@@ -38,7 +38,10 @@ describe("DSO routes", () => {
     const { app } = setup();
     const res = await app.request("/api/dso/status");
     const text = await res.text();
-    expect(JSON.parse(text)).toEqual({ data: { prod: true, pre: false } });
+    const data = JSON.parse(text).data;
+    expect(data.prod).toBe(true);
+    expect(data.pre).toBe(false);
+    expect(Array.isArray(data.variablesSeen)).toBe(true);
     expect(text).not.toContain(KEY);
   });
 

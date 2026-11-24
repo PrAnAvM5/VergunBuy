@@ -50,7 +50,16 @@ export function createApp(deps: AppDeps) {
 
   /** Whether keys are configured; never the keys themselves. */
   app.get("/dso/status", (c) =>
-    c.json({ data: { prod: dso.configured("prod"), pre: dso.configured("pre") } }),
+    c.json({
+      data: {
+        prod: dso.configured("prod"),
+        pre: dso.configured("pre"),
+        // Names only (never values) of key-like variables the server can see, to spot typos.
+        variablesSeen: Object.keys(process.env)
+          .filter((k) => /(^DS|^RP_|API_KEY)/i.test(k))
+          .sort(),
+      },
+    }),
   );
 
   /** Rule documents that apply at a point (RD New), valid today or on geldigOp. */
