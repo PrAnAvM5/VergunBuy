@@ -28,3 +28,8 @@ jobs:
           jq '{complete: .data.complete, documents: (.data.regelingen.documents | length), drafts: (.data.drafts.documents | length), calls: (.data.calls | length)}' regelingen.json
           jq -e '.data.complete == true and (.data.regelingen.documents | length) > 0' regelingen.json > /dev/null \
             || { echo "::error::The DSO search is incomplete or empty"; jq '.data.regelingen.error // .data.drafts.error' regelingen.json; exit 1; }
+          curl -fsS -X POST "$SERVER/api/rp/zoning" -H "content-type: application/json" \
+            -d '{"ring":[[84900,383320],[84920,383320],[84920,383340],[84900,383340]]}' > zoning.json
+          jq '{complete: .data.complete, plans: (.data.plans | length), objects: (.data.objects | length)}' zoning.json
+          jq -e '.data.complete == true and (.data.plans | length) > 0' zoning.json > /dev/null \
+            || { echo "::error::The zoning plan search is incomplete or empty"; exit 1; }
