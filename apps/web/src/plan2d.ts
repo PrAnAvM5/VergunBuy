@@ -4,7 +4,7 @@
  */
 import type { PlotContext } from "@vergunbuy/data";
 import { polyToLocal, toLocal, type Point, type Polygon } from "@vergunbuy/engine";
-import { esc } from "./format.ts";
+import { esc, isOtherHomeOnParcel } from "./format.ts";
 
 const W = 820;
 const H = 620;
@@ -62,6 +62,14 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
   parts.push(
     `<path class="obj${sel("plot:main")}" data-sel="plot:main" d="${path(plot)}" fill="#ffffff" stroke="#1d1f24" stroke-width="2"/>`,
   );
+  // Other homes on the same parcel stand on "this plot" too, so draw them above the plot fill.
+  const otherHomes = ctx.neighbours.filter(isOtherHomeOnParcel);
+  for (const b of otherHomes) {
+    const key = `neighbour:${b.id}`;
+    parts.push(
+      `<path class="obj${sel(key)}" data-sel="${esc(key)}" d="${path(polyToLocal(f, b.outline))}" fill="#2a9d8f" fill-opacity="0.35" stroke="#1f7a6f" stroke-width="1.4" stroke-dasharray="6 4"/>`,
+    );
+  }
   for (const b of ctx.outbuildings) {
     const key = `outbuilding:${b.id}`;
     parts.push(
@@ -91,11 +99,25 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
       text(
         tx((L.house.minX + L.house.maxX) / 2),
         ty((L.house.minY + L.house.maxY) / 2),
-        "House",
+        ctx.unitsInHouse > 1 ? `Building with ${ctx.unitsInHouse} units` : "House",
         13,
         "#ffffff",
       ),
     );
+  for (const b of otherHomes) {
+    const box = polyToLocal(f, b.outline);
+    const cx = box.reduce((s, p) => s + p[0], 0) / box.length;
+    const cy = box.reduce((s, p) => s + p[1], 0) / box.length;
+    parts.push(
+      text(
+        tx(cx),
+        ty(cy),
+        `Other home${b.addressLabels?.length ? ` (${b.addressLabels.join(", ")})` : ""}`,
+        12,
+        "#11473f",
+      ),
+    );
+  }
   const streetY = L.plot.minY - 3;
   if (f.method !== "none")
     parts.push(

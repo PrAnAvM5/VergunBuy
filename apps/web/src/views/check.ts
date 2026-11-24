@@ -6,18 +6,26 @@
  */
 import { ACCESS_TEXT, esc, FLAG_TEXT, HOUSE_TYPE_TEXT, m2, qualityCard } from "../format.ts";
 import { bindAnswers, renderInspector } from "../inspector.ts";
-import { AERIAL_YEARS, drawPlan, legend, type Layers } from "../plan.ts";
+import { AERIAL_YEARS, legend, type Layers } from "../plan.ts";
 import { drawWorkspacePlan } from "../plan2d.ts";
 import { lastRun, runCheck, type RunResult } from "../run.ts";
 import type { SceneHandle } from "../scene3d.ts";
+import type { MapHandle, OverlayId } from "../map.ts";
 import { SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
 
 export type View = "map" | "2d" | "3d";
 
 let scene: SceneHandle | undefined;
+let mapView: MapHandle | undefined;
+const disposeMap = () => {
+  mapView?.dispose();
+  mapView = undefined;
+};
+/** Releases the 3D scene and the interactive map (WebGL contexts, listeners). */
 export const disposeScene = () => {
   scene?.dispose();
   scene = undefined;
+  disposeMap();
 };
 
 const VIA_TEXT: Record<string, string> = {
@@ -104,6 +112,18 @@ function rememberView(view: View): void {
   history.replaceState(null, "", `${path}${q ? `?${q}` : ""}`);
 }
 
+/** Overlay names for the map's menu (kept here so the map code loads only when shown). */
+const OVERLAY_LIST: [OverlayId, string][] = [
+  ["plot", "Plot, house and homes on the same parcel"],
+  ["buildings", "Neighbouring buildings"],
+  ["parcels", "Parcel lines (cadastral map)"],
+  ["public", "Streets, paths and green"],
+  ["trees", "Trees and hedges"],
+  ["access", "Car access"],
+  ["edges", "Edge types"],
+  ["labels", "House numbers and street names"],
+];
+
 const message3d = (title: string, body: string, reload: boolean) =>
   `<div class="card error-box" style="margin:24px"><h3 style="margin-top:0">${esc(title)}</h3><p class="muted small">${esc(body)}</p>${reload ? `<button class="btn" onclick="location.reload()">Reload the page</button>` : ""}</div>`;
 
@@ -158,11 +178,16 @@ export async function renderCheck(
   }
 
   const ctx = result.context;
-  const layers: Layers = {
-    context: true,
+  const layers: Pick<Layers, "aerial"> = { aerial: "Actueel_orthoHR" };
+  const overlays: Record<OverlayId, boolean> = {
+    plot: true,
+    buildings: true,
+    parcels: true,
+    public: true,
+    trees: true,
+    access: true,
     edges: true,
-    dimensions: false,
-    aerial: "Actueel_orthoHR",
+    labels: true,
   };
   const ms = ctx.measurements;
   const L = ctx.layout;
@@ -203,9 +228,9 @@ export async function renderCheck(
           <div id="view"></div>
           <div class="plan-tools" id="tools-map">
             <label>Aerial photo <select id="l-aerial">${AERIAL_YEARS.map(([k, l]) => `<option value="${k}"${k === layers.aerial ? " selected" : ""}>${esc(l)}</option>`).join("")}</select></label>
-            <label><input type="checkbox" id="l-edges" checked /> Edge types</label>
-            <label><input type="checkbox" id="l-context" checked /> Surroundings</label>
-            <span style="margin-left:auto">Click any object to inspect it</span>
+            <label><input type="checkbox" id="l-all" checked /> Overlays</label>
+            <details class="overlay-menu"><summary>Choose overlays</summary><div>${OVERLAY_LIST.map(([id, label]) => `<label><input type="checkbox" data-overlay="${id}" ${overlays[id] ? "checked" : ""}/> ${esc(label)}</label>`).join("")}</div></details>
+            <span style="margin-left:auto">Drag to move · scroll or pinch to zoom · click to inspect</span>
           </div>
           <div class="plan-tools" id="tools-2d">
             <label><input type="checkbox" id="l-dims" checked /> Dimensions</label>
@@ -279,6 +304,7 @@ export async function renderCheck(
   const legendEl = root.querySelector<HTMLElement>("#legend");
 
   let mounting3d = false;
+  let mountingMap = false;
   const drawInspector = () => {
     if (inspEl) inspEl.innerHTML = renderInspector(ctx, selected, devBox?.checked ?? false);
   };
@@ -292,10 +318,41 @@ export async function renderCheck(
       .querySelectorAll<HTMLButtonElement>(".tabs button")
       .forEach((b) => b.classList.toggle("on", b.dataset.view === view));
     if (legendEl) legendEl.style.display = view === "3d" ? "none" : "";
-    if (view !== "3d") disposeScene();
+    if (view !== "3d") {
+      scene?.dispose();
+      scene = undefined;
+    }
+    if (view !== "map") disposeMap();
     if (view === "map") {
-      viewEl.className = "";
-      viewEl.innerHTML = drawPlan(ctx, layers, selected);
+      if (mapView) mapView.setSelected(selected);
+      else if (!mountingMap) {
+        viewEl.className = "";
+        viewEl.innerHTML = `<div class="loading" style="padding:30px"><div class="spinner"></div>Loading the map…</div>`;
+        mountingMap = true;
+        try {
+          const { mountMap } = await import("../map.ts");
+          if (view === "map") {
+            mapView = mountMap(viewEl, ctx, {
+              aerial: layers.aerial,
+              overlays,
+              ...(selected ? { selected } : {}),
+              onSelect: (key) => {
+                selected = key;
+                drawInspector();
+              },
+            });
+          }
+        } catch (err) {
+          console.error(err);
+          viewEl.innerHTML = message3d(
+            "The map could not be loaded",
+            "The site was probably updated while this page was open.",
+            true,
+          );
+        } finally {
+          mountingMap = false;
+        }
+      }
     } else if (view === "2d") {
       viewEl.className = "";
       viewEl.innerHTML = drawWorkspacePlan(ctx, selected, dims);
@@ -320,22 +377,39 @@ export async function renderCheck(
     }),
   );
   viewEl?.addEventListener("click", (e) => {
-    if (view === "3d") return;
+    if (view !== "2d") return; // the map handles its own clicks; 3D has none
     selected = (e.target as Element).closest("[data-sel]")?.getAttribute("data-sel") ?? undefined;
     void draw();
   });
   if (inspEl) bindAnswers(inspEl, () => void draw());
   root.querySelector<HTMLSelectElement>("#l-aerial")?.addEventListener("change", (e) => {
     layers.aerial = (e.target as HTMLSelectElement).value;
-    void draw();
+    mapView?.setAerial(layers.aerial);
   });
-  root.querySelector<HTMLInputElement>("#l-edges")?.addEventListener("change", (e) => {
-    layers.edges = (e.target as HTMLInputElement).checked;
-    void draw();
-  });
-  root.querySelector<HTMLInputElement>("#l-context")?.addEventListener("change", (e) => {
-    layers.context = (e.target as HTMLInputElement).checked;
-    void draw();
+  const overlayBoxes = [...root.querySelectorAll<HTMLInputElement>("input[data-overlay]")];
+  const allBox = root.querySelector<HTMLInputElement>("#l-all");
+  const syncAll = () => {
+    if (!allBox) return;
+    const on = overlayBoxes.filter((b) => b.checked).length;
+    allBox.checked = on > 0;
+    allBox.indeterminate = on > 0 && on < overlayBoxes.length;
+  };
+  overlayBoxes.forEach((box) =>
+    box.addEventListener("change", () => {
+      const id = box.dataset.overlay as OverlayId;
+      overlays[id] = box.checked;
+      mapView?.setOverlay(id, box.checked);
+      syncAll();
+    }),
+  );
+  allBox?.addEventListener("change", () => {
+    for (const box of overlayBoxes) {
+      box.checked = allBox.checked;
+      const id = box.dataset.overlay as OverlayId;
+      overlays[id] = box.checked;
+      mapView?.setOverlay(id, box.checked);
+    }
+    allBox.indeterminate = false;
   });
   root.querySelector<HTMLInputElement>("#l-dims")?.addEventListener("change", (e) => {
     dims = (e.target as HTMLInputElement).checked;

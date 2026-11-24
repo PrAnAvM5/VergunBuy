@@ -613,3 +613,45 @@ select {
 .ex-table .pill {
   margin: 2px 2px 2px 0;
 }
+
+/* Interactive map */
+.olmap {
+  height: min(560px, 72vh);
+  min-height: 320px;
+  position: relative;
+}
+.olmap .ol-scale-line {
+  left: 10px;
+  bottom: 10px;
+}
+.olmap .ol-attribution {
+  font-size: 10px;
+}
+.overlay-menu summary {
+  cursor: pointer;
+  color: var(--accent, #2a4a8a);
+}
+.overlay-menu > div {
+  display: grid;
+  gap: 6px;
+  padding: 8px 0 2px;
+}
+
+/* Small screens: header on two lines, menu items never broken over lines, map leaves room to scroll */
+@media (max-width: 640px) {
+  .topbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  nav {
+    width: 100%;
+    overflow-x: auto;
+    gap: 16px;
+  }
+  nav a {
+    white-space: nowrap;
+  }
+  .olmap {
+    height: 60vh;
+  }
+}

@@ -194,6 +194,7 @@ export function legend(): string {
   const items: [string, string][] = [
     ["var(--house)", "House"],
     ["#b9aee8", "Other building on plot"],
+    ["#2a9d8f", "Other home on the same parcel"],
     ["#a8a296", "Neighbouring buildings"],
     ["var(--road)", "Road"],
     ["var(--path)", "Footpath"],

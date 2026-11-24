@@ -114,7 +114,11 @@ export function classifyEdges(input: EdgeInput): EdgeRun[] {
   return runs.map((r) => ({ ...r, lengthM: Math.round(r.lengthM * 100) / 100 }));
 }
 
-export type HouseType = "detached" | "semi-or-end" | "terraced" | "corner";
+/**
+ * "unit" = one address among several in the same building (a flat, or a home above a shop).
+ * It is set by the data layer from the building register, never from edges.
+ */
+export type HouseType = "detached" | "semi-or-end" | "terraced" | "corner" | "unit";
 
 /**
  * House type is DERIVED from edge classes and used only for explanations and tests.

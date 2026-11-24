@@ -1,0 +1,10 @@
+{
+  "address": "Markt 10a, 4641HR Ossendrecht",
+  "query": {
+    "postcode": "4641HR",
+    "number": 10,
+    "addition": "a"
+  },
+  "recordedAt": "2026-11-24",
+  "source": "validation run 2026-11-24 seed 7"
+}

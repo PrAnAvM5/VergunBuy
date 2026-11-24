@@ -4,7 +4,7 @@
  */
 import type { PlotContext } from "@vergunbuy/data";
 import { area } from "@vergunbuy/engine";
-import { EDGE_TEXT, esc, m, m2 } from "./format.ts";
+import { EDGE_TEXT, esc, isOtherHomeOnParcel, m, m2 } from "./format.ts";
 
 interface Row {
   label: string;
@@ -153,14 +153,29 @@ function describe(ctx: PlotContext, key: string): View | undefined {
         value: `${h.scanYear} (${esc(h.scanSource ?? "AHN")})`,
         certainty: "measured",
       });
+    if (b.addressLabels?.length)
+      rows.push({
+        label: "House numbers",
+        value: esc(b.addressLabels.join(", ")),
+        certainty: "measured",
+      });
+    if ((b.addresses ?? 0) > 0)
+      rows.push({
+        label: "Addresses in building",
+        value: `${b.addresses}${b.use ? ` (${esc(b.use.replace(/,/g, ", "))})` : ""}`,
+        certainty: "measured",
+      });
     rows.push({ label: "BAG id", value: esc(b.id), certainty: "measured" });
+    const otherHome = type === "neighbour" && isOtherHomeOnParcel(b);
     return {
       title:
         type === "house"
           ? "House"
           : type === "outbuilding"
             ? "Other building on this plot"
-            : "Neighbouring building",
+            : otherHome
+              ? "Other home on the same parcel"
+              : "Neighbouring building",
       rows,
       source: `BAG (outline, year, addresses; public domain)${h ? " and 3D BAG (heights, roof, scan changes; CC BY 4.0)" : ""}`,
       how:
@@ -168,7 +183,9 @@ function describe(ctx: PlotContext, key: string): View | undefined {
           ? "The building linked to this address in the register. Heights come from the national laser scan; a change between scans can mean an extension."
           : type === "outbuilding"
             ? "The register does not say what an outbuilding is. We describe it from its size, height and whether it has an address, so treat the description as a likely guess."
-            : "A registered building near the plot, used to detect shared walls.",
+            : otherHome
+              ? "Most of this building lies on the same cadastral parcel as this address, and it holds homes. The cadastral map shows one parcel; who owns which part (for example through apartment rights) is not in the open data."
+              : "A registered building near the plot, used to detect shared walls.",
       raw: b,
     };
   }

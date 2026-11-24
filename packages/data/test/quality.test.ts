@@ -240,4 +240,21 @@ describe("validation run findings (2026-11-24)", () => {
     expect(context.exits[0]?.acrossM).toBeLessThanOrEqual(3);
     expect(context.exits[0]?.alongPlotM).toBeGreaterThanOrEqual(2.5);
   });
+
+  it("Markt 10a: a flat above a shop is a unit in a shared building, and buildings carry house numbers", async () => {
+    const tracer = new Tracer();
+    const fetchFn = fixtureFetch(load("ossendrecht-markt-10a"));
+    const address = await findAddress(
+      AddressQuery.parse({ postcode: "4641HR", number: "10", addition: "a" }),
+      { summarize() {}, degrade() {}, recordCall() {} },
+      fetchFn,
+    );
+    const context = await buildPlotContext(address, tracer, fetchFn);
+    expect(context.houseType).toBe("unit");
+    expect(context.unitsInHouse).toBe(4);
+    expect(context.flags.map((f) => f.code)).toEqual(
+      expect.arrayContaining(["MULTI_UNIT_BUILDING", "SHARED_PLOT"]),
+    );
+    expect(context.house[0]?.addressLabels).toEqual(["10", "10a", "10b"]);
+  });
 });

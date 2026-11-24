@@ -12,6 +12,7 @@
   "dependencies": {
     "@vergunbuy/data": "workspace:*",
     "@vergunbuy/engine": "workspace:*",
+    "ol": "^10.11.0",
     "three": "^0.170.0"
   },
   "devDependencies": {

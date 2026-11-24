@@ -78,6 +78,8 @@ export interface Building {
   widthM?: number;
   /** Share of the building's footprint that lies on this plot (0..1). */
   onPlotShare?: number;
+  /** House numbers registered in this building, e.g. ["10", "10a", "10b"]. */
+  addressLabels?: string[];
 }
 
 export interface Tree {
@@ -145,6 +147,7 @@ export type FlagCode =
   | "PLOT_AREA_MISMATCH"
   | "INVALID_GEOMETRY"
   | "SHARED_PLOT"
+  | "MULTI_UNIT_BUILDING"
   | "PAVEMENT_CROSSING";
 
 export interface Flag {
@@ -190,6 +193,8 @@ export interface PlotContext {
   pavementRuns: PavementRun[];
   /** Other home buildings on the same cadastral parcel (terraces or flats owned by one party). */
   otherHomesOnPlot: number;
+  /** Addresses in the house's building; more than 1 means this home is a unit (flat). */
+  unitsInHouse: number;
   measurements: Measurements;
   /** The plot's own frame (street at the bottom) and its main dimensions. */
   frame: PlotFrame;
@@ -301,6 +306,7 @@ const share = (plot: Polygon, b: Polygon) => {
  * cannot show them. Count them directly: a house touching other homes is not detached.
  */
 function houseTypeWithin(fromEdges: HouseType, house: Building[], others: Building[]): HouseType {
+  if (house.some((h) => (h.addresses ?? 0) > 1)) return "unit";
   if (!house.length || !others.length) return fromEdges;
   const touching = others.filter((o) =>
     house.some((h) => distanceBetween(h.outline, o.outline) <= 0.3),
@@ -489,11 +495,32 @@ export async function buildPlotContext(
       const res = await ogcItems(OGC.bag, "pand", work, ctx, fetchFn);
       if (!res.complete) truncated("buildings", "building");
       const current = res.features.filter((f) => IN_USE.has(str(f.properties.status) ?? ""));
+      // House numbers per building, so every building on the map can be named.
+      const labelsByPand = new Map<string, string[]>();
+      try {
+        const vos = await ogcItems(OGC.bag, "verblijfsobject", work, ctx, fetchFn);
+        for (const v of vos.features) {
+          const nr = num(v.properties.huisnummer);
+          if (nr === undefined) continue;
+          const label = `${nr}${str(v.properties.huisletter) ?? ""}${str(v.properties.toevoeging) ? `-${str(v.properties.toevoeging)}` : ""}`;
+          for (const href of (v.properties["pand.href"] as string[] | undefined) ?? []) {
+            const uuid = href.split("/").pop() ?? "";
+            const list = labelsByPand.get(uuid) ?? [];
+            if (!list.includes(label)) list.push(label);
+            labelsByPand.set(uuid, list);
+          }
+        }
+      } catch {
+        note(quality, "buildings", "House numbers of nearby buildings could not be loaded.");
+      }
       const dropped = res.features.length - current.length;
       let straddling = 0;
       let invalid = 0;
       for (const f of current) {
         for (const b of toBuilding(f)) {
+          const labels = labelsByPand.get(String(f.id));
+          if (labels?.length)
+            b.addressLabels = labels.sort((p, q) => p.localeCompare(q, "nl", { numeric: true }));
           if (!validatePolygon(b.outline).valid) invalid++;
           b.onPlotShare = Math.round(share(plot.outline, b.outline) * 100) / 100;
           if (housePandUuids.has(String(f.id))) house.push(b);
@@ -566,6 +593,13 @@ export async function buildPlotContext(
       "SHARED_PLOT",
       `This parcel also holds ${otherHomesOnPlot} other home building(s), as with housing-association terraces or flats. Plot size, garden and setbacks below are for the whole parcel, not this home.`,
     );
+  }
+  const unitsInHouse = Math.max(0, ...house.map((h) => h.addresses ?? 0));
+  if (unitsInHouse > 1) {
+    const uses = [...new Set(house.flatMap((h) => (h.use ?? "").split(",")).filter(Boolean))];
+    const detail = `This address is one of ${unitsInHouse} units in the same building${uses.some((u) => u !== "woonfunctie") ? " (homes together with a shop or other use)" : " (flats)"}. The building and its plot are shared, so a carport needs the other owners to agree, usually through the owners' association (VvE).`;
+    downgrade(quality, "plot", "partial", detail);
+    flag("MULTI_UNIT_BUILDING", detail);
   }
   if (house.length > 1)
     flag("MULTIPLE_HOUSE_BUILDINGS", `${house.length} building outlines belong to this address.`);
@@ -1100,6 +1134,7 @@ export async function buildPlotContext(
     access,
     pavementRuns,
     otherHomesOnPlot,
+    unitsInHouse,
     measurements,
     frame,
     layout,

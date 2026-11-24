@@ -8,6 +8,13 @@ export function esc(value: unknown): string {
     .replace(/'/g, "&#39;");
 }
 
+/** A building on this parcel that holds homes but is not this house (see SHARED_PLOT). */
+export const isOtherHomeOnParcel = (b: {
+  onPlotShare?: number;
+  addresses?: number;
+  use?: string;
+}) => (b.onPlotShare ?? 0) >= 0.5 && (b.addresses ?? 0) > 0 && /woon/i.test(b.use ?? "");
+
 export const m = (n: number, digits = 1) => `${n.toFixed(digits)} m`;
 export const m2 = (n: number) => `${Math.round(n)} m²`;
 
@@ -47,6 +54,8 @@ export const FLAG_TEXT: Record<string, string> = {
     "No registered driveway crossing and no road along the plot. Registers often miss exits, especially rural and rear ones, so check the aerial photo. A new exit needs its own permit.",
   PAVEMENT_CROSSING:
     "The road lies just beyond a pavement or verge, the usual way Dutch homes are reached, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+  MULTI_UNIT_BUILDING:
+    "This address is one unit in a building with several addresses (flats, or homes above a shop). The building and plot are shared, so a carport needs the other owners to agree, usually through the owners' association (VvE).",
   SHARED_PLOT:
     "This parcel also holds other homes, as with housing-association terraces or flats. Plot size, garden and setbacks are for the whole parcel, not just this home, and the owner of the parcel would have to agree to any build.",
   POSSIBLE_EXIT:
@@ -69,6 +78,7 @@ export const HOUSE_TYPE_TEXT: Record<string, string> = {
   "semi-or-end": "Semi-detached or end of terrace",
   terraced: "Terraced house",
   corner: "Corner house",
+  unit: "Flat or unit in a shared building",
 };
 
 export const EDGE_TEXT: Record<string, { label: string; color: string; dash?: string }> = {

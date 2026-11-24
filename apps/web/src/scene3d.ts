@@ -8,6 +8,7 @@
 import type { Building, PlotContext } from "@vergunbuy/data";
 import { polyToLocal, toLocal, type Polygon } from "@vergunbuy/engine";
 import * as THREE from "three";
+import { isOtherHomeOnParcel } from "./format.ts";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export interface SceneHandle {
@@ -162,6 +163,8 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
     houseWall: new THREE.MeshLambertMaterial({ color: "#f1ebe0", side: THREE.DoubleSide }),
     outRoof: new THREE.MeshLambertMaterial({ color: "#7d6fd6", side: THREE.DoubleSide }),
     outWall: new THREE.MeshLambertMaterial({ color: "#d9d3f5", side: THREE.DoubleSide }),
+    otherRoof: new THREE.MeshLambertMaterial({ color: "#2a9d8f", side: THREE.DoubleSide }),
+    otherWall: new THREE.MeshLambertMaterial({ color: "#bfe3de", side: THREE.DoubleSide }),
     nbRoof: new THREE.MeshLambertMaterial({ color: "#9a958c", side: THREE.DoubleSide }),
     nbWall: new THREE.MeshLambertMaterial({ color: "#d8d4cc", side: THREE.DoubleSide }),
     trunk: new THREE.MeshLambertMaterial({ color: "#6b4f35" }),
@@ -197,7 +200,12 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
   for (const b of ctx.house) add(safeBuilding(ctx, b, mats.houseRoof, mats.houseWall));
   for (const b of ctx.outbuildings) add(safeBuilding(ctx, b, mats.outRoof, mats.outWall));
   for (const b of ctx.neighbours)
-    if (inRange(b.outline)) add(safeBuilding(ctx, b, mats.nbRoof, mats.nbWall));
+    if (inRange(b.outline))
+      add(
+        isOtherHomeOnParcel(b)
+          ? safeBuilding(ctx, b, mats.otherRoof, mats.otherWall)
+          : safeBuilding(ctx, b, mats.nbRoof, mats.nbWall),
+      );
   for (const t of ctx.trees ?? []) {
     const [x, y] = toLocal(ctx.frame, t.at);
     if (Math.abs(x - cx) > range || Math.abs(y - cy) > range) continue;
