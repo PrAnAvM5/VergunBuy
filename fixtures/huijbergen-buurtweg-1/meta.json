@@ -1,0 +1,19 @@
+{
+  "address": "Buurtweg 1, 4635RN Huijbergen",
+  "query": {
+    "postcode": "4635RN",
+    "number": 1
+  },
+  "recordedAt": "2026-11-24",
+  "steps": [
+    "ok find-address: Found Buurtweg 1, 4635RN Huijbergen",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Huijbergen D 320, 2413 m² drawn",
+    "ok bag-buildings: 1 house, 0 other on plot, 0 nearby; ignored 0 demolished or invalid",
+    "ok 3dbag-heights: Heights for 1 buildings, height scan of 2024",
+    "ok bgt-trees: 12 registered trees, 0 hedges nearby (garden trees are not registered)",
+    "ok bgt-public: 8 current public areas; ignored 12 historical records",
+    "ok classify-edges: 6 edge runs"
+  ],
+  "flags": []
+}
