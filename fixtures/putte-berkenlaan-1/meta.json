@@ -1,0 +1,21 @@
+{
+  "address": "Berkenlaan 1, 4645JE Putte",
+  "query": {
+    "postcode": "4645JE",
+    "number": 1
+  },
+  "recordedAt": "2026-11-24",
+  "steps": [
+    "ok find-address: Found Berkenlaan 1, 4645JE Putte",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Putte C 1782, 1839 m² drawn",
+    "ok bag-buildings: 1 house, 0 other on plot, 7 nearby; ignored 4 demolished or invalid",
+    "ok 3dbag-heights: Heights for 8 buildings, height scan of 2024",
+    "ok bgt-trees: 14 registered trees, 0 hedges nearby (garden trees are not registered)",
+    "ok bgt-public: 35 current public areas; ignored 87 historical records",
+    "ok classify-edges: 10 edge runs"
+  ],
+  "flags": [
+    "POSSIBLE_ACHTERPAD"
+  ]
+}
