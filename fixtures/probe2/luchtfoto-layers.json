@@ -1,0 +1,78 @@
+{
+  "status": 200,
+  "cors": "*",
+  "layers": [
+    [
+      "Actueel_orthoHR",
+      "Luchtfoto Actueel Ortho 8cm RGB"
+    ],
+    [
+      "Actueel_ortho25",
+      "Luchtfoto Actueel Ortho 25cm RGB"
+    ],
+    [
+      "2026_orthoHR",
+      "Luchtfoto 2026 Ortho 5 en 8cm RGB"
+    ],
+    [
+      "2026_quickortho25",
+      "Luchtfoto 2026 Quick Ortho 25cm RGB"
+    ],
+    [
+      "2025_orthoHR",
+      "Luchtfoto 2025 Ortho 5 en 8cm RGB"
+    ],
+    [
+      "2025_ortho25",
+      "Luchtfoto 2025 Ortho 25cm RGB"
+    ],
+    [
+      "2024_orthoHR",
+      "Luchtfoto 2024 Ortho 8cm RGB"
+    ],
+    [
+      "2024_ortho25",
+      "Luchtfoto 2024 Ortho 25cm RGB"
+    ],
+    [
+      "2023_orthoHR",
+      "Luchtfoto 2023 Ortho 8cm RGB"
+    ],
+    [
+      "2023_ortho25",
+      "Luchtfoto 2023 Ortho 25cm RGB"
+    ],
+    [
+      "2022_orthoHR",
+      "Luchtfoto 2022 Ortho 8cm RGB"
+    ],
+    [
+      "2022_ortho25",
+      "Luchtfoto 2022 Ortho 25cm RGB"
+    ],
+    [
+      "2021_orthoHR",
+      "Luchtfoto 2021 Ortho 8cm RGB"
+    ],
+    [
+      "2020_ortho25",
+      "Luchtfoto 2020 Ortho 25cm RGB"
+    ],
+    [
+      "2019_ortho25",
+      "Luchtfoto 2019 Ortho 25cm RGB"
+    ],
+    [
+      "2018_ortho25",
+      "Luchtfoto 2018 Ortho 25cm RGB"
+    ],
+    [
+      "2017_ortho25",
+      "Luchtfoto 2017 Ortho 25cm RGB"
+    ],
+    [
+      "2016_ortho25",
+      "Luchtfoto 2016 Ortho 25cm RGB"
+    ]
+  ]
+}

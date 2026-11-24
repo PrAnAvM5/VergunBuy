@@ -1,0 +1,166 @@
+{
+  "url": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_vlak/items?f=json&limit=200&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Content-Crs,Link",
+    "content-crs": "<http://www.opengis.net/def/crs/EPSG/0/28992>",
+    "content-type": "application/geo+json",
+    "x-content-type-options": "nosniff"
+  },
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T02:09:14Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_vlak/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_vlak/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_vlak/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=200"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2026-09-02T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.2eef7734a5e74af485f6656917cc9710",
+          "lv_publicatiedatum": "2026-09-03T10:58:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "haag",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-09-03T10:15:15Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "6c338529-7d1f-9604-40d5-fe0bf5f630cb"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81015.47,
+                381957.987
+              ],
+              [
+                81014.287,
+                381940.709
+              ],
+              [
+                81019.28,
+                381940.569
+              ],
+              [
+                81019.602,
+                381945.212
+              ],
+              [
+                81018.162,
+                381945.253
+              ],
+              [
+                81017.293,
+                381945.278
+              ],
+              [
+                81017.974,
+                381957.875
+              ],
+              [
+                81015.47,
+                381957.987
+              ]
+            ]
+          ]
+        },
+        "id": "ec08f3cc-09dc-5fe6-9056-561be43ac7cc"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2026-09-02T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.9f6dfaea6d7940d99d2a21ebe57782f5",
+          "lv_publicatiedatum": "2026-09-03T10:58:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "haag",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-09-03T10:15:15Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "08a474e1-9645-1e38-a1c6-112bdf066f6a"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81023.25,
+                381940.31
+              ],
+              [
+                81023.263,
+                381945.108
+              ],
+              [
+                81022.482,
+                381945.13
+              ],
+              [
+                81019.602,
+                381945.212
+              ],
+              [
+                81019.28,
+                381940.569
+              ],
+              [
+                81023.25,
+                381940.31
+              ]
+            ]
+          ]
+        },
+        "id": "e48e79e6-f5c9-5707-9030-04ef9f7cc614"
+      }
+    ],
+    "numberReturned": 2
+  }
+}

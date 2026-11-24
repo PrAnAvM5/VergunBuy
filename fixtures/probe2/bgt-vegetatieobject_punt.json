@@ -1,0 +1,758 @@
+{
+  "url": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_punt/items?f=json&limit=200&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Content-Crs,Link",
+    "content-crs": "<http://www.opengis.net/def/crs/EPSG/0/28992>",
+    "content-type": "application/geo+json",
+    "x-content-type-options": "nosniff"
+  },
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T02:09:14Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_punt/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_punt/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/vegetatieobject_punt/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=200"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:45:31Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.084b27276f96466a81e1bbe6dd20a04e",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "65187b03-a3f1-0aeb-397f-006d2e7222d6"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81050.374,
+            381958.687
+          ]
+        },
+        "id": "1710f26b-e1eb-5e76-8801-6b42a0ee79c8"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:46:42Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.4286768fad824ee1aa7f6b5ce520dc7f",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "44c3083a-e4b4-f14e-c0fd-3c49b5374259"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81058.823,
+            381953.87
+          ]
+        },
+        "id": "e5d15ed6-6391-5755-859a-027d69d91157"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:46:48Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.47938a6a5c6746da8bd2933996334f11",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "f4a8464d-8fca-30d8-fce1-a369f75ab1ac"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81037.088,
+            381959.415
+          ]
+        },
+        "id": "a284eb4e-0cb0-5a7f-9b3d-67dedb7a92b5"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:47:55Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.7d107f1ec8e8459a834810f41ad0ee5f",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "97f0cec5-dd66-2a31-67fd-eac938ee53ab"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81043.694,
+            381959.175
+          ]
+        },
+        "id": "bf1e173a-2f70-5504-b18a-ff2d00113ce2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:48:13Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.88d5de8548cb4cfba3bd1b282736997c",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "fbdbede2-f5f3-c988-6732-0998a8f40e98"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80993.855,
+            381967.72
+          ]
+        },
+        "id": "45906c7d-019e-5237-9db6-1816673479d6"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:50:32Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f194de9a7b214f558faf6a7579e7625f",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "2d07c388-5c4d-ce4b-cbec-5c07ec09019a"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81064.169,
+            381947.667
+          ]
+        },
+        "id": "36ef12d9-020c-5fe0-8e58-9356d07f35e2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:45:31Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.084b27276f96466a81e1bbe6dd20a04e",
+          "lv_publicatiedatum": "2019-10-10T08:56:40Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "90324e97-478d-cbe6-5bf9-ebb24dac1db7"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81050.374,
+            381958.687
+          ]
+        },
+        "id": "ce70df1d-8e1e-5550-a3ce-824dc63f7b17"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:46:42Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.4286768fad824ee1aa7f6b5ce520dc7f",
+          "lv_publicatiedatum": "2019-10-10T08:56:40Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "6f1422df-77d1-f93f-5289-77f93a1e229d"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81058.823,
+            381953.87
+          ]
+        },
+        "id": "2b2e2070-1db1-5c96-b181-e33a326009b2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:46:48Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.47938a6a5c6746da8bd2933996334f11",
+          "lv_publicatiedatum": "2019-10-10T08:56:40Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "6029a60a-f9ea-ae86-00d2-30e6d0cfc7c4"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81037.088,
+            381959.415
+          ]
+        },
+        "id": "7be7688f-382c-50d2-9070-1889bb6cadb5"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:47:55Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.7d107f1ec8e8459a834810f41ad0ee5f",
+          "lv_publicatiedatum": "2019-10-10T08:56:40Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "00cc0e1f-92f9-e23d-6f3a-906fb071158c"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81043.694,
+            381959.175
+          ]
+        },
+        "id": "8ce9425d-d55b-5219-b943-470d7a779325"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:48:13Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.88d5de8548cb4cfba3bd1b282736997c",
+          "lv_publicatiedatum": "2019-10-10T08:56:40Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "9967c2fe-453c-1040-c300-925ac666af1c"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80993.855,
+            381967.72
+          ]
+        },
+        "id": "31ab67d7-52f5-5065-9b84-fb9efa806eb1"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-21T22:00:00Z",
+          "eind_registratie": "2019-10-10T07:50:32Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f194de9a7b214f558faf6a7579e7625f",
+          "lv_publicatiedatum": "2019-10-10T08:56:40Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-10-09T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "f2979f2c-49be-6c5a-e3ad-f1069f139004"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81064.169,
+            381947.667
+          ]
+        },
+        "id": "2aeead1b-9424-53f1-a141-8edc80fd5575"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.09d7c542d43049ff991b36deb4b59bdc",
+          "lv_publicatiedatum": "2019-11-20T16:17:09Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-11-20T11:33:43Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "c93292e3-8bc4-b2d5-8969-d744596eb58c"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81050.44,
+            381959.192
+          ]
+        },
+        "id": "3bbb0712-25c4-5dc3-ae2a-5813c18f42c2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.18ec3e6c203b422ca96a5091e23c7094",
+          "lv_publicatiedatum": "2019-11-20T16:17:09Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-11-20T11:33:43Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "2702f61e-f809-e371-3a67-c006b5bd9873"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81037.152,
+            381959.92
+          ]
+        },
+        "id": "7c5dd3d2-634b-5bbd-8927-56b8c9ce94a5"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.6dab45f5bbd7405d9989502ba7815f3a",
+          "lv_publicatiedatum": "2019-11-20T16:17:09Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-11-20T11:33:43Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "e8836b00-81ff-d939-6dd2-04d3259ffe81"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80993.911,
+            381968.226
+          ]
+        },
+        "id": "7385c19e-323f-53ea-b258-f49bc50a97a3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.762d19067fa54b0487458f7aeba631d7",
+          "lv_publicatiedatum": "2019-11-20T16:17:09Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-11-20T11:33:43Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "cb1b8961-1569-ba10-66ee-f74953fccdd8"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81058.89,
+            381954.374
+          ]
+        },
+        "id": "1a8694eb-7117-5066-ad7e-c46f946a662c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.fc0066addc0543bd9fd1d0f37d0138b6",
+          "lv_publicatiedatum": "2019-11-20T16:17:09Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-11-20T11:33:43Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "b915e457-136d-9ce7-37a7-0e35f5ea3e64"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81043.759,
+            381959.68
+          ]
+        },
+        "id": "2583e240-71e7-5b90-b37d-3398938a1bf2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": "2026-09-03T10:15:15Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.5ab289467e904650b45c46f71054f5c8",
+          "lv_publicatiedatum": "2019-11-20T16:17:09Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-11-20T11:33:43Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "5e085d56-29f3-a75e-5f66-90cf518b5ad3"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81064.237,
+            381948.17
+          ]
+        },
+        "id": "4fd53e16-cee9-56d9-96af-58db3add99e8"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.5ab289467e904650b45c46f71054f5c8",
+          "lv_publicatiedatum": "2026-09-03T10:58:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-09-03T10:15:15Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "6f5e8ef5-deaa-2b53-d5a1-9a1563b2db9a"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81062.985,
+            381947.733
+          ]
+        },
+        "id": "1834eec7-f75b-5f33-85a8-f98cd0d82713"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2019-11-19T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.edc2df56d1724c58874cc0e95908c73e",
+          "lv_publicatiedatum": "2026-09-03T10:58:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "boom",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObjectPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-09-03T10:15:15Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeVegetatieObject",
+          "version": "8dc49677-6688-1080-f073-21c35da93f86"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81069.137,
+            381896.269
+          ]
+        },
+        "id": "7cd48022-76ec-5e63-949f-57c4579e9a31"
+      }
+    ],
+    "numberReturned": 20
+  }
+}

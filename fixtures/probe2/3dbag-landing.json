@@ -1,0 +1,44 @@
+{
+  "url": "https://api.3dbag.nl/",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "content-type": "application/json"
+  },
+  "body": {
+    "description": "3DBAG is an extended version of the 3DBAG data set. It contains additional information that is either derived from the 3DBAG, or integrated from other data sources.",
+    "links": [
+      {
+        "href": "https://api.3dbag.nl/",
+        "rel": "self",
+        "title": "3DBAG API",
+        "type": "application/json"
+      },
+      {
+        "href": "https://api.3dbag.nl/api",
+        "rel": "service-desc",
+        "title": "the API definition",
+        "type": "application/vnd.oai.openapi+json;version=3.0"
+      },
+      {
+        "href": "https://api.3dbag.nl/api.html",
+        "rel": "service-doc",
+        "title": "the API documentation",
+        "type": "text/html"
+      },
+      {
+        "href": "https://api.3dbag.nl/conformance",
+        "rel": "conformance",
+        "title": "Conformance classes implemented by this server",
+        "type": "application/json"
+      },
+      {
+        "href": "https://api.3dbag.nl/collections",
+        "rel": "data",
+        "title": "Information about the feature collections",
+        "type": "application/json"
+      }
+    ],
+    "title": "3DBAG API"
+  }
+}
