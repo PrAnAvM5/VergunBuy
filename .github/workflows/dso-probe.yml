@@ -1,0 +1,43 @@
+name: DSO probe (manual)
+
+# Calls our own server (which holds the DSO key) for a few test homes and commits the answers to
+# fixtures/dso-probe/. The answers contain rule documents only, never the key.
+on:
+  workflow_dispatch:
+    inputs:
+      server:
+        description: Server address
+        default: https://vergunbuy-inky.vercel.app
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ask the server
+        env:
+          SERVER: ${{ inputs.server }}
+        run: |
+          mkdir -p fixtures/dso-probe
+          curl -s "$SERVER/api/health" > fixtures/dso-probe/health.json
+          curl -s "$SERVER/api/dso/status" > fixtures/dso-probe/status.json
+          # name x y (RD New): Verdelingsweg 514 Putte, Zonnedauw 13 Huijbergen, Aalbersestraat 1 Hoogerheide
+          for h in "verdelingsweg514 86549.8 376598.204" "zonnedauw13 84909 383328" "aalbersestraat1 81029.282 381929.681"; do
+            set -- $h
+            curl -s "$SERVER/api/dso/regelingen?x=$2&y=$3" > "fixtures/dso-probe/regelingen-$1.json"
+            if [ -n "$(grep -o '/api/rp/plannen' apps/api/src/app.ts || true)" ]; then
+              curl -s "$SERVER/api/rp/plannen?x=$2&y=$3" > "fixtures/dso-probe/rp-plannen-$1.json"
+            fi
+          done
+          head -c 600 fixtures/dso-probe/status.json; echo
+          for f in fixtures/dso-probe/*.json; do echo "== $f"; head -c 400 "$f"; echo; done
+      - name: Commit answers
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fixtures/dso-probe
+          git commit -m "DSO probe answers" || echo "nothing to commit"
+          git pull --rebase && git push
