@@ -139,6 +139,58 @@ export function createDso(cfg: DsoConfig) {
   return {
     configured: (env: DsoEnv) => Boolean(cfg.keys[env]),
 
+    /**
+     * The API's own description (OpenAPI), reduced to what we need: the paths, and the request
+     * and response schemas of the location search. Used to match the request format exactly.
+     */
+    async spec(env: DsoEnv) {
+      const key = cfg.keys[env];
+      if (!key) throw new DsoNotConfigured(env);
+      const tried: { path: string; status: number | null }[] = [];
+      for (const path of ["/openapi.json", "/api-docs", "/v3/api-docs", "/openapi.yaml"]) {
+        try {
+          const res = await fetchFn(BASES[env] + path, {
+            headers: { "x-api-key": key, accept: "application/json" },
+            signal: AbortSignal.timeout(cfg.timeoutMs ?? 15000),
+          });
+          tried.push({ path, status: res.status });
+          if (!res.ok) continue;
+          const doc = (await res.json()) as {
+            paths?: Record<string, Record<string, unknown>>;
+            components?: { schemas?: Record<string, unknown> };
+          };
+          const zoek = doc.paths?.["/regelingen/_zoek"];
+          const refs = new Set<string>();
+          JSON.stringify(zoek ?? {}).replace(
+            /#\/components\/schemas\/([\w.-]+)/g,
+            (_m, n: string) => {
+              refs.add(n);
+              return "";
+            },
+          );
+          // Follow schema references two levels deep, so the request body is fully visible.
+          for (let round = 0; round < 3; round++)
+            for (const n of [...refs])
+              JSON.stringify(doc.components?.schemas?.[n] ?? {}).replace(
+                /#\/components\/schemas\/([\w.-]+)/g,
+                (_m, m: string) => {
+                  refs.add(m);
+                  return "";
+                },
+              );
+          return {
+            from: path,
+            paths: Object.keys(doc.paths ?? {}),
+            regelingenZoek: zoek,
+            schemas: Object.fromEntries([...refs].map((n) => [n, doc.components?.schemas?.[n]])),
+          };
+        } catch {
+          tried.push({ path, status: null });
+        }
+      }
+      return { tried };
+    },
+
     /** Which rule documents (regelingen) apply at a point, valid on a date. */
     async regelingenAt(p: z.infer<typeof RdPoint>) {
       const calls: DsoCall[] = [];
@@ -168,11 +220,17 @@ export function createDso(cfg: DsoConfig) {
         ),
         // While the answer format is being learned: the error body, or the first keys.
         ...(res.status !== 200
-          ? { error: compact(res.body) }
+          ? { error: truncate(res.body) }
           : { topLevelKeys: Object.keys((res.body as object) ?? {}) }),
       };
     },
   };
+}
+
+/** The DSO's own error answer, cut to a safe size (it never contains the key). */
+function truncate(body: unknown): unknown {
+  const text = JSON.stringify(body);
+  return text.length <= 4000 ? body : { truncated: text.slice(0, 4000) };
 }
 
 export class DsoNotConfigured extends Error {

@@ -62,6 +62,20 @@ export function createApp(deps: AppDeps) {
     }),
   );
 
+  /** The DSO API's own description, reduced (no key involved in the answer). */
+  app.get("/dso/spec", async (c) => {
+    try {
+      return c.json({ data: await dso.spec("prod") });
+    } catch (err) {
+      if (err instanceof DsoNotConfigured)
+        return c.json(
+          { error: { code: "DSO_NOT_CONFIGURED", message: "No DSO key is set." } },
+          503,
+        );
+      throw err;
+    }
+  });
+
   /** Rule documents that apply at a point (RD New), valid today or on geldigOp. */
   app.get("/dso/regelingen", async (c) => {
     const parsed = RdPoint.safeParse(c.req.query());

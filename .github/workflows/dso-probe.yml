@@ -24,6 +24,7 @@ jobs:
           mkdir -p fixtures/dso-probe
           curl -s "$SERVER/api/health" > fixtures/dso-probe/health.json
           curl -s "$SERVER/api/dso/status" > fixtures/dso-probe/status.json
+          curl -s "$SERVER/api/dso/spec" > fixtures/dso-probe/spec.json
           # name x y (RD New): Verdelingsweg 514 Putte, Zonnedauw 13 Huijbergen, Aalbersestraat 1 Hoogerheide
           for h in "verdelingsweg514 86549.8 376598.204" "zonnedauw13 84909 383328" "aalbersestraat1 81029.282 381929.681"; do
             set -- $h
