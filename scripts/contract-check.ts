@@ -3,8 +3,8 @@
  * data in the shape our adapters expect. Runs weekly in CI and on demand
  * (`pnpm contract-check`), never on every push, so upstream hiccups don't block work.
  */
-import { getJson, LocatieserverResponse } from "@vergunbuy/data";
-import { Tracer } from "@vergunbuy/engine";
+import { getJson, LOCATIESERVER_FIELDS, LocatieserverResponse } from "@vergunbuy/data";
+import { SafeError, Tracer } from "@vergunbuy/engine";
 
 const tracer = new Tracer();
 let failed = false;
@@ -12,8 +12,9 @@ let failed = false;
 async function check(id: string, label: string, run: Parameters<Tracer["step"]>[2]) {
   try {
     await tracer.step(id, label, run);
-  } catch {
+  } catch (err) {
     failed = true;
+    if (err instanceof SafeError && err.detail) console.log(`detail   ${id}: ${err.detail}`);
   }
 }
 
@@ -22,6 +23,7 @@ await check("locatieserver", "PDOK Locatieserver: address search", async (ctx) =
   url.searchParams.set("q", "Hoogerheide");
   url.searchParams.set("fq", "type:adres");
   url.searchParams.set("rows", "3");
+  url.searchParams.set("fl", LOCATIESERVER_FIELDS);
   const data = await getJson({
     url,
     schema: LocatieserverResponse,

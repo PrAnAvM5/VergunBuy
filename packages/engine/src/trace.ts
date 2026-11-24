@@ -76,6 +76,8 @@ export class SafeError extends Error {
   constructor(
     readonly code: string,
     message: string,
+    /** Developer-only detail (e.g. schema issues). Logged, never shown to users or put in the trace. */
+    readonly detail?: string,
   ) {
     super(message);
     this.name = "SafeError";

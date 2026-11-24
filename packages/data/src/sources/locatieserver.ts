@@ -8,6 +8,21 @@ import { getJson, type FetchFn } from "../http.ts";
 
 const BASE = "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free";
 
+/** Fields we request explicitly, so the response never depends on the service's default field list. */
+export const LOCATIESERVER_FIELDS = [
+  "weergavenaam",
+  "straatnaam",
+  "huisnummer",
+  "huisletter",
+  "huisnummertoevoeging",
+  "postcode",
+  "woonplaatsnaam",
+  "gemeentenaam",
+  "centroide_rd",
+  "nummeraanduiding_id",
+  "adresseerbaarobject_id",
+].join(",");
+
 /** Pilot municipality (v1 scope). */
 export const PILOT_MUNICIPALITY = "Woensdrecht";
 
@@ -73,6 +88,7 @@ export async function findAddress(
   url.searchParams.set("q", `postcode:${query.postcode} AND huisnummer:${query.number}`);
   url.searchParams.set("fq", "type:adres");
   url.searchParams.set("rows", "10");
+  url.searchParams.set("fl", LOCATIESERVER_FIELDS);
 
   const data = await getJson({
     url,
