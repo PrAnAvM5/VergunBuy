@@ -89,8 +89,12 @@ for (const dir of dirs) {
       error: row.error ?? null,
     };
     const file = `${slug(row.address)}.json.gz`;
-    if (!row.error && recordings.includes(file)) {
-      const rec = JSON.parse(gunzipSync(readFileSync(join(recDir, file))).toString()) as Record<
+    // A newer recording of the same home (e.g. from the obstacle sweep, with the height scan)
+    // replaces the original one.
+    const newer = newestRecording(file);
+    if (!row.error && (newer || recordings.includes(file))) {
+      const source = newer ?? join(recDir, file);
+      const rec = JSON.parse(gunzipSync(readFileSync(source)).toString()) as Record<
         string,
         { links?: unknown[]; response?: { docs?: Record<string, string | number>[] } }
       >;
@@ -104,7 +108,7 @@ for (const dir of dirs) {
         if (addition) home.addition = addition;
         home.rec = `${id}/${slug(row.address)}`;
         await replay(home, rec);
-        copyFileSync(join(recDir, file), join(out, id, `${slug(row.address)}.json.gz.bin`));
+        copyFileSync(source, join(out, id, `${slug(row.address)}.json.gz.bin`));
       }
     }
     const img = `${imageSlug(row.address)}.jpg`;
@@ -127,6 +131,19 @@ writeFileSync(join(out, "index.json"), JSON.stringify({ runs }));
 console.log(
   `validation index: ${runs.length} runs, ${runs.reduce((n, r) => n + r.homes.length, 0)} homes`,
 );
+
+/** The most recent recording of this home from a later run (obstacle sweeps), if any. */
+function newestRecording(file: string): string | undefined {
+  const later = readdirSync(reports)
+    .filter((d) => d.startsWith("obstacles-"))
+    .sort()
+    .reverse();
+  for (const d of later) {
+    const p = join(reports, d, "recordings", file);
+    if (existsSync(p)) return p;
+  }
+  return undefined;
+}
 
 /** Re-runs one recorded home through today's pipeline and updates the row in place. */
 async function replay(home: Home, rec: Record<string, { links?: unknown[] }>): Promise<void> {

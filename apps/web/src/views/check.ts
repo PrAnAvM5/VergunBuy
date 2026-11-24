@@ -12,7 +12,7 @@ import { lastRun, runCheck, type RunResult } from "../run.ts";
 import type { SceneHandle } from "../scene3d.ts";
 import type { MapHandle, OverlayId } from "../map.ts";
 import { lookAround } from "../streetview.ts";
-import { SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
+import { STRUCTURE_TEXT, SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
 
 export type View = "map" | "2d" | "3d" | "street";
 
@@ -113,6 +113,24 @@ function rememberView(view: View): void {
   history.replaceState(null, "", `${path}${q ? `?${q}` : ""}`);
 }
 
+function obstacleText(ctx: PlotContext): string {
+  const o = ctx.obstacles;
+  if (!o) return "Unknown: the height scan could not be loaded";
+  const tall = o.obstacles.filter((x) => x.kind === "tall");
+  const medium = o.obstacles.filter((x) => x.kind === "medium");
+  const structures = ctx.structures.filter((s) => s.onPlotShare > 0.3);
+  const parts = [
+    tall.length ? `${tall.length} tall (trees or high structures), ${o.tallM2} m²` : "",
+    medium.length
+      ? `${medium.length} medium (hedges, shrubs, maybe a parked car), ${o.mediumM2} m²`
+      : "",
+    structures.length
+      ? `registered: ${structures.map((s) => STRUCTURE_TEXT[s.type] ?? s.type).join(", ")}`
+      : "",
+  ].filter(Boolean);
+  return `${parts.length ? esc(parts.join("; ")) : "None found above 1 m"}<div class="small muted">In ${o.yardM2} m² of open garden, from the laser height scan (a snapshot; trees change).</div>`;
+}
+
 /** Overlay names for the map's menu (kept here so the map code loads only when shown). */
 const OVERLAY_LIST: [OverlayId, string][] = [
   ["plot", "Plot, house and homes on the same parcel"],
@@ -120,6 +138,7 @@ const OVERLAY_LIST: [OverlayId, string][] = [
   ["parcels", "Parcel lines (cadastral map)"],
   ["public", "Streets, paths and green"],
   ["trees", "Trees and hedges"],
+  ["obstacles", "Obstacles in the garden (height scan)"],
   ["access", "Car access"],
   ["edges", "Edge types"],
   ["labels", "House numbers and street names"],
@@ -186,6 +205,7 @@ export async function renderCheck(
     parcels: true,
     public: true,
     trees: true,
+    obstacles: true,
     access: true,
     edges: true,
     labels: true,
@@ -259,6 +279,7 @@ export async function renderCheck(
             <dt>Car access</dt><dd><span class="pill ${ACCESS_TEXT[ctx.access.level]?.cls ?? "grey"}">${esc(ACCESS_TEXT[ctx.access.level]?.label ?? ctx.access.level)}</span><div class="small muted" style="margin-top:4px">${esc(ctx.access.reason)}</div></dd>
             <dt>Other buildings</dt><dd>${ctx.outbuildings.length ? ctx.outbuildings.map((b) => esc(b.label ?? "Outbuilding")).join("; ") : "None registered"}</dd>
             <dt>Shared walls</dt><dd>${plotEdges.has("shared-wall") ? "Yes" : "None found"}</dd>
+            <dt>Garden obstacles</dt><dd>${obstacleText(ctx)}</dd>
             <dt>Registered trees</dt><dd>${ctx.trees === null ? "Unknown" : ctx.trees.length ? `${ctx.trees.length} nearby` : "None nearby"}</dd>
           </dl>
         </div>

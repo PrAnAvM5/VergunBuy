@@ -9,7 +9,7 @@ import { at, centroid, type Point, type Polygon as Ring } from "@vergunbuy/engin
 import OLMap from "ol/Map.js";
 import View from "ol/View.js";
 import Feature from "ol/Feature.js";
-import { LineString, Point as OLPoint, Polygon } from "ol/geom.js";
+import { LineString, MultiPolygon, Point as OLPoint, Polygon } from "ol/geom.js";
 import TileLayer from "ol/layer/Tile.js";
 import VectorLayer from "ol/layer/Vector.js";
 import TileWMS from "ol/source/TileWMS.js";
@@ -29,6 +29,7 @@ export const OVERLAYS = [
   ["parcels", "Parcel lines"],
   ["public", "Streets and green"],
   ["trees", "Trees and hedges"],
+  ["obstacles", "Obstacles in the garden (height scan)"],
   ["access", "Car access"],
   ["edges", "Edge types"],
   ["labels", "House numbers and street names"],
@@ -106,6 +107,29 @@ export function mountMap(
       }),
     );
   }
+  // Obstacles: every 0.5 m cell as a square, one feature per obstacle so a click opens it.
+  for (const o of ctx.obstacles?.obstacles ?? []) {
+    const half = (ctx.obstacles?.res ?? 0.5) / 2;
+    const squares = o.cells.map(([x, y]) => [
+      [
+        [x - half, y - half],
+        [x + half, y - half],
+        [x + half, y + half],
+        [x - half, y + half],
+        [x - half, y - half],
+      ],
+    ]);
+    add(
+      "obstacles",
+      new Feature({
+        geometry: new MultiPolygon(squares),
+        kind: o.kind === "tall" ? "obstacle-tall" : "obstacle-medium",
+        sel: `obstacle:${o.id}`,
+      }),
+    );
+  }
+  for (const s of ctx.structures)
+    add("obstacles", poly(s.outline, { kind: "structure", sel: `structure:${s.id}` }));
   for (const h of ctx.hedges)
     add("trees", poly(h.outline, { kind: "hedge", sel: `hedge:${h.id}` }));
   for (const t of ctx.trees ?? [])
@@ -170,6 +194,7 @@ export function mountMap(
     "buildings",
     "trees",
     "plot",
+    "obstacles",
     "edges",
     "access",
     "labels",
@@ -343,6 +368,12 @@ function styleFor(
         stroke: stroke(e?.color ?? "#000", 4, e?.dash ? e.dash.split(" ").map(Number) : undefined),
       });
     }
+    case "obstacle-tall":
+      return new Style({ fill: fill(photo ? "rgba(235,50,50,0.45)" : "rgba(214,60,60,0.55)") });
+    case "obstacle-medium":
+      return new Style({ fill: fill(photo ? "rgba(255,200,0,0.45)" : "rgba(230,170,20,0.5)") });
+    case "structure":
+      return new Style({ stroke: stroke("#00b8d9", 2.5), fill: fill("rgba(0,184,217,0.15)") });
     case "hedge":
       return new Style({
         stroke: stroke(photo ? "#9be07f" : "#2f5d22", 1.5),

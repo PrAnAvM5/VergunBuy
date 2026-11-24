@@ -2,7 +2,7 @@
  * Inspector (ADR-023): shows what we know about one clicked object, how sure we are,
  * where it comes from and how it was derived. The developer layer adds the raw record.
  */
-import type { PlotContext } from "@vergunbuy/data";
+import { STRUCTURE_TEXT, type PlotContext } from "@vergunbuy/data";
 import { area } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc, isOtherHomeOnParcel, m, m2 } from "./format.ts";
 
@@ -187,6 +187,46 @@ function describe(ctx: PlotContext, key: string): View | undefined {
               ? "Most of this building lies on the same cadastral parcel as this address, and it holds homes. The cadastral map shows one parcel; who owns which part (for example through apartment rights) is not in the open data."
               : "A registered building near the plot, used to detect shared walls.",
       raw: b,
+    };
+  }
+  if (type === "obstacle") {
+    const o = ctx.obstacles?.obstacles.find((x) => x.id === id);
+    if (!o) return undefined;
+    return {
+      title: o.kind === "tall" ? "Tall obstacle (tree or high structure)" : "Medium obstacle",
+      rows: [
+        { label: "Area", value: m2(o.areaM2), certainty: "measured" },
+        { label: "Highest point", value: `${o.maxHeightM} m above ground`, certainty: "measured" },
+        {
+          label: "Likely",
+          value:
+            o.kind === "tall"
+              ? "A tree or a high garden structure: treat as fixed"
+              : "A hedge, shrub or low structure, or something movable (a parked car, a trailer) that stood there during the scan",
+          certainty: "assumed",
+        },
+      ],
+      source: "AHN (national laser height scan, 0.5 m), via PDOK, CC0",
+      how: "Surface height minus ground height, inside the plot and outside registered buildings. Cells of 0.5 × 0.5 m above 1 m that touch form one obstacle; it is tall when at least 1 m² reaches 2.5 m. The scan is a snapshot of one date, so check the aerial photo or Street View for what is there now.",
+      raw: { ...o, cells: `${o.cells.length} cells`, cellHeights: undefined },
+    };
+  }
+  if (type === "structure") {
+    const s = ctx.structures.find((x) => x.id === id);
+    if (!s) return undefined;
+    return {
+      title: STRUCTURE_TEXT[s.type] ?? s.type,
+      rows: [
+        { label: "Area", value: m2(area(s.outline)), certainty: "measured" },
+        {
+          label: "On this plot",
+          value: `${Math.round(s.onPlotShare * 100)}%`,
+          certainty: "measured",
+        },
+      ],
+      source: "BGT (overig bouwwerk), CC0",
+      how: "Registered by the municipality as a structure that is not a building, such as a roof without walls (often a carport) or a pool. Its size and position are as drawn on the map.",
+      raw: s,
     };
   }
   if (type === "tree") {

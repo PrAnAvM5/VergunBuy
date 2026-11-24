@@ -1140,6 +1140,8 @@ export async function buildPlotContext(
         for (const f of res.features) {
           if (!isCurrentBgt(f)) continue;
           const type = str(f.properties.type) ?? str(f.properties.bgt_type) ?? "other";
+          // "niet-bgt": drawn by the municipality outside the national standard; type unknown.
+          if (type === "niet-bgt") continue;
           outerRings(f.geometry).forEach((ring, i) => {
             if (distanceBetween(ring, plot.outline) > 0.5) return;
             structures.push({

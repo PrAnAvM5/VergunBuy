@@ -82,6 +82,32 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
       `<path class="obj${sel(key)}" data-sel="${esc(key)}" d="${path(polyToLocal(f, b.outline))}" fill="#6b5bd2" fill-opacity="0.85" stroke="#4a3db0" stroke-width="1.4"/>`,
     );
   }
+  // Obstacles from the height scan: cells drawn in the plot frame.
+  const half = (ctx.obstacles?.res ?? 0.5) / 2;
+  for (const o of ctx.obstacles?.obstacles ?? []) {
+    const key = `obstacle:${o.id}`;
+    const d = o.cells
+      .map(([x, y]) =>
+        path(
+          polyToLocal(f, [
+            [x - half, y - half],
+            [x + half, y - half],
+            [x + half, y + half],
+            [x - half, y + half],
+          ]),
+        ),
+      )
+      .join("");
+    parts.push(
+      `<path class="obj${sel(key)}" data-sel="${esc(key)}" d="${d}" fill="${o.kind === "tall" ? "#d63c3c" : "#e6aa14"}" fill-opacity="${o.kind === "tall" ? 0.55 : 0.5}" stroke="none"/>`,
+    );
+  }
+  for (const s of ctx.structures) {
+    const key = `structure:${s.id}`;
+    parts.push(
+      `<path class="obj${sel(key)}" data-sel="${esc(key)}" d="${path(polyToLocal(f, s.outline))}" fill="#00b8d9" fill-opacity="0.15" stroke="#00b8d9" stroke-width="1.4"/>`,
+    );
+  }
   for (const t of ctx.trees ?? []) {
     const p = toLocal(f, t.at);
     if (p[0] < minX || p[0] > maxX || p[1] < minY || p[1] > maxY) continue;

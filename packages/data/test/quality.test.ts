@@ -255,7 +255,8 @@ describe("validation run findings (2026-11-24)", () => {
     expect(context.flags.map((f) => f.code)).toEqual(
       expect.arrayContaining(["MULTI_UNIT_BUILDING", "SHARED_PLOT"]),
     );
-    expect(context.house[0]?.addressLabels).toEqual(["10", "10a", "10b"]);
+    // Four units in the building: three homes (10, 10a, 10b) and number 12.
+    expect(context.house[0]?.addressLabels).toEqual(["10", "10a", "10b", "12"]);
   });
 
   it("Koppelstraat 11: a crossing that only touches a corner of the plot is not its exit", async () => {

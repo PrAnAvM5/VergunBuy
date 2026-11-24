@@ -169,6 +169,7 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
     nbWall: new THREE.MeshLambertMaterial({ color: "#d8d4cc", side: THREE.DoubleSide }),
     trunk: new THREE.MeshLambertMaterial({ color: "#6b4f35" }),
     crown: new THREE.MeshLambertMaterial({ color: "#4d8f3f", transparent: true, opacity: 0.9 }),
+    obstacle: new THREE.MeshLambertMaterial({ color: "#d9a520", transparent: true, opacity: 0.85 }),
   };
 
   for (const a of ctx.publicAreas ?? []) {
@@ -206,6 +207,28 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
           ? safeBuilding(ctx, b, mats.otherRoof, mats.otherWall)
           : safeBuilding(ctx, b, mats.nbRoof, mats.nbWall),
       );
+  // Obstacles from the height scan as 0.5 m columns of their measured height.
+  if (ctx.obstacles) {
+    const res = ctx.obstacles.res;
+    for (const kind of ["tall", "medium"] as const) {
+      const cells = ctx.obstacles.obstacles
+        .filter((o) => o.kind === kind)
+        .flatMap((o) => o.cells.map((p, i) => [p, o.cellHeights[i] ?? 1] as const));
+      if (!cells.length) continue;
+      const mesh = new THREE.InstancedMesh(
+        new THREE.BoxGeometry(res, 1, res),
+        kind === "tall" ? mats.crown : mats.obstacle,
+        cells.length,
+      );
+      const mx = new THREE.Matrix4();
+      cells.forEach(([p, h], i) => {
+        const [x, y] = toLocal(ctx.frame, p);
+        mx.makeScale(1, Math.max(h, 0.2), 1).setPosition(v3(x, y, h / 2));
+        mesh.setMatrixAt(i, mx);
+      });
+      scene.add(mesh);
+    }
+  }
   for (const t of ctx.trees ?? []) {
     const [x, y] = toLocal(ctx.frame, t.at);
     if (Math.abs(x - cx) > range || Math.abs(y - cy) > range) continue;
