@@ -1,0 +1,54 @@
+name: DSO daily snapshot and rule-change monitor
+
+# Every morning: which rule documents (exact versions) and drafts apply at the reference points.
+# Writes apps/web/public/rules/dso-snapshot.json (the website's fallback when the server or the
+# DSO is down) and opens an issue when anything changed since yesterday.
+#
+# Source: the DSO directly if the repository secret DSO_API_KEY exists, otherwise our server.
+on:
+  schedule:
+    - cron: "41 4 * * *" # 05:41 Amsterdam (winter time)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: dso-daily
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Take the snapshot
+        env:
+          DSO_API_KEY: ${{ secrets.DSO_API_KEY }}
+          SERVER: https://vergunbuy-inky.vercel.app
+          CHANGES_OUT: ${{ runner.temp }}/changes.md
+        run: pnpm exec tsx scripts/dso-snapshot.ts
+      - name: Commit the snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/web/public/rules/dso-snapshot.json
+          git commit -m "DSO snapshot $(date -u +%F)" || echo "nothing to commit"
+          git pull --rebase && git push
+      - name: Open an issue when rules changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHANGES: ${{ runner.temp }}/changes.md
+        run: |
+          if [ -s "$CHANGES" ]; then
+            gh label create rule-change --color D93F0B --description "DSO reports a rule change" 2>/dev/null || true
+            gh issue create --title "Rule change reported by the DSO ($(date -u +%F))" \
+              --label rule-change --body-file "$CHANGES"
+          fi

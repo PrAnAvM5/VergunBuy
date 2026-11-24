@@ -2,5 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "pnpm --filter @vergunbuy/api run build:vercel"
+  "buildCommand": "pnpm --filter @vergunbuy/api run build:vercel",
+  "ignoreCommand": "git diff --quiet ${VERCEL_GIT_PREVIOUS_SHA:-HEAD^} HEAD -- apps/api packages package.json pnpm-lock.yaml pnpm-workspace.yaml vercel.json"
 }

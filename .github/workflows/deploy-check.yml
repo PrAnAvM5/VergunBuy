@@ -1,0 +1,25 @@
+name: Check the live server after each Vercel deployment
+
+# Vercel reports each deployment back to GitHub. When a production deployment succeeds, this asks
+# the live server the three things the website depends on. A red run here means the site's rule
+# checks are broken right now, even though the build itself succeeded.
+on:
+  deployment_status:
+
+jobs:
+  smoke:
+    if: github.event.deployment_status.state == 'success' && contains(github.event.deployment.environment, 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask the live server
+        env:
+          SERVER: https://vergunbuy-inky.vercel.app
+        run: |
+          set -e
+          curl -fsS "$SERVER/api/health" | tee health.json; echo
+          curl -fsS "$SERVER/api/dso/status" | tee status.json; echo
+          jq -e '.data.prod == true' status.json > /dev/null || { echo "::error::DSO key is not configured on Vercel"; exit 1; }
+          curl -fsS "$SERVER/api/dso/regelingen?x=86549.8&y=376598.204" > regelingen.json
+          jq '{complete: .data.complete, documents: (.data.regelingen.documents | length), drafts: (.data.drafts.documents | length), calls: (.data.calls | length)}' regelingen.json
+          jq -e '.data.complete == true and (.data.regelingen.documents | length) > 0' regelingen.json > /dev/null \
+            || { echo "::error::The DSO search is incomplete or empty"; jq '.data.regelingen.error // .data.drafts.error' regelingen.json; exit 1; }
