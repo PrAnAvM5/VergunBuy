@@ -5,7 +5,7 @@
     {
       "village": "Hoogerheide",
       "address": "Maststraat 43, 4631EP Hoogerheide",
-      "ms": 17282,
+      "ms": 9707,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 149,
@@ -36,6 +36,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -45,17 +47,29 @@
         "PAVEMENT_CROSSING",
         "FRONT_ESTIMATED"
       ],
-      "sides": "front: footpath / pavement 7.2 m | rear: neighbouring plot 7.2 m | left: footpath / pavement 15.5 m, neighbouring plot 5.1 m | right: neighbouring plot 11.8 m, shared wall with the neighbour 8.4 m, footpath / pavement 0.7 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement 7.2 m | rear: neighbouring plot 7.2 m | left: footpath / pavement 15.5 m, neighbouring plot 5.1 m | right: neighbouring plot 11.8 m, shared wall with the neighbour 8.4 m, footpath / pavement 0.8 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (181 ms): Found Maststraat 43, 4631EP Hoogerheide",
-        "ok bag-address (307 ms): Address is in 1 building(s)",
-        "ok brk-plot (171 ms): Plot Woensdrecht D 2556, 149 m² drawn",
-        "ok bag-buildings (6489 ms): 1 house, 1 other on plot, 46 nearby; ignored 0 demolished or invalid",
-        "ok 3dbag-heights (1255 ms): Heights for 48 buildings, height scan of 2024",
-        "ok bgt-trees (630 ms): 5 registered trees, 6 hedges, 0 other vegetation nearby",
-        "ok bgt-public (7849 ms): 33 current public areas; ignored 32 historical records",
-        "ok classify-edges (34 ms): 12 edge runs"
+        "ok find-address (99 ms): Found Maststraat 43, 4631EP Hoogerheide",
+        "ok bag-address (149 ms): Address is in 1 building(s)",
+        "ok brk-plot (103 ms): Plot Woensdrecht D 2556, 149 m² drawn",
+        "ok bag-buildings (401 ms): 1 house, 1 other buildings on plot, 46 nearby; ignored 0 demolished or invalid",
+        "ok 3dbag-heights (984 ms): Heights for 48 buildings, height scan of 2024",
+        "ok bgt-trees (97 ms): 5 registered trees, 6 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1257 ms): 33 current public areas; ignored 32 historical records",
+        "ok classify-edges (29 ms): 12 edge runs",
+        "ok bgt-structures (90 ms): none registered on or at the plot",
+        "ok ahn-obstacles (483 ms): 2 tall (3.8 m²), 0 medium (0 m²), 0 overhanging from next door (0 m²) in 35.8 m² of garden",
+        "ok zoning-plans (5310 ms): 3 binding plan(s); on the plot: Wonen - 3, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 2",
+        "ok heritage (350 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -199,7 +213,7 @@
     {
       "village": "Hoogerheide",
       "address": "Zandfort 48, 4631RM Hoogerheide",
-      "ms": 14373,
+      "ms": 16044,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 948,
@@ -229,23 +243,37 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
         "PAVEMENT_CROSSING",
         "FRONT_ESTIMATED"
       ],
-      "sides": "front: footpath / pavement 24.1 m | rear: neighbouring plot 23.4 m | left: neighbouring plot 39.1 m, footpath / pavement 0.5 m | right: neighbouring plot 39.4 m, footpath / pavement 0.8 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement 24.1 m | rear: neighbouring plot 23.4 m | left: neighbouring plot 39.2 m, footpath / pavement 0.4 m | right: neighbouring plot 39.5 m, footpath / pavement 0.7 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (458 ms): Found Zandfort 48, 4631RM Hoogerheide",
-        "ok bag-address (312 ms): Address is in 1 building(s)",
-        "ok brk-plot (161 ms): Plot Woensdrecht B 2120, 948 m² drawn",
-        "ok bag-buildings (3940 ms): 1 house, 0 other on plot, 12 nearby; ignored 6 demolished or invalid",
-        "ok 3dbag-heights (1364 ms): Heights for 13 buildings, height scan of 2024",
-        "ok bgt-trees (492 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (7212 ms): 3 current public areas; ignored 14 historical records",
-        "ok classify-edges (35 ms): 8 edge runs"
+        "ok find-address (280 ms): Found Zandfort 48, 4631RM Hoogerheide",
+        "ok bag-address (164 ms): Address is in 1 building(s)",
+        "ok brk-plot (93 ms): Plot Woensdrecht B 2120, 948 m² drawn",
+        "ok bag-buildings (694 ms): 1 house, 0 other buildings on plot, 12 nearby; ignored 6 demolished or invalid",
+        "ok 3dbag-heights (1079 ms): Heights for 13 buildings, height scan of 2024",
+        "ok bgt-trees (89 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1334 ms): 3 current public areas; ignored 14 historical records",
+        "ok classify-edges (30 ms): 8 edge runs",
+        "ok bgt-structures (93 ms): canopy (roof without walls, e.g. a carport)",
+        "ok ahn-obstacles (449 ms): 15 tall (178.3 m²), 10 medium (24.3 m²), 0 overhanging from next door (0 m²) in 693.8 m² of garden",
+        "ok zoning-plans (10856 ms): 7 binding plan(s); on the plot: Wonen - 1, bouwvlak, other: ohter: aardkundig waardevol gebied, geluidzone - industrie, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 7, vrijwaringszone - radar 1, maximale goot- en bouwhoogte (m), Verkeer, vrijwaringszone - radar",
+        "ok heritage (339 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -390,9 +418,9 @@
     {
       "village": "Hoogerheide",
       "address": "Aalbersestraat 8, 4631CD Hoogerheide",
-      "ms": 9872,
+      "ms": 19620,
       "use": "woonfunctie",
-      "houseType": "detached",
+      "houseType": "unit",
       "plotAreaM2": 1159,
       "frontMethod": "street-label",
       "frontStreet": "Aalbersestraat",
@@ -449,23 +477,38 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
         "SHARED_PLOT",
+        "MULTI_UNIT_BUILDING",
         "POSSIBLE_EXIT"
       ],
-      "sides": "front: public green 22.8 m, road (Aalbersestraat) 13.5 m | rear: public green 29.6 m, footpath / pavement 6.8 m | left: public green 49.1 m, neighbouring plot 10.2 m | right: public green 59.3 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: public green 22.8 m, road (Aalbersestraat) 13.5 m | rear: public green 29.5 m, footpath / pavement 6.9 m | left: public green 48.9 m, neighbouring plot 10.4 m | right: public green 59.3 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (468 ms): Found Aalbersestraat 8, 4631CD Hoogerheide",
-        "ok bag-address (476 ms): Address is in 1 building(s)",
-        "ok brk-plot (182 ms): Plot Woensdrecht D 2459, 1159 m² drawn",
-        "ok bag-buildings (712 ms): 1 house, 0 other on plot, 45 nearby; ignored 7 demolished or invalid",
-        "ok 3dbag-heights (1408 ms): Heights for 44 buildings, height scan of 2024",
-        "ok bgt-trees (338 ms): 16 registered trees, 2 hedges, 0 other vegetation nearby",
-        "ok bgt-public (4760 ms): 53 current public areas; ignored 71 historical records",
-        "ok classify-edges (109 ms): 20 edge runs"
+        "ok find-address (264 ms): Found Aalbersestraat 8, 4631CD Hoogerheide",
+        "ok bag-address (115 ms): Address is in 1 building(s)",
+        "ok brk-plot (98 ms): Plot Woensdrecht D 2459, 1159 m² drawn",
+        "ok bag-buildings (812 ms): 1 house, 9 other homes and 0 other buildings on plot, 45 nearby; ignored 7 demolished or invalid",
+        "ok 3dbag-heights (1480 ms): Heights for 44 buildings, height scan of 2024",
+        "ok bgt-trees (106 ms): 16 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (723 ms): 53 current public areas; ignored 71 historical records",
+        "ok classify-edges (92 ms): 20 edge runs",
+        "ok bgt-structures (91 ms): none registered on or at the plot",
+        "ok ahn-obstacles (435 ms): 13 tall (21.8 m²), 11 medium (10.5 m²), 1 overhanging from next door (0.8 m²) in 343.5 m² of garden",
+        "ok zoning-plans (13807 ms): 10 binding plan(s); on the plot: Waarde - Archeologie, Verkeer - Verblijfsgebied, Wonen - 4, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 2, vrijwaringszone - radar",
+        "ok heritage (343 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -618,9 +661,9 @@
     {
       "village": "Hoogerheide",
       "address": "Rozenlaan 36, 4631AK Hoogerheide",
-      "ms": 13496,
+      "ms": 11653,
       "use": "woonfunctie",
-      "houseType": "detached",
+      "houseType": "terraced",
       "plotAreaM2": 1112,
       "frontMethod": "street-label",
       "frontStreet": "Rozenlaan",
@@ -689,6 +732,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -698,17 +743,29 @@
         "POSSIBLE_ACHTERPAD",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: public green 20.4 m, footpath / pavement (Rozenlaan) 4.7 m, footpath / pavement 1.8 m, neighbouring plot 0.8 m | rear: footpath / pavement 25.6 m, neighbouring plot 2.6 m | left: footpath / pavement (Rozenlaan) 45.1 m | right: footpath / pavement 25.3 m, neighbouring plot 20 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: public green 20.4 m, footpath / pavement (Rozenlaan) 4.8 m, footpath / pavement 1.7 m, neighbouring plot 0.8 m | rear: footpath / pavement 25.6 m, neighbouring plot 2.6 m | left: footpath / pavement (Rozenlaan) 45.1 m | right: footpath / pavement 25.3 m, neighbouring plot 20 m",
       "outbuildings": 2,
       "steps": [
-        "ok find-address (168 ms): Found Rozenlaan 36, 4631AK Hoogerheide",
-        "ok bag-address (966 ms): Address is in 1 building(s)",
-        "ok brk-plot (162 ms): Plot Woensdrecht G 3648, 1112 m² drawn",
-        "ok bag-buildings (709 ms): 1 house, 2 other on plot, 34 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (1083 ms): Heights for 36 buildings, height scan of 2024",
-        "ok bgt-trees (244 ms): 18 registered trees, 8 hedges, 0 other vegetation nearby",
-        "ok bgt-public (9441 ms): 43 current public areas; ignored 104 historical records",
-        "ok classify-edges (38 ms): 20 edge runs"
+        "ok find-address (262 ms): Found Rozenlaan 36, 4631AK Hoogerheide",
+        "ok bag-address (223 ms): Address is in 1 building(s)",
+        "ok brk-plot (98 ms): Plot Woensdrecht G 3648, 1112 m² drawn",
+        "ok bag-buildings (462 ms): 1 house, 7 other homes and 2 other buildings on plot, 34 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (855 ms): Heights for 36 buildings, height scan of 2024",
+        "ok bgt-trees (119 ms): 18 registered trees, 8 hedges, 0 other vegetation nearby",
+        "ok bgt-public (740 ms): 43 current public areas; ignored 104 historical records",
+        "ok classify-edges (31 ms): 20 edge runs",
+        "ok bgt-structures (96 ms): none registered on or at the plot",
+        "ok ahn-obstacles (388 ms): 3 tall (17 m²), 18 medium (79.3 m²), 1 overhanging from next door (2.3 m²) in 462.3 m² of garden",
+        "ok zoning-plans (7476 ms): 4 binding plan(s); on the plot: Waarde - Archeologie, Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, vrijwaringszone - radar 1",
+        "ok heritage (348 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -904,7 +961,7 @@
     {
       "village": "Huijbergen",
       "address": "Meulenven 1, 4635DK Huijbergen",
-      "ms": 12182,
+      "ms": 18300,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 311,
@@ -966,6 +1023,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -973,17 +1032,29 @@
         "OUTBUILDINGS_ON_PLOT",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: footpath / pavement (Meulenven) 19.4 m | rear: neighbouring plot 18.4 m | left: neighbouring plot 12.9 m, footpath / pavement (Demerstraat) 7.4 m, footpath / pavement (Meulenven) 0.5 m | right: neighbouring plot 23.7 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement (Meulenven) 19.4 m | rear: neighbouring plot 18.4 m | left: neighbouring plot 12.9 m, footpath / pavement (Demerstraat) 7.3 m, footpath / pavement (Meulenven) 0.6 m | right: neighbouring plot 23.7 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (163 ms): Found Meulenven 1, 4635DK Huijbergen",
-        "ok bag-address (440 ms): Address is in 1 building(s)",
-        "ok brk-plot (163 ms): Plot Huijbergen C 2357, 311 m² drawn",
-        "ok bag-buildings (1213 ms): 1 house, 1 other on plot, 23 nearby; ignored 2 demolished or invalid",
-        "ok 3dbag-heights (1060 ms): Heights for 24 buildings, height scan of 2024",
-        "ok bgt-trees (689 ms): 26 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (7873 ms): 36 current public areas; ignored 76 historical records",
-        "ok classify-edges (38 ms): 14 edge runs"
+        "ok find-address (97 ms): Found Meulenven 1, 4635DK Huijbergen",
+        "ok bag-address (295 ms): Address is in 1 building(s)",
+        "ok brk-plot (94 ms): Plot Huijbergen C 2357, 311 m² drawn",
+        "ok bag-buildings (353 ms): 1 house, 1 other buildings on plot, 23 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (1410 ms): Heights for 24 buildings, height scan of 2024",
+        "ok bgt-trees (106 ms): 26 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (937 ms): 36 current public areas; ignored 76 historical records",
+        "ok classify-edges (27 ms): 14 edge runs",
+        "ok bgt-structures (98 ms): none registered on or at the plot",
+        "ok ahn-obstacles (422 ms): 0 tall (0 m²), 6 medium (6.3 m²), 3 overhanging from next door (10.5 m²) in 146 m² of garden",
+        "ok zoning-plans (13653 ms): 10 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 3, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+        "ok heritage (343 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -1167,7 +1238,7 @@
     {
       "village": "Huijbergen",
       "address": "Waterdrieblad 6, 4635BP Huijbergen",
-      "ms": 8194,
+      "ms": 15807,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 681,
@@ -1182,7 +1253,7 @@
           "alongPlotM": 8.2
         }
       ],
-      "carReachableM": 8.2,
+      "carReachableM": 8.1,
       "carReachableSides": [
         "front"
       ],
@@ -1195,20 +1266,34 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "complete",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [],
-      "sides": "front: neighbouring plot 15.2 m, driveway crossing (Waterdrieblad) 8.2 m, footpath / pavement 1 m | rear: neighbouring plot 37.1 m | left: neighbouring plot 17.4 m | right: neighbouring plot 29.3 m, public green 0.3 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: neighbouring plot 15.5 m, driveway crossing (Waterdrieblad) 8.1 m, footpath / pavement 0.9 m | rear: neighbouring plot 37.1 m | left: neighbouring plot 17.4 m | right: neighbouring plot 29.2 m, public green 0.4 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (475 ms): Found Waterdrieblad 6, 4635BP Huijbergen",
-        "ok bag-address (199 ms): Address is in 1 building(s)",
-        "ok brk-plot (161 ms): Plot Huijbergen B 831, 681 m² drawn",
-        "ok bag-buildings (1372 ms): 1 house, 0 other on plot, 17 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (997 ms): Heights for 18 buildings, height scan of 2024",
-        "ok bgt-trees (555 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (4391 ms): 31 current public areas; ignored 63 historical records",
-        "ok classify-edges (31 ms): 9 edge runs"
+        "ok find-address (269 ms): Found Waterdrieblad 6, 4635BP Huijbergen",
+        "ok bag-address (119 ms): Address is in 1 building(s)",
+        "ok brk-plot (118 ms): Plot Huijbergen B 831, 681 m² drawn",
+        "ok bag-buildings (416 ms): 1 house, 0 other buildings on plot, 17 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (1339 ms): Heights for 18 buildings, height scan of 2024",
+        "ok bgt-trees (93 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (611 ms): 31 current public areas; ignored 63 historical records",
+        "ok classify-edges (33 ms): 9 edge runs",
+        "ok bgt-structures (91 ms): canopy (roof without walls, e.g. a carport)",
+        "ok ahn-obstacles (523 ms): 0 tall (0 m²), 6 medium (57.8 m²), 4 overhanging from next door (18.5 m²) in 503 m² of garden",
+        "ok zoning-plans (11777 ms): 9 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+        "ok heritage (350 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -1491,8 +1576,8 @@
         "carEdges": [
           [
             [
-              84846.06423022698,
-              383387.9924840293
+              84846.06084374047,
+              383387.99514173815
             ],
             [
               84845.79933172684,
@@ -1505,7 +1590,7 @@
     {
       "village": "Huijbergen",
       "address": "Handekenskruid 44, 4635BJ Huijbergen",
-      "ms": 12898,
+      "ms": 19740,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 482,
@@ -1602,22 +1687,36 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "complete",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
         "OUTBUILDINGS_ON_PLOT"
       ],
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Handekenskruid) 18.6 m | rear: neighbouring plot 0.8 m | left: neighbouring plot 38.3 m, shared wall with the neighbour 8.7 m | right: neighbouring plot 45.5 m",
       "outbuildings": 2,
       "steps": [
-        "ok find-address (182 ms): Found Handekenskruid 44, 4635BJ Huijbergen",
-        "ok bag-address (411 ms): Address is in 1 building(s)",
-        "ok brk-plot (160 ms): Plot Huijbergen B 972, 482 m² drawn",
-        "ok bag-buildings (810 ms): 1 house, 2 other on plot, 25 nearby; ignored 8 demolished or invalid",
-        "ok 3dbag-heights (1039 ms): Heights for 27 buildings, height scan of 2024",
-        "ok bgt-trees (412 ms): 5 registered trees, 8 hedges, 0 other vegetation nearby",
-        "ok bgt-public (9005 ms): 37 current public areas; ignored 58 historical records",
-        "ok classify-edges (58 ms): 15 edge runs"
+        "ok find-address (106 ms): Found Handekenskruid 44, 4635BJ Huijbergen",
+        "ok bag-address (154 ms): Address is in 1 building(s)",
+        "ok brk-plot (158 ms): Plot Huijbergen B 972, 482 m² drawn",
+        "ok bag-buildings (357 ms): 1 house, 2 other buildings on plot, 25 nearby; ignored 8 demolished or invalid",
+        "ok 3dbag-heights (881 ms): Heights for 27 buildings, height scan of 2024",
+        "ok bgt-trees (98 ms): 5 registered trees, 8 hedges, 0 other vegetation nearby",
+        "ok bgt-public (701 ms): 37 current public areas; ignored 58 historical records",
+        "ok classify-edges (44 ms): 15 edge runs",
+        "ok bgt-structures (95 ms): none registered on or at the plot",
+        "ok ahn-obstacles (323 ms): 1 tall (16.3 m²), 11 medium (34.8 m²), 0 overhanging from next door (0 m²) in 322.8 m² of garden",
+        "ok zoning-plans (15738 ms): 9 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 3, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+        "ok heritage (342 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -2447,7 +2546,7 @@
     {
       "village": "Huijbergen",
       "address": "Boomstraat 16, 4635CX Huijbergen",
-      "ms": 14976,
+      "ms": 12359,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 881,
@@ -2489,6 +2588,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -2496,17 +2597,29 @@
         "POSSIBLE_EXIT",
         "FRONT_ESTIMATED"
       ],
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
       "sides": "front: road (J.B. van Agtmaalstraat) 42.4 m | rear: neighbouring plot 43 m | left: neighbouring plot 23 m, road (J.B. van Agtmaalstraat) 0.3 m | right: footpath / pavement 18.1 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (163 ms): Found Boomstraat 16, 4635CX Huijbergen",
-        "ok bag-address (811 ms): Address is in 1 building(s)",
-        "ok brk-plot (172 ms): Plot Huijbergen C 1495, 881 m² drawn",
-        "ok bag-buildings (2631 ms): 1 house, 1 other on plot, 23 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (1366 ms): Heights for 25 buildings, height scan of 2024",
-        "ok bgt-trees (2448 ms): 26 registered trees, 4 hedges, 0 other vegetation nearby",
-        "ok bgt-public (6172 ms): 36 current public areas; ignored 63 historical records",
-        "ok classify-edges (76 ms): 5 edge runs"
+        "ok find-address (276 ms): Found Boomstraat 16, 4635CX Huijbergen",
+        "ok bag-address (105 ms): Address is in 1 building(s)",
+        "ok brk-plot (92 ms): Plot Huijbergen C 1495, 881 m² drawn",
+        "ok bag-buildings (383 ms): 1 house, 1 other buildings on plot, 23 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (1128 ms): Heights for 25 buildings, height scan of 2024",
+        "ok bgt-trees (108 ms): 26 registered trees, 4 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1192 ms): 36 current public areas; ignored 63 historical records",
+        "ok classify-edges (62 ms): 5 edge runs",
+        "ok bgt-structures (89 ms): canopy (roof without walls, e.g. a carport)",
+        "ok ahn-obstacles (430 ms): 9 tall (108 m²), 12 medium (98.8 m²), 0 overhanging from next door (0 m²) in 699 m² of garden",
+        "ok zoning-plans (7148 ms): 5 binding plan(s); on the plot: Waarde - Archeologie, Gemengd - 3, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+        "ok heritage (341 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -2675,7 +2788,7 @@
     {
       "village": "Ossendrecht",
       "address": "Kapucijnenstraat 9, 4641KH Ossendrecht",
-      "ms": 7190,
+      "ms": 15100,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 131,
@@ -2706,6 +2819,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -2713,17 +2828,29 @@
         "POSSIBLE_ACHTERPAD",
         "PAVEMENT_CROSSING"
       ],
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Kapucijnenstraat) 6.1 m | rear: footpath / pavement (Kapucijnenstraat) 6.1 m | left: neighbouring plot 13.3 m, shared wall with the neighbour 8.3 m | right: neighbouring plot 13.3 m, shared wall with the neighbour 8.3 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (162 ms): Found Kapucijnenstraat 9, 4641KH Ossendrecht",
-        "ok bag-address (180 ms): Address is in 1 building(s)",
-        "ok brk-plot (167 ms): Plot Ossendrecht D 5507, 131 m² drawn",
-        "ok bag-buildings (258 ms): 1 house, 1 other on plot, 47 nearby; ignored 2 demolished or invalid",
-        "ok 3dbag-heights (1216 ms): Heights for 49 buildings, height scan of 2024",
-        "ok bgt-trees (157 ms): 3 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (4739 ms): 28 current public areas; ignored 36 historical records",
-        "ok classify-edges (27 ms): 10 edge runs"
+        "ok find-address (97 ms): Found Kapucijnenstraat 9, 4641KH Ossendrecht",
+        "ok bag-address (178 ms): Address is in 1 building(s)",
+        "ok brk-plot (105 ms): Plot Ossendrecht D 5507, 131 m² drawn",
+        "ok bag-buildings (1170 ms): 1 house, 1 other buildings on plot, 47 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (914 ms): Heights for 49 buildings, height scan of 2024",
+        "ok bgt-trees (91 ms): 3 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (736 ms): 28 current public areas; ignored 36 historical records",
+        "ok classify-edges (20 ms): 10 edge runs",
+        "ok bgt-structures (90 ms): none registered on or at the plot",
+        "ok ahn-obstacles (325 ms): 0 tall (0 m²), 1 medium (1.3 m²), 0 overhanging from next door (0 m²) in 39.5 m² of garden",
+        "ok zoning-plans (10494 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar, Verkeer",
+        "ok heritage (339 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -2827,7 +2954,7 @@
     {
       "village": "Ossendrecht",
       "address": "Burgemeester van Gilshof 51, 4641TK Ossendrecht",
-      "ms": 13808,
+      "ms": 16563,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 983,
@@ -2877,7 +3004,9 @@
       "otherHomesOnPlot": 0,
       "exits": [],
       "carReachableM": 0,
-      "carReachableSides": [],
+      "carReachableSides": [
+        "left"
+      ],
       "nearestInritM": null,
       "inritWithin10m": 0,
       "quality": {
@@ -2887,23 +3016,37 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
         "OUTBUILDINGS_ON_PLOT",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: footpath / pavement (Burgemeester van Gilshof) 43.3 m | rear: footpath / pavement (Burgemeester van Gilshof) 14.2 m, neighbouring plot 0.3 m | left: footpath / pavement (Burgemeester van Gilshof) 21.9 m, neighbouring plot 5.7 m | right: neighbouring plot 51.3 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement (Burgemeester van Gilshof) 43.3 m | rear: footpath / pavement (Burgemeester van Gilshof) 14.3 m, neighbouring plot 0.1 m | left: footpath / pavement (Burgemeester van Gilshof) 22 m, verge belonging to the road 5.6 m | right: neighbouring plot 51.3 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (497 ms): Found Burgemeester van Gilshof 51, 4641TK Ossendrecht",
-        "ok bag-address (160 ms): Address is in 1 building(s)",
-        "ok brk-plot (160 ms): Plot Ossendrecht D 6159, 983 m² drawn",
-        "ok bag-buildings (2523 ms): 1 house, 1 other on plot, 25 nearby; ignored 2 demolished or invalid",
-        "ok 3dbag-heights (815 ms): Heights for 26 buildings, height scan of 2024",
-        "ok bgt-trees (160 ms): 3 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (8898 ms): 17 current public areas; ignored 20 historical records",
-        "ok classify-edges (45 ms): 10 edge runs"
+        "ok find-address (259 ms): Found Burgemeester van Gilshof 51, 4641TK Ossendrecht",
+        "ok bag-address (327 ms): Address is in 1 building(s)",
+        "ok brk-plot (90 ms): Plot Ossendrecht D 6159, 983 m² drawn",
+        "ok bag-buildings (607 ms): 1 house, 1 other buildings on plot, 25 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (1341 ms): Heights for 26 buildings, height scan of 2024",
+        "ok bgt-trees (93 ms): 3 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1210 ms): 17 current public areas; ignored 20 historical records",
+        "ok classify-edges (44 ms): 10 edge runs",
+        "ok bgt-structures (107 ms): canopy (roof without walls, e.g. a carport)",
+        "ok ahn-obstacles (332 ms): 17 tall (165 m²), 26 medium (41.5 m²), 0 overhanging from next door (0 m²) in 739.8 m² of garden",
+        "ok zoning-plans (11170 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar, maximale goot- en bouwhoogte (m)",
+        "ok heritage (351 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -3075,46 +3218,74 @@
     {
       "village": "Ossendrecht",
       "address": "Looizicht 8, 4641TE Ossendrecht",
-      "ms": 18471,
+      "ms": 27463,
       "use": "woonfunctie",
-      "houseType": "detached",
+      "houseType": "semi-or-end",
       "plotAreaM2": 11667,
-      "frontMethod": "none",
-      "access": "unknown",
-      "accessReason": "Street data could not be loaded, so car access is unknown.",
+      "frontMethod": "street-label",
+      "frontStreet": "Looizicht",
+      "access": "registered",
+      "accessReason": "3 registered driveway crossings touch the plot.",
       "pavementRuns": [],
       "otherHomesOnPlot": 24,
-      "exits": [],
-      "carReachableM": 0,
-      "carReachableSides": [],
-      "nearestInritM": null,
-      "inritWithin10m": 0,
+      "exits": [
+        {
+          "alongPlotM": 3
+        },
+        {
+          "alongPlotM": 6.8
+        },
+        {
+          "alongPlotM": 3.5
+        }
+      ],
+      "carReachableM": 19.7,
+      "carReachableSides": [
+        "front",
+        "rear",
+        "right"
+      ],
+      "nearestInritM": 0,
+      "inritWithin10m": 11,
       "quality": {
         "plot": "partial",
         "buildings": "complete",
         "heights": "complete",
-        "publicArea": "missing",
+        "publicArea": "complete",
         "vegetation": "partial",
-        "access": "missing",
-        "front": "missing"
+        "access": "complete",
+        "obstacles": "complete",
+        "legal": "complete",
+        "front": "complete"
       },
       "flags": [
         "PLOT_AREA_MISMATCH",
         "SHARED_PLOT",
-        "OUTBUILDINGS_ON_PLOT",
-        "PUBLIC_AREA_UNKNOWN"
+        "OUTBUILDINGS_ON_PLOT"
       ],
-      "sides": "front: unknown (data missing) 237.1 m | rear: unknown (data missing) 250 m | left: unknown (data missing) 270.1 m | right: unknown (data missing) 231.2 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement (Leempad) 108.3 m, neighbouring plot 105.7 m, road (Looizicht) 12.3 m, public green 3.9 m, road (Leempad) 2.5 m, road (Looipad) 0.6 m, road (Kerkepad) 0.4 m | rear: neighbouring plot 224.1 m, public green 42.8 m, road (Kerkepad) 3.6 m, footpath / pavement (Leempad) 1.9 m | left: neighbouring plot 159.3 m, public green 68.8 m | right: neighbouring plot 238.9 m, public green 10.8 m, footpath / pavement (Kerkstraat) 4.1 m, road (Kerkepad) 0.2 m",
       "outbuildings": 12,
       "steps": [
-        "ok find-address (455 ms): Found Looizicht 8, 4641TE Ossendrecht",
-        "ok bag-address (625 ms): Address is in 1 building(s)",
-        "ok brk-plot (161 ms): Plot Ossendrecht D 6989, 11667 m² drawn",
-        "ok bag-buildings (2203 ms): 1 house, 12 other on plot, 191 nearby; ignored 42 demolished or invalid",
-        "ok 3dbag-heights (6294 ms): Heights for 195 buildings, height scan of 2024",
-        "ok bgt-trees (548 ms): 30 registered trees, 13 hedges, 0 other vegetation nearby",
-        "failed bgt-public (8002 ms): ",
-        "degraded classify-edges (181 ms): 99 edge runs (some edges unknown)"
+        "ok find-address (262 ms): Found Looizicht 8, 4641TE Ossendrecht",
+        "ok bag-address (131 ms): Address is in 1 building(s)",
+        "ok brk-plot (92 ms): Plot Ossendrecht D 6989, 11667 m² drawn",
+        "ok bag-buildings (358 ms): 1 house, 24 other homes and 12 other buildings on plot, 191 nearby; ignored 42 demolished or invalid",
+        "ok 3dbag-heights (5256 ms): Heights for 195 buildings, height scan of 2024",
+        "ok bgt-trees (308 ms): 30 registered trees, 13 hedges, 0 other vegetation nearby",
+        "ok bgt-public (4158 ms): 146 current public areas; ignored 243 historical records",
+        "ok classify-edges (2158 ms): 116 edge runs",
+        "ok bgt-structures (129 ms): canopy (roof without walls, e.g. a carport), canopy (roof without walls, e.g. a carport), canopy (roof without walls, e.g. a carport), canopy (roof without walls, e.g. a carport)",
+        "ok ahn-obstacles (1482 ms): 98 tall (862.5 m²), 217 medium (631 m²), 6 overhanging from next door (28.8 m²) in 9018.3 m² of garden",
+        "ok zoning-plans (12269 ms): 8 binding plan(s); on the plot: Waarde - Archeologie 1, Waarde - Aardkundig waardevol gebied, overige zone - kerkepad, overige zone - archeologische verwachtingswaarde, Verkeer - Verblijfsgebied, Waarde - Archeologie, specifieke vorm van wonen - gebruik als tuin bij wonen, specifieke vorm van wonen - te bebouwen en gebruiken als wonen, vrijwaringszone - radar, luchtvaartverkeerzone - 1, Wonen - 3, bouwvlak, maximale goot- en bouwhoogte (m), Agrarisch met waarden - Natuur- en landschapswaarden, Verkeer, other: kerkepad, other: cultuurhistorisch waardevol gebied, other: archeologische verwachtingswaarde",
+        "ok heritage (349 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -3797,17 +3968,804 @@
             ]
           ]
         ],
-        "exits": [],
-        "inritsNear": [],
-        "carEdges": []
+        "exits": [
+          [
+            [
+              81419.551,
+              378702.198
+            ],
+            [
+              81416.018,
+              378703.563
+            ],
+            [
+              81415.518,
+              378701.464
+            ],
+            [
+              81419.125,
+              378700.176
+            ]
+          ],
+          [
+            [
+              81457.887,
+              378686.338
+            ],
+            [
+              81458.706,
+              378688.341
+            ],
+            [
+              81453.29,
+              378690.233
+            ],
+            [
+              81452.345,
+              378690.603
+            ],
+            [
+              81451.621,
+              378688.575
+            ],
+            [
+              81452.674,
+              378688.199
+            ]
+          ],
+          [
+            [
+              81385.629,
+              378731.332
+            ],
+            [
+              81385.077,
+              378732.038
+            ],
+            [
+              81384.406,
+              378728.359
+            ],
+            [
+              81384.362,
+              378728.076
+            ],
+            [
+              81384.28,
+              378727.549
+            ],
+            [
+              81384.219,
+              378727.157
+            ],
+            [
+              81385.027,
+              378727.031
+            ],
+            [
+              81385.202,
+              378728.325
+            ]
+          ]
+        ],
+        "inritsNear": [
+          [
+            [
+              81437.547,
+              378695.362
+            ],
+            [
+              81434.586,
+              378696.714
+            ],
+            [
+              81433.879,
+              378694.909
+            ],
+            [
+              81437.098,
+              378693.76
+            ]
+          ],
+          [
+            [
+              81465.775,
+              378664.485
+            ],
+            [
+              81464.357,
+              378664.987
+            ],
+            [
+              81463.786,
+              378663.353
+            ],
+            [
+              81462.563,
+              378659.855
+            ],
+            [
+              81463.907,
+              378659.243
+            ],
+            [
+              81464.264,
+              378659.08
+            ]
+          ],
+          [
+            [
+              81468.754,
+              378672.814
+            ],
+            [
+              81467.066,
+              378673.464
+            ],
+            [
+              81467.06228674938,
+              378673.4345840102
+            ],
+            [
+              81467.05849630483,
+              378673.4051778678
+            ],
+            [
+              81467.0546286925,
+              378673.3757817753
+            ],
+            [
+              81467.05068393899,
+              378673.3463959351
+            ],
+            [
+              81467.04666207149,
+              378673.31702054973
+            ],
+            [
+              81467.0425631177,
+              378673.2876558216
+            ],
+            [
+              81467.03838710589,
+              378673.25830195285
+            ],
+            [
+              81467.0341340648,
+              378673.22895914584
+            ],
+            [
+              81467.02980402372,
+              378673.19962760265
+            ],
+            [
+              81467.0253970125,
+              378673.1703075253
+            ],
+            [
+              81467.0209130615,
+              378673.1409991158
+            ],
+            [
+              81467.0163522016,
+              378673.1117025761
+            ],
+            [
+              81467.0117144642,
+              378673.08241810795
+            ],
+            [
+              81467.00699988128,
+              378673.0531459131
+            ],
+            [
+              81467.0022084853,
+              378673.02388619323
+            ],
+            [
+              81466.99734030927,
+              378672.9946391499
+            ],
+            [
+              81466.99239538674,
+              378672.96540498454
+            ],
+            [
+              81466.98737375175,
+              378672.9361838986
+            ],
+            [
+              81466.9822754389,
+              378672.9069760933
+            ],
+            [
+              81466.97710048333,
+              378672.87778176996
+            ],
+            [
+              81466.97184892067,
+              378672.84860112955
+            ],
+            [
+              81466.96652078711,
+              378672.81943437323
+            ],
+            [
+              81466.96111611935,
+              378672.79028170183
+            ],
+            [
+              81466.9556349546,
+              378672.7611433162
+            ],
+            [
+              81466.95007733065,
+              378672.73201941716
+            ],
+            [
+              81466.94444328577,
+              378672.7029102052
+            ],
+            [
+              81466.93873285878,
+              378672.6738158809
+            ],
+            [
+              81466.932946089,
+              378672.6447366447
+            ],
+            [
+              81466.92708301632,
+              378672.6156726969
+            ],
+            [
+              81466.92114368112,
+              378672.5866242377
+            ],
+            [
+              81466.9151281243,
+              378672.5575914673
+            ],
+            [
+              81466.90903638731,
+              378672.5285745856
+            ],
+            [
+              81466.90286851213,
+              378672.49957379256
+            ],
+            [
+              81466.89662454123,
+              378672.47058928787
+            ],
+            [
+              81466.89030451763,
+              378672.4416212713
+            ],
+            [
+              81466.88390848486,
+              378672.41266994237
+            ],
+            [
+              81466.87743648698,
+              378672.3837355005
+            ],
+            [
+              81466.87088856859,
+              378672.35481814505
+            ],
+            [
+              81466.86426477479,
+              378672.32591807516
+            ],
+            [
+              81466.85756515121,
+              378672.29703549
+            ],
+            [
+              81466.850789744,
+              378672.2681705885
+            ],
+            [
+              81466.84393859984,
+              378672.23932356946
+            ],
+            [
+              81466.83701176592,
+              378672.21049463167
+            ],
+            [
+              81466.83000928996,
+              378672.1816839737
+            ],
+            [
+              81466.8229312202,
+              378672.152891794
+            ],
+            [
+              81466.81577760538,
+              378672.12411829096
+            ],
+            [
+              81466.80854849482,
+              378672.09536366275
+            ],
+            [
+              81466.80124393829,
+              378672.0666281075
+            ],
+            [
+              81466.79386398612,
+              378672.0379118231
+            ],
+            [
+              81466.78640868915,
+              378672.0092150074
+            ],
+            [
+              81466.77887809872,
+              378671.98053785815
+            ],
+            [
+              81466.77127226673,
+              378671.95188057283
+            ],
+            [
+              81466.76359124557,
+              378671.9232433489
+            ],
+            [
+              81466.75583508814,
+              378671.89462638355
+            ],
+            [
+              81466.74800384788,
+              378671.866029874
+            ],
+            [
+              81466.74009757875,
+              378671.8374540172
+            ],
+            [
+              81466.7321163352,
+              378671.80889901007
+            ],
+            [
+              81466.7240601722,
+              378671.7803650492
+            ],
+            [
+              81466.71592914527,
+              378671.7518523313
+            ],
+            [
+              81466.70772331042,
+              378671.7233610527
+            ],
+            [
+              81466.69944272417,
+              378671.69489140966
+            ],
+            [
+              81466.69108744356,
+              378671.66644359834
+            ],
+            [
+              81466.68265752617,
+              378671.6380178147
+            ],
+            [
+              81466.67415303004,
+              378671.60961425456
+            ],
+            [
+              81466.66557401376,
+              378671.5812331136
+            ],
+            [
+              81466.65692053646,
+              378671.5528745873
+            ],
+            [
+              81466.64819265773,
+              378671.5245388711
+            ],
+            [
+              81466.63939043769,
+              378671.49622616003
+            ],
+            [
+              81466.630513937,
+              378671.46793664934
+            ],
+            [
+              81466.62156321677,
+              378671.43967053376
+            ],
+            [
+              81466.61253833871,
+              378671.411428008
+            ],
+            [
+              81466.60343936495,
+              378671.38320926676
+            ],
+            [
+              81466.59426635818,
+              378671.3550145043
+            ],
+            [
+              81466.5850193816,
+              378671.3268439149
+            ],
+            [
+              81466.5756984989,
+              378671.29869769263
+            ],
+            [
+              81466.5663037743,
+              378671.27057603135
+            ],
+            [
+              81466.55683527252,
+              378671.24247912486
+            ],
+            [
+              81466.54729305877,
+              378671.2144071666
+            ],
+            [
+              81466.53767719881,
+              378671.18636035005
+            ],
+            [
+              81466.52798775885,
+              378671.15833886835
+            ],
+            [
+              81466.51822480567,
+              378671.13034291455
+            ],
+            [
+              81466.5083884065,
+              378671.10237268155
+            ],
+            [
+              81466.49847862912,
+              378671.074428362
+            ],
+            [
+              81466.48849554178,
+              378671.04651014844
+            ],
+            [
+              81466.47843921326,
+              378671.01861823315
+            ],
+            [
+              81466.46830971284,
+              378670.9907528082
+            ],
+            [
+              81466.4581071103,
+              378670.96291406575
+            ],
+            [
+              81466.44783147592,
+              378670.9351021974
+            ],
+            [
+              81466.43748288047,
+              378670.9073173948
+            ],
+            [
+              81466.42706139527,
+              378670.8795598494
+            ],
+            [
+              81466.4165670921,
+              378670.8518297523
+            ],
+            [
+              81466.40600004325,
+              378670.82412729465
+            ],
+            [
+              81466.3953603215,
+              378670.7964526672
+            ],
+            [
+              81466.38464800018,
+              378670.76880606066
+            ],
+            [
+              81466.37386315306,
+              378670.7411876654
+            ],
+            [
+              81466.36300585444,
+              378670.71359767177
+            ],
+            [
+              81466.35207617912,
+              378670.68603626976
+            ],
+            [
+              81466.34107420237,
+              378670.6585036493
+            ],
+            [
+              81466.33,
+              378670.631
+            ],
+            [
+              81465.917,
+              378669.449
+            ],
+            [
+              81467.387,
+              378668.941
+            ]
+          ],
+          [
+            [
+              81388.781,
+              378748.249
+            ],
+            [
+              81388.657,
+              378748.316
+            ],
+            [
+              81388.099,
+              378748.619
+            ],
+            [
+              81387.295,
+              378744.206
+            ],
+            [
+              81388.061,
+              378744.419
+            ],
+            [
+              81388.072,
+              378744.422
+            ]
+          ],
+          [
+            [
+              81443.54,
+              378693.551
+            ],
+            [
+              81441.218,
+              378694.56
+            ],
+            [
+              81440.355,
+              378692.597
+            ],
+            [
+              81443.001,
+              378691.652
+            ]
+          ],
+          [
+            [
+              81419.551,
+              378702.198
+            ],
+            [
+              81416.018,
+              378703.563
+            ],
+            [
+              81415.518,
+              378701.464
+            ],
+            [
+              81419.125,
+              378700.176
+            ]
+          ],
+          [
+            [
+              81460.803,
+              378648.592
+            ],
+            [
+              81460.243,
+              378648.716
+            ],
+            [
+              81458.782,
+              378649.038
+            ],
+            [
+              81457.666,
+              378645.845
+            ],
+            [
+              81457.519,
+              378645.425
+            ],
+            [
+              81458.887,
+              378644.785
+            ],
+            [
+              81459.634,
+              378644.436
+            ]
+          ],
+          [
+            [
+              81457.887,
+              378686.338
+            ],
+            [
+              81458.706,
+              378688.341
+            ],
+            [
+              81453.29,
+              378690.233
+            ],
+            [
+              81452.345,
+              378690.603
+            ],
+            [
+              81451.621,
+              378688.575
+            ],
+            [
+              81452.674,
+              378688.199
+            ]
+          ],
+          [
+            [
+              81385.629,
+              378731.332
+            ],
+            [
+              81385.077,
+              378732.038
+            ],
+            [
+              81384.406,
+              378728.359
+            ],
+            [
+              81384.362,
+              378728.076
+            ],
+            [
+              81384.28,
+              378727.549
+            ],
+            [
+              81384.219,
+              378727.157
+            ],
+            [
+              81385.027,
+              378727.031
+            ],
+            [
+              81385.202,
+              378728.325
+            ]
+          ],
+          [
+            [
+              81411.083,
+              378705.069
+            ],
+            [
+              81410.473,
+              378703.265
+            ],
+            [
+              81415.518,
+              378701.464
+            ],
+            [
+              81416.018,
+              378703.563
+            ]
+          ],
+          [
+            [
+              81391.782,
+              378769.588
+            ],
+            [
+              81392.454,
+              378769.731
+            ],
+            [
+              81392.942,
+              378772.479
+            ],
+            [
+              81392.31,
+              378772.591
+            ]
+          ]
+        ],
+        "carEdges": [
+          [
+            [
+              81481.323,
+              378549.445
+            ],
+            [
+              81481.4593105306,
+              378549.9113500687
+            ]
+          ],
+          [
+            [
+              81492.28854948505,
+              378576.04436084675
+            ],
+            [
+              81492.3390620812,
+              378576.16444659134
+            ]
+          ],
+          [
+            [
+              81389.111083506,
+              378749.80901091115
+            ],
+            [
+              81389.11449751598,
+              378749.82987311867
+            ]
+          ],
+          [
+            [
+              81362.2165385951,
+              378628.26951035054
+            ],
+            [
+              81362.20469695587,
+              378628.27308628766
+            ]
+          ],
+          [
+            [
+              81345.939,
+              378633.185
+            ],
+            [
+              81345.96148751739,
+              378633.30928406096
+            ]
+          ],
+          [
+            [
+              81326.69283681885,
+              378648.5819847743
+            ],
+            [
+              81326.56148883748,
+              378647.8318847827
+            ]
+          ]
+        ]
       }
     },
     {
       "village": "Ossendrecht",
       "address": "Markt 10a, 4641HR Ossendrecht",
-      "ms": 7844,
+      "ms": 10621,
       "use": "winkelfunctie,woonfunctie",
-      "houseType": "corner",
+      "houseType": "unit",
       "plotAreaM2": 274,
       "frontMethod": "street-label",
       "frontStreet": "Markt",
@@ -3867,24 +4825,39 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
         "SHARED_PLOT",
+        "MULTI_UNIT_BUILDING",
         "OUTBUILDINGS_ON_PLOT",
         "PAVEMENT_CROSSING"
       ],
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Markt) 15.6 m | rear: neighbouring plot 15.5 m | left: neighbouring plot 18.7 m | right: shared wall with the neighbour 9.8 m, neighbouring plot 9 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (164 ms): Found Markt 10a, 4641HR Ossendrecht",
-        "ok bag-address (337 ms): Address is in 1 building(s)",
-        "ok brk-plot (159 ms): Plot Ossendrecht D 4233, 274 m² drawn",
-        "ok bag-buildings (2379 ms): 1 house, 1 other on plot, 27 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (1411 ms): Heights for 29 buildings, height scan of 2024",
-        "ok bgt-trees (630 ms): 14 registered trees, 13 hedges, 0 other vegetation nearby",
-        "ok bgt-public (2330 ms): 38 current public areas; ignored 92 historical records",
-        "ok classify-edges (32 ms): 12 edge runs"
+        "ok find-address (271 ms): Found Markt 10a, 4641HR Ossendrecht",
+        "ok bag-address (97 ms): Address is in 1 building(s)",
+        "ok brk-plot (101 ms): Plot Ossendrecht D 4233, 274 m² drawn",
+        "ok bag-buildings (547 ms): 1 house, 1 other homes and 1 other buildings on plot, 27 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (1880 ms): Heights for 29 buildings, height scan of 2024",
+        "ok bgt-trees (115 ms): 14 registered trees, 13 hedges, 0 other vegetation nearby",
+        "ok bgt-public (599 ms): 38 current public areas; ignored 92 historical records",
+        "ok classify-edges (32 ms): 12 edge runs",
+        "ok bgt-structures (91 ms): none registered on or at the plot",
+        "ok ahn-obstacles (351 ms): 1 tall (0.5 m²), 2 medium (1 m²), 0 overhanging from next door (0 m²) in 21.8 m² of garden",
+        "ok zoning-plans (5779 ms): 4 binding plan(s); on the plot: Centrum, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied, maximale goot- en bouwhoogte (m)",
+        "ok heritage (349 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -4048,9 +5021,9 @@
     {
       "village": "Putte",
       "address": "Leliestraat 10, 4645CL Putte",
-      "ms": 9808,
+      "ms": 16789,
       "use": "woonfunctie",
-      "houseType": "detached",
+      "houseType": "semi-or-end",
       "plotAreaM2": 294,
       "frontMethod": "longest-public",
       "access": "possible",
@@ -4080,6 +5053,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -4088,17 +5063,29 @@
         "PAVEMENT_CROSSING",
         "FRONT_ESTIMATED"
       ],
-      "sides": "front: public green 13.5 m, footpath / pavement 6.7 m | rear: neighbouring plot 13.7 m, public green 6.4 m | left: footpath / pavement 18.3 m, neighbouring plot 3 m | right: public green 21.2 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: public green 13.5 m, footpath / pavement 6.7 m | rear: neighbouring plot 13.7 m, public green 6.4 m | left: footpath / pavement 18.4 m, neighbouring plot 2.9 m | right: public green 21.2 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (178 ms): Found Leliestraat 10, 4645CL Putte",
-        "ok bag-address (559 ms): Address is in 1 building(s)",
-        "ok brk-plot (172 ms): Plot Putte B 3399, 294 m² drawn",
-        "ok bag-buildings (318 ms): 1 house, 0 other on plot, 35 nearby; ignored 1 demolished or invalid",
-        "ok 3dbag-heights (1436 ms): Heights for 35 buildings, height scan of 2024",
-        "ok bgt-trees (386 ms): 20 registered trees, 6 hedges, 0 other vegetation nearby",
-        "ok bgt-public (6152 ms): 26 current public areas; ignored 108 historical records",
-        "ok classify-edges (37 ms): 13 edge runs"
+        "ok find-address (104 ms): Found Leliestraat 10, 4645CL Putte",
+        "ok bag-address (100 ms): Address is in 1 building(s)",
+        "ok brk-plot (95 ms): Plot Putte B 3399, 294 m² drawn",
+        "ok bag-buildings (511 ms): 1 house, 2 other homes and 0 other buildings on plot, 35 nearby; ignored 1 demolished or invalid",
+        "ok 3dbag-heights (715 ms): Heights for 35 buildings, height scan of 2024",
+        "ok bgt-trees (112 ms): 20 registered trees, 6 hedges, 0 other vegetation nearby",
+        "ok bgt-public (719 ms): 26 current public areas; ignored 108 historical records",
+        "ok classify-edges (31 ms): 13 edge runs",
+        "ok bgt-structures (91 ms): none registered on or at the plot",
+        "ok ahn-obstacles (430 ms): 1 tall (2.3 m²), 3 medium (1.8 m²), 3 overhanging from next door (6.8 m²) in 51.5 m² of garden",
+        "ok zoning-plans (13067 ms): 10 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar, maximale goot- en bouwhoogte (m)",
+        "ok heritage (340 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -4215,7 +5202,7 @@
     {
       "village": "Putte",
       "address": "Keizerstraat 67, 4645GP Putte",
-      "ms": 15633,
+      "ms": 13751,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 130,
@@ -4240,23 +5227,37 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
         "POSSIBLE_ACHTERPAD",
         "POSSIBLE_EXIT"
       ],
-      "sides": "front: road (Keizerstraat) 6 m, shared wall with the neighbour 1 m, neighbouring plot 0.8 m | rear: footpath / pavement 5.7 m, neighbouring plot 1.1 m, shared wall with the neighbour 1 m | left: neighbouring plot 13.3 m, shared wall with the neighbour 8.4 m | right: shared wall with the neighbour 12.1 m, neighbouring plot 9.7 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: road (Keizerstraat) 6 m, shared wall with the neighbour 1 m, neighbouring plot 0.8 m | rear: footpath / pavement 5.7 m, neighbouring plot 1.1 m, shared wall with the neighbour 1 m | left: neighbouring plot 13.3 m, shared wall with the neighbour 8.5 m | right: shared wall with the neighbour 12.1 m, neighbouring plot 9.7 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (171 ms): Found Keizerstraat 67, 4645GP Putte",
-        "ok bag-address (657 ms): Address is in 1 building(s)",
-        "ok brk-plot (160 ms): Plot Putte B 3314, 130 m² drawn",
-        "ok bag-buildings (760 ms): 1 house, 0 other on plot, 30 nearby; ignored 9 demolished or invalid",
-        "ok 3dbag-heights (1086 ms): Heights for 31 buildings, height scan of 2024",
-        "ok bgt-trees (220 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (12546 ms): 9 current public areas; ignored 13 historical records",
-        "ok classify-edges (2 ms): 16 edge runs"
+        "ok find-address (269 ms): Found Keizerstraat 67, 4645GP Putte",
+        "ok bag-address (348 ms): Address is in 1 building(s)",
+        "ok brk-plot (94 ms): Plot Putte B 3314, 130 m² drawn",
+        "ok bag-buildings (820 ms): 1 house, 0 other buildings on plot, 30 nearby; ignored 9 demolished or invalid",
+        "ok 3dbag-heights (4544 ms): Heights for 31 buildings, height scan of 2024",
+        "ok bgt-trees (260 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (667 ms): 9 current public areas; ignored 13 historical records",
+        "ok classify-edges (2 ms): 16 edge runs",
+        "ok bgt-structures (93 ms): none registered on or at the plot",
+        "ok ahn-obstacles (372 ms): 1 tall (1.5 m²), 6 medium (12 m²), 0 overhanging from next door (0 m²) in 58.8 m² of garden",
+        "ok zoning-plans (5897 ms): 4 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar",
+        "ok heritage (345 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -4373,7 +5374,7 @@
     {
       "village": "Putte",
       "address": "1e Verdelingsweg 514, 4645RT Putte",
-      "ms": 17540,
+      "ms": 16016,
       "use": "logiesfunctie,woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 608,
@@ -4393,7 +5394,9 @@
       "otherHomesOnPlot": 0,
       "exits": [],
       "carReachableM": 0,
-      "carReachableSides": [],
+      "carReachableSides": [
+        "front"
+      ],
       "nearestInritM": null,
       "inritWithin10m": 0,
       "quality": {
@@ -4403,6 +5406,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -4410,17 +5415,29 @@
         "PAVEMENT_CROSSING",
         "FRONT_ESTIMATED"
       ],
-      "sides": "front: neighbouring plot 14.7 m | rear: neighbouring plot 15.5 m | left: neighbouring plot 44.7 m | right: neighbouring plot 43.8 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: verge belonging to the road 12 m, neighbouring plot 2.6 m | rear: neighbouring plot 15.5 m | left: neighbouring plot 44.7 m | right: neighbouring plot 43.8 m",
       "outbuildings": 3,
       "steps": [
-        "ok find-address (481 ms): Found 1e Verdelingsweg 514, 4645RT Putte",
-        "ok bag-address (509 ms): Address is in 1 building(s)",
-        "ok brk-plot (172 ms): Plot Putte A 875, 608 m² drawn",
-        "ok bag-buildings (981 ms): 1 house, 3 other on plot, 30 nearby; ignored 23 demolished or invalid",
-        "ok 3dbag-heights (1253 ms): Heights for 30 buildings, height scan of 2024",
-        "ok bgt-trees (195 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (11772 ms): 2 current public areas; ignored 9 historical records",
-        "ok classify-edges (129 ms): 13 edge runs"
+        "ok find-address (265 ms): Found 1e Verdelingsweg 514, 4645RT Putte",
+        "ok bag-address (252 ms): Address is in 1 building(s)",
+        "ok brk-plot (96 ms): Plot Putte A 875, 608 m² drawn",
+        "ok bag-buildings (267 ms): 1 house, 3 other buildings on plot, 30 nearby; ignored 23 demolished or invalid",
+        "ok 3dbag-heights (710 ms): Heights for 30 buildings, height scan of 2024",
+        "ok bgt-trees (87 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (3093 ms): 2 current public areas; ignored 9 historical records",
+        "ok classify-edges (99 ms): 13 edge runs",
+        "ok bgt-structures (106 ms): none registered on or at the plot",
+        "ok ahn-obstacles (422 ms): 0 tall (0 m²), 10 medium (27.3 m²), 3 overhanging from next door (7.8 m²) in 405 m² of garden",
+        "ok zoning-plans (8722 ms): 6 binding plan(s); on the plot: Recreatie - Recreatiecentrum hazeduinen, bouwvlak, overige zone - beperkingen veehouderij, overige zone - groenblauwe mantel, maximum aantal wooneenheden, maximum bebouwd oppervlak (m2), Recreatie - Recreatiecentrum Hazeduinen, other: reserveringsgebied - waterberging, vrijwaringszone - radar",
+        "ok heritage (343 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -4604,9 +5621,9 @@
     {
       "village": "Putte",
       "address": "Tulpstraat 26, 4645CT Putte",
-      "ms": 16228,
+      "ms": 19041,
       "use": "woonfunctie",
-      "houseType": "detached",
+      "houseType": "unit",
       "plotAreaM2": 1824,
       "frontMethod": "street-label",
       "frontStreet": "Tulpstraat",
@@ -4649,25 +5666,40 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
         "SHARED_PLOT",
+        "MULTI_UNIT_BUILDING",
         "OUTBUILDINGS_ON_PLOT",
         "POSSIBLE_ACHTERPAD",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: footpath / pavement (Tulpstraat) 71.3 m, footpath / pavement (Breestraat) 0.3 m | rear: neighbouring plot 63.6 m, footpath / pavement 15.1 m | left: footpath / pavement (Tulpstraat) 27.2 m, footpath / pavement (Breestraat) 20.7 m | right: neighbouring plot 43.1 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement (Tulpstraat) 71.3 m, footpath / pavement (Breestraat) 0.3 m | rear: neighbouring plot 63.7 m, footpath / pavement 15.1 m | left: footpath / pavement (Tulpstraat) 27.2 m, footpath / pavement (Breestraat) 20.7 m | right: neighbouring plot 43.1 m",
       "outbuildings": 2,
       "steps": [
-        "ok find-address (173 ms): Found Tulpstraat 26, 4645CT Putte",
-        "ok bag-address (265 ms): Address is in 1 building(s)",
-        "ok brk-plot (162 ms): Plot Putte B 3366, 1824 m² drawn",
-        "ok bag-buildings (709 ms): 1 house, 2 other on plot, 71 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (3674 ms): Heights for 72 buildings, height scan of 2024",
-        "ok bgt-trees (656 ms): 18 registered trees, 3 hedges, 0 other vegetation nearby",
-        "ok bgt-public (7842 ms): 41 current public areas; ignored 92 historical records",
-        "ok classify-edges (127 ms): 25 edge runs"
+        "ok find-address (270 ms): Found Tulpstraat 26, 4645CT Putte",
+        "ok bag-address (158 ms): Address is in 1 building(s)",
+        "ok brk-plot (92 ms): Plot Putte B 3366, 1824 m² drawn",
+        "ok bag-buildings (2313 ms): 1 house, 9 other homes and 2 other buildings on plot, 71 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (1693 ms): Heights for 72 buildings, height scan of 2024",
+        "ok bgt-trees (285 ms): 18 registered trees, 3 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1443 ms): 41 current public areas; ignored 92 historical records",
+        "ok classify-edges (118 ms): 25 edge runs",
+        "ok bgt-structures (99 ms): none registered on or at the plot",
+        "ok ahn-obstacles (485 ms): 14 tall (29.8 m²), 32 medium (36.3 m²), 2 overhanging from next door (4.5 m²) in 797.3 m² of garden",
+        "ok zoning-plans (9532 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 4, bouwvlak, vrijwaringszone - radar",
+        "ok heritage (348 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -4906,7 +5938,7 @@
     {
       "village": "Woensdrecht",
       "address": "Tuinstraat 3, 4634VR Woensdrecht",
-      "ms": 16154,
+      "ms": 16865,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 343,
@@ -4952,6 +5984,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -4959,17 +5993,29 @@
         "OUTBUILDINGS_ON_PLOT",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: footpath / pavement (Tuinstraat) 14.2 m | rear: neighbouring plot 9.1 m | left: neighbouring plot 28.9 m | right: neighbouring plot 17.8 m, footpath / pavement (Tuinstraat) 4 m, public green 4 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement (Tuinstraat) 14.2 m | rear: neighbouring plot 9.1 m | left: neighbouring plot 28.9 m | right: neighbouring plot 17.8 m, footpath / pavement (Tuinstraat) 4 m, public green 3.9 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (162 ms): Found Tuinstraat 3, 4634VR Woensdrecht",
-        "ok bag-address (388 ms): Address is in 1 building(s)",
-        "ok brk-plot (173 ms): Plot Woensdrecht G 2645, 343 m² drawn",
-        "ok bag-buildings (2385 ms): 1 house, 1 other on plot, 21 nearby; ignored 10 demolished or invalid",
-        "ok 3dbag-heights (1707 ms): Heights for 22 buildings, height scan of 2024",
-        "ok bgt-trees (470 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (10545 ms): 9 current public areas; ignored 12 historical records",
-        "ok classify-edges (21 ms): 9 edge runs"
+        "ok find-address (109 ms): Found Tuinstraat 3, 4634VR Woensdrecht",
+        "ok bag-address (225 ms): Address is in 1 building(s)",
+        "ok brk-plot (93 ms): Plot Woensdrecht G 2645, 343 m² drawn",
+        "ok bag-buildings (287 ms): 1 house, 1 other buildings on plot, 21 nearby; ignored 10 demolished or invalid",
+        "ok 3dbag-heights (988 ms): Heights for 22 buildings, height scan of 2024",
+        "ok bgt-trees (93 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (824 ms): 9 current public areas; ignored 12 historical records",
+        "ok classify-edges (18 ms): 9 edge runs",
+        "ok bgt-structures (94 ms): none registered on or at the plot",
+        "ok ahn-obstacles (411 ms): 0 tall (0 m²), 3 medium (8 m²), 0 overhanging from next door (0 m²) in 140.8 m² of garden",
+        "ok zoning-plans (12973 ms): 9 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2, vrijwaringszone - radar",
+        "ok heritage (351 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -5117,9 +6163,9 @@
     {
       "village": "Woensdrecht",
       "address": "Mgr van Mensstraat 63, 4634VB Woensdrecht",
-      "ms": 9715,
+      "ms": 12585,
       "use": "woonfunctie",
-      "houseType": "detached",
+      "houseType": "semi-or-end",
       "plotAreaM2": 576,
       "frontMethod": "longest-public",
       "access": "possible",
@@ -5157,6 +6203,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -5166,17 +6214,29 @@
         "PAVEMENT_CROSSING",
         "FRONT_ESTIMATED"
       ],
-      "sides": "front: footpath / pavement (Molenakkers) 29.1 m | rear: neighbouring plot 27 m, public green 2 m | left: neighbouring plot 12.2 m, public green 7.5 m | right: footpath / pavement (Molenakkers) 20 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement (Molenakkers) 29.1 m | rear: neighbouring plot 27 m, public green 2 m | left: neighbouring plot 12.2 m, public green 7.6 m | right: footpath / pavement (Molenakkers) 20 m",
       "outbuildings": 5,
       "steps": [
-        "ok find-address (474 ms): Found Mgr van Mensstraat 63, 4634VB Woensdrecht",
-        "ok bag-address (270 ms): Address is in 1 building(s)",
-        "ok brk-plot (161 ms): Plot Woensdrecht G 3126, 576 m² drawn",
-        "ok bag-buildings (1773 ms): 1 house, 5 other on plot, 37 nearby; ignored 2 demolished or invalid",
-        "degraded 3dbag-heights (3210 ms): Heights for 41 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
-        "ok bgt-trees (469 ms): 11 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (2795 ms): 38 current public areas; ignored 64 historical records",
-        "ok classify-edges (46 ms): 6 edge runs"
+        "ok find-address (275 ms): Found Mgr van Mensstraat 63, 4634VB Woensdrecht",
+        "ok bag-address (124 ms): Address is in 1 building(s)",
+        "ok brk-plot (101 ms): Plot Woensdrecht G 3126, 576 m² drawn",
+        "ok bag-buildings (1143 ms): 1 house, 3 other homes and 5 other buildings on plot, 37 nearby; ignored 2 demolished or invalid",
+        "degraded 3dbag-heights (783 ms): Heights for 41 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
+        "ok bgt-trees (109 ms): 11 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (786 ms): 38 current public areas; ignored 64 historical records",
+        "ok classify-edges (41 ms): 6 edge runs",
+        "ok bgt-structures (92 ms): none registered on or at the plot",
+        "ok ahn-obstacles (313 ms): 4 tall (21 m²), 10 medium (38 m²), 2 overhanging from next door (5 m²) in 223.5 m² of garden",
+        "ok zoning-plans (7980 ms): 5 binding plan(s); on the plot: Verkeer - Verblijfsgebied, specifieke vorm van wonen - te bebouwen en gebruiken als wonen, specifieke vorm van wonen - gebruik als tuin bij wonen, luchtvaartverkeerzone - 8, luchtvaartverkeerzone - 2, vrijwaringszone - radar 2, overige zone - aardkundig waardevol gebied, Wonen - 3, bouwvlak, other: ohter: aardkundig waardevol gebied",
+        "ok heritage (350 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -5358,9 +6418,9 @@
     {
       "village": "Woensdrecht",
       "address": "Mgr van Mensstraat 8, 4634VC Woensdrecht",
-      "ms": 11305,
+      "ms": 19383,
       "use": "woonfunctie",
-      "houseType": "detached",
+      "houseType": "semi-or-end",
       "plotAreaM2": 941,
       "frontMethod": "street-label",
       "frontStreet": "Mgr van Mensstraat",
@@ -5412,6 +6472,8 @@
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -5421,17 +6483,29 @@
         "POSSIBLE_ACHTERPAD",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: footpath / pavement (Mgr van Mensstraat) 42.5 m | rear: footpath / pavement 39 m, neighbouring plot 3 m | left: footpath / pavement (Mgr van Mensstraat) 21.7 m, neighbouring plot 1.7 m | right: footpath / pavement 24 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: footpath / pavement (Mgr van Mensstraat) 42.5 m | rear: footpath / pavement 38.8 m, neighbouring plot 3.1 m | left: footpath / pavement (Mgr van Mensstraat) 21.7 m, neighbouring plot 1.7 m | right: footpath / pavement 24 m",
       "outbuildings": 7,
       "steps": [
-        "ok find-address (173 ms): Found Mgr van Mensstraat 8, 4634VC Woensdrecht",
-        "ok bag-address (542 ms): Address is in 1 building(s)",
-        "ok brk-plot (169 ms): Plot Woensdrecht G 3565, 941 m² drawn",
-        "ok bag-buildings (1571 ms): 1 house, 7 other on plot, 56 nearby; ignored 5 demolished or invalid",
-        "degraded 3dbag-heights (4899 ms): Heights for 63 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
-        "ok bgt-trees (1110 ms): 2 registered trees, 2 hedges, 0 other vegetation nearby",
-        "ok bgt-public (2618 ms): 38 current public areas; ignored 62 historical records",
-        "ok classify-edges (15 ms): 15 edge runs"
+        "ok find-address (100 ms): Found Mgr van Mensstraat 8, 4634VC Woensdrecht",
+        "ok bag-address (292 ms): Address is in 1 building(s)",
+        "ok brk-plot (91 ms): Plot Woensdrecht G 3565, 941 m² drawn",
+        "ok bag-buildings (324 ms): 1 house, 5 other homes and 7 other buildings on plot, 56 nearby; ignored 5 demolished or invalid",
+        "degraded 3dbag-heights (1605 ms): Heights for 63 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
+        "ok bgt-trees (91 ms): 2 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (595 ms): 38 current public areas; ignored 62 historical records",
+        "ok classify-edges (14 ms): 15 edge runs",
+        "ok bgt-structures (91 ms): none registered on or at the plot",
+        "ok ahn-obstacles (359 ms): 6 tall (44 m²), 25 medium (72.8 m²), 0 overhanging from next door (0 m²) in 517 m² of garden",
+        "ok zoning-plans (15228 ms): 11 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2, vrijwaringszone - radar",
+        "ok heritage (347 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -5689,9 +6763,9 @@
     {
       "village": "Woensdrecht",
       "address": "Dorpsstraat 53e, 4634TN Woensdrecht",
-      "ms": 8945,
+      "ms": 20160,
       "use": "gezondheidszorgfunctie,industriefunctie,woonfunctie",
-      "houseType": "corner",
+      "houseType": "unit",
       "plotAreaM2": 1376,
       "frontMethod": "longest-public",
       "access": "possible",
@@ -5715,37 +6789,52 @@
       ],
       "otherHomesOnPlot": 0,
       "exits": [],
-      "carReachableM": 130.3,
+      "carReachableM": 130.4,
       "carReachableSides": [
         "front"
       ],
       "nearestInritM": null,
       "inritWithin10m": 0,
       "quality": {
-        "plot": "complete",
+        "plot": "partial",
         "buildings": "complete",
         "heights": "complete",
         "publicArea": "assumed",
         "vegetation": "partial",
         "access": "assumed",
+        "obstacles": "complete",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
+        "MULTI_UNIT_BUILDING",
         "WATER_NEARBY",
         "POSSIBLE_EXIT",
         "FRONT_ESTIMATED"
       ],
-      "sides": "front: road 130.3 m, footpath / pavement 3 m | rear: neighbouring plot 101.7 m, shared wall with the neighbour 26.3 m, footpath / pavement 3 m, water 0.3 m | left: water 10.1 m, neighbouring plot 0.3 m | right: footpath / pavement 6.2 m, shared wall with the neighbour 3 m, neighbouring plot 2.5 m",
+      "legal": {
+        "ex-monument-2227": "clear",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "unknown"
+      },
+      "zoningStatus": "complete",
+      "sides": "front: road 130.4 m, footpath / pavement 3 m | rear: neighbouring plot 101.6 m, shared wall with the neighbour 26.3 m, footpath / pavement 3.1 m, water 0.3 m | left: water 10.1 m, neighbouring plot 0.2 m | right: footpath / pavement 6.2 m, shared wall with the neighbour 3 m, neighbouring plot 2.6 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (171 ms): Found Dorpsstraat 53e, 4634TN Woensdrecht",
-        "ok bag-address (945 ms): Address is in 1 building(s)",
-        "ok brk-plot (158 ms): Plot Woensdrecht G 3842, 1376 m² drawn",
-        "ok bag-buildings (1503 ms): 1 house, 0 other on plot, 21 nearby; ignored 2 demolished or invalid",
-        "ok 3dbag-heights (3037 ms): Heights for 20 buildings, height scan of 2024",
-        "ok bgt-trees (467 ms): 8 registered trees, 2 hedges, 0 other vegetation nearby",
-        "ok bgt-public (2116 ms): 13 current public areas; ignored 40 historical records",
-        "ok classify-edges (43 ms): 21 edge runs"
+        "ok find-address (265 ms): Found Dorpsstraat 53e, 4634TN Woensdrecht",
+        "ok bag-address (96 ms): Address is in 1 building(s)",
+        "ok brk-plot (90 ms): Plot Woensdrecht G 3842, 1376 m² drawn",
+        "ok bag-buildings (224 ms): 1 house, 0 other buildings on plot, 21 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (1057 ms): Heights for 20 buildings, height scan of 2024",
+        "ok bgt-trees (100 ms): 8 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (661 ms): 13 current public areas; ignored 40 historical records",
+        "ok classify-edges (44 ms): 21 edge runs",
+        "ok bgt-structures (90 ms): none registered on or at the plot",
+        "ok ahn-obstacles (529 ms): 0 tall (0 m²), 11 medium (14.5 m²), 2 overhanging from next door (1.5 m²) in 748.5 m² of garden",
+        "ok zoning-plans (16240 ms): 12 binding plan(s); on the plot: Gemengd - 3, bouwvlak, bedrijf, detailhandel, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2, vrijwaringszone - radar",
+        "ok heritage (347 ms): no monument on or next to the plot"
       ],
       "draw": {
         "plot": [
@@ -5886,8 +6975,8 @@
               382770.12
             ],
             [
-              79672.61531802744,
-              382770.771580823
+              79672.6161874367,
+              382770.7782205732
             ]
           ],
           [
