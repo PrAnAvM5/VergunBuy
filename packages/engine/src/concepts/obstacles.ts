@@ -156,10 +156,39 @@ export function detectObstacles(
   const areaAbove: Record<string, number> = Object.fromEntries(
     compareAt.map((t) => [String(t), 0]),
   );
+  // Bounding boxes first: only buildings whose (buffered) box holds the cell are tested exactly.
+  // Same result, but large parcels with many buildings stay fast.
+  const buf = settings.buildingBufferM;
+  const boxes = buildings.map((b) => {
+    const xs = b.map((q) => q[0]);
+    const ys = b.map((q) => q[1]);
+    return {
+      b,
+      minX: Math.min(...xs) - buf,
+      maxX: Math.max(...xs) + buf,
+      minY: Math.min(...ys) - buf,
+      maxY: Math.max(...ys) + buf,
+    };
+  });
+  const pxs = plot.map((q) => q[0]);
+  const pys = plot.map((q) => q[1]);
+  const plotBox = {
+    minX: Math.min(...pxs),
+    maxX: Math.max(...pxs),
+    minY: Math.min(...pys),
+    maxY: Math.max(...pys),
+  };
   for (let i = 0; i < N; i++) {
     const p = centre(i);
     if (
-      buildings.some((b) => contains(b, p) || distanceToBoundary(b, p) <= settings.buildingBufferM)
+      boxes.some(
+        (x) =>
+          p[0] >= x.minX &&
+          p[0] <= x.maxX &&
+          p[1] >= x.minY &&
+          p[1] <= x.maxY &&
+          (contains(x.b, p) || distanceToBoundary(x.b, p) <= buf),
+      )
     )
       continue;
     const sv = grid.dsm[i]!;
@@ -167,7 +196,14 @@ export function detectObstacles(
     if (Number.isNaN(sv) || Number.isNaN(gv)) continue;
     const h = sv - gv;
     height[i] = h;
-    if (!contains(plot, p)) continue;
+    if (
+      p[0] < plotBox.minX ||
+      p[0] > plotBox.maxX ||
+      p[1] < plotBox.minY ||
+      p[1] > plotBox.maxY ||
+      !contains(plot, p)
+    )
+      continue;
     inPlot[i] = 1;
     yard++;
     if (Number.isNaN(grid.dtm[i]!)) filled++;
