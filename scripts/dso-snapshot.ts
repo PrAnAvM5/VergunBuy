@@ -64,6 +64,10 @@ async function ask(x: number, y: number): Promise<Answer> {
   };
 }
 
+console.log(
+  `Source: ${process.env.DSO_API_KEY ? "the DSO directly (GitHub secret)" : `our server ${SERVER}`}`,
+);
+
 const prev: DsoSnapshot | null = existsSync(OUT)
   ? (JSON.parse(readFileSync(OUT, "utf8")) as DsoSnapshot)
   : null;
