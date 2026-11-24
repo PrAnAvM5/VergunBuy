@@ -5,6 +5,7 @@ export default tseslint.config(
   {
     ignores: [
       "scripts/probe.mjs",
+      "scripts/probe2.mjs",
       "**/dist/**",
       "**/node_modules/**",
       "apps/web/legacy/**",
