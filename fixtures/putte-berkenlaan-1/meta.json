@@ -15,7 +15,5 @@
     "ok bgt-public: 35 current public areas; ignored 87 historical records",
     "ok classify-edges: 10 edge runs"
   ],
-  "flags": [
-    "POSSIBLE_ACHTERPAD"
-  ]
+  "flags": ["POSSIBLE_ACHTERPAD"]
 }

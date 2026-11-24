@@ -1,7 +1,10 @@
 import { esc, FLAG_TEXT, HOUSE_TYPE_TEXT, m2 } from "../format.ts";
-import { renderInspector } from "../inspector.ts";
+import { bindAnswers, renderInspector } from "../inspector.ts";
 import { AERIAL_YEARS, drawPlan, legend, type Layers } from "../plan.ts";
 import { runCheck, type RunResult } from "../run.ts";
+
+export const workspaceHref = (q: RunResult["query"], mode: RunResult["mode"]) =>
+  `#/plot/${encodeURIComponent(q.postcode)}/${encodeURIComponent(q.number)}${q.addition ? `/${encodeURIComponent(q.addition)}` : ""}${mode === "demo" ? "?demo" : ""}`;
 
 export async function renderCheck(
   root: HTMLElement,
@@ -24,7 +27,12 @@ export async function renderCheck(
   }
 
   const ctx = result.context;
-  const layers: Layers = { context: true, edges: true, dimensions: true, aerial: "" };
+  const layers: Layers = {
+    context: true,
+    edges: true,
+    dimensions: false,
+    aerial: "Actueel_orthoHR",
+  };
   const ms = ctx.measurements;
   const house = ctx.house[0];
   let selected: string | undefined;
@@ -36,15 +44,17 @@ export async function renderCheck(
         <div class="muted small">${mode === "demo" ? '<span class="pill warn">Recorded example (recorded 24-11-2026)</span> ' : '<span class="pill ok">Live data</span> '}${result.totalMs} ms · <a href="#/system">see every step</a></div>
         <h1>${esc(ctx.address.label)}</h1>
       </div>
-      <a class="btn" href="#/">Check another address</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="#/">Check another address</a>
+        <a class="btn btn-primary" href="${workspaceHref(query, mode)}">Open plot workspace (2D / 3D) →</a>
+      </div>
     </div>
     <div class="layout">
       <div>
         <div class="card plan-wrap">
           <div id="plan"></div>
           <div class="plan-tools">
-            <label>Aerial photo <select id="l-aerial">${AERIAL_YEARS.map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join("")}</select></label>
-            <label><input type="checkbox" id="l-dims" checked /> Dimensions</label>
+            <label>Aerial photo <select id="l-aerial">${AERIAL_YEARS.map(([k, l]) => `<option value="${k}"${k === layers.aerial ? " selected" : ""}>${esc(l)}</option>`).join("")}</select></label>
             <label><input type="checkbox" id="l-edges" checked /> Edge types</label>
             <label><input type="checkbox" id="l-context" checked /> Surroundings</label>
             <label><input type="checkbox" id="l-dev" ${developer ? "checked" : ""} /> Developer details</label>
@@ -95,6 +105,7 @@ export async function renderCheck(
     if (planEl) planEl.innerHTML = drawPlan(ctx, layers, selected);
     if (inspEl) inspEl.innerHTML = renderInspector(ctx, selected, devBox?.checked ?? false);
   };
+  if (inspEl) bindAnswers(inspEl, redraw);
   planEl?.addEventListener("click", (e) => {
     const target = (e.target as Element).closest("[data-sel]");
     selected = target?.getAttribute("data-sel") ?? undefined;

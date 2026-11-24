@@ -9,7 +9,7 @@ import { EDGE_TEXT, esc, m, m2 } from "./format.ts";
 interface Row {
   label: string;
   value: string;
-  certainty?: "measured" | "derived" | "assumed" | "unknown";
+  certainty?: "measured" | "derived" | "assumed" | "user-answered" | "unknown";
 }
 
 interface View {
@@ -20,6 +20,15 @@ interface View {
   raw: unknown;
 }
 
+/** User answers for facts the registers lack (ADR-020: few, optional, always with "don't know"). */
+const answers = new Map<string, string>();
+export const answerKey = (ctx: PlotContext, buildingId: string) =>
+  `${ctx.address.bagVerblijfsobjectId}:${buildingId}`;
+export const setAnswer = (key: string, value: string) =>
+  value ? answers.set(key, value) : answers.delete(key);
+export const getAnswer = (key: string) => answers.get(key);
+export const OUTBUILDING_KINDS = ["Shed", "Garage", "Carport", "Garden room", "Other"];
+
 const ROOF_TEXT: Record<string, string> = {
   slanted: "Sloped",
   horizontal: "Flat",
@@ -29,7 +38,7 @@ const ROOF_TEXT: Record<string, string> = {
 
 const certPill = (c?: Row["certainty"]) =>
   c
-    ? ` <span class="pill ${c === "measured" ? "ok" : c === "derived" ? "" : c === "assumed" ? "warn" : "bad"} cert">${c}</span>`
+    ? ` <span class="pill ${c === "measured" ? "ok" : c === "derived" ? "" : c === "assumed" ? "warn" : c === "user-answered" ? "grey" : "bad"} cert">${c}</span>`
     : "";
 
 function describe(ctx: PlotContext, key: string): View | undefined {
@@ -74,7 +83,14 @@ function describe(ctx: PlotContext, key: string): View | undefined {
           ? "No change seen between height scans"
           : undefined;
     const rows: Row[] = [];
-    if (type === "outbuilding")
+    const answered = type === "outbuilding" ? getAnswer(answerKey(ctx, b.id)) : undefined;
+    if (answered)
+      rows.push({
+        label: "What it is",
+        value: `${esc(answered)} (you said)`,
+        certainty: "user-answered",
+      });
+    else if (type === "outbuilding")
       rows.push({
         label: "What it probably is",
         value: esc(b.label ?? "Outbuilding"),
@@ -89,6 +105,24 @@ function describe(ctx: PlotContext, key: string): View | undefined {
       rows.push({
         label: "Height",
         value: `${h.heightM} m${h.lowestRoofM !== undefined ? ` (lowest roof ${h.lowestRoofM} m)` : ""}`,
+        certainty: "measured",
+      });
+    if (type !== "neighbour" && h?.roofParts && h.roofParts.length > 1) {
+      const top = Math.max(...h.roofParts.map((r) => r.topM));
+      const low = h.roofParts.filter((r) => r.topM < top - 1.5);
+      rows.push({
+        label: "Roof parts",
+        value: `${h.roofParts.length} roof planes${low.length ? `; ${low.length} lower part${low.length > 1 ? "s" : ""} (up to ${Math.max(...low.map((r) => r.topM))} m), often an extension or annex` : ""}`,
+        certainty: "measured",
+      });
+    }
+    if (h?.mesh)
+      rows.push({
+        label: "3D shape",
+        value:
+          h.mesh.lod === "2.2"
+            ? "Real roof shape (LoD 2.2)"
+            : `Simplified block (LoD ${esc(h.mesh.lod)})`,
         certainty: "measured",
       });
     if (h?.roofType)
@@ -233,5 +267,25 @@ export function renderInspector(
     <dl class="facts">${v.rows.map((r) => `<dt>${esc(r.label)}</dt><dd>${r.value}${certPill(r.certainty)}</dd>`).join("")}</dl>
     <p class="small muted" style="margin:12px 0 4px"><strong>Source.</strong> ${esc(v.source)}</p>
     <p class="small muted" style="margin:0"><strong>How we know.</strong> ${esc(v.how)}</p>
+    ${key.startsWith("outbuilding:") ? askOutbuilding(ctx, key.slice("outbuilding:".length)) : ""}
     ${developer ? `<pre class="raw mono">${esc(JSON.stringify(v.raw, null, 1))}</pre>` : ""}`;
+}
+
+function askOutbuilding(ctx: PlotContext, id: string): string {
+  const k = answerKey(ctx, id);
+  const current = getAnswer(k);
+  const chip = (label: string, value: string) =>
+    `<button class="chip${current === value || (!current && value === "") ? " on" : ""}" data-answer="${esc(value)}" data-target="${esc(k)}">${esc(label)}</button>`;
+  return `<div class="ask"><div class="small"><strong>Do you know what this is?</strong> The registers don't record it. Optional.</div>
+    <div class="ask-options">${OUTBUILDING_KINDS.map((o) => chip(o, o)).join("")}${chip("Don't know", "")}</div></div>`;
+}
+
+/** Wire the answer chips inside an Inspector element; calls `changed` after an answer. */
+export function bindAnswers(el: HTMLElement, changed: () => void): void {
+  el.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest<HTMLElement>("[data-answer]");
+    if (!btn) return;
+    setAnswer(btn.dataset.target ?? "", btn.dataset.answer ?? "");
+    changed();
+  });
 }

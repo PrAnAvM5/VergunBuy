@@ -10,6 +10,7 @@ import { renderAbout } from "./views/about.ts";
 import { renderCheck } from "./views/check.ts";
 import { renderHome } from "./views/home.ts";
 import { renderSystem } from "./views/system.ts";
+import { disposeWorkspace, renderWorkspace } from "./views/workspace.ts";
 
 const app = document.querySelector<HTMLElement>("#app");
 
@@ -20,11 +21,22 @@ function route(): void {
   const parts = path.split("/").filter(Boolean);
   const page = parts[0] ?? "home";
   document.querySelectorAll<HTMLAnchorElement>("nav a").forEach((a) => {
-    a.classList.toggle("active", a.dataset.nav === (page === "check" ? "home" : page));
+    a.classList.toggle(
+      "active",
+      a.dataset.nav === (page === "check" || page === "plot" ? "home" : page),
+    );
   });
   window.scrollTo(0, 0);
+  disposeWorkspace();
 
-  if (page === "check" && parts[1] && parts[2]) {
+  if (page === "plot" && parts[1] && parts[2]) {
+    const query = {
+      postcode: decodeURIComponent(parts[1]),
+      number: decodeURIComponent(parts[2]),
+      ...(parts[3] ? { addition: decodeURIComponent(parts[3]) } : {}),
+    };
+    void renderWorkspace(app, query, params.has("demo") ? "demo" : "live", params.has("dev"));
+  } else if (page === "check" && parts[1] && parts[2]) {
     const query = {
       postcode: decodeURIComponent(parts[1]),
       number: decodeURIComponent(parts[2]),

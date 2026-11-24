@@ -38,6 +38,15 @@ describe("buildPlotContext on real recorded data", () => {
     expect(tracer.steps.every((s) => s.status !== "failed")).toBe(true);
   });
 
+  it("finds the front from the street-name label and measures the plot in its own frame", async () => {
+    const { context } = await run();
+    expect(context.frame.method).toBe("street-label");
+    expect(context.frame.streetName).toBe("Aalbersestraat");
+    expect(context.layout.plotWidthM).toBeCloseTo(5.3, 0);
+    expect(context.layout.plotDepthM).toBeCloseTo(21, 0);
+    expect(context.house[0]?.heights?.mesh?.lod).toBe("2.2");
+  });
+
   it("ignores demolished buildings and historical BGT records", async () => {
     const { context } = await run();
     const all = [...context.house, ...context.outbuildings, ...context.neighbours];

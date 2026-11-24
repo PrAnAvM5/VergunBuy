@@ -15,9 +15,5 @@
     "ok bgt-public: 23 current public areas; ignored 16 historical records",
     "ok classify-edges: 8 edge runs"
   ],
-  "flags": [
-    "OUTBUILDINGS_ON_PLOT",
-    "POSSIBLE_ACHTERPAD",
-    "NO_EXIT_FOUND"
-  ]
+  "flags": ["OUTBUILDINGS_ON_PLOT", "POSSIBLE_ACHTERPAD", "NO_EXIT_FOUND"]
 }
