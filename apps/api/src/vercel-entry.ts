@@ -3,6 +3,7 @@ import { handle } from "@hono/node-server/vercel";
 import { createApp } from "./app.ts";
 import { env } from "./config.ts";
 import { createDso } from "./dso.ts";
+import { createRp } from "./rp.ts";
 
 export default handle(
   createApp({
@@ -14,5 +15,6 @@ export default handle(
         ...(env.DSO_API_KEY_PRE ? { pre: env.DSO_API_KEY_PRE } : {}),
       },
     }),
+    rp: createRp(env.RP_API_KEY ? { key: env.RP_API_KEY } : {}),
   }),
 );

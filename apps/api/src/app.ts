@@ -14,9 +14,11 @@ import { secureHeaders } from "hono/secure-headers";
 import { toErrorBody } from "./errors.ts";
 import { rateLimit } from "./rateLimit.ts";
 import { createDso, DsoNotConfigured, RdPoint } from "./dso.ts";
+import { createRp, PlotPolygon } from "./rp.ts";
 
 export interface AppDeps {
   dso?: ReturnType<typeof createDso>;
+  rp?: ReturnType<typeof createRp>;
   fetchFn?: FetchFn;
   allowedOrigins: string[];
   version: string;
@@ -30,7 +32,7 @@ export function createApp(deps: AppDeps) {
 
   app.use("*", requestId());
   app.use("*", secureHeaders());
-  app.use("*", cors({ origin: deps.allowedOrigins, allowMethods: ["GET"] }));
+  app.use("*", cors({ origin: deps.allowedOrigins, allowMethods: ["GET", "POST"] }));
   app.use("*", async (c, next) => {
     const started = performance.now();
     await next();
@@ -46,13 +48,41 @@ export function createApp(deps: AppDeps) {
   app.use("/search", rateLimit(deps.rateLimit ?? { limit: 30, windowMs: 60_000 }));
   // DSO calls use the key's quota: stricter limit per visitor.
   app.use("/dso/*", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
+  app.use("/rp/*", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
   const dso = deps.dso ?? createDso({ keys: {} });
+  const rp = deps.rp ?? createRp({});
+
+  /**
+   * Old zoning plans (tijdelijk deel of the omgevingsplan) at a plot: the binding plans and every
+   * plan object that overlaps the plot outline, with geometry. Body: { ring: [[x, y], ...] } in RD.
+   */
+  app.post("/rp/zoning", async (c) => {
+    const parsed = PlotPolygon.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success)
+      return c.json(
+        {
+          error: {
+            code: "INVALID_INPUT",
+            message: "Give the plot outline as ring: [[x, y], ...] in RD New.",
+          },
+        },
+        400,
+      );
+    if (!rp.configured())
+      return c.json(
+        { error: { code: "RP_NOT_CONFIGURED", message: "No Ruimtelijke Plannen key is set." } },
+        503,
+      );
+    const data = await rp.zoningForPlot(parsed.data.ring);
+    return c.json({ data, requestId: c.get("requestId") });
+  });
 
   /** Whether keys are configured; never the keys themselves. */
   app.get("/dso/status", (c) =>
     c.json({
       data: {
         prod: dso.configured("prod"),
+        rp: rp.configured(),
         pre: dso.configured("pre"),
         // Names only (never values) of key-like variables the server can see, to spot typos.
         variablesSeen: Object.keys(process.env)

@@ -15,6 +15,8 @@ const Env = z.object({
   /** DSO keys: secrets, set only in the hosting environment (never in code or chat). */
   DSO_API_KEY: z.string().min(10).optional(),
   DSO_API_KEY_PRE: z.string().min(10).optional(),
+  /** Ruimtelijke Plannen v4 (old zoning plans). */
+  RP_API_KEY: z.string().min(10).optional(),
   PORT: z.coerce.number().int().default(8787),
 });
 
