@@ -1,0 +1,38 @@
+{
+  "url": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/kunstwerkdeel_lijn/items?f=json&limit=200&bbox=85712,375820,85782,375890&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Content-Crs,Link",
+    "content-crs": "<http://www.opengis.net/def/crs/EPSG/0/28992>",
+    "content-length": "395",
+    "content-type": "application/geo+json",
+    "x-content-type-options": "nosniff"
+  },
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T18:39:09Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/kunstwerkdeel_lijn/items?bbox=85712%2C375820%2C85782%2C375890&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/kunstwerkdeel_lijn/items?bbox=85712%2C375820%2C85782%2C375890&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/kunstwerkdeel_lijn/items?bbox=85712%2C375820%2C85782%2C375890&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=200"
+      }
+    ],
+    "features": [],
+    "numberReturned": 0
+  }
+}

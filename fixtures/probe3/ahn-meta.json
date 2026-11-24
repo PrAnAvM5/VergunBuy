@@ -1,0 +1,88 @@
+{
+  "coverages": [
+    "dsm_05m",
+    "dtm_05m"
+  ],
+  "dsm": "dsm_05m",
+  "dtm": "dtm_05m",
+  "files": {
+    "ahn-dsm_05m-verdelingsweg514.tif": {
+      "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&version=2.0.1&request=GetCoverage&coverageid=dsm_05m&subset=x(86514.8,86584.8)&subset=y(376563.204,376633.204)&format=image/tiff",
+      "status": 200,
+      "bytes": 54547,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-method": "GET,POST,OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "54547",
+        "content-type": "image/tiff",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    "ahn-dtm_05m-verdelingsweg514.tif": {
+      "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&version=2.0.1&request=GetCoverage&coverageid=dtm_05m&subset=x(86514.8,86584.8)&subset=y(376563.204,376633.204)&format=image/tiff",
+      "status": 200,
+      "bytes": 42560,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-method": "GET,POST,OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "42560",
+        "content-type": "image/tiff",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    "ahn-dsm_05m-zonnedauw13.tif": {
+      "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&version=2.0.1&request=GetCoverage&coverageid=dsm_05m&subset=x(84874,84944)&subset=y(383293,383363)&format=image/tiff",
+      "status": 200,
+      "bytes": 55246,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-method": "GET,POST,OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "55246",
+        "content-type": "image/tiff",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    "ahn-dtm_05m-zonnedauw13.tif": {
+      "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&version=2.0.1&request=GetCoverage&coverageid=dtm_05m&subset=x(84874,84944)&subset=y(383293,383363)&format=image/tiff",
+      "status": 200,
+      "bytes": 39913,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-method": "GET,POST,OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "39913",
+        "content-type": "image/tiff",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    "ahn-dsm_05m-koppelstraat11.tif": {
+      "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&version=2.0.1&request=GetCoverage&coverageid=dsm_05m&subset=x(85712,85782)&subset=y(375820,375890)&format=image/tiff",
+      "status": 200,
+      "bytes": 56744,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-method": "GET,POST,OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "56744",
+        "content-type": "image/tiff",
+        "x-content-type-options": "nosniff"
+      }
+    },
+    "ahn-dtm_05m-koppelstraat11.tif": {
+      "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&version=2.0.1&request=GetCoverage&coverageid=dtm_05m&subset=x(85712,85782)&subset=y(375820,375890)&format=image/tiff",
+      "status": 200,
+      "bytes": 46217,
+      "headers": {
+        "access-control-allow-headers": "Content-Type",
+        "access-control-allow-method": "GET,POST,OPTIONS",
+        "access-control-allow-origin": "*",
+        "content-length": "46217",
+        "content-type": "image/tiff",
+        "x-content-type-options": "nosniff"
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "url": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?f=json&limit=200&bbox=84874,383293,84944,383363&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Content-Crs,Link",
+    "content-crs": "<http://www.opengis.net/def/crs/EPSG/0/28992>",
+    "content-length": "973",
+    "content-type": "application/geo+json",
+    "x-content-type-options": "nosniff"
+  },
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T18:39:08Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?bbox=84874%2C383293%2C84944%2C383363&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?bbox=84874%2C383293%2C84944%2C383363&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?bbox=84874%2C383293%2C84944%2C383363&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=200"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-23T22:00:00Z",
+          "eind_registratie": "2018-10-29T21:13:28Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.c21ae1f4d23f4313b54e58b0bda18ab0",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": null,
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_type_leeg": "waardeOnbekend",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2018-10-28T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "transitie",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "58bbf92d-7862-1ad1-98f6-f0902d11766a"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                84914.659,
+                383344.495
+              ],
+              [
+                84914.383,
+                383343.286
+              ],
+              [
+                84915.698,
+                383342.985
+              ],
+              [
+                84915.975,
+                383344.195
+              ],
+              [
+                84914.659,
+                383344.495
+              ]
+            ]
+          ]
+        },
+        "id": "cd5a4dbc-ac4d-578c-9807-12b64e8cdc2b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-23T22:00:00Z",
+          "eind_registratie": "2018-10-29T21:13:28Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.c21ae1f4d23f4313b54e58b0bda18ab0",
+          "lv_publicatiedatum": "2018-11-08T00:23:25Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": null,
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_type_leeg": "waardeOnbekend",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2018-10-28T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "transitie",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "fc009fac-5039-c63d-457f-16a90a44bdf0"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                84914.659,
+                383344.495
+              ],
+              [
+                84914.383,
+                383343.286
+              ],
+              [
+                84915.698,
+                383342.985
+              ],
+              [
+                84915.975,
+                383344.195
+              ],
+              [
+                84914.659,
+                383344.495
+              ]
+            ]
+          ]
+        },
+        "id": "a51dc12b-ecab-52aa-a0c2-5fc327266b8d"
+      }
+    ],
+    "numberReturned": 2
+  }
+}

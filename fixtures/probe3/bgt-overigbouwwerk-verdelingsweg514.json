@@ -1,0 +1,1526 @@
+{
+  "url": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?f=json&limit=200&bbox=86514.8,376563.204,86584.8,376633.204&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "access-control-expose-headers": "Content-Crs,Link",
+    "content-crs": "<http://www.opengis.net/def/crs/EPSG/0/28992>",
+    "content-type": "application/geo+json",
+    "x-content-type-options": "nosniff"
+  },
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T18:39:07Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?bbox=86514.8%2C376563.204%2C86584.8%2C376633.204&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?bbox=86514.8%2C376563.204%2C86584.8%2C376633.204&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=200"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/overigbouwwerk/items?bbox=86514.8%2C376563.204%2C86584.8%2C376633.204&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=200"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:31:08Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.03bd9ee4d65b4652a545c7f3d57d7dca",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "644191f2-c569-f95a-eb0e-08b7374c1402"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86548.043,
+                376586.509
+              ],
+              [
+                86545.224,
+                376584.601
+              ],
+              [
+                86547.558,
+                376581.152
+              ],
+              [
+                86550.377,
+                376583.059
+              ],
+              [
+                86548.043,
+                376586.509
+              ]
+            ]
+          ]
+        },
+        "id": "24500747-e4b4-5cd3-b1f9-f3a84e1e84fb"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:43:27Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.0abe6df1c27f4861a75520ed78b70487",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "e5bde806-9d97-9ae7-36a8-1132a63a70a7"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86536.432,
+                376616.57
+              ],
+              [
+                86533.241,
+                376615.095
+              ],
+              [
+                86534.728,
+                376611.879
+              ],
+              [
+                86537.919,
+                376613.354
+              ],
+              [
+                86536.432,
+                376616.57
+              ]
+            ]
+          ]
+        },
+        "id": "51e494e3-5729-51f0-86cf-e7f067a38a95"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:26:19Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.1349b46d69394661b7e7701eb5d4ac38",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "26c2058d-4e8c-eb6d-88a2-2d3308a78f1a"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86581.758,
+                376569.207
+              ],
+              [
+                86579.519,
+                376568.105
+              ],
+              [
+                86581.14,
+                376564.811
+              ],
+              [
+                86583.379,
+                376565.913
+              ],
+              [
+                86581.758,
+                376569.207
+              ]
+            ]
+          ]
+        },
+        "id": "3f330f0f-592d-5463-8605-1575bc758ef2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:46:59Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.14922177c56a433d88b8e3f996ded45a",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "2600f787-37cc-38db-cd75-4a435ff77f00"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86534.372,
+                376633.472
+              ],
+              [
+                86532.136,
+                376636.785
+              ],
+              [
+                86529.436,
+                376634.963
+              ],
+              [
+                86531.672,
+                376631.65
+              ],
+              [
+                86534.372,
+                376633.472
+              ]
+            ]
+          ]
+        },
+        "id": "8b696177-d25c-5f90-b8fd-53c4f2ea7dd0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:34:26Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.19ef51a5a71841829e478d0a8e711c16",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "7909a23f-4294-ae84-7572-7cc4e70a3db7"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86536.725,
+                376602.836
+              ],
+              [
+                86533.355,
+                376601.103
+              ],
+              [
+                86534.846,
+                376598.204
+              ],
+              [
+                86538.216,
+                376599.937
+              ],
+              [
+                86536.725,
+                376602.836
+              ]
+            ]
+          ]
+        },
+        "id": "b880faa2-5d69-5ce8-8d1f-d86b6fd1d82b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:27:06Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.1f76afe60e514538a2d2414fab8a250d",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "8d0782e8-7ac9-f387-65b5-fce42187d3d0"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86580.846,
+                376574.288
+              ],
+              [
+                86577.562,
+                376572.227
+              ],
+              [
+                86579.45,
+                376569.217
+              ],
+              [
+                86582.735,
+                376571.278
+              ],
+              [
+                86580.846,
+                376574.288
+              ]
+            ]
+          ]
+        },
+        "id": "8f605978-220c-5990-96f7-1f5518c30a1f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:41:55Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.2b6fb0d598534917b157b148e40bf440",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "2e6f458d-c01d-3c46-ffaa-7a344b05d670"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86547.498,
+                376616.503
+              ],
+              [
+                86545.675,
+                376616.865
+              ],
+              [
+                86544.381,
+                376615.966
+              ],
+              [
+                86544.052,
+                376614.243
+              ],
+              [
+                86544.909,
+                376612.904
+              ],
+              [
+                86546.686,
+                376612.553
+              ],
+              [
+                86548.079,
+                376613.453
+              ],
+              [
+                86548.419,
+                376615.133
+              ],
+              [
+                86547.498,
+                376616.503
+              ]
+            ]
+          ]
+        },
+        "id": "30bc9492-e4ff-5ce6-a8cc-ef4016ff2993"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:33:34Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.54e43e8d3fb747b4a4e5fa32c229f3f0",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "cbbce88e-26c7-5d96-ba2e-e7e258ad3843"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86541.552,
+                376593.863
+              ],
+              [
+                86540.712,
+                376595.282
+              ],
+              [
+                86538.139,
+                376593.757
+              ],
+              [
+                86538.979,
+                376592.339
+              ],
+              [
+                86541.552,
+                376593.863
+              ]
+            ]
+          ]
+        },
+        "id": "57fcb9eb-232d-5882-a43d-49c753306214"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:29:15Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.593bd1d4c27a41849137f4df020414f1",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "1c10c3e5-bfc1-d87d-f20c-90a66ee04035"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86573.97,
+                376610.494
+              ],
+              [
+                86572.11,
+                376609.324
+              ],
+              [
+                86573.243,
+                376607.522
+              ],
+              [
+                86575.103,
+                376608.692
+              ],
+              [
+                86573.97,
+                376610.494
+              ]
+            ]
+          ]
+        },
+        "id": "320f2013-3aee-5432-b3a4-55166184e68a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:46:20Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.dd08df3fc1bf4638bdc2c476cbceba6c",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "e6dba072-532f-25c6-585f-db02927069ad"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86530.848,
+                376628.152
+              ],
+              [
+                86529.055,
+                376631.519
+              ],
+              [
+                86525.62,
+                376629.691
+              ],
+              [
+                86527.413,
+                376626.323
+              ],
+              [
+                86530.848,
+                376628.152
+              ]
+            ]
+          ]
+        },
+        "id": "d1be580b-34e9-559a-ad1e-401504a59be1"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:35:16Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.e0f86c09a9fc4e0abd95cf4f285e693d",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "de256c4c-6daa-334d-f923-00196c62160a"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86545.644,
+                376606.981
+              ],
+              [
+                86546.885,
+                376604.679
+              ],
+              [
+                86550.901,
+                376606.845
+              ],
+              [
+                86549.66,
+                376609.147
+              ],
+              [
+                86545.644,
+                376606.981
+              ]
+            ]
+          ]
+        },
+        "id": "1d36d5df-c028-5026-9f2a-dede42a51594"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:32:30Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f1669d99d2544220b6eff7e7cec75367",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "426262df-4532-eb83-9c73-14e48f84f7f9"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86528.206,
+                376587.241
+              ],
+              [
+                86527.076,
+                376589.354
+              ],
+              [
+                86524.12,
+                376587.772
+              ],
+              [
+                86525.25,
+                376585.659
+              ],
+              [
+                86528.206,
+                376587.241
+              ]
+            ]
+          ]
+        },
+        "id": "bc18a35c-5784-5a3c-8f81-30d4c0967baa"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:45:17Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f4a7ebc4c8534273b56d5c2c6c2765f3",
+          "lv_publicatiedatum": "2016-11-03T14:30:12Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "3bdc0115-5ebf-67c4-9287-0370833a325b"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86533.535,
+                376617.317
+              ],
+              [
+                86536.321,
+                376618.819
+              ],
+              [
+                86534.255,
+                376622.651
+              ],
+              [
+                86531.469,
+                376621.149
+              ],
+              [
+                86533.535,
+                376617.317
+              ]
+            ]
+          ]
+        },
+        "id": "3b9f2929-43ff-58a4-aa96-3342f90fb3f7"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:31:08Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.03bd9ee4d65b4652a545c7f3d57d7dca",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "a283a6fd-af35-b649-0e08-1884ead89a65"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86548.043,
+                376586.509
+              ],
+              [
+                86545.224,
+                376584.601
+              ],
+              [
+                86547.558,
+                376581.152
+              ],
+              [
+                86550.377,
+                376583.059
+              ],
+              [
+                86548.043,
+                376586.509
+              ]
+            ]
+          ]
+        },
+        "id": "39552339-2d52-51a3-a3b3-b319eba06b02"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:43:27Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.0abe6df1c27f4861a75520ed78b70487",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "7fc43a2c-cd14-a148-20a7-b3709a2a85cf"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86536.432,
+                376616.57
+              ],
+              [
+                86533.241,
+                376615.095
+              ],
+              [
+                86534.728,
+                376611.879
+              ],
+              [
+                86537.919,
+                376613.354
+              ],
+              [
+                86536.432,
+                376616.57
+              ]
+            ]
+          ]
+        },
+        "id": "3b0e10c5-ca2d-55b1-ba38-c5e9ea19c32e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:26:19Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.1349b46d69394661b7e7701eb5d4ac38",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "0ce83cc2-3ddb-d9c7-8ff4-7675d857eadc"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86581.758,
+                376569.207
+              ],
+              [
+                86579.519,
+                376568.105
+              ],
+              [
+                86581.14,
+                376564.811
+              ],
+              [
+                86583.379,
+                376565.913
+              ],
+              [
+                86581.758,
+                376569.207
+              ]
+            ]
+          ]
+        },
+        "id": "9792c77a-d375-51f8-9bc9-06fb7e4b1633"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:46:59Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.14922177c56a433d88b8e3f996ded45a",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "4c98dc13-e54b-ccee-5806-962f7c48f866"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86534.372,
+                376633.472
+              ],
+              [
+                86532.136,
+                376636.785
+              ],
+              [
+                86529.436,
+                376634.963
+              ],
+              [
+                86531.672,
+                376631.65
+              ],
+              [
+                86534.372,
+                376633.472
+              ]
+            ]
+          ]
+        },
+        "id": "8366aec2-2bb0-5311-9a86-1f4bbefa310f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:34:26Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.19ef51a5a71841829e478d0a8e711c16",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "a345b60a-c260-3e90-c367-e6d681663048"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86536.725,
+                376602.836
+              ],
+              [
+                86533.355,
+                376601.103
+              ],
+              [
+                86534.846,
+                376598.204
+              ],
+              [
+                86538.216,
+                376599.937
+              ],
+              [
+                86536.725,
+                376602.836
+              ]
+            ]
+          ]
+        },
+        "id": "b9bbef52-31e1-5353-a5d0-d7bb190f3ffa"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:27:06Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.1f76afe60e514538a2d2414fab8a250d",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "b2c41f6b-f5c0-ba81-c110-e30a43fcf2c8"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86580.846,
+                376574.288
+              ],
+              [
+                86577.562,
+                376572.227
+              ],
+              [
+                86579.45,
+                376569.217
+              ],
+              [
+                86582.735,
+                376571.278
+              ],
+              [
+                86580.846,
+                376574.288
+              ]
+            ]
+          ]
+        },
+        "id": "f6a14473-e8ce-59ba-a466-4fe222b5aa0b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:41:55Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.2b6fb0d598534917b157b148e40bf440",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "d7b0345a-d711-7477-053e-ba5981a06b11"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86547.498,
+                376616.503
+              ],
+              [
+                86545.675,
+                376616.865
+              ],
+              [
+                86544.381,
+                376615.966
+              ],
+              [
+                86544.052,
+                376614.243
+              ],
+              [
+                86544.909,
+                376612.904
+              ],
+              [
+                86546.686,
+                376612.553
+              ],
+              [
+                86548.079,
+                376613.453
+              ],
+              [
+                86548.419,
+                376615.133
+              ],
+              [
+                86547.498,
+                376616.503
+              ]
+            ]
+          ]
+        },
+        "id": "9d4f4cd2-5aae-50ae-a234-85112ac12f88"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:33:34Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.54e43e8d3fb747b4a4e5fa32c229f3f0",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "be9cfd10-3c52-9af9-16ca-4a4eda871ebd"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86541.552,
+                376593.863
+              ],
+              [
+                86540.712,
+                376595.282
+              ],
+              [
+                86538.139,
+                376593.757
+              ],
+              [
+                86538.979,
+                376592.339
+              ],
+              [
+                86541.552,
+                376593.863
+              ]
+            ]
+          ]
+        },
+        "id": "6f19adbe-02b6-51d8-9476-f5f711191f43"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:29:15Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.593bd1d4c27a41849137f4df020414f1",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "d3be9b06-cd8d-0256-93e9-c46d0668c119"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86573.97,
+                376610.494
+              ],
+              [
+                86572.11,
+                376609.324
+              ],
+              [
+                86573.243,
+                376607.522
+              ],
+              [
+                86575.103,
+                376608.692
+              ],
+              [
+                86573.97,
+                376610.494
+              ]
+            ]
+          ]
+        },
+        "id": "68706edd-3bb0-5696-8e61-eab5b8bcfe15"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:46:20Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.dd08df3fc1bf4638bdc2c476cbceba6c",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "e3a6fefb-a9f0-26d9-f77d-05b0d3e6449d"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86530.848,
+                376628.152
+              ],
+              [
+                86529.055,
+                376631.519
+              ],
+              [
+                86525.62,
+                376629.691
+              ],
+              [
+                86527.413,
+                376626.323
+              ],
+              [
+                86530.848,
+                376628.152
+              ]
+            ]
+          ]
+        },
+        "id": "dc771b55-e35c-5978-8084-0cba5c872a5a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:35:16Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.e0f86c09a9fc4e0abd95cf4f285e693d",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "d983d474-b9e7-dbf2-fd42-426377adecd5"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86545.644,
+                376606.981
+              ],
+              [
+                86546.885,
+                376604.679
+              ],
+              [
+                86550.901,
+                376606.845
+              ],
+              [
+                86549.66,
+                376609.147
+              ],
+              [
+                86545.644,
+                376606.981
+              ]
+            ]
+          ]
+        },
+        "id": "0b4da303-21bc-54fb-bfdd-b5dcf18e3d20"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:32:30Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f1669d99d2544220b6eff7e7cec75367",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "de878b3e-8c07-fca6-72d8-e2ff62479653"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86528.206,
+                376587.241
+              ],
+              [
+                86527.076,
+                376589.354
+              ],
+              [
+                86524.12,
+                376587.772
+              ],
+              [
+                86525.25,
+                376585.659
+              ],
+              [
+                86528.206,
+                376587.241
+              ]
+            ]
+          ]
+        },
+        "id": "5facd7ac-b6f7-5f8d-9b71-625d61bca36e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-16T22:00:00Z",
+          "eind_registratie": "2019-02-02T12:45:17Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f4a7ebc4c8534273b56d5c2c6c2765f3",
+          "lv_publicatiedatum": "2019-02-07T06:36:20Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "plus_type": "schuur",
+          "plus_type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerkPlus",
+          "plus_type_leeg": null,
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-02-01T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:15:51Z",
+          "type": "niet-bgt",
+          "type_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOverigBouwwerk",
+          "version": "b820134e-caa9-7242-9a14-9c29f597b235"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                86533.535,
+                376617.317
+              ],
+              [
+                86536.321,
+                376618.819
+              ],
+              [
+                86534.255,
+                376622.651
+              ],
+              [
+                86531.469,
+                376621.149
+              ],
+              [
+                86533.535,
+                376617.317
+              ]
+            ]
+          ]
+        },
+        "id": "f7c9c187-6551-5d25-9c35-87975da7d5c5"
+      }
+    ],
+    "numberReturned": 26
+  }
+}
