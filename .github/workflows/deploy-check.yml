@@ -1,14 +1,19 @@
 name: Check the live server after each Vercel deployment
 
-# Vercel reports each deployment back to GitHub. When a production deployment succeeds, this asks
+# Vercel reports each deployment back to GitHub as a commit status named "Vercel". When one on
+# main succeeds, this asks
 # the live server the three things the website depends on. A red run here means the site's rule
 # checks are broken right now, even though the build itself succeeded.
 on:
-  deployment_status:
+  status:
+  workflow_dispatch:
 
 jobs:
   smoke:
-    if: github.event.deployment_status.state == 'success' && contains(github.event.deployment.environment, 'Production')
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.context == 'Vercel' && github.event.state == 'success' &&
+       contains(github.event.branches.*.name, 'main'))
     runs-on: ubuntu-latest
     steps:
       - name: Ask the live server
