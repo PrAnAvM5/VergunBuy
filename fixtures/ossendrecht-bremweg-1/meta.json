@@ -1,0 +1,23 @@
+{
+  "address": "Bremweg 1, 4641RN Ossendrecht",
+  "query": {
+    "postcode": "4641RN",
+    "number": 1
+  },
+  "recordedAt": "2026-11-24",
+  "steps": [
+    "ok find-address: Found Bremweg 1, 4641RN Ossendrecht",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Ossendrecht B 2087, 5643 m² drawn",
+    "ok bag-buildings: 1 house, 3 other on plot, 0 nearby; ignored 6 demolished or invalid",
+    "ok 3dbag-heights: Heights for 2 buildings, height scan of 2024",
+    "ok bgt-trees: 0 registered trees, 0 hedges nearby (garden trees are not registered)",
+    "ok bgt-public: 5 current public areas; ignored 25 historical records",
+    "ok classify-edges: 15 edge runs"
+  ],
+  "flags": [
+    "OUTBUILDINGS_ON_PLOT",
+    "CHANGED_BETWEEN_SCANS",
+    "NO_EXIT_FOUND"
+  ]
+}
