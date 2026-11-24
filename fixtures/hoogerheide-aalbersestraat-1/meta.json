@@ -1,5 +1,23 @@
 {
-  "recordedAt": "2026-11-24",
   "address": "Aalbersestraat 1, 4631CC Hoogerheide",
-  "source": "scripts/probe.mjs via GitHub Actions"
+  "query": {
+    "postcode": "4631CC",
+    "number": 1
+  },
+  "recordedAt": "2026-11-24",
+  "steps": [
+    "ok find-address: Found Aalbersestraat 1, 4631CC Hoogerheide",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Woensdrecht D 3512, 110 m² drawn",
+    "ok bag-buildings: 1 house, 1 other on plot, 34 nearby; ignored 5 demolished or invalid",
+    "ok 3dbag-heights: Heights for 36 buildings, height scan of 2024",
+    "ok bgt-trees: 3 registered trees, 2 hedges nearby (garden trees are not registered)",
+    "ok bgt-public: 23 current public areas; ignored 16 historical records",
+    "ok classify-edges: 8 edge runs"
+  ],
+  "flags": [
+    "OUTBUILDINGS_ON_PLOT",
+    "POSSIBLE_ACHTERPAD",
+    "NO_EXIT_FOUND"
+  ]
 }
