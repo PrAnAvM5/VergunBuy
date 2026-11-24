@@ -7,3 +7,4 @@ dist
 .vercel
 coverage
 dist-types
+apps/web/public/validation

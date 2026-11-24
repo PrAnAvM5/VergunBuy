@@ -10,7 +10,7 @@ import { AERIAL_YEARS, drawPlan, legend, type Layers } from "../plan.ts";
 import { drawWorkspacePlan } from "../plan2d.ts";
 import { lastRun, runCheck, type RunResult } from "../run.ts";
 import type { SceneHandle } from "../scene3d.ts";
-import { SURFACE_TEXT } from "@vergunbuy/data";
+import { SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
 
 export type View = "map" | "2d" | "3d";
 
@@ -40,18 +40,110 @@ const sameQuery = (a: RunResult["query"], b: RunResult["query"]) =>
   String(a.number) === String(b.number) &&
   (a.addition ?? "") === (b.addition ?? "");
 
+/**
+ * Loads three.js and builds the scene, with a clear message instead of an endless spinner when:
+ *  - the site was updated while this page was open (the old 3D file no longer exists) → reload;
+ *  - the browser cannot start WebGL (switched off, old GPU driver, some privacy modes);
+ *  - the scene itself fails on unusual data (the error is logged for the developer view).
+ */
+const load3d = () => import("../scene3d.ts");
+
+async function open3d(
+  el: HTMLElement,
+  ctx: PlotContext,
+  stillWanted: () => boolean,
+): Promise<SceneHandle | undefined> {
+  let mod: Awaited<ReturnType<typeof load3d>>;
+  try {
+    mod = await load3d();
+  } catch (err) {
+    console.error(err);
+    const key = "vergunbuy-reloaded-for-3d";
+    if (!sessionStorageGet(key)) {
+      sessionStorageSet(key, "1");
+      location.reload();
+      return undefined;
+    }
+    el.innerHTML = message3d(
+      "The 3D view could not be loaded",
+      "The site was probably updated while this page was open.",
+      true,
+    );
+    return undefined;
+  }
+  if (!stillWanted()) return undefined;
+  if (!mod.webglAvailable()) {
+    el.innerHTML = message3d(
+      "Your browser could not start 3D",
+      "WebGL is switched off or not supported here. Try another browser, or turn on hardware acceleration in the browser settings.",
+      false,
+    );
+    return undefined;
+  }
+  try {
+    el.innerHTML = "";
+    return mod.mountScene(el, ctx);
+  } catch (err) {
+    console.error(err);
+    el.innerHTML = message3d(
+      "The 3D model could not be built for this plot",
+      `The map and 2D plan still work. Technical detail: ${err instanceof Error ? err.message : String(err)}`,
+      true,
+    );
+    return undefined;
+  }
+}
+
+/** Keeps the open tab in the address, so a reload or a shared link opens the same view. */
+function rememberView(view: View): void {
+  const [path = "", search = ""] = location.hash.split("?");
+  const params = new URLSearchParams(search);
+  if (view === "map") params.delete("view");
+  else params.set("view", view);
+  const q = params.toString();
+  history.replaceState(null, "", `${path}${q ? `?${q}` : ""}`);
+}
+
+const message3d = (title: string, body: string, reload: boolean) =>
+  `<div class="card error-box" style="margin:24px"><h3 style="margin-top:0">${esc(title)}</h3><p class="muted small">${esc(body)}</p>${reload ? `<button class="btn" onclick="location.reload()">Reload the page</button>` : ""}</div>`;
+
+function sessionStorageGet(key: string): string | null {
+  try {
+    return sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+function sessionStorageSet(key: string, value: string): void {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch {
+    // storage unavailable (private mode): we simply do not auto-reload
+  }
+}
+
+const checkHref = (q: RunResult["query"]) =>
+  `#/check/${encodeURIComponent(q.postcode)}/${encodeURIComponent(q.number)}${q.addition ? `/${encodeURIComponent(q.addition)}` : ""}`;
+
 export async function renderCheck(
   root: HTMLElement,
   query: RunResult["query"],
   mode: RunResult["mode"],
   developer: boolean,
   initialView: View = "map",
+  rec?: string,
 ): Promise<void> {
   disposeScene();
   let result = lastRun();
-  if (!result || result.mode !== mode || !sameQuery(result.query, query) || !result.context) {
+  if (
+    !result ||
+    result.mode !== mode ||
+    result.rec !== rec ||
+    !sameQuery(result.query, query) ||
+    !result.context
+  ) {
     root.innerHTML = `<div class="loading"><div class="spinner"></div>Reading the public registers for ${esc(query.postcode)} ${esc(query.number)}${query.addition ? esc(query.addition) : ""}…</div>`;
-    result = await runCheck(query, mode);
+    result = await runCheck(query, mode, rec);
   }
 
   if (!result.context) {
@@ -89,7 +181,13 @@ export async function renderCheck(
   root.innerHTML = `
     <div class="check-head">
       <div>
-        <div class="muted small">${mode === "demo" ? '<span class="pill warn">Recorded example</span> ' : '<span class="pill ok">Live data</span> '}${result.totalMs} ms · <a href="#/system">see every step</a></div>
+        <div class="muted small">${
+          rec
+            ? `<span class="pill warn">Recorded ${esc(rec.slice(8, 10))}-${esc(rec.slice(5, 7))}-${esc(rec.slice(0, 4))}, batch ${esc(rec.split("/")[0]?.split("-s")[1] ?? "")}</span> <a href="#/examples">all examples</a> · <a href="${checkHref(query)}">check live now</a> · `
+            : mode === "demo"
+              ? '<span class="pill warn">Recorded example</span> '
+              : '<span class="pill ok">Live data</span> '
+        }${result.totalMs} ms · <a href="#/system">see every step</a></div>
         <h1>${esc(ctx.address.label)}</h1>
       </div>
       <a class="btn" href="#/">Check another address</a>
@@ -180,6 +278,7 @@ export async function renderCheck(
   };
   const legendEl = root.querySelector<HTMLElement>("#legend");
 
+  let mounting3d = false;
   const drawInspector = () => {
     if (inspEl) inspEl.innerHTML = renderInspector(ctx, selected, devBox?.checked ?? false);
   };
@@ -200,13 +299,15 @@ export async function renderCheck(
     } else if (view === "2d") {
       viewEl.className = "";
       viewEl.innerHTML = drawWorkspacePlan(ctx, selected, dims);
-    } else if (!scene) {
+    } else if (!scene && !mounting3d) {
       viewEl.className = "view3d";
       viewEl.innerHTML = `<div class="loading" style="padding:30px"><div class="spinner"></div>Building the 3D model…</div>`;
-      const { mountScene } = await import("../scene3d.ts");
-      if (view !== "3d") return;
-      viewEl.innerHTML = "";
-      scene = mountScene(viewEl, ctx);
+      mounting3d = true;
+      try {
+        scene = await open3d(viewEl, ctx, () => view === "3d");
+      } finally {
+        mounting3d = false;
+      }
     }
     drawInspector();
   };
@@ -214,6 +315,7 @@ export async function renderCheck(
   root.querySelectorAll<HTMLButtonElement>(".tabs button").forEach((b) =>
     b.addEventListener("click", () => {
       view = (b.dataset.view as View) ?? "map";
+      rememberView(view);
       void draw();
     }),
   );

@@ -5,8 +5,8 @@
   "type": "module",
   "description": "VergunBuy web app: address check, plan, Inspector and System view.",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "tsx ../../scripts/validation-index.ts && vite",
+    "build": "tsx ../../scripts/validation-index.ts && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -96,6 +96,31 @@ function buildingObject(
   return group;
 }
 
+/** True when the browser can create a WebGL context. */
+export function webglAvailable(): boolean {
+  try {
+    const c = document.createElement("canvas");
+    return !!(c.getContext("webgl2") ?? c.getContext("webgl"));
+  } catch {
+    return false;
+  }
+}
+
+/** One odd building (e.g. a broken roof face) must not take down the whole scene. */
+function safeBuilding(
+  ctx: PlotContext,
+  b: Building,
+  roof: THREE.Material,
+  wall: THREE.Material,
+): THREE.Object3D | undefined {
+  try {
+    return buildingObject(ctx, b, roof, wall);
+  } catch (err) {
+    console.warn("3D: skipped building", b.id, err);
+    return undefined;
+  }
+}
+
 export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
@@ -168,10 +193,11 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
     ),
   );
 
-  for (const b of ctx.house) scene.add(buildingObject(ctx, b, mats.houseRoof, mats.houseWall));
-  for (const b of ctx.outbuildings) scene.add(buildingObject(ctx, b, mats.outRoof, mats.outWall));
+  const add = (o: THREE.Object3D | undefined) => o && scene.add(o);
+  for (const b of ctx.house) add(safeBuilding(ctx, b, mats.houseRoof, mats.houseWall));
+  for (const b of ctx.outbuildings) add(safeBuilding(ctx, b, mats.outRoof, mats.outWall));
   for (const b of ctx.neighbours)
-    if (inRange(b.outline)) scene.add(buildingObject(ctx, b, mats.nbRoof, mats.nbWall));
+    if (inRange(b.outline)) add(safeBuilding(ctx, b, mats.nbRoof, mats.nbWall));
   for (const t of ctx.trees ?? []) {
     const [x, y] = toLocal(ctx.frame, t.at);
     if (Math.abs(x - cx) > range || Math.abs(y - cy) > range) continue;

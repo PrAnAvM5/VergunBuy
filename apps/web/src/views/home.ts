@@ -15,6 +15,7 @@ export function renderHome(root: HTMLElement): void {
       <div class="search-actions">
         <button class="btn-primary" form="search" type="submit">Check this address</button>
         <a class="btn" href="#/check/${DEMO.postcode}/${DEMO.number}?demo">Try a recorded example</a>
+        <a class="btn" href="#/examples">Browse the validation homes</a>
       </div>
       <p class="note">Pilot: municipality of Woensdrecht (Hoogerheide, Huijbergen, Ossendrecht, Putte, Woensdrecht). First renovation type: carports.</p>
     </div>
