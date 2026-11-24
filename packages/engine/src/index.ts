@@ -10,3 +10,4 @@ export * from "./quality.ts";
 export * from "./concepts/access.ts";
 export * from "./concepts/sides.ts";
 export * from "./rd.ts";
+export * from "./concepts/obstacles.ts";

@@ -4,15 +4,9 @@ name: Record address (manual)
 on:
   workflow_dispatch:
     inputs:
-      postcode:
-        description: Postcode, e.g. 4631CC
+      addresses:
+        description: 'Addresses as postcode:number[:addition], space separated, e.g. "4631CC:1 4641HR:10:a"'
         required: true
-      number:
-        description: House number
-        required: true
-      addition:
-        description: Letter or addition (optional)
-        required: false
 
 permissions:
   contents: write
@@ -28,11 +22,15 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec tsx scripts/record.ts "${{ inputs.postcode }}" "${{ inputs.number }}" "${{ inputs.addition }}"
+      - run: pnpm exec tsx scripts/record.ts $ADDRESSES
+        env:
+          ADDRESSES: ${{ inputs.addresses }}
       - name: Commit recording
+        env:
+          ADDRESSES: ${{ inputs.addresses }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add fixtures
-          git commit -m "Record ${{ inputs.postcode }} ${{ inputs.number }}" || echo "nothing to commit"
+          git commit -m "Record addresses: $ADDRESSES" || echo "nothing to commit"
           git pull --rebase && git push

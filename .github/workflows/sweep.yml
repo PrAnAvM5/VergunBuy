@@ -1,0 +1,30 @@
+name: Obstacle sweep (manual)
+
+# Re-runs the live pipeline with the laser height scan for every validation home and commits a
+# report with aerial images coloured by obstacle height to reports/obstacles-<date>/.
+on: workflow_dispatch
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec tsx scripts/sweep-obstacles.ts
+      - run: pip install pillow && python scripts/sweep_images.py reports/obstacles-$(date -u +%F)
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports
+          git commit -m "Obstacle sweep" || echo "nothing to commit"
+          git pull --rebase && git push

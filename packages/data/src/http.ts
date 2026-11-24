@@ -14,6 +14,7 @@ import type { z } from "zod";
 export const ALLOWED_HOSTS = new Set([
   "api.pdok.nl",
   "api.3dbag.nl",
+  "service.pdok.nl",
   "service.omgevingswet.overheid.nl",
 ]);
 
@@ -81,6 +82,45 @@ export async function getJson<T>(opts: GetJsonOptions<T>): Promise<T> {
     );
   }
   return parsed.data;
+}
+
+/** Same guarantees as getJson, for binary bodies (height rasters). */
+export async function getBytes(opts: {
+  url: URL;
+  ctx: StepContext;
+  fetchFn?: FetchFn;
+  timeoutMs?: number;
+  serviceName: string;
+}): Promise<ArrayBuffer> {
+  const { url, ctx, serviceName } = opts;
+  if (url.protocol !== "https:" || !ALLOWED_HOSTS.has(url.hostname)) {
+    throw new SafeError("HOST_NOT_ALLOWED", `Calls to ${url.hostname} are not allowed.`);
+  }
+  const fetchFn = opts.fetchFn ?? fetch;
+  const started = performance.now();
+  const record = (httpStatus: number | null) =>
+    ctx.recordCall({
+      host: url.hostname,
+      path: url.pathname,
+      httpStatus,
+      ms: Math.round(performance.now() - started),
+    });
+  let res: Response;
+  try {
+    res = await fetchFn(url, { signal: AbortSignal.timeout(opts.timeoutMs ?? DEFAULT_TIMEOUT_MS) });
+  } catch (err) {
+    record(null);
+    if (err instanceof DOMException && err.name === "TimeoutError")
+      throw new SafeError("UPSTREAM_TIMEOUT", `${capitalise(serviceName)} did not answer in time.`);
+    throw new SafeError("UPSTREAM_UNREACHABLE", `${capitalise(serviceName)} could not be reached.`);
+  }
+  record(res.status);
+  if (!res.ok)
+    throw new SafeError(
+      "UPSTREAM_ERROR",
+      `${capitalise(serviceName)} returned an error (${res.status}).`,
+    );
+  return res.arrayBuffer();
 }
 
 const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);

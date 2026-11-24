@@ -56,11 +56,14 @@ import {
   type PublicArea,
   type PublicAreaKind,
   type Tracer,
+  detectObstacles,
+  type ObstacleResult,
 } from "@vergunbuy/engine";
 import type { FetchFn } from "./http.ts";
 import type { Address } from "./sources/locatieserver.ts";
 import { num, OGC, ogcItems, outerRings, str, type Bbox, type Feature } from "./sources/ogc.ts";
 import { fetchHeights, type BuildingHeights } from "./sources/threedbag.ts";
+import { fetchHeightGrid } from "./sources/ahn.ts";
 
 export interface Building {
   id: string;
@@ -197,6 +200,10 @@ export interface PlotContext {
   otherHomesOnPlot: number;
   /** Addresses in the house's building; more than 1 means this home is a unit (flat). */
   unitsInHouse: number;
+  /** Registered structures on or at the plot (BGT "overig bouwwerk"): canopies, pools, ... */
+  structures: Structure[];
+  /** Trees and other obstacles in the garden from the laser height scan; absent if unavailable. */
+  obstacles?: ObstacleResult;
   measurements: Measurements;
   /** The plot's own frame (street at the bottom) and its main dimensions. */
   frame: PlotFrame;
@@ -317,6 +324,24 @@ function houseTypeWithin(fromEdges: HouseType, house: Building[], others: Buildi
   if (fromEdges === "corner") return "corner";
   return touching >= 2 ? "terraced" : "semi-or-end";
 }
+
+export interface Structure {
+  id: string;
+  /** BGT type, e.g. "overkapping" (canopy, often a carport), "bassin" (pool). */
+  type: string;
+  outline: Polygon;
+  onPlotShare: number;
+}
+
+export const STRUCTURE_TEXT: Record<string, string> = {
+  overkapping: "canopy (roof without walls, e.g. a carport)",
+  bassin: "pool or basin",
+  "open loods": "open shed",
+  opslagtank: "storage tank",
+  windturbine: "wind turbine",
+  "lage trafo": "transformer box",
+  bezinkbak: "settling tank",
+};
 
 /** A registered crossing further across the pavement than this is not counted as this plot's. */
 const CROSSING_ACROSS_MAX_M = 3;
@@ -1102,6 +1127,88 @@ export async function buildPlotContext(
     };
   }
 
+  // 7b. Registered structures (canopies, pools) and obstacles from the laser height scan.
+  // Neither is critical: missing data downgrades "obstacles", never stops the check.
+  const structures: Structure[] = [];
+  try {
+    await tracer.step(
+      "bgt-structures",
+      "Canopies, pools and other structures (BGT)",
+      async (ctx) => {
+        const res = await ogcItems(OGC.bgt, "overigbouwwerk", work, ctx, fetchFn);
+        if (!res.complete) truncated("obstacles", "structure");
+        for (const f of res.features) {
+          if (!isCurrentBgt(f)) continue;
+          const type = str(f.properties.type) ?? str(f.properties.bgt_type) ?? "other";
+          outerRings(f.geometry).forEach((ring, i) => {
+            if (distanceBetween(ring, plot.outline) > 0.5) return;
+            structures.push({
+              id: bgtId(f, i),
+              type,
+              outline: ring,
+              onPlotShare:
+                Math.round(
+                  (intersectionArea(ring, plot.outline) / Math.max(area(ring), 0.01)) * 100,
+                ) / 100,
+            });
+          });
+        }
+        ctx.summarize(
+          structures.length
+            ? structures.map((s) => STRUCTURE_TEXT[s.type] ?? s.type).join(", ")
+            : "none registered on or at the plot",
+        );
+      },
+    );
+  } catch {
+    note(quality, "obstacles", "Registered structures (canopies, pools) could not be loaded.");
+  }
+
+  let obstacles: ObstacleResult | undefined;
+  try {
+    obstacles = await tracer.step(
+      "ahn-obstacles",
+      "Trees and other obstacles in the garden (laser height scan)",
+      async (ctx) => {
+        const xs = plot.outline.map((p) => p[0]);
+        const ys = plot.outline.map((p) => p[1]);
+        const grid = await fetchHeightGrid(
+          [Math.min(...xs) - 2, Math.min(...ys) - 2, Math.max(...xs) + 2, Math.max(...ys) + 2],
+          ctx,
+          fetchFn,
+        );
+        const result = detectObstacles(
+          grid,
+          plot.outline,
+          [...house, ...outbuildings, ...neighbours].map((b) => b.outline),
+        );
+        ctx.summarize(
+          `${result.obstacles.filter((o) => o.kind === "tall").length} tall (${result.tallM2} m²), ${result.obstacles.filter((o) => o.kind === "medium").length} medium (${result.mediumM2} m²) in ${result.yardM2} m² of garden`,
+        );
+        return result;
+      },
+    );
+    note(
+      quality,
+      "obstacles",
+      "From the national laser height scan: a snapshot of one date. Trees may have grown or gone since, and a parked car shows up as a medium obstacle.",
+    );
+    if (obstacles.groundFilledShare > 0.5)
+      downgrade(
+        quality,
+        "obstacles",
+        "assumed",
+        "Under most of the garden the scan saw no bare ground (dense trees), so ground height was filled in from around it.",
+      );
+  } catch {
+    downgrade(
+      quality,
+      "obstacles",
+      "missing",
+      "The national laser height scan could not be loaded, so trees and other obstacles in the garden are unknown.",
+    );
+  }
+
   // 8. Measurements.
   const publicOutlines = (publicAreas ?? [])
     .filter((a) => a.kind !== "water")
@@ -1156,6 +1263,8 @@ export async function buildPlotContext(
     pavementRuns,
     otherHomesOnPlot,
     unitsInHouse,
+    structures,
+    ...(obstacles ? { obstacles } : {}),
     measurements,
     frame,
     layout,

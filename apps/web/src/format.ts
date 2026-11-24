@@ -105,6 +105,7 @@ export const DOMAIN_TEXT: Record<string, string> = {
   vegetation: "Trees and plants",
   access: "Car access",
   front: "Front of the plot",
+  obstacles: "Obstacles in the garden",
 };
 
 /** Data completeness card: what we know fully, what is estimated, incomplete or missing. */

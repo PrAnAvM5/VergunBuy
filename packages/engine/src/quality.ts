@@ -19,7 +19,7 @@ import type { Outcome } from "./facts.ts";
 export type DataStatus = "complete" | "assumed" | "partial" | "missing";
 
 export type Domain =
-  "plot" | "buildings" | "heights" | "publicArea" | "vegetation" | "access" | "front";
+  "plot" | "buildings" | "heights" | "publicArea" | "vegetation" | "access" | "front" | "obstacles";
 
 export interface DomainQuality {
   status: DataStatus;
@@ -50,6 +50,7 @@ export function newQuality(): DataQuality {
     publicArea: q(),
     vegetation: q(),
     access: q(),
+    obstacles: q(),
     front: q(),
   };
 }
