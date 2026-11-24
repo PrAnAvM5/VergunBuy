@@ -14,12 +14,13 @@ import {
 const rules = RuleSet.parse(
   JSON.parse(
     readFileSync(
-      join(import.meta.dirname, "../../../rulesets/woensdrecht/2026-11-24.json"),
+      join(import.meta.dirname, "../../../rulesets/woensdrecht/carport/2026-11-24.json"),
       "utf8",
     ),
   ),
 );
-const params = rules.rules.find((r) => r.id === "area-limit")?.params as unknown as AreaTableParams;
+const areaRule = rules.rules.find((r) => r.id === "ia-area-limit")?.evaluation;
+const params = (areaRule?.kind === "check" ? areaRule.params : {}) as unknown as AreaTableParams;
 
 describe("weakest link", () => {
   it("takes the lowest level", () => {

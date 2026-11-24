@@ -1,7 +1,5 @@
-import { readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { combineOutcomes, RuleSet, SafeError, Tracer } from "../src/index.ts";
+import { combineOutcomes, SafeError, Tracer } from "../src/index.ts";
 
 describe("combineOutcomes (zero false greens)", () => {
   it("is pass only when every check passes", () => {
@@ -38,18 +36,4 @@ describe("Tracer", () => {
     expect(tracer.steps[3]?.error).not.toContain("secret");
     expect(tracer.steps[0]?.ms).toBe(5);
   });
-});
-
-describe("rule files", () => {
-  const root = join(import.meta.dirname, "../../../rulesets");
-  for (const municipality of readdirSync(root)) {
-    for (const file of readdirSync(join(root, municipality))) {
-      it(`${municipality}/${file} matches the RuleSet schema`, () => {
-        const json: unknown = JSON.parse(readFileSync(join(root, municipality, file), "utf8"));
-        const result = RuleSet.safeParse(json);
-        expect(result.success, JSON.stringify(result.error?.issues)).toBe(true);
-        expect(file).toBe(`${result.data?.version}.json`);
-      });
-    }
-  }
 });

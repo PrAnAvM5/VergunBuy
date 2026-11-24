@@ -1,0 +1,378 @@
+{
+  "schema": 2,
+  "municipality": "Woensdrecht",
+  "municipalityCode": "gm0873",
+  "activity": "carport",
+  "version": "2026-11-24",
+  "documents": {
+    "omgevingsplan": {
+      "title": "Omgevingsplan gemeente Woensdrecht",
+      "status": "in-force",
+      "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+      "verifiedExpressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506",
+      "verifiedOn": "2026-11-24",
+      "textFile": "fixtures/dso-docs/omgevingsplan-woensdrecht.json.gz"
+    },
+    "bbl": {
+      "title": "Besluit bouwwerken leefomgeving (Bbl)",
+      "status": "in-force",
+      "workId": "/akn/nl/act/mnre1034/2018/BWBR0041297",
+      "verifiedExpressionId": "/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0",
+      "verifiedOn": "2026-11-24",
+      "textFile": "fixtures/dso-docs/bbl.json.gz",
+      "url": "https://wetten.overheid.nl/BWBR0041297"
+    },
+    "omgevingsplan-draft": {
+      "title": "Omgevingsplan gemeente Woensdrecht (ontwerp)",
+      "status": "draft",
+      "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+      "verifiedExpressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-09-02;06030214",
+      "verifiedOn": "2026-11-24",
+      "textFile": "fixtures/dso-docs/omgevingsplan-woensdrecht-draft.json.gz",
+      "technischId": "_akn_nl_act_gm0873_2020_omgevingsplan_akn_nl_bill_gm0873_2026_besluite8ff657e879e488890b7196022be419a"
+    }
+  },
+  "definitions": [
+    {
+      "term": "achtererfgebied",
+      "document": "bbl",
+      "quote": "gebouwerf achter de lijn die het hoofdgebouw doorkruist op 1 m achter de voorkant en van daaruit evenwijdig loopt met het aangrenzend openbaar toegankelijk gebied, zonder het hoofdgebouw opnieuw te doorkruisen of in het gebouwerf achter het hoofdgebouw te komen"
+    },
+    {
+      "term": "bijbehorend bouwwerk",
+      "document": "bbl",
+      "quote": "uitbreiding van een hoofdgebouw of functioneel met een zich op hetzelfde perceel bevindend hoofdgebouw verbonden, daar wel of niet tegen aangebouwd gebouw, of ander bouwwerk, met een dak"
+    },
+    {
+      "term": "openbaar toegankelijk gebied",
+      "document": "bbl",
+      "quote": "met uitzondering van wegen alleen bedoeld voor de ontsluiting van percelen door langzaam verkeer"
+    },
+    {
+      "term": "gebouwerf",
+      "document": "bbl",
+      "quote": "bebouwd of onbebouwd perceel, of een gedeelte daarvan, dat direct is gelegen bij een hoofdgebouw en in feitelijk opzicht is ingericht ten dienste van het gebruik van dat gebouw"
+    },
+    {
+      "term": "bebouwingsgebied",
+      "document": "omgevingsplan",
+      "quote": "achtererfgebied en de grond onder het hoofdgebouw, uitgezonderd de grond onder het oorspronkelijk hoofdgebouw"
+    }
+  ],
+  "rules": [
+    {
+      "id": "tech-on-ground",
+      "title": "On the ground",
+      "plain": "A carport standing on the ground needs no technical building permit for this point.",
+      "effect": "technical-permit-condition",
+      "document": "bbl",
+      "article": "2.25, onder a",
+      "quote": "niet op de grond staat",
+      "evaluation": {
+        "kind": "by-design",
+        "why": "The tool only places carports standing on the ground."
+      }
+    },
+    {
+      "id": "tech-max-5m",
+      "title": "Not higher than 5 m (technical)",
+      "plain": "Above 5 m a technical building permit is needed.",
+      "effect": "technical-permit-condition",
+      "document": "bbl",
+      "article": "2.25, onder b",
+      "quote": "hoger is dan 5 m",
+      "evaluation": {
+        "kind": "check",
+        "check": "maxHeight",
+        "params": {
+          "maxM": 5
+        }
+      }
+    },
+    {
+      "id": "tech-no-roof-terrace",
+      "title": "No roof terrace or balcony",
+      "plain": "A carport with a roof terrace or balcony needs a technical building permit.",
+      "effect": "technical-permit-condition",
+      "document": "bbl",
+      "article": "2.25, onder d",
+      "quote": "is voorzien van een dakterras, balkon of andere niet op de grond gelegen buitenruimte",
+      "evaluation": {
+        "kind": "by-design",
+        "why": "The tool's carports have no roof terrace."
+      }
+    },
+    {
+      "id": "tech-not-main-building",
+      "title": "Does not become a main building",
+      "plain": "A carport is an annex, not a main building.",
+      "effect": "technical-permit-condition",
+      "document": "bbl",
+      "article": "2.25, onder e",
+      "quote": "als gevolg van de bouwactiviteit een hoofdgebouw wordt",
+      "evaluation": {
+        "kind": "by-design",
+        "why": "A carport next to a house is an annex (bijbehorend bouwwerk)."
+      }
+    },
+    {
+      "id": "pf-on-ground",
+      "title": "On the ground",
+      "plain": "Permit-free only for an annex standing on the ground.",
+      "effect": "permit-free-condition",
+      "document": "omgevingsplan",
+      "article": "22.27, onder a, 1°",
+      "quote": "op de grond staand",
+      "evaluation": {
+        "kind": "by-design",
+        "why": "The tool only places carports standing on the ground."
+      }
+    },
+    {
+      "id": "pf-back-yard",
+      "title": "In the back-yard area (achtererfgebied)",
+      "plain": "Permit-free only behind the line 1 m behind the front of the house. In the front-yard area a permit is always needed.",
+      "effect": "permit-free-condition",
+      "document": "omgevingsplan",
+      "article": "22.27, onder a, 2°",
+      "quote": "gelegen in achtererfgebied",
+      "evaluation": {
+        "kind": "check",
+        "check": "inZone",
+        "params": {
+          "zone": "achtererfgebied"
+        }
+      }
+    },
+    {
+      "id": "pf-public-distance",
+      "title": "More than 1 m from publicly accessible area",
+      "plain": "Every part must be more than 1 m from the street, pavement, park or other public area (paths only for bikes and pedestrians to reach plots do not count).",
+      "effect": "permit-free-condition",
+      "document": "omgevingsplan",
+      "article": "22.27, onder a, 3°",
+      "quote": "op een afstand van meer dan 1 m vanaf openbaar toegankelijk gebied",
+      "evaluation": {
+        "kind": "check",
+        "check": "minDistanceToEdgeKind",
+        "params": {
+          "edgeKind": "public",
+          "minM": 1,
+          "strict": true
+        }
+      }
+    },
+    {
+      "id": "pf-max-5m",
+      "title": "Not higher than 5 m",
+      "plain": "Permit-free only up to 5 m high.",
+      "effect": "permit-free-condition",
+      "document": "omgevingsplan",
+      "article": "22.27, onder a, 4°",
+      "quote": "niet hoger dan 5 m",
+      "evaluation": {
+        "kind": "check",
+        "check": "maxHeight",
+        "params": {
+          "maxM": 5
+        }
+      }
+    },
+    {
+      "id": "pf-no-roof-terrace",
+      "title": "No roof terrace or balcony",
+      "plain": "Permit-free only without a roof terrace or balcony.",
+      "effect": "permit-free-condition",
+      "document": "omgevingsplan",
+      "article": "22.27, onder a, 6°",
+      "quote": "niet voorzien van een dakterras, balkon of andere niet op de grond gelegen buitenruimte",
+      "evaluation": {
+        "kind": "by-design",
+        "why": "The tool's carports have no roof terrace."
+      }
+    },
+    {
+      "id": "ex-monument-2227",
+      "title": "Monument on or next to the plot",
+      "plain": "For work in, on or at a (pre-protected) municipal, provincial or national monument, the permit-free rule for annexes does not apply.",
+      "effect": "exclusion",
+      "document": "omgevingsplan",
+      "article": "22.28, eerste en tweede lid",
+      "quote": "Op een activiteit die wordt verricht in, aan of op een gemeentelijk monument, voorbeschermd gemeentelijk monument, provinciaal monument, voorbeschermd provinciaal monument, rijksmonument of voorbeschermd rijksmonument is Artikel 22.27 niet van toepassing.",
+      "evaluation": {
+        "kind": "needs-data",
+        "data": ["national monuments register (RCE)", "Woensdrecht municipal monuments list"]
+      },
+      "excludes": "22.27"
+    },
+    {
+      "id": "ex-village-view-2227",
+      "title": "Protected village view (rijksbeschermd dorpsgezicht)",
+      "plain": "In a nationally protected village view, annexes are only permit-free in a few cases.",
+      "effect": "exclusion",
+      "document": "omgevingsplan",
+      "article": "22.28, derde lid",
+      "quote": "Op een activiteit die wordt verricht op een locatie waaraan in dit omgevingsplan de functie-aanduiding rijksbeschermd stads- of dorpsgezicht is gegeven, is Artikel 22.27 alleen van toepassing voor zover het gaat om",
+      "evaluation": {
+        "kind": "needs-data",
+        "data": ["functie-aanduiding rijksbeschermd stads- of dorpsgezicht at the plot"]
+      },
+      "excludes": "22.27"
+    },
+    {
+      "id": "ex-archaeology-2227",
+      "title": "Archaeology rules, unless smaller than 50 m²",
+      "plain": "Where the old zoning plan requires archaeological research for building, the annex is not permit-free, unless it is smaller than 50 m².",
+      "effect": "exclusion",
+      "document": "omgevingsplan",
+      "article": "22.28, vierde lid",
+      "quote": "het bouwwerk waarop de activiteit betrekking heeft een oppervlakte heeft van minder dan 50 m 2",
+      "evaluation": {
+        "kind": "needs-data",
+        "data": ["archaeology rules of the old zoning plan (tijdelijk deel) at the plot"]
+      },
+      "excludes": "22.27"
+    },
+    {
+      "id": "ia-height-near-house",
+      "title": "Height within 4 m of the original house",
+      "plain": "Within 4 m of the original house: at most 5 m, at most 0.3 m above the first-floor level of the house, and not higher than the house.",
+      "effect": "in-accordance-condition",
+      "document": "omgevingsplan",
+      "article": "22.36, onder a, 1°",
+      "quote": "voor zover op een afstand van niet meer dan 4 m van het oorspronkelijk hoofdgebouw, niet hoger dan: I. 5 m; II. 0,3 m boven de bovenkant van de scheidingsconstructie met de tweede bouwlaag van het hoofdgebouw; en III. het hoofdgebouw",
+      "evaluation": {
+        "kind": "needs-data",
+        "data": [
+          "height of the first-floor level of the house (estimate from 3D BAG)",
+          "original main building outline"
+        ]
+      }
+    },
+    {
+      "id": "ia-height-far-from-house",
+      "title": "Above 3 m further than 4 m from the house: pitched roof",
+      "plain": "More than 4 m from the original house, anything above 3 m needs a pitched roof, ridge at most 5 m and limited by the distance to the plot boundary.",
+      "effect": "in-accordance-condition",
+      "document": "omgevingsplan",
+      "article": "22.36, onder a, 2°, I",
+      "quote": "als het bijbehorend bouwwerk of de uitbreiding daarvan hoger is dan 3 m: voorzien van een schuin dak, de dakvoet niet hoger dan 3 m",
+      "evaluation": {
+        "kind": "check",
+        "check": "ridgeHeightByBoundaryDistance",
+        "params": {
+          "freeUpToM": 3,
+          "factor": 0.47,
+          "baseM": 3,
+          "maxM": 5,
+          "maxPitchDeg": 55
+        }
+      }
+    },
+    {
+      "id": "ia-subordinate",
+      "title": "Functionally subordinate to the house",
+      "plain": "More than 4 m from the house the annex must serve the house.",
+      "effect": "in-accordance-condition",
+      "document": "omgevingsplan",
+      "article": "22.36, onder a, 2°, II",
+      "quote": "functioneel ondergeschikt aan het hoofdgebouw",
+      "evaluation": {
+        "kind": "by-design",
+        "why": "A carport serves the house."
+      }
+    },
+    {
+      "id": "ia-area-limit",
+      "title": "Total annex area within the limit",
+      "plain": "All annexes in the bebouwingsgebied together: 50% of the first 100 m², plus 20% of the part between 100 and 300 m², plus 10% above 300 m², at most 150 m² in total. Existing sheds and annexes count.",
+      "effect": "in-accordance-condition",
+      "document": "omgevingsplan",
+      "article": "22.36, onder a, 3°",
+      "quote": "bij een bebouwingsgebied kleiner dan of gelijk aan 100 m 2 : 50% van dat bebouwingsgebied",
+      "evaluation": {
+        "kind": "check",
+        "check": "areaTable",
+        "params": {
+          "tier1UpToM2": 100,
+          "tier1Share": 0.5,
+          "tier2UpToM2": 300,
+          "tier2BaseM2": 50,
+          "tier2Share": 0.2,
+          "tier3BaseM2": 90,
+          "tier3Share": 0.1,
+          "maxM2": 150
+        }
+      }
+    },
+    {
+      "id": "ia-at-main-building",
+      "title": "Belongs to a main building",
+      "plain": "The annex must be at or near a main building (not a caravan home or a temporary building).",
+      "effect": "in-accordance-condition",
+      "document": "omgevingsplan",
+      "article": "22.36, onder a, 4°",
+      "quote": "uitbreiding van of gelegen aan of bij een hoofdgebouw, anders dan: I. een woonwagen",
+      "evaluation": {
+        "kind": "check",
+        "check": "mainBuildingIsDwelling",
+        "params": {
+          "source": "BAG"
+        }
+      }
+    },
+    {
+      "id": "ex-monument-village-2236",
+      "title": "Monument or protected village view",
+      "plain": "In, on or at a monument, or in a nationally protected village view, the 'in accordance by law' rule does not apply.",
+      "effect": "exclusion",
+      "document": "omgevingsplan",
+      "article": "22.38",
+      "quote": "Artikel 22.36 is niet van toepassing op een activiteit die wordt verricht: a. in, aan, op of bij een gemeentelijk monument",
+      "evaluation": {
+        "kind": "needs-data",
+        "data": [
+          "national monuments register (RCE)",
+          "Woensdrecht municipal monuments list",
+          "functie-aanduiding rijksbeschermd stads- of dorpsgezicht"
+        ]
+      },
+      "excludes": "22.36"
+    },
+    {
+      "id": "ex-safety-2236",
+      "title": "External safety zones",
+      "plain": "Near ammunition storage, explosives sites, risky pipelines or similar safety distances, the 'in accordance by law' rule does not apply.",
+      "effect": "exclusion",
+      "document": "omgevingsplan",
+      "article": "22.39",
+      "quote": "op een locatie in een in het tijdelijke deel van dit omgevingsplan, bedoeld in artikel 22.1, onder a, van de Omgevingswet, opgenomen veiligheidszone, getypeerd als A-zone of B-zone, rondom een munitieopslag",
+      "evaluation": {
+        "kind": "needs-data",
+        "data": [
+          "safety zones of the old zoning plan (tijdelijk deel)",
+          "Bal safety distances (risicokaart)"
+        ]
+      },
+      "excludes": "22.36"
+    }
+  ],
+  "drafts": [
+    {
+      "document": "omgevingsplan-draft",
+      "reviewedOn": "2026-11-24",
+      "finding": "The draft omgevingsplan (ontwerp, registered 2026-09-03) keeps articles 22.26 to 22.39 unchanged. It adds new chapters 4 and 5, including areas with cultural-historical value (4.10, 4.11), building an exit (4.17, uitweg) and paving in water-system areas (4.64). Section 5.2 'Bouwwerken' is still empty (reserved).",
+      "stillToReview": [
+        "5.3.1 activities in an area with cultural-historical value",
+        "5.6.1 building or changing an exit (uitweg)",
+        "5.9.7 paving in the area 'behoud en herstel van watersystemen'"
+      ]
+    }
+  ],
+  "openPoints": [
+    "Article 22.27 keeps the rest of the omgevingsplan in force. When the 22.36 conditions are not all met, the old zoning plan (tijdelijk deel, from Ruimtelijke Plannen) decides; until that is read, the answer is 'unknown', never green.",
+    "The definition of 'oorspronkelijk hoofdgebouw' (original main building) still has to be located and quoted.",
+    "Monuments, protected village views, archaeology and safety zones need their own data sources before they can be checked.",
+    "Civil-law advice (roof water onto the neighbour's land, Burgerlijk Wetboek 5:53) is not part of this rule set yet."
+  ]
+}
