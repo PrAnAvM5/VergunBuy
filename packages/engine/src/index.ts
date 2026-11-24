@@ -3,3 +3,5 @@ export * from "./trace.ts";
 export * from "./geometry.ts";
 export * from "./ruleset.ts";
 export * from "./concepts/edges.ts";
+export * from "./confidence.ts";
+export * from "./rules/areaLimit.ts";
