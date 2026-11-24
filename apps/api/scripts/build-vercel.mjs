@@ -21,7 +21,7 @@ await build({
   bundle: true,
   platform: "node",
   format: "esm",
-  target: "node20",
+  target: "node22",
   outfile: `${fn}/index.mjs`,
   // Some dependencies use require(); give the ESM bundle a require function.
   banner: {
@@ -31,7 +31,7 @@ await build({
 });
 writeFileSync(
   `${fn}/.vc-config.json`,
-  JSON.stringify({ runtime: "nodejs20.x", handler: "index.mjs", launcherType: "Nodejs" }, null, 2),
+  JSON.stringify({ runtime: "nodejs22.x", handler: "index.mjs", launcherType: "Nodejs" }, null, 2),
 );
 writeFileSync(`${fn}/package.json`, JSON.stringify({ type: "module" }));
 writeFileSync(
