@@ -8,3 +8,4 @@ export * from "./rules/areaLimit.ts";
 export * from "./concepts/frame.ts";
 export * from "./quality.ts";
 export * from "./concepts/access.ts";
+export * from "./concepts/sides.ts";

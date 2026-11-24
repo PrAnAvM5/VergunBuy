@@ -44,3 +44,20 @@ describe("plotFrame", () => {
     expect(layout.setbacks?.rearM).toBeCloseTo(2, 1);
   });
 });
+
+describe("describeSides", () => {
+  it("assigns every edge to front, rear, left or right and accounts for the whole boundary", async () => {
+    const { describeSides } = await import("../src/index.ts");
+    const frame = plotFrame(plot, runs, [{ at: [-3, 10], name: "Westweg" }]);
+    const sides = describeSides(frame, plot, runs, (id) =>
+      id === "west" ? "road (Westweg)" : id === "south" ? "road (Zuidweg)" : undefined,
+    );
+    const by = Object.fromEntries(sides.map((s) => [s.side, s]));
+    // West is the front (street label), so south becomes a side.
+    expect(by.front?.parts[0]?.label).toBe("road (Westweg)");
+    expect(by.front?.lengthM).toBeCloseTo(20, 1);
+    expect(sides.some((s) => s.parts.some((p) => p.label === "road (Zuidweg)"))).toBe(true);
+    const total = sides.reduce((s, x) => s + x.lengthM, 0);
+    expect(total).toBeCloseTo(2 * (8 + 20), 0);
+  });
+});

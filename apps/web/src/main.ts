@@ -7,10 +7,9 @@
  */
 import "./style.css";
 import { renderAbout } from "./views/about.ts";
-import { renderCheck } from "./views/check.ts";
+import { disposeScene, renderCheck } from "./views/check.ts";
 import { renderHome } from "./views/home.ts";
 import { renderSystem } from "./views/system.ts";
-import { disposeWorkspace, renderWorkspace } from "./views/workspace.ts";
 
 const app = document.querySelector<HTMLElement>("#app");
 
@@ -27,7 +26,7 @@ function route(): void {
     );
   });
   window.scrollTo(0, 0);
-  disposeWorkspace();
+  disposeScene();
 
   if (page === "plot" && parts[1] && parts[2]) {
     const query = {
@@ -35,7 +34,7 @@ function route(): void {
       number: decodeURIComponent(parts[2]),
       ...(parts[3] ? { addition: decodeURIComponent(parts[3]) } : {}),
     };
-    void renderWorkspace(app, query, params.has("demo") ? "demo" : "live", params.has("dev"));
+    void renderCheck(app, query, params.has("demo") ? "demo" : "live", params.has("dev"), "2d");
   } else if (page === "check" && parts[1] && parts[2]) {
     const query = {
       postcode: decodeURIComponent(parts[1]),

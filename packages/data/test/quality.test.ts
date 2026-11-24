@@ -182,3 +182,15 @@ describe("invalid geometry is never measured silently", () => {
     expect(context.quality.buildings.status).toBe("partial");
   });
 });
+
+describe("surroundings per side (real data)", () => {
+  it("Aalbersestraat 1: front on the Aalbersestraat pavement, the road itself along the left side", async () => {
+    const { context } = await run(aalbers(), "4631CC", "1");
+    const by = Object.fromEntries(context.sides.map((s) => [s.side, s]));
+    expect(by.front?.parts[0]?.label).toContain("Aalbersestraat");
+    expect(by.left?.parts.some((p) => p.label === "road (Aalbersestraat)" && p.lengthM > 15)).toBe(
+      true,
+    );
+    expect(by.right?.parts.some((p) => p.kind === "shared-wall")).toBe(true);
+  });
+});

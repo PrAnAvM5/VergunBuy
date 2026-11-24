@@ -24,6 +24,8 @@ import {
   classifyEdges,
   contains,
   deriveHouseType,
+  describeSides,
+  type SideSummary,
   distanceBetween,
   downgrade,
   gate,
@@ -159,7 +161,12 @@ export interface PlotContext {
   neighbours: Building[];
   /** Other parcels nearby, for drawing context only. */
   nearbyParcels: { id: string; outline: Polygon }[];
-  publicAreas: (PublicArea & { label: string; registeredAt?: string })[] | null;
+  publicAreas:
+    (PublicArea & { label: string; registeredAt?: string; streetName?: string })[] | null;
+  /** Street-name label positions from the map register, for drawing and for naming roads. */
+  streetNames: { at: Point; name: string }[];
+  /** What lies along each side of the plot, in plain words. */
+  sides: SideSummary[];
   trees: Tree[] | null;
   hedges: { id: string; outline: Polygon }[];
   otherVegetation: OtherVegetation[];
@@ -185,6 +192,46 @@ const IN_USE = new Set([
   "Verbouwing pand",
   "Sloopvergunning verleend",
 ]);
+
+/** Plain names for BGT road functions. */
+export const SURFACE_TEXT: Record<string, string> = {
+  "rijbaan lokale weg": "road",
+  "rijbaan regionale weg": "main road",
+  "rijbaan autosnelweg": "motorway",
+  "rijbaan autoweg": "main road",
+  parkeervlak: "parking spaces",
+  voetpad: "footpath / pavement",
+  "voetpad op trap": "steps",
+  fietspad: "cycle path",
+  voetgangersgebied: "pedestrian area",
+  inrit: "driveway crossing",
+  woonerf: "shared residential street",
+  ruiterpad: "bridle path",
+  "OV-baan": "bus or tram lane",
+};
+
+function distanceToPolygon(poly: Polygon, p: Point): number {
+  if (contains(poly, p)) return 0;
+  let min = Infinity;
+  for (let i = 0; i < poly.length; i++) {
+    const a = poly[i]!;
+    const b = poly[(i + 1) % poly.length]!;
+    const dx = b[0] - a[0];
+    const dy = b[1] - a[1];
+    const t = Math.max(
+      0,
+      Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)),
+    );
+    min = Math.min(min, Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy));
+  }
+  return min;
+}
+
+/** One label position per street name, so names are not drawn many times. */
+function dedupeLabels(labels: { at: Point; name: string }[]) {
+  const seen = new Set<string>();
+  return labels.filter((l) => (seen.has(l.name) ? false : (seen.add(l.name), true)));
+}
 
 const INVALID_TEXT =
   "Some shapes from the registers are not clean (for example, edges crossing each other). Measurements on them may be off.";
@@ -591,8 +638,10 @@ export async function buildPlotContext(
 
   // 4. Public area from BGT (current objects only). Degrades to "unknown" edges, never to "neighbour".
   let streetLabels: { at: Point; name: string }[] = [];
+  let allLabels: { at: Point; name: string }[] = [];
   let labelsRead = false;
-  let publicAreas: (PublicArea & { label: string; registeredAt?: string })[] | null = null;
+  let publicAreas:
+    (PublicArea & { label: string; registeredAt?: string; streetName?: string })[] | null = null;
   try {
     publicAreas = await tracer.step(
       "bgt-public",
@@ -608,7 +657,7 @@ export async function buildPlotContext(
         try {
           const labels = await ogcItems(OGC.bgt, "openbareruimtelabel", work, ctx, fetchFn);
           labelsRead = true;
-          streetLabels = labels.features
+          allLabels = labels.features
             .filter((f) => isCurrentBgt(f) && f.geometry?.type === "Point")
             .map((f) => {
               const c = f.geometry?.coordinates as number[];
@@ -617,7 +666,10 @@ export async function buildPlotContext(
                 name: str(f.properties.openbareruimtenaam) ?? "",
               };
             })
-            .filter((l) => l.name.toLowerCase() === address.street.toLowerCase());
+            .filter((l) => l.name !== "");
+          streetLabels = allLabels.filter(
+            (l) => l.name.toLowerCase() === address.street.toLowerCase(),
+          );
         } catch {
           labelsRead = false;
         }
@@ -777,6 +829,19 @@ export async function buildPlotContext(
     reason: accessResult.reason,
   };
 
+  // Name each road surface after the street label inside it, or the nearest one within 12 m.
+  for (const a of publicAreas ?? []) {
+    if (a.kind === "water" || a.kind === "green") continue;
+    const inside = allLabels.find((l) => contains(a.outline, l.at));
+    const nearest =
+      inside ??
+      allLabels
+        .map((l) => ({ l, d: distanceToPolygon(a.outline, l.at) }))
+        .filter((x) => x.d <= 12)
+        .sort((p, q) => p.d - q.d)[0]?.l;
+    if (nearest) a.streetName = nearest.name;
+  }
+
   // 7. The plot's own frame: street at the bottom.
   const kindById = new Map((publicAreas ?? []).map((a) => [a.id, a.kind]));
   const frame = plotFrame(plot.outline, edges, streetLabels, (id) =>
@@ -804,6 +869,16 @@ export async function buildPlotContext(
     );
   }
   const layout = plotLayout(frame, plot.outline, mainHouse?.outline);
+
+  // What lies along each side, in plain words.
+  const sides = describeSides(frame, plot.outline, edges, (id) => {
+    const a = id ? byId.get(id) : undefined;
+    if (!a) return undefined;
+    const what =
+      SURFACE_TEXT[a.label] ??
+      (a.kind === "green" ? "public green" : a.kind === "water" ? "water" : a.label);
+    return a.streetName ? `${what} (${a.streetName})` : what;
+  });
 
   // 8. Measurements.
   const publicOutlines = (publicAreas ?? [])
@@ -848,6 +923,8 @@ export async function buildPlotContext(
           ),
       ),
     publicAreas,
+    streetNames: dedupeLabels(allLabels),
+    sides,
     trees,
     hedges,
     otherVegetation,
