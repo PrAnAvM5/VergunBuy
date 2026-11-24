@@ -199,7 +199,11 @@ export function legend(): string {
     ["var(--road)", "Road"],
     ["var(--path)", "Footpath"],
     ["var(--green)", "Public green"],
-    ["#f2b134", "Driveway crossing / car can reach boundary"],
+    ["#f2b134", "Registered driveway crossing (solid)"],
+    [
+      "repeating-linear-gradient(90deg,#f2b134 0 6px,transparent 6px 10px)",
+      "Car could reach the boundary here (dashed: possible, not proven)",
+    ],
     ["#3f8f3a", "Registered tree"],
     ["#4f8a3c", "Hedge"],
   ];

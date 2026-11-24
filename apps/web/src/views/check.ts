@@ -11,9 +11,10 @@ import { drawWorkspacePlan } from "../plan2d.ts";
 import { lastRun, runCheck, type RunResult } from "../run.ts";
 import type { SceneHandle } from "../scene3d.ts";
 import type { MapHandle, OverlayId } from "../map.ts";
+import { lookAround } from "../streetview.ts";
 import { SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
 
-export type View = "map" | "2d" | "3d";
+export type View = "map" | "2d" | "3d" | "street";
 
 let scene: SceneHandle | undefined;
 let mapView: MapHandle | undefined;
@@ -224,6 +225,7 @@ export async function renderCheck(
             <button data-view="map">Map and aerial photo</button>
             <button data-view="2d">2D plan</button>
             <button data-view="3d">3D view</button>
+            <button data-view="street">Street View and 3D photos</button>
           </div>
           <div id="view"></div>
           <div class="plan-tools" id="tools-map">
@@ -237,6 +239,7 @@ export async function renderCheck(
             <span class="small">${frontNote}</span>
             <span style="margin-left:auto">Click any object to inspect it</span>
           </div>
+          <div class="plan-tools" id="tools-street"><span>Free outside viewers, opened at this house in a new tab.</span></div>
           <div class="plan-tools" id="tools-3d"><span>Drag to rotate · scroll to zoom · right-drag to move. Shapes from 3D BAG (CC BY 4.0).</span></div>
           <div class="plan-tools"><label><input type="checkbox" id="l-dev" ${developer ? "checked" : ""} /> Developer details in the Inspector</label></div>
           <div class="legend" id="legend">${legend()}</div>
@@ -300,6 +303,7 @@ export async function renderCheck(
     map: root.querySelector("#tools-map"),
     "2d": root.querySelector("#tools-2d"),
     "3d": root.querySelector("#tools-3d"),
+    street: root.querySelector("#tools-street"),
   };
   const legendEl = root.querySelector<HTMLElement>("#legend");
 
@@ -317,7 +321,7 @@ export async function renderCheck(
     root
       .querySelectorAll<HTMLButtonElement>(".tabs button")
       .forEach((b) => b.classList.toggle("on", b.dataset.view === view));
-    if (legendEl) legendEl.style.display = view === "3d" ? "none" : "";
+    if (legendEl) legendEl.style.display = view === "3d" || view === "street" ? "none" : "";
     if (view !== "3d") {
       scene?.dispose();
       scene = undefined;
@@ -353,6 +357,9 @@ export async function renderCheck(
           mountingMap = false;
         }
       }
+    } else if (view === "street") {
+      viewEl.className = "";
+      viewEl.innerHTML = lookAround(ctx);
     } else if (view === "2d") {
       viewEl.className = "";
       viewEl.innerHTML = drawWorkspacePlan(ctx, selected, dims);

@@ -33,6 +33,7 @@ import {
   intersectionArea,
   isCarSurface,
   pavementCrossings,
+  ROAD_PARCEL_VERGE,
   facingLengthM,
   MIN_ACCESS_WIDTH_M,
   type PavementRun,
@@ -1067,7 +1068,21 @@ export async function buildPlotContext(
   const layout = plotLayout(frame, plot.outline, mainHouse?.outline);
 
   // What lies along each side, in plain words.
-  const sides = describeSides(frame, plot.outline, edges, (id) => {
+  // A boundary stretch that only borders unmapped ground on the road's own parcel is the road's
+  // verge, not a neighbour's garden. For the plain-words summary only: the edge kinds used for
+  // setbacks and house type stay as they are.
+  const ROAD_VERGE_ID = "__road-verge";
+  const sideRuns: EdgeRun[] = edges.map((r) => {
+    if (r.kind !== "neighbour") return r;
+    const covered = pavementRuns
+      .filter((p) => p.edge === r.edge && p.via.includes(ROAD_PARCEL_VERGE))
+      .reduce((m, p) => m + Math.max(0, Math.min(p.to, r.to) - Math.max(p.from, r.from)), 0);
+    return covered >= 0.8 * (r.to - r.from)
+      ? { ...r, kind: "public", otherSide: ROAD_VERGE_ID }
+      : r;
+  });
+  const sides = describeSides(frame, plot.outline, sideRuns, (id) => {
+    if (id === ROAD_VERGE_ID) return "verge belonging to the road";
     const a = id ? byId.get(id) : undefined;
     if (!a) return undefined;
     const what =

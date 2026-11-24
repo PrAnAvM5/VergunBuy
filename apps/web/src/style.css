@@ -655,3 +655,27 @@ select {
     height: 60vh;
   }
 }
+
+/* Look-around links */
+.looks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  padding: 16px;
+}
+.look {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.look h3 {
+  margin: 0;
+  font-size: 15px;
+}
+.look .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}

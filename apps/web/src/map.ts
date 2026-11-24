@@ -162,15 +162,16 @@ export function mountMap(
       new Style({ stroke: new Stroke({ color: "#ff2d55", width: 3 }) }),
     ];
   };
-  // Draw order: parcels, public, buildings, trees, plot, access, edges, labels.
+  // Draw order: parcels, public, buildings, trees, plot, edges, access, labels. Car access goes
+  // above the edge types so the "car can reach here" marking is never broken up by them.
   const order: OverlayId[] = [
     "parcels",
     "public",
     "buildings",
     "trees",
     "plot",
-    "access",
     "edges",
+    "access",
     "labels",
   ];
   order.forEach((id, z) => {
@@ -331,7 +332,11 @@ function styleFor(
         fill: fill(photo ? "rgba(242,177,52,0.25)" : "rgba(242,177,52,0.85)"),
       });
     case "car-edge":
-      return new Style({ stroke: stroke("rgba(242,177,52,0.85)", 8, [10, 6]) });
+      // Dashed = possible, not proven. A registered crossing is the solid "exit" shape.
+      return [
+        new Style({ stroke: stroke("rgba(0,0,0,0.35)", 9) }),
+        new Style({ stroke: stroke("#f2b134", 6, [14, 8]) }),
+      ];
     case "edge": {
       const e = EDGE_TEXT[f.get("edgeKind") as string];
       return new Style({
