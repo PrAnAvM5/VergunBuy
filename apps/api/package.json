@@ -5,7 +5,8 @@
   "type": "module",
   "description": "HTTP API (Hono). Runs as Vercel Functions in production and as a Node server locally.",
   "scripts": {
-    "dev": "tsx watch src/dev.ts"
+    "dev": "tsx watch src/dev.ts",
+    "build:vercel": "node scripts/build-vercel.mjs"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.0",
@@ -15,6 +16,7 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
+    "esbuild": "^0.24.2",
     "tsx": "^4.19.0"
   }
 }

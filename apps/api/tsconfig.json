@@ -6,6 +6,6 @@
     "allowImportingTsExtensions": true,
     "emitDeclarationOnly": true
   },
-  "include": ["src", "test", "api"],
+  "include": ["src", "test"],
   "references": [{ "path": "../../packages/engine" }, { "path": "../../packages/data" }]
 }

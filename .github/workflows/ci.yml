@@ -24,3 +24,7 @@ jobs:
         run: pnpm typecheck
       - name: Tests (engine, data adapters, API, rule files)
         run: pnpm test
+      - name: Server bundle for Vercel builds and starts
+        run: |
+          pnpm --filter @vergunbuy/api run build:vercel
+          node -e "import('./.vercel/output/functions/api.func/index.mjs').then(m => { if (typeof m.default !== 'function') process.exit(1); console.log('bundle ok') })"

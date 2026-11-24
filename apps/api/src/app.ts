@@ -13,8 +13,10 @@ import { requestId } from "hono/request-id";
 import { secureHeaders } from "hono/secure-headers";
 import { toErrorBody } from "./errors.ts";
 import { rateLimit } from "./rateLimit.ts";
+import { createDso, DsoNotConfigured, RdPoint } from "./dso.ts";
 
 export interface AppDeps {
+  dso?: ReturnType<typeof createDso>;
   fetchFn?: FetchFn;
   allowedOrigins: string[];
   version: string;
@@ -42,6 +44,35 @@ export function createApp(deps: AppDeps) {
     });
   });
   app.use("/search", rateLimit(deps.rateLimit ?? { limit: 30, windowMs: 60_000 }));
+  // DSO calls use the key's quota: stricter limit per visitor.
+  app.use("/dso/*", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
+  const dso = deps.dso ?? createDso({ keys: {} });
+
+  /** Whether keys are configured; never the keys themselves. */
+  app.get("/dso/status", (c) =>
+    c.json({ data: { prod: dso.configured("prod"), pre: dso.configured("pre") } }),
+  );
+
+  /** Rule documents that apply at a point (RD New), valid today or on geldigOp. */
+  app.get("/dso/regelingen", async (c) => {
+    const parsed = RdPoint.safeParse(c.req.query());
+    if (!parsed.success)
+      return c.json(
+        { error: { code: "INVALID_INPUT", message: "Give x and y in RD New (EPSG:28992)." } },
+        400,
+      );
+    try {
+      const data = await dso.regelingenAt(parsed.data);
+      return c.json({ data, requestId: c.get("requestId") }, data.status === null ? 502 : 200);
+    } catch (err) {
+      if (err instanceof DsoNotConfigured)
+        return c.json(
+          { error: { code: "DSO_NOT_CONFIGURED", message: `No DSO key is set for ${err.env}.` } },
+          503,
+        );
+      throw err;
+    }
+  });
 
   app.get("/health", (c) =>
     c.json({ status: "ok", version: deps.version, time: new Date().toISOString() }),

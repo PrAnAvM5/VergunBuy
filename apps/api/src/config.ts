@@ -4,7 +4,7 @@ import { z } from "zod";
 const Env = z.object({
   ALLOWED_ORIGINS: z
     .string()
-    .default("http://localhost:5173")
+    .default("https://pranavm5.github.io,http://localhost:5173,http://localhost:4173")
     .transform((s) =>
       s
         .split(",")
@@ -12,6 +12,9 @@ const Env = z.object({
         .filter(Boolean),
     ),
   APP_VERSION: z.string().default("dev"),
+  /** DSO keys: secrets, set only in the hosting environment (never in code or chat). */
+  DSO_API_KEY: z.string().min(10).optional(),
+  DSO_API_KEY_PRE: z.string().min(10).optional(),
   PORT: z.coerce.number().int().default(8787),
 });
 
