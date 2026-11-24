@@ -57,6 +57,13 @@ describe("findAddress", () => {
     expect(step?.calls[0]).toMatchObject({ host: "api.pdok.nl", httpStatus: 200 });
   });
 
+  it("accepts registered addresses without a postcode (real Woensdrecht case)", async () => {
+    const noPostcode: Record<string, unknown> = doc();
+    delete noPostcode.postcode;
+    const { result } = await run(respond(solr([noPostcode])));
+    expect((await result).postcode).toBe("4631AA");
+  });
+
   it("refuses addresses outside the pilot municipality", async () => {
     const { result, tracer } = await run(respond(solr([doc({ gemeentenaam: "Bergen op Zoom" })])));
     await expect(result).rejects.toMatchObject({ code: "OUTSIDE_PILOT" });

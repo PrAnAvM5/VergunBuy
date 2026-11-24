@@ -45,7 +45,8 @@ const Doc = z.object({
   huisnummer: z.number(),
   huisletter: z.string().optional(),
   huisnummertoevoeging: z.string().optional(),
-  postcode: z.string(),
+  /** Optional in BAG: some addresses (e.g. storage units like "Kooiweg 40d-B08") have none. */
+  postcode: z.string().optional(),
   woonplaatsnaam: z.string(),
   gemeentenaam: z.string(),
   centroide_rd: z.string(),
@@ -129,7 +130,7 @@ export async function findAddress(
     street: doc.straatnaam,
     number: doc.huisnummer,
     ...(addition ? { addition } : {}),
-    postcode: doc.postcode,
+    postcode: doc.postcode ?? query.postcode,
     town: doc.woonplaatsnaam,
     municipality: doc.gemeentenaam,
     pointRd: parsePoint(doc.centroide_rd),
