@@ -2,9 +2,9 @@
  * Inspector (ADR-023): shows what we know about one clicked object, how sure we are,
  * where it comes from and how it was derived. The developer layer adds the raw record.
  */
-import { STRUCTURE_TEXT, type PlotContext } from "@vergunbuy/data";
+import { STRUCTURE_TEXT, SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
 import { HEIGHT_BANDS, OBSTACLE_KIND_TEXT } from "./format.ts";
-import { area } from "@vergunbuy/engine";
+import { area, at, sideOfEdge } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc, isOtherHomeOnParcel, m, m2 } from "./format.ts";
 
 interface Row {
@@ -327,18 +327,40 @@ function describe(ctx: PlotContext, key: string): View | undefined {
   if (type === "edge") {
     const run = ctx.edges[Number(id)];
     if (!run) return undefined;
+    const a = at(ctx.plot.outline, run.edge);
+    const b = at(ctx.plot.outline, run.edge + 1);
+    const edgeLen = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    const side =
+      ctx.frame.method === "none" ? undefined : sideOfEdge(ctx.frame, ctx.plot.outline, run.edge);
+    const area = ctx.publicAreas?.find((p) => p.id === run.otherSide);
+    const building = [...ctx.neighbours, ...ctx.house].find((x) => x.id === run.otherSide);
+    const other = area
+      ? `${esc(SURFACE_TEXT[area.label] ?? area.label)}${area.streetName ? ` (${esc(area.streetName)})` : ""}`
+      : building
+        ? `building ${esc(building.id)}${building.addressLabels?.length ? ` (no. ${esc(building.addressLabels.join(", "))})` : ""}`
+        : "—";
     return {
       title: `Plot edge: ${EDGE_TEXT[run.kind]?.label ?? run.kind}`,
       rows: [
         { label: "Length", value: m(run.lengthM), certainty: "derived" },
+        ...(side ? [{ label: "Side", value: side, certainty: "derived" as const }] : []),
+        {
+          label: "Where",
+          value: `${(run.from * edgeLen).toFixed(2)} – ${(run.to * edgeLen).toFixed(2)} m along boundary line ${run.edge + 1} (${edgeLen.toFixed(2)} m long, corner to corner)`,
+          certainty: "derived",
+        },
         {
           label: "Other side",
-          value: run.otherSide ? esc(run.otherSide) : "—",
+          value: other,
           certainty: run.kind === "unknown" ? "unknown" : "derived",
         },
+        ...(area?.registeredAt
+          ? [{ label: "Registered", value: esc(area.registeredAt), certainty: "measured" as const }]
+          : []),
       ],
-      source: "Derived by the engine from BRK, BAG and BGT",
-      how: "We walk along the plot boundary in 25 cm steps and look 50 cm outside. What we find there decides the edge type. A shared wall is where the house wall meets a neighbouring building.",
+      source:
+        "Derived by the engine from the cadastral map (BRK), the building register (BAG) and the street map (BGT)",
+      how: `Corner points come straight from the cadastral map, so each boundary line's length is exact (to the map's own accuracy, about 0.2–1 m in the field). We walk along each line in 25 cm steps and look 50 cm outside: the first public area found there (street map) decides the type; else a neighbouring building against our house wall is a shared wall; else it is a neighbour's plot. Where the answer changes along a line, the change point is found to within 1 cm by halving the interval, and the parts always add up to the line's full length.`,
       raw: run,
     };
   }
