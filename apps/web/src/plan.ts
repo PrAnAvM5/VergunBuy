@@ -145,6 +145,18 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
     });
   }
 
+  // Stretches of boundary where a car can reach the plot (no registered crossing needed to see this).
+  for (const e of ctx.carReachableEdges) {
+    const a = at(ctx.plot.outline, e.edge);
+    const b = at(ctx.plot.outline, e.edge + 1);
+    const p = (t: number) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t] as const;
+    const [x1, y1] = p(e.from);
+    const [x2, y2] = p(e.to);
+    parts.push(
+      `<line x1="${tx(x1).toFixed(1)}" y1="${ty(y1).toFixed(1)}" x2="${tx(x2).toFixed(1)}" y2="${ty(y2).toFixed(1)}" stroke="#f2b134" stroke-width="10" stroke-opacity="0.55" stroke-dasharray="8 5" pointer-events="none"/>`,
+    );
+  }
+
   if (layers.dimensions) {
     const label = (x: number, y: number, text: string, size = 12) =>
       `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-family="system-ui" font-size="${size}" font-weight="600" text-anchor="middle" dominant-baseline="central" fill="#1d1f24" stroke="#ffffff" stroke-width="3.5" paint-order="stroke" pointer-events="none">${esc(text)}</text>`;
@@ -205,7 +217,7 @@ export function legend(): string {
     ["var(--road)", "Road"],
     ["var(--path)", "Footpath"],
     ["var(--green)", "Public green"],
-    ["#f2b134", "Driveway crossing (exit)"],
+    ["#f2b134", "Driveway crossing / car can reach boundary"],
     ["#3f8f3a", "Registered tree"],
     ["#4f8a3c", "Hedge"],
   ];

@@ -10,7 +10,15 @@
  * y pointing away from the street (into the plot), so the street is at the bottom.
  */
 import type { EdgeRun } from "./edges.ts";
-import { at, edges, length, outwardNormal, type Point, type Polygon } from "../geometry.ts";
+import {
+  at,
+  centroid,
+  edges,
+  length,
+  outwardNormal,
+  type Point,
+  type Polygon,
+} from "../geometry.ts";
 
 export interface PlotFrame {
   origin: Point;
@@ -50,13 +58,6 @@ export function toLocal(frame: PlotFrame, p: Point): Point {
 
 export const polyToLocal = (frame: PlotFrame, poly: Polygon): Polygon =>
   poly.map((p) => toLocal(frame, p));
-
-function centroid(poly: Polygon): Point {
-  return [
-    poly.reduce((s, p) => s + p[0], 0) / poly.length,
-    poly.reduce((s, p) => s + p[1], 0) / poly.length,
-  ];
-}
 
 const KIND_WEIGHT: Record<string, number> = { public: 1 };
 

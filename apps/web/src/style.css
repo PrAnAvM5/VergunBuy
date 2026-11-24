@@ -583,3 +583,15 @@ select {
   padding: 3px 8px;
   border-radius: 6px;
 }
+.qrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+.qrow:first-of-type {
+  border-top: 0;
+}

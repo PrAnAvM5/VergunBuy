@@ -3,7 +3,7 @@
  * (street at the bottom), with architectural dimension lines drawn outside the shapes.
  */
 import type { PlotContext } from "@vergunbuy/data";
-import { contains, polyToLocal, toLocal, type Point, type Polygon } from "@vergunbuy/engine";
+import { polyToLocal, toLocal, type Point, type Polygon } from "@vergunbuy/engine";
 import { esc } from "./format.ts";
 
 const W = 820;
@@ -156,13 +156,4 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
     `<g font-family="system-ui" font-size="11" fill="#5a5e66"><line x1="16" y1="${H - 16}" x2="${16 + bar}" y2="${H - 16}" stroke="#5a5e66" stroke-width="2"/><text x="16" y="${H - 24}">5 m</text></g>`,
   );
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Plot plan with the street at the bottom and main dimensions">${parts.join("")}</svg>`;
-}
-
-/** Is a building's centre on the plot? Used to pick what the 3D view shows in full colour. */
-export function onPlot(ctx: PlotContext, poly: Polygon): boolean {
-  const c: Point = [
-    poly.reduce((s, p) => s + p[0], 0) / poly.length,
-    poly.reduce((s, p) => s + p[1], 0) / poly.length,
-  ];
-  return contains(ctx.plot.outline, c);
 }

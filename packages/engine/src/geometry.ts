@@ -1,3 +1,5 @@
+import polygonClipping from "polygon-clipping";
+
 /**
  * Small, dependency-free 2D geometry in metres (RD New, EPSG:28992).
  * Polygons are open rings: the last point is NOT repeated.
@@ -109,11 +111,105 @@ export function orientedBox(poly: Polygon): { lengthM: number; widthM: number; a
   return { lengthM: r(best.lengthM), widthM: r(best.widthM), angleDeg: r(best.angleDeg) };
 }
 
-/** Shortest distance between two polygons' boundaries (0 if they touch or overlap). */
+/** Orientation of the triple (p, q, r): >0 counter-clockwise, <0 clockwise, 0 collinear (within eps). */
+function orient(p: Point, q: Point, r: Point, eps = 1e-9): number {
+  const v = (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]);
+  return Math.abs(v) < eps ? 0 : v;
+}
+
+const onSegment = (p: Point, q: Point, r: Point) =>
+  Math.min(p[0], r[0]) - 1e-9 <= q[0] &&
+  q[0] <= Math.max(p[0], r[0]) + 1e-9 &&
+  Math.min(p[1], r[1]) - 1e-9 <= q[1] &&
+  q[1] <= Math.max(p[1], r[1]) + 1e-9;
+
+/** True if segments a–b and c–d share at least one point (crossing, touching or collinear overlap). */
+export function segmentsIntersect(a: Point, b: Point, c: Point, d: Point): boolean {
+  const o1 = orient(a, b, c);
+  const o2 = orient(a, b, d);
+  const o3 = orient(c, d, a);
+  const o4 = orient(c, d, b);
+  if (o1 * o2 < 0 && o3 * o4 < 0) return true;
+  if (o1 === 0 && onSegment(a, c, b)) return true;
+  if (o2 === 0 && onSegment(a, d, b)) return true;
+  if (o3 === 0 && onSegment(c, a, d)) return true;
+  if (o4 === 0 && onSegment(c, b, d)) return true;
+  return false;
+}
+
+/** Shortest distance between segments a–b and c–d (0 if they intersect). */
+export function segmentDistance(a: Point, b: Point, c: Point, d: Point): number {
+  if (segmentsIntersect(a, b, c, d)) return 0;
+  return Math.min(
+    distanceToSegment(a, c, d),
+    distanceToSegment(b, c, d),
+    distanceToSegment(c, a, b),
+    distanceToSegment(d, a, b),
+  );
+}
+
+/**
+ * Shortest distance between two polygons (0 if they touch, cross or one lies inside the other).
+ * Checks every edge pair, so two shapes that cross without any vertex inside the other
+ * (e.g. a plus sign made of two bars) correctly return 0.
+ */
 export function distanceBetween(a: Polygon, b: Polygon): number {
-  if (a.some((p) => contains(b, p)) || b.some((p) => contains(a, p))) return 0;
+  if (a.length === 0 || b.length === 0) return Infinity;
+  const first = (p: Polygon) => p[0] as Point;
+  if (contains(b, first(a)) || contains(a, first(b))) return 0;
   let min = Infinity;
-  for (const p of a) min = Math.min(min, distanceToBoundary(b, p));
-  for (const p of b) min = Math.min(min, distanceToBoundary(a, p));
+  for (const [p, q] of edges(a)) {
+    for (const [r, t] of edges(b)) {
+      const d = segmentDistance(p, q, r, t);
+      if (d === 0) return 0;
+      if (d < min) min = d;
+    }
+  }
   return min;
+}
+
+/**
+ * Area-weighted centroid (centre of mass) of a simple polygon. Unlike the average of the
+ * vertices, it does not shift towards the side that happens to have more corner points.
+ */
+export function centroid(poly: Polygon): Point {
+  let a = 0;
+  let cx = 0;
+  let cy = 0;
+  for (let i = 0; i < poly.length; i++) {
+    const [x1, y1] = at(poly, i);
+    const [x2, y2] = at(poly, i + 1);
+    const cross = x1 * y2 - x2 * y1;
+    a += cross;
+    cx += (x1 + x2) * cross;
+    cy += (y1 + y2) * cross;
+  }
+  if (Math.abs(a) < 1e-12) {
+    // Degenerate (no area): fall back to the vertex average.
+    return [
+      poly.reduce((s, p) => s + p[0], 0) / poly.length,
+      poly.reduce((s, p) => s + p[1], 0) / poly.length,
+    ];
+  }
+  return [cx / (3 * a), cy / (3 * a)];
+}
+
+/** Area (m²) of the overlap of two simple polygons, using a robust clipping library. */
+export function intersectionArea(a: Polygon, b: Polygon): number {
+  if (a.length < 3 || b.length < 3) return 0;
+  const ring = (p: Polygon): [number, number][] => {
+    const r = p.map((q) => [q[0], q[1]] as [number, number]);
+    const f = r[0]!;
+    r.push([f[0], f[1]]);
+    return r;
+  };
+  const result = polygonClipping.intersection([ring(a)], [ring(b)]);
+  let total = 0;
+  for (const poly of result) {
+    poly.forEach((r, i) => {
+      const open = r.slice(0, -1) as unknown as Polygon;
+      total += i === 0 ? area(open) : -area(open);
+    });
+  }
+  return total;
 }

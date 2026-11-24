@@ -1,4 +1,4 @@
-import { esc, FLAG_TEXT, HOUSE_TYPE_TEXT, m2 } from "../format.ts";
+import { ACCESS_TEXT, esc, FLAG_TEXT, HOUSE_TYPE_TEXT, m2, qualityCard } from "../format.ts";
 import { bindAnswers, renderInspector } from "../inspector.ts";
 import { AERIAL_YEARS, drawPlan, legend, type Layers } from "../plan.ts";
 import { runCheck, type RunResult } from "../run.ts";
@@ -75,7 +75,7 @@ export async function renderCheck(
             <dt>House</dt><dd>${esc(HOUSE_TYPE_TEXT[ctx.houseType] ?? ctx.houseType)}${house?.bouwjaar ? `, built ${house.bouwjaar}` : ""}</dd>
             <dt>Size</dt><dd>${ms.houseLengthM ? `${ms.houseLengthM} × ${ms.houseWidthM} m` : "Unknown"}${ms.houseHeightM !== undefined ? `, ${ms.houseHeightM} m high` : ""}${house?.heights?.storeys ? `, ~${house.heights.storeys} storeys` : ""}</dd>
             <dt>Street side</dt><dd>${ms.frontageM > 0 ? `${ms.frontageM} m of boundary on public area` : "None found"}</dd>
-            <dt>Existing exit</dt><dd>${ctx.exits.length ? `Yes, ${ctx.exits.length} driveway crossing${ctx.exits.length > 1 ? "s" : ""}` : ctx.publicAreas ? "None registered" : "Unknown"}</dd>
+            <dt>Car access</dt><dd><span class="pill ${ACCESS_TEXT[ctx.access.level]?.cls ?? "grey"}">${esc(ACCESS_TEXT[ctx.access.level]?.label ?? ctx.access.level)}</span><div class="small muted" style="margin-top:4px">${esc(ctx.access.reason)}</div></dd>
             <dt>Other buildings</dt><dd>${ctx.outbuildings.length ? ctx.outbuildings.map((b) => esc(b.label ?? "Outbuilding")).join("; ") : "None registered"}</dd>
             <dt>Shared walls</dt><dd>${plotEdges.has("shared-wall") ? "Yes" : "None found"}</dd>
             <dt>Registered trees</dt><dd>${ctx.trees === null ? "Unknown" : ctx.trees.length ? `${ctx.trees.length} nearby` : "None nearby"}</dd>
@@ -94,6 +94,7 @@ export async function renderCheck(
               : `<p class="small muted" style="margin:0">Nothing unusual found in the data for this plot.</p>`
           }
         </div>
+        <div class="card">${qualityCard(ctx.quality)}</div>
         <div class="card" id="inspector"></div>
       </aside>
     </div>`;

@@ -139,17 +139,25 @@ function buildMesh(
   return { mesh: { lod: geom.lod, faces }, roofParts };
 }
 
+export interface HeightsResult {
+  heights: Map<string, BuildingHeights>;
+  /** False when more pages existed than we read. */
+  complete: boolean;
+}
+
 export async function fetchHeights(
   bbox: Bbox,
   ctx: StepContext,
   fetchFn?: FetchFn,
-  maxPages = 5,
-): Promise<Map<string, BuildingHeights>> {
+  maxPages = 10,
+): Promise<HeightsResult> {
   const out = new Map<string, BuildingHeights>();
   let next: URL | undefined = new URL("https://api.3dbag.nl/collections/pand/items");
   next.searchParams.set("bbox", bbox.map((n) => n.toFixed(2)).join(","));
   next.searchParams.set("limit", "100");
-  for (let page = 0; next && page < maxPages; page++) {
+  let pages = 0;
+  while (next && pages < maxPages) {
+    pages++;
     const body: z.infer<typeof Page> = await getJson({
       url: next,
       schema: Page,
@@ -203,5 +211,7 @@ export async function fetchHeights(
     const href = body.links?.find((l) => l.rel === "next")?.href;
     next = href ? new URL(href) : undefined;
   }
-  return out;
+  const complete = next === undefined;
+  if (!complete) ctx.degrade(`3D BAG: more than ${pages} pages, list cut off`);
+  return { heights: out, complete };
 }

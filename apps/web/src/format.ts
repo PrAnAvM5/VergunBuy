@@ -38,6 +38,24 @@ export const FLAG_TEXT: Record<string, string> = {
     "Buildings could not be loaded, so shared walls with neighbours could not be detected.",
   OUTBUILDINGS_ON_PLOT:
     "There is another registered building on this plot, such as a garage or shed. It counts toward the built area.",
+  HEIGHTS_MISSING: "Building heights could not be loaded, so heights are unknown.",
+  HEIGHTS_PARTIAL:
+    "Some buildings on this plot have no measured height. Small sheds and recent builds are often missing from the height scan.",
+  CHANGED_BETWEEN_SCANS:
+    "The national height scans show the house changed between two scans. This can mean an extension or a new roof, which matters for how much more may be built.",
+  NO_EXIT_FOUND:
+    "No registered driveway crossing and no road along the plot. Registers often miss exits, especially rural and rear ones, so check the aerial photo. A new exit needs its own permit.",
+  POSSIBLE_EXIT:
+    "A road or parking area runs directly along the plot, so a car can reach it, but no driveway crossing is registered there. Check the aerial photo.",
+  BUILDING_ON_BOUNDARY:
+    "A building crosses the plot boundary, so it is unclear which plot it belongs to. Cadastral boundaries are indicative.",
+  TREES_UNKNOWN: "Registered trees could not be loaded.",
+  DATA_TRUNCATED:
+    "Not all records could be read for this area. Checks that depend on them show as 'needs a check'.",
+  FRONT_ESTIMATED:
+    "The front of the plot is estimated (the street name was not found next to it). On corner and rural plots this can be the wrong side.",
+  PLOT_AREA_MISMATCH:
+    "The drawn plot differs from the registered plot area by more than 5%. Boundaries may be inaccurate.",
 };
 
 export const HOUSE_TYPE_TEXT: Record<string, string> = {
@@ -54,4 +72,44 @@ export const EDGE_TEXT: Record<string, { label: string; color: string; dash?: st
   "shared-wall": { label: "Shared wall", color: "#d0582b" },
   neighbour: { label: "Neighbouring plot", color: "#8a8e96" },
   unknown: { label: "Unknown (data missing)", color: "#b23a3a", dash: "2 4" },
+};
+
+export const STATUS_TEXT: Record<string, { label: string; cls: string }> = {
+  complete: { label: "Complete", cls: "ok" },
+  assumed: { label: "Estimated", cls: "warn" },
+  partial: { label: "Incomplete", cls: "warn" },
+  missing: { label: "Missing", cls: "bad" },
+};
+
+export const DOMAIN_TEXT: Record<string, string> = {
+  plot: "Plot outline",
+  buildings: "Buildings",
+  heights: "Heights",
+  publicArea: "Streets and public area",
+  vegetation: "Trees and plants",
+  access: "Car access",
+  front: "Front of the plot",
+};
+
+/** Data completeness card: what we know fully, what is estimated, incomplete or missing. */
+export function qualityCard(
+  q: Record<string, { status: string; reasons: string[]; notes: string[] }>,
+): string {
+  const rows = Object.entries(q)
+    .map(([d, v]) => {
+      const st = STATUS_TEXT[v.status] ?? { label: v.status, cls: "grey" };
+      const why = [...v.reasons, ...v.notes]
+        .map((r) => `<div class="small muted">${esc(r)}</div>`)
+        .join("");
+      return `<div class="qrow"><div><div>${esc(DOMAIN_TEXT[d] ?? d)}</div>${why}</div><span class="pill ${st.cls}">${esc(st.label)}</span></div>`;
+    })
+    .join("");
+  return `<h3>Data completeness</h3><p class="small muted" style="margin:0 0 6px">A check can only be green when all the data it needs is complete.</p>${rows}`;
+}
+
+export const ACCESS_TEXT: Record<string, { label: string; cls: string }> = {
+  registered: { label: "Registered driveway", cls: "ok" },
+  possible: { label: "Possible, needs a check", cls: "warn" },
+  "none-found": { label: "Not found, needs a check", cls: "warn" },
+  unknown: { label: "Unknown", cls: "bad" },
 };

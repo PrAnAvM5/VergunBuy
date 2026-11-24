@@ -32,14 +32,23 @@ const FeatureCollection = z.object({
 
 export type Bbox = [number, number, number, number];
 
+/** Result of a paged read. `complete` is false when more pages existed than we read. */
+export interface OgcResult {
+  features: Feature[];
+  complete: boolean;
+  pages: number;
+}
+
+export const OGC_MAX_PAGES = 10;
+
 export async function ogcItems(
   base: string,
   collection: string,
   bbox: Bbox,
   ctx: StepContext,
   fetchFn?: FetchFn,
-  maxPages = 3,
-): Promise<Feature[]> {
+  maxPages = OGC_MAX_PAGES,
+): Promise<OgcResult> {
   const url = new URL(`${base}/collections/${collection}/items`);
   url.searchParams.set("f", "json");
   url.searchParams.set("limit", "1000");
@@ -49,7 +58,8 @@ export async function ogcItems(
 
   const features: Feature[] = [];
   let next: URL | undefined = url;
-  for (let page = 0; next && page < maxPages; page++) {
+  let pages = 0;
+  while (next && pages < maxPages) {
     const body: z.infer<typeof FeatureCollection> = await getJson({
       url: next,
       schema: FeatureCollection,
@@ -57,11 +67,15 @@ export async function ogcItems(
       serviceName: `PDOK (${collection})`,
       ...(fetchFn ? { fetchFn } : {}),
     });
+    pages++;
     features.push(...body.features);
     const href = body.links?.find((l) => l.rel === "next")?.href;
     next = href ? new URL(href) : undefined;
   }
-  return features;
+  // If a next page still exists, the list was cut off: say so, never pretend it is complete.
+  const complete = next === undefined;
+  if (!complete) ctx.degrade(`${collection}: more than ${pages} pages, list cut off`);
+  return { features, complete, pages };
 }
 
 /** Outer rings of a (Multi)Polygon as open rings. Holes are ignored (rare for plots and houses). */

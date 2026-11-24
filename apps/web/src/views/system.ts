@@ -1,4 +1,4 @@
-import { esc } from "../format.ts";
+import { esc, qualityCard } from "../format.ts";
 import { lastRun } from "../run.ts";
 
 const STATUS_TEXT: Record<string, string> = {
@@ -68,6 +68,7 @@ export function renderSystem(root: HTMLElement): void {
         ${run.error ? `<p class="small" style="color:var(--bad)">Stopped: ${esc(run.error.message)} (${esc(run.error.code)})</p>` : ""}
       </div>
       <div class="side">
+        ${run.context ? `<div class="card">${qualityCard(run.context.quality)}</div>` : ""}
         <div class="card">
           <h2>Data sources used</h2>
           ${
