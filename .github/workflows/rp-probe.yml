@@ -1,0 +1,35 @@
+name: Ruimtelijke Plannen probe (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: Script to run
+        default: scripts/rp-probe.ts
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Probe
+        env:
+          RP_API_KEY: ${{ secrets.RP_API_KEY }}
+          DSO_API_KEY: ${{ secrets.DSO_API_KEY }}
+        run: pnpm exec tsx ${{ inputs.script }}
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fixtures
+          git commit -m "Probe answers (${{ inputs.script }})" || echo "nothing to commit"
+          git pull --rebase && git push
