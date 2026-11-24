@@ -85,6 +85,9 @@ interface Row {
   outbuildings?: number;
   steps?: string[];
   draw?: unknown;
+  /** Rule exclusions decided from zoning plans and monument registers: ruleId → state. */
+  legal?: Record<string, string>;
+  zoningStatus?: string;
 }
 
 const outDir = `reports/validation-${new Date().toISOString().slice(0, 10)}-s${seed}`;
@@ -128,6 +131,8 @@ function summarise(village: string, ctx: PlotContext, ms: number, tracer: Tracer
     inritWithin10m: dists.filter((d) => d <= 10).length,
     quality: Object.fromEntries(Object.entries(ctx.quality).map(([k, v]) => [k, v.status])),
     flags: ctx.flags.map((f) => f.code),
+    legal: Object.fromEntries(ctx.legal.exclusions.map((e) => [e.ruleId, e.state])),
+    zoningStatus: ctx.legal.zoning.status,
     sides: ctx.sides
       .map((s) => `${s.side}: ${s.parts.map((p) => `${p.label} ${p.lengthM} m`).join(", ")}`)
       .join(" | "),
@@ -243,16 +248,21 @@ const lines = [
   `- Any data cut off: ${pct(count((r) => r.flags?.includes("DATA_TRUNCATED") ?? false))}`,
   `- Building on the plot boundary: ${pct(count((r) => r.flags?.includes("BUILDING_ON_BOUNDARY") ?? false))}`,
   `- Invalid geometry: ${pct(count((r) => r.flags?.includes("INVALID_GEOMETRY") ?? false))}`,
+  `- Zoning plans read completely: ${pct(count((r) => r.zoningStatus === "complete"))}`,
+  ...["ex-monument-2227", "ex-village-view-2227", "ex-archaeology-2227", "ex-safety-2236"].map(
+    (id) =>
+      `- ${id}: ${["clear", "applies", "depends-on-placement", "unknown"].map((st) => `${st} ${count((r) => r.legal?.[id] === st)}`).join(", ")}`,
+  ),
   `- Median time: ${ok.map((r) => r.ms).sort((a, b) => a - b)[Math.floor(ok.length / 2)] ?? "-"} ms`,
   "",
   "## Per address",
   "",
-  "| Village | Address | Type | Access | Exits | Road contact | Nearest crossing | Front | Flags |",
-  "|---|---|---|---|---|---|---|---|---|",
+  "| Village | Address | Type | Access | Exits | Road contact | Nearest crossing | Front | Archaeology | Safety | Flags |",
+  "|---|---|---|---|---|---|---|---|---|---|---|",
   ...rows.map((r) =>
     r.error
-      ? `| ${r.village} | ${r.address} | error | ${r.error} | | | | | |`
-      : `| ${r.village} | ${r.address} | ${r.houseType} | ${r.access}${r.route ? ` (${r.route})` : ""} | ${r.exits?.length} | ${r.carReachableM} m | ${r.nearestInritM ?? "none"} m | ${r.frontMethod} | ${r.flags?.join(", ")} |`,
+      ? `| ${r.village} | ${r.address} | error | ${r.error} | | | | | | | |`
+      : `| ${r.village} | ${r.address} | ${r.houseType} | ${r.access}${r.route ? ` (${r.route})` : ""} | ${r.exits?.length} | ${r.carReachableM} m | ${r.nearestInritM ?? "none"} m | ${r.frontMethod} | ${r.legal?.["ex-archaeology-2227"] ?? "-"} | ${r.legal?.["ex-safety-2236"] ?? "-"} | ${r.flags?.join(", ")} |`,
   ),
   "",
 ];
