@@ -86,10 +86,9 @@ export async function fetchZoning(
       outlines: g.success ? outerRings(g.data) : [],
     };
   });
-  // An object without a usable outline cannot be placed: the answer is then incomplete.
-  const missingGeometry = objects.some(
-    (o) => o.outlines.length === 0 && o.kind !== "maatvoeringen",
-  );
+  // An object without any geometry cannot be placed: the answer is then incomplete. (Lines,
+  // such as "figuren", have a geometry but no outline; they carry no area rules.)
+  const missingGeometry = answer.data.objects.some((o) => o.geometry == null);
   return {
     status: answer.data.complete && !missingGeometry ? "complete" : "incomplete",
     plans: answer.data.plans.map((p) => ({ id: p.id, name: p.name, date: p.date })),

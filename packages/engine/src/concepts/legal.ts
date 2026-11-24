@@ -64,8 +64,10 @@ export interface ExclusionResult {
 export const BAL_MAX_DISTANCE_M = 120;
 
 /**
- * Zoning that could hold an activity with a Bal safety distance (22.39 c), with the distance
- * within which it matters. Distances are the largest in the matching Bal tables.
+ * Zoning that could hold an activity with a Bal safety distance (22.39 c), with the largest
+ * distance that kind of site can have (Bal tables 4.421, 4.472c, 4.484, 4.899 and articles
+ * 4.524 to 4.1101): LNG tanks at fuel stations 120 m; biogas and propane tanks 50 m; gas pressure
+ * stations up to 25 m; packaged dangerous goods 20 m.
  */
 const RISK_SOURCES: { test: RegExp; withinM: number; what: string }[] = [
   {
@@ -73,11 +75,15 @@ const RISK_SOURCES: { test: RegExp; withinM: number; what: string }[] = [
     withinM: 120,
     what: "a fuel station",
   },
-  { test: /^bedrijf|bedrijventerrein|industrie/i, withinM: 120, what: "a business site" },
   {
     test: /nutsvoorziening|gasdruk|gasontvang/i,
     withinM: 25,
     what: "a utility site (gas pressure station)",
+  },
+  {
+    test: /^bedrijf|bedrijventerrein|industrie/i,
+    withinM: 50,
+    what: "a business site (propane tank, biogas, dangerous goods)",
   },
   { test: /^agrarisch/i, withinM: 50, what: "a farm (propane tank or biogas)" },
   {
@@ -204,14 +210,30 @@ export function assessExclusions(plot: Polygon, facts: LegalFacts): ExclusionRes
     });
   else {
     const zones = atPlot.filter((o) => SAFETY_ZONE.test(o.name) || PIPELINE_STRIP.test(o.name));
+    // Installations stand where building is allowed: inside a building block (bouwvlak) when the
+    // zone has one. A zone without any building block is measured whole (conservative).
+    const blocks = facts.zoning.objects.filter((o) => o.kind === "bouwvlakken");
     const sources = facts.zoning.objects
       .filter((o) => o.kind === "bestemmingsvlakken" && !o.outlines.some((p) => overlaps(p, plot)))
       .flatMap((o) => {
         const src = RISK_SOURCES.find((r) => r.test.test(o.name) || r.test.test(o.mainGroup ?? ""));
         if (!src) return [];
-        const d = Math.min(...o.outlines.map((p) => distanceBetween(p, plot)));
+        const inZone = blocks
+          .filter((b) => b.planId === o.planId)
+          .flatMap((b) => b.outlines)
+          .filter((b) => o.outlines.some((z) => overlaps(z, b)));
+        const measured = inZone.length ? inZone : o.outlines;
+        const d = Math.min(...measured.map((p) => distanceBetween(p, plot)));
         return d <= src.withinM
-          ? [{ name: o.name, what: src.what, d: Math.round(d), withinM: src.withinM }]
+          ? [
+              {
+                name: o.name,
+                what: src.what,
+                d: Math.round(d),
+                withinM: src.withinM,
+                block: inZone.length > 0,
+              },
+            ]
           : [];
       });
     if (zones.length)
@@ -225,7 +247,7 @@ export function assessExclusions(plot: Polygon, facts: LegalFacts): ExclusionRes
       out.push({
         ruleId: "ex-safety-2236",
         state: "unknown",
-        reason: `Within the Bal safety distance of ${sources.map((s) => `${s.what} ("${s.name}", ${s.d} m away, matters within ${s.withinM} m)`).join("; ")}. Whether it actually holds such an installation is not in open data; check the risk map (Atlas Leefomgeving).`,
+        reason: `Within the Bal safety distance of ${sources.map((s) => `${s.what} ("${s.name}", ${s.block ? "its building area is " : ""}${s.d} m away, matters within ${s.withinM} m)`).join("; ")}. Whether it actually holds such an installation is not in open data; check the risk map (Atlas Leefomgeving).`,
       });
     else
       out.push({

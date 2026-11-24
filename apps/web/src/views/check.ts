@@ -113,6 +113,42 @@ function rememberView(view: View): void {
   history.replaceState(null, "", `${path}${q ? `?${q}` : ""}`);
 }
 
+const EXCLUSION_TEXT: Record<string, string> = {
+  "ex-monument-2227": "Monuments",
+  "ex-village-view-2227": "Protected village view",
+  "ex-archaeology-2227": "Archaeology",
+  "ex-monument-village-2236": "Monument or view (allowed-by-law route)",
+  "ex-safety-2236": "External safety",
+};
+const STATE_PILL: Record<string, { cls: string; label: string }> = {
+  clear: { cls: "ok", label: "Clear" },
+  applies: { cls: "bad", label: "Applies" },
+  "depends-on-placement": { cls: "warn", label: "Depends on position" },
+  unknown: { cls: "warn", label: "Needs a check" },
+};
+
+/** Zoning plans, monuments and safety: the exceptions in the carport rules, from the registers. */
+function legalCard(ctx: PlotContext): string {
+  const l = ctx.legal;
+  if (!l) return "";
+  const plans = l.zoning.plans;
+  return `<div class="card">
+    <h3>Zoning plans and monuments</h3>
+    <p class="small muted" style="margin:0 0 6px">${
+      l.zoning.status === "missing"
+        ? "The old zoning plans could not be loaded."
+        : `${plans.length} binding zoning plan(s): ${plans.map((p) => esc(p.name)).join("; ")}`
+    }</p>
+    ${l.exclusions
+      .filter((e) => e.ruleId !== "ex-monument-village-2236")
+      .map(
+        (e) =>
+          `<div class="qrow"><div><div>${esc(EXCLUSION_TEXT[e.ruleId] ?? e.ruleId)} <span class="pill ${STATE_PILL[e.state]?.cls ?? "grey"}">${STATE_PILL[e.state]?.label ?? e.state}</span></div><div class="small muted">${esc(e.reason)}</div></div></div>`,
+      )
+      .join("")}
+  </div>`;
+}
+
 function obstacleText(ctx: PlotContext): string {
   const o = ctx.obstacles;
   if (!o) return "Unknown: the height scan could not be loaded";
@@ -291,6 +327,7 @@ export async function renderCheck(
             <dt>Registered trees</dt><dd>${ctx.trees === null ? "Unknown" : ctx.trees.length ? `${ctx.trees.length} nearby` : "None nearby"}</dd>
           </dl>
         </div>
+        ${legalCard(ctx)}
         <div class="card">
           <h3>Surroundings</h3>
           <p class="small muted" style="margin:0 0 6px">What lies along each side of the plot.</p>
