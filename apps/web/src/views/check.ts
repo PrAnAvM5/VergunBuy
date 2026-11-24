@@ -1,6 +1,6 @@
 import { esc, FLAG_TEXT, HOUSE_TYPE_TEXT, m2 } from "../format.ts";
 import { renderInspector } from "../inspector.ts";
-import { drawPlan, legend, type Layers } from "../plan.ts";
+import { AERIAL_YEARS, drawPlan, legend, type Layers } from "../plan.ts";
 import { runCheck, type RunResult } from "../run.ts";
 
 export async function renderCheck(
@@ -24,15 +24,16 @@ export async function renderCheck(
   }
 
   const ctx = result.context;
-  const layers: Layers = { context: true, edges: true };
+  const layers: Layers = { context: true, edges: true, dimensions: true, aerial: "" };
+  const ms = ctx.measurements;
+  const house = ctx.house[0];
   let selected: string | undefined;
   const plotEdges = new Set(ctx.edges.map((e) => e.kind));
-  const publicLen = ctx.edges.filter((e) => e.kind === "public").reduce((s, e) => s + e.lengthM, 0);
 
   root.innerHTML = `
     <div class="check-head">
       <div>
-        <div class="muted small">${mode === "demo" ? '<span class="pill warn">Recorded example (24-11-2026)</span> ' : '<span class="pill ok">Live data</span> '}${result.totalMs} ms · <a href="#/system">see every step</a></div>
+        <div class="muted small">${mode === "demo" ? '<span class="pill warn">Recorded example (recorded 24-11-2026)</span> ' : '<span class="pill ok">Live data</span> '}${result.totalMs} ms · <a href="#/system">see every step</a></div>
         <h1>${esc(ctx.address.label)}</h1>
       </div>
       <a class="btn" href="#/">Check another address</a>
@@ -42,6 +43,8 @@ export async function renderCheck(
         <div class="card plan-wrap">
           <div id="plan"></div>
           <div class="plan-tools">
+            <label>Aerial photo <select id="l-aerial">${AERIAL_YEARS.map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join("")}</select></label>
+            <label><input type="checkbox" id="l-dims" checked /> Dimensions</label>
             <label><input type="checkbox" id="l-edges" checked /> Edge types</label>
             <label><input type="checkbox" id="l-context" checked /> Surroundings</label>
             <label><input type="checkbox" id="l-dev" ${developer ? "checked" : ""} /> Developer details</label>
@@ -59,9 +62,13 @@ export async function renderCheck(
           <h2>This plot</h2>
           <dl class="facts">
             <dt>Plot</dt><dd>${esc(ctx.plot.id)}, ${m2(ctx.plot.areaM2)}</dd>
-            <dt>House</dt><dd>${esc(HOUSE_TYPE_TEXT[ctx.houseType] ?? ctx.houseType)}${ctx.house[0]?.bouwjaar ? `, built ${ctx.house[0].bouwjaar}` : ""}</dd>
-            <dt>Street side</dt><dd>${publicLen > 0 ? `${publicLen.toFixed(1)} m of boundary on public area` : "None found"}</dd>
+            <dt>House</dt><dd>${esc(HOUSE_TYPE_TEXT[ctx.houseType] ?? ctx.houseType)}${house?.bouwjaar ? `, built ${house.bouwjaar}` : ""}</dd>
+            <dt>Size</dt><dd>${ms.houseLengthM ? `${ms.houseLengthM} × ${ms.houseWidthM} m` : "Unknown"}${ms.houseHeightM !== undefined ? `, ${ms.houseHeightM} m high` : ""}${house?.heights?.storeys ? `, ~${house.heights.storeys} storeys` : ""}</dd>
+            <dt>Street side</dt><dd>${ms.frontageM > 0 ? `${ms.frontageM} m of boundary on public area` : "None found"}</dd>
+            <dt>Existing exit</dt><dd>${ctx.exits.length ? `Yes, ${ctx.exits.length} driveway crossing${ctx.exits.length > 1 ? "s" : ""}` : ctx.publicAreas ? "None registered" : "Unknown"}</dd>
+            <dt>Other buildings</dt><dd>${ctx.outbuildings.length ? ctx.outbuildings.map((b) => esc(b.label ?? "Outbuilding")).join("; ") : "None registered"}</dd>
             <dt>Shared walls</dt><dd>${plotEdges.has("shared-wall") ? "Yes" : "None found"}</dd>
+            <dt>Registered trees</dt><dd>${ctx.trees === null ? "Unknown" : ctx.trees.length ? `${ctx.trees.length} nearby` : "None nearby"}</dd>
           </dl>
         </div>
         <div class="card">
@@ -91,6 +98,14 @@ export async function renderCheck(
   planEl?.addEventListener("click", (e) => {
     const target = (e.target as Element).closest("[data-sel]");
     selected = target?.getAttribute("data-sel") ?? undefined;
+    redraw();
+  });
+  root.querySelector<HTMLSelectElement>("#l-aerial")?.addEventListener("change", (e) => {
+    layers.aerial = (e.target as HTMLSelectElement).value;
+    redraw();
+  });
+  root.querySelector<HTMLInputElement>("#l-dims")?.addEventListener("change", (e) => {
+    layers.dimensions = (e.target as HTMLInputElement).checked;
     redraw();
   });
   root.querySelector<HTMLInputElement>("#l-edges")?.addEventListener("change", (e) => {

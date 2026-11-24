@@ -519,3 +519,12 @@ table.src th {
     padding: 20px 16px 40px;
   }
 }
+select {
+  font: inherit;
+  font-size: 13px;
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink);
+}

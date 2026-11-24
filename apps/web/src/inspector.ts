@@ -20,6 +20,13 @@ interface View {
   raw: unknown;
 }
 
+const ROOF_TEXT: Record<string, string> = {
+  slanted: "Sloped",
+  horizontal: "Flat",
+  "multiple horizontal": "Flat, at several heights",
+  "could not be detected": "Not detected",
+};
+
 const certPill = (c?: Row["certainty"]) =>
   c
     ? ` <span class="pill ${c === "measured" ? "ok" : c === "derived" ? "" : c === "assumed" ? "warn" : "bad"} cert">${c}</span>`
@@ -57,8 +64,62 @@ function describe(ctx: PlotContext, key: string): View | undefined {
       type === "house" ? ctx.house : type === "outbuilding" ? ctx.outbuildings : ctx.neighbours;
     const b = list.find((x) => x.id === id);
     if (!b) return undefined;
-    const changed =
-      b.documentdatum && b.bouwjaar && Number(b.documentdatum.slice(0, 4)) > b.bouwjaar + 1;
+    const h = b.heights;
+    const changed = h?.changedBetweenScans;
+    const scanChange = changed?.ahn3ToAhn4
+      ? "Changed between the 2014–2019 and 2020–2022 height scans"
+      : changed?.ahn4ToAhn5
+        ? "Changed between the 2020–2022 and 2023–2025 height scans"
+        : changed && (changed.ahn3ToAhn4 === false || changed.ahn4ToAhn5 === false)
+          ? "No change seen between height scans"
+          : undefined;
+    const rows: Row[] = [];
+    if (type === "outbuilding")
+      rows.push({
+        label: "What it probably is",
+        value: esc(b.label ?? "Outbuilding"),
+        certainty: "assumed",
+      });
+    rows.push({
+      label: "Size",
+      value: `${b.lengthM ?? "?"} × ${b.widthM ?? "?"} m (${m2(area(b.outline))})`,
+      certainty: "derived",
+    });
+    if (h?.heightM !== undefined)
+      rows.push({
+        label: "Height",
+        value: `${h.heightM} m${h.lowestRoofM !== undefined ? ` (lowest roof ${h.lowestRoofM} m)` : ""}`,
+        certainty: "measured",
+      });
+    if (h?.roofType)
+      rows.push({
+        label: "Roof",
+        value: esc(ROOF_TEXT[h.roofType] ?? h.roofType),
+        certainty: "measured",
+      });
+    if (h?.storeys !== undefined)
+      rows.push({ label: "Storeys (estimated)", value: String(h.storeys), certainty: "derived" });
+    if (b.bouwjaar) rows.push({ label: "Built", value: String(b.bouwjaar), certainty: "measured" });
+    if (b.addresses !== undefined)
+      rows.push({ label: "Addresses inside", value: String(b.addresses), certainty: "measured" });
+    if (type !== "neighbour" && scanChange)
+      rows.push({ label: "Height scans", value: esc(scanChange), certainty: "measured" });
+    if (type !== "neighbour" && h?.registerVersion !== undefined)
+      rows.push({
+        label: "Register record",
+        value:
+          h.registerVersion > 1
+            ? `Changed since creation (version ${h.registerVersion})`
+            : "Unchanged since it was created (version 1)",
+        certainty: "measured",
+      });
+    if (h?.scanYear)
+      rows.push({
+        label: "Measured in",
+        value: `${h.scanYear} (${esc(h.scanSource ?? "AHN")})`,
+        certainty: "measured",
+      });
+    rows.push({ label: "BAG id", value: esc(b.id), certainty: "measured" });
     return {
       title:
         type === "house"
@@ -66,41 +127,60 @@ function describe(ctx: PlotContext, key: string): View | undefined {
           : type === "outbuilding"
             ? "Other building on this plot"
             : "Neighbouring building",
-      rows: [
-        { label: "BAG id", value: esc(b.id), certainty: "measured" },
-        { label: "Footprint (from above)", value: m2(area(b.outline)), certainty: "measured" },
-        ...(b.bouwjaar
-          ? [{ label: "Built", value: String(b.bouwjaar), certainty: "measured" as const }]
-          : []),
-        { label: "Status", value: esc(b.status), certainty: "measured" },
-        ...(b.documentdatum
-          ? [
-              {
-                label: "Last register document",
-                value: `${esc(b.documentdatum)}${b.documentnummer ? ` (no. ${esc(b.documentnummer)})` : ""}`,
-                certainty: "measured" as const,
-              },
-            ]
-          : []),
-        ...(type === "house" && changed
-          ? [
-              {
-                label: "Possible later change",
-                value:
-                  "A register document is dated well after the build year. This can mean an extension; it is evidence, not proof.",
-                certainty: "derived" as const,
-              },
-            ]
-          : []),
-      ],
-      source: "BAG (Basisregistratie Adressen en Gebouwen), public domain",
+      rows,
+      source: `BAG (outline, year, addresses; public domain)${h ? " and 3D BAG (heights, roof, scan changes; CC BY 4.0)" : ""}`,
       how:
         type === "house"
-          ? "The building(s) linked to this address in the register. Demolished or wrongly registered buildings are ignored."
+          ? "The building linked to this address in the register. Heights come from the national laser scan; a change between scans can mean an extension."
           : type === "outbuilding"
-            ? "A registered building whose centre lies on this plot and that is not the house."
-            : "A registered building near the plot. Used to detect shared walls.",
+            ? "The register does not say what an outbuilding is. We describe it from its size, height and whether it has an address, so treat the description as a likely guess."
+            : "A registered building near the plot, used to detect shared walls.",
       raw: b,
+    };
+  }
+  if (type === "tree") {
+    const t = ctx.trees?.find((x) => x.id === id);
+    if (!t) return undefined;
+    return {
+      title: "Registered tree",
+      rows: [
+        { label: "Crown shown", value: `${t.crownM} m wide`, certainty: "assumed" },
+        ...(t.registeredAt
+          ? [{ label: "Registered", value: esc(t.registeredAt), certainty: "measured" as const }]
+          : []),
+      ],
+      source: "BGT (vegetatieobject), CC0",
+      how: "The municipality registers street trees as points, without size, so the crown circle is an assumption. Trees in gardens are not registered anywhere; use the aerial photo to spot them. Whether a tree is protected is checked separately.",
+      raw: t,
+    };
+  }
+  if (type === "exit") {
+    const e = ctx.exits.find((x) => x.id === id);
+    if (!e) return undefined;
+    return {
+      title: "Driveway crossing (existing exit)",
+      rows: [
+        {
+          label: "Along the plot",
+          value: e.alongPlotM > 0 ? m(e.alongPlotM) : "Touches the plot corner",
+          certainty: "derived",
+        },
+        ...(e.registeredAt
+          ? [{ label: "Registered", value: esc(e.registeredAt), certainty: "measured" as const }]
+          : []),
+      ],
+      source: "BGT (wegdeel, function 'inrit'), CC0",
+      how: "A registered crossing from the road onto a plot. A carport that uses an existing exit avoids the separate permit needed for a new one.",
+      raw: e,
+    };
+  }
+  if (type === "hedge") {
+    return {
+      title: "Hedge",
+      rows: [],
+      source: "BGT (vegetatieobject), CC0",
+      how: "A hedge registered by the municipality. Garden hedges are usually not registered.",
+      raw: id,
     };
   }
   if (type === "public") {
