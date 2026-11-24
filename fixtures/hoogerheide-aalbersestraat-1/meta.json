@@ -15,7 +15,9 @@
     "ok bgt-public: 23 current public areas; ignored 16 historical records",
     "ok classify-edges: 8 edge runs",
     "ok bgt-structures: none registered on or at the plot",
-    "ok ahn-obstacles: 0 tall (0 m²), 6 medium (5.3 m²), 0 overhanging from next door (0 m²) in 40.5 m² of garden"
+    "ok ahn-obstacles: 0 tall (0 m²), 6 medium (5.3 m²), 0 overhanging from next door (0 m²) in 40.5 m² of garden",
+    "ok zoning-plans: 10 binding plan(s); on the plot: Waarde - Archeologie, Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 2, vrijwaringszone - radar (incomplete)",
+    "ok heritage: no monument on or next to the plot"
   ],
   "flags": [
     "OUTBUILDINGS_ON_PLOT",

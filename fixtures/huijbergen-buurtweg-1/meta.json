@@ -10,14 +10,14 @@
     "ok bag-address: Address is in 1 building(s)",
     "ok brk-plot: Plot Huijbergen D 320, 2413 m² drawn",
     "ok bag-buildings: 1 house, 0 other buildings on plot, 0 nearby; ignored 0 demolished or invalid",
-    "failed 3dbag-heights: ",
+    "ok 3dbag-heights: Heights for 1 buildings, height scan of 2024",
     "ok bgt-trees: 12 registered trees, 0 hedges, 0 other vegetation nearby",
     "ok bgt-public: 8 current public areas; ignored 12 historical records",
     "ok classify-edges: 6 edge runs",
     "ok bgt-structures: none registered on or at the plot",
-    "ok ahn-obstacles: 9 tall (104 m²), 24 medium (78.5 m²), 1 overhanging from next door (17.5 m²) in 2098 m² of garden"
+    "ok ahn-obstacles: 12 tall (93 m²), 24 medium (78.5 m²), 3 overhanging from next door (17.5 m²) in 2098 m² of garden",
+    "ok zoning-plans: 5 binding plan(s); on the plot: specifieke vorm van agrarisch - veehouderij, milieuzone - grondwaterbeschermingsgebied, overige zone - archeologische verwachtingswaarde, Agrarisch, Verkeer, bouwvlak, specifieke vorm van agrarisch - loonwerkbedrijf, other: archeologische verwachtingswaarde, geluidzone - industrie, luchtvaartverkeerzone - 2, vrijwaringszone - radar",
+    "ok heritage: no monument on or next to the plot"
   ],
-  "flags": [
-    "HEIGHTS_MISSING"
-  ]
+  "flags": []
 }

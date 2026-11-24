@@ -15,7 +15,9 @@
     "ok bgt-public: 35 current public areas; ignored 87 historical records",
     "ok classify-edges: 10 edge runs",
     "ok bgt-structures: none registered on or at the plot",
-    "ok ahn-obstacles: 1 tall (910.5 m²), 15 medium (53.3 m²), 2 overhanging from next door (289.8 m²) in 1655.8 m² of garden"
+    "ok ahn-obstacles: 52 tall (1068.8 m²), 15 medium (53.3 m²), 7 overhanging from next door (30.3 m²) in 1655.8 m² of garden",
+    "ok zoning-plans: 8 binding plan(s); on the plot: Wonen - 1, bouwvlak, vrijwaringszone - radar, maximale goot- en bouwhoogte (m) (incomplete)",
+    "ok heritage: no monument on or next to the plot"
   ],
   "flags": []
 }

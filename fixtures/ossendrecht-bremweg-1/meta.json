@@ -15,7 +15,9 @@
     "ok bgt-public: 5 current public areas; ignored 25 historical records",
     "ok classify-edges: 15 edge runs",
     "ok bgt-structures: none registered on or at the plot",
-    "ok ahn-obstacles: 15 tall (270.8 m²), 24 medium (65.5 m²), 1 overhanging from next door (12.3 m²) in 5023.8 m² of garden"
+    "ok ahn-obstacles: 19 tall (269.3 m²), 24 medium (65.5 m²), 1 overhanging from next door (10.3 m²) in 5023.8 m² of garden",
+    "ok zoning-plans: 7 binding plan(s); on the plot: Waarde - Natura 2000, overige zone - beperkingen veehouderij, overige zone - ecologische hoofdstructuur, overige zone - groenblauwe mantel, Wonen, Waarde - Aardkundig waardevol gebied, Natuur, bouwvlak, luchtvaartverkeerzone - 8, vrijwaringszone - radar, overige zone - zoekgebied voor behoud en herstel watersystemen, luchtvaartverkeerzone - 1, vrijwaringszone - radarverstoringsgebied (incomplete)",
+    "ok heritage: no monument on or next to the plot"
   ],
   "flags": [
     "BUILDING_ON_BOUNDARY",
