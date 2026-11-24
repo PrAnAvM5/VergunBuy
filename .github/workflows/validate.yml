@@ -1,0 +1,38 @@
+name: Validation run (manual)
+
+# Runs the real pipeline on random homes across the five villages and commits a report with
+# aerial check images to reports/validation-<date>/.
+on:
+  workflow_dispatch:
+    inputs:
+      per_village:
+        description: Homes per village
+        default: "4"
+      seed:
+        description: Random seed (same seed, same addresses)
+        default: "20261124"
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec tsx scripts/validate.ts "${{ inputs.per_village }}" "${{ inputs.seed }}"
+      - run: pip install pillow && python scripts/validate_images.py reports/validation-$(date -u +%F)
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports
+          git commit -m "Validation run ${{ inputs.seed }}" || echo "nothing to commit"
+          git pull --rebase && git push
