@@ -22,6 +22,7 @@ const recordingFetch: typeof fetch = async (input, init) => {
     .clone()
     .json()
     .catch(() => undefined)) as { features?: unknown[] } | undefined;
+  if (key === "3dbag/pand" && body) normalise3dbag(body as never);
   if (key && body && res.ok) {
     const prev = recorded[key];
     if (prev?.features && body.features) prev.features.push(...body.features);
@@ -29,6 +30,20 @@ const recordingFetch: typeof fetch = async (input, init) => {
   }
   return res;
 };
+
+/** 3D BAG scales vertices per response; make them absolute so pages can be merged. */
+function normalise3dbag(page: {
+  features?: { vertices?: number[][] }[];
+  metadata?: { transform?: { scale: number[]; translate: number[] } };
+}) {
+  const t = page.metadata?.transform;
+  if (!t) return;
+  for (const f of page.features ?? [])
+    f.vertices = (f.vertices ?? []).map((v) =>
+      v.map((n, i) => n * (t.scale[i] ?? 1) + (t.translate[i] ?? 0)),
+    );
+  page.metadata = { ...page.metadata, transform: { scale: [1, 1, 1], translate: [0, 0, 0] } };
+}
 
 const tracer = new Tracer();
 const query = AddressQuery.parse({ postcode, number, ...(addition ? { addition } : {}) });

@@ -1,6 +1,7 @@
 /**
- * 3D BAG (TU Delft / 3DGI, CC BY 4.0): heights, roof type, storeys and change flags per BAG building,
- * derived from the national height scans (AHN). Heights are metres above NAP; we store heights above ground.
+ * 3D BAG (TU Delft / 3DGI, CC BY 4.0): heights, roof type, storeys, change flags and 3D shape
+ * per BAG building, derived from the national height scans (AHN).
+ * Heights in the source are metres above NAP; we convert to metres above ground.
  * Docs: https://api.3dbag.nl/api.html
  */
 import type { StepContext } from "@vergunbuy/engine";
@@ -26,16 +27,59 @@ const Attributes = z
   })
   .passthrough();
 
+const Geometry = z
+  .object({
+    type: z.string(),
+    lod: z.string(),
+    boundaries: z.unknown(),
+    semantics: z
+      .object({
+        surfaces: z.array(z.object({ type: z.string() }).passthrough()),
+        values: z.unknown(),
+      })
+      .optional(),
+  })
+  .passthrough();
+
+const CityObject = z
+  .object({
+    type: z.string(),
+    attributes: Attributes.optional(),
+    geometry: z.array(Geometry).optional(),
+  })
+  .passthrough();
+
 const Page = z.object({
   features: z.array(
     z.object({
-      CityObjects: z.record(
-        z.object({ type: z.string(), attributes: Attributes.optional() }).passthrough(),
-      ),
+      CityObjects: z.record(CityObject),
+      vertices: z.array(z.array(z.number())).optional(),
     }),
   ),
+  metadata: z
+    .object({
+      transform: z
+        .object({ scale: z.array(z.number()), translate: z.array(z.number()) })
+        .optional(),
+    })
+    .passthrough()
+    .optional(),
   links: z.array(z.object({ rel: z.string(), href: z.string() })).optional(),
 });
+
+/** One planar face of a building: RD x, RD y, height above ground (metres). */
+export interface Face {
+  kind: "roof" | "wall" | "ground";
+  ring: [number, number, number][];
+  /** Roof slope in degrees, when known. */
+  slopeDeg?: number;
+}
+
+export interface BuildingMesh {
+  /** Level of detail used: 2.2 = real roof shapes, 1.3/1.2 = simpler blocks. */
+  lod: string;
+  faces: Face[];
+}
 
 export interface BuildingHeights {
   /** Highest roof point above ground, metres. */
@@ -52,9 +96,48 @@ export interface BuildingHeights {
   /** BAG record version; above 1 means the register record was changed after creation. */
   registerVersion?: number;
   reliable?: boolean;
+  /** Each roof plane: slope and top height above ground (from LoD 2.2). */
+  roofParts?: { slopeDeg: number; topM: number }[];
+  mesh?: BuildingMesh;
 }
 
+const PREFERRED_LODS = ["2.2", "1.3", "1.2"];
 const round1 = (n: number) => Math.round(n * 10) / 10;
+
+type CityObjectT = z.infer<typeof CityObject>;
+
+function buildMesh(
+  part: CityObjectT | undefined,
+  vtx: (i: number) => [number, number, number],
+): { mesh: BuildingMesh; roofParts: { slopeDeg: number; topM: number }[] } | undefined {
+  const geoms = part?.geometry ?? [];
+  const geom = PREFERRED_LODS.map((l) => geoms.find((g) => g.lod === l)).find(Boolean);
+  if (!geom || geom.type !== "Solid" || !geom.semantics) return undefined;
+  const shells = geom.boundaries as number[][][][];
+  const values = geom.semantics.values as number[][];
+  const surfaces = geom.semantics.surfaces;
+  const faces: Face[] = [];
+  const roofParts: { slopeDeg: number; topM: number }[] = [];
+  shells.forEach((shell, si) =>
+    shell.forEach((surface, fi) => {
+      const sem = surfaces[values[si]?.[fi] ?? -1] as
+        { type: string; b3_hellingshoek?: number } | undefined;
+      const kind: Face["kind"] =
+        sem?.type === "RoofSurface" ? "roof" : sem?.type === "GroundSurface" ? "ground" : "wall";
+      const outer = surface[0];
+      if (!outer) return;
+      const face: Face = { kind, ring: outer.map(vtx) };
+      if (sem?.b3_hellingshoek !== undefined) face.slopeDeg = sem.b3_hellingshoek;
+      faces.push(face);
+      if (kind === "roof")
+        roofParts.push({
+          slopeDeg: round1(sem?.b3_hellingshoek ?? 0),
+          topM: round1(Math.max(...face.ring.map((p) => p[2]))),
+        });
+    }),
+  );
+  return { mesh: { lod: geom.lod, faces }, roofParts };
+}
 
 export async function fetchHeights(
   bbox: Bbox,
@@ -74,7 +157,9 @@ export async function fetchHeights(
       serviceName: "3D BAG",
       ...(fetchFn ? { fetchFn } : {}),
     });
+    const t = body.metadata?.transform ?? { scale: [1, 1, 1], translate: [0, 0, 0] };
     for (const f of body.features) {
+      const verts = f.vertices ?? [];
       for (const [key, obj] of Object.entries(f.CityObjects)) {
         if (obj.type !== "Building" || !obj.attributes) continue;
         const a = obj.attributes;
@@ -94,6 +179,24 @@ export async function fetchHeights(
         if (a.b3_pw_bron) h.scanSource = a.b3_pw_bron;
         if (a.voorkomenidentificatie != null) h.registerVersion = a.voorkomenidentificatie;
         if (a.b3_kwaliteitsindicator != null) h.reliable = a.b3_kwaliteitsindicator;
+
+        // Geometry lives on the BuildingPart child; vertices are integers scaled per response.
+        const part = Object.entries(f.CityObjects).find(
+          ([k, o]) => o.type === "BuildingPart" && k.startsWith(key),
+        )?.[1];
+        const vtx = (i: number): [number, number, number] => {
+          const v = verts[i] ?? [0, 0, 0];
+          return [
+            (v[0] ?? 0) * (t.scale[0] ?? 1) + (t.translate[0] ?? 0),
+            (v[1] ?? 0) * (t.scale[1] ?? 1) + (t.translate[1] ?? 0),
+            round1((v[2] ?? 0) * (t.scale[2] ?? 1) + (t.translate[2] ?? 0) - (ground ?? 0)),
+          ];
+        };
+        const built = buildMesh(part, vtx);
+        if (built) {
+          h.mesh = built.mesh;
+          if (built.roofParts.length) h.roofParts = built.roofParts;
+        }
         out.set(key.replace("NL.IMBAG.Pand.", ""), h);
       }
     }

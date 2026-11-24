@@ -16,6 +16,10 @@ import {
   classifyEdges,
   distanceBetween,
   orientedBox,
+  plotFrame,
+  plotLayout,
+  type PlotFrame,
+  type PlotLayout,
   contains,
   deriveHouseType,
   SafeError,
@@ -114,6 +118,9 @@ export interface PlotContext {
   hedges: { id: string; outline: Polygon }[];
   exits: Exit[];
   measurements: Measurements;
+  /** The plot's own frame (street at the bottom) and its main dimensions. */
+  frame: PlotFrame;
+  layout: PlotLayout;
   edges: EdgeRun[];
   houseType: HouseType;
   flags: Flag[];
@@ -409,6 +416,9 @@ export async function buildPlotContext(
     flags.push({ code: "TREES_UNKNOWN", detail: "Registered trees could not be loaded." });
   }
 
+  // Street-name labels (BGT): tell us which side of the plot faces the address's own street.
+  let streetLabels: { at: Point; name: string }[] = [];
+
   // 4. Public area from BGT (current objects only). Degrades to "unknown" edges, never to "neighbour".
   let publicAreas: (PublicArea & { label: string; registeredAt?: string })[] | null = null;
   try {
@@ -421,6 +431,20 @@ export async function buildPlotContext(
           ogcItems(OGC.bgt, "begroeidterreindeel", work, ctx, fetchFn),
           ogcItems(OGC.bgt, "waterdeel", work, ctx, fetchFn),
         ]);
+        streetLabels = await ogcItems(OGC.bgt, "openbareruimtelabel", work, ctx, fetchFn)
+          .then((fs) =>
+            fs
+              .filter((f) => isCurrentBgt(f) && f.geometry?.type === "Point")
+              .map((f) => {
+                const c = f.geometry?.coordinates as number[];
+                return {
+                  at: [Number(c[0]), Number(c[1])] as Point,
+                  name: str(f.properties.openbareruimtenaam) ?? "",
+                };
+              })
+              .filter((l) => l.name.toLowerCase() === address.street.toLowerCase()),
+          )
+          .catch(() => []);
         const areas: (PublicArea & { label: string; registeredAt?: string })[] = [];
         let history = 0;
         let narrowPaths = 0;
@@ -533,7 +557,14 @@ export async function buildPlotContext(
         "No registered driveway crossing touches this plot. A carport may need a new exit, which needs its own permit.",
     });
 
-  // 7. Measurements.
+  // 7. The plot's own frame: street at the bottom.
+  const kindById = new Map((publicAreas ?? []).map((a) => [a.id, a.kind]));
+  const frame = plotFrame(plot.outline, edges, streetLabels, (id) =>
+    id ? kindById.get(id) : undefined,
+  );
+  const layout = plotLayout(frame, plot.outline, mainHouse?.outline);
+
+  // 8. Measurements.
   const publicOutlines = (publicAreas ?? [])
     .filter((a) => a.kind !== "water")
     .map((a) => a.outline);
@@ -576,6 +607,8 @@ export async function buildPlotContext(
     hedges,
     exits,
     measurements,
+    frame,
+    layout,
     edges,
     houseType: deriveHouseType(edges),
     flags,
