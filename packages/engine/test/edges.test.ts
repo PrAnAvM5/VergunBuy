@@ -97,3 +97,15 @@ describe("classifyEdges", () => {
     expect(facts.houseType.note).toContain("terraced");
   });
 });
+
+describe("orientedBox", () => {
+  it("measures a rotated rectangle along its own axes", async () => {
+    const { orientedBox } = await import("../src/geometry.ts");
+    const c = Math.cos(Math.PI / 6);
+    const s = Math.sin(Math.PI / 6);
+    const rot = (x: number, y: number) => [x * c - y * s, x * s + y * c] as const;
+    const box = orientedBox([rot(0, 0), rot(9, 0), rot(9, 6), rot(0, 6)]);
+    expect(box.lengthM).toBeCloseTo(9, 1);
+    expect(box.widthM).toBeCloseTo(6, 1);
+  });
+});

@@ -5,3 +5,4 @@ apps/web/legacy
 fixtures/probe
 fixtures/hoogerheide-aalbersestraat-1/responses.json
 fixtures/probe2
+fixtures/*/responses.json

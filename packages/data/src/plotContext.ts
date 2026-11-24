@@ -14,6 +14,8 @@
 import {
   area,
   classifyEdges,
+  distanceBetween,
+  orientedBox,
   contains,
   deriveHouseType,
   SafeError,
@@ -28,6 +30,7 @@ import {
 import type { FetchFn } from "./http.ts";
 import type { Address } from "./sources/locatieserver.ts";
 import { num, OGC, ogcItems, outerRings, str, type Bbox, type Feature } from "./sources/ogc.ts";
+import { fetchHeights, type BuildingHeights } from "./sources/threedbag.ts";
 
 export interface Building {
   id: string;
@@ -36,6 +39,41 @@ export interface Building {
   status: string;
   documentdatum?: string;
   documentnummer?: string;
+  /** Number of addresses (verblijfsobjecten) in the building; 0 for most sheds and garages. */
+  addresses?: number;
+  /** BAG use, e.g. "woonfunctie". Absent for buildings without an address. */
+  use?: string;
+  heights?: BuildingHeights;
+  /** Plain description. For outbuildings this is an assumption: BAG does not record the type. */
+  label?: string;
+  lengthM?: number;
+  widthM?: number;
+}
+
+export interface Tree {
+  id: string;
+  at: Point;
+  /** Assumed crown diameter: the register has a point only, no size. */
+  crownM: number;
+  registeredAt?: string;
+}
+
+export interface Exit {
+  id: string;
+  outline: Polygon;
+  /** Length of plot boundary that touches the driveway crossing. */
+  alongPlotM: number;
+  registeredAt?: string;
+}
+
+export interface Measurements {
+  houseLengthM?: number;
+  houseWidthM?: number;
+  houseHeightM?: number;
+  /** Shortest distance from the house to public area. */
+  houseToPublicM?: number;
+  /** Plot boundary length on public area. */
+  frontageM: number;
 }
 
 export type FlagCode =
@@ -45,7 +83,11 @@ export type FlagCode =
   | "POSSIBLE_ACHTERPAD"
   | "WATER_NEARBY"
   | "NEIGHBOURS_UNKNOWN"
-  | "OUTBUILDINGS_ON_PLOT";
+  | "OUTBUILDINGS_ON_PLOT"
+  | "HEIGHTS_MISSING"
+  | "CHANGED_BETWEEN_SCANS"
+  | "NO_EXIT_FOUND"
+  | "TREES_UNKNOWN";
 
 export interface Flag {
   code: FlagCode;
@@ -67,7 +109,11 @@ export interface PlotContext {
   neighbours: Building[];
   /** Other parcels nearby, for drawing context only. */
   nearbyParcels: { id: string; outline: Polygon }[];
-  publicAreas: (PublicArea & { label: string })[] | null;
+  publicAreas: (PublicArea & { label: string; registeredAt?: string })[] | null;
+  trees: Tree[] | null;
+  hedges: { id: string; outline: Polygon }[];
+  exits: Exit[];
+  measurements: Measurements;
   edges: EdgeRun[];
   houseType: HouseType;
   flags: Flag[];
@@ -80,6 +126,12 @@ const IN_USE = new Set([
   "Verbouwing pand",
   "Sloopvergunning verleend",
 ]);
+
+/** Registration date of a BGT object, as a spreadable optional field. */
+const registered = (f: Feature): { registeredAt?: string } => {
+  const t = str(f.properties.tijdstip_registratie);
+  return t ? { registeredAt: t.slice(0, 10) } : {};
+};
 
 const isCurrentBgt = (f: Feature) =>
   f.properties.eind_registratie === null || f.properties.eind_registratie === undefined;
@@ -124,8 +176,30 @@ function toBuilding(f: Feature): Building[] {
     if (bouwjaar !== undefined) b.bouwjaar = bouwjaar;
     if (documentdatum) b.documentdatum = documentdatum;
     if (documentnummer) b.documentnummer = documentnummer;
+    const addresses = num(f.properties.aantal_verblijfsobjecten);
+    if (addresses !== undefined) b.addresses = addresses;
+    const use = str(f.properties.gebruiksdoel);
+    if (use) b.use = use;
+    const box = orientedBox(outline);
+    b.lengthM = box.lengthM;
+    b.widthM = box.widthM;
     return b;
   });
+}
+
+/**
+ * BAG does not record what an outbuilding is. We describe it from size, height and whether
+ * it has an address. This is an assumption and is labelled as such in the Inspector.
+ */
+export function describeOutbuilding(b: Building): string {
+  const a = area(b.outline);
+  const h = b.heights?.heightM;
+  if ((b.addresses ?? 0) > 0)
+    return b.use ? `Building with an address (${b.use})` : "Building with an address";
+  if (a < 8) return "Small shed or storage";
+  if (h !== undefined && h <= 3.5 && a <= 45) return "Single-storey shed, garage or garden room";
+  if (h !== undefined && h > 3.5) return "Larger outbuilding (taller than one storey)";
+  return "Outbuilding (type not registered)";
 }
 
 export async function buildPlotContext(
@@ -258,8 +332,85 @@ export async function buildPlotContext(
       detail: `${outbuildings.length} other building(s) registered on this plot.`,
     });
 
+  // 3b. Heights, roof type and change flags from 3D BAG. Degrades.
+  try {
+    await tracer.step("3dbag-heights", "Heights and roofs (3D BAG)", async (ctx) => {
+      const heights = await fetchHeights(work, ctx, fetchFn);
+      let matched = 0;
+      for (const b of [...house, ...outbuildings, ...neighbours]) {
+        const h = heights.get(b.id.replace(/-\d+$/, ""));
+        if (h) {
+          b.heights = h;
+          matched++;
+        }
+      }
+      sources.push({ name: "3D BAG", licence: "CC BY 4.0", fetchedAt: now(), objects: matched });
+      const scan = house[0]?.heights?.scanYear;
+      ctx.summarize(`Heights for ${matched} buildings${scan ? `, height scan of ${scan}` : ""}`);
+      if (house.length > 0 && !house.some((h) => h.heights?.heightM !== undefined))
+        ctx.degrade("no height for the house");
+    });
+  } catch {
+    flags.push({ code: "HEIGHTS_MISSING", detail: "Building heights could not be loaded." });
+  }
+  for (const b of outbuildings) b.label = describeOutbuilding(b);
+  for (const b of house) b.label = "House";
+  const changed = house.find(
+    (h) => h.heights?.changedBetweenScans.ahn3ToAhn4 || h.heights?.changedBetweenScans.ahn4ToAhn5,
+  );
+  if (changed) {
+    const c = changed.heights?.changedBetweenScans;
+    flags.push({
+      code: "CHANGED_BETWEEN_SCANS",
+      detail: `The national height scans show a change to the house between ${c?.ahn3ToAhn4 ? "2014–2019 and 2020–2022" : "2020–2022 and 2023–2025"}. This can mean an extension or roof change.`,
+    });
+  }
+
+  // 3c. Registered street trees and hedges (BGT). Garden trees are not registered anywhere. Degrades.
+  let trees: Tree[] | null = null;
+  let hedges: { id: string; outline: Polygon }[] = [];
+  try {
+    await tracer.step("bgt-trees", "Registered trees and hedges (BGT)", async (ctx) => {
+      const [points, areas] = await Promise.all([
+        ogcItems(OGC.bgt, "vegetatieobject_punt", work, ctx, fetchFn),
+        ogcItems(OGC.bgt, "vegetatieobject_vlak", work, ctx, fetchFn),
+      ]);
+      trees = points
+        .filter(
+          (f) =>
+            isCurrentBgt(f) &&
+            str(f.properties.plus_type) === "boom" &&
+            f.geometry?.type === "Point",
+        )
+        .map((f) => {
+          const c = f.geometry?.coordinates as number[];
+          const t: Tree = {
+            id: str(f.properties.lokaal_id) ?? String(f.id),
+            at: [Number(c[0]), Number(c[1])],
+            crownM: 4,
+          };
+          const reg = str(f.properties.tijdstip_registratie);
+          if (reg) t.registeredAt = reg.slice(0, 10);
+          return t;
+        });
+      hedges = areas
+        .filter((f) => isCurrentBgt(f))
+        .flatMap((f) =>
+          outerRings(f.geometry).map((outline) => ({
+            id: str(f.properties.lokaal_id) ?? String(f.id),
+            outline,
+          })),
+        );
+      ctx.summarize(
+        `${trees.length} registered trees, ${hedges.length} hedges nearby (garden trees are not registered)`,
+      );
+    });
+  } catch {
+    flags.push({ code: "TREES_UNKNOWN", detail: "Registered trees could not be loaded." });
+  }
+
   // 4. Public area from BGT (current objects only). Degrades to "unknown" edges, never to "neighbour".
-  let publicAreas: (PublicArea & { label: string })[] | null = null;
+  let publicAreas: (PublicArea & { label: string; registeredAt?: string })[] | null = null;
   try {
     publicAreas = await tracer.step(
       "bgt-public",
@@ -270,7 +421,7 @@ export async function buildPlotContext(
           ogcItems(OGC.bgt, "begroeidterreindeel", work, ctx, fetchFn),
           ogcItems(OGC.bgt, "waterdeel", work, ctx, fetchFn),
         ]);
-        const areas: (PublicArea & { label: string })[] = [];
+        const areas: (PublicArea & { label: string; registeredAt?: string })[] = [];
         let history = 0;
         let narrowPaths = 0;
         const add = (
@@ -291,6 +442,7 @@ export async function buildPlotContext(
                   kind,
                   outline: ring,
                   label: labelOf(f),
+                  ...registered(f),
                 });
             });
           }
@@ -358,6 +510,53 @@ export async function buildPlotContext(
     return runs;
   });
 
+  // 6. Existing exits: registered driveway crossings ("inrit") that touch the plot.
+  const exits: Exit[] = [];
+  for (const a of publicAreas ?? []) {
+    if (a.label !== "inrit") continue;
+    if (distanceBetween(a.outline, plot.outline) > 0.6) continue;
+    let along = 0;
+    for (const run of edges) {
+      if (run.otherSide === a.id) along += run.lengthM;
+    }
+    exits.push({
+      id: a.id,
+      outline: a.outline,
+      alongPlotM: Math.round(along * 10) / 10,
+      ...(a.registeredAt ? { registeredAt: a.registeredAt } : {}),
+    });
+  }
+  if (publicAreas && exits.length === 0)
+    flags.push({
+      code: "NO_EXIT_FOUND",
+      detail:
+        "No registered driveway crossing touches this plot. A carport may need a new exit, which needs its own permit.",
+    });
+
+  // 7. Measurements.
+  const publicOutlines = (publicAreas ?? [])
+    .filter((a) => a.kind !== "water")
+    .map((a) => a.outline);
+  const houseToPublic = mainHouse
+    ? Math.min(
+        ...publicOutlines.map((o) => distanceBetween(mainHouse.outline, o)),
+        ...(publicOutlines.length ? [] : [Infinity]),
+      )
+    : undefined;
+  const measurements: Measurements = {
+    frontageM:
+      Math.round(edges.filter((e) => e.kind === "public").reduce((s, e) => s + e.lengthM, 0) * 10) /
+      10,
+    ...(mainHouse?.lengthM ? { houseLengthM: mainHouse.lengthM } : {}),
+    ...(mainHouse?.widthM ? { houseWidthM: mainHouse.widthM } : {}),
+    ...(mainHouse?.heights?.heightM !== undefined
+      ? { houseHeightM: mainHouse.heights.heightM }
+      : {}),
+    ...(houseToPublic !== undefined && Number.isFinite(houseToPublic)
+      ? { houseToPublicM: Math.round(houseToPublic * 10) / 10 }
+      : {}),
+  };
+
   return {
     address,
     plot,
@@ -373,6 +572,10 @@ export async function buildPlotContext(
       )
       .filter((p) => p.outline !== plot.outline),
     publicAreas,
+    trees,
+    hedges,
+    exits,
+    measurements,
     edges,
     houseType: deriveHouseType(edges),
     flags,

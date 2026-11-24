@@ -6,6 +6,6 @@
     "allowImportingTsExtensions": true,
     "emitDeclarationOnly": true
   },
-  "include": ["."],
+  "include": ["*.ts"],
   "references": [{ "path": "../packages/engine" }, { "path": "../packages/data" }]
 }

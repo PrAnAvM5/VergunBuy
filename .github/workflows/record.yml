@@ -1,0 +1,38 @@
+name: Record address (manual)
+
+# Runs the real pipeline for one address and commits every response to fixtures/<town-street-number>/.
+on:
+  workflow_dispatch:
+    inputs:
+      postcode:
+        description: Postcode, e.g. 4631CC
+        required: true
+      number:
+        description: House number
+        required: true
+      addition:
+        description: Letter or addition (optional)
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec tsx scripts/record.ts "${{ inputs.postcode }}" "${{ inputs.number }}" "${{ inputs.addition }}"
+      - name: Commit recording
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fixtures
+          git commit -m "Record ${{ inputs.postcode }} ${{ inputs.number }}" || echo "nothing to commit"
+          git pull --rebase && git push
