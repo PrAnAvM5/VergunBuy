@@ -1,0 +1,3206 @@
+{
+  "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:00Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1984,
+          "documentdatum": "1995-08-04",
+          "documentnummer": "95118",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000411497",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000411497",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/98e78138-04d6-592e-885e-97c30fd999bd",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/cec07ac8-77b5-5a76-9281-7c5a5487dbe1"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81038.332,
+                381903.252
+              ],
+              [
+                81037.3,
+                381903.31
+              ],
+              [
+                81037.21,
+                381901.84
+              ],
+              [
+                81033.68,
+                381902.03
+              ],
+              [
+                81033.77,
+                381903.5
+              ],
+              [
+                81030.66,
+                381903.69
+              ],
+              [
+                81030.1,
+                381894.13
+              ],
+              [
+                81037.785,
+                381893.69
+              ],
+              [
+                81038.332,
+                381903.252
+              ]
+            ]
+          ]
+        },
+        "id": "fbcb7c4d-9707-5164-a2a5-6d088db413ca"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000412472",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000412472",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81063.658,
+                381953.224
+              ],
+              [
+                81065.88,
+                381955.45
+              ],
+              [
+                81064.486,
+                381956.776
+              ],
+              [
+                81062.299,
+                381954.573
+              ],
+              [
+                81063.658,
+                381953.224
+              ]
+            ]
+          ]
+        },
+        "id": "c07cd3c3-af6c-543e-b310-7c1d36ed42cf"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000412473",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000412473",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81063.079,
+                381940.44
+              ],
+              [
+                81063.238,
+                381943.356
+              ],
+              [
+                81061.179,
+                381943.468
+              ],
+              [
+                81061.029,
+                381940.552
+              ],
+              [
+                81063.079,
+                381940.44
+              ]
+            ]
+          ]
+        },
+        "id": "38144f7e-406d-59dd-8440-bafa5da9688c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000412517",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000412517",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81048.888,
+                381961.661
+              ],
+              [
+                81049.547,
+                381964.545
+              ],
+              [
+                81047.641,
+                381965.04
+              ],
+              [
+                81046.898,
+                381962.178
+              ],
+              [
+                81048.888,
+                381961.661
+              ]
+            ]
+          ]
+        },
+        "id": "80f4e253-821b-5fd2-94d4-0a2af0e1207d"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1950,
+          "documentdatum": "2015-11-19",
+          "documentnummer": "2015.48897",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000412534",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000412534",
+          "status": "Pand gesloopt",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/87e03c8e-999c-55e9-a375-492adb74d552"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81003.334,
+                381963.013
+              ],
+              [
+                81003.697,
+                381964.663
+              ],
+              [
+                81004.693,
+                381964.447
+              ],
+              [
+                81005.86,
+                381969.822
+              ],
+              [
+                80997,
+                381971.75
+              ],
+              [
+                80994.97,
+                381962.44
+              ],
+              [
+                81002.422,
+                381960.816
+              ],
+              [
+                81002.428,
+                381959.738
+              ],
+              [
+                81005.609,
+                381959.755
+              ],
+              [
+                81018.595,
+                381959.822
+              ],
+              [
+                81018.574,
+                381963.94
+              ],
+              [
+                81005.6,
+                381963.913
+              ],
+              [
+                81005.603,
+                381962.479
+              ],
+              [
+                81003.334,
+                381963.013
+              ]
+            ]
+          ]
+        },
+        "id": "8c7f7b86-8b18-5c89-b500-d5ced471195f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000412538",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000412538",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81056.772,
+                381962.461
+              ],
+              [
+                81055.39,
+                381959.39
+              ],
+              [
+                81057.11,
+                381958.635
+              ],
+              [
+                81058.587,
+                381961.646
+              ],
+              [
+                81056.772,
+                381962.461
+              ]
+            ]
+          ]
+        },
+        "id": "897c7c35-ba95-556c-899f-17810f82bd9a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1984,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000412132",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000412132",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4efb310a-b5ac-5e35-91f0-6dc3a63a6ef5",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/21586333-6515-5983-8133-800180d28c3c"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81062.334,
+                381894.921
+              ],
+              [
+                81062.75,
+                381901.78
+              ],
+              [
+                81053.22,
+                381902.38
+              ],
+              [
+                81053.2,
+                381902
+              ],
+              [
+                81054.66,
+                381901.91
+              ],
+              [
+                81054.45,
+                381898.34
+              ],
+              [
+                81052.98,
+                381898.44
+              ],
+              [
+                81052.794,
+                381895.5
+              ],
+              [
+                81062.334,
+                381894.921
+              ]
+            ]
+          ]
+        },
+        "id": "a187c594-0b4a-59fd-a10e-e9837cee0e2b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000412136",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000412136",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/74091db3-8b05-5bf0-a711-53329f9c1e90"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81032.319,
+                381936.925
+              ],
+              [
+                81031.786,
+                381927.042
+              ],
+              [
+                81036.863,
+                381926.769
+              ],
+              [
+                81037.396,
+                381936.651
+              ],
+              [
+                81032.319,
+                381936.925
+              ]
+            ]
+          ]
+        },
+        "id": "11a4e80e-c98f-5205-aae7-2b3666a83e44"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000414738",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000414738",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81032.729,
+                381945.009
+              ],
+              [
+                81032.57,
+                381942.083
+              ],
+              [
+                81034.364,
+                381941.991
+              ],
+              [
+                81034.514,
+                381944.917
+              ],
+              [
+                81032.729,
+                381945.009
+              ]
+            ]
+          ]
+        },
+        "id": "0b9a1a62-8af8-5d1e-aef4-29829f761d1f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1993,
+          "documentdatum": "2019-07-17",
+          "documentnummer": "2019.28271",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000414361",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000414361",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1614c41e-2ab9-55db-9052-db9c8149dbf0"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81004.18,
+                381938.208
+              ],
+              [
+                81004.635,
+                381940.156
+              ],
+              [
+                81000.653,
+                381940.564
+              ],
+              [
+                80997.56,
+                381941.261
+              ],
+              [
+                80994.434,
+                381942.003
+              ],
+              [
+                80992.7,
+                381942.438
+              ],
+              [
+                80991.898,
+                381939.06
+              ],
+              [
+                80986.307,
+                381940.362
+              ],
+              [
+                80984.035,
+                381930.604
+              ],
+              [
+                80992.765,
+                381928.571
+              ],
+              [
+                80994.971,
+                381938.047
+              ],
+              [
+                81003.667,
+                381936.014
+              ],
+              [
+                81004.18,
+                381938.208
+              ]
+            ]
+          ]
+        },
+        "id": "86a7bd69-e487-5f8d-a555-2458f14e1c78"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000414764",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000414764",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81069.642,
+                381947.429
+              ],
+              [
+                81071.884,
+                381949.746
+              ],
+              [
+                81070.359,
+                381951.186
+              ],
+              [
+                81068.192,
+                381948.941
+              ],
+              [
+                81068.498,
+                381948.573
+              ],
+              [
+                81069.642,
+                381947.429
+              ]
+            ]
+          ]
+        },
+        "id": "dafda9a9-34f6-5d49-b4d6-30e8fab9c513"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1984,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000416540",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416540",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0ebda0a6-355e-505f-82ac-4a3dc90aafc1",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/f9bec3ce-355e-5078-abef-a76d8b1f916a"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81038.332,
+                381903.252
+              ],
+              [
+                81037.785,
+                381893.69
+              ],
+              [
+                81045.47,
+                381893.25
+              ],
+              [
+                81045.617,
+                381895.797
+              ],
+              [
+                81046.92,
+                381895.75
+              ],
+              [
+                81051.42,
+                381895.47
+              ],
+              [
+                81051.84,
+                381902.19
+              ],
+              [
+                81047.34,
+                381902.47
+              ],
+              [
+                81047.318,
+                381902.119
+              ],
+              [
+                81045.985,
+                381902.196
+              ],
+              [
+                81046.02,
+                381902.81
+              ],
+              [
+                81044.02,
+                381902.91
+              ],
+              [
+                81043.94,
+                381901.44
+              ],
+              [
+                81040.39,
+                381901.66
+              ],
+              [
+                81040.48,
+                381903.13
+              ],
+              [
+                81038.332,
+                381903.252
+              ]
+            ]
+          ]
+        },
+        "id": "395e9f7e-fae7-5fc5-bd29-414d63af7005"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000416547",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416547",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/907acaa8-5db6-5175-8825-57c4143f4358"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81072.873,
+                381929.834
+              ],
+              [
+                81073.134,
+                381934.72
+              ],
+              [
+                81067.86,
+                381935.005
+              ],
+              [
+                81067.327,
+                381925.126
+              ],
+              [
+                81072.604,
+                381924.841
+              ],
+              [
+                81072.873,
+                381929.834
+              ]
+            ]
+          ]
+        },
+        "id": "235cf0f4-3cdd-5915-888c-d6032eb9fe5c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000416548",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416548",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1ca4825a-dc75-5a61-bef6-7b0541896663"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81042.473,
+                381936.376
+              ],
+              [
+                81041.94,
+                381926.495
+              ],
+              [
+                81047.018,
+                381926.221
+              ],
+              [
+                81047.551,
+                381936.102
+              ],
+              [
+                81042.473,
+                381936.376
+              ]
+            ]
+          ]
+        },
+        "id": "6222a795-a959-52d3-bb32-5b3c3bcceb3c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000416939",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416939",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81042.731,
+                381941.54
+              ],
+              [
+                81044.673,
+                381941.439
+              ],
+              [
+                81044.823,
+                381944.355
+              ],
+              [
+                81042.889,
+                381944.46
+              ],
+              [
+                81042.731,
+                381941.54
+              ]
+            ]
+          ]
+        },
+        "id": "74442d5c-a134-549c-9ca0-73b6d3485dab"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000416940",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416940",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/c9d14d46-3c26-5c2b-b5ec-a2a6a21da3e9"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80996.979,
+                381952.887
+              ],
+              [
+                80998.27,
+                381958.41
+              ],
+              [
+                80990.91,
+                381960.13
+              ],
+              [
+                80989.621,
+                381954.603
+              ],
+              [
+                80996.979,
+                381952.887
+              ]
+            ]
+          ]
+        },
+        "id": "4f9710a4-906a-5008-93d9-57f7820f6cde"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000416941",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416941",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81042.192,
+                381962.586
+              ],
+              [
+                81042.237,
+                381965.797
+              ],
+              [
+                81040.144,
+                381965.826
+              ],
+              [
+                81040.08,
+                381962.646
+              ],
+              [
+                81042.192,
+                381962.586
+              ]
+            ]
+          ]
+        },
+        "id": "482644c5-d10d-5b1a-b31d-3dc10e6a4b47"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000416967",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416967",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/9e49445f-bb8f-5dc3-a1af-32cfcb251160"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81067.136,
+                381974.054
+              ],
+              [
+                81060.529,
+                381967.228
+              ],
+              [
+                81064.186,
+                381963.73
+              ],
+              [
+                81070.772,
+                381970.536
+              ],
+              [
+                81067.136,
+                381974.054
+              ]
+            ]
+          ]
+        },
+        "id": "25078a27-34de-55d1-870a-cec490b421fd"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000416969",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000416969",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/fcb19e00-c501-5765-9ea2-1b69ef45001c"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81067.843,
+                381960.233
+              ],
+              [
+                81074.408,
+                381967.017
+              ],
+              [
+                81070.772,
+                381970.536
+              ],
+              [
+                81064.186,
+                381963.73
+              ],
+              [
+                81067.843,
+                381960.233
+              ]
+            ]
+          ]
+        },
+        "id": "c452babf-bfd8-57d7-8612-d753e51cce07"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000419120",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000419120",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81053.056,
+                381943.909
+              ],
+              [
+                81052.9,
+                381940.993
+              ],
+              [
+                81053.009,
+                381940.987
+              ],
+              [
+                81054.801,
+                381940.89
+              ],
+              [
+                81054.951,
+                381943.806
+              ],
+              [
+                81053.056,
+                381943.909
+              ]
+            ]
+          ]
+        },
+        "id": "91c5eca7-1740-5384-9fc8-c40c73594ee0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000419181",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000419181",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81032.729,
+                381945.009
+              ],
+              [
+                81030.645,
+                381945.116
+              ],
+              [
+                81030.493,
+                381942.19
+              ],
+              [
+                81032.57,
+                381942.083
+              ],
+              [
+                81032.729,
+                381945.009
+              ]
+            ]
+          ]
+        },
+        "id": "35684546-4a96-5b8b-8b41-7353cca613b5"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000419182",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000419182",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81011.236,
+                381945.674
+              ],
+              [
+                81011.079,
+                381942.548
+              ],
+              [
+                81013.324,
+                381942.435
+              ],
+              [
+                81013.48,
+                381945.526
+              ],
+              [
+                81011.236,
+                381945.674
+              ]
+            ]
+          ]
+        },
+        "id": "ca092a81-d10f-5a07-9093-42bd7632ee32"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000419183",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000419183",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e982467e-2b27-5f5f-8b29-85dde191645c"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80995.733,
+                381947.558
+              ],
+              [
+                80988.378,
+                381949.273
+              ],
+              [
+                80987.09,
+                381943.75
+              ],
+              [
+                80992.7,
+                381942.438
+              ],
+              [
+                80994.434,
+                381942.003
+              ],
+              [
+                80995.733,
+                381947.558
+              ]
+            ]
+          ]
+        },
+        "id": "3022c694-86d4-52a3-82dd-61f3e11d4d63"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000419184",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000419184",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81040.08,
+                381962.646
+              ],
+              [
+                81040.144,
+                381965.826
+              ],
+              [
+                81038.318,
+                381965.851
+              ],
+              [
+                81038.333,
+                381962.703
+              ],
+              [
+                81038.599,
+                381962.688
+              ],
+              [
+                81040.08,
+                381962.646
+              ]
+            ]
+          ]
+        },
+        "id": "e85e42db-f8e7-5867-bedc-840b67f13b73"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2015-03-09",
+          "documentnummer": "2015.06271",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000419203",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000419203",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81029.883,
+                381962.856
+              ],
+              [
+                81030.368,
+                381962.854
+              ],
+              [
+                81031.949,
+                381962.846
+              ],
+              [
+                81032.01,
+                381965.982
+              ],
+              [
+                81031.784,
+                381965.981
+              ],
+              [
+                81031.77,
+                381968.541
+              ],
+              [
+                81030.091,
+                381968.532
+              ],
+              [
+                81030.105,
+                381965.972
+              ],
+              [
+                81029.946,
+                381965.971
+              ],
+              [
+                81029.883,
+                381962.856
+              ]
+            ]
+          ]
+        },
+        "id": "0f9036c5-433c-5f56-be29-669285c5cc85"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000418773",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000418773",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1a2886c8-9739-59a7-9547-4469c8386b05"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81062.782,
+                381935.279
+              ],
+              [
+                81062.25,
+                381925.399
+              ],
+              [
+                81067.327,
+                381925.126
+              ],
+              [
+                81067.86,
+                381935.005
+              ],
+              [
+                81062.782,
+                381935.279
+              ]
+            ]
+          ]
+        },
+        "id": "2fc7d171-d53e-5956-9d4a-9ff30aa509c1"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000418774",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000418774",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/d6b813f7-55e4-5a19-aa84-ccbd9a219266"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81057.705,
+                381935.554
+              ],
+              [
+                81057.172,
+                381925.673
+              ],
+              [
+                81062.25,
+                381925.399
+              ],
+              [
+                81062.782,
+                381935.279
+              ],
+              [
+                81057.705,
+                381935.554
+              ]
+            ]
+          ]
+        },
+        "id": "ff408941-1f5e-5be3-acce-e6ee75ac451b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000418777",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000418777",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a89e502a-e039-5615-a84d-bd06684659b2"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81031.786,
+                381927.042
+              ],
+              [
+                81032.319,
+                381936.925
+              ],
+              [
+                81027.044,
+                381937.21
+              ],
+              [
+                81026.778,
+                381932.32
+              ],
+              [
+                81026.509,
+                381927.327
+              ],
+              [
+                81031.786,
+                381927.042
+              ]
+            ]
+          ]
+        },
+        "id": "e256042b-6dbf-5e0c-9cf0-ef42e10891af"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000418239",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000418239",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81013.48,
+                381945.526
+              ],
+              [
+                81013.635,
+                381948.612
+              ],
+              [
+                81011.39,
+                381948.725
+              ],
+              [
+                81011.236,
+                381945.674
+              ],
+              [
+                81013.48,
+                381945.526
+              ]
+            ]
+          ]
+        },
+        "id": "faa83d44-13bf-559d-b177-eb8f617f9cfb"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000421441",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000421441",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81029.946,
+                381965.971
+              ],
+              [
+                81028.147,
+                381965.961
+              ],
+              [
+                81028.116,
+                381962.864
+              ],
+              [
+                81029.883,
+                381962.856
+              ],
+              [
+                81029.946,
+                381965.971
+              ]
+            ]
+          ]
+        },
+        "id": "0ebe73a9-7bbf-560e-9827-814171f9daf2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000421444",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000421444",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81068.154,
+                381943.089
+              ],
+              [
+                81068.003,
+                381940.173
+              ],
+              [
+                81069.879,
+                381940.071
+              ],
+              [
+                81070.029,
+                381942.987
+              ],
+              [
+                81068.154,
+                381943.089
+              ]
+            ]
+          ]
+        },
+        "id": "27a246ab-1a29-53e2-83f7-5b32b9d290d6"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000419755",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000419755",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81022.376,
+                381898.735
+              ],
+              [
+                81022.4,
+                381899.13
+              ],
+              [
+                81022.7,
+                381904.13
+              ],
+              [
+                81019.69,
+                381904.31
+              ],
+              [
+                81019.39,
+                381899.31
+              ],
+              [
+                81019.368,
+                381898.915
+              ],
+              [
+                81020.445,
+                381898.851
+              ],
+              [
+                81020.087,
+                381894.284
+              ],
+              [
+                81018.22,
+                381894.431
+              ],
+              [
+                81018.031,
+                381892.019
+              ],
+              [
+                81018.664,
+                381891.97
+              ],
+              [
+                81021.294,
+                381891.69
+              ],
+              [
+                81022.125,
+                381891.625
+              ],
+              [
+                81022.67,
+                381898.72
+              ],
+              [
+                81022.376,
+                381898.735
+              ]
+            ]
+          ]
+        },
+        "id": "3b15a897-b1f3-5d7c-9cf9-caa98b3fbbd7"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000421078",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000421078",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/79ded1f8-dadb-56d5-bf0b-5d59faf30d1f"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80978.651,
+                381906.171
+              ],
+              [
+                80976.86,
+                381896.81
+              ],
+              [
+                80981.77,
+                381895.88
+              ],
+              [
+                80991.102,
+                381894.092
+              ],
+              [
+                80991.659,
+                381896.999
+              ],
+              [
+                80989.283,
+                381897.454
+              ],
+              [
+                80990.478,
+                381903.909
+              ],
+              [
+                80978.651,
+                381906.171
+              ]
+            ]
+          ]
+        },
+        "id": "f533b4b1-b41a-5e10-a954-00ab38ee367c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1984,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000421079",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000421079",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/08ef868e-100f-5a0e-82d4-dd318615a101",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/fee66854-dfe2-5880-8ece-d90833105a73"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81062.334,
+                381894.921
+              ],
+              [
+                81052.794,
+                381895.5
+              ],
+              [
+                81052.78,
+                381895.28
+              ],
+              [
+                81054.25,
+                381895.19
+              ],
+              [
+                81054.04,
+                381891.63
+              ],
+              [
+                81052.57,
+                381891.72
+              ],
+              [
+                81052.394,
+                381888.79
+              ],
+              [
+                81061.928,
+                381888.213
+              ],
+              [
+                81062.334,
+                381894.921
+              ]
+            ]
+          ]
+        },
+        "id": "3164ca2c-1479-55e4-b555-a448d5cdfa54"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000421084",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000421084",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/03697816-d662-5662-b877-ccb4afa54647"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81052.628,
+                381935.828
+              ],
+              [
+                81052.095,
+                381925.947
+              ],
+              [
+                81057.172,
+                381925.673
+              ],
+              [
+                81057.705,
+                381935.554
+              ],
+              [
+                81052.628,
+                381935.828
+              ]
+            ]
+          ]
+        },
+        "id": "f059e1aa-46f3-5cc0-badd-f46ad700fe42"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000423606",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000423606",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0e4f5663-1f52-5e1c-a9f5-697507747603"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80996.979,
+                381952.887
+              ],
+              [
+                80989.621,
+                381954.603
+              ],
+              [
+                80988.378,
+                381949.273
+              ],
+              [
+                80995.733,
+                381947.558
+              ],
+              [
+                80996.979,
+                381952.887
+              ]
+            ]
+          ]
+        },
+        "id": "e0b22728-84f6-513c-a784-78d2131e7875"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000425465",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000425465",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2bb7954c-06c7-5c36-a0fc-c0775f565b76"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81047.551,
+                381936.102
+              ],
+              [
+                81047.018,
+                381926.221
+              ],
+              [
+                81052.095,
+                381925.947
+              ],
+              [
+                81052.628,
+                381935.828
+              ],
+              [
+                81047.551,
+                381936.102
+              ]
+            ]
+          ]
+        },
+        "id": "2c57eb27-645c-5d0a-a0dd-bbdd18cf56be"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000425466",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000425466",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/092aef49-e3bc-5a6a-8ef8-03a9df5c49f2"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81041.94,
+                381926.495
+              ],
+              [
+                81042.473,
+                381936.376
+              ],
+              [
+                81037.396,
+                381936.651
+              ],
+              [
+                81036.863,
+                381926.769
+              ],
+              [
+                81041.94,
+                381926.495
+              ]
+            ]
+          ]
+        },
+        "id": "2e390828-8b4a-5160-9e6a-07fd6dd5ea92"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000423633",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000423633",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81055.39,
+                381959.39
+              ],
+              [
+                81056.772,
+                381962.461
+              ],
+              [
+                81054.94,
+                381963.284
+              ],
+              [
+                81053.538,
+                381960.219
+              ],
+              [
+                81053.897,
+                381960.046
+              ],
+              [
+                81055.39,
+                381959.39
+              ]
+            ]
+          ]
+        },
+        "id": "fa868e90-150b-5b14-a93e-b1444a9018a4"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2011-03-03",
+          "documentnummer": "2011.10268",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000423240",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000423240",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80997.095,
+                381915.256
+              ],
+              [
+                80991.66,
+                381915.53
+              ],
+              [
+                80991.428,
+                381912.492
+              ],
+              [
+                80996.88,
+                381912.13
+              ],
+              [
+                80997.048,
+                381914.559
+              ],
+              [
+                80997.095,
+                381915.256
+              ]
+            ]
+          ]
+        },
+        "id": "bd179a45-8507-515f-a041-d72a72d53b62"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1974,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "overige gebruiksfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000424805",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000424805",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0c07c529-346b-518a-be4f-e159c708b287"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81024.32,
+                381904.06
+              ],
+              [
+                81024.16,
+                381901.19
+              ],
+              [
+                81027.01,
+                381901.03
+              ],
+              [
+                81027.17,
+                381903.88
+              ],
+              [
+                81024.32,
+                381904.06
+              ]
+            ]
+          ]
+        },
+        "id": "1921c080-6074-5935-921d-a217a12741cf"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000426698",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000426698",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81048.888,
+                381961.661
+              ],
+              [
+                81050.897,
+                381961.14
+              ],
+              [
+                81051.64,
+                381964.002
+              ],
+              [
+                81049.547,
+                381964.545
+              ],
+              [
+                81048.888,
+                381961.661
+              ]
+            ]
+          ]
+        },
+        "id": "86965807-07e7-5811-a0bd-a8d872544a1a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000424929",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000424929",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81013.701,
+                381950.297
+              ],
+              [
+                81013.777,
+                381952.336
+              ],
+              [
+                81010.559,
+                381952.455
+              ],
+              [
+                81010.483,
+                381950.416
+              ],
+              [
+                81013.701,
+                381950.297
+              ]
+            ]
+          ]
+        },
+        "id": "f3459e0a-733c-55b6-9709-562d9826d4fe"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000429027",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000429027",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81062.299,
+                381954.573
+              ],
+              [
+                81064.486,
+                381956.776
+              ],
+              [
+                81062.975,
+                381958.213
+              ],
+              [
+                81060.869,
+                381955.996
+              ],
+              [
+                81061.077,
+                381955.785
+              ],
+              [
+                81062.299,
+                381954.573
+              ]
+            ]
+          ]
+        },
+        "id": "998edb68-9542-547b-b88a-0c4de32e96a9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000426278",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000426278",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81052.9,
+                381940.993
+              ],
+              [
+                81053.056,
+                381943.909
+              ],
+              [
+                81051.009,
+                381944.02
+              ],
+              [
+                81050.86,
+                381941.104
+              ],
+              [
+                81051.141,
+                381941.089
+              ],
+              [
+                81052.9,
+                381940.993
+              ]
+            ]
+          ]
+        },
+        "id": "dd4c089a-f9c4-5ad2-9be7-13b7d93c5a04"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000428069",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000428069",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81063.238,
+                381943.356
+              ],
+              [
+                81063.079,
+                381940.44
+              ],
+              [
+                81064.96,
+                381940.338
+              ],
+              [
+                81065.109,
+                381943.254
+              ],
+              [
+                81063.238,
+                381943.356
+              ]
+            ]
+          ]
+        },
+        "id": "f4e6d3ab-0a6e-5b57-a1cb-21c57ef6719f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 2012,
+          "documentdatum": "2019-05-14",
+          "documentnummer": "2019.18677",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000453779",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000453779",
+          "status": "Pand gesloopt",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81023.25,
+                381940.31
+              ],
+              [
+                81020.513,
+                381940.429
+              ],
+              [
+                81020.504,
+                381940.225
+              ],
+              [
+                81020.339,
+                381936.445
+              ],
+              [
+                81023.076,
+                381936.326
+              ],
+              [
+                81023.25,
+                381940.31
+              ]
+            ]
+          ]
+        },
+        "id": "43261fbf-d5cc-52fe-b118-4d7e28e6be8c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1987,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000428131",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000428131",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81042.731,
+                381941.54
+              ],
+              [
+                81042.889,
+                381944.46
+              ],
+              [
+                81040.898,
+                381944.569
+              ],
+              [
+                81040.748,
+                381941.643
+              ],
+              [
+                81042.731,
+                381941.54
+              ]
+            ]
+          ]
+        },
+        "id": "39c74b0f-5596-5d73-954a-56aae2fc418f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000428158",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000428158",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/13c016d2-22f3-5525-a7c2-01cc2ee6e9d5"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81063.33,
+                381977.737
+              ],
+              [
+                81057.977,
+                381972.154
+              ],
+              [
+                81056.727,
+                381970.864
+              ],
+              [
+                81060.529,
+                381967.228
+              ],
+              [
+                81067.136,
+                381974.054
+              ],
+              [
+                81063.33,
+                381977.737
+              ]
+            ]
+          ]
+        },
+        "id": "f5d3d06a-c702-587d-93ba-eecdb052ac94"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1988,
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11366",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000428161",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000428161",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7e74356e-fd40-52f4-88e2-ff9c9541b1a0"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81074.408,
+                381967.017
+              ],
+              [
+                81067.843,
+                381960.233
+              ],
+              [
+                81071.5,
+                381956.735
+              ],
+              [
+                81078.044,
+                381963.498
+              ],
+              [
+                81074.408,
+                381967.017
+              ]
+            ]
+          ]
+        },
+        "id": "4e1d3fa3-2e09-540f-a0dc-332edf77894a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1930,
+          "documentdatum": "2013-07-02",
+          "documentnummer": "2013.43864",
+          "gebruiksdoel": "bijeenkomstfunctie,woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000427221",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000427221",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/32dc47d9-1a07-5d6b-a96c-056313a045e5"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81008.078,
+                381979.522
+              ],
+              [
+                81008.403,
+                381981.291
+              ],
+              [
+                81006.874,
+                381981.514
+              ],
+              [
+                81007.774,
+                381986.602
+              ],
+              [
+                81007.829,
+                381986.845
+              ],
+              [
+                81000.5,
+                381988.5
+              ],
+              [
+                80996.84,
+                381971.78
+              ],
+              [
+                80997,
+                381971.75
+              ],
+              [
+                81005.86,
+                381969.822
+              ],
+              [
+                81006.915,
+                381969.593
+              ],
+              [
+                81007.358,
+                381969.65
+              ],
+              [
+                81008.143,
+                381973.266
+              ],
+              [
+                81006.784,
+                381973.561
+              ],
+              [
+                81008.078,
+                381979.522
+              ]
+            ]
+          ]
+        },
+        "id": "3058650d-3496-5fdf-b4ab-7aefa0be6996"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 2015,
+          "documentdatum": "2016-10-26",
+          "documentnummer": "2016.45187",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000455610",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000455610",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81024.039,
+                381970.83
+              ],
+              [
+                81024.038,
+                381970.719
+              ],
+              [
+                81022.526,
+                381970.73
+              ],
+              [
+                81022.521,
+                381970.047
+              ],
+              [
+                81024.156,
+                381970.035
+              ],
+              [
+                81024.148,
+                381968.947
+              ],
+              [
+                81022.513,
+                381968.958
+              ],
+              [
+                81022.472,
+                381963.096
+              ],
+              [
+                81023.16,
+                381963.091
+              ],
+              [
+                81024.87,
+                381963.079
+              ],
+              [
+                81024.925,
+                381970.824
+              ],
+              [
+                81024.039,
+                381970.83
+              ]
+            ]
+          ]
+        },
+        "id": "741bdb29-2354-5e7d-98d2-eef63c74d8ca"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2022-05-11",
+          "documentnummer": "2022.17415",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000454658",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000454658",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81007.407,
+                381894.544
+              ],
+              [
+                81007.371,
+                381892.618
+              ],
+              [
+                81009.935,
+                381892.571
+              ],
+              [
+                81009.971,
+                381894.496
+              ],
+              [
+                81007.407,
+                381894.544
+              ]
+            ]
+          ]
+        },
+        "id": "c00b5416-0ebb-5a67-960d-105033200976"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1950,
+          "documentdatum": "2018-01-24",
+          "documentnummer": "2018.03314",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000455945",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000455945",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8c4b0548-8533-579b-a472-308d6fb476e3"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81002.422,
+                381960.816
+              ],
+              [
+                81002.428,
+                381959.738
+              ],
+              [
+                81005.609,
+                381959.755
+              ],
+              [
+                81013.237,
+                381959.794
+              ],
+              [
+                81013.275,
+                381963.929
+              ],
+              [
+                81005.6,
+                381963.913
+              ],
+              [
+                81005.603,
+                381962.479
+              ],
+              [
+                81003.334,
+                381963.013
+              ],
+              [
+                81003.697,
+                381964.663
+              ],
+              [
+                81004.693,
+                381964.447
+              ],
+              [
+                81005.86,
+                381969.822
+              ],
+              [
+                80997,
+                381971.75
+              ],
+              [
+                80994.97,
+                381962.44
+              ],
+              [
+                81002.422,
+                381960.816
+              ]
+            ]
+          ]
+        },
+        "id": "f55a6c6d-4668-56bf-939d-4985e7ce823b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2011-03-03",
+          "documentnummer": "2011.10268",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000453732",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000453732",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80999.512,
+                381903.44
+              ],
+              [
+                80999.519,
+                381898.948
+              ],
+              [
+                81000,
+                381898.949
+              ],
+              [
+                81000.641,
+                381898.95
+              ],
+              [
+                81001.769,
+                381898.911
+              ],
+              [
+                81001.865,
+                381903.353
+              ],
+              [
+                81000,
+                381903.422
+              ],
+              [
+                80999.512,
+                381903.44
+              ]
+            ]
+          ]
+        },
+        "id": "4bbcd6cd-4b97-50c1-a5c8-b83de92a3018"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1975,
+          "documentdatum": "2021-11-03",
+          "documentnummer": "2021.40938",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000461852",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000461852",
+          "status": "Pand ten onrechte opgevoerd",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81011.726,
+                381898.901
+              ],
+              [
+                81011.731,
+                381901.888
+              ],
+              [
+                81007.034,
+                381901.896
+              ],
+              [
+                81007.029,
+                381898.909
+              ],
+              [
+                81011.726,
+                381898.901
+              ]
+            ]
+          ]
+        },
+        "id": "617c3f7f-e51f-5dba-8db4-266e8678216a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1975,
+          "documentdatum": "2021-11-03",
+          "documentnummer": "2021.40938",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000461857",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000461857",
+          "status": "Pand ten onrechte opgevoerd",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81018.595,
+                381959.822
+              ],
+              [
+                81018.574,
+                381963.94
+              ],
+              [
+                81013.275,
+                381963.929
+              ],
+              [
+                81013.237,
+                381959.794
+              ],
+              [
+                81018.595,
+                381959.822
+              ]
+            ]
+          ]
+        },
+        "id": "1dd563af-a447-5561-9a8e-d343a188b1cf"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1975,
+          "documentdatum": "2018-10-19",
+          "documentnummer": "2018.42387",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000461955",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000461955",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80993.584,
+                381896.672
+              ],
+              [
+                80993.679,
+                381892.513
+              ],
+              [
+                80998.019,
+                381892.613
+              ],
+              [
+                80997.924,
+                381896.772
+              ],
+              [
+                80993.584,
+                381896.672
+              ]
+            ]
+          ]
+        },
+        "id": "2ad86096-58af-57cb-bcfb-a20d47531f51"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1975,
+          "documentdatum": "2025-06-03",
+          "documentnummer": "2025.08806",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000462082",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000462082",
+          "status": "Pand gesloopt",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81004.983,
+                381903.651
+              ],
+              [
+                81004.936,
+                381902.315
+              ],
+              [
+                81009.446,
+                381902.157
+              ],
+              [
+                81009.493,
+                381903.493
+              ],
+              [
+                81004.983,
+                381903.651
+              ]
+            ]
+          ]
+        },
+        "id": "c440bb25-aa52-5405-bbd3-e7323cf69868"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 1950,
+          "documentdatum": "2025-08-21",
+          "documentnummer": "2025.12107",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000420416",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000420416",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81011.97,
+                381900.097
+              ],
+              [
+                81017.989,
+                381899.862
+              ],
+              [
+                81018.114,
+                381903.068
+              ],
+              [
+                81012.095,
+                381903.303
+              ],
+              [
+                81012.044,
+                381901.989
+              ],
+              [
+                81011.97,
+                381900.097
+              ]
+            ]
+          ]
+        },
+        "id": "aae6efe9-96a2-5d15-921b-282f8b318a97"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1950,
+          "documentdatum": "2025-08-21",
+          "documentnummer": "2025.12107",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0873100000418772",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000418772",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2dd8c054-39fe-5dd6-ba8d-627f7751b29d"
+          ]
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                80987.565,
+                381908.974
+              ],
+              [
+                80988.907,
+                381908.732
+              ],
+              [
+                80989.43,
+                381911.299
+              ],
+              [
+                80980,
+                381913.22
+              ],
+              [
+                80978.651,
+                381906.171
+              ],
+              [
+                80986.773,
+                381904.618
+              ],
+              [
+                80986.846,
+                381904.999
+              ],
+              [
+                80987.565,
+                381908.974
+              ]
+            ]
+          ]
+        },
+        "id": "37cb5467-7505-5f90-b4a2-fd4377956a3f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 2023,
+          "documentdatum": "2025-09-26",
+          "documentnummer": "2025.13904",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000467654",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000467654",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81015.55,
+                381896.598
+              ],
+              [
+                81012.612,
+                381896.686
+              ],
+              [
+                81012.493,
+                381892.715
+              ],
+              [
+                81015.431,
+                381892.627
+              ],
+              [
+                81015.55,
+                381896.598
+              ]
+            ]
+          ]
+        },
+        "id": "ece53f1c-e3c2-5759-8740-f4aef82e27a8"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "aantal_verblijfsobjecten": 0,
+          "bouwjaar": 2012,
+          "documentdatum": "2026-03-27",
+          "documentnummer": "0873D2026032700044",
+          "gebruiksdoel": null,
+          "geconstateerd": "N",
+          "identificatie": "0873100000468439",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0873100000468439",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81007.371,
+                381892.618
+              ],
+              [
+                81007.407,
+                381894.544
+              ],
+              [
+                81003.783,
+                381894.612
+              ],
+              [
+                81003.748,
+                381892.684
+              ],
+              [
+                81007.371,
+                381892.618
+              ]
+            ]
+          ]
+        },
+        "id": "6e1ebcc8-6ce5-5ebc-960d-af6137f6b26b"
+      }
+    ],
+    "numberReturned": 63
+  }
+}

@@ -1,0 +1,933 @@
+{
+  "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:01Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2015-11-19",
+          "documentnummer": "2015.48897",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000432705",
+          "hoofdadres_status": "Naamgeving ingetrokken",
+          "huisletter": null,
+          "huisnummer": 3,
+          "identificatie": "0873010000432706",
+          "openbare_ruimte_identificatie": "0873300000411084",
+          "openbare_ruimte_naam": "Ossendrechtseweg",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 184,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/8c7f7b86-8b18-5c89-b500-d5ced471195f"
+          ],
+          "postcode": "4631BA",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000432706",
+          "status": "Verblijfsobject ingetrokken",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80999,
+            381966
+          ]
+        },
+        "id": "87e03c8e-999c-55e9-a375-492adb74d552"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2023-03-28",
+          "documentnummer": "2023.09904",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000432707",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 5,
+          "identificatie": "0873010000432708",
+          "openbare_ruimte_identificatie": "0873300000411084",
+          "openbare_ruimte_naam": "Ossendrechtseweg",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 72,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/4f9710a4-906a-5008-93d9-57f7820f6cde"
+          ],
+          "postcode": "4631BA",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000432708",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80993,
+            381958
+          ]
+        },
+        "id": "c9d14d46-3c26-5c2b-b5ec-a2a6a21da3e9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2023-03-28",
+          "documentnummer": "2023.09904",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000432711",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 7,
+          "identificatie": "0873010000432712",
+          "openbare_ruimte_identificatie": "0873300000411084",
+          "openbare_ruimte_naam": "Ossendrechtseweg",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 83,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/e0b22728-84f6-513c-a784-78d2131e7875"
+          ],
+          "postcode": "4631BA",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000432712",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80992,
+            381952
+          ]
+        },
+        "id": "0e4f5663-1f52-5e1c-a9f5-697507747603"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2010-06-22",
+          "documentnummer": "2010.11431",
+          "gebruiksdoel": "overige gebruiksfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000449489",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": "a",
+          "huisnummer": 2,
+          "identificatie": "0873010000449490",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 6,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/1921c080-6074-5935-921d-a217a12741cf"
+          ],
+          "postcode": null,
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000449490",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81025.665,
+            381902.545
+          ]
+        },
+        "id": "0c07c529-346b-518a-be4f-e159c708b287"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2015-11-24",
+          "documentnummer": "2015.49949",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000455946",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 3,
+          "identificatie": "0873010000455947",
+          "openbare_ruimte_identificatie": "0873300000411084",
+          "openbare_ruimte_naam": "Ossendrechtseweg",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 184,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/f55a6c6d-4668-56bf-939d-4985e7ce823b"
+          ],
+          "postcode": "4631BA",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000455947",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80998.184,
+            381966.009
+          ]
+        },
+        "id": "8c4b0548-8533-579b-a472-308d6fb476e3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2024-10-30",
+          "documentnummer": "2024.18665",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000432715",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 9,
+          "identificatie": "0873010000432716",
+          "openbare_ruimte_identificatie": "0873300000411084",
+          "openbare_ruimte_naam": "Ossendrechtseweg",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 83,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/3022c694-86d4-52a3-82dd-61f3e11d4d63"
+          ],
+          "postcode": "4631BA",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000432716",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80990,
+            381945
+          ]
+        },
+        "id": "e982467e-2b27-5f5f-8b29-85dde191645c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-08-22",
+          "documentnummer": "2025.12171",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429223",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 6,
+          "identificatie": "0873010000429224",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 48,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/fbcb7c4d-9707-5164-a2a5-6d088db413ca"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429224",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81035.091,
+            381895.946
+          ]
+        },
+        "id": "98e78138-04d6-592e-885e-97c30fd999bd"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-08-22",
+          "documentnummer": "2025.12171",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429227",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 8,
+          "identificatie": "0873010000429228",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 48,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/395e9f7e-fae7-5fc5-bd29-414d63af7005"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429228",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81041.791,
+            381895.562
+          ]
+        },
+        "id": "0ebda0a6-355e-505f-82ac-4a3dc90aafc1"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-08-22",
+          "documentnummer": "2025.12171",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429215",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 2,
+          "identificatie": "0873010000429216",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 52,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/fbcb7c4d-9707-5164-a2a5-6d088db413ca"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429216",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81035.311,
+            381899.439
+          ]
+        },
+        "id": "cec07ac8-77b5-5a76-9281-7c5a5487dbe1"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-08-22",
+          "documentnummer": "2025.12171",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429219",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 4,
+          "identificatie": "0873010000429220",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 52,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/395e9f7e-fae7-5fc5-bd29-414d63af7005"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429220",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81042.01,
+            381899.055
+          ]
+        },
+        "id": "f9bec3ce-355e-5078-abef-a76d8b1f916a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-10-08",
+          "documentnummer": "2025.14322",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429231",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 10,
+          "identificatie": "0873010000429232",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 52,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/a187c594-0b4a-59fd-a10e-e9837cee0e2b"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429232",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81057.051,
+            381899.978
+          ]
+        },
+        "id": "4efb310a-b5ac-5e35-91f0-6dc3a63a6ef5"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-10-08",
+          "documentnummer": "2025.14322",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429235",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 12,
+          "identificatie": "0873010000429236",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 52,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/3164ca2c-1479-55e4-b555-a448d5cdfa54"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429236",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81056.641,
+            381893.263
+          ]
+        },
+        "id": "08ef868e-100f-5a0e-82d4-dd318615a101"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-10-08",
+          "documentnummer": "2025.14322",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000430617",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 26,
+          "identificatie": "0873010000430618",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 48,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/a187c594-0b4a-59fd-a10e-e9837cee0e2b"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000430618",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81060.544,
+            381899.759
+          ]
+        },
+        "id": "21586333-6515-5983-8133-800180d28c3c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2025-10-08",
+          "documentnummer": "2025.14322",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000430621",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 28,
+          "identificatie": "0873010000430622",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 48,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/3164ca2c-1479-55e4-b555-a448d5cdfa54"
+          ],
+          "postcode": "4631CD",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000430622",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81060.134,
+            381893.044
+          ]
+        },
+        "id": "fee66854-dfe2-5880-8ece-d90833105a73"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429213",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 1,
+          "identificatie": "0873010000429214",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/e256042b-6dbf-5e0c-9cf0-ef42e10891af"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429214",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81029.282,
+            381929.681
+          ]
+        },
+        "id": "a89e502a-e039-5615-a84d-bd06684659b2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429217",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 3,
+          "identificatie": "0873010000429218",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/11a4e80e-c98f-5205-aae7-2b3666a83e44"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429218",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81034.459,
+            381929.402
+          ]
+        },
+        "id": "74091db3-8b05-5bf0-a711-53329f9c1e90"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429221",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 5,
+          "identificatie": "0873010000429222",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/2e390828-8b4a-5160-9e6a-07fd6dd5ea92"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429222",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81039.536,
+            381929.128
+          ]
+        },
+        "id": "092aef49-e3bc-5a6a-8ef8-03a9df5c49f2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429225",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 7,
+          "identificatie": "0873010000429226",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/6222a795-a959-52d3-bb32-5b3c3bcceb3c"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429226",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81044.614,
+            381928.854
+          ]
+        },
+        "id": "1ca4825a-dc75-5a61-bef6-7b0541896663"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429229",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 9,
+          "identificatie": "0873010000429230",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/2c57eb27-645c-5d0a-a0dd-bbdd18cf56be"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429230",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81049.691,
+            381928.58
+          ]
+        },
+        "id": "2bb7954c-06c7-5c36-a0fc-c0775f565b76"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429233",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 11,
+          "identificatie": "0873010000429234",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/f059e1aa-46f3-5cc0-badd-f46ad700fe42"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429234",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81054.768,
+            381928.306
+          ]
+        },
+        "id": "03697816-d662-5662-b877-ccb4afa54647"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429237",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 13,
+          "identificatie": "0873010000429238",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/ff408941-1f5e-5be3-acce-e6ee75ac451b"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429238",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81059.846,
+            381928.032
+          ]
+        },
+        "id": "d6b813f7-55e4-5a19-aa84-ccbd9a219266"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder_identificatie": "0873",
+          "bronhouder_naam": "Woensdrecht",
+          "documentdatum": "2026-05-08",
+          "documentnummer": "0873Z2026050800006",
+          "gebruiksdoel": "woonfunctie",
+          "geconstateerd": "N",
+          "hoofdadres_identificatie": "0873200000429241",
+          "hoofdadres_status": "Naamgeving uitgegeven",
+          "huisletter": null,
+          "huisnummer": 15,
+          "identificatie": "0873010000429242",
+          "openbare_ruimte_identificatie": "0873300000411221",
+          "openbare_ruimte_naam": "Aalbersestraat",
+          "openbare_ruimte_naam_kort": null,
+          "openbare_ruimte_status": "Naamgeving uitgegeven",
+          "oppervlakte": 90,
+          "pand.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/2fc7d171-d53e-5956-9d4a-9ff30aa509c1"
+          ],
+          "postcode": "4631CC",
+          "provincie_afkorting": "NB",
+          "provincie_naam": "Noord-Brabant",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0873010000429242",
+          "status": "Verblijfsobject in gebruik",
+          "toevoeging": null,
+          "woonplaats_identificatie": "1000",
+          "woonplaats_naam": "Hoogerheide",
+          "woonplaats_status": "Woonplaats aangewezen"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81064.923,
+            381927.759
+          ]
+        },
+        "id": "1a2886c8-9739-59a7-9547-4469c8386b05"
+      }
+    ],
+    "numberReturned": 22
+  }
+}

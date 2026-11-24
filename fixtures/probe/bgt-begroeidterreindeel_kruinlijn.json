@@ -1,0 +1,30 @@
+{
+  "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/begroeidterreindeel_kruinlijn/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:02Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/begroeidterreindeel_kruinlijn/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/begroeidterreindeel_kruinlijn/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/begroeidterreindeel_kruinlijn/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [],
+    "numberReturned": 0
+  }
+}

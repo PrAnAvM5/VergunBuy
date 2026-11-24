@@ -1,0 +1,513 @@
+{
+  "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=woonplaatsnaam:Hoogerheide&fq=type:adres&rows=50&fl=weergavenaam,postcode,huisnummer,huisletter,huisnummertoevoeging,centroide_rd,adresseerbaarobject_id,nummeraanduiding_id,straatnaam,gemeentenaam",
+  "status": 200,
+  "body": {
+    "response": {
+      "numFound": 6007,
+      "start": 0,
+      "maxScore": 3.6437678,
+      "numFoundExact": true,
+      "docs": [
+        {
+          "weergavenaam": "Aalbersestraat 1, 4631CC Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631CC",
+          "nummeraanduiding_id": "0873200000429213",
+          "adresseerbaarobject_id": "0873010000429214",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81029.282 381929.681)",
+          "straatnaam": "Aalbersestraat"
+        },
+        {
+          "weergavenaam": "Akkerdreef 1, 4631CT Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631CT",
+          "nummeraanduiding_id": "0873200000452700",
+          "adresseerbaarobject_id": "0873030000452701",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81912.187 381425.954)",
+          "straatnaam": "Akkerdreef"
+        },
+        {
+          "weergavenaam": "Ampèreweg 1, 4631SP Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631SP",
+          "nummeraanduiding_id": "0873200000429271",
+          "adresseerbaarobject_id": "0873010000429272",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(82823.054 382603.991)",
+          "straatnaam": "Ampèreweg"
+        },
+        {
+          "weergavenaam": "Antwerpsestraatweg 1, 4631NK Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631NK",
+          "nummeraanduiding_id": "0873200000429283",
+          "adresseerbaarobject_id": "0873010000429284",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80677.808 382731.288)",
+          "straatnaam": "Antwerpsestraatweg"
+        },
+        {
+          "weergavenaam": "Arendsberg 1, 4631VA Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631VA",
+          "nummeraanduiding_id": "0873200000460143",
+          "adresseerbaarobject_id": "0873010000460144",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80839.212 382509.772)",
+          "straatnaam": "Arendsberg"
+        },
+        {
+          "weergavenaam": "Bijentiende 1, 4631MB Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631MB",
+          "nummeraanduiding_id": "0873200000445029",
+          "adresseerbaarobject_id": "0873010000445030",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81137.101 382905.401)",
+          "straatnaam": "Bijentiende"
+        },
+        {
+          "weergavenaam": "Binnenweg 1, 4631LN Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631LN",
+          "nummeraanduiding_id": "0873200000430345",
+          "adresseerbaarobject_id": "0873010000430346",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80979 382404)",
+          "straatnaam": "Binnenweg"
+        },
+        {
+          "weergavenaam": "Blériotlaan 1, 4631HT Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631HT",
+          "nummeraanduiding_id": "0873200000429433",
+          "adresseerbaarobject_id": "0873010000429434",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81665 382622)",
+          "straatnaam": "Blériotlaan"
+        },
+        {
+          "weergavenaam": "Bloemenlaan 1, 4631AC Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AC",
+          "nummeraanduiding_id": "0873200000429487",
+          "adresseerbaarobject_id": "0873010000429488",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80546 383309)",
+          "straatnaam": "Bloemenlaan"
+        },
+        {
+          "weergavenaam": "Buitendreef 1, 4631SV Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631SV",
+          "nummeraanduiding_id": "0873200000429525",
+          "adresseerbaarobject_id": "0873010000429526",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(82603 382320)",
+          "straatnaam": "Buitendreef"
+        },
+        {
+          "weergavenaam": "Burg Moorsstraat 1, 4631EC Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631EC",
+          "nummeraanduiding_id": "0873200000429557",
+          "adresseerbaarobject_id": "0873010000429558",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81458.574 382076.689)",
+          "straatnaam": "Burg Moorsstraat"
+        },
+        {
+          "weergavenaam": "Buys Ballotstraat 1, 4631GV Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631GV",
+          "nummeraanduiding_id": "0873200000429645",
+          "adresseerbaarobject_id": "0873010000429646",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81726 382207)",
+          "straatnaam": "Buys Ballotstraat"
+        },
+        {
+          "weergavenaam": "Cameronlaan 1, 4631NW Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631NW",
+          "nummeraanduiding_id": "0873200000429705",
+          "adresseerbaarobject_id": "0873010000429706",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80610 382450)",
+          "straatnaam": "Cameronlaan"
+        },
+        {
+          "weergavenaam": "Cleirenbaantje 1, 4631RB Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631RB",
+          "nummeraanduiding_id": "0873200000450221",
+          "adresseerbaarobject_id": "0873010000450222",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80641.324 383837.597)",
+          "straatnaam": "Cleirenbaantje"
+        },
+        {
+          "weergavenaam": "Couwenberghstraat 1, 4631CV Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631CV",
+          "nummeraanduiding_id": "0873200000429775",
+          "adresseerbaarobject_id": "0873010000429776",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81616 381590)",
+          "straatnaam": "Couwenberghstraat"
+        },
+        {
+          "weergavenaam": "de Acacia 1, 4631DB Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631DB",
+          "nummeraanduiding_id": "0873200000429821",
+          "adresseerbaarobject_id": "0873010000429822",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80302.328 382979.84)",
+          "straatnaam": "de Acacia"
+        },
+        {
+          "weergavenaam": "de Anjer 1, 4631AB Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AB",
+          "nummeraanduiding_id": "0873200000429149",
+          "adresseerbaarobject_id": "0873010000429150",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80567.224 383200.678)",
+          "straatnaam": "de Anjer"
+        },
+        {
+          "weergavenaam": "de Berk 1, 4631AS Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AS",
+          "nummeraanduiding_id": "0873200000431209",
+          "adresseerbaarobject_id": "0873010000431210",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80355 382988)",
+          "straatnaam": "de Berk"
+        },
+        {
+          "weergavenaam": "de Eik 1, 4631AT Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AT",
+          "nummeraanduiding_id": "0873200000430719",
+          "adresseerbaarobject_id": "0873010000430720",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80305 382876)",
+          "straatnaam": "de Eik"
+        },
+        {
+          "weergavenaam": "de Hazelaar 1, 4631AP Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AP",
+          "nummeraanduiding_id": "0873200000430779",
+          "adresseerbaarobject_id": "0873010000430780",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80490.536 383150.348)",
+          "straatnaam": "de Hazelaar"
+        },
+        {
+          "weergavenaam": "de Hortensia 1, 4631DG Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631DG",
+          "nummeraanduiding_id": "0873200000430839",
+          "adresseerbaarobject_id": "0873010000430840",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80462 383191)",
+          "straatnaam": "de Hortensia"
+        },
+        {
+          "weergavenaam": "de Jasmijn 1, 4631AX Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AX",
+          "nummeraanduiding_id": "0873200000430899",
+          "adresseerbaarobject_id": "0873010000430900",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80416.156 383137.424)",
+          "straatnaam": "de Jasmijn"
+        },
+        {
+          "weergavenaam": "de Narcis 1, 4631AE Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AE",
+          "nummeraanduiding_id": "0873200000430989",
+          "adresseerbaarobject_id": "0873010000430990",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80583 383100)",
+          "straatnaam": "de Narcis"
+        },
+        {
+          "weergavenaam": "de Papaver 1, 4631AV Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AV",
+          "nummeraanduiding_id": "0873200000431043",
+          "adresseerbaarobject_id": "0873010000431044",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80536.081 383033.664)",
+          "straatnaam": "de Papaver"
+        },
+        {
+          "weergavenaam": "de Roos 1, 4631AG Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AG",
+          "nummeraanduiding_id": "0873200000451449",
+          "adresseerbaarobject_id": "0873010000451450",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80594 382977)",
+          "straatnaam": "de Roos"
+        },
+        {
+          "weergavenaam": "de Sering 1, 4631AH Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AH",
+          "nummeraanduiding_id": "0873200000429945",
+          "adresseerbaarobject_id": "0873010000429946",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80529.707 382895.73)",
+          "straatnaam": "de Sering"
+        },
+        {
+          "weergavenaam": "de Tulp 1, 4631AJ Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AJ",
+          "nummeraanduiding_id": "0873200000429985",
+          "adresseerbaarobject_id": "0873010000429986",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80488.06 382844.464)",
+          "straatnaam": "de Tulp"
+        },
+        {
+          "weergavenaam": "de Vuurdoorn 1, 4631DH Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631DH",
+          "nummeraanduiding_id": "0873200000430069",
+          "adresseerbaarobject_id": "0873010000430070",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80254 383142)",
+          "straatnaam": "de Vuurdoorn"
+        },
+        {
+          "weergavenaam": "de Wilg 1, 4631DD Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631DD",
+          "nummeraanduiding_id": "0873200000430123",
+          "adresseerbaarobject_id": "0873010000430124",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80360 382782)",
+          "straatnaam": "de Wilg"
+        },
+        {
+          "weergavenaam": "de Zonnebloem 1, 4631AW Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631AW",
+          "nummeraanduiding_id": "0873200000430229",
+          "adresseerbaarobject_id": "0873010000430230",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80446.52 382907.622)",
+          "straatnaam": "de Zonnebloem"
+        },
+        {
+          "weergavenaam": "Doelstraat 1, 4631RH Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631RH",
+          "nummeraanduiding_id": "0873200000431655",
+          "adresseerbaarobject_id": "0873010000431656",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80654 383319)",
+          "straatnaam": "Doelstraat"
+        },
+        {
+          "weergavenaam": "dokter van de Karplein 1, 4631MK Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631MK",
+          "nummeraanduiding_id": "0873200000445701",
+          "adresseerbaarobject_id": "0873010000445702",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80986.144 382811.417)",
+          "straatnaam": "dokter van de Karplein"
+        },
+        {
+          "weergavenaam": "Dr de Bruijnlaan 1, 4631CW Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631CW",
+          "nummeraanduiding_id": "0873200000447203",
+          "adresseerbaarobject_id": "0873010000447204",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81536 381654)",
+          "straatnaam": "Dr de Bruijnlaan"
+        },
+        {
+          "weergavenaam": "Duinhoefplein 1, 4631MC Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631MC",
+          "nummeraanduiding_id": "0873200000445215",
+          "adresseerbaarobject_id": "0873010000445216",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81078.418 382764.222)",
+          "straatnaam": "Duinhoefplein"
+        },
+        {
+          "weergavenaam": "Duinstraat 1, 4631KR Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631KR",
+          "nummeraanduiding_id": "0873200000432917",
+          "adresseerbaarobject_id": "0873010000432918",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80777 382716)",
+          "straatnaam": "Duinstraat"
+        },
+        {
+          "weergavenaam": "Duintjesplein 1, 4631EG Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631EG",
+          "nummeraanduiding_id": "0873200000433029",
+          "adresseerbaarobject_id": "0873010000433030",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81351 381905)",
+          "straatnaam": "Duintjesplein"
+        },
+        {
+          "weergavenaam": "Edisonweg 1, 4631SN Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631SN",
+          "nummeraanduiding_id": "0873200000452270",
+          "adresseerbaarobject_id": "0873010000452271",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(82629 382515)",
+          "straatnaam": "Edisonweg"
+        },
+        {
+          "weergavenaam": "Edward Jennerstraat 1, 4631LA Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631LA",
+          "nummeraanduiding_id": "0873200000430395",
+          "adresseerbaarobject_id": "0873010000430396",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81023 382659)",
+          "straatnaam": "Edward Jennerstraat"
+        },
+        {
+          "weergavenaam": "Flemingstraat 1, 4631LJ Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631LJ",
+          "nummeraanduiding_id": "0873200000430435",
+          "adresseerbaarobject_id": "0873010000430436",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80911 382572)",
+          "straatnaam": "Flemingstraat"
+        },
+        {
+          "weergavenaam": "Fokkerlaan 1, 4631JM Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631JM",
+          "nummeraanduiding_id": "0873200000430457",
+          "adresseerbaarobject_id": "0873010000430458",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81432 382701)",
+          "straatnaam": "Fokkerlaan"
+        },
+        {
+          "weergavenaam": "Garry Horselaan 1, 4631NS Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631NS",
+          "nummeraanduiding_id": "0873200000430527",
+          "adresseerbaarobject_id": "0873010000430528",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80324 382577)",
+          "straatnaam": "Garry Horselaan"
+        },
+        {
+          "weergavenaam": "Gemeynte 1, 4631MG Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631MG",
+          "nummeraanduiding_id": "0873200000445129",
+          "adresseerbaarobject_id": "0873010000445130",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81328.619 382994.055)",
+          "straatnaam": "Gemeynte"
+        },
+        {
+          "weergavenaam": "Geyssendorfferlaan 1, 4631HW Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631HW",
+          "nummeraanduiding_id": "0873200000430543",
+          "adresseerbaarobject_id": "0873010000430544",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81649.2 382530.102)",
+          "straatnaam": "Geyssendorfferlaan"
+        },
+        {
+          "weergavenaam": "Gravesandestraat 1, 4631HA Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631HA",
+          "nummeraanduiding_id": "0873200000430569",
+          "adresseerbaarobject_id": "0873010000430570",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81659 382364)",
+          "straatnaam": "Gravesandestraat"
+        },
+        {
+          "weergavenaam": "Griblingstraat 1, Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "nummeraanduiding_id": "0873200000449547",
+          "adresseerbaarobject_id": "0873010000449548",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81021.881 382683.255)",
+          "straatnaam": "Griblingstraat"
+        },
+        {
+          "weergavenaam": "Hamiltonlaan 1, 4631NX Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631NX",
+          "nummeraanduiding_id": "0873200000431091",
+          "adresseerbaarobject_id": "0873010000431092",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(80504 382460)",
+          "straatnaam": "Hamiltonlaan"
+        },
+        {
+          "weergavenaam": "Heideduinstede 1, 4631MA Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631MA",
+          "nummeraanduiding_id": "0873200000446741",
+          "adresseerbaarobject_id": "0873010000446742",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81219.354 382738.307)",
+          "straatnaam": "Heideduinstede"
+        },
+        {
+          "weergavenaam": "Heistraat 1, 4631KW Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631KW",
+          "nummeraanduiding_id": "0873200000431121",
+          "adresseerbaarobject_id": "0873010000431122",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81155 382399)",
+          "straatnaam": "Heistraat"
+        },
+        {
+          "weergavenaam": "Hof van Brabant 1, 4631HX Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631HX",
+          "nummeraanduiding_id": "0873200000460609",
+          "adresseerbaarobject_id": "0873010000460610",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81593.532 382776.745)",
+          "straatnaam": "Hof van Brabant"
+        },
+        {
+          "weergavenaam": "Hugo de Grootstraat 1, 4631GJ Hoogerheide",
+          "gemeentenaam": "Woensdrecht",
+          "postcode": "4631GJ",
+          "nummeraanduiding_id": "0873200000431149",
+          "adresseerbaarobject_id": "0873010000431150",
+          "huisnummer": 1,
+          "centroide_rd": "POINT(81930 382429)",
+          "straatnaam": "Hugo de Grootstraat"
+        }
+      ]
+    }
+  }
+}

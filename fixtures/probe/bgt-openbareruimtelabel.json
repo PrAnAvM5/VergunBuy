@@ -1,0 +1,103 @@
+{
+  "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/openbareruimtelabel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:03Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/openbareruimtelabel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/openbareruimtelabel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/openbareruimtelabel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_opr": "0873300000411221",
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-20T22:00:00Z",
+          "eind_registratie": "2018-08-30T19:43:46Z",
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G1655.452c5f54982f47ca80260d807dd646f3",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "openbareruimtenaam": "Aalbersestraat",
+          "openbareruimtetype": "Weg",
+          "openbareruimtetype_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOpenbareRuimte",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "fcfa4213-cd8e-3e37-83a6-1fb860bc212b"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81026.193,
+            381917.792
+          ]
+        },
+        "id": "f0ea1a5c-639e-5685-825b-c3552a4e7674"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_opr": "0873300000411221",
+          "bronhouder": "G0873",
+          "creation_date": "2016-06-20T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.7999999523163,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G1655.452c5f54982f47ca80260d807dd646f3",
+          "lv_publicatiedatum": "2018-10-22T20:54:29Z",
+          "openbareruimtenaam": "Aalbersestraat",
+          "openbareruimtetype": "Weg",
+          "openbareruimtetype_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#TypeOpenbareRuimte",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2018-08-30T19:43:46Z",
+          "version": "c87fa663-8954-a7e5-4d80-956c77d2b745"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81016.176,
+            381919.813
+          ]
+        },
+        "id": "b4958849-6876-53de-b604-e42a975f3c46"
+      }
+    ],
+    "numberReturned": 2
+  }
+}

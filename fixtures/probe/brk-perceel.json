@@ -1,0 +1,6141 @@
+{
+  "url": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:01Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2005-06-16T12:01:00Z",
+          "identificatie_lokaal_id": "10260169770000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 24,
+          "perceelnummer": 1697,
+          "perceelnummer_plaatscoordinaat_x": 80994.815,
+          "perceelnummer_plaatscoordinaat_y": 381913.735,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": -4.434,
+          "perceelnummer_verschuiving_delta_y": 7.417,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2005-06-16T12:01:00Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80999.696,
+                  381915.142
+                ],
+                [
+                  80991.856,
+                  381915.599
+                ],
+                [
+                  80991.787,
+                  381912.45
+                ],
+                [
+                  80999.629,
+                  381912.061
+                ],
+                [
+                  80999.696,
+                  381915.142
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "0d498a64-4281-575d-b14f-e0202f91032e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260199070000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 475,
+          "perceelnummer": 1990,
+          "perceelnummer_plaatscoordinaat_x": 81015.904,
+          "perceelnummer_plaatscoordinaat_y": 381975.616,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81023.025,
+                  381986.28
+                ],
+                [
+                  81010.885,
+                  381986.531
+                ],
+                [
+                  81007.709,
+                  381986.922
+                ],
+                [
+                  80996.101,
+                  381989.504
+                ],
+                [
+                  80992.199,
+                  381972.786
+                ],
+                [
+                  80996.162,
+                  381971.927
+                ],
+                [
+                  80996.843,
+                  381971.796
+                ],
+                [
+                  81006.916,
+                  381969.593
+                ],
+                [
+                  81014.657,
+                  381970.559
+                ],
+                [
+                  81023.261,
+                  381970.902
+                ],
+                [
+                  81023.025,
+                  381986.28
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "147b7520-3366-5152-a1bf-f26b42467aa8"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260238870000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 553,
+          "perceelnummer": 2388,
+          "perceelnummer_plaatscoordinaat_x": 81004.827,
+          "perceelnummer_plaatscoordinaat_y": 381887.443,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81020.746,
+                  381881.601
+                ],
+                [
+                  81021.665,
+                  381885.459
+                ],
+                [
+                  81021.866,
+                  381892.823
+                ],
+                [
+                  80985.719,
+                  381893.159
+                ],
+                [
+                  80985.899,
+                  381894.099
+                ],
+                [
+                  80974.598,
+                  381896.166
+                ],
+                [
+                  80972.291,
+                  381883.683
+                ],
+                [
+                  80981.57,
+                  381882.161
+                ],
+                [
+                  80981.491,
+                  381881.905
+                ],
+                [
+                  80988.265,
+                  381881.637
+                ],
+                [
+                  81020.746,
+                  381881.601
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "5adcd61a-0f9a-5103-8667-ea882946e84d"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260245970000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 1180,
+          "perceelnummer": 2459,
+          "perceelnummer_plaatscoordinaat_x": 81045.463,
+          "perceelnummer_plaatscoordinaat_y": 381891.401,
+          "perceelnummer_rotatie": 1.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81050.083,
+                  381888.806
+                ],
+                [
+                  81047.371,
+                  381845.242
+                ],
+                [
+                  81060.795,
+                  381844.424
+                ],
+                [
+                  81064.591,
+                  381903.629
+                ],
+                [
+                  81028.302,
+                  381905.995
+                ],
+                [
+                  81027.381,
+                  381890.392
+                ],
+                [
+                  81050.083,
+                  381888.806
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "ebdc6301-7c8d-599d-804c-72d9f47a9fce"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260248770000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 14,
+          "perceelnummer": 2487,
+          "perceelnummer_plaatscoordinaat_x": 81023.225,
+          "perceelnummer_plaatscoordinaat_y": 381902.855,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 4.236,
+          "perceelnummer_verschuiving_delta_y": 7.895,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81022.096,
+                  381901.306
+                ],
+                [
+                  81027.01,
+                  381901.03
+                ],
+                [
+                  81027.17,
+                  381903.88
+                ],
+                [
+                  81022.174,
+                  381904.196
+                ],
+                [
+                  81022.096,
+                  381901.306
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "bc44130c-cbcc-58fc-b4df-f3be9948a027"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2005-06-16T12:01:00Z",
+          "identificatie_lokaal_id": "10260251870000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 412,
+          "perceelnummer": 2518,
+          "perceelnummer_plaatscoordinaat_x": 81003.575,
+          "perceelnummer_plaatscoordinaat_y": 381909.113,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2005-06-16T12:01:00Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80976.52,
+                  381906.585
+                ],
+                [
+                  80986.914,
+                  381904.565
+                ],
+                [
+                  81018.505,
+                  381903.098
+                ],
+                [
+                  81019.289,
+                  381914.138
+                ],
+                [
+                  80999.696,
+                  381915.142
+                ],
+                [
+                  80999.629,
+                  381912.061
+                ],
+                [
+                  80991.787,
+                  381912.45
+                ],
+                [
+                  80991.856,
+                  381915.599
+                ],
+                [
+                  80978.347,
+                  381916.386
+                ],
+                [
+                  80977.979,
+                  381914.485
+                ],
+                [
+                  80976.52,
+                  381906.585
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "71caa9b6-cd0c-55bf-963d-69fa7d76f1c3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260251970000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 538,
+          "perceelnummer": 2519,
+          "perceelnummer_plaatscoordinaat_x": 81006.272,
+          "perceelnummer_plaatscoordinaat_y": 381898.23,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81022.096,
+                  381901.306
+                ],
+                [
+                  81022.174,
+                  381904.196
+                ],
+                [
+                  81022.442,
+                  381913.979
+                ],
+                [
+                  81019.289,
+                  381914.138
+                ],
+                [
+                  81018.505,
+                  381903.098
+                ],
+                [
+                  80986.914,
+                  381904.565
+                ],
+                [
+                  80976.52,
+                  381906.585
+                ],
+                [
+                  80974.598,
+                  381896.166
+                ],
+                [
+                  80985.899,
+                  381894.099
+                ],
+                [
+                  80985.719,
+                  381893.159
+                ],
+                [
+                  81021.866,
+                  381892.823
+                ],
+                [
+                  81022.096,
+                  381901.306
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "02db11ad-0a2e-584e-b92a-3b2fe04f5a18"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2021-02-15T12:33:44Z",
+          "identificatie_lokaal_id": "10260276070000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 7565,
+          "perceelnummer": 2760,
+          "perceelnummer_plaatscoordinaat_x": 80932.142,
+          "perceelnummer_plaatscoordinaat_y": 381754.842,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2021-02-15T12:33:44Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80943.122,
+                  381772.189
+                ],
+                [
+                  80944.551,
+                  381777.184
+                ],
+                [
+                  80945.03,
+                  381779.115
+                ],
+                [
+                  80946.864,
+                  381786.506
+                ],
+                [
+                  80948.314,
+                  381792.351
+                ],
+                [
+                  80950.063,
+                  381800.108
+                ],
+                [
+                  80951.598,
+                  381806.704
+                ],
+                [
+                  80954.055,
+                  381817.65
+                ],
+                [
+                  80956.378,
+                  381827.658
+                ],
+                [
+                  80958.744,
+                  381837.855
+                ],
+                [
+                  80963.056,
+                  381856.44
+                ],
+                [
+                  80963.811,
+                  381859.396
+                ],
+                [
+                  80964.131,
+                  381859.387
+                ],
+                [
+                  80966.112,
+                  381867.873
+                ],
+                [
+                  80968.574,
+                  381867.394
+                ],
+                [
+                  80969.81,
+                  381872.91
+                ],
+                [
+                  80970.128,
+                  381873.842
+                ],
+                [
+                  80970.46,
+                  381874.81
+                ],
+                [
+                  80971.98,
+                  381883.733
+                ],
+                [
+                  80972.291,
+                  381883.683
+                ],
+                [
+                  80974.598,
+                  381896.166
+                ],
+                [
+                  80976.52,
+                  381906.585
+                ],
+                [
+                  80977.979,
+                  381914.485
+                ],
+                [
+                  80978.347,
+                  381916.386
+                ],
+                [
+                  80980.73,
+                  381928.686
+                ],
+                [
+                  80983.307,
+                  381942.973
+                ],
+                [
+                  80983.465,
+                  381943.737
+                ],
+                [
+                  80983.875,
+                  381944.523
+                ],
+                [
+                  80985.901,
+                  381946.78
+                ],
+                [
+                  80986.358,
+                  381947.679
+                ],
+                [
+                  80986.867,
+                  381949.842
+                ],
+                [
+                  80987.82,
+                  381953.895
+                ],
+                [
+                  80988.196,
+                  381955.496
+                ],
+                [
+                  80989.371,
+                  381960.49
+                ],
+                [
+                  80989.583,
+                  381961.454
+                ],
+                [
+                  80992.199,
+                  381972.786
+                ],
+                [
+                  80996.101,
+                  381989.504
+                ],
+                [
+                  80980.251,
+                  381991.06
+                ],
+                [
+                  80979.6,
+                  381988.44
+                ],
+                [
+                  80977.65,
+                  381980.59
+                ],
+                [
+                  80977.41,
+                  381979.53
+                ],
+                [
+                  80975.899,
+                  381973.404
+                ],
+                [
+                  80973.47,
+                  381963.56
+                ],
+                [
+                  80973.198,
+                  381962.486
+                ],
+                [
+                  80972.9,
+                  381961.31
+                ],
+                [
+                  80970.73,
+                  381951.84
+                ],
+                [
+                  80968.91,
+                  381943.78
+                ],
+                [
+                  80968.085,
+                  381941.279
+                ],
+                [
+                  80966.91,
+                  381937.72
+                ],
+                [
+                  80965.292,
+                  381930.458
+                ],
+                [
+                  80962.207,
+                  381916.379
+                ],
+                [
+                  80961.952,
+                  381915.723
+                ],
+                [
+                  80961.172,
+                  381913.146
+                ],
+                [
+                  80958.406,
+                  381902.673
+                ],
+                [
+                  80957.097,
+                  381897.088
+                ],
+                [
+                  80955.78,
+                  381891.47
+                ],
+                [
+                  80955.55,
+                  381890.31
+                ],
+                [
+                  80953.128,
+                  381879.933
+                ],
+                [
+                  80951.77,
+                  381874.56
+                ],
+                [
+                  80949.12,
+                  381862.97
+                ],
+                [
+                  80945.718,
+                  381848.237
+                ],
+                [
+                  80943.735,
+                  381829.938
+                ],
+                [
+                  80943.586,
+                  381829.461
+                ],
+                [
+                  80940.839,
+                  381816.83
+                ],
+                [
+                  80938.45,
+                  381807.25
+                ],
+                [
+                  80935.437,
+                  381793.233
+                ],
+                [
+                  80933.712,
+                  381785.211
+                ],
+                [
+                  80932.122,
+                  381777.816
+                ],
+                [
+                  80931.287,
+                  381773.982
+                ],
+                [
+                  80928.648,
+                  381761.856
+                ],
+                [
+                  80928.046,
+                  381759.062
+                ],
+                [
+                  80925.406,
+                  381746.776
+                ],
+                [
+                  80923.053,
+                  381735.942
+                ],
+                [
+                  80922.667,
+                  381734.155
+                ],
+                [
+                  80922.158,
+                  381731.81
+                ],
+                [
+                  80921.007,
+                  381726.504
+                ],
+                [
+                  80919.752,
+                  381720.727
+                ],
+                [
+                  80918.509,
+                  381715.263
+                ],
+                [
+                  80917.464,
+                  381710.669
+                ],
+                [
+                  80916.751,
+                  381707.501
+                ],
+                [
+                  80916.512,
+                  381706.435
+                ],
+                [
+                  80912.066,
+                  381686.673
+                ],
+                [
+                  80901.524,
+                  381641.543
+                ],
+                [
+                  80894.984,
+                  381613.194
+                ],
+                [
+                  80890.531,
+                  381593.996
+                ],
+                [
+                  80885.829,
+                  381575.417
+                ],
+                [
+                  80880.312,
+                  381551.16
+                ],
+                [
+                  80880.297,
+                  381551.113
+                ],
+                [
+                  80875.508,
+                  381536.016
+                ],
+                [
+                  80866.736,
+                  381508.434
+                ],
+                [
+                  80848.469,
+                  381463.353
+                ],
+                [
+                  80843.8,
+                  381449.691
+                ],
+                [
+                  80855.328,
+                  381447.829
+                ],
+                [
+                  80859.551,
+                  381455.603
+                ],
+                [
+                  80861.334,
+                  381459.44
+                ],
+                [
+                  80862.918,
+                  381462.872
+                ],
+                [
+                  80864.941,
+                  381468.173
+                ],
+                [
+                  80866.563,
+                  381472.02
+                ],
+                [
+                  80873.901,
+                  381494.847
+                ],
+                [
+                  80877.748,
+                  381506.523
+                ],
+                [
+                  80881.795,
+                  381518.265
+                ],
+                [
+                  80887.41,
+                  381535.741
+                ],
+                [
+                  80890.994,
+                  381548.451
+                ],
+                [
+                  80895.063,
+                  381562.818
+                ],
+                [
+                  80898.311,
+                  381575.346
+                ],
+                [
+                  80901.703,
+                  381588.264
+                ],
+                [
+                  80904.502,
+                  381599.937
+                ],
+                [
+                  80907.389,
+                  381611.549
+                ],
+                [
+                  80929.175,
+                  381709.064
+                ],
+                [
+                  80931.368,
+                  381718.88
+                ],
+                [
+                  80933.085,
+                  381726.01
+                ],
+                [
+                  80933.114,
+                  381726.135
+                ],
+                [
+                  80933.673,
+                  381728.684
+                ],
+                [
+                  80941.319,
+                  381763.518
+                ],
+                [
+                  80941.748,
+                  381767.383
+                ],
+                [
+                  80943.122,
+                  381772.189
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "2d4f0923-0f48-52da-b265-f8474d1df0e2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2005-06-16T12:01:00Z",
+          "identificatie_lokaal_id": "10260315270000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 4,
+          "perceelnummer": 3152,
+          "perceelnummer_plaatscoordinaat_x": 80991.055,
+          "perceelnummer_plaatscoordinaat_y": 381960.595,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": -7.705,
+          "perceelnummer_verschuiving_delta_y": 4.523,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2005-06-16T12:01:00Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80994.439,
+                  381960.324
+                ],
+                [
+                  80989.583,
+                  381961.454
+                ],
+                [
+                  80989.371,
+                  381960.49
+                ],
+                [
+                  80990.91,
+                  381960.13
+                ],
+                [
+                  80995.661,
+                  381960.039
+                ],
+                [
+                  80994.439,
+                  381960.324
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "b80a65aa-62fa-59a7-bfbb-ce5860ca4f64"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2005-06-16T12:01:00Z",
+          "identificatie_lokaal_id": "10260330770000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 52,
+          "perceelnummer": 3307,
+          "perceelnummer_plaatscoordinaat_x": 80992.812,
+          "perceelnummer_plaatscoordinaat_y": 381966.065,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2005-06-16T12:01:00Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80996.162,
+                  381971.927
+                ],
+                [
+                  80992.199,
+                  381972.786
+                ],
+                [
+                  80989.583,
+                  381961.454
+                ],
+                [
+                  80994.439,
+                  381960.324
+                ],
+                [
+                  80995.101,
+                  381962.965
+                ],
+                [
+                  80995.09,
+                  381962.968
+                ],
+                [
+                  80994.247,
+                  381963.179
+                ],
+                [
+                  80996.162,
+                  381971.927
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "01024234-af5f-5019-9143-24205e728b08"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260330870000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 316,
+          "perceelnummer": 3308,
+          "perceelnummer_plaatscoordinaat_x": 81015.133,
+          "perceelnummer_plaatscoordinaat_y": 381967.432,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81013.211,
+                  381959.807
+                ],
+                [
+                  81013.21,
+                  381959.879
+                ],
+                [
+                  81023.166,
+                  381959.382
+                ],
+                [
+                  81023.274,
+                  381962.938
+                ],
+                [
+                  81023.653,
+                  381962.936
+                ],
+                [
+                  81023.261,
+                  381970.902
+                ],
+                [
+                  81014.657,
+                  381970.559
+                ],
+                [
+                  81006.916,
+                  381969.593
+                ],
+                [
+                  80996.843,
+                  381971.796
+                ],
+                [
+                  80996.162,
+                  381971.927
+                ],
+                [
+                  80994.247,
+                  381963.179
+                ],
+                [
+                  80995.09,
+                  381962.968
+                ],
+                [
+                  80995.101,
+                  381962.965
+                ],
+                [
+                  80994.439,
+                  381960.324
+                ],
+                [
+                  80995.661,
+                  381960.039
+                ],
+                [
+                  80998.478,
+                  381959.383
+                ],
+                [
+                  81002.544,
+                  381958.297
+                ],
+                [
+                  81003.402,
+                  381958.291
+                ],
+                [
+                  81005.668,
+                  381958.276
+                ],
+                [
+                  81005.671,
+                  381959.818
+                ],
+                [
+                  81013.211,
+                  381959.807
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "9a62712d-2611-563f-83cb-bb4746c8e57a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260332070000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 552,
+          "perceelnummer": 3320,
+          "perceelnummer_plaatscoordinaat_x": 81008.226,
+          "perceelnummer_plaatscoordinaat_y": 381933.502,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81022.805,
+                  381927.277
+                ],
+                [
+                  81023.161,
+                  381940.356
+                ],
+                [
+                  81013.29,
+                  381940.631
+                ],
+                [
+                  81000.671,
+                  381940.686
+                ],
+                [
+                  80994.47,
+                  381942.158
+                ],
+                [
+                  80994.44,
+                  381942.03
+                ],
+                [
+                  80985.561,
+                  381944.107
+                ],
+                [
+                  80982.02,
+                  381928.833
+                ],
+                [
+                  80984.334,
+                  381928.295
+                ],
+                [
+                  80988.918,
+                  381927.778
+                ],
+                [
+                  80989.856,
+                  381927.647
+                ],
+                [
+                  81001.329,
+                  381927.293
+                ],
+                [
+                  81022.805,
+                  381927.277
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "141e6d11-f356-5ebc-8679-680cdad08ec9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260332170000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 63,
+          "perceelnummer": 3321,
+          "perceelnummer_plaatscoordinaat_x": 81011.675,
+          "perceelnummer_plaatscoordinaat_y": 381926.375,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 4.823,
+          "perceelnummer_verschuiving_delta_y": 4.599,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81022.73,
+                  381924.525
+                ],
+                [
+                  81022.805,
+                  381927.277
+                ],
+                [
+                  81001.329,
+                  381927.293
+                ],
+                [
+                  80989.856,
+                  381927.647
+                ],
+                [
+                  80988.918,
+                  381927.778
+                ],
+                [
+                  80984.334,
+                  381928.295
+                ],
+                [
+                  80992.473,
+                  381926.405
+                ],
+                [
+                  80995.408,
+                  381926.081
+                ],
+                [
+                  81022.73,
+                  381924.525
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "adc4e5b1-0469-56e1-b664-0273157f350e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260332270000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 503,
+          "perceelnummer": 3322,
+          "perceelnummer_plaatscoordinaat_x": 81003.401,
+          "perceelnummer_plaatscoordinaat_y": 381920.404,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81022.442,
+                  381913.979
+                ],
+                [
+                  81022.73,
+                  381924.525
+                ],
+                [
+                  80995.408,
+                  381926.081
+                ],
+                [
+                  80992.473,
+                  381926.405
+                ],
+                [
+                  80984.334,
+                  381928.295
+                ],
+                [
+                  80982.02,
+                  381928.833
+                ],
+                [
+                  80985.561,
+                  381944.107
+                ],
+                [
+                  80983.875,
+                  381944.523
+                ],
+                [
+                  80983.465,
+                  381943.737
+                ],
+                [
+                  80983.307,
+                  381942.973
+                ],
+                [
+                  80980.73,
+                  381928.686
+                ],
+                [
+                  80978.347,
+                  381916.386
+                ],
+                [
+                  80991.856,
+                  381915.599
+                ],
+                [
+                  80999.696,
+                  381915.142
+                ],
+                [
+                  81019.289,
+                  381914.138
+                ],
+                [
+                  81022.442,
+                  381913.979
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "8d866a56-672d-5093-9edf-6b64c4afca57"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260346570000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 158,
+          "perceelnummer": 3465,
+          "perceelnummer_plaatscoordinaat_x": 81001.946,
+          "perceelnummer_plaatscoordinaat_y": 381943.777,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81013.583,
+                  381945.52
+                ],
+                [
+                  81011.429,
+                  381945.645
+                ],
+                [
+                  80995.827,
+                  381947.96
+                ],
+                [
+                  80995.776,
+                  381947.746
+                ],
+                [
+                  80986.867,
+                  381949.842
+                ],
+                [
+                  80986.358,
+                  381947.679
+                ],
+                [
+                  80985.901,
+                  381946.78
+                ],
+                [
+                  80983.875,
+                  381944.523
+                ],
+                [
+                  80985.561,
+                  381944.107
+                ],
+                [
+                  80994.44,
+                  381942.03
+                ],
+                [
+                  80994.47,
+                  381942.158
+                ],
+                [
+                  81000.671,
+                  381940.686
+                ],
+                [
+                  81013.29,
+                  381940.631
+                ],
+                [
+                  81013.583,
+                  381945.52
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "76bbb638-4655-5cfb-87dd-0cb2c05ca787"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349170000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 121,
+          "perceelnummer": 3491,
+          "perceelnummer_plaatscoordinaat_x": 81026.621,
+          "perceelnummer_plaatscoordinaat_y": 381969.642,
+          "perceelnummer_rotatie": -89.6,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81024.964,
+                  381986.143
+                ],
+                [
+                  81024.644,
+                  381962.953
+                ],
+                [
+                  81029.883,
+                  381962.843
+                ],
+                [
+                  81029.945,
+                  381965.782
+                ],
+                [
+                  81030.004,
+                  381973.977
+                ],
+                [
+                  81030.226,
+                  381986.011
+                ],
+                [
+                  81024.964,
+                  381986.143
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "0b82d39c-c817-5787-a732-a4e1d105ea94"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349270000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 117,
+          "perceelnummer": 3492,
+          "perceelnummer_plaatscoordinaat_x": 81033.068,
+          "perceelnummer_plaatscoordinaat_y": 381969.491,
+          "perceelnummer_rotatie": -88.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81034.899,
+                  381962.738
+                ],
+                [
+                  81035.324,
+                  381985.884
+                ],
+                [
+                  81030.226,
+                  381986.011
+                ],
+                [
+                  81030.004,
+                  381973.977
+                ],
+                [
+                  81029.945,
+                  381965.782
+                ],
+                [
+                  81029.883,
+                  381962.843
+                ],
+                [
+                  81034.899,
+                  381962.738
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "2bc93c83-5be0-5b3d-890f-06370c92a691"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349370000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 117,
+          "perceelnummer": 3493,
+          "perceelnummer_plaatscoordinaat_x": 81036.543,
+          "perceelnummer_plaatscoordinaat_y": 381969.944,
+          "perceelnummer_rotatie": -89.6,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81034.899,
+                  381962.738
+                ],
+                [
+                  81040.08,
+                  381962.629
+                ],
+                [
+                  81040.142,
+                  381965.568
+                ],
+                [
+                  81040.204,
+                  381973.789
+                ],
+                [
+                  81040.424,
+                  381985.756
+                ],
+                [
+                  81035.324,
+                  381985.884
+                ],
+                [
+                  81034.899,
+                  381962.738
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "f44e7347-0fdb-5bd7-a37a-b48204c8525c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349470000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 117,
+          "perceelnummer": 3494,
+          "perceelnummer_plaatscoordinaat_x": 81043.393,
+          "perceelnummer_plaatscoordinaat_y": 381969.995,
+          "perceelnummer_rotatie": -88.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81045.098,
+                  381962.59
+                ],
+                [
+                  81045.523,
+                  381985.629
+                ],
+                [
+                  81040.424,
+                  381985.756
+                ],
+                [
+                  81040.204,
+                  381973.789
+                ],
+                [
+                  81040.142,
+                  381965.568
+                ],
+                [
+                  81040.08,
+                  381962.629
+                ],
+                [
+                  81045.098,
+                  381962.59
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "3a2182dc-f087-55a4-9851-fe4caaf2dec2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349570000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 114,
+          "perceelnummer": 3495,
+          "perceelnummer_plaatscoordinaat_x": 81047.828,
+          "perceelnummer_plaatscoordinaat_y": 381969.608,
+          "perceelnummer_rotatie": -83.7,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81048.898,
+                  381961.704
+                ],
+                [
+                  81049.559,
+                  381964.596
+                ],
+                [
+                  81050.374,
+                  381972.04
+                ],
+                [
+                  81050.403,
+                  381973.6
+                ],
+                [
+                  81050.621,
+                  381985.502
+                ],
+                [
+                  81045.523,
+                  381985.629
+                ],
+                [
+                  81045.098,
+                  381962.59
+                ],
+                [
+                  81045.249,
+                  381962.556
+                ],
+                [
+                  81048.898,
+                  381961.704
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "42648806-1d92-59c5-ad2b-d2025227710c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349670000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 118,
+          "perceelnummer": 3496,
+          "perceelnummer_plaatscoordinaat_x": 81052.71,
+          "perceelnummer_plaatscoordinaat_y": 381969.944,
+          "perceelnummer_rotatie": -69.8,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81052.345,
+                  381960.936
+                ],
+                [
+                  81055.661,
+                  381969.962
+                ],
+                [
+                  81055.536,
+                  381973.654
+                ],
+                [
+                  81055.691,
+                  381980.842
+                ],
+                [
+                  81055.831,
+                  381980.842
+                ],
+                [
+                  81055.817,
+                  381985.372
+                ],
+                [
+                  81050.621,
+                  381985.502
+                ],
+                [
+                  81050.403,
+                  381973.6
+                ],
+                [
+                  81050.374,
+                  381972.04
+                ],
+                [
+                  81049.559,
+                  381964.596
+                ],
+                [
+                  81048.898,
+                  381961.704
+                ],
+                [
+                  81052.345,
+                  381960.936
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "ddec0acb-aa45-521d-ac8c-5b4673ae69cb"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349870000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 115,
+          "perceelnummer": 3498,
+          "perceelnummer_plaatscoordinaat_x": 81056.488,
+          "perceelnummer_plaatscoordinaat_y": 381966.527,
+          "perceelnummer_rotatie": -69.8,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81052.345,
+                  381960.936
+                ],
+                [
+                  81052.413,
+                  381960.921
+                ],
+                [
+                  81055.461,
+                  381959.549
+                ],
+                [
+                  81056.676,
+                  381962.248
+                ],
+                [
+                  81059.404,
+                  381966.352
+                ],
+                [
+                  81060.489,
+                  381967.473
+                ],
+                [
+                  81070.428,
+                  381977.744
+                ],
+                [
+                  81066.795,
+                  381981.302
+                ],
+                [
+                  81057.971,
+                  381972.223
+                ],
+                [
+                  81057.87,
+                  381972.32
+                ],
+                [
+                  81056.709,
+                  381971.119
+                ],
+                [
+                  81056.745,
+                  381971.084
+                ],
+                [
+                  81055.661,
+                  381969.962
+                ],
+                [
+                  81052.345,
+                  381960.936
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "34db79cd-5ebd-5de4-b47f-c32893388ab5"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260349970000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 112,
+          "perceelnummer": 3499,
+          "perceelnummer_plaatscoordinaat_x": 81060.863,
+          "perceelnummer_plaatscoordinaat_y": 381962.927,
+          "perceelnummer_rotatie": -45.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81058.561,
+                  381958.154
+                ],
+                [
+                  81074.069,
+                  381974.179
+                ],
+                [
+                  81070.428,
+                  381977.744
+                ],
+                [
+                  81060.489,
+                  381967.473
+                ],
+                [
+                  81059.404,
+                  381966.352
+                ],
+                [
+                  81056.676,
+                  381962.248
+                ],
+                [
+                  81055.461,
+                  381959.549
+                ],
+                [
+                  81058.561,
+                  381958.154
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "da697e83-ff25-5e6d-8edc-c3b6496a35e3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260350070000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 113,
+          "perceelnummer": 3500,
+          "perceelnummer_plaatscoordinaat_x": 81062.788,
+          "perceelnummer_plaatscoordinaat_y": 381959.955,
+          "perceelnummer_rotatie": -45.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81058.561,
+                  381958.154
+                ],
+                [
+                  81058.729,
+                  381958.078
+                ],
+                [
+                  81062.356,
+                  381954.57
+                ],
+                [
+                  81064.394,
+                  381956.677
+                ],
+                [
+                  81067.812,
+                  381960.386
+                ],
+                [
+                  81077.71,
+                  381970.613
+                ],
+                [
+                  81074.069,
+                  381974.179
+                ],
+                [
+                  81058.561,
+                  381958.154
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "8df18e51-681b-595a-86bf-2fa5b541a733"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260350170000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 113,
+          "perceelnummer": 3501,
+          "perceelnummer_plaatscoordinaat_x": 81067.633,
+          "perceelnummer_plaatscoordinaat_y": 381955.057,
+          "perceelnummer_rotatie": -45.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81065.93,
+                  381951.113
+                ],
+                [
+                  81081.35,
+                  381967.048
+                ],
+                [
+                  81077.71,
+                  381970.613
+                ],
+                [
+                  81067.812,
+                  381960.386
+                ],
+                [
+                  81064.394,
+                  381956.677
+                ],
+                [
+                  81062.356,
+                  381954.57
+                ],
+                [
+                  81065.93,
+                  381951.113
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "ffbe68d3-3a79-5b0d-8a06-ee104c96130e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260350270000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 113,
+          "perceelnummer": 3502,
+          "perceelnummer_plaatscoordinaat_x": 81069.673,
+          "perceelnummer_plaatscoordinaat_y": 381952.783,
+          "perceelnummer_rotatie": -45.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81065.93,
+                  381951.113
+                ],
+                [
+                  81069.689,
+                  381947.477
+                ],
+                [
+                  81071.727,
+                  381949.584
+                ],
+                [
+                  81075.136,
+                  381953.298
+                ],
+                [
+                  81084.992,
+                  381963.483
+                ],
+                [
+                  81081.35,
+                  381967.048
+                ],
+                [
+                  81065.93,
+                  381951.113
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "94b480ee-d0c8-52a9-baf3-e6de0091533a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351270000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 110,
+          "perceelnummer": 3512,
+          "perceelnummer_plaatscoordinaat_x": 81029.167,
+          "perceelnummer_plaatscoordinaat_y": 381941.049,
+          "perceelnummer_rotatie": -86.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81031.576,
+                  381924.041
+                ],
+                [
+                  81032.27,
+                  381936.887
+                ],
+                [
+                  81032.571,
+                  381942.101
+                ],
+                [
+                  81032.729,
+                  381945.018
+                ],
+                [
+                  81027.485,
+                  381945.297
+                ],
+                [
+                  81026.347,
+                  381924.329
+                ],
+                [
+                  81031.576,
+                  381924.041
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "ca266da7-26f5-597b-96b4-25a8499a2f5d"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351370000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 107,
+          "perceelnummer": 3513,
+          "perceelnummer_plaatscoordinaat_x": 81036.146,
+          "perceelnummer_plaatscoordinaat_y": 381940.982,
+          "perceelnummer_rotatie": -86.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81031.576,
+                  381924.041
+                ],
+                [
+                  81036.677,
+                  381923.76
+                ],
+                [
+                  81037.809,
+                  381944.748
+                ],
+                [
+                  81032.729,
+                  381945.018
+                ],
+                [
+                  81032.571,
+                  381942.101
+                ],
+                [
+                  81032.27,
+                  381936.887
+                ],
+                [
+                  81031.576,
+                  381924.041
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "47e21603-a388-541e-86e7-6d32f88b26b9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351470000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 107,
+          "perceelnummer": 3514,
+          "perceelnummer_plaatscoordinaat_x": 81039.137,
+          "perceelnummer_plaatscoordinaat_y": 381941.182,
+          "perceelnummer_rotatie": -86.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81042.89,
+                  381944.478
+                ],
+                [
+                  81037.809,
+                  381944.748
+                ],
+                [
+                  81036.677,
+                  381923.76
+                ],
+                [
+                  81041.768,
+                  381923.479
+                ],
+                [
+                  81042.461,
+                  381936.337
+                ],
+                [
+                  81042.731,
+                  381941.548
+                ],
+                [
+                  81042.89,
+                  381944.478
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "68b73784-6cee-5a51-8502-a747067e7a71"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351570000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 107,
+          "perceelnummer": 3515,
+          "perceelnummer_plaatscoordinaat_x": 81045.916,
+          "perceelnummer_plaatscoordinaat_y": 381940.384,
+          "perceelnummer_rotatie": -86.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81047.991,
+                  381944.206
+                ],
+                [
+                  81042.89,
+                  381944.478
+                ],
+                [
+                  81042.731,
+                  381941.548
+                ],
+                [
+                  81042.461,
+                  381936.337
+                ],
+                [
+                  81041.768,
+                  381923.479
+                ],
+                [
+                  81046.857,
+                  381923.199
+                ],
+                [
+                  81047.991,
+                  381944.206
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "7afbf301-6842-5e6e-b1e9-b83a312e369a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351670000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 107,
+          "perceelnummer": 3516,
+          "perceelnummer_plaatscoordinaat_x": 81049.239,
+          "perceelnummer_plaatscoordinaat_y": 381940.45,
+          "perceelnummer_rotatie": -86.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81046.857,
+                  381923.199
+                ],
+                [
+                  81051.948,
+                  381922.918
+                ],
+                [
+                  81052.643,
+                  381935.788
+                ],
+                [
+                  81052.9,
+                  381940.995
+                ],
+                [
+                  81053.058,
+                  381943.937
+                ],
+                [
+                  81047.991,
+                  381944.206
+                ],
+                [
+                  81046.857,
+                  381923.199
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "ef6de5c7-0c7b-54cb-be25-68deea616f90"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351770000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 107,
+          "perceelnummer": 3517,
+          "perceelnummer_plaatscoordinaat_x": 81056.35,
+          "perceelnummer_plaatscoordinaat_y": 381940.318,
+          "perceelnummer_rotatie": -86.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81051.948,
+                  381922.918
+                ],
+                [
+                  81057.038,
+                  381922.638
+                ],
+                [
+                  81058.172,
+                  381943.665
+                ],
+                [
+                  81053.058,
+                  381943.937
+                ],
+                [
+                  81052.9,
+                  381940.995
+                ],
+                [
+                  81052.643,
+                  381935.788
+                ],
+                [
+                  81051.948,
+                  381922.918
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "3375ef08-03a2-5fab-83b2-4f39160b0890"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351870000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 107,
+          "perceelnummer": 3518,
+          "perceelnummer_plaatscoordinaat_x": 81059.806,
+          "perceelnummer_plaatscoordinaat_y": 381939.786,
+          "perceelnummer_rotatie": -86.9,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81057.038,
+                  381922.638
+                ],
+                [
+                  81062.129,
+                  381922.357
+                ],
+                [
+                  81062.824,
+                  381935.239
+                ],
+                [
+                  81063.078,
+                  381940.422
+                ],
+                [
+                  81063.24,
+                  381943.395
+                ],
+                [
+                  81058.172,
+                  381943.665
+                ],
+                [
+                  81057.038,
+                  381922.638
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "14367d4a-1861-5418-958b-5345ecdfc834"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260351970000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 107,
+          "perceelnummer": 3519,
+          "perceelnummer_plaatscoordinaat_x": 81066.549,
+          "perceelnummer_plaatscoordinaat_y": 381939.001,
+          "perceelnummer_rotatie": -88.2,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81062.129,
+                  381922.357
+                ],
+                [
+                  81067.219,
+                  381922.077
+                ],
+                [
+                  81067.914,
+                  381934.964
+                ],
+                [
+                  81068.074,
+                  381940.16
+                ],
+                [
+                  81068.236,
+                  381943.129
+                ],
+                [
+                  81063.24,
+                  381943.395
+                ],
+                [
+                  81063.078,
+                  381940.422
+                ],
+                [
+                  81062.824,
+                  381935.239
+                ],
+                [
+                  81062.129,
+                  381922.357
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "35d1daf6-d797-5b44-ac2f-7448be7bb966"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2008-11-19T11:47:59Z",
+          "identificatie_lokaal_id": "10260352070000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 116,
+          "perceelnummer": 3520,
+          "perceelnummer_plaatscoordinaat_x": 81071.554,
+          "perceelnummer_plaatscoordinaat_y": 381938.722,
+          "perceelnummer_rotatie": -87.5,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2008-11-19T11:47:59Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81067.219,
+                  381922.077
+                ],
+                [
+                  81072.408,
+                  381921.791
+                ],
+                [
+                  81073.135,
+                  381934.603
+                ],
+                [
+                  81074.134,
+                  381934.547
+                ],
+                [
+                  81074.392,
+                  381940.413
+                ],
+                [
+                  81071.782,
+                  381942.941
+                ],
+                [
+                  81068.236,
+                  381943.129
+                ],
+                [
+                  81068.074,
+                  381940.16
+                ],
+                [
+                  81067.914,
+                  381934.964
+                ],
+                [
+                  81067.219,
+                  381922.077
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "f094a977-c0f9-59e5-b05a-22b3202a9fb2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2021-02-15T12:33:44Z",
+          "identificatie_lokaal_id": "10260397670000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 133,
+          "perceelnummer": 3976,
+          "perceelnummer_plaatscoordinaat_x": 81000.258,
+          "perceelnummer_plaatscoordinaat_y": 381949.521,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2021-02-15T12:33:44Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81003.277,
+                  381952.031
+                ],
+                [
+                  80997.102,
+                  381953.415
+                ],
+                [
+                  80988.196,
+                  381955.496
+                ],
+                [
+                  80987.82,
+                  381953.895
+                ],
+                [
+                  80986.867,
+                  381949.842
+                ],
+                [
+                  80995.776,
+                  381947.746
+                ],
+                [
+                  80995.827,
+                  381947.96
+                ],
+                [
+                  81011.429,
+                  381945.645
+                ],
+                [
+                  81013.583,
+                  381945.52
+                ],
+                [
+                  81013.811,
+                  381949.32
+                ],
+                [
+                  81013.838,
+                  381949.778
+                ],
+                [
+                  81013.868,
+                  381950.278
+                ],
+                [
+                  81010.514,
+                  381950.478
+                ],
+                [
+                  81005.396,
+                  381951.556
+                ],
+                [
+                  81003.268,
+                  381951.571
+                ],
+                [
+                  81003.277,
+                  381952.031
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "01d6891a-acc5-57b0-96e9-0db5a54d986c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2021-02-15T10:19:41Z",
+          "identificatie_lokaal_id": "10260398570000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 0.4,
+          "perceelnummer": 3985,
+          "perceelnummer_plaatscoordinaat_x": 81003.581,
+          "perceelnummer_plaatscoordinaat_y": 381951.769,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 1.89,
+          "perceelnummer_verschuiving_delta_y": -3.239,
+          "sectie": "D",
+          "soort_grootte_code": "10",
+          "soort_grootte_waarde": "Administratief, bijhouden opgeschort (ga)",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2021-02-15T10:19:41Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81003.277,
+                  381952.031
+                ],
+                [
+                  81003.268,
+                  381951.571
+                ],
+                [
+                  81005.396,
+                  381951.556
+                ],
+                [
+                  81003.277,
+                  381952.031
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "6c5cfd3b-9899-58fa-b5af-ecf512c4cba7"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2021-02-15T10:19:41Z",
+          "identificatie_lokaal_id": "10260398670000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 73,
+          "perceelnummer": 3986,
+          "perceelnummer_plaatscoordinaat_x": 81006.168,
+          "perceelnummer_plaatscoordinaat_y": 381955.078,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "10",
+          "soort_grootte_waarde": "Administratief, bijhouden opgeschort (ga)",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2021-02-15T10:19:41Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81003.402,
+                  381958.291
+                ],
+                [
+                  81003.277,
+                  381952.031
+                ],
+                [
+                  81005.396,
+                  381951.556
+                ],
+                [
+                  81013.941,
+                  381951.496
+                ],
+                [
+                  81014.345,
+                  381958.227
+                ],
+                [
+                  81005.668,
+                  381958.276
+                ],
+                [
+                  81003.402,
+                  381958.291
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "04ab0cb6-42ab-5e4b-ac06-a79544502702"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2021-02-15T12:33:44Z",
+          "identificatie_lokaal_id": "10260398770000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 7,
+          "perceelnummer": 3987,
+          "perceelnummer_plaatscoordinaat_x": 81012.213,
+          "perceelnummer_plaatscoordinaat_y": 381950.828,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": -0.7,
+          "perceelnummer_verschuiving_delta_y": 4.27,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2021-02-15T12:33:44Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81005.396,
+                  381951.556
+                ],
+                [
+                  81010.514,
+                  381950.478
+                ],
+                [
+                  81013.868,
+                  381950.278
+                ],
+                [
+                  81013.941,
+                  381951.496
+                ],
+                [
+                  81005.396,
+                  381951.556
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "ef67d5e9-c24d-51af-bb25-2b0e00c5d2f2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2021-02-15T12:33:44Z",
+          "identificatie_lokaal_id": "10260398870000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 82,
+          "perceelnummer": 3988,
+          "perceelnummer_plaatscoordinaat_x": 81000.348,
+          "perceelnummer_plaatscoordinaat_y": 381954.398,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "1",
+          "soort_grootte_waarde": "Vastgesteld",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2021-02-15T12:33:44Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80988.196,
+                  381955.496
+                ],
+                [
+                  80997.102,
+                  381953.415
+                ],
+                [
+                  81003.277,
+                  381952.031
+                ],
+                [
+                  81003.402,
+                  381958.291
+                ],
+                [
+                  81002.544,
+                  381958.297
+                ],
+                [
+                  80998.478,
+                  381959.383
+                ],
+                [
+                  80995.661,
+                  381960.039
+                ],
+                [
+                  80990.91,
+                  381960.13
+                ],
+                [
+                  80989.371,
+                  381960.49
+                ],
+                [
+                  80988.196,
+                  381955.496
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "c03f4b15-3b35-54ea-8cab-390d998777a0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "akr_kadastrale_gemeente_code_code": "1241",
+          "akr_kadastrale_gemeente_code_waarde": "WDT00",
+          "begin_geldigheid": "2026-01-20T15:42:08Z",
+          "identificatie_lokaal_id": "10260408370000",
+          "identificatie_namespace": "NL.IMKAD.KadastraalObject",
+          "kadastrale_gemeente_code": "1131",
+          "kadastrale_gemeente_waarde": "Woensdrecht",
+          "kadastrale_grootte_waarde": 43309,
+          "perceelnummer": 4083,
+          "perceelnummer_plaatscoordinaat_x": 81150.866,
+          "perceelnummer_plaatscoordinaat_y": 381720.48,
+          "perceelnummer_rotatie": 0,
+          "perceelnummer_verschuiving_delta_x": 0,
+          "perceelnummer_verschuiving_delta_y": 0,
+          "sectie": "D",
+          "soort_grootte_code": "5",
+          "soort_grootte_waarde": "Voorlopig",
+          "status_historie_code": "G",
+          "status_historie_waarde": "Geldig",
+          "tijdstip_registratie": "2026-01-20T15:42:08Z",
+          "volgnummer": 0
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81029.883,
+                  381962.843
+                ],
+                [
+                  81024.644,
+                  381962.953
+                ],
+                [
+                  81024.964,
+                  381986.143
+                ],
+                [
+                  81023.025,
+                  381986.28
+                ],
+                [
+                  81023.261,
+                  381970.902
+                ],
+                [
+                  81023.653,
+                  381962.936
+                ],
+                [
+                  81023.274,
+                  381962.938
+                ],
+                [
+                  81023.166,
+                  381959.382
+                ],
+                [
+                  81013.21,
+                  381959.879
+                ],
+                [
+                  81013.211,
+                  381959.807
+                ],
+                [
+                  81005.671,
+                  381959.818
+                ],
+                [
+                  81005.668,
+                  381958.276
+                ],
+                [
+                  81014.345,
+                  381958.227
+                ],
+                [
+                  81013.941,
+                  381951.496
+                ],
+                [
+                  81013.868,
+                  381950.278
+                ],
+                [
+                  81013.838,
+                  381949.778
+                ],
+                [
+                  81013.811,
+                  381949.32
+                ],
+                [
+                  81013.583,
+                  381945.52
+                ],
+                [
+                  81013.29,
+                  381940.631
+                ],
+                [
+                  81023.161,
+                  381940.356
+                ],
+                [
+                  81022.805,
+                  381927.277
+                ],
+                [
+                  81022.73,
+                  381924.525
+                ],
+                [
+                  81022.442,
+                  381913.979
+                ],
+                [
+                  81022.174,
+                  381904.196
+                ],
+                [
+                  81027.17,
+                  381903.88
+                ],
+                [
+                  81027.01,
+                  381901.03
+                ],
+                [
+                  81022.096,
+                  381901.306
+                ],
+                [
+                  81021.866,
+                  381892.823
+                ],
+                [
+                  81021.665,
+                  381885.459
+                ],
+                [
+                  81020.746,
+                  381881.601
+                ],
+                [
+                  81018.451,
+                  381871.962
+                ],
+                [
+                  81016.222,
+                  381862.603
+                ],
+                [
+                  81014.271,
+                  381854.411
+                ],
+                [
+                  81010.671,
+                  381839.209
+                ],
+                [
+                  81060.35,
+                  381836.122
+                ],
+                [
+                  81059.483,
+                  381821.118
+                ],
+                [
+                  81023.682,
+                  381823.43
+                ],
+                [
+                  81019.898,
+                  381762.196
+                ],
+                [
+                  81006.044,
+                  381762.874
+                ],
+                [
+                  81010.601,
+                  381839.004
+                ],
+                [
+                  81009.696,
+                  381835.202
+                ],
+                [
+                  81007.076,
+                  381824.198
+                ],
+                [
+                  81005.23,
+                  381815.791
+                ],
+                [
+                  81002.74,
+                  381805.524
+                ],
+                [
+                  81001.223,
+                  381799.254
+                ],
+                [
+                  80992.555,
+                  381763.486
+                ],
+                [
+                  80991.768,
+                  381759.919
+                ],
+                [
+                  81021.325,
+                  381757.674
+                ],
+                [
+                  81021.39,
+                  381756.17
+                ],
+                [
+                  81048.44,
+                  381753.82
+                ],
+                [
+                  81047.922,
+                  381752.108
+                ],
+                [
+                  81047.453,
+                  381750.381
+                ],
+                [
+                  81047.035,
+                  381748.642
+                ],
+                [
+                  81046.667,
+                  381746.891
+                ],
+                [
+                  81046.35,
+                  381745.13
+                ],
+                [
+                  81045.772,
+                  381740.828
+                ],
+                [
+                  81045.32,
+                  381736.51
+                ],
+                [
+                  81044.58,
+                  381727.84
+                ],
+                [
+                  81043.84,
+                  381719.06
+                ],
+                [
+                  81043.718,
+                  381717.609
+                ],
+                [
+                  81042.784,
+                  381704.275
+                ],
+                [
+                  81036.335,
+                  381675.635
+                ],
+                [
+                  81033.806,
+                  381664.401
+                ],
+                [
+                  81033.796,
+                  381664.356
+                ],
+                [
+                  81027.877,
+                  381638.072
+                ],
+                [
+                  81027.87,
+                  381638.042
+                ],
+                [
+                  81022.038,
+                  381612.138
+                ],
+                [
+                  81022.019,
+                  381612.053
+                ],
+                [
+                  81020.843,
+                  381606.831
+                ],
+                [
+                  80912.516,
+                  381611.336
+                ],
+                [
+                  80907.389,
+                  381611.549
+                ],
+                [
+                  80904.502,
+                  381599.937
+                ],
+                [
+                  80901.703,
+                  381588.264
+                ],
+                [
+                  80898.311,
+                  381575.346
+                ],
+                [
+                  80895.063,
+                  381562.818
+                ],
+                [
+                  80890.994,
+                  381548.451
+                ],
+                [
+                  80887.41,
+                  381535.741
+                ],
+                [
+                  80881.795,
+                  381518.265
+                ],
+                [
+                  80877.748,
+                  381506.523
+                ],
+                [
+                  80873.901,
+                  381494.847
+                ],
+                [
+                  80866.563,
+                  381472.02
+                ],
+                [
+                  80864.941,
+                  381468.173
+                ],
+                [
+                  80862.918,
+                  381462.872
+                ],
+                [
+                  80861.334,
+                  381459.44
+                ],
+                [
+                  80859.551,
+                  381455.603
+                ],
+                [
+                  80920.509,
+                  381459.231
+                ],
+                [
+                  80943.516,
+                  381460.53
+                ],
+                [
+                  80943.002,
+                  381468.919
+                ],
+                [
+                  80947.775,
+                  381469.213
+                ],
+                [
+                  80946.529,
+                  381487.328
+                ],
+                [
+                  80949.272,
+                  381487.507
+                ],
+                [
+                  80958.22,
+                  381488.04
+                ],
+                [
+                  80967.15,
+                  381488.58
+                ],
+                [
+                  80976.07,
+                  381489.12
+                ],
+                [
+                  80984.97,
+                  381489.66
+                ],
+                [
+                  80993.93,
+                  381490.2
+                ],
+                [
+                  81002.83,
+                  381490.74
+                ],
+                [
+                  81011.77,
+                  381491.28
+                ],
+                [
+                  81020.65,
+                  381491.82
+                ],
+                [
+                  81020.423,
+                  381495.52
+                ],
+                [
+                  81018.7,
+                  381496.18
+                ],
+                [
+                  81020.48,
+                  381504.57
+                ],
+                [
+                  81022.29,
+                  381513.07
+                ],
+                [
+                  81024.27,
+                  381512.65
+                ],
+                [
+                  81024.674,
+                  381514.4
+                ],
+                [
+                  81024.54,
+                  381514.43
+                ],
+                [
+                  81029.47,
+                  381536.41
+                ],
+                [
+                  81039.01,
+                  381534.26
+                ],
+                [
+                  81047.51,
+                  381532.36
+                ],
+                [
+                  81056.01,
+                  381530.43
+                ],
+                [
+                  81065.57,
+                  381528.28
+                ],
+                [
+                  81066.54,
+                  381528.06
+                ],
+                [
+                  81061.6,
+                  381506.1
+                ],
+                [
+                  81060.62,
+                  381506.32
+                ],
+                [
+                  81051.03,
+                  381508.46
+                ],
+                [
+                  81042.58,
+                  381510.4
+                ],
+                [
+                  81041.614,
+                  381510.616
+                ],
+                [
+                  81041.21,
+                  381509.01
+                ],
+                [
+                  81046.195,
+                  381507.84
+                ],
+                [
+                  81046.227,
+                  381507.987
+                ],
+                [
+                  81048.248,
+                  381507.553
+                ],
+                [
+                  81048.245,
+                  381501.314
+                ],
+                [
+                  81047.603,
+                  381501.295
+                ],
+                [
+                  81047.759,
+                  381498.75
+                ],
+                [
+                  81048.261,
+                  381490.593
+                ],
+                [
+                  81049.3,
+                  381490.658
+                ],
+                [
+                  81052.304,
+                  381490.842
+                ],
+                [
+                  81052.1,
+                  381493.78
+                ],
+                [
+                  81058.24,
+                  381494.19
+                ],
+                [
+                  81067.43,
+                  381494.77
+                ],
+                [
+                  81076.63,
+                  381495.32
+                ],
+                [
+                  81085.8,
+                  381495.85
+                ],
+                [
+                  81097.3,
+                  381496.55
+                ],
+                [
+                  81097.61,
+                  381491.54
+                ],
+                [
+                  81097.09,
+                  381491.52
+                ],
+                [
+                  81098.24,
+                  381473.09
+                ],
+                [
+                  81098.613,
+                  381467.11
+                ],
+                [
+                  81103.028,
+                  381466.464
+                ],
+                [
+                  81123.358,
+                  381466.757
+                ],
+                [
+                  81130.198,
+                  381467.543
+                ],
+                [
+                  81148.389,
+                  381474.189
+                ],
+                [
+                  81155.059,
+                  381474.411
+                ],
+                [
+                  81154.94,
+                  381476.7
+                ],
+                [
+                  81160.479,
+                  381476.942
+                ],
+                [
+                  81160.35,
+                  381479.36
+                ],
+                [
+                  81163.35,
+                  381479.51
+                ],
+                [
+                  81163.5,
+                  381476.48
+                ],
+                [
+                  81161.589,
+                  381476.397
+                ],
+                [
+                  81161.693,
+                  381474.633
+                ],
+                [
+                  81175.834,
+                  381475.104
+                ],
+                [
+                  81177.164,
+                  381480.856
+                ],
+                [
+                  81222.558,
+                  381645.535
+                ],
+                [
+                  81220.399,
+                  381645.494
+                ],
+                [
+                  81219.102,
+                  381640.808
+                ],
+                [
+                  81215.595,
+                  381628.17
+                ],
+                [
+                  81213.042,
+                  381618.977
+                ],
+                [
+                  81210.533,
+                  381609.937
+                ],
+                [
+                  81180.393,
+                  381617.908
+                ],
+                [
+                  81175.578,
+                  381619.181
+                ],
+                [
+                  81178.261,
+                  381628.512
+                ],
+                [
+                  81180.869,
+                  381637.581
+                ],
+                [
+                  81184.381,
+                  381649.793
+                ],
+                [
+                  81189.876,
+                  381672.193
+                ],
+                [
+                  81194.709,
+                  381670.91
+                ],
+                [
+                  81198.066,
+                  381685.111
+                ],
+                [
+                  81200.842,
+                  381696.53
+                ],
+                [
+                  81200.081,
+                  381696.559
+                ],
+                [
+                  81193.584,
+                  381697.111
+                ],
+                [
+                  81180.491,
+                  381694.227
+                ],
+                [
+                  81166.705,
+                  381691.19
+                ],
+                [
+                  81155.554,
+                  381690.04
+                ],
+                [
+                  81152.68,
+                  381716.59
+                ],
+                [
+                  81158.832,
+                  381717.3
+                ],
+                [
+                  81162.534,
+                  381721.9
+                ],
+                [
+                  81167.823,
+                  381728.472
+                ],
+                [
+                  81170.804,
+                  381732.176
+                ],
+                [
+                  81172.115,
+                  381733.817
+                ],
+                [
+                  81176.472,
+                  381739.274
+                ],
+                [
+                  81181.3,
+                  381745.32
+                ],
+                [
+                  81185.069,
+                  381750.157
+                ],
+                [
+                  81184.923,
+                  381751.5
+                ],
+                [
+                  81184.435,
+                  381755.994
+                ],
+                [
+                  81184.431,
+                  381756.033
+                ],
+                [
+                  81184.044,
+                  381759.593
+                ],
+                [
+                  81183.44,
+                  381764.96
+                ],
+                [
+                  81182.445,
+                  381773.551
+                ],
+                [
+                  81182.227,
+                  381775.435
+                ],
+                [
+                  81180.901,
+                  381787.287
+                ],
+                [
+                  81180.022,
+                  381795.143
+                ],
+                [
+                  81179.694,
+                  381797.84
+                ],
+                [
+                  81172.042,
+                  381803.708
+                ],
+                [
+                  81170.169,
+                  381801.378
+                ],
+                [
+                  81164.271,
+                  381806.098
+                ],
+                [
+                  81166.165,
+                  381808.443
+                ],
+                [
+                  81161.932,
+                  381807.969
+                ],
+                [
+                  81158.419,
+                  381810.781
+                ],
+                [
+                  81148.168,
+                  381819.238
+                ],
+                [
+                  81128.502,
+                  381834.981
+                ],
+                [
+                  81137.823,
+                  381846.642
+                ],
+                [
+                  81147.126,
+                  381858.279
+                ],
+                [
+                  81165.904,
+                  381881.771
+                ],
+                [
+                  81154.523,
+                  381891.672
+                ],
+                [
+                  81115.576,
+                  381929.344
+                ],
+                [
+                  81113.765,
+                  381935.334
+                ],
+                [
+                  81095.873,
+                  381952.561
+                ],
+                [
+                  81080.749,
+                  381936.779
+                ],
+                [
+                  81076.986,
+                  381940.419
+                ],
+                [
+                  81073.255,
+                  381944.027
+                ],
+                [
+                  81069.689,
+                  381947.477
+                ],
+                [
+                  81065.93,
+                  381951.113
+                ],
+                [
+                  81062.356,
+                  381954.57
+                ],
+                [
+                  81058.729,
+                  381958.078
+                ],
+                [
+                  81058.561,
+                  381958.154
+                ],
+                [
+                  81055.461,
+                  381959.549
+                ],
+                [
+                  81052.413,
+                  381960.921
+                ],
+                [
+                  81052.345,
+                  381960.936
+                ],
+                [
+                  81048.898,
+                  381961.704
+                ],
+                [
+                  81045.249,
+                  381962.556
+                ],
+                [
+                  81045.098,
+                  381962.59
+                ],
+                [
+                  81040.08,
+                  381962.629
+                ],
+                [
+                  81034.899,
+                  381962.738
+                ],
+                [
+                  81029.883,
+                  381962.843
+                ]
+              ],
+              [
+                [
+                  81137.373,
+                  381482.286
+                ],
+                [
+                  81137.592,
+                  381478.793
+                ],
+                [
+                  81134.097,
+                  381478.577
+                ],
+                [
+                  81104.999,
+                  381476.776
+                ],
+                [
+                  81104.79,
+                  381480.27
+                ],
+                [
+                  81104.12,
+                  381491.46
+                ],
+                [
+                  81103.51,
+                  381500.69
+                ],
+                [
+                  81100.48,
+                  381500.5
+                ],
+                [
+                  81099.91,
+                  381510.69
+                ],
+                [
+                  81094.73,
+                  381531.07
+                ],
+                [
+                  81105.55,
+                  381533.82
+                ],
+                [
+                  81114.46,
+                  381536.09
+                ],
+                [
+                  81125.32,
+                  381538.85
+                ],
+                [
+                  81128.316,
+                  381539.611
+                ],
+                [
+                  81131.466,
+                  381527.159
+                ],
+                [
+                  81136.991,
+                  381527.767
+                ],
+                [
+                  81140.02,
+                  381528.1
+                ],
+                [
+                  81139.529,
+                  381522.01
+                ],
+                [
+                  81138.784,
+                  381513.146
+                ],
+                [
+                  81137.99,
+                  381502.809
+                ],
+                [
+                  81136.941,
+                  381493.489
+                ],
+                [
+                  81136.673,
+                  381493.472
+                ],
+                [
+                  81137.373,
+                  381482.286
+                ]
+              ],
+              [
+                [
+                  81141.017,
+                  381605.504
+                ],
+                [
+                  81138.559,
+                  381596.776
+                ],
+                [
+                  81136.155,
+                  381588.24
+                ],
+                [
+                  81133.69,
+                  381579.487
+                ],
+                [
+                  81131.3,
+                  381571.001
+                ],
+                [
+                  81128.875,
+                  381562.371
+                ],
+                [
+                  81114.445,
+                  381566.533
+                ],
+                [
+                  81107.712,
+                  381571.095
+                ],
+                [
+                  81109.415,
+                  381577.096
+                ],
+                [
+                  81111.846,
+                  381585.629
+                ],
+                [
+                  81114.313,
+                  381594.288
+                ],
+                [
+                  81116.734,
+                  381602.784
+                ],
+                [
+                  81119.265,
+                  381611.669
+                ],
+                [
+                  81121.8,
+                  381620.566
+                ],
+                [
+                  81135.41,
+                  381616.69
+                ],
+                [
+                  81143.513,
+                  381614.382
+                ],
+                [
+                  81141.017,
+                  381605.504
+                ]
+              ],
+              [
+                [
+                  81085.932,
+                  381680.049
+                ],
+                [
+                  81093.157,
+                  381674.291
+                ],
+                [
+                  81100.126,
+                  381668.738
+                ],
+                [
+                  81107.055,
+                  381663.216
+                ],
+                [
+                  81114.092,
+                  381657.609
+                ],
+                [
+                  81121.222,
+                  381651.927
+                ],
+                [
+                  81128.253,
+                  381646.323
+                ],
+                [
+                  81135.384,
+                  381640.641
+                ],
+                [
+                  81142.353,
+                  381635.091
+                ],
+                [
+                  81136.95,
+                  381628.34
+                ],
+                [
+                  81136.675,
+                  381627.995
+                ],
+                [
+                  81137.536,
+                  381627.648
+                ],
+                [
+                  81138.881,
+                  381627.106
+                ],
+                [
+                  81136.568,
+                  381618.258
+                ],
+                [
+                  81130.328,
+                  381620.042
+                ],
+                [
+                  81130.062,
+                  381619.708
+                ],
+                [
+                  81120.74,
+                  381622.68
+                ],
+                [
+                  81117.73,
+                  381623.648
+                ],
+                [
+                  81112.88,
+                  381627.536
+                ],
+                [
+                  81105.962,
+                  381633.083
+                ],
+                [
+                  81098.803,
+                  381638.822
+                ],
+                [
+                  81091.853,
+                  381644.394
+                ],
+                [
+                  81084.873,
+                  381649.99
+                ],
+                [
+                  81077.902,
+                  381655.579
+                ],
+                [
+                  81073.189,
+                  381659.357
+                ],
+                [
+                  81076.475,
+                  381668.139
+                ],
+                [
+                  81085.932,
+                  381680.049
+                ]
+              ],
+              [
+                [
+                  81038.233,
+                  381548.272
+                ],
+                [
+                  81029.44,
+                  381550.24
+                ],
+                [
+                  81009.11,
+                  381554.83
+                ],
+                [
+                  81003.85,
+                  381557.83
+                ],
+                [
+                  81003.287,
+                  381563.648
+                ],
+                [
+                  81002.42,
+                  381572.605
+                ],
+                [
+                  81001.552,
+                  381581.577
+                ],
+                [
+                  81000.68,
+                  381590.59
+                ],
+                [
+                  81013.14,
+                  381591.11
+                ],
+                [
+                  81019.67,
+                  381591.37
+                ],
+                [
+                  81031.91,
+                  381591.88
+                ],
+                [
+                  81032.41,
+                  381594.17
+                ],
+                [
+                  81034.27,
+                  381602.5
+                ],
+                [
+                  81043.107,
+                  381600.483
+                ],
+                [
+                  81051.93,
+                  381598.47
+                ],
+                [
+                  81050.08,
+                  381590.23
+                ],
+                [
+                  81048.68,
+                  381583.9
+                ],
+                [
+                  81046.496,
+                  381574.087
+                ],
+                [
+                  81046.06,
+                  381572.13
+                ],
+                [
+                  81052.548,
+                  381570.68
+                ],
+                [
+                  81061.268,
+                  381568.731
+                ],
+                [
+                  81070.13,
+                  381566.75
+                ],
+                [
+                  81067.95,
+                  381556.99
+                ],
+                [
+                  81066.51,
+                  381550.64
+                ],
+                [
+                  81064.65,
+                  381542.36
+                ],
+                [
+                  81055.834,
+                  381544.333
+                ],
+                [
+                  81047.002,
+                  381546.31
+                ],
+                [
+                  81038.233,
+                  381548.272
+                ]
+              ],
+              [
+                [
+                  81133.849,
+                  381725.68
+                ],
+                [
+                  81142.898,
+                  381718.432
+                ],
+                [
+                  81146.215,
+                  381715.775
+                ],
+                [
+                  81150.169,
+                  381716.25
+                ],
+                [
+                  81153.099,
+                  381689.635
+                ],
+                [
+                  81153.377,
+                  381687.268
+                ],
+                [
+                  81154.675,
+                  381675.448
+                ],
+                [
+                  81155.121,
+                  381671.376
+                ],
+                [
+                  81140.689,
+                  381653.375
+                ],
+                [
+                  81138.465,
+                  381655.159
+                ],
+                [
+                  81131.887,
+                  381660.433
+                ],
+                [
+                  81125.406,
+                  381665.632
+                ],
+                [
+                  81119.06,
+                  381670.725
+                ],
+                [
+                  81112.449,
+                  381676.028
+                ],
+                [
+                  81106.175,
+                  381681.061
+                ],
+                [
+                  81099.652,
+                  381686.295
+                ],
+                [
+                  81093.339,
+                  381691.361
+                ],
+                [
+                  81086.886,
+                  381696.537
+                ],
+                [
+                  81080.446,
+                  381701.704
+                ],
+                [
+                  81074.138,
+                  381706.765
+                ],
+                [
+                  81060.396,
+                  381717.755
+                ],
+                [
+                  81061.838,
+                  381733.754
+                ],
+                [
+                  81062.638,
+                  381742.705
+                ],
+                [
+                  81063.452,
+                  381751.81
+                ],
+                [
+                  81063.621,
+                  381753.69
+                ],
+                [
+                  81069.992,
+                  381761.616
+                ],
+                [
+                  81077.444,
+                  381770.876
+                ],
+                [
+                  81096.942,
+                  381755.239
+                ],
+                [
+                  81106.651,
+                  381747.464
+                ],
+                [
+                  81116.478,
+                  381739.592
+                ],
+                [
+                  81126.068,
+                  381731.912
+                ],
+                [
+                  81133.849,
+                  381725.68
+                ]
+              ],
+              [
+                [
+                  81167.508,
+                  381591.041
+                ],
+                [
+                  81170.127,
+                  381600.174
+                ],
+                [
+                  81173.711,
+                  381612.674
+                ],
+                [
+                  81178.536,
+                  381611.368
+                ],
+                [
+                  81208.667,
+                  381603.215
+                ],
+                [
+                  81205.19,
+                  381590.689
+                ],
+                [
+                  81202.657,
+                  381581.562
+                ],
+                [
+                  81200.126,
+                  381572.443
+                ],
+                [
+                  81196.647,
+                  381559.909
+                ],
+                [
+                  81194.11,
+                  381550.771
+                ],
+                [
+                  81191.547,
+                  381541.538
+                ],
+                [
+                  81188.095,
+                  381529.101
+                ],
+                [
+                  81187.31,
+                  381526.276
+                ],
+                [
+                  81178.129,
+                  381523.62
+                ],
+                [
+                  81167.686,
+                  381523.8
+                ],
+                [
+                  81149.37,
+                  381527.778
+                ],
+                [
+                  81156.083,
+                  381551.191
+                ],
+                [
+                  81158.784,
+                  381560.612
+                ],
+                [
+                  81161.327,
+                  381569.48
+                ],
+                [
+                  81164.913,
+                  381581.989
+                ],
+                [
+                  81167.508,
+                  381591.041
+                ]
+              ],
+              [
+                [
+                  80964.74,
+                  381526.1
+                ],
+                [
+                  80940.77,
+                  381527.2
+                ],
+                [
+                  80941.23,
+                  381537.43
+                ],
+                [
+                  80941.69,
+                  381547.72
+                ],
+                [
+                  80942.15,
+                  381557.9
+                ],
+                [
+                  80942.61,
+                  381568.13
+                ],
+                [
+                  80947.633,
+                  381567.91
+                ],
+                [
+                  80947.7,
+                  381569.46
+                ],
+                [
+                  80948.31,
+                  381583.54
+                ],
+                [
+                  80948.79,
+                  381593.88
+                ],
+                [
+                  80958.2,
+                  381593.48
+                ],
+                [
+                  80967.64,
+                  381593.07
+                ],
+                [
+                  80977.05,
+                  381592.66
+                ],
+                [
+                  80986.46,
+                  381592.24
+                ],
+                [
+                  80985.43,
+                  381567.84
+                ],
+                [
+                  80985.4,
+                  381567.04
+                ],
+                [
+                  80989.43,
+                  381566.87
+                ],
+                [
+                  80989.51,
+                  381566.12
+                ],
+                [
+                  80990.49,
+                  381556.41
+                ],
+                [
+                  80991.35,
+                  381548.01
+                ],
+                [
+                  80992.86,
+                  381544.64
+                ],
+                [
+                  80999.36,
+                  381543.17
+                ],
+                [
+                  81007.79,
+                  381541.26
+                ],
+                [
+                  81016.72,
+                  381539.24
+                ],
+                [
+                  81011.86,
+                  381517.31
+                ],
+                [
+                  81008.42,
+                  381501.42
+                ],
+                [
+                  81006.89,
+                  381500.14
+                ],
+                [
+                  80995.6,
+                  381499.44
+                ],
+                [
+                  80983.96,
+                  381498.73
+                ],
+                [
+                  80983.86,
+                  381500.58
+                ],
+                [
+                  80982.01,
+                  381500.57
+                ],
+                [
+                  80973.01,
+                  381500.02
+                ],
+                [
+                  80964.05,
+                  381499.46
+                ],
+                [
+                  80955.08,
+                  381498.91
+                ],
+                [
+                  80946.09,
+                  381498.35
+                ],
+                [
+                  80946.089,
+                  381498.37
+                ],
+                [
+                  80945.166,
+                  381498.314
+                ],
+                [
+                  80941.852,
+                  381501.165
+                ],
+                [
+                  80940.59,
+                  381522.269
+                ],
+                [
+                  80940.69,
+                  381525.678
+                ],
+                [
+                  80945.745,
+                  381525.455
+                ],
+                [
+                  80945.74,
+                  381525.33
+                ],
+                [
+                  80953.52,
+                  381525
+                ],
+                [
+                  80962.55,
+                  381524.6
+                ],
+                [
+                  80971.53,
+                  381524.19
+                ],
+                [
+                  80971.901,
+                  381525.723
+                ],
+                [
+                  80966.24,
+                  381526.03
+                ],
+                [
+                  80964.74,
+                  381526.1
+                ]
+              ],
+              [
+                [
+                  81125.648,
+                  381896.926
+                ],
+                [
+                  81130.31,
+                  381902.666
+                ],
+                [
+                  81141.351,
+                  381893.676
+                ],
+                [
+                  81147.84,
+                  381892.41
+                ],
+                [
+                  81145.886,
+                  381889.983
+                ],
+                [
+                  81146.5,
+                  381889.483
+                ],
+                [
+                  81141.833,
+                  381883.734
+                ],
+                [
+                  81128.593,
+                  381867.392
+                ],
+                [
+                  81117.957,
+                  381876.038
+                ],
+                [
+                  81117.381,
+                  381876.506
+                ],
+                [
+                  81117.263,
+                  381876.529
+                ],
+                [
+                  81111.22,
+                  381877.703
+                ],
+                [
+                  81112.794,
+                  381879.672
+                ],
+                [
+                  81113.067,
+                  381880.013
+                ],
+                [
+                  81112.372,
+                  381880.578
+                ],
+                [
+                  81125.648,
+                  381896.926
+                ]
+              ],
+              [
+                [
+                  81113.558,
+                  381816
+                ],
+                [
+                  81120.422,
+                  381824.608
+                ],
+                [
+                  81120.37,
+                  381824.649
+                ],
+                [
+                  81122.088,
+                  381826.794
+                ],
+                [
+                  81141.655,
+                  381811.173
+                ],
+                [
+                  81139.921,
+                  381809.036
+                ],
+                [
+                  81147.233,
+                  381803.196
+                ],
+                [
+                  81154.518,
+                  381797.378
+                ],
+                [
+                  81161.822,
+                  381791.545
+                ],
+                [
+                  81169.2,
+                  381785.653
+                ],
+                [
+                  81171.155,
+                  381783.918
+                ],
+                [
+                  81174.499,
+                  381752.96
+                ],
+                [
+                  81170.898,
+                  381748.496
+                ],
+                [
+                  81162.8,
+                  381738.413
+                ],
+                [
+                  81153.402,
+                  381726.712
+                ],
+                [
+                  81134.293,
+                  381741.99
+                ],
+                [
+                  81126.86,
+                  381747.933
+                ],
+                [
+                  81119.624,
+                  381753.718
+                ],
+                [
+                  81112.389,
+                  381759.502
+                ],
+                [
+                  81104.928,
+                  381765.471
+                ],
+                [
+                  81085.495,
+                  381781.007
+                ],
+                [
+                  81091.76,
+                  381788.872
+                ],
+                [
+                  81097.381,
+                  381795.88
+                ],
+                [
+                  81107.029,
+                  381807.806
+                ],
+                [
+                  81113.558,
+                  381816
+                ]
+              ],
+              [
+                [
+                  81045.483,
+                  381784.535
+                ],
+                [
+                  81043.021,
+                  381786.514
+                ],
+                [
+                  81040.346,
+                  381787.047
+                ],
+                [
+                  81041.131,
+                  381788.032
+                ],
+                [
+                  81039.853,
+                  381789.058
+                ],
+                [
+                  81044.469,
+                  381794.804
+                ],
+                [
+                  81066.199,
+                  381821.855
+                ],
+                [
+                  81070.816,
+                  381827.602
+                ],
+                [
+                  81076.449,
+                  381823.076
+                ],
+                [
+                  81091.709,
+                  381820.195
+                ],
+                [
+                  81087.21,
+                  381814.596
+                ],
+                [
+                  81087.129,
+                  381814.495
+                ],
+                [
+                  81082.541,
+                  381808.785
+                ],
+                [
+                  81082.512,
+                  381808.749
+                ],
+                [
+                  81061.686,
+                  381782.828
+                ],
+                [
+                  81060.779,
+                  381781.699
+                ],
+                [
+                  81056.163,
+                  381775.953
+                ],
+                [
+                  81045.483,
+                  381784.535
+                ]
+              ],
+              [
+                [
+                  80938.027,
+                  381466.159
+                ],
+                [
+                  80903.238,
+                  381463.964
+                ],
+                [
+                  80902.63,
+                  381460.88
+                ],
+                [
+                  80862.57,
+                  381458.26
+                ],
+                [
+                  80872.97,
+                  381481.06
+                ],
+                [
+                  80878.88,
+                  381494.99
+                ],
+                [
+                  80881.72,
+                  381502.02
+                ],
+                [
+                  80884.45,
+                  381509.07
+                ],
+                [
+                  80887.04,
+                  381516.15
+                ],
+                [
+                  80889.53,
+                  381523.33
+                ],
+                [
+                  80891.88,
+                  381530.61
+                ],
+                [
+                  80894.06,
+                  381537.99
+                ],
+                [
+                  80897.74,
+                  381552.59
+                ],
+                [
+                  80901.43,
+                  381567.64
+                ],
+                [
+                  80905.09,
+                  381582.65
+                ],
+                [
+                  80905.85,
+                  381585.67
+                ],
+                [
+                  80909.75,
+                  381595.57
+                ],
+                [
+                  80933.79,
+                  381594.57
+                ],
+                [
+                  80932.44,
+                  381576.25
+                ],
+                [
+                  80931.27,
+                  381560.48
+                ],
+                [
+                  80930.56,
+                  381544.67
+                ],
+                [
+                  80929.84,
+                  381527.99
+                ],
+                [
+                  80929.19,
+                  381513.12
+                ],
+                [
+                  80932.02,
+                  381512.51
+                ],
+                [
+                  80932.78,
+                  381500.77
+                ],
+                [
+                  80933.36,
+                  381491.83
+                ],
+                [
+                  80933.55,
+                  381488.84
+                ],
+                [
+                  80935.53,
+                  381488.96
+                ],
+                [
+                  80935.92,
+                  381482.95
+                ],
+                [
+                  80936.699,
+                  381471.219
+                ],
+                [
+                  80936.845,
+                  381468.673
+                ],
+                [
+                  80938.434,
+                  381468.725
+                ],
+                [
+                  80938.474,
+                  381468.2
+                ],
+                [
+                  80938.453,
+                  381467.673
+                ],
+                [
+                  80938.37,
+                  381467.153
+                ],
+                [
+                  80938.228,
+                  381466.646
+                ],
+                [
+                  80938.027,
+                  381466.159
+                ]
+              ],
+              [
+                [
+                  81041.768,
+                  381923.479
+                ],
+                [
+                  81036.677,
+                  381923.76
+                ],
+                [
+                  81031.576,
+                  381924.041
+                ],
+                [
+                  81026.347,
+                  381924.329
+                ],
+                [
+                  81027.485,
+                  381945.297
+                ],
+                [
+                  81032.729,
+                  381945.018
+                ],
+                [
+                  81037.809,
+                  381944.748
+                ],
+                [
+                  81042.89,
+                  381944.478
+                ],
+                [
+                  81047.991,
+                  381944.206
+                ],
+                [
+                  81053.058,
+                  381943.937
+                ],
+                [
+                  81058.172,
+                  381943.665
+                ],
+                [
+                  81063.24,
+                  381943.395
+                ],
+                [
+                  81068.236,
+                  381943.129
+                ],
+                [
+                  81071.782,
+                  381942.941
+                ],
+                [
+                  81074.392,
+                  381940.413
+                ],
+                [
+                  81074.134,
+                  381934.547
+                ],
+                [
+                  81073.135,
+                  381934.603
+                ],
+                [
+                  81072.408,
+                  381921.791
+                ],
+                [
+                  81067.219,
+                  381922.077
+                ],
+                [
+                  81062.129,
+                  381922.357
+                ],
+                [
+                  81057.038,
+                  381922.638
+                ],
+                [
+                  81051.948,
+                  381922.918
+                ],
+                [
+                  81046.857,
+                  381923.199
+                ],
+                [
+                  81041.768,
+                  381923.479
+                ]
+              ],
+              [
+                [
+                  81082.18,
+                  381591.7
+                ],
+                [
+                  81081.54,
+                  381588.76
+                ],
+                [
+                  81079.69,
+                  381580.56
+                ],
+                [
+                  81076.71,
+                  381567.28
+                ],
+                [
+                  81076.6,
+                  381567.31
+                ],
+                [
+                  81073.46,
+                  381568.01
+                ],
+                [
+                  81064.13,
+                  381570.12
+                ],
+                [
+                  81048.35,
+                  381573.67
+                ],
+                [
+                  81051.35,
+                  381586.9
+                ],
+                [
+                  81053.2,
+                  381595.12
+                ],
+                [
+                  81053.87,
+                  381598.04
+                ],
+                [
+                  81082.18,
+                  381591.7
+                ]
+              ],
+              [
+                [
+                  81077.96,
+                  381685.15
+                ],
+                [
+                  81077.9,
+                  381685.08
+                ],
+                [
+                  81080.19,
+                  381684.28
+                ],
+                [
+                  81070.82,
+                  381657.04
+                ],
+                [
+                  81058.79,
+                  381659.65
+                ],
+                [
+                  81050.59,
+                  381661.48
+                ],
+                [
+                  81047.69,
+                  381662.15
+                ],
+                [
+                  81054.08,
+                  381690.49
+                ],
+                [
+                  81056.95,
+                  381689.84
+                ],
+                [
+                  81077.96,
+                  381685.15
+                ]
+              ],
+              [
+                [
+                  81080.765,
+                  381564.421
+                ],
+                [
+                  81089.461,
+                  381566.643
+                ],
+                [
+                  81098.222,
+                  381568.881
+                ],
+                [
+                  81106.908,
+                  381571.1
+                ],
+                [
+                  81108.725,
+                  381564.07
+                ],
+                [
+                  81110.321,
+                  381557.772
+                ],
+                [
+                  81112.46,
+                  381549.48
+                ],
+                [
+                  81103.664,
+                  381547.232
+                ],
+                [
+                  81094.945,
+                  381545.004
+                ],
+                [
+                  81086.209,
+                  381542.771
+                ],
+                [
+                  81077.419,
+                  381540.524
+                ],
+                [
+                  81073.686,
+                  381555.154
+                ],
+                [
+                  81072.521,
+                  381559.821
+                ],
+                [
+                  81073.819,
+                  381565.871
+                ],
+                [
+                  81080.461,
+                  381564.343
+                ],
+                [
+                  81080.765,
+                  381564.421
+                ]
+              ],
+              [
+                [
+                  81091.158,
+                  381897.543
+                ],
+                [
+                  81091.391,
+                  381897.836
+                ],
+                [
+                  81103.989,
+                  381913.672
+                ],
+                [
+                  81104.276,
+                  381914.032
+                ],
+                [
+                  81106.323,
+                  381916.606
+                ],
+                [
+                  81108.867,
+                  381919.804
+                ],
+                [
+                  81114.944,
+                  381914.97
+                ],
+                [
+                  81128.216,
+                  381912.451
+                ],
+                [
+                  81124.383,
+                  381907.689
+                ],
+                [
+                  81124.271,
+                  381907.549
+                ],
+                [
+                  81125.239,
+                  381906.779
+                ],
+                [
+                  81120.648,
+                  381901.077
+                ],
+                [
+                  81107.64,
+                  381884.921
+                ],
+                [
+                  81103.013,
+                  381879.174
+                ],
+                [
+                  81099.448,
+                  381882.01
+                ],
+                [
+                  81081.512,
+                  381885.417
+                ],
+                [
+                  81086.233,
+                  381891.352
+                ],
+                [
+                  81086.804,
+                  381892.069
+                ],
+                [
+                  81091.158,
+                  381897.543
+                ]
+              ],
+              [
+                [
+                  81112.461,
+                  381844.928
+                ],
+                [
+                  81108.083,
+                  381839.448
+                ],
+                [
+                  81086.378,
+                  381843.612
+                ],
+                [
+                  81092.513,
+                  381851.318
+                ],
+                [
+                  81092.791,
+                  381851.667
+                ],
+                [
+                  81092.164,
+                  381852.168
+                ],
+                [
+                  81096.766,
+                  381857.924
+                ],
+                [
+                  81105.567,
+                  381868.932
+                ],
+                [
+                  81106.159,
+                  381868.46
+                ],
+                [
+                  81106.378,
+                  381868.736
+                ],
+                [
+                  81128.057,
+                  381864.445
+                ],
+                [
+                  81121.497,
+                  381856.236
+                ],
+                [
+                  81121.411,
+                  381856.128
+                ],
+                [
+                  81112.683,
+                  381845.206
+                ],
+                [
+                  81112.461,
+                  381844.928
+                ]
+              ],
+              [
+                [
+                  81096.44,
+                  381638.65
+                ],
+                [
+                  81088.06,
+                  381619.74
+                ],
+                [
+                  81064.48,
+                  381630.01
+                ],
+                [
+                  81065.69,
+                  381632.76
+                ],
+                [
+                  81069.05,
+                  381640.47
+                ],
+                [
+                  81074.61,
+                  381653.05
+                ],
+                [
+                  81074.7,
+                  381652.98
+                ],
+                [
+                  81076.2,
+                  381654.85
+                ],
+                [
+                  81080.08,
+                  381651.75
+                ],
+                [
+                  81085.37,
+                  381647.5
+                ],
+                [
+                  81087.84,
+                  381645.54
+                ],
+                [
+                  81090.3,
+                  381643.55
+                ],
+                [
+                  81093.07,
+                  381641.34
+                ],
+                [
+                  81095.57,
+                  381639.33
+                ],
+                [
+                  81096.44,
+                  381638.65
+                ]
+              ],
+              [
+                [
+                  81098.707,
+                  381946.297
+                ],
+                [
+                  81106.127,
+                  381939.14
+                ],
+                [
+                  81112.086,
+                  381933.392
+                ],
+                [
+                  81107.06,
+                  381928.182
+                ],
+                [
+                  81103.511,
+                  381924.504
+                ],
+                [
+                  81099.969,
+                  381920.833
+                ],
+                [
+                  81096.429,
+                  381917.163
+                ],
+                [
+                  81092.888,
+                  381913.492
+                ],
+                [
+                  81087.874,
+                  381908.296
+                ],
+                [
+                  81076.039,
+                  381919.715
+                ],
+                [
+                  81075.309,
+                  381926.103
+                ],
+                [
+                  81076.12,
+                  381926.932
+                ],
+                [
+                  81077.497,
+                  381928.341
+                ],
+                [
+                  81076.426,
+                  381929.392
+                ],
+                [
+                  81079.952,
+                  381933.059
+                ],
+                [
+                  81083.479,
+                  381936.726
+                ],
+                [
+                  81087.022,
+                  381940.411
+                ],
+                [
+                  81089.467,
+                  381942.954
+                ],
+                [
+                  81090.545,
+                  381944.075
+                ],
+                [
+                  81095.581,
+                  381949.312
+                ],
+                [
+                  81098.707,
+                  381946.297
+                ]
+              ],
+              [
+                [
+                  81050.083,
+                  381888.806
+                ],
+                [
+                  81027.381,
+                  381890.392
+                ],
+                [
+                  81028.302,
+                  381905.995
+                ],
+                [
+                  81064.591,
+                  381903.629
+                ],
+                [
+                  81060.795,
+                  381844.424
+                ],
+                [
+                  81047.371,
+                  381845.242
+                ],
+                [
+                  81050.083,
+                  381888.806
+                ]
+              ],
+              [
+                [
+                  81072.12,
+                  381652.21
+                ],
+                [
+                  81063.89,
+                  381633.55
+                ],
+                [
+                  81062.7,
+                  381630.82
+                ],
+                [
+                  81044.86,
+                  381638.63
+                ],
+                [
+                  81046.07,
+                  381641.39
+                ],
+                [
+                  81049.45,
+                  381649.04
+                ],
+                [
+                  81052.84,
+                  381656.46
+                ],
+                [
+                  81053.36,
+                  381658.8
+                ],
+                [
+                  81072.48,
+                  381654.59
+                ],
+                [
+                  81071.97,
+                  381652.24
+                ],
+                [
+                  81072.12,
+                  381652.21
+                ]
+              ],
+              [
+                [
+                  81115.52,
+                  381612.9
+                ],
+                [
+                  81115.47,
+                  381612.81
+                ],
+                [
+                  81117.8,
+                  381612.15
+                ],
+                [
+                  81109.93,
+                  381584.41
+                ],
+                [
+                  81092.18,
+                  381588.38
+                ],
+                [
+                  81089.24,
+                  381589.03
+                ],
+                [
+                  81095.6,
+                  381617.4
+                ],
+                [
+                  81098.51,
+                  381616.75
+                ],
+                [
+                  81106.73,
+                  381614.87
+                ],
+                [
+                  81115.52,
+                  381612.9
+                ]
+              ],
+              [
+                [
+                  81152.71,
+                  381652.88
+                ],
+                [
+                  81150.87,
+                  381650.63
+                ],
+                [
+                  81148.58,
+                  381652.47
+                ],
+                [
+                  81150.44,
+                  381654.78
+                ],
+                [
+                  81152.71,
+                  381652.88
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "dbd29dc8-660b-55b0-a6bd-4eb131c407f5"
+      }
+    ],
+    "numberReturned": 41
+  }
+}

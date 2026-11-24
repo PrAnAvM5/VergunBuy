@@ -1,0 +1,5037 @@
+{
+  "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:04Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/pand/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/pand/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/pand/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000426278",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.00f85b853dc745abab4f801424d97f6e",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "ef9a351c-b7fc-af9d-51b3-ae452478a43f"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81053.056,
+                  381943.909
+                ],
+                [
+                  81051.009,
+                  381944.02
+                ],
+                [
+                  81050.86,
+                  381941.104
+                ],
+                [
+                  81051.141,
+                  381941.089
+                ],
+                [
+                  81052.9,
+                  381940.993
+                ],
+                [
+                  81053.056,
+                  381943.909
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "76c2f966-5a53-53fa-962c-64f65ed43353"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416540",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.0a8c9bb8bdb84a7fa96866be5432edbc",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "263be0f2-5ee7-39d8-67d2-eb7ede1e04fb"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81051.84,
+                  381902.19
+                ],
+                [
+                  81047.34,
+                  381902.47
+                ],
+                [
+                  81047.318,
+                  381902.119
+                ],
+                [
+                  81045.985,
+                  381902.196
+                ],
+                [
+                  81046.02,
+                  381902.81
+                ],
+                [
+                  81044.02,
+                  381902.91
+                ],
+                [
+                  81043.94,
+                  381901.44
+                ],
+                [
+                  81040.744,
+                  381901.638
+                ],
+                [
+                  81040.39,
+                  381901.66
+                ],
+                [
+                  81040.48,
+                  381903.13
+                ],
+                [
+                  81038.332,
+                  381903.252
+                ],
+                [
+                  81037.785,
+                  381893.69
+                ],
+                [
+                  81040.286,
+                  381893.547
+                ],
+                [
+                  81045.47,
+                  381893.25
+                ],
+                [
+                  81045.617,
+                  381895.797
+                ],
+                [
+                  81046.92,
+                  381895.75
+                ],
+                [
+                  81051.42,
+                  381895.47
+                ],
+                [
+                  81051.84,
+                  381902.19
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "f7d8f440-6296-5b2b-8488-49e36b15145e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000414764",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.0f7442f3ab4048d193a6005a87e1f031",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c7b25d5f-e192-aefc-6ae6-34d905dab2ec"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81071.884,
+                  381949.746
+                ],
+                [
+                  81070.359,
+                  381951.186
+                ],
+                [
+                  81068.192,
+                  381948.941
+                ],
+                [
+                  81068.498,
+                  381948.573
+                ],
+                [
+                  81069.642,
+                  381947.429
+                ],
+                [
+                  81071.884,
+                  381949.746
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "786bf797-cdec-5339-8f74-b9da800291b9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000412136",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.1240517808fc430cb6d72f27014f0cec",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "b11e445d-ab0a-c741-27b1-9ba0973f890d"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81037.396,
+                  381936.651
+                ],
+                [
+                  81032.319,
+                  381936.925
+                ],
+                [
+                  81031.786,
+                  381927.042
+                ],
+                [
+                  81036.863,
+                  381926.769
+                ],
+                [
+                  81037.396,
+                  381936.651
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "c42246f7-4d0a-5dfb-9baa-0a95c4571429"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000428069",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.15f2cc783e704fd0aebd90437d95bf2c",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "e97d9c4d-32b1-8a74-1ae0-469e535443a5"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81065.109,
+                  381943.254
+                ],
+                [
+                  81063.238,
+                  381943.356
+                ],
+                [
+                  81063.079,
+                  381940.44
+                ],
+                [
+                  81064.96,
+                  381940.338
+                ],
+                [
+                  81065.109,
+                  381943.254
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "84012504-0371-5d33-9d69-9766dd595202"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000414738",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.190f5c55b827444ab6113b58e6941955",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "fcf14e0d-4ac3-f20b-80d2-c1a403f30e60"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81034.514,
+                  381944.917
+                ],
+                [
+                  81032.729,
+                  381945.009
+                ],
+                [
+                  81032.57,
+                  381942.083
+                ],
+                [
+                  81034.364,
+                  381941.991
+                ],
+                [
+                  81034.514,
+                  381944.917
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "d33ec369-671c-52b0-82c9-cf723fad4bdf"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419183",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.19d1f0138d1741418fdab08bd3dfbb37",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "0b55a1d4-2cf7-aac5-c28f-7a4c8f528386"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80995.733,
+                  381947.558
+                ],
+                [
+                  80988.378,
+                  381949.273
+                ],
+                [
+                  80987.09,
+                  381943.75
+                ],
+                [
+                  80992.7,
+                  381942.438
+                ],
+                [
+                  80994.434,
+                  381942.003
+                ],
+                [
+                  80995.733,
+                  381947.558
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "56ea2b48-1c30-5382-824a-b2407d1b4bcf"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000428161",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.2083b767194142b28d3be618b3836829",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "4fb95ffd-4dfa-7f7a-ad5b-149e9c4cc6a1"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81078.044,
+                  381963.498
+                ],
+                [
+                  81074.408,
+                  381967.017
+                ],
+                [
+                  81067.843,
+                  381960.233
+                ],
+                [
+                  81071.5,
+                  381956.735
+                ],
+                [
+                  81078.044,
+                  381963.498
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "c3f9f0a4-9310-54dc-93f9-8842cf01eae0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000418774",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.21c75e266d3d408c8d02bb39f3464376",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "7a91e955-3a66-d80b-de2b-972cce0a0830"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81062.782,
+                  381935.279
+                ],
+                [
+                  81057.705,
+                  381935.554
+                ],
+                [
+                  81057.172,
+                  381925.673
+                ],
+                [
+                  81062.25,
+                  381925.399
+                ],
+                [
+                  81062.782,
+                  381935.279
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "6032489e-4ac0-5358-8224-68882b6e4038"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416548",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.32327076ede940ee881ad5976f8d7c3e",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "e9a2dbfb-dcfc-94d6-7cdf-3ca699c9424e"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81047.551,
+                  381936.102
+                ],
+                [
+                  81042.473,
+                  381936.376
+                ],
+                [
+                  81041.94,
+                  381926.495
+                ],
+                [
+                  81047.018,
+                  381926.221
+                ],
+                [
+                  81047.551,
+                  381936.102
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "48c00a3a-1c7b-5843-9b4f-c73ee6a81767"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000418777",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.36b54aefd9b24f5092d60ada94222237",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "46353cd1-dc0c-a2f8-f5cf-a94550dfaad5"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81032.319,
+                  381936.925
+                ],
+                [
+                  81027.044,
+                  381937.21
+                ],
+                [
+                  81026.778,
+                  381932.32
+                ],
+                [
+                  81026.509,
+                  381927.327
+                ],
+                [
+                  81031.786,
+                  381927.042
+                ],
+                [
+                  81032.319,
+                  381936.925
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "9cf4db27-6d45-5529-931d-4224df57f951"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000455945",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2017-11-30T08:30:27Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.377c07106dc9421c9dcefcf9deb28380",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c0cc4341-121c-0619-7ccf-e828f294ad0e"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81003.334,
+                  381963.013
+                ],
+                [
+                  81003.697,
+                  381964.663
+                ],
+                [
+                  81004.693,
+                  381964.447
+                ],
+                [
+                  81005.86,
+                  381969.822
+                ],
+                [
+                  80997,
+                  381971.75
+                ],
+                [
+                  80995.077,
+                  381962.93
+                ],
+                [
+                  80994.97,
+                  381962.44
+                ],
+                [
+                  81002.422,
+                  381960.816
+                ],
+                [
+                  81002.428,
+                  381959.738
+                ],
+                [
+                  81002.764,
+                  381959.74
+                ],
+                [
+                  81005.609,
+                  381959.755
+                ],
+                [
+                  81018.595,
+                  381959.822
+                ],
+                [
+                  81018.574,
+                  381963.94
+                ],
+                [
+                  81005.6,
+                  381963.913
+                ],
+                [
+                  81005.603,
+                  381962.479
+                ],
+                [
+                  81003.334,
+                  381963.013
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "376e7b79-9729-5f14-b197-488df92f7a9d"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000427221",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2018-04-13T13:28:33Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.3ec094e83860455588aefb91ea4fd523",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "9a802a4f-6b13-d09b-6654-f5283c5ec38e"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81008.078,
+                  381979.522
+                ],
+                [
+                  81008.403,
+                  381981.291
+                ],
+                [
+                  81006.874,
+                  381981.514
+                ],
+                [
+                  81007.774,
+                  381986.602
+                ],
+                [
+                  81007.829,
+                  381986.845
+                ],
+                [
+                  81000.5,
+                  381988.5
+                ],
+                [
+                  80996.84,
+                  381971.78
+                ],
+                [
+                  80997,
+                  381971.75
+                ],
+                [
+                  81005.86,
+                  381969.822
+                ],
+                [
+                  81006.915,
+                  381969.593
+                ],
+                [
+                  81007.358,
+                  381969.65
+                ],
+                [
+                  81008.143,
+                  381973.266
+                ],
+                [
+                  81006.784,
+                  381973.561
+                ],
+                [
+                  81008.078,
+                  381979.522
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "9ef6f093-133e-5f87-b4f1-5a290416badd"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000412538",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.3ee1ae5e95e34a3d8520bca3450badd5",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "00186204-dc21-07d5-2e9b-1d56190331b6"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81056.772,
+                  381962.461
+                ],
+                [
+                  81055.39,
+                  381959.39
+                ],
+                [
+                  81057.11,
+                  381958.635
+                ],
+                [
+                  81057.287,
+                  381958.996
+                ],
+                [
+                  81058.587,
+                  381961.646
+                ],
+                [
+                  81056.772,
+                  381962.461
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "badbccf5-af29-535c-aad0-3ae0ab0db179"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000428131",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.4803ca33cdfb4db5addf298a3b02ca0d",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "f509d258-b734-0718-eb97-81ca9a6331cc"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81042.889,
+                  381944.46
+                ],
+                [
+                  81040.898,
+                  381944.569
+                ],
+                [
+                  81040.748,
+                  381941.643
+                ],
+                [
+                  81042.731,
+                  381941.54
+                ],
+                [
+                  81042.889,
+                  381944.46
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "42c6d89c-bb25-52a1-baae-eb69a2da8b94"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000423606",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.4ae0fcb0c31c40b0a031a386d1cb4919",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "6c2dee01-dea6-44e8-b66e-53d640ffd7d5"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80996.979,
+                  381952.887
+                ],
+                [
+                  80989.621,
+                  381954.603
+                ],
+                [
+                  80988.378,
+                  381949.273
+                ],
+                [
+                  80995.733,
+                  381947.558
+                ],
+                [
+                  80996.979,
+                  381952.887
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "ccb17465-a157-5bbe-ab70-10835bc49786"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000421441",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.4c258ec5c71b4bc090827b540dcfebef",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "2d7c9e06-a829-0a00-21ea-fe23ac37f91a"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81029.946,
+                  381965.971
+                ],
+                [
+                  81028.147,
+                  381965.961
+                ],
+                [
+                  81028.116,
+                  381962.864
+                ],
+                [
+                  81029.883,
+                  381962.856
+                ],
+                [
+                  81029.946,
+                  381965.971
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "f0fa1ab1-43a5-5f5d-b6dd-1890c809e448"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000411497",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.5bf692e1541642eeb8af7408716bba49",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "cc2c2275-8d8e-c004-de7c-42be329d0475"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81038.332,
+                  381903.252
+                ],
+                [
+                  81037.3,
+                  381903.31
+                ],
+                [
+                  81037.21,
+                  381901.84
+                ],
+                [
+                  81035.755,
+                  381901.918
+                ],
+                [
+                  81033.68,
+                  381902.03
+                ],
+                [
+                  81033.77,
+                  381903.5
+                ],
+                [
+                  81030.66,
+                  381903.69
+                ],
+                [
+                  81030.1,
+                  381894.13
+                ],
+                [
+                  81035.297,
+                  381893.832
+                ],
+                [
+                  81037.785,
+                  381893.69
+                ],
+                [
+                  81038.332,
+                  381903.252
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "0f6a5a99-0930-528e-8871-682e117f3ee2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000421079",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.67dc8553e1d74e76bb67a7cd9292fdd9",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "a94efc55-d205-269e-6b4f-62c01a72faf5"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81062.334,
+                  381894.921
+                ],
+                [
+                  81052.794,
+                  381895.5
+                ],
+                [
+                  81052.78,
+                  381895.28
+                ],
+                [
+                  81054.25,
+                  381895.19
+                ],
+                [
+                  81054.04,
+                  381891.63
+                ],
+                [
+                  81052.57,
+                  381891.72
+                ],
+                [
+                  81052.394,
+                  381888.79
+                ],
+                [
+                  81061.928,
+                  381888.213
+                ],
+                [
+                  81062.334,
+                  381894.921
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "fa67d214-f9c2-5142-b4d4-b7fa6eab0422"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000424929",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.6d7561c0142e4e7496942644a0620b35",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "0fa378e0-628c-db87-317f-992546457fdb"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81013.701,
+                  381950.297
+                ],
+                [
+                  81013.777,
+                  381952.336
+                ],
+                [
+                  81010.559,
+                  381952.455
+                ],
+                [
+                  81010.483,
+                  381950.416
+                ],
+                [
+                  81013.701,
+                  381950.297
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "6be4df03-13bf-5a91-ae22-866f4725b6d0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000423240",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.70f4feacc3154fd19bf62f9ffb16654a",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "7e6088b0-cf3c-54e7-670f-c66a0a6eb1a1"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80997.048,
+                  381914.559
+                ],
+                [
+                  80997.095,
+                  381915.256
+                ],
+                [
+                  80991.66,
+                  381915.53
+                ],
+                [
+                  80991.428,
+                  381912.492
+                ],
+                [
+                  80996.88,
+                  381912.13
+                ],
+                [
+                  80997.048,
+                  381914.559
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "a6be4bc6-b90a-5cff-a78f-0772b59ca820"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419184",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.7c9f676b92c745758188c876c18fa636",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "ad5e58ab-e775-84d2-675c-180ed466be4c"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81040.144,
+                  381965.826
+                ],
+                [
+                  81038.318,
+                  381965.851
+                ],
+                [
+                  81038.333,
+                  381962.703
+                ],
+                [
+                  81038.599,
+                  381962.688
+                ],
+                [
+                  81040.08,
+                  381962.646
+                ],
+                [
+                  81040.144,
+                  381965.826
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "95b7da44-3030-50a0-b196-454a48fd9de6"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000412473",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.7e094f188fed4944a43e2aef6b10a64d",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "1e7198eb-501e-2895-32a7-8b5c2bcba318"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81063.238,
+                  381943.356
+                ],
+                [
+                  81061.179,
+                  381943.468
+                ],
+                [
+                  81061.029,
+                  381940.552
+                ],
+                [
+                  81063.079,
+                  381940.44
+                ],
+                [
+                  81063.238,
+                  381943.356
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "323a1134-4188-5a45-8049-42b44600647d"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416967",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.7ee907751f09428c9b9d2cde2a138513",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "435a6f89-73fc-fb41-ca45-14ae5be973d0"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81070.772,
+                  381970.536
+                ],
+                [
+                  81067.136,
+                  381974.054
+                ],
+                [
+                  81060.529,
+                  381967.228
+                ],
+                [
+                  81064.186,
+                  381963.73
+                ],
+                [
+                  81070.772,
+                  381970.536
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "23e64809-401c-5a08-ad97-360f94193626"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419181",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.83dc0fd223084c92905cc634eeb5c9d6",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "640601a7-1d37-74a5-8ffa-252aa447391b"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81032.729,
+                  381945.009
+                ],
+                [
+                  81030.645,
+                  381945.116
+                ],
+                [
+                  81030.493,
+                  381942.19
+                ],
+                [
+                  81032.57,
+                  381942.083
+                ],
+                [
+                  81032.729,
+                  381945.009
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "e8dc7098-a8cf-50ec-9547-9c007687d211"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000426698",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.8549bbc570fc4a819f4c90600672338a",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "f184444f-c241-6bc5-7b2f-fceb92ce6956"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81049.547,
+                  381964.545
+                ],
+                [
+                  81048.888,
+                  381961.661
+                ],
+                [
+                  81050.897,
+                  381961.14
+                ],
+                [
+                  81050.972,
+                  381961.429
+                ],
+                [
+                  81051.64,
+                  381964.002
+                ],
+                [
+                  81049.547,
+                  381964.545
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "b2c3691d-029c-5de6-962f-47d2df2e5959"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000453779",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2019-05-09T09:23:42Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.93707910b661455f81cd6c5a7833ac26",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-05-08T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "da9788ce-c573-a1c5-3fec-7d65f8e432f9"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81023.25,
+                  381940.31
+                ],
+                [
+                  81020.513,
+                  381940.429
+                ],
+                [
+                  81020.504,
+                  381940.225
+                ],
+                [
+                  81020.339,
+                  381936.445
+                ],
+                [
+                  81023.076,
+                  381936.326
+                ],
+                [
+                  81023.25,
+                  381940.31
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "db253db6-0731-52ad-a519-08f58ab7c60f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416939",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.97f10f79a3a04780806d1c8011eac41d",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "0efc4617-b09a-6b75-1083-4bb0acfadb33"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81044.823,
+                  381944.355
+                ],
+                [
+                  81042.889,
+                  381944.46
+                ],
+                [
+                  81042.731,
+                  381941.54
+                ],
+                [
+                  81044.673,
+                  381941.439
+                ],
+                [
+                  81044.823,
+                  381944.355
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "e010a459-e7b7-5e7c-8b3d-975fafc38f9a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000421084",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.980a57d0931449cab94b1591086969dc",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "3a738263-92d0-75bc-e460-0ce3b77583c5"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81057.705,
+                  381935.554
+                ],
+                [
+                  81052.628,
+                  381935.828
+                ],
+                [
+                  81052.095,
+                  381925.947
+                ],
+                [
+                  81057.172,
+                  381925.673
+                ],
+                [
+                  81057.705,
+                  381935.554
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "30a004f6-19ee-57b5-b227-d1a25e54ef60"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419120",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.a266df8fc30b43f99c0a93ac1584775f",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "453ba256-d87a-9324-9bc0-7d9f92d8c690"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81054.951,
+                  381943.806
+                ],
+                [
+                  81053.056,
+                  381943.909
+                ],
+                [
+                  81052.9,
+                  381940.993
+                ],
+                [
+                  81053.009,
+                  381940.987
+                ],
+                [
+                  81054.801,
+                  381940.89
+                ],
+                [
+                  81054.951,
+                  381943.806
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "01943bd5-4165-5d11-82e0-89826eef7931"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000453732",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.a3c5491eed544f48bc568a5844ba5d6b",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "1f0b892e-49d9-ba93-b909-aefe873ad83d"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80999.512,
+                  381903.44
+                ],
+                [
+                  80999.519,
+                  381898.948
+                ],
+                [
+                  81000.641,
+                  381898.95
+                ],
+                [
+                  81001.769,
+                  381898.911
+                ],
+                [
+                  81001.865,
+                  381903.353
+                ],
+                [
+                  80999.512,
+                  381903.44
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "f7de659b-310b-5980-bad1-929401cd7e73"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000425465",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.a9b556f08ac34e72bd64defd1cf5b901",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "5e619b9e-2e67-c621-4d00-090501e1f59b"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81052.628,
+                  381935.828
+                ],
+                [
+                  81047.551,
+                  381936.102
+                ],
+                [
+                  81047.018,
+                  381926.221
+                ],
+                [
+                  81052.095,
+                  381925.947
+                ],
+                [
+                  81052.628,
+                  381935.828
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "8304700c-05d9-5938-b0c0-deaa065f19a0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416941",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.afb8f74594214c4e845a59c5f8c508be",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "8df82e01-4f51-a660-c2ac-af9bd103ad7b"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81040.144,
+                  381965.826
+                ],
+                [
+                  81040.08,
+                  381962.646
+                ],
+                [
+                  81042.192,
+                  381962.586
+                ],
+                [
+                  81042.196,
+                  381962.845
+                ],
+                [
+                  81042.237,
+                  381965.797
+                ],
+                [
+                  81040.144,
+                  381965.826
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "c51f19b2-310d-59c0-afad-db6ab45b0f4b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000418239",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.b145a0220b9e428384fbf9193fe73dab",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "e63e5e2d-471f-8105-b47a-8f0a818d82c1"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81011.236,
+                  381945.674
+                ],
+                [
+                  81013.48,
+                  381945.526
+                ],
+                [
+                  81013.635,
+                  381948.612
+                ],
+                [
+                  81011.39,
+                  381948.725
+                ],
+                [
+                  81011.236,
+                  381945.674
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "41ce64a1-11a6-5510-9e6e-f3e96af2f411"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416940",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.b9779fd635c3495f9ff8033caaaab571",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "a9d33289-7cfa-2be3-13b3-e5c4415f27cc"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80998.27,
+                  381958.41
+                ],
+                [
+                  80990.91,
+                  381960.13
+                ],
+                [
+                  80989.621,
+                  381954.603
+                ],
+                [
+                  80996.979,
+                  381952.887
+                ],
+                [
+                  80998.27,
+                  381958.41
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "1030f67c-3a9d-5051-9c2f-0c77ad6b01c9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000418773",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.bb712f6cc73d40dda762ae716abd49c6",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "75099c47-d48d-8fd4-a20f-28cc3dd02230"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81067.86,
+                  381935.005
+                ],
+                [
+                  81062.782,
+                  381935.279
+                ],
+                [
+                  81062.25,
+                  381925.399
+                ],
+                [
+                  81067.327,
+                  381925.126
+                ],
+                [
+                  81067.86,
+                  381935.005
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "675238e1-7b2a-5ed5-8961-c44db3f6a726"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419755",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.c8ae0c17cf604741ab0991822ef4769c",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "786ac328-16af-d1c6-4a01-28173742202b"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81022.376,
+                  381898.735
+                ],
+                [
+                  81022.4,
+                  381899.13
+                ],
+                [
+                  81022.7,
+                  381904.13
+                ],
+                [
+                  81019.69,
+                  381904.31
+                ],
+                [
+                  81019.39,
+                  381899.31
+                ],
+                [
+                  81019.368,
+                  381898.915
+                ],
+                [
+                  81020.445,
+                  381898.851
+                ],
+                [
+                  81020.087,
+                  381894.284
+                ],
+                [
+                  81018.22,
+                  381894.431
+                ],
+                [
+                  81018.031,
+                  381892.019
+                ],
+                [
+                  81018.664,
+                  381891.97
+                ],
+                [
+                  81021.294,
+                  381891.69
+                ],
+                [
+                  81022.125,
+                  381891.625
+                ],
+                [
+                  81022.67,
+                  381898.72
+                ],
+                [
+                  81022.376,
+                  381898.735
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "d98fd995-482b-53c9-8f61-432bc0577ded"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000414361",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2019-06-08T08:04:51Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.cac1bd75349f47a8a71d61bb9a837832",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-06-07T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "e332a6b2-d164-4d18-e883-1cbb1940b168"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81013.334,
+                  381940.002
+                ],
+                [
+                  81012.565,
+                  381940.538
+                ],
+                [
+                  81004.78,
+                  381940.667
+                ],
+                [
+                  81004.635,
+                  381940.156
+                ],
+                [
+                  81000.653,
+                  381940.564
+                ],
+                [
+                  80997.56,
+                  381941.261
+                ],
+                [
+                  80994.434,
+                  381942.003
+                ],
+                [
+                  80992.7,
+                  381942.438
+                ],
+                [
+                  80991.898,
+                  381939.06
+                ],
+                [
+                  80986.307,
+                  381940.362
+                ],
+                [
+                  80984.035,
+                  381930.604
+                ],
+                [
+                  80992.765,
+                  381928.571
+                ],
+                [
+                  80994.971,
+                  381938.047
+                ],
+                [
+                  81003.667,
+                  381936.014
+                ],
+                [
+                  81004.18,
+                  381938.208
+                ],
+                [
+                  81013.34,
+                  381938.097
+                ],
+                [
+                  81013.334,
+                  381940.002
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "816e95b2-0359-5584-b680-2b2fbe3c1efd"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000423633",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.d2bc8cb432b3486f95e6d27fc685ac63",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "a1869a46-aee2-6e94-f548-ac5726f5b2b8"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81056.772,
+                  381962.461
+                ],
+                [
+                  81054.94,
+                  381963.284
+                ],
+                [
+                  81053.632,
+                  381960.424
+                ],
+                [
+                  81053.538,
+                  381960.219
+                ],
+                [
+                  81053.897,
+                  381960.046
+                ],
+                [
+                  81055.39,
+                  381959.39
+                ],
+                [
+                  81056.772,
+                  381962.461
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "e5d4b071-84c3-56eb-a95a-457594e692c2"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000421444",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.d4c575ad9c0840ff8a3ab13e3bfc5922",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c353fd5c-06e4-97f1-cdcb-b90db27aaebb"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81070.029,
+                  381942.987
+                ],
+                [
+                  81068.154,
+                  381943.089
+                ],
+                [
+                  81068.003,
+                  381940.173
+                ],
+                [
+                  81069.879,
+                  381940.071
+                ],
+                [
+                  81070.029,
+                  381942.987
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "1927b4c4-e181-5290-83e0-a081da873c38"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000412472",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.dc98458b7f3a4780b5a979c7e3524384",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "1c395682-8bc2-b159-7f72-d6b61e26206f"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81064.486,
+                  381956.776
+                ],
+                [
+                  81062.299,
+                  381954.573
+                ],
+                [
+                  81063.658,
+                  381953.224
+                ],
+                [
+                  81065.88,
+                  381955.45
+                ],
+                [
+                  81064.486,
+                  381956.776
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "7304cc11-026c-544d-ac2d-e443935e811e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000412132",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.e1f2eba5aeea4103a68714e4dce9ffd6",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "36a24193-7b27-74d7-0aa2-0d5fee30108a"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81062.75,
+                  381901.78
+                ],
+                [
+                  81053.22,
+                  381902.38
+                ],
+                [
+                  81053.2,
+                  381902
+                ],
+                [
+                  81054.66,
+                  381901.91
+                ],
+                [
+                  81054.45,
+                  381898.34
+                ],
+                [
+                  81052.98,
+                  381898.44
+                ],
+                [
+                  81052.794,
+                  381895.5
+                ],
+                [
+                  81062.334,
+                  381894.921
+                ],
+                [
+                  81062.75,
+                  381901.78
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "db22d117-daaa-54e8-a20c-9020911d3303"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416547",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.e8083ece5fb34ac6b03b9494e80c1c0f",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c7d7a988-bc5b-b6cc-9f78-b0c5be26f101"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81073.134,
+                  381934.72
+                ],
+                [
+                  81067.86,
+                  381935.005
+                ],
+                [
+                  81067.327,
+                  381925.126
+                ],
+                [
+                  81072.604,
+                  381924.841
+                ],
+                [
+                  81072.873,
+                  381929.834
+                ],
+                [
+                  81073.134,
+                  381934.72
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "7680bfe7-2ab5-535f-8c2c-764f7e2577f1"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000429027",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.efbaa0ff856c405bb6d5efefae62ea67",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "dba0f0ed-c4cc-50d5-2ebf-eaa14e305c39"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81064.486,
+                  381956.776
+                ],
+                [
+                  81062.975,
+                  381958.213
+                ],
+                [
+                  81060.869,
+                  381955.996
+                ],
+                [
+                  81061.077,
+                  381955.785
+                ],
+                [
+                  81062.299,
+                  381954.573
+                ],
+                [
+                  81064.486,
+                  381956.776
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "218a08aa-7f21-509f-b4a2-989c832b42a9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000428158",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f2a44b69039f48f8b72c5fa9877feef5",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "a1803395-3c39-47fe-32ee-a449c8edbb87"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81067.136,
+                  381974.054
+                ],
+                [
+                  81063.33,
+                  381977.737
+                ],
+                [
+                  81057.977,
+                  381972.154
+                ],
+                [
+                  81056.727,
+                  381970.864
+                ],
+                [
+                  81060.529,
+                  381967.228
+                ],
+                [
+                  81067.136,
+                  381974.054
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "adfdfa6d-0e2e-50e4-a739-6f9407d8b7b9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000454658",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2022-05-19T15:01:48Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f2cccf317f8e4cf98b6cd043e5ab5ed7",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "b81085af-d9fe-dc1a-632c-79843116c7b6"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81012.613,
+                  381893.765
+                ],
+                [
+                  81013.764,
+                  381893.8
+                ],
+                [
+                  81013.67,
+                  381896.869
+                ],
+                [
+                  81009.499,
+                  381896.741
+                ],
+                [
+                  81009.562,
+                  381894.673
+                ],
+                [
+                  81007.337,
+                  381894.605
+                ],
+                [
+                  81007.396,
+                  381892.68
+                ],
+                [
+                  81009.959,
+                  381892.759
+                ],
+                [
+                  81009.93,
+                  381893.682
+                ],
+                [
+                  81011.24,
+                  381893.722
+                ],
+                [
+                  81011.232,
+                  381894.524
+                ],
+                [
+                  81012.606,
+                  381894.537
+                ],
+                [
+                  81012.613,
+                  381893.765
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "aa8af003-a993-5dbb-b2b6-984be5297517"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000416969",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f779772515a94d1d8086a04f693f8a61",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "3292fdc1-f516-10d0-2e4d-621f58ad32af"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81074.408,
+                  381967.017
+                ],
+                [
+                  81070.772,
+                  381970.536
+                ],
+                [
+                  81064.186,
+                  381963.73
+                ],
+                [
+                  81067.843,
+                  381960.233
+                ],
+                [
+                  81074.408,
+                  381967.017
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "d7dd995e-06c7-584c-acda-7c41e8b1f92f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000412517",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f8330e2d31a2471186f0780b11d15001",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "4171e248-5bc7-dd0b-a33b-da08050b7048"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81049.547,
+                  381964.545
+                ],
+                [
+                  81047.641,
+                  381965.04
+                ],
+                [
+                  81046.898,
+                  381962.178
+                ],
+                [
+                  81048.888,
+                  381961.661
+                ],
+                [
+                  81049.547,
+                  381964.545
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "3aa19342-d7a7-5562-9804-9f1d3fbdadeb"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419203",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f8f8050c44ae4a9ab019def6c810e3ac",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "ad6a6572-c262-0849-68a6-a61051fa7017"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81031.784,
+                  381965.981
+                ],
+                [
+                  81031.77,
+                  381968.541
+                ],
+                [
+                  81030.091,
+                  381968.532
+                ],
+                [
+                  81030.105,
+                  381965.972
+                ],
+                [
+                  81029.946,
+                  381965.971
+                ],
+                [
+                  81029.883,
+                  381962.856
+                ],
+                [
+                  81030.368,
+                  381962.854
+                ],
+                [
+                  81031.949,
+                  381962.846
+                ],
+                [
+                  81032.01,
+                  381965.982
+                ],
+                [
+                  81031.784,
+                  381965.981
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "10afe2d4-7e08-5880-b540-a40f9756f84a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000424805",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.fab6107d06254aaf8c556228cce2588d",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "66303d8a-ab51-7a31-52b4-9159868adb0b"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81024.636,
+                  381904.04
+                ],
+                [
+                  81024.32,
+                  381904.06
+                ],
+                [
+                  81024.16,
+                  381901.19
+                ],
+                [
+                  81024.511,
+                  381901.17
+                ],
+                [
+                  81027.01,
+                  381901.03
+                ],
+                [
+                  81027.17,
+                  381903.88
+                ],
+                [
+                  81024.636,
+                  381904.04
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "5fca5e41-e190-5185-a2d5-1ea9b1eae7a0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000425466",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.fb255459250a448ab58bf801bf7ccaa9",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "3499dfd7-7557-22fd-d5c7-26f9bd4d7b81"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81042.473,
+                  381936.376
+                ],
+                [
+                  81037.396,
+                  381936.651
+                ],
+                [
+                  81036.863,
+                  381926.769
+                ],
+                [
+                  81041.94,
+                  381926.495
+                ],
+                [
+                  81042.473,
+                  381936.376
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "7520627e-77b5-5cbf-9058-f90fe91d34ec"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000455945",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.377c07106dc9421c9dcefcf9deb28380",
+          "lv_publicatiedatum": "2018-01-15T09:27:52Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2017-11-30T08:30:27Z",
+          "version": "d2b97bcf-4123-282e-ce32-675439f47d25"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81005.86,
+                  381969.822
+                ],
+                [
+                  80997,
+                  381971.75
+                ],
+                [
+                  80995.077,
+                  381962.93
+                ],
+                [
+                  80994.97,
+                  381962.44
+                ],
+                [
+                  81002.422,
+                  381960.816
+                ],
+                [
+                  81002.428,
+                  381959.738
+                ],
+                [
+                  81002.764,
+                  381959.74
+                ],
+                [
+                  81005.609,
+                  381959.755
+                ],
+                [
+                  81013.237,
+                  381959.794
+                ],
+                [
+                  81013.275,
+                  381963.929
+                ],
+                [
+                  81005.6,
+                  381963.913
+                ],
+                [
+                  81005.603,
+                  381962.479
+                ],
+                [
+                  81003.334,
+                  381963.013
+                ],
+                [
+                  81003.697,
+                  381964.663
+                ],
+                [
+                  81004.693,
+                  381964.447
+                ],
+                [
+                  81005.86,
+                  381969.822
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "2c60d92b-54d6-5485-ab70-35916092d765"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000427221",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.3ec094e83860455588aefb91ea4fd523",
+          "lv_publicatiedatum": "2018-04-26T10:57:10Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2018-04-13T13:28:33Z",
+          "version": "dbd9f270-d9b0-7430-0560-8e3663487863"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81008.078,
+                  381979.522
+                ],
+                [
+                  81008.403,
+                  381981.291
+                ],
+                [
+                  81006.874,
+                  381981.514
+                ],
+                [
+                  81007.774,
+                  381986.602
+                ],
+                [
+                  81007.829,
+                  381986.845
+                ],
+                [
+                  81000.5,
+                  381988.5
+                ],
+                [
+                  80996.84,
+                  381971.78
+                ],
+                [
+                  80997,
+                  381971.75
+                ],
+                [
+                  81005.86,
+                  381969.822
+                ],
+                [
+                  81006.915,
+                  381969.593
+                ],
+                [
+                  81007.358,
+                  381969.65
+                ],
+                [
+                  81008.143,
+                  381973.266
+                ],
+                [
+                  81006.784,
+                  381973.561
+                ],
+                [
+                  81008.078,
+                  381979.522
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "bf235b8e-9e1e-5e14-9401-940121d7506f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000461857",
+          "bronhouder": "G0873",
+          "creation_date": "2018-11-24T23:00:00Z",
+          "eind_registratie": "2022-01-12T09:32:45Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.07a60194262b4c6abbc24e14f06f4910",
+          "lv_publicatiedatum": "2018-11-25T19:09:49Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2022-01-11T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2018-11-25T18:40:15Z",
+          "version": "6143e4bc-aaff-181a-37c8-f55e8a887b56"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81018.595,
+                  381959.822
+                ],
+                [
+                  81018.574,
+                  381963.94
+                ],
+                [
+                  81013.275,
+                  381963.929
+                ],
+                [
+                  81013.237,
+                  381959.794
+                ],
+                [
+                  81018.595,
+                  381959.822
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "6b64012c-8136-5be5-95e7-b67e89bfa56c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000461955",
+          "bronhouder": "G0873",
+          "creation_date": "2018-11-24T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.9e9ace7408be41e28dc035da94c8613e",
+          "lv_publicatiedatum": "2018-11-25T19:09:49Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2018-11-25T18:44:05Z",
+          "version": "16acc5be-9d3a-f9ab-07e3-52cae492793a"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80993.584,
+                  381896.672
+                ],
+                [
+                  80993.679,
+                  381892.513
+                ],
+                [
+                  80998.019,
+                  381892.613
+                ],
+                [
+                  80997.924,
+                  381896.772
+                ],
+                [
+                  80993.584,
+                  381896.672
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "24f73fde-efa6-5526-8b72-7ccb5b4b190c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000461852",
+          "bronhouder": "G0873",
+          "creation_date": "2019-02-26T23:00:00Z",
+          "eind_registratie": "2022-01-12T09:23:52Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.8569675e0a5c4f8fa339af659cf6925a",
+          "lv_publicatiedatum": "2019-03-25T11:19:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2022-01-11T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2019-02-27T10:06:46Z",
+          "version": "77c16970-25a5-d4a2-fe61-5edc696588bb"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81011.726,
+                  381898.901
+                ],
+                [
+                  81011.731,
+                  381901.888
+                ],
+                [
+                  81007.034,
+                  381901.896
+                ],
+                [
+                  81007.029,
+                  381898.909
+                ],
+                [
+                  81011.726,
+                  381898.901
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "c8a4761c-b6e4-5f12-8f46-5282d399b53f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000453779",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2019-05-09T09:23:42Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.93707910b661455f81cd6c5a7833ac26",
+          "lv_publicatiedatum": "2019-06-04T09:13:07Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-05-08T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "2b3c18c2-c110-48e5-7771-344e8f72849e"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81023.25,
+                  381940.31
+                ],
+                [
+                  81020.513,
+                  381940.429
+                ],
+                [
+                  81020.504,
+                  381940.225
+                ],
+                [
+                  81020.339,
+                  381936.445
+                ],
+                [
+                  81023.076,
+                  381936.326
+                ],
+                [
+                  81023.25,
+                  381940.31
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "0845278d-bab9-5ffd-9b74-88c19d66bf26"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000414361",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2019-06-08T08:04:51Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.cac1bd75349f47a8a71d61bb9a837832",
+          "lv_publicatiedatum": "2019-06-11T08:19:38Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2019-06-07T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "533c0b26-11f7-0dbc-ccdb-42b8f0e4f0d5"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81013.334,
+                  381940.002
+                ],
+                [
+                  81012.565,
+                  381940.538
+                ],
+                [
+                  81004.78,
+                  381940.667
+                ],
+                [
+                  81004.635,
+                  381940.156
+                ],
+                [
+                  81000.653,
+                  381940.564
+                ],
+                [
+                  80997.56,
+                  381941.261
+                ],
+                [
+                  80994.434,
+                  381942.003
+                ],
+                [
+                  80992.7,
+                  381942.438
+                ],
+                [
+                  80991.898,
+                  381939.06
+                ],
+                [
+                  80986.307,
+                  381940.362
+                ],
+                [
+                  80984.035,
+                  381930.604
+                ],
+                [
+                  80992.765,
+                  381928.571
+                ],
+                [
+                  80994.971,
+                  381938.047
+                ],
+                [
+                  81003.667,
+                  381936.014
+                ],
+                [
+                  81004.18,
+                  381938.208
+                ],
+                [
+                  81013.34,
+                  381938.097
+                ],
+                [
+                  81013.334,
+                  381940.002
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "98f4e121-0f4f-5c25-934e-e72d803b4c90"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000414361",
+          "bronhouder": "G0873",
+          "creation_date": "2019-06-07T22:00:00Z",
+          "eind_registratie": "2019-08-06T10:07:32Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.d6656c0d0bbc4200a171109c339c7cd4",
+          "lv_publicatiedatum": "2019-06-11T08:19:38Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-06-08T08:04:51Z",
+          "version": "238d9df0-6680-2512-4238-b3c47f1efeab"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81004.18,
+                  381938.208
+                ],
+                [
+                  81004.635,
+                  381940.156
+                ],
+                [
+                  81000.653,
+                  381940.564
+                ],
+                [
+                  80997.56,
+                  381941.261
+                ],
+                [
+                  80994.434,
+                  381942.003
+                ],
+                [
+                  80992.7,
+                  381942.438
+                ],
+                [
+                  80991.898,
+                  381939.06
+                ],
+                [
+                  80986.307,
+                  381940.362
+                ],
+                [
+                  80984.035,
+                  381930.604
+                ],
+                [
+                  80992.765,
+                  381928.571
+                ],
+                [
+                  80994.971,
+                  381938.047
+                ],
+                [
+                  81003.667,
+                  381936.014
+                ],
+                [
+                  81004.18,
+                  381938.208
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "705920bc-47b6-51f3-82d5-40f9cd1cec12"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000414361",
+          "bronhouder": "G0873",
+          "creation_date": "2019-06-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.d6656c0d0bbc4200a171109c339c7cd4",
+          "lv_publicatiedatum": "2019-08-08T11:05:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-08-06T10:07:32Z",
+          "version": "b381681c-b3af-d41c-ef86-6f671813c994"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81004.18,
+                  381938.208
+                ],
+                [
+                  81004.635,
+                  381940.156
+                ],
+                [
+                  81000.653,
+                  381940.564
+                ],
+                [
+                  80997.56,
+                  381941.261
+                ],
+                [
+                  80994.434,
+                  381942.003
+                ],
+                [
+                  80992.7,
+                  381942.438
+                ],
+                [
+                  80991.898,
+                  381939.06
+                ],
+                [
+                  80986.307,
+                  381940.362
+                ],
+                [
+                  80984.035,
+                  381930.604
+                ],
+                [
+                  80992.765,
+                  381928.571
+                ],
+                [
+                  80994.971,
+                  381938.047
+                ],
+                [
+                  81003.667,
+                  381936.014
+                ],
+                [
+                  81004.18,
+                  381938.208
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "c40f4d48-b7bb-53e7-9389-469e17bbcb99"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000461857",
+          "bronhouder": "G0873",
+          "creation_date": "2018-11-24T23:00:00Z",
+          "eind_registratie": "2022-01-12T09:32:45Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.07a60194262b4c6abbc24e14f06f4910",
+          "lv_publicatiedatum": "2022-01-12T10:54:39Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2022-01-11T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2018-11-25T18:40:15Z",
+          "version": "2cc4f777-6d71-1950-d1bb-ffc73fff3645"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81018.595,
+                  381959.822
+                ],
+                [
+                  81018.574,
+                  381963.94
+                ],
+                [
+                  81013.275,
+                  381963.929
+                ],
+                [
+                  81013.237,
+                  381959.794
+                ],
+                [
+                  81018.595,
+                  381959.822
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "12d02bb4-4ddb-5e54-855a-bb18aa2e37e3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000461852",
+          "bronhouder": "G0873",
+          "creation_date": "2019-02-26T23:00:00Z",
+          "eind_registratie": "2022-01-12T09:23:52Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.8569675e0a5c4f8fa339af659cf6925a",
+          "lv_publicatiedatum": "2022-01-12T10:54:39Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2022-01-11T23:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2019-02-27T10:06:46Z",
+          "version": "b67a2348-6941-3a49-9d8f-7e4de40952cf"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81011.726,
+                  381898.901
+                ],
+                [
+                  81011.731,
+                  381901.888
+                ],
+                [
+                  81007.034,
+                  381901.896
+                ],
+                [
+                  81007.029,
+                  381898.909
+                ],
+                [
+                  81011.726,
+                  381898.901
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "bfaccb89-11b5-59a2-a5b9-ac7906a9b114"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000454658",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.f2cccf317f8e4cf98b6cd043e5ab5ed7",
+          "lv_publicatiedatum": "2022-05-23T14:03:18Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2022-05-19T15:01:48Z",
+          "version": "b0792ce9-b4dc-3166-f858-3b3391a11286"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81007.407,
+                  381894.544
+                ],
+                [
+                  81007.371,
+                  381892.618
+                ],
+                [
+                  81009.935,
+                  381892.571
+                ],
+                [
+                  81009.971,
+                  381894.496
+                ],
+                [
+                  81007.407,
+                  381894.544
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "8d03009b-ff0b-5bff-841b-46c33e202944"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000455610",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2022-12-12T01:22:37Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.b0a7c778740d4f41811d4a1af803a479",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "244f70d9-9c9b-92f6-383d-15ba8f690f59"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81024.039,
+                  381970.83
+                ],
+                [
+                  81024.038,
+                  381970.719
+                ],
+                [
+                  81022.526,
+                  381970.73
+                ],
+                [
+                  81022.521,
+                  381970.047
+                ],
+                [
+                  81024.156,
+                  381970.035
+                ],
+                [
+                  81024.148,
+                  381968.947
+                ],
+                [
+                  81022.513,
+                  381968.958
+                ],
+                [
+                  81022.472,
+                  381963.096
+                ],
+                [
+                  81023.16,
+                  381963.091
+                ],
+                [
+                  81024.87,
+                  381963.079
+                ],
+                [
+                  81024.925,
+                  381970.824
+                ],
+                [
+                  81024.039,
+                  381970.83
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "22c5ad32-4b9a-5186-b557-3751d920d050"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000455610",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.b0a7c778740d4f41811d4a1af803a479",
+          "lv_publicatiedatum": "2022-12-12T13:55:04Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2022-12-12T01:22:37Z",
+          "version": "045fd1ed-3496-3e25-a29c-c572cb8552cf"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81024.87,
+                  381963.079
+                ],
+                [
+                  81024.925,
+                  381970.824
+                ],
+                [
+                  81024.039,
+                  381970.83
+                ],
+                [
+                  81024.038,
+                  381970.719
+                ],
+                [
+                  81022.526,
+                  381970.73
+                ],
+                [
+                  81022.521,
+                  381970.047
+                ],
+                [
+                  81024.156,
+                  381970.035
+                ],
+                [
+                  81024.148,
+                  381968.947
+                ],
+                [
+                  81022.513,
+                  381968.958
+                ],
+                [
+                  81022.472,
+                  381963.096
+                ],
+                [
+                  81023.16,
+                  381963.091
+                ],
+                [
+                  81023.319,
+                  381963.09
+                ],
+                [
+                  81024.87,
+                  381963.079
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "3c33033b-510a-532a-9171-0911de52516c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000420416",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2025-06-25T03:30:43Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.5ed4bc52eb694ffb807753ea9a114301",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "2285f276-3cfd-7876-52f3-86601396f4db"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81010.372,
+                  381903.37
+                ],
+                [
+                  81010.32,
+                  381902.057
+                ],
+                [
+                  81012.044,
+                  381901.989
+                ],
+                [
+                  81011.97,
+                  381900.097
+                ],
+                [
+                  81017.989,
+                  381899.862
+                ],
+                [
+                  81018.114,
+                  381903.068
+                ],
+                [
+                  81010.372,
+                  381903.37
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "f8f66ed9-2fbb-5fba-b6d0-e0382f97922f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000420416",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.5ed4bc52eb694ffb807753ea9a114301",
+          "lv_publicatiedatum": "2025-06-25T16:34:08Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2025-06-25T03:30:43Z",
+          "version": "301f53cb-f9b9-ec33-d4cb-39dc5a2f4ae0"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81011.97,
+                  381900.097
+                ],
+                [
+                  81017.989,
+                  381899.862
+                ],
+                [
+                  81018.114,
+                  381903.068
+                ],
+                [
+                  81012.095,
+                  381903.303
+                ],
+                [
+                  81012.044,
+                  381901.989
+                ],
+                [
+                  81011.97,
+                  381900.097
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "547f6908-b96c-5e4a-95c9-7f2d0a800856"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000421078",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2025-06-25T03:30:43Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.a70359ab59834e378d9077f607f6bb54",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "77084edf-b8be-e5da-6a72-a00e40a3f302"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80990.478,
+                  381903.909
+                ],
+                [
+                  80978.651,
+                  381906.171
+                ],
+                [
+                  80976.86,
+                  381896.81
+                ],
+                [
+                  80981.77,
+                  381895.88
+                ],
+                [
+                  80991.102,
+                  381894.092
+                ],
+                [
+                  80991.659,
+                  381896.999
+                ],
+                [
+                  80989.283,
+                  381897.454
+                ],
+                [
+                  80990.478,
+                  381903.909
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "efdf42fc-b73e-5b02-bd09-2d4ab5165864"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000421078",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.a70359ab59834e378d9077f607f6bb54",
+          "lv_publicatiedatum": "2025-06-25T16:34:08Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2025-06-25T03:30:43Z",
+          "version": "2a5c648d-659c-d93f-8179-bc1de4a5d559"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80976.86,
+                  381896.81
+                ],
+                [
+                  80981.77,
+                  381895.88
+                ],
+                [
+                  80991.102,
+                  381894.092
+                ],
+                [
+                  80991.659,
+                  381896.999
+                ],
+                [
+                  80989.283,
+                  381897.454
+                ],
+                [
+                  80990.478,
+                  381903.909
+                ],
+                [
+                  80986.773,
+                  381904.618
+                ],
+                [
+                  80978.651,
+                  381906.171
+                ],
+                [
+                  80976.86,
+                  381896.81
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "227936fd-eb23-546b-bdf7-b8e9c50a4f1b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419182",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2025-06-25T03:30:43Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.dcb0b7acf12e41bca1e9177d1852962c",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "4260fb3e-92a4-9589-b898-2d0d03e58b74"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81013.48,
+                  381945.526
+                ],
+                [
+                  81011.236,
+                  381945.674
+                ],
+                [
+                  81011.079,
+                  381942.548
+                ],
+                [
+                  81013.324,
+                  381942.435
+                ],
+                [
+                  81013.48,
+                  381945.526
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "a753a217-5c03-552f-b769-0340af099cbf"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000419182",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.dcb0b7acf12e41bca1e9177d1852962c",
+          "lv_publicatiedatum": "2025-06-25T16:34:08Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2025-06-25T03:30:43Z",
+          "version": "02ae28ef-1745-dc2b-cbeb-2092f197379c"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81013.48,
+                  381945.526
+                ],
+                [
+                  81011.236,
+                  381945.674
+                ],
+                [
+                  81011.079,
+                  381942.548
+                ],
+                [
+                  81013.324,
+                  381942.435
+                ],
+                [
+                  81013.324,
+                  381942.442
+                ],
+                [
+                  81013.48,
+                  381945.526
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "146d47f4-da6e-5125-a494-865b48ac870e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000418772",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2025-06-25T03:30:43Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.fea7095a40594241beae1e1059701982",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "64dc2e98-7058-26b2-d802-c25678193351"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80998.471,
+                  381908.005
+                ],
+                [
+                  80994.448,
+                  381908.452
+                ],
+                [
+                  80994.395,
+                  381907.971
+                ],
+                [
+                  80988.877,
+                  381908.584
+                ],
+                [
+                  80989.43,
+                  381911.299
+                ],
+                [
+                  80980,
+                  381913.22
+                ],
+                [
+                  80978.651,
+                  381906.171
+                ],
+                [
+                  80990.478,
+                  381903.909
+                ],
+                [
+                  80990.575,
+                  381904.43
+                ],
+                [
+                  80997.982,
+                  381903.607
+                ],
+                [
+                  80998.471,
+                  381908.005
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "a8463f93-2b87-5a8f-9e90-b385848e802f"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000418772",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.fea7095a40594241beae1e1059701982",
+          "lv_publicatiedatum": "2025-06-25T16:34:08Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2025-06-25T03:30:43Z",
+          "version": "5d1fe02a-f85f-439c-4be2-0e0425e20c54"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  80987.565,
+                  381908.974
+                ],
+                [
+                  80988.907,
+                  381908.732
+                ],
+                [
+                  80989.43,
+                  381911.299
+                ],
+                [
+                  80980,
+                  381913.22
+                ],
+                [
+                  80978.651,
+                  381906.171
+                ],
+                [
+                  80986.773,
+                  381904.618
+                ],
+                [
+                  80986.846,
+                  381904.999
+                ],
+                [
+                  80987.565,
+                  381908.974
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "7cfeb407-bc82-5495-bc9d-394d40b837bc"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000462082",
+          "bronhouder": "G0873",
+          "creation_date": "2019-02-26T23:00:00Z",
+          "eind_registratie": "2025-06-25T03:30:43Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.8674bd902f7642b5b630eedeb41127e9",
+          "lv_publicatiedatum": "2019-03-25T11:19:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2025-06-24T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2019-02-27T10:05:27Z",
+          "version": "1f3856df-fab1-87f7-c03f-e3c8e89251f1"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81004.983,
+                  381903.651
+                ],
+                [
+                  81004.936,
+                  381902.315
+                ],
+                [
+                  81009.446,
+                  381902.157
+                ],
+                [
+                  81009.493,
+                  381903.493
+                ],
+                [
+                  81004.983,
+                  381903.651
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "a2890090-d901-5ccf-b0df-caf57b94c297"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000462082",
+          "bronhouder": "G0873",
+          "creation_date": "2019-02-26T23:00:00Z",
+          "eind_registratie": "2025-06-25T03:30:43Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.8674bd902f7642b5b630eedeb41127e9",
+          "lv_publicatiedatum": "2025-06-25T16:34:08Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": "2025-06-24T22:00:00Z",
+          "termination_date_leeg": null,
+          "tijdstip_registratie": "2019-02-27T10:05:27Z",
+          "version": "4959ff2d-ab5d-efd3-fed5-acfac067bc89"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81004.983,
+                  381903.651
+                ],
+                [
+                  81004.936,
+                  381902.315
+                ],
+                [
+                  81009.446,
+                  381902.157
+                ],
+                [
+                  81009.493,
+                  381903.493
+                ],
+                [
+                  81004.983,
+                  381903.651
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "87d47b6a-6b73-58ca-a6ad-d4c957a2e6d6"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000000000",
+          "bronhouder": "G0873",
+          "creation_date": "2024-04-03T22:00:00Z",
+          "eind_registratie": "2025-10-23T12:48:37Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.b69a8ceed3c14f41a467ff615bb3aa8a",
+          "lv_publicatiedatum": "2024-04-04T08:36:39Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2024-04-04T08:02:50Z",
+          "version": "600dc86c-a371-ba34-cfac-b62ccbba886a"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81015.55,
+                  381896.598
+                ],
+                [
+                  81012.612,
+                  381896.686
+                ],
+                [
+                  81012.493,
+                  381892.715
+                ],
+                [
+                  81015.431,
+                  381892.627
+                ],
+                [
+                  81015.55,
+                  381896.598
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "09c9d211-6004-5f13-9865-a7abcccc3ccf"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000467654",
+          "bronhouder": "G0873",
+          "creation_date": "2024-04-03T22:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.b69a8ceed3c14f41a467ff615bb3aa8a",
+          "lv_publicatiedatum": "2025-10-24T10:03:15Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2025-10-23T12:48:37Z",
+          "version": "66a65010-4c6d-8b85-4764-89a547cdcec0"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81015.55,
+                  381896.598
+                ],
+                [
+                  81012.612,
+                  381896.686
+                ],
+                [
+                  81012.493,
+                  381892.715
+                ],
+                [
+                  81015.431,
+                  381892.627
+                ],
+                [
+                  81015.55,
+                  381896.598
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "da2de784-68a1-511b-b48d-129bc57d28aa"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000000000",
+          "bronhouder": "G0873",
+          "creation_date": "2023-11-22T23:00:00Z",
+          "eind_registratie": "2026-03-27T10:25:42Z",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.3ed1f318bc784a85bd75d3e84d96810d",
+          "lv_publicatiedatum": "2023-11-23T15:43:43Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2023-11-23T03:24:23Z",
+          "version": "ffe2cf59-54ad-53cb-4c3d-5d473914a881"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81007.371,
+                  381892.618
+                ],
+                [
+                  81007.407,
+                  381894.544
+                ],
+                [
+                  81003.783,
+                  381894.612
+                ],
+                [
+                  81003.748,
+                  381892.684
+                ],
+                [
+                  81007.371,
+                  381892.618
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "449e7e14-1649-5e2c-8b61-1cdc00110aa3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_pnd": "0873100000468439",
+          "bronhouder": "G0873",
+          "creation_date": "2023-11-22T23:00:00Z",
+          "eind_registratie": null,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.3ed1f318bc784a85bd75d3e84d96810d",
+          "lv_publicatiedatum": "2026-03-27T14:17:06Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-03-27T10:25:42Z",
+          "version": "f6082556-db44-e33c-09fc-6164876a838f"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  81007.371,
+                  381892.618
+                ],
+                [
+                  81007.407,
+                  381894.544
+                ],
+                [
+                  81003.783,
+                  381894.612
+                ],
+                [
+                  81003.748,
+                  381892.684
+                ],
+                [
+                  81007.371,
+                  381892.618
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "fe90bbe7-7532-57fe-9ec0-48a3fca41431"
+      }
+    ],
+    "numberReturned": 79
+  }
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "name": "locatieserver",
+    "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=woonplaatsnaam:Hoogerheide&fq=type:adres&rows=50&fl=weergavenaam,postcode,huisnummer,huisletter,huisnummertoevoeging,centroide_rd,adresseerbaarobject_id,nummeraanduiding_id,straatnaam,gemeentenaam",
+    "status": 200
+  },
+  {
+    "name": "collections-bag",
+    "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections?f=json",
+    "status": 200
+  },
+  {
+    "name": "collections-bgt",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections?f=json",
+    "status": 200
+  },
+  {
+    "name": "collections-brk5",
+    "url": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v5/collections?f=json",
+    "status": 404
+  },
+  {
+    "name": "collections-brk4",
+    "url": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v4/collections?f=json",
+    "status": 404
+  },
+  {
+    "name": "collections-brk1",
+    "url": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections?f=json",
+    "status": 200
+  },
+  {
+    "name": "bag-pand",
+    "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bag-verblijfsobject",
+    "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "brk-perceel",
+    "url": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-begroeidterreindeel",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/begroeidterreindeel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-begroeidterreindeel_kruinlijn",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/begroeidterreindeel_kruinlijn/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-onbegroeidterreindeel",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/onbegroeidterreindeel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-onbegroeidterreindeel_kruinlijn",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/onbegroeidterreindeel_kruinlijn/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-ondersteunendwaterdeel",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/ondersteunendwaterdeel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-ondersteunendwegdeel",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/ondersteunendwegdeel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-ondersteunendwegdeel_kruinlijn",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/ondersteunendwegdeel_kruinlijn/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-openbareruimte",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/openbareruimte/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-openbareruimtelabel",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/openbareruimtelabel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-overigbouwwerk",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/overigbouwwerk/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-overigescheiding",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/overigescheiding/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-pand",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-pand_nummeraanduiding",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand_nummeraanduiding/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-scheiding_lijn",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/scheiding_lijn/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-scheiding_vlak",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/scheiding_vlak/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-waterdeel",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/waterdeel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-wegdeel",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/wegdeel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  },
+  {
+    "name": "bgt-wegdeel_kruinlijn",
+    "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/wegdeel_kruinlijn/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+    "status": 200
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "url": "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v5/collections?f=json",
+  "status": 404,
+  "body": {
+    "nonJson": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx/1.27.0</center>\r\n</body>\r\n</html>\r\n"
+  }
+}

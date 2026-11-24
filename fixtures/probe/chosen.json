@@ -1,0 +1,15 @@
+{
+  "doc": {
+    "weergavenaam": "Aalbersestraat 1, 4631CC Hoogerheide",
+    "gemeentenaam": "Woensdrecht",
+    "postcode": "4631CC",
+    "nummeraanduiding_id": "0873200000429213",
+    "adresseerbaarobject_id": "0873010000429214",
+    "huisnummer": 1,
+    "centroide_rd": "POINT(81029.282 381929.681)",
+    "straatnaam": "Aalbersestraat"
+  },
+  "x": 81029.282,
+  "y": 381929.681,
+  "bbox": "80989.282,381889.681,81069.282,381969.681"
+}

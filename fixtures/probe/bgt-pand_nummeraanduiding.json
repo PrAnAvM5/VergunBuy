@@ -1,0 +1,751 @@
+{
+  "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand_nummeraanduiding/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:04Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/pand_nummeraanduiding/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/pand_nummeraanduiding/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/pand_nummeraanduiding/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": "0873010000429228",
+          "bag_vbo_hoogste_huisnummer_leeg": null,
+          "bag_vbo_laagste_huisnummer": "0873010000429220",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.59999990463257,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.0a8c9bb8bdb84a7fa96866be5432edbc",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "4-8",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "263be0f2-5ee7-39d8-67d2-eb7ede1e04fb"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81043.698,
+            381898.888
+          ]
+        },
+        "id": "2767633a-aeb3-51c3-abe1-8008b2029c41"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429218",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.1240517808fc430cb6d72f27014f0cec",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "3",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "b11e445d-ab0a-c741-27b1-9ba0973f890d"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81033.911,
+            381929.43
+          ]
+        },
+        "id": "bcb2b110-4212-578f-af2c-678ffea5cec7"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000432716",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 346.8999996185303,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.19d1f0138d1741418fdab08bd3dfbb37",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "9",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "0b55a1d4-2cf7-aac5-c28f-7a4c8f528386"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80990.292,
+            381946.477
+          ]
+        },
+        "id": "ff1017f0-1ddf-5591-b337-0300a1c329dd"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429238",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.21c75e266d3d408c8d02bb39f3464376",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "13",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "7a91e955-3a66-d80b-de2b-972cce0a0830"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81058.749,
+            381928.091
+          ]
+        },
+        "id": "8fbdd171-21bd-562d-810a-946a68f052b8"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429226",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.32327076ede940ee881ad5976f8d7c3e",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "7",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "e9a2dbfb-dcfc-94d6-7cdf-3ca699c9424e"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81044.066,
+            381928.884
+          ]
+        },
+        "id": "79aa8434-b197-5bfb-bc76-81618acb9378"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429214",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.36b54aefd9b24f5092d60ada94222237",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "1",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "46353cd1-dc0c-a2f8-f5cf-a94550dfaad5"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81029.014,
+            381929.694
+          ]
+        },
+        "id": "6a228b7b-b5a0-5cf3-87a1-90c34be640e4"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000455947",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": "2017-11-30T08:30:27Z",
+          "hoek": 347.69999980926514,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.377c07106dc9421c9dcefcf9deb28380",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "3",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c0cc4341-121c-0619-7ccf-e828f294ad0e"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80998.598,
+            381967.342
+          ]
+        },
+        "id": "e5c41314-3a13-5f50-bd34-72d032c38a2e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000432712",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 346.8999996185303,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.4ae0fcb0c31c40b0a031a386d1cb4919",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "7",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "6c2dee01-dea6-44e8-b66e-53d640ffd7d5"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80991.558,
+            381951.904
+          ]
+        },
+        "id": "88fb94f1-a344-57e4-90b3-61ec1d76cbf5"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": "0873010000429224",
+          "bag_vbo_hoogste_huisnummer_leeg": null,
+          "bag_vbo_laagste_huisnummer": "0873010000429216",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 360,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.5bf692e1541642eeb8af7408716bba49",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "2-6",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "cc2c2275-8d8e-c004-de7c-42be329d0475"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81035.311,
+            381899.439
+          ]
+        },
+        "id": "4b7b1173-221c-5819-a99c-e61d3513f3d4"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": "0873010000430622",
+          "bag_vbo_hoogste_huisnummer_leeg": null,
+          "bag_vbo_laagste_huisnummer": "0873010000429236",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 360,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.67dc8553e1d74e76bb67a7cd9292fdd9",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "12-28",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "a94efc55-d205-269e-6b4f-62c01a72faf5"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81056.641,
+            381893.263
+          ]
+        },
+        "id": "cc6476d8-78ea-5fff-9344-f88b53f15750"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429234",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.980a57d0931449cab94b1591086969dc",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "11",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "3a738263-92d0-75bc-e460-0ce3b77583c5"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81053.257,
+            381928.388
+          ]
+        },
+        "id": "87fae370-d115-5095-8f04-fddae885855e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429230",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.a9b556f08ac34e72bd64defd1cf5b901",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "9",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "5e619b9e-2e67-c621-4d00-090501e1f59b"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81049.144,
+            381928.61
+          ]
+        },
+        "id": "82532e9a-a69e-5dcb-9eb8-5de1bffa80fe"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000432708",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 346.8999996185303,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.b9779fd635c3495f9ff8033caaaab571",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "5",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "a9d33289-7cfa-2be3-13b3-e5c4415f27cc"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80992.824,
+            381957.332
+          ]
+        },
+        "id": "f122afb5-b1df-5cbb-aefc-46b28d184733"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429242",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.bb712f6cc73d40dda762ae716abd49c6",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "15",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "75099c47-d48d-8fd4-a20f-28cc3dd02230"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81063.827,
+            381927.817
+          ]
+        },
+        "id": "942f384d-5583-54d8-817a-a2fc2e724450"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": "0873010000430618",
+          "bag_vbo_hoogste_huisnummer_leeg": null,
+          "bag_vbo_laagste_huisnummer": "0873010000429232",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 360,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.e1f2eba5aeea4103a68714e4dce9ffd6",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "10-26",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "36a24193-7b27-74d7-0aa2-0d5fee30108a"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81057.051,
+            381899.978
+          ]
+        },
+        "id": "e7950a5b-6e5f-53da-b43f-5f21b2cc5096"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429246",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.e8083ece5fb34ac6b03b9494e80c1c0f",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "17",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c7d7a988-bc5b-b6cc-9f78-b0c5be26f101"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81069.005,
+            381927.538
+          ]
+        },
+        "id": "0ca06598-1140-506c-a0ff-638f23de4d3b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000449490",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 360,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.fab6107d06254aaf8c556228cce2588d",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "2a",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "66303d8a-ab51-7a31-52b4-9159868adb0b"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81025.665,
+            381902.545
+          ]
+        },
+        "id": "0870f9db-3f1c-5762-b818-2f81f39da919"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000429222",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 356.90000009536743,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.fb255459250a448ab58bf801bf7ccaa9",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "5",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "3499dfd7-7557-22fd-d5c7-26f9bd4d7b81"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81038.989,
+            381929.158
+          ]
+        },
+        "id": "e3490d0d-9075-505a-aec2-d52db4aff7a9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000455947",
+          "bronhouder": "G0873",
+          "creation_date": "2016-04-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 347.69999980926514,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.377c07106dc9421c9dcefcf9deb28380",
+          "lv_publicatiedatum": "2018-01-15T09:27:52Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "3",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2017-11-30T08:30:27Z",
+          "version": "d2b97bcf-4123-282e-ce32-675439f47d25"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80998.598,
+            381967.342
+          ]
+        },
+        "id": "41fd0a00-d876-5e5c-8465-0b7735e13371"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bag_vbo_hoogste_huisnummer": null,
+          "bag_vbo_hoogste_huisnummer_leeg": "geenWaarde",
+          "bag_vbo_laagste_huisnummer": "0873010000447954",
+          "bronhouder": "G0873",
+          "creation_date": "2019-06-07T22:00:00Z",
+          "eind_registratie": null,
+          "hoek": 346,
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "lokaal_id": "G0873.d6656c0d0bbc4200a171109c339c7cd4",
+          "lv_publicatiedatum": "2019-08-08T11:05:34Z",
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "tekst": "11",
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2019-08-06T10:07:32Z",
+          "version": "b381681c-b3af-d41c-ef86-6f671813c994"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            80989.64,
+            381934.736
+          ]
+        },
+        "id": "629f44a7-7a09-5343-ae59-324f8c2c2105"
+      }
+    ],
+    "numberReturned": 20
+  }
+}

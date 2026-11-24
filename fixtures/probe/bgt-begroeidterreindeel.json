@@ -1,0 +1,5938 @@
+{
+  "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/begroeidterreindeel/items?f=json&limit=100&bbox=80989.282,381889.681,81069.282,381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992",
+  "status": 200,
+  "body": {
+    "type": "FeatureCollection",
+    "timeStamp": "2026-11-24T00:59:02Z",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/begroeidterreindeel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=json&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/begroeidterreindeel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=jsonfg&limit=100"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/begroeidterreindeel/items?bbox=80989.282%2C381889.681%2C81069.282%2C381969.681&bbox-crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&crs=http%3A%2F%2Fwww.opengis.net%2Fdef%2Fcrs%2FEPSG%2F0%2F28992&f=html&limit=100"
+      }
+    ],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2018-02-24T14:50:46Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.7aa9fd5d538240e9b10e3753a57e3fdb",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "bosplantsoen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "f09a52e4-a457-383f-e884-09d85b6b3133"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81026.728,
+                381868.427
+              ],
+              [
+                81027.326,
+                381872.537
+              ],
+              [
+                81030.095,
+                381893.346
+              ],
+              [
+                81030.09,
+                381893.826
+              ],
+              [
+                81028.692,
+                381893.874
+              ],
+              [
+                81028.789,
+                381897.461
+              ],
+              [
+                81025.607,
+                381897.701
+              ],
+              [
+                81025.801,
+                381900.785
+              ],
+              [
+                81024.498,
+                381900.881
+              ],
+              [
+                81024.511,
+                381901.17
+              ],
+              [
+                81024.16,
+                381901.19
+              ],
+              [
+                81024.32,
+                381904.06
+              ],
+              [
+                81024.636,
+                381904.04
+              ],
+              [
+                81028.186,
+                381904.111
+              ],
+              [
+                81028.454,
+                381908.648
+              ],
+              [
+                81028.75,
+                381913.66
+              ],
+              [
+                81023.585,
+                381913.92
+              ],
+              [
+                81023.477,
+                381904.124
+              ],
+              [
+                81023.32,
+                381889.83
+              ],
+              [
+                81022.662,
+                381882.21
+              ],
+              [
+                81019.465,
+                381867.888
+              ],
+              [
+                81015.382,
+                381856.14
+              ],
+              [
+                81010.263,
+                381837.063
+              ],
+              [
+                81009.044,
+                381832.108
+              ],
+              [
+                81006.613,
+                381821.647
+              ],
+              [
+                81010.23,
+                381821.66
+              ],
+              [
+                81011.83,
+                381821.56
+              ],
+              [
+                81012.39,
+                381830.53
+              ],
+              [
+                81016.59,
+                381830.25
+              ],
+              [
+                81016.659,
+                381830.727
+              ],
+              [
+                81017.728,
+                381830.68
+              ],
+              [
+                81018.38,
+                381841.53
+              ],
+              [
+                81018.671,
+                381842.535
+              ],
+              [
+                81016.105,
+                381842.689
+              ],
+              [
+                81014.652,
+                381842.776
+              ],
+              [
+                81015.003,
+                381848.164
+              ],
+              [
+                81016.245,
+                381848.09
+              ],
+              [
+                81019.994,
+                381847.865
+              ],
+              [
+                81020.26,
+                381851.97
+              ],
+              [
+                81041.08,
+                381850.63
+              ],
+              [
+                81040.853,
+                381847.349
+              ],
+              [
+                81041.081,
+                381847.334
+              ],
+              [
+                81041.386,
+                381851.54
+              ],
+              [
+                81028.224,
+                381852.436
+              ],
+              [
+                81028.2,
+                381853.384
+              ],
+              [
+                81027.028,
+                381857.517
+              ],
+              [
+                81026.579,
+                381861.328
+              ],
+              [
+                81026.43,
+                381864.018
+              ],
+              [
+                81026.728,
+                381868.427
+              ]
+            ]
+          ]
+        },
+        "id": "4d3c2b51-4c7d-5dd8-b5b2-8578918141f9"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.909f9429603f4ff89f70a1000e46dc80",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c6708f4d-208a-ecda-b2f5-f42e17cef3d5"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81017.974,
+                381957.875
+              ],
+              [
+                81015.47,
+                381957.987
+              ],
+              [
+                81014.287,
+                381940.709
+              ],
+              [
+                81019.28,
+                381940.569
+              ],
+              [
+                81019.602,
+                381945.212
+              ],
+              [
+                81018.162,
+                381945.253
+              ],
+              [
+                81017.293,
+                381945.278
+              ],
+              [
+                81017.974,
+                381957.875
+              ]
+            ]
+          ]
+        },
+        "id": "eff414ee-c648-5f9d-9244-f0f3a869afb8"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.2ab45819305e4795beb68e2edcc6190b",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "45ab5193-481a-ee41-7721-bb79c6b16c99"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81052.2,
+                381907.34
+              ],
+              [
+                81048.19,
+                381907.566
+              ],
+              [
+                81047.527,
+                381907.603
+              ],
+              [
+                81047.251,
+                381904.311
+              ],
+              [
+                81052.01,
+                381904.03
+              ],
+              [
+                81052.034,
+                381904.447
+              ],
+              [
+                81052.2,
+                381907.34
+              ]
+            ]
+          ]
+        },
+        "id": "e06156a7-f699-5b05-98df-71c63cddf9f3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.406263a5fd2845aea9d038401e40654c",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "d8135d2a-c90a-0955-abd6-f669b47f5f04"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81046.397,
+                381907.666
+              ],
+              [
+                81042.211,
+                381907.901
+              ],
+              [
+                81041.891,
+                381907.919
+              ],
+              [
+                81041.754,
+                381904.636
+              ],
+              [
+                81046.17,
+                381904.375
+              ],
+              [
+                81046.2,
+                381904.804
+              ],
+              [
+                81046.397,
+                381907.666
+              ]
+            ]
+          ]
+        },
+        "id": "ef25e6c7-a5da-524e-b241-766fc0bd0043"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.46c274070abf4284b271d445851df216",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "b72fc6f4-ba7b-a8df-7621-865e28627660"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81023.263,
+                381945.108
+              ],
+              [
+                81022.482,
+                381945.13
+              ],
+              [
+                81019.602,
+                381945.212
+              ],
+              [
+                81019.28,
+                381940.569
+              ],
+              [
+                81023.25,
+                381940.31
+              ],
+              [
+                81023.263,
+                381945.108
+              ]
+            ]
+          ]
+        },
+        "id": "6eeb906d-ab86-5196-bc94-759b630b214a"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2017-09-27T17:02:58Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.89ef1570cbdc4ffea56a63d34182bd8f",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "33def286-4894-77a8-347f-f886d74c4eeb"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81051.195,
+                381891.926
+              ],
+              [
+                81030.095,
+                381893.346
+              ],
+              [
+                81027.326,
+                381872.537
+              ],
+              [
+                81026.728,
+                381868.427
+              ],
+              [
+                81026.43,
+                381864.018
+              ],
+              [
+                81026.579,
+                381861.328
+              ],
+              [
+                81027.028,
+                381857.517
+              ],
+              [
+                81028.2,
+                381853.384
+              ],
+              [
+                81042.717,
+                381852.606
+              ],
+              [
+                81042.568,
+                381849.421
+              ],
+              [
+                81048.472,
+                381848.999
+              ],
+              [
+                81051.195,
+                381891.926
+              ]
+            ],
+            [
+              [
+                81039.55,
+                381863.747
+              ],
+              [
+                81039.55,
+                381865.247
+              ],
+              [
+                81041.05,
+                381865.247
+              ],
+              [
+                81041.05,
+                381863.747
+              ],
+              [
+                81039.55,
+                381863.747
+              ]
+            ],
+            [
+              [
+                81036.386,
+                381879.668
+              ],
+              [
+                81037.878,
+                381879.668
+              ],
+              [
+                81037.878,
+                381878.056
+              ],
+              [
+                81036.386,
+                381878.056
+              ],
+              [
+                81036.386,
+                381879.668
+              ]
+            ]
+          ]
+        },
+        "id": "e0fe0319-01ac-5a9a-b96b-da16467c5b85"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.9ac1f754a1f442d3ab80faccc6a8aa1a",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "c46d6cd1-3ae2-30f5-0a4a-d3c074c95a0d"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81034.269,
+                381908.347
+              ],
+              [
+                81031.02,
+                381908.53
+              ],
+              [
+                81030.878,
+                381905.812
+              ],
+              [
+                81030.85,
+                381905.28
+              ],
+              [
+                81034.004,
+                381905.094
+              ],
+              [
+                81034.049,
+                381905.641
+              ],
+              [
+                81034.269,
+                381908.347
+              ]
+            ]
+          ]
+        },
+        "id": "30dbdc27-2395-51c0-9ce1-114daaf25bd8"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.9acca477fedf45e399082d6981e190f9",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "ce145fa7-2a8d-f986-b5a9-6a489e5b1360"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81063.159,
+                381906.741
+              ],
+              [
+                81053.861,
+                381907.232
+              ],
+              [
+                81053.52,
+                381907.25
+              ],
+              [
+                81053.35,
+                381903.94
+              ],
+              [
+                81062.85,
+                381903.38
+              ],
+              [
+                81062.964,
+                381903.757
+              ],
+              [
+                81063.159,
+                381906.741
+              ]
+            ]
+          ]
+        },
+        "id": "92f51e4d-7ad4-53f2-a534-3467583e04c4"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.9db5df58f878489a93c02507a90ab2e6",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "90ea2abc-cb5d-802a-354d-1860f8c5d4eb"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81040.929,
+                381907.973
+              ],
+              [
+                81035.183,
+                381908.296
+              ],
+              [
+                81034.949,
+                381905.575
+              ],
+              [
+                81034.903,
+                381905.041
+              ],
+              [
+                81040.788,
+                381904.693
+              ],
+              [
+                81040.809,
+                381905.174
+              ],
+              [
+                81040.929,
+                381907.973
+              ]
+            ]
+          ]
+        },
+        "id": "9063d967-cf53-5d17-bbf0-3ee66d7c57aa"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.8a99bf21742e4f9dae5dbf3476421f07",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "4c83ab3d-513a-64bf-7129-0210468ecea3"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81069.98,
+                381906.38
+              ],
+              [
+                81063.159,
+                381906.741
+              ],
+              [
+                81062.964,
+                381903.757
+              ],
+              [
+                81062.85,
+                381903.38
+              ],
+              [
+                81062.75,
+                381901.78
+              ],
+              [
+                81062.334,
+                381894.921
+              ],
+              [
+                81061.928,
+                381888.213
+              ],
+              [
+                81061.522,
+                381881.504
+              ],
+              [
+                81061.115,
+                381874.795
+              ],
+              [
+                81060.709,
+                381868.086
+              ],
+              [
+                81060.302,
+                381861.377
+              ],
+              [
+                81059.896,
+                381854.669
+              ],
+              [
+                81059.48,
+                381847.81
+              ],
+              [
+                81059.275,
+                381844.527
+              ],
+              [
+                81065.632,
+                381844.16
+              ],
+              [
+                81065.632,
+                381844.16
+              ],
+              [
+                81065.70860668813,
+                381844.15223487525
+              ],
+              [
+                81065.78528635067,
+                381844.14522693824
+              ],
+              [
+                81065.8620315037,
+                381844.13897687296
+              ],
+              [
+                81065.93883465687,
+                381844.13348528935
+              ],
+              [
+                81066.01568831422,
+                381844.1287527235
+              ],
+              [
+                81066.09258497483,
+                381844.1247796372
+              ],
+              [
+                81066.1695171336,
+                381844.12156641827
+              ],
+              [
+                81066.24647728195,
+                381844.1191133803
+              ],
+              [
+                81066.32345790857,
+                381844.1174207627
+              ],
+              [
+                81066.40045150014,
+                381844.11648873077
+              ],
+              [
+                81066.47745054212,
+                381844.11631737533
+              ],
+              [
+                81066.5544475194,
+                381844.11690671317
+              ],
+              [
+                81066.63143491707,
+                381844.1182566868
+              ],
+              [
+                81066.70840522116,
+                381844.12036716443
+              ],
+              [
+                81066.7853509194,
+                381844.1232379401
+              ],
+              [
+                81066.86226450185,
+                381844.12686873355
+              ],
+              [
+                81066.93913846179,
+                381844.13125919044
+              ],
+              [
+                81067.0159652963,
+                381844.1364088824
+              ],
+              [
+                81067.0927375071,
+                381844.1423173066
+              ],
+              [
+                81067.16944760123,
+                381844.1489838865
+              ],
+              [
+                81067.24608809176,
+                381844.1564079715
+              ],
+              [
+                81067.32265149863,
+                381844.1645888369
+              ],
+              [
+                81067.39913034922,
+                381844.1735256843
+              ],
+              [
+                81067.4755171792,
+                381844.18321764143
+              ],
+              [
+                81067.55180453323,
+                381844.1936637624
+              ],
+              [
+                81067.62798496567,
+                381844.20486302767
+              ],
+              [
+                81067.7040510413,
+                381844.2168143441
+              ],
+              [
+                81067.77999533611,
+                381844.22951654537
+              ],
+              [
+                81067.85581043789,
+                381844.2429683916
+              ],
+              [
+                81067.93148894714,
+                381844.25716857007
+              ],
+              [
+                81068.0070234776,
+                381844.27211569477
+              ],
+              [
+                81068.08240665714,
+                381844.28780830675
+              ],
+              [
+                81068.15763112834,
+                381844.30424487457
+              ],
+              [
+                81068.2326895493,
+                381844.3214237939
+              ],
+              [
+                81068.30757459434,
+                381844.3393433882
+              ],
+              [
+                81068.38227895465,
+                381844.3580019084
+              ],
+              [
+                81068.45679533914,
+                381844.3773975335
+              ],
+              [
+                81068.53111647496,
+                381844.3975283705
+              ],
+              [
+                81068.6052351084,
+                381844.41839245457
+              ],
+              [
+                81068.6791440055,
+                381844.43998774944
+              ],
+              [
+                81068.75283595272,
+                381844.46231214737
+              ],
+              [
+                81068.82630375776,
+                381844.48536346946
+              ],
+              [
+                81068.89954025015,
+                381844.509139466
+              ],
+              [
+                81068.97253828202,
+                381844.5336378164
+              ],
+              [
+                81069.04529072875,
+                381844.55885612965
+              ],
+              [
+                81069.11779048973,
+                381844.58479194436
+              ],
+              [
+                81069.19003048897,
+                381844.6114427293
+              ],
+              [
+                81069.26200367587,
+                381844.6388058833
+              ],
+              [
+                81069.33370302583,
+                381844.66687873576
+              ],
+              [
+                81069.405121541,
+                381844.6956585467
+              ],
+              [
+                81069.47625225094,
+                381844.7251425073
+              ],
+              [
+                81069.54708821331,
+                381844.7553277398
+              ],
+              [
+                81069.6176225145,
+                381844.7862112983
+              ],
+              [
+                81069.68784827039,
+                381844.8177901684
+              ],
+              [
+                81069.75775862693,
+                381844.85006126814
+              ],
+              [
+                81069.8273467609,
+                381844.88302144775
+              ],
+              [
+                81069.89660588047,
+                381844.9166674904
+              ],
+              [
+                81069.96552922597,
+                381844.95099611214
+              ],
+              [
+                81070.03411007048,
+                381844.98600396264
+              ],
+              [
+                81070.10234172053,
+                381845.021687625
+              ],
+              [
+                81070.17021751669,
+                381845.0580436166
+              ],
+              [
+                81070.2377308343,
+                381845.095068389
+              ],
+              [
+                81070.30487508407,
+                381845.1327583287
+              ],
+              [
+                81070.37164371272,
+                381845.17110975704
+              ],
+              [
+                81070.43803020362,
+                381845.210118931
+              ],
+              [
+                81070.50402807747,
+                381845.2497820433
+              ],
+              [
+                81070.56963089287,
+                381845.29009522276
+              ],
+              [
+                81070.634832247,
+                381845.3310545348
+              ],
+              [
+                81070.69962577622,
+                381845.3726559819
+              ],
+              [
+                81070.76400515666,
+                381845.4148955037
+              ],
+              [
+                81070.82796410492,
+                381845.4577689777
+              ],
+              [
+                81070.89149637858,
+                381845.5012722193
+              ],
+              [
+                81070.95459577692,
+                381845.54540098266
+              ],
+              [
+                81071.01725614144,
+                381845.59015096084
+              ],
+              [
+                81071.07947135648,
+                381845.6355177862
+              ],
+              [
+                81071.14123534986,
+                381845.681497031
+              ],
+              [
+                81071.2025420934,
+                381845.7280842076
+              ],
+              [
+                81071.26338560355,
+                381845.77527476917
+              ],
+              [
+                81071.32375994201,
+                381845.8230641099
+              ],
+              [
+                81071.38365921626,
+                381845.87144756544
+              ],
+              [
+                81071.4430775801,
+                381845.9204204137
+              ],
+              [
+                81071.50200923433,
+                381845.9699778749
+              ],
+              [
+                81071.5604484272,
+                381846.0201151122
+              ],
+              [
+                81071.61838945508,
+                381846.0708272322
+              ],
+              [
+                81071.6758266629,
+                381846.1221092855
+              ],
+              [
+                81071.7327544448,
+                381846.17395626684
+              ],
+              [
+                81071.78916724464,
+                381846.22636311606
+              ],
+              [
+                81071.84505955652,
+                381846.27932471817
+              ],
+              [
+                81071.90042592536,
+                381846.3328359042
+              ],
+              [
+                81071.9552609474,
+                381846.38689145143
+              ],
+              [
+                81072.00955927077,
+                381846.441486084
+              ],
+              [
+                81072.06331559594,
+                381846.4966144736
+              ],
+              [
+                81072.11652467627,
+                381846.5522712395
+              ],
+              [
+                81072.16918131859,
+                381846.60845094983
+              ],
+              [
+                81072.22128038362,
+                381846.66514812125
+              ],
+              [
+                81072.27281678646,
+                381846.7223572203
+              ],
+              [
+                81072.32378549718,
+                381846.7800726632
+              ],
+              [
+                81072.37418154125,
+                381846.8382888171
+              ],
+              [
+                81072.424,
+                381846.897
+              ],
+              [
+                81072.424,
+                381846.897
+              ],
+              [
+                81072.343,
+                381848.879
+              ],
+              [
+                81069.98,
+                381906.38
+              ]
+            ]
+          ]
+        },
+        "id": "61b54f80-aa71-5541-babf-609c0807152b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2022-12-12T01:22:36Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.22fb10d5defa4ca9ad6920aad1b3969a",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "d0f2e9c5-9936-dee7-2822-10cc4e166d87"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81048.936,
+                381960.178
+              ],
+              [
+                81046.067,
+                381960.697
+              ],
+              [
+                81043.083,
+                381960.914
+              ],
+              [
+                81028.084,
+                381961.246
+              ],
+              [
+                81027.865,
+                381961.213
+              ],
+              [
+                81027.558,
+                381961.103
+              ],
+              [
+                81027.368,
+                381960.989
+              ],
+              [
+                81027.193,
+                381960.742
+              ],
+              [
+                81027.106,
+                381959.327
+              ],
+              [
+                81027.164,
+                381958.956
+              ],
+              [
+                81027.293,
+                381958.743
+              ],
+              [
+                81027.596,
+                381958.521
+              ],
+              [
+                81028.779,
+                381958.446
+              ],
+              [
+                81035.319,
+                381958.034
+              ],
+              [
+                81053.661,
+                381957.221
+              ],
+              [
+                81053.671,
+                381957.442
+              ],
+              [
+                81053.687,
+                381957.819
+              ],
+              [
+                81053.706,
+                381958.242
+              ],
+              [
+                81051.369,
+                381959.381
+              ],
+              [
+                81048.936,
+                381960.178
+              ]
+            ]
+          ]
+        },
+        "id": "07b83c22-599d-5703-b412-3f89c70d026d"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.22fb10d5defa4ca9ad6920aad1b3969a",
+          "lv_publicatiedatum": "2022-12-12T13:55:04Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2022-12-12T01:22:36Z",
+          "version": "ca8fc6be-72e9-966c-4c8e-4b89f31bb1d4"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81027.596,
+                381958.521
+              ],
+              [
+                81028.779,
+                381958.446
+              ],
+              [
+                81035.319,
+                381958.034
+              ],
+              [
+                81053.661,
+                381957.221
+              ],
+              [
+                81054.003,
+                381957.206
+              ],
+              [
+                81054.047,
+                381958.215
+              ],
+              [
+                81051.369,
+                381959.381
+              ],
+              [
+                81048.936,
+                381960.178
+              ],
+              [
+                81046.067,
+                381960.697
+              ],
+              [
+                81043.083,
+                381960.914
+              ],
+              [
+                81028.084,
+                381961.246
+              ],
+              [
+                81027.865,
+                381961.213
+              ],
+              [
+                81027.558,
+                381961.103
+              ],
+              [
+                81027.368,
+                381960.989
+              ],
+              [
+                81027.193,
+                381960.742
+              ],
+              [
+                81027.106,
+                381959.327
+              ],
+              [
+                81027.164,
+                381958.956
+              ],
+              [
+                81027.293,
+                381958.743
+              ],
+              [
+                81027.596,
+                381958.521
+              ]
+            ]
+          ]
+        },
+        "id": "900d7391-4fc4-5e19-a5e2-0662ed5a880b"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2022-12-12T01:22:36Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.540445d53883425aa401a863343f26be",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "4f5b4658-50e2-0fed-7e60-63d74136ef1e"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81059.801,
+                381954.881
+              ],
+              [
+                81058.598,
+                381956.065
+              ],
+              [
+                81056.181,
+                381957.786
+              ],
+              [
+                81056.147,
+                381957.111
+              ],
+              [
+                81055.91,
+                381952.405
+              ],
+              [
+                81055.966,
+                381952.169
+              ],
+              [
+                81056.109,
+                381952
+              ],
+              [
+                81056.323,
+                381951.909
+              ],
+              [
+                81061.555,
+                381951.33
+              ],
+              [
+                81061.571,
+                381945.701
+              ],
+              [
+                81061.572,
+                381945.345
+              ],
+              [
+                81064.763,
+                381945.171
+              ],
+              [
+                81064.767,
+                381945.485
+              ],
+              [
+                81064.808,
+                381948.804
+              ],
+              [
+                81064.66,
+                381949.411
+              ],
+              [
+                81064.436,
+                381949.791
+              ],
+              [
+                81059.801,
+                381954.881
+              ]
+            ]
+          ]
+        },
+        "id": "30204ee3-3625-5638-b869-58a1ca9145f0"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.540445d53883425aa401a863343f26be",
+          "lv_publicatiedatum": "2022-12-12T13:55:04Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2022-12-12T01:22:36Z",
+          "version": "5b175d83-6097-c405-8703-966739058762"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81064.763,
+                381945.171
+              ],
+              [
+                81064.767,
+                381945.485
+              ],
+              [
+                81064.808,
+                381948.804
+              ],
+              [
+                81064.66,
+                381949.411
+              ],
+              [
+                81064.436,
+                381949.791
+              ],
+              [
+                81057.805,
+                381956.294
+              ],
+              [
+                81057.805,
+                381956.294
+              ],
+              [
+                81057.79127795847,
+                381956.3070945376
+              ],
+              [
+                81057.77747489903,
+                381956.3201036455
+              ],
+              [
+                81057.76359135349,
+                381956.3330268225
+              ],
+              [
+                81057.74962785681,
+                381956.34586357046
+              ],
+              [
+                81057.73558494705,
+                381956.35861339496
+              ],
+              [
+                81057.72146316526,
+                381956.3712758046
+              ],
+              [
+                81057.70726305562,
+                381956.3838503115
+              ],
+              [
+                81057.69298516525,
+                381956.39633643127
+              ],
+              [
+                81057.6786300443,
+                381956.4087336826
+              ],
+              [
+                81057.66419824593,
+                381956.42104158795
+              ],
+              [
+                81057.64969032617,
+                381956.43325967307
+              ],
+              [
+                81057.63510684406,
+                381956.4453874671
+              ],
+              [
+                81057.62044836151,
+                381956.4574245028
+              ],
+              [
+                81057.60571544335,
+                381956.4693703163
+              ],
+              [
+                81057.59090865725,
+                381956.48122444743
+              ],
+              [
+                81057.57602857373,
+                381956.4929864393
+              ],
+              [
+                81057.56107576616,
+                381956.5046558388
+              ],
+              [
+                81057.54605081069,
+                381956.5162321963
+              ],
+              [
+                81057.53095428624,
+                381956.52771506563
+              ],
+              [
+                81057.51578677451,
+                381956.5391040044
+              ],
+              [
+                81057.50054885994,
+                381956.5503985738
+              ],
+              [
+                81057.48524112965,
+                381956.56159833865
+              ],
+              [
+                81057.46986417347,
+                381956.5727028673
+              ],
+              [
+                81057.4544185839,
+                381956.58371173206
+              ],
+              [
+                81057.43890495611,
+                381956.5946245086
+              ],
+              [
+                81057.42332388782,
+                381956.6054407764
+              ],
+              [
+                81057.40767597943,
+                381956.6161601188
+              ],
+              [
+                81057.39196183384,
+                381956.6267821227
+              ],
+              [
+                81057.37618205656,
+                381956.63730637886
+              ],
+              [
+                81057.36033725561,
+                381956.64773248177
+              ],
+              [
+                81057.34442804151,
+                381956.6580600297
+              ],
+              [
+                81057.32845502727,
+                381956.6682886246
+              ],
+              [
+                81057.31241882834,
+                381956.6784178725
+              ],
+              [
+                81057.29632006264,
+                381956.68844738306
+              ],
+              [
+                81057.28015935046,
+                381956.6983767698
+              ],
+              [
+                81057.2639373145,
+                381956.7082056501
+              ],
+              [
+                81057.24765457984,
+                381956.7179336453
+              ],
+              [
+                81057.23131177385,
+                381956.72756038053
+              ],
+              [
+                81057.21490952626,
+                381956.7370854849
+              ],
+              [
+                81057.19844846908,
+                381956.74650859134
+              ],
+              [
+                81057.18192923655,
+                381956.75582933676
+              ],
+              [
+                81057.1653524652,
+                381956.7650473621
+              ],
+              [
+                81057.14871879376,
+                381956.7741623121
+              ],
+              [
+                81057.13202886315,
+                381956.78317383555
+              ],
+              [
+                81057.11528331645,
+                381956.7920815852
+              ],
+              [
+                81057.09848279889,
+                381956.8008852179
+              ],
+              [
+                81057.08162795783,
+                381956.8095843944
+              ],
+              [
+                81057.06471944271,
+                381956.8181787795
+              ],
+              [
+                81057.04775790503,
+                381956.82666804205
+              ],
+              [
+                81057.03074399836,
+                381956.8350518549
+              ],
+              [
+                81057.01367837825,
+                381956.8433298951
+              ],
+              [
+                81056.99656170228,
+                381956.8515018436
+              ],
+              [
+                81056.97939462998,
+                381956.8595673856
+              ],
+              [
+                81056.96217782282,
+                381956.86752621026
+              ],
+              [
+                81056.94491194417,
+                381956.8753780109
+              ],
+              [
+                81056.92759765935,
+                381956.8831224851
+              ],
+              [
+                81056.91023563549,
+                381956.89075933426
+              ],
+              [
+                81056.89282654155,
+                381956.8982882643
+              ],
+              [
+                81056.87537104834,
+                381956.905708985
+              ],
+              [
+                81056.85786982848,
+                381956.9130212105
+              ],
+              [
+                81056.84032355627,
+                381956.920224659
+              ],
+              [
+                81056.82273290784,
+                381956.92731905304
+              ],
+              [
+                81056.80509856094,
+                381956.93430411915
+              ],
+              [
+                81056.78742119507,
+                381956.9411795882
+              ],
+              [
+                81056.76970149137,
+                381956.9479451953
+              ],
+              [
+                81056.7519401326,
+                381956.95460067975
+              ],
+              [
+                81056.73413780313,
+                381956.9611457851
+              ],
+              [
+                81056.7162951889,
+                381956.9675802592
+              ],
+              [
+                81056.69841297745,
+                381956.9739038541
+              ],
+              [
+                81056.68049185777,
+                381956.98011632607
+              ],
+              [
+                81056.6625325204,
+                381956.9862174358
+              ],
+              [
+                81056.64453565732,
+                381956.99220694817
+              ],
+              [
+                81056.62650196202,
+                381956.99808463245
+              ],
+              [
+                81056.60843212935,
+                381957.00385026215
+              ],
+              [
+                81056.59032685554,
+                381957.0095036151
+              ],
+              [
+                81056.57218683824,
+                381957.0150444734
+              ],
+              [
+                81056.55401277641,
+                381957.0204726237
+              ],
+              [
+                81056.53580537031,
+                381957.0257878567
+              ],
+              [
+                81056.51756532151,
+                381957.0309899677
+              ],
+              [
+                81056.49929333282,
+                381957.03607875615
+              ],
+              [
+                81056.4809901083,
+                381957.0410540261
+              ],
+              [
+                81056.4626563532,
+                381957.04591558577
+              ],
+              [
+                81056.44429277391,
+                381957.0506632478
+              ],
+              [
+                81056.42590007804,
+                381957.0552968293
+              ],
+              [
+                81056.4074789743,
+                381957.0598161518
+              ],
+              [
+                81056.38903017246,
+                381957.06422104104
+              ],
+              [
+                81056.37055438338,
+                381957.0685113274
+              ],
+              [
+                81056.35205231897,
+                381957.0726868455
+              ],
+              [
+                81056.33352469213,
+                381957.07674743445
+              ],
+              [
+                81056.31497221677,
+                381957.0806929378
+              ],
+              [
+                81056.29639560774,
+                381957.08452320355
+              ],
+              [
+                81056.27779558083,
+                381957.08823808405
+              ],
+              [
+                81056.2591728527,
+                381957.09183743625
+              ],
+              [
+                81056.24052814094,
+                381957.09532112145
+              ],
+              [
+                81056.22186216396,
+                381957.09868900536
+              ],
+              [
+                81056.20317564097,
+                381957.10194095824
+              ],
+              [
+                81056.18446929201,
+                381957.10507685476
+              ],
+              [
+                81056.16574383785,
+                381957.10809657414
+              ],
+              [
+                81056.147,
+                381957.111
+              ],
+              [
+                81056.147,
+                381957.111
+              ],
+              [
+                81055.91,
+                381952.405
+              ],
+              [
+                81055.966,
+                381952.169
+              ],
+              [
+                81056.109,
+                381952
+              ],
+              [
+                81056.323,
+                381951.909
+              ],
+              [
+                81061.555,
+                381951.33
+              ],
+              [
+                81061.571,
+                381945.701
+              ],
+              [
+                81061.572,
+                381945.345
+              ],
+              [
+                81064.763,
+                381945.171
+              ]
+            ]
+          ]
+        },
+        "id": "7544e5ba-9a39-5ade-9daa-22518e686e5c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2023-11-23T03:24:22Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.0d106526686c4e259a3dee6bbac4f606",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "180e225a-42de-152c-46c1-aedd9c3daf56"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81067.804,
+                381912.934
+              ],
+              [
+                81067.76332744546,
+                381912.94830215053
+              ],
+              [
+                81067.72261272458,
+                381912.9624838186
+              ],
+              [
+                81067.68185619426,
+                381912.97654487967
+              ],
+              [
+                81067.64105821178,
+                381912.9904852107
+              ],
+              [
+                81067.60021913477,
+                381913.0043046894
+              ],
+              [
+                81067.55933932119,
+                381913.01800319465
+              ],
+              [
+                81067.51841912941,
+                381913.03158060636
+              ],
+              [
+                81067.47745891813,
+                381913.0450368055
+              ],
+              [
+                81067.4364590464,
+                381913.0583716741
+              ],
+              [
+                81067.39541987362,
+                381913.0715850954
+              ],
+              [
+                81067.35434175952,
+                381913.0846769533
+              ],
+              [
+                81067.31322506421,
+                381913.09764713334
+              ],
+              [
+                81067.27207014809,
+                381913.1104955217
+              ],
+              [
+                81067.23087737191,
+                381913.12322200567
+              ],
+              [
+                81067.18964709679,
+                381913.1358264738
+              ],
+              [
+                81067.14837968413,
+                381913.1483088156
+              ],
+              [
+                81067.10707549569,
+                381913.1606689216
+              ],
+              [
+                81067.06573489352,
+                381913.17290668347
+              ],
+              [
+                81067.02435824001,
+                381913.18502199394
+              ],
+              [
+                81066.98294589786,
+                381913.19701474684
+              ],
+              [
+                81066.94149823011,
+                381913.208884837
+              ],
+              [
+                81066.90001560004,
+                381913.2206321603
+              ],
+              [
+                81066.85849837131,
+                381913.23225661396
+              ],
+              [
+                81066.81694690784,
+                381913.2437580959
+              ],
+              [
+                81066.77536157388,
+                381913.2551365054
+              ],
+              [
+                81066.73374273394,
+                381913.2663917426
+              ],
+              [
+                81066.69209075285,
+                381913.27752370905
+              ],
+              [
+                81066.65040599575,
+                381913.28853230696
+              ],
+              [
+                81066.60868882803,
+                381913.29941743996
+              ],
+              [
+                81066.56693961535,
+                381913.31017901254
+              ],
+              [
+                81066.52515872371,
+                381913.32081693044
+              ],
+              [
+                81066.48334651934,
+                381913.3313311004
+              ],
+              [
+                81066.44150336877,
+                381913.3417214302
+              ],
+              [
+                81066.39962963878,
+                381913.3519878288
+              ],
+              [
+                81066.35772569643,
+                381913.3621302062
+              ],
+              [
+                81066.31579190906,
+                381913.3721484735
+              ],
+              [
+                81066.27382864423,
+                381913.38204254286
+              ],
+              [
+                81066.2318362698,
+                381913.3918123276
+              ],
+              [
+                81066.18981515388,
+                381913.40145774203
+              ],
+              [
+                81066.14776566479,
+                381913.4109787016
+              ],
+              [
+                81066.10568817116,
+                381913.42037512286
+              ],
+              [
+                81066.0635830418,
+                381913.42964692344
+              ],
+              [
+                81066.02145064584,
+                381913.43879402213
+              ],
+              [
+                81065.97929135259,
+                381913.4478163386
+              ],
+              [
+                81065.9371055316,
+                381913.4567137939
+              ],
+              [
+                81065.89489355267,
+                381913.46548631
+              ],
+              [
+                81065.85265578583,
+                381913.47413381
+              ],
+              [
+                81065.81039260133,
+                381913.48265621805
+              ],
+              [
+                81065.76810436964,
+                381913.4910534595
+              ],
+              [
+                81065.72579146145,
+                381913.49932546075
+              ],
+              [
+                81065.68345424767,
+                381913.5074721492
+              ],
+              [
+                81065.64109309943,
+                381913.51549345354
+              ],
+              [
+                81065.59870838805,
+                381913.5233893034
+              ],
+              [
+                81065.55630048508,
+                381913.5311596296
+              ],
+              [
+                81065.51386976225,
+                381913.5388043639
+              ],
+              [
+                81065.4714165915,
+                381913.5463234395
+              ],
+              [
+                81065.428941345,
+                381913.5537167904
+              ],
+              [
+                81065.38644439504,
+                381913.56098435173
+              ],
+              [
+                81065.34392611416,
+                381913.56812605984
+              ],
+              [
+                81065.30138687507,
+                381913.5751418521
+              ],
+              [
+                81065.25882705067,
+                381913.582031667
+              ],
+              [
+                81065.216247014,
+                381913.58879544423
+              ],
+              [
+                81065.17364713836,
+                381913.5954331244
+              ],
+              [
+                81065.13102779714,
+                381913.60194464936
+              ],
+              [
+                81065.08838936394,
+                381913.60832996207
+              ],
+              [
+                81065.04573221254,
+                381913.6145890065
+              ],
+              [
+                81065.00305671684,
+                381913.6207217278
+              ],
+              [
+                81064.96036325095,
+                381913.62672807224
+              ],
+              [
+                81064.91765218909,
+                381913.63260798715
+              ],
+              [
+                81064.87492390569,
+                381913.63836142095
+              ],
+              [
+                81064.83217877528,
+                381913.6439883232
+              ],
+              [
+                81064.78941717256,
+                381913.64948864473
+              ],
+              [
+                81064.74663947237,
+                381913.65486233716
+              ],
+              [
+                81064.70384604971,
+                381913.6601093534
+              ],
+              [
+                81064.66103727967,
+                381913.66522964754
+              ],
+              [
+                81064.61821353754,
+                381913.6702231746
+              ],
+              [
+                81064.57537519868,
+                381913.6750898909
+              ],
+              [
+                81064.53252263862,
+                381913.67982975376
+              ],
+              [
+                81064.489656233,
+                381913.68444272154
+              ],
+              [
+                81064.44677635755,
+                381913.6889287539
+              ],
+              [
+                81064.4038833882,
+                381913.6932878115
+              ],
+              [
+                81064.36097770091,
+                381913.6975198561
+              ],
+              [
+                81064.31805967179,
+                381913.70162485057
+              ],
+              [
+                81064.27512967706,
+                381913.70560275903
+              ],
+              [
+                81064.23218809302,
+                381913.70945354656
+              ],
+              [
+                81064.18923529611,
+                381913.71317717934
+              ],
+              [
+                81064.14627166284,
+                381913.7167736248
+              ],
+              [
+                81064.10329756983,
+                381913.7202428515
+              ],
+              [
+                81064.06031339378,
+                381913.72358482884
+              ],
+              [
+                81064.01731951149,
+                381913.7267995276
+              ],
+              [
+                81063.97431629982,
+                381913.72988691967
+              ],
+              [
+                81063.93130413574,
+                381913.7328469779
+              ],
+              [
+                81063.88828339629,
+                381913.73567967635
+              ],
+              [
+                81063.84525445859,
+                381913.73838499025
+              ],
+              [
+                81063.8022176998,
+                381913.74096289586
+              ],
+              [
+                81063.75917349721,
+                381913.7434133705
+              ],
+              [
+                81063.71612222811,
+                381913.74573639286
+              ],
+              [
+                81063.6730642699,
+                381913.7479319424
+              ],
+              [
+                81063.63,
+                381913.75
+              ],
+              [
+                81063.63,
+                381913.75
+              ],
+              [
+                81059.684,
+                381913.977
+              ],
+              [
+                81059.29,
+                381914
+              ],
+              [
+                81059.02,
+                381908.97
+              ],
+              [
+                81071.841,
+                381908.221
+              ],
+              [
+                81071.841,
+                381908.221
+              ],
+              [
+                81071.8400018874,
+                381908.2243360148
+              ],
+              [
+                81071.83900228661,
+                381908.227671584
+              ],
+              [
+                81071.83800119784,
+                381908.2310067069
+              ],
+              [
+                81071.8369986213,
+                381908.2343413828
+              ],
+              [
+                81071.83599455716,
+                381908.23767561116
+              ],
+              [
+                81071.83498900563,
+                381908.2410093912
+              ],
+              [
+                81071.83398196693,
+                381908.24434272235
+              ],
+              [
+                81071.83297344124,
+                381908.2476756039
+              ],
+              [
+                81071.83196342878,
+                381908.2510080352
+              ],
+              [
+                81071.83095192972,
+                381908.2543400155
+              ],
+              [
+                81071.82993894428,
+                381908.2576715443
+              ],
+              [
+                81071.82892447268,
+                381908.26100262086
+              ],
+              [
+                81071.82790851509,
+                381908.2643332444
+              ],
+              [
+                81071.82689107173,
+                381908.2676634145
+              ],
+              [
+                81071.82587214278,
+                381908.2709931303
+              ],
+              [
+                81071.82485172848,
+                381908.27432239114
+              ],
+              [
+                81071.82382982901,
+                381908.27765119646
+              ],
+              [
+                81071.82280644459,
+                381908.28097954555
+              ],
+              [
+                81071.82178157539,
+                381908.2843074378
+              ],
+              [
+                81071.82075522163,
+                381908.2876348724
+              ],
+              [
+                81071.81972738354,
+                381908.2909618489
+              ],
+              [
+                81071.8186980613,
+                381908.29428836645
+              ],
+              [
+                81071.8176672551,
+                381908.2976144245
+              ],
+              [
+                81071.81663496519,
+                381908.30094002234
+              ],
+              [
+                81071.81560119173,
+                381908.3042651593
+              ],
+              [
+                81071.81456593495,
+                381908.30758983473
+              ],
+              [
+                81071.81352919506,
+                381908.310914048
+              ],
+              [
+                81071.81249097224,
+                381908.31423779845
+              ],
+              [
+                81071.81145126672,
+                381908.31756108534
+              ],
+              [
+                81071.8104100787,
+                381908.3208839081
+              ],
+              [
+                81071.8093674084,
+                381908.32420626597
+              ],
+              [
+                81071.808323256,
+                381908.3275281584
+              ],
+              [
+                81071.80727762173,
+                381908.33084958466
+              ],
+              [
+                81071.8062305058,
+                381908.3341705441
+              ],
+              [
+                81071.80518190839,
+                381908.33749103604
+              ],
+              [
+                81071.80413182975,
+                381908.34081105987
+              ],
+              [
+                81071.80308027005,
+                381908.34413061495
+              ],
+              [
+                81071.80202722953,
+                381908.3474497005
+              ],
+              [
+                81071.80097270838,
+                381908.35076831596
+              ],
+              [
+                81071.79991670682,
+                381908.35408646066
+              ],
+              [
+                81071.79885922505,
+                381908.3574041339
+              ],
+              [
+                81071.79780026329,
+                381908.36072133505
+              ],
+              [
+                81071.79673982176,
+                381908.36403806345
+              ],
+              [
+                81071.79567790063,
+                381908.3673543184
+              ],
+              [
+                81071.79461450016,
+                381908.3706700993
+              ],
+              [
+                81071.79354962055,
+                381908.37398540543
+              ],
+              [
+                81071.79248326199,
+                381908.37730023614
+              ],
+              [
+                81071.79141542471,
+                381908.38061459083
+              ],
+              [
+                81071.79034610892,
+                381908.3839284688
+              ],
+              [
+                81071.78927531482,
+                381908.3872418694
+              ],
+              [
+                81071.78820304264,
+                381908.39055479196
+              ],
+              [
+                81071.7871292926,
+                381908.3938672358
+              ],
+              [
+                81071.78605406488,
+                381908.39717920026
+              ],
+              [
+                81071.78497735974,
+                381908.4004906847
+              ],
+              [
+                81071.78389917735,
+                381908.4038016886
+              ],
+              [
+                81071.78281951795,
+                381908.407112211
+              ],
+              [
+                81071.78173838176,
+                381908.4104222515
+              ],
+              [
+                81071.78065576898,
+                381908.4137318093
+              ],
+              [
+                81071.77957167981,
+                381908.41704088385
+              ],
+              [
+                81071.7784861145,
+                381908.42034947436
+              ],
+              [
+                81071.77739907325,
+                381908.4236575803
+              ],
+              [
+                81071.77631055629,
+                381908.4269652009
+              ],
+              [
+                81071.77522056381,
+                381908.4302723356
+              ],
+              [
+                81071.77412909605,
+                381908.4335789837
+              ],
+              [
+                81071.77303615322,
+                381908.4368851445
+              ],
+              [
+                81071.77194173554,
+                381908.4401908174
+              ],
+              [
+                81071.77084584322,
+                381908.44349600177
+              ],
+              [
+                81071.76974847646,
+                381908.44680069684
+              ],
+              [
+                81071.76864963553,
+                381908.45010490203
+              ],
+              [
+                81071.7675493206,
+                381908.4534086167
+              ],
+              [
+                81071.76644753193,
+                381908.4567118401
+              ],
+              [
+                81071.7653442697,
+                381908.4600145717
+              ],
+              [
+                81071.76423953415,
+                381908.4633168108
+              ],
+              [
+                81071.76313332551,
+                381908.46661855665
+              ],
+              [
+                81071.76202564397,
+                381908.4699198087
+              ],
+              [
+                81071.76091648979,
+                381908.47322056623
+              ],
+              [
+                81071.75980586314,
+                381908.47652082867
+              ],
+              [
+                81071.75869376429,
+                381908.47982059524
+              ],
+              [
+                81071.75758019343,
+                381908.48311986536
+              ],
+              [
+                81071.7564651508,
+                381908.4864186384
+              ],
+              [
+                81071.75534863662,
+                381908.4897169136
+              ],
+              [
+                81071.7542306511,
+                381908.4930146904
+              ],
+              [
+                81071.75311119447,
+                381908.49631196813
+              ],
+              [
+                81071.75199026694,
+                381908.4996087461
+              ],
+              [
+                81071.75086786876,
+                381908.50290502363
+              ],
+              [
+                81071.74974400013,
+                381908.5062008001
+              ],
+              [
+                81071.7486186613,
+                381908.5094960749
+              ],
+              [
+                81071.74749185245,
+                381908.51279084734
+              ],
+              [
+                81071.74636357384,
+                381908.5160851167
+              ],
+              [
+                81071.7452338257,
+                381908.5193788824
+              ],
+              [
+                81071.74410260822,
+                381908.5226721438
+              ],
+              [
+                81071.74296992166,
+                381908.52596490015
+              ],
+              [
+                81071.74183576622,
+                381908.5292571509
+              ],
+              [
+                81071.74070014214,
+                381908.53254889534
+              ],
+              [
+                81071.73956304965,
+                381908.5358401328
+              ],
+              [
+                81071.73842448895,
+                381908.5391308627
+              ],
+              [
+                81071.7372844603,
+                381908.54242108425
+              ],
+              [
+                81071.7361429639,
+                381908.5457107969
+              ],
+              [
+                81071.735,
+                381908.549
+              ],
+              [
+                81071.735,
+                381908.549
+              ],
+              [
+                81071.7146458216,
+                381908.60656843387
+              ],
+              [
+                81071.69383290989,
+                381908.6639726137
+              ],
+              [
+                81071.67256259019,
+                381908.72120888415
+              ],
+              [
+                81071.65083621693,
+                381908.77827360056
+              ],
+              [
+                81071.62865517358,
+                381908.83516312926
+              ],
+              [
+                81071.6060208726,
+                381908.8918738476
+              ],
+              [
+                81071.58293475525,
+                381908.9484021444
+              ],
+              [
+                81071.5593982916,
+                381909.0047444201
+              ],
+              [
+                81071.5354129804,
+                381909.06089708704
+              ],
+              [
+                81071.51098034896,
+                381909.1168565695
+              ],
+              [
+                81071.4861019531,
+                381909.17261930415
+              ],
+              [
+                81071.46077937698,
+                381909.22818174015
+              ],
+              [
+                81071.43501423311,
+                381909.28354033944
+              ],
+              [
+                81071.40880816212,
+                381909.33869157697
+              ],
+              [
+                81071.38216283274,
+                381909.3936319408
+              ],
+              [
+                81071.35507994168,
+                381909.4483579325
+              ],
+              [
+                81071.32756121353,
+                381909.5028660673
+              ],
+              [
+                81071.29960840057,
+                381909.5571528742
+              ],
+              [
+                81071.27122328279,
+                381909.6112148964
+              ],
+              [
+                81071.24240766767,
+                381909.6650486913
+              ],
+              [
+                81071.21316339009,
+                381909.7186508311
+              ],
+              [
+                81071.18349231228,
+                381909.77201790235
+              ],
+              [
+                81071.1533963236,
+                381909.8251465069
+              ],
+              [
+                81071.12287734047,
+                381909.87803326163
+              ],
+              [
+                81071.09193730628,
+                381909.93067479884
+              ],
+              [
+                81071.0605781912,
+                381909.9830677665
+              ],
+              [
+                81071.02880199208,
+                381910.0352088283
+              ],
+              [
+                81070.99661073237,
+                381910.08709466405
+              ],
+              [
+                81070.9640064619,
+                381910.13872196985
+              ],
+              [
+                81070.93099125684,
+                381910.1900874582
+              ],
+              [
+                81070.8975672195,
+                381910.24118785816
+              ],
+              [
+                81070.86373647823,
+                381910.292019916
+              ],
+              [
+                81070.82950118728,
+                381910.3425803947
+              ],
+              [
+                81070.7948635267,
+                381910.3928660748
+              ],
+              [
+                81070.75982570206,
+                381910.44287375425
+              ],
+              [
+                81070.72438994452,
+                381910.4926002486
+              ],
+              [
+                81070.68855851052,
+                381910.5420423915
+              ],
+              [
+                81070.6523336817,
+                381910.5911970346
+              ],
+              [
+                81070.61571776478,
+                381910.64006104774
+              ],
+              [
+                81070.57871309135,
+                381910.6886313195
+              ],
+              [
+                81070.54132201779,
+                381910.73690475704
+              ],
+              [
+                81070.50354692503,
+                381910.7848782865
+              ],
+              [
+                81070.46539021851,
+                381910.8325488529
+              ],
+              [
+                81070.42685432793,
+                381910.8799134208
+              ],
+              [
+                81070.38794170717,
+                381910.9269689742
+              ],
+              [
+                81070.34865483409,
+                381910.9737125166
+              ],
+              [
+                81070.30899621034,
+                381911.0201410716
+              ],
+              [
+                81070.2689683613,
+                381911.0662516827
+              ],
+              [
+                81070.22857383582,
+                381911.1120414137
+              ],
+              [
+                81070.18781520614,
+                381911.15750734886
+              ],
+              [
+                81070.14669506763,
+                381911.20264659304
+              ],
+              [
+                81070.10521603873,
+                381911.2474562719
+              ],
+              [
+                81070.06338076071,
+                381911.29193353205
+              ],
+              [
+                81070.02119189753,
+                381911.3360755413
+              ],
+              [
+                81069.97865213566,
+                381911.3798794887
+              ],
+              [
+                81069.93576418392,
+                381911.42334258516
+              ],
+              [
+                81069.8925307733,
+                381911.46646206296
+              ],
+              [
+                81069.84895465679,
+                381911.50923517626
+              ],
+              [
+                81069.80503860919,
+                381911.55165920156
+              ],
+              [
+                81069.76078542697,
+                381911.5937314373
+              ],
+              [
+                81069.71619792806,
+                381911.6354492044
+              ],
+              [
+                81069.67127895165,
+                381911.67680984654
+              ],
+              [
+                81069.62603135807,
+                381911.7178107298
+              ],
+              [
+                81069.58045802858,
+                381911.7584492435
+              ],
+              [
+                81069.53456186515,
+                381911.7987227998
+              ],
+              [
+                81069.48834579032,
+                381911.83862883423
+              ],
+              [
+                81069.44181274703,
+                381911.87816480565
+              ],
+              [
+                81069.39496569836,
+                381911.9173281966
+              ],
+              [
+                81069.3478076274,
+                381911.9561165131
+              ],
+              [
+                81069.30034153708,
+                381911.99452728534
+              ],
+              [
+                81069.25257044988,
+                381912.0325580674
+              ],
+              [
+                81069.20449740777,
+                381912.0702064376
+              ],
+              [
+                81069.15612547187,
+                381912.10746999853
+              ],
+              [
+                81069.1074577224,
+                381912.1443463774
+              ],
+              [
+                81069.0584972584,
+                381912.180833226
+              ],
+              [
+                81069.00924719754,
+                381912.21692822094
+              ],
+              [
+                81068.9597106759,
+                381912.2526290638
+              ],
+              [
+                81068.90989084788,
+                381912.2879334812
+              ],
+              [
+                81068.85979088582,
+                381912.3228392251
+              ],
+              [
+                81068.80941398001,
+                381912.35734407284
+              ],
+              [
+                81068.75876333828,
+                381912.39144582715
+              ],
+              [
+                81068.70784218592,
+                381912.4251423166
+              ],
+              [
+                81068.65665376549,
+                381912.4584313954
+              ],
+              [
+                81068.6052013365,
+                381912.49131094385
+              ],
+              [
+                81068.55348817531,
+                381912.52377886826
+              ],
+              [
+                81068.50151757488,
+                381912.55583310116
+              ],
+              [
+                81068.44929284455,
+                381912.58747160144
+              ],
+              [
+                81068.39681730987,
+                381912.6186923544
+              ],
+              [
+                81068.34409431233,
+                381912.649493372
+              ],
+              [
+                81068.29112720919,
+                381912.67987269297
+              ],
+              [
+                81068.23791937325,
+                381912.7098283827
+              ],
+              [
+                81068.18447419265,
+                381912.7393585339
+              ],
+              [
+                81068.13079507063,
+                381912.76846126595
+              ],
+              [
+                81068.07688542534,
+                381912.7971347258
+              ],
+              [
+                81068.02274868959,
+                381912.8253770876
+              ],
+              [
+                81067.96838831066,
+                381912.8531865529
+              ],
+              [
+                81067.9138077501,
+                381912.88056135084
+              ],
+              [
+                81067.85901048343,
+                381912.9074997383
+              ],
+              [
+                81067.804,
+                381912.934
+              ]
+            ]
+          ]
+        },
+        "id": "c98ac4a9-8bbf-5718-ae58-f861f31c749e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.0d106526686c4e259a3dee6bbac4f606",
+          "lv_publicatiedatum": "2023-11-23T15:43:43Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2023-11-23T03:24:22Z",
+          "version": "6379d676-77bc-54d8-9800-d966099c2bf3"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81059.29,
+                381914
+              ],
+              [
+                81059.02,
+                381908.97
+              ],
+              [
+                81071.841,
+                381908.221
+              ],
+              [
+                81071.841,
+                381908.221
+              ],
+              [
+                81071.84001364738,
+                381908.2243396138
+              ],
+              [
+                81071.8390255643,
+                381908.227678716
+              ],
+              [
+                81071.83803575103,
+                381908.23101730575
+              ],
+              [
+                81071.83704420783,
+                381908.2343553821
+              ],
+              [
+                81071.83605093497,
+                381908.2376929442
+              ],
+              [
+                81071.83505593272,
+                381908.2410299911
+              ],
+              [
+                81071.83405920134,
+                381908.244366522
+              ],
+              [
+                81071.8330607411,
+                381908.24770253594
+              ],
+              [
+                81071.83206055229,
+                381908.251038032
+              ],
+              [
+                81071.83105863513,
+                381908.2543730093
+              ],
+              [
+                81071.83005498993,
+                381908.257707467
+              ],
+              [
+                81071.82904961694,
+                381908.26104140416
+              ],
+              [
+                81071.82804251644,
+                381908.2643748199
+              ],
+              [
+                81071.82703368869,
+                381908.26770771324
+              ],
+              [
+                81071.82602313398,
+                381908.27104008343
+              ],
+              [
+                81071.82501085257,
+                381908.27437192947
+              ],
+              [
+                81071.82399684472,
+                381908.27770325047
+              ],
+              [
+                81071.82298111072,
+                381908.2810340456
+              ],
+              [
+                81071.82196365083,
+                381908.28436431393
+              ],
+              [
+                81071.82094446532,
+                381908.28769405454
+              ],
+              [
+                81071.81992355449,
+                381908.2910232666
+              ],
+              [
+                81071.81890091859,
+                381908.2943519491
+              ],
+              [
+                81071.8178765579,
+                381908.2976801013
+              ],
+              [
+                81071.81685047271,
+                381908.3010077222
+              ],
+              [
+                81071.81582266327,
+                381908.30433481093
+              ],
+              [
+                81071.81479312986,
+                381908.30766136665
+              ],
+              [
+                81071.81376187278,
+                381908.31098738837
+              ],
+              [
+                81071.81272889228,
+                381908.31431287527
+              ],
+              [
+                81071.81169418865,
+                381908.3176378264
+              ],
+              [
+                81071.81065776218,
+                381908.3209622409
+              ],
+              [
+                81071.80961961312,
+                381908.3242861179
+              ],
+              [
+                81071.80857974177,
+                381908.3276094565
+              ],
+              [
+                81071.80753814841,
+                381908.3309322558
+              ],
+              [
+                81071.8064948333,
+                381908.33425451483
+              ],
+              [
+                81071.80544979674,
+                381908.3375762328
+              ],
+              [
+                81071.804403039,
+                381908.3408974088
+              ],
+              [
+                81071.80335456037,
+                381908.3442180419
+              ],
+              [
+                81071.80230436112,
+                381908.34753813123
+              ],
+              [
+                81071.80125244154,
+                381908.35085767595
+              ],
+              [
+                81071.80019880191,
+                381908.3541766751
+              ],
+              [
+                81071.79914344252,
+                381908.35749512777
+              ],
+              [
+                81071.79808636365,
+                381908.3608130331
+              ],
+              [
+                81071.79702756557,
+                381908.3641303903
+              ],
+              [
+                81071.79596704857,
+                381908.36744719825
+              ],
+              [
+                81071.79490481295,
+                381908.3707634563
+              ],
+              [
+                81071.79384085898,
+                381908.3740791634
+              ],
+              [
+                81071.79277518696,
+                381908.37739431876
+              ],
+              [
+                81071.79170779717,
+                381908.3807089214
+              ],
+              [
+                81071.79063868988,
+                381908.38402297045
+              ],
+              [
+                81071.7895678654,
+                381908.3873364651
+              ],
+              [
+                81071.788495324,
+                381908.3906494044
+              ],
+              [
+                81071.78742106598,
+                381908.3939617874
+              ],
+              [
+                81071.78634509163,
+                381908.3972736133
+              ],
+              [
+                81071.78526740122,
+                381908.40058488125
+              ],
+              [
+                81071.78418799507,
+                381908.4038955902
+              ],
+              [
+                81071.78310687345,
+                381908.40720573947
+              ],
+              [
+                81071.78202403666,
+                381908.41051532794
+              ],
+              [
+                81071.78093948496,
+                381908.41382435494
+              ],
+              [
+                81071.77985321869,
+                381908.4171328194
+              ],
+              [
+                81071.7787652381,
+                381908.42044072057
+              ],
+              [
+                81071.7776755435,
+                381908.42374805745
+              ],
+              [
+                81071.7765841352,
+                381908.42705482926
+              ],
+              [
+                81071.77549101345,
+                381908.430361035
+              ],
+              [
+                81071.77439617859,
+                381908.4336666739
+              ],
+              [
+                81071.77329963088,
+                381908.43697174493
+              ],
+              [
+                81071.77220137062,
+                381908.4402762474
+              ],
+              [
+                81071.77110139813,
+                381908.44358018023
+              ],
+              [
+                81071.76999971368,
+                381908.4468835426
+              ],
+              [
+                81071.76889631758,
+                381908.4501863337
+              ],
+              [
+                81071.7677912101,
+                381908.4534885525
+              ],
+              [
+                81071.76668439156,
+                381908.4567901982
+              ],
+              [
+                81071.76557586227,
+                381908.4600912699
+              ],
+              [
+                81071.7644656225,
+                381908.46339176677
+              ],
+              [
+                81071.76335367256,
+                381908.4666916878
+              ],
+              [
+                81071.76224001276,
+                381908.46999103227
+              ],
+              [
+                81071.76112464337,
+                381908.4732897991
+              ],
+              [
+                81071.7600075647,
+                381908.47658798756
+              ],
+              [
+                81071.75888877708,
+                381908.47988559667
+              ],
+              [
+                81071.75776828078,
+                381908.4831826256
+              ],
+              [
+                81071.7566460761,
+                381908.4864790735
+              ],
+              [
+                81071.75552216335,
+                381908.4897749393
+              ],
+              [
+                81071.75439654283,
+                381908.4930702223
+              ],
+              [
+                81071.75326921484,
+                381908.4963649216
+              ],
+              [
+                81071.7521401797,
+                381908.4996590363
+              ],
+              [
+                81071.75100943769,
+                381908.50295256544
+              ],
+              [
+                81071.74987698912,
+                381908.50624550815
+              ],
+              [
+                81071.7487428343,
+                381908.50953786366
+              ],
+              [
+                81071.74760697353,
+                381908.5128296309
+              ],
+              [
+                81071.74646940711,
+                381908.51612080925
+              ],
+              [
+                81071.74533013537,
+                381908.5194113976
+              ],
+              [
+                81071.74418915858,
+                381908.5227013951
+              ],
+              [
+                81071.74304647707,
+                381908.52599080093
+              ],
+              [
+                81071.74190209113,
+                381908.52927961416
+              ],
+              [
+                81071.74075600109,
+                381908.53256783396
+              ],
+              [
+                81071.73960820725,
+                381908.5358554594
+              ],
+              [
+                81071.73845870991,
+                381908.53914248955
+              ],
+              [
+                81071.73730750938,
+                381908.54242892365
+              ],
+              [
+                81071.73615460597,
+                381908.5457147608
+              ],
+              [
+                81071.735,
+                381908.549
+              ],
+              [
+                81071.735,
+                381908.549
+              ],
+              [
+                81071.7146458216,
+                381908.60656843387
+              ],
+              [
+                81071.69383290989,
+                381908.6639726137
+              ],
+              [
+                81071.67256259019,
+                381908.72120888415
+              ],
+              [
+                81071.65083621693,
+                381908.77827360056
+              ],
+              [
+                81071.62865517358,
+                381908.83516312926
+              ],
+              [
+                81071.6060208726,
+                381908.8918738476
+              ],
+              [
+                81071.58293475525,
+                381908.9484021444
+              ],
+              [
+                81071.5593982916,
+                381909.0047444201
+              ],
+              [
+                81071.5354129804,
+                381909.06089708704
+              ],
+              [
+                81071.51098034896,
+                381909.1168565695
+              ],
+              [
+                81071.4861019531,
+                381909.17261930415
+              ],
+              [
+                81071.46077937698,
+                381909.22818174015
+              ],
+              [
+                81071.43501423311,
+                381909.28354033944
+              ],
+              [
+                81071.40880816212,
+                381909.33869157697
+              ],
+              [
+                81071.38216283274,
+                381909.3936319408
+              ],
+              [
+                81071.35507994168,
+                381909.4483579325
+              ],
+              [
+                81071.32756121353,
+                381909.5028660673
+              ],
+              [
+                81071.29960840057,
+                381909.5571528742
+              ],
+              [
+                81071.27122328279,
+                381909.6112148964
+              ],
+              [
+                81071.24240766767,
+                381909.6650486913
+              ],
+              [
+                81071.21316339009,
+                381909.7186508311
+              ],
+              [
+                81071.18349231228,
+                381909.77201790235
+              ],
+              [
+                81071.1533963236,
+                381909.8251465069
+              ],
+              [
+                81071.12287734047,
+                381909.87803326163
+              ],
+              [
+                81071.09193730628,
+                381909.93067479884
+              ],
+              [
+                81071.0605781912,
+                381909.9830677665
+              ],
+              [
+                81071.02880199208,
+                381910.0352088283
+              ],
+              [
+                81070.99661073237,
+                381910.08709466405
+              ],
+              [
+                81070.9640064619,
+                381910.13872196985
+              ],
+              [
+                81070.93099125684,
+                381910.1900874582
+              ],
+              [
+                81070.8975672195,
+                381910.24118785816
+              ],
+              [
+                81070.86373647823,
+                381910.292019916
+              ],
+              [
+                81070.82950118728,
+                381910.3425803947
+              ],
+              [
+                81070.7948635267,
+                381910.3928660748
+              ],
+              [
+                81070.75982570206,
+                381910.44287375425
+              ],
+              [
+                81070.72438994452,
+                381910.4926002486
+              ],
+              [
+                81070.68855851052,
+                381910.5420423915
+              ],
+              [
+                81070.6523336817,
+                381910.5911970346
+              ],
+              [
+                81070.61571776478,
+                381910.64006104774
+              ],
+              [
+                81070.57871309135,
+                381910.6886313195
+              ],
+              [
+                81070.54132201779,
+                381910.73690475704
+              ],
+              [
+                81070.50354692503,
+                381910.7848782865
+              ],
+              [
+                81070.46539021851,
+                381910.8325488529
+              ],
+              [
+                81070.42685432793,
+                381910.8799134208
+              ],
+              [
+                81070.38794170717,
+                381910.9269689742
+              ],
+              [
+                81070.34865483409,
+                381910.9737125166
+              ],
+              [
+                81070.30899621034,
+                381911.0201410716
+              ],
+              [
+                81070.2689683613,
+                381911.0662516827
+              ],
+              [
+                81070.22857383582,
+                381911.1120414137
+              ],
+              [
+                81070.18781520614,
+                381911.15750734886
+              ],
+              [
+                81070.14669506763,
+                381911.20264659304
+              ],
+              [
+                81070.10521603873,
+                381911.2474562719
+              ],
+              [
+                81070.06338076071,
+                381911.29193353205
+              ],
+              [
+                81070.02119189753,
+                381911.3360755413
+              ],
+              [
+                81069.97865213566,
+                381911.3798794887
+              ],
+              [
+                81069.93576418392,
+                381911.42334258516
+              ],
+              [
+                81069.8925307733,
+                381911.46646206296
+              ],
+              [
+                81069.84895465679,
+                381911.50923517626
+              ],
+              [
+                81069.80503860919,
+                381911.55165920156
+              ],
+              [
+                81069.76078542697,
+                381911.5937314373
+              ],
+              [
+                81069.71619792806,
+                381911.6354492044
+              ],
+              [
+                81069.67127895165,
+                381911.67680984654
+              ],
+              [
+                81069.62603135807,
+                381911.7178107298
+              ],
+              [
+                81069.58045802858,
+                381911.7584492435
+              ],
+              [
+                81069.53456186515,
+                381911.7987227998
+              ],
+              [
+                81069.48834579032,
+                381911.83862883423
+              ],
+              [
+                81069.44181274703,
+                381911.87816480565
+              ],
+              [
+                81069.39496569836,
+                381911.9173281966
+              ],
+              [
+                81069.3478076274,
+                381911.9561165131
+              ],
+              [
+                81069.30034153708,
+                381911.99452728534
+              ],
+              [
+                81069.25257044988,
+                381912.0325580674
+              ],
+              [
+                81069.20449740777,
+                381912.0702064376
+              ],
+              [
+                81069.15612547187,
+                381912.10746999853
+              ],
+              [
+                81069.1074577224,
+                381912.1443463774
+              ],
+              [
+                81069.0584972584,
+                381912.180833226
+              ],
+              [
+                81069.00924719754,
+                381912.21692822094
+              ],
+              [
+                81068.9597106759,
+                381912.2526290638
+              ],
+              [
+                81068.90989084788,
+                381912.2879334812
+              ],
+              [
+                81068.85979088582,
+                381912.3228392251
+              ],
+              [
+                81068.80941398001,
+                381912.35734407284
+              ],
+              [
+                81068.75876333828,
+                381912.39144582715
+              ],
+              [
+                81068.70784218592,
+                381912.4251423166
+              ],
+              [
+                81068.65665376549,
+                381912.4584313954
+              ],
+              [
+                81068.6052013365,
+                381912.49131094385
+              ],
+              [
+                81068.55348817531,
+                381912.52377886826
+              ],
+              [
+                81068.50151757488,
+                381912.55583310116
+              ],
+              [
+                81068.44929284455,
+                381912.58747160144
+              ],
+              [
+                81068.39681730987,
+                381912.6186923544
+              ],
+              [
+                81068.34409431233,
+                381912.649493372
+              ],
+              [
+                81068.29112720919,
+                381912.67987269297
+              ],
+              [
+                81068.23791937325,
+                381912.7098283827
+              ],
+              [
+                81068.18447419265,
+                381912.7393585339
+              ],
+              [
+                81068.13079507063,
+                381912.76846126595
+              ],
+              [
+                81068.07688542534,
+                381912.7971347258
+              ],
+              [
+                81068.02274868959,
+                381912.8253770876
+              ],
+              [
+                81067.96838831066,
+                381912.8531865529
+              ],
+              [
+                81067.9138077501,
+                381912.88056135084
+              ],
+              [
+                81067.85901048343,
+                381912.9074997383
+              ],
+              [
+                81067.804,
+                381912.934
+              ],
+              [
+                81067.804,
+                381912.934
+              ],
+              [
+                81067.76332744546,
+                381912.94830215053
+              ],
+              [
+                81067.72261272458,
+                381912.9624838186
+              ],
+              [
+                81067.68185619426,
+                381912.97654487967
+              ],
+              [
+                81067.64105821178,
+                381912.9904852107
+              ],
+              [
+                81067.60021913477,
+                381913.0043046894
+              ],
+              [
+                81067.55933932119,
+                381913.01800319465
+              ],
+              [
+                81067.51841912941,
+                381913.03158060636
+              ],
+              [
+                81067.47745891813,
+                381913.0450368055
+              ],
+              [
+                81067.4364590464,
+                381913.0583716741
+              ],
+              [
+                81067.39541987362,
+                381913.0715850954
+              ],
+              [
+                81067.35434175952,
+                381913.0846769533
+              ],
+              [
+                81067.31322506421,
+                381913.09764713334
+              ],
+              [
+                81067.27207014809,
+                381913.1104955217
+              ],
+              [
+                81067.23087737191,
+                381913.12322200567
+              ],
+              [
+                81067.18964709679,
+                381913.1358264738
+              ],
+              [
+                81067.14837968413,
+                381913.1483088156
+              ],
+              [
+                81067.10707549569,
+                381913.1606689216
+              ],
+              [
+                81067.06573489352,
+                381913.17290668347
+              ],
+              [
+                81067.02435824001,
+                381913.18502199394
+              ],
+              [
+                81066.98294589786,
+                381913.19701474684
+              ],
+              [
+                81066.94149823011,
+                381913.208884837
+              ],
+              [
+                81066.90001560004,
+                381913.2206321603
+              ],
+              [
+                81066.85849837131,
+                381913.23225661396
+              ],
+              [
+                81066.81694690784,
+                381913.2437580959
+              ],
+              [
+                81066.77536157388,
+                381913.2551365054
+              ],
+              [
+                81066.73374273394,
+                381913.2663917426
+              ],
+              [
+                81066.69209075285,
+                381913.27752370905
+              ],
+              [
+                81066.65040599575,
+                381913.28853230696
+              ],
+              [
+                81066.60868882803,
+                381913.29941743996
+              ],
+              [
+                81066.56693961535,
+                381913.31017901254
+              ],
+              [
+                81066.52515872371,
+                381913.32081693044
+              ],
+              [
+                81066.48334651934,
+                381913.3313311004
+              ],
+              [
+                81066.44150336877,
+                381913.3417214302
+              ],
+              [
+                81066.39962963878,
+                381913.3519878288
+              ],
+              [
+                81066.35772569643,
+                381913.3621302062
+              ],
+              [
+                81066.31579190906,
+                381913.3721484735
+              ],
+              [
+                81066.27382864423,
+                381913.38204254286
+              ],
+              [
+                81066.2318362698,
+                381913.3918123276
+              ],
+              [
+                81066.18981515388,
+                381913.40145774203
+              ],
+              [
+                81066.14776566479,
+                381913.4109787016
+              ],
+              [
+                81066.10568817116,
+                381913.42037512286
+              ],
+              [
+                81066.0635830418,
+                381913.42964692344
+              ],
+              [
+                81066.02145064584,
+                381913.43879402213
+              ],
+              [
+                81065.97929135259,
+                381913.4478163386
+              ],
+              [
+                81065.9371055316,
+                381913.4567137939
+              ],
+              [
+                81065.89489355267,
+                381913.46548631
+              ],
+              [
+                81065.85265578583,
+                381913.47413381
+              ],
+              [
+                81065.81039260133,
+                381913.48265621805
+              ],
+              [
+                81065.76810436964,
+                381913.4910534595
+              ],
+              [
+                81065.72579146145,
+                381913.49932546075
+              ],
+              [
+                81065.68345424767,
+                381913.5074721492
+              ],
+              [
+                81065.64109309943,
+                381913.51549345354
+              ],
+              [
+                81065.59870838805,
+                381913.5233893034
+              ],
+              [
+                81065.55630048508,
+                381913.5311596296
+              ],
+              [
+                81065.51386976225,
+                381913.5388043639
+              ],
+              [
+                81065.4714165915,
+                381913.5463234395
+              ],
+              [
+                81065.428941345,
+                381913.5537167904
+              ],
+              [
+                81065.38644439504,
+                381913.56098435173
+              ],
+              [
+                81065.34392611416,
+                381913.56812605984
+              ],
+              [
+                81065.30138687507,
+                381913.5751418521
+              ],
+              [
+                81065.25882705067,
+                381913.582031667
+              ],
+              [
+                81065.216247014,
+                381913.58879544423
+              ],
+              [
+                81065.17364713836,
+                381913.5954331244
+              ],
+              [
+                81065.13102779714,
+                381913.60194464936
+              ],
+              [
+                81065.08838936394,
+                381913.60832996207
+              ],
+              [
+                81065.04573221254,
+                381913.6145890065
+              ],
+              [
+                81065.00305671684,
+                381913.6207217278
+              ],
+              [
+                81064.96036325095,
+                381913.62672807224
+              ],
+              [
+                81064.91765218909,
+                381913.63260798715
+              ],
+              [
+                81064.87492390569,
+                381913.63836142095
+              ],
+              [
+                81064.83217877528,
+                381913.6439883232
+              ],
+              [
+                81064.78941717256,
+                381913.64948864473
+              ],
+              [
+                81064.74663947237,
+                381913.65486233716
+              ],
+              [
+                81064.70384604971,
+                381913.6601093534
+              ],
+              [
+                81064.66103727967,
+                381913.66522964754
+              ],
+              [
+                81064.61821353754,
+                381913.6702231746
+              ],
+              [
+                81064.57537519868,
+                381913.6750898909
+              ],
+              [
+                81064.53252263862,
+                381913.67982975376
+              ],
+              [
+                81064.489656233,
+                381913.68444272154
+              ],
+              [
+                81064.44677635755,
+                381913.6889287539
+              ],
+              [
+                81064.4038833882,
+                381913.6932878115
+              ],
+              [
+                81064.36097770091,
+                381913.6975198561
+              ],
+              [
+                81064.31805967179,
+                381913.70162485057
+              ],
+              [
+                81064.27512967706,
+                381913.70560275903
+              ],
+              [
+                81064.23218809302,
+                381913.70945354656
+              ],
+              [
+                81064.18923529611,
+                381913.71317717934
+              ],
+              [
+                81064.14627166284,
+                381913.7167736248
+              ],
+              [
+                81064.10329756983,
+                381913.7202428515
+              ],
+              [
+                81064.06031339378,
+                381913.72358482884
+              ],
+              [
+                81064.01731951149,
+                381913.7267995276
+              ],
+              [
+                81063.97431629982,
+                381913.72988691967
+              ],
+              [
+                81063.93130413574,
+                381913.7328469779
+              ],
+              [
+                81063.88828339629,
+                381913.73567967635
+              ],
+              [
+                81063.84525445859,
+                381913.73838499025
+              ],
+              [
+                81063.8022176998,
+                381913.74096289586
+              ],
+              [
+                81063.75917349721,
+                381913.7434133705
+              ],
+              [
+                81063.71612222811,
+                381913.74573639286
+              ],
+              [
+                81063.6730642699,
+                381913.7479319424
+              ],
+              [
+                81063.63,
+                381913.75
+              ],
+              [
+                81063.63,
+                381913.75
+              ],
+              [
+                81059.684,
+                381913.977
+              ],
+              [
+                81059.29,
+                381914
+              ]
+            ]
+          ]
+        },
+        "id": "2c8c5723-6082-5455-8e9d-02bba04b7c0e"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2025-08-07T13:09:20Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.7aa9fd5d538240e9b10e3753a57e3fdb",
+          "lv_publicatiedatum": "2018-03-01T17:33:23Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "bosplantsoen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2018-02-24T14:50:46Z",
+          "version": "d35d49d9-57b6-a481-6aeb-7de54e1d22b2"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81018.279,
+                381839.854
+              ],
+              [
+                81014.476,
+                381840.082
+              ],
+              [
+                81014.652,
+                381842.776
+              ],
+              [
+                81015.003,
+                381848.164
+              ],
+              [
+                81016.245,
+                381848.09
+              ],
+              [
+                81019.994,
+                381847.865
+              ],
+              [
+                81020.26,
+                381851.97
+              ],
+              [
+                81041.08,
+                381850.63
+              ],
+              [
+                81040.853,
+                381847.349
+              ],
+              [
+                81041.081,
+                381847.334
+              ],
+              [
+                81041.386,
+                381851.54
+              ],
+              [
+                81028.224,
+                381852.436
+              ],
+              [
+                81028.2,
+                381853.384
+              ],
+              [
+                81027.028,
+                381857.517
+              ],
+              [
+                81026.579,
+                381861.328
+              ],
+              [
+                81026.43,
+                381864.018
+              ],
+              [
+                81026.728,
+                381868.427
+              ],
+              [
+                81027.326,
+                381872.537
+              ],
+              [
+                81030.095,
+                381893.346
+              ],
+              [
+                81030.09,
+                381893.826
+              ],
+              [
+                81028.692,
+                381893.874
+              ],
+              [
+                81028.789,
+                381897.461
+              ],
+              [
+                81025.607,
+                381897.701
+              ],
+              [
+                81025.801,
+                381900.785
+              ],
+              [
+                81024.498,
+                381900.881
+              ],
+              [
+                81024.511,
+                381901.17
+              ],
+              [
+                81024.16,
+                381901.19
+              ],
+              [
+                81024.32,
+                381904.06
+              ],
+              [
+                81024.636,
+                381904.04
+              ],
+              [
+                81028.186,
+                381904.111
+              ],
+              [
+                81028.454,
+                381908.648
+              ],
+              [
+                81028.75,
+                381913.66
+              ],
+              [
+                81023.585,
+                381913.92
+              ],
+              [
+                81023.477,
+                381904.124
+              ],
+              [
+                81023.32,
+                381889.83
+              ],
+              [
+                81022.662,
+                381882.21
+              ],
+              [
+                81019.465,
+                381867.888
+              ],
+              [
+                81015.382,
+                381856.14
+              ],
+              [
+                81010.263,
+                381837.063
+              ],
+              [
+                81009.044,
+                381832.108
+              ],
+              [
+                81006.613,
+                381821.647
+              ],
+              [
+                81010.23,
+                381821.66
+              ],
+              [
+                81011.83,
+                381821.56
+              ],
+              [
+                81012.39,
+                381830.53
+              ],
+              [
+                81016.59,
+                381830.25
+              ],
+              [
+                81016.659,
+                381830.727
+              ],
+              [
+                81017.728,
+                381830.68
+              ],
+              [
+                81018.279,
+                381839.854
+              ]
+            ]
+          ]
+        },
+        "id": "7ef7e019-2bcb-5c0e-b87b-fbf0c5920646"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2026-09-03T10:15:15Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.7aa9fd5d538240e9b10e3753a57e3fdb",
+          "lv_publicatiedatum": "2025-08-07T13:19:38Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "bosplantsoen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2025-08-07T13:09:20Z",
+          "version": "f6b99aa5-56c6-4709-3aae-3e718fe312c1"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81018.279,
+                381839.854
+              ],
+              [
+                81014.476,
+                381840.082
+              ],
+              [
+                81013.444,
+                381840.144
+              ],
+              [
+                81015.003,
+                381848.164
+              ],
+              [
+                81016.245,
+                381848.09
+              ],
+              [
+                81019.994,
+                381847.865
+              ],
+              [
+                81020.26,
+                381851.97
+              ],
+              [
+                81041.08,
+                381850.63
+              ],
+              [
+                81040.853,
+                381847.349
+              ],
+              [
+                81041.081,
+                381847.334
+              ],
+              [
+                81041.386,
+                381851.54
+              ],
+              [
+                81028.224,
+                381852.436
+              ],
+              [
+                81028.2,
+                381853.384
+              ],
+              [
+                81027.028,
+                381857.517
+              ],
+              [
+                81026.579,
+                381861.328
+              ],
+              [
+                81026.43,
+                381864.018
+              ],
+              [
+                81026.728,
+                381868.427
+              ],
+              [
+                81027.326,
+                381872.537
+              ],
+              [
+                81030.095,
+                381893.346
+              ],
+              [
+                81030.09,
+                381893.826
+              ],
+              [
+                81028.692,
+                381893.874
+              ],
+              [
+                81028.789,
+                381897.461
+              ],
+              [
+                81025.607,
+                381897.701
+              ],
+              [
+                81025.801,
+                381900.785
+              ],
+              [
+                81024.498,
+                381900.881
+              ],
+              [
+                81024.511,
+                381901.17
+              ],
+              [
+                81024.16,
+                381901.19
+              ],
+              [
+                81024.32,
+                381904.06
+              ],
+              [
+                81024.636,
+                381904.04
+              ],
+              [
+                81028.186,
+                381904.111
+              ],
+              [
+                81028.454,
+                381908.648
+              ],
+              [
+                81028.75,
+                381913.66
+              ],
+              [
+                81023.585,
+                381913.92
+              ],
+              [
+                81023.477,
+                381904.124
+              ],
+              [
+                81023.32,
+                381889.83
+              ],
+              [
+                81022.662,
+                381882.21
+              ],
+              [
+                81019.465,
+                381867.888
+              ],
+              [
+                81015.382,
+                381856.14
+              ],
+              [
+                81010.263,
+                381837.063
+              ],
+              [
+                81009.044,
+                381832.108
+              ],
+              [
+                81006.613,
+                381821.647
+              ],
+              [
+                81010.23,
+                381821.66
+              ],
+              [
+                81011.83,
+                381821.56
+              ],
+              [
+                81012.39,
+                381830.53
+              ],
+              [
+                81016.59,
+                381830.25
+              ],
+              [
+                81016.659,
+                381830.727
+              ],
+              [
+                81017.728,
+                381830.68
+              ],
+              [
+                81018.279,
+                381839.854
+              ]
+            ]
+          ]
+        },
+        "id": "c5e565aa-d7fc-56c1-be62-a3b20d847c8c"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.7aa9fd5d538240e9b10e3753a57e3fdb",
+          "lv_publicatiedatum": "2026-09-03T10:58:34Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "heesters",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-09-03T10:15:15Z",
+          "version": "538a1f79-c7ab-3a19-1ac9-a6e21632b46b"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81030.095,
+                381893.346
+              ],
+              [
+                81030.09,
+                381893.826
+              ],
+              [
+                81028.692,
+                381893.874
+              ],
+              [
+                81028.789,
+                381897.461
+              ],
+              [
+                81025.607,
+                381897.701
+              ],
+              [
+                81025.801,
+                381900.785
+              ],
+              [
+                81024.498,
+                381900.881
+              ],
+              [
+                81024.511,
+                381901.17
+              ],
+              [
+                81024.16,
+                381901.19
+              ],
+              [
+                81024.32,
+                381904.06
+              ],
+              [
+                81024.636,
+                381904.04
+              ],
+              [
+                81028.186,
+                381904.111
+              ],
+              [
+                81028.454,
+                381908.648
+              ],
+              [
+                81028.75,
+                381913.66
+              ],
+              [
+                81023.585,
+                381913.92
+              ],
+              [
+                81023.477,
+                381904.124
+              ],
+              [
+                81023.32,
+                381889.83
+              ],
+              [
+                81022.662,
+                381882.21
+              ],
+              [
+                81019.465,
+                381867.888
+              ],
+              [
+                81015.382,
+                381856.14
+              ],
+              [
+                81010.843,
+                381839.223
+              ],
+              [
+                81018.201,
+                381838.559
+              ],
+              [
+                81018.279,
+                381839.854
+              ],
+              [
+                81014.476,
+                381840.082
+              ],
+              [
+                81013.444,
+                381840.144
+              ],
+              [
+                81015.003,
+                381848.164
+              ],
+              [
+                81016.245,
+                381848.09
+              ],
+              [
+                81019.994,
+                381847.865
+              ],
+              [
+                81020.26,
+                381851.97
+              ],
+              [
+                81028.125,
+                381851.464
+              ],
+              [
+                81028.178,
+                381852.295
+              ],
+              [
+                81028.2,
+                381853.384
+              ],
+              [
+                81027.028,
+                381857.517
+              ],
+              [
+                81026.579,
+                381861.328
+              ],
+              [
+                81026.43,
+                381864.018
+              ],
+              [
+                81026.728,
+                381868.427
+              ],
+              [
+                81027.326,
+                381872.537
+              ],
+              [
+                81030.095,
+                381893.346
+              ]
+            ]
+          ]
+        },
+        "id": "f372547e-2fd4-5903-909b-e955443524a3"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2026-09-03T10:15:15Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.89ef1570cbdc4ffea56a63d34182bd8f",
+          "lv_publicatiedatum": "2018-01-15T09:27:52Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2017-09-27T17:02:58Z",
+          "version": "a8f109bc-6929-e48c-79ce-a9e8c75087ed"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81048.472,
+                381848.999
+              ],
+              [
+                81051.195,
+                381891.926
+              ],
+              [
+                81030.095,
+                381893.346
+              ],
+              [
+                81027.326,
+                381872.537
+              ],
+              [
+                81026.728,
+                381868.427
+              ],
+              [
+                81026.43,
+                381864.018
+              ],
+              [
+                81026.579,
+                381861.328
+              ],
+              [
+                81027.028,
+                381857.517
+              ],
+              [
+                81028.2,
+                381853.384
+              ],
+              [
+                81042.717,
+                381852.606
+              ],
+              [
+                81042.568,
+                381849.421
+              ],
+              [
+                81048.472,
+                381848.999
+              ]
+            ]
+          ]
+        },
+        "id": "9f368311-c736-5443-baba-1e908bd46213"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.89ef1570cbdc4ffea56a63d34182bd8f",
+          "lv_publicatiedatum": "2026-09-03T10:58:34Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-09-03T10:15:15Z",
+          "version": "c425fe05-6b06-da34-fd0a-24b777793014"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81039.636,
+                381851.557
+              ],
+              [
+                81039.583,
+                381850.726
+              ],
+              [
+                81040.883,
+                381850.643
+              ],
+              [
+                81040.936,
+                381851.474
+              ],
+              [
+                81041.893,
+                381851.412
+              ],
+              [
+                81041.768,
+                381849.478
+              ],
+              [
+                81042.568,
+                381849.421
+              ],
+              [
+                81048.472,
+                381848.999
+              ],
+              [
+                81051.195,
+                381891.926
+              ],
+              [
+                81030.095,
+                381893.346
+              ],
+              [
+                81027.326,
+                381872.537
+              ],
+              [
+                81026.728,
+                381868.427
+              ],
+              [
+                81026.43,
+                381864.018
+              ],
+              [
+                81026.579,
+                381861.328
+              ],
+              [
+                81027.028,
+                381857.517
+              ],
+              [
+                81028.2,
+                381853.384
+              ],
+              [
+                81028.178,
+                381852.295
+              ],
+              [
+                81039.636,
+                381851.557
+              ]
+            ],
+            [
+              [
+                81040.323,
+                381878.813
+              ],
+              [
+                81040.067,
+                381878.228
+              ],
+              [
+                81039.714,
+                381877.696
+              ],
+              [
+                81039.274,
+                381877.233
+              ],
+              [
+                81038.761,
+                381876.854
+              ],
+              [
+                81038.317,
+                381876.395
+              ],
+              [
+                81037.801,
+                381876.02
+              ],
+              [
+                81037.227,
+                381875.74
+              ],
+              [
+                81036.613,
+                381875.564
+              ],
+              [
+                81035.978,
+                381875.497
+              ],
+              [
+                81035.341,
+                381875.54
+              ],
+              [
+                81034.722,
+                381875.693
+              ],
+              [
+                81034.138,
+                381875.952
+              ],
+              [
+                81033.607,
+                381876.307
+              ],
+              [
+                81033.147,
+                381876.749
+              ],
+              [
+                81032.769,
+                381877.264
+              ],
+              [
+                81032.487,
+                381877.836
+              ],
+              [
+                81032.308,
+                381878.449
+              ],
+              [
+                81032.237,
+                381879.084
+              ],
+              [
+                81032.278,
+                381879.721
+              ],
+              [
+                81032.428,
+                381880.341
+              ],
+              [
+                81032.684,
+                381880.926
+              ],
+              [
+                81033.037,
+                381881.458
+              ],
+              [
+                81033.476,
+                381881.921
+              ],
+              [
+                81033.99,
+                381882.301
+              ],
+              [
+                81034.434,
+                381882.76
+              ],
+              [
+                81034.95,
+                381883.134
+              ],
+              [
+                81035.524,
+                381883.414
+              ],
+              [
+                81036.138,
+                381883.59
+              ],
+              [
+                81036.773,
+                381883.658
+              ],
+              [
+                81037.41,
+                381883.614
+              ],
+              [
+                81038.029,
+                381883.461
+              ],
+              [
+                81038.613,
+                381883.203
+              ],
+              [
+                81039.143,
+                381882.847
+              ],
+              [
+                81039.604,
+                381882.406
+              ],
+              [
+                81039.982,
+                381881.891
+              ],
+              [
+                81040.264,
+                381881.318
+              ],
+              [
+                81040.443,
+                381880.705
+              ],
+              [
+                81040.513,
+                381880.071
+              ],
+              [
+                81040.473,
+                381879.434
+              ],
+              [
+                81040.323,
+                381878.813
+              ]
+            ]
+          ]
+        },
+        "id": "d69f2f38-f61a-5e6f-8a37-7962263c6a92"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": "2026-09-03T10:15:15Z",
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.956abb3db2214ecd82ad7a4909024b27",
+          "lv_publicatiedatum": "2016-10-26T15:18:26Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "bodembedekkers",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2016-09-29T04:06:38Z",
+          "version": "1a39a4cd-8b5d-0296-341e-cbb3eb4f7ff5"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81024.086,
+                381939.414
+              ],
+              [
+                81024.289,
+                381944.071
+              ],
+              [
+                81024.133,
+                381944.571
+              ],
+              [
+                81023.847,
+                381944.818
+              ],
+              [
+                81023.571,
+                381944.984
+              ],
+              [
+                81023.263,
+                381945.108
+              ],
+              [
+                81023.25,
+                381940.31
+              ],
+              [
+                81023.076,
+                381936.326
+              ],
+              [
+                81022.562,
+                381924.536
+              ],
+              [
+                81022.89,
+                381924.518
+              ],
+              [
+                81023.435,
+                381924.489
+              ],
+              [
+                81023.488,
+                381925.711
+              ],
+              [
+                81024.086,
+                381939.414
+              ]
+            ]
+          ]
+        },
+        "id": "db700ff9-16a4-5961-91ed-41f1d93b3026"
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "bronhouder": "G0873",
+          "creation_date": "2016-05-12T22:00:00Z",
+          "eind_registratie": null,
+          "fysiek_voorkomen": "groenvoorziening",
+          "fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerrein",
+          "in_onderzoek": null,
+          "in_onderzoek_leeg": "geenWaarde",
+          "kruinlijn_leeg": "waardeOnbekend",
+          "lokaal_id": "G0873.956abb3db2214ecd82ad7a4909024b27",
+          "lv_publicatiedatum": "2026-09-03T10:58:34Z",
+          "op_talud": "false",
+          "op_talud_leeg": null,
+          "plus_fysiek_voorkomen": "gras- en kruidachtigen",
+          "plus_fysiek_voorkomen_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#FysiekVoorkomenBegroeidTerreinPlus",
+          "plus_fysiek_voorkomen_leeg": null,
+          "plus_status": null,
+          "plus_status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#VoidReasonValue",
+          "plus_status_leeg": "geenWaarde",
+          "relatieve_hoogteligging": 0,
+          "status": "bestaand",
+          "status_codespace": "http://www.geostandaarden.nl/imgeo/def/2.1#Status",
+          "status_leeg": null,
+          "termination_date": null,
+          "termination_date_leeg": "geenWaarde",
+          "tijdstip_registratie": "2026-09-03T10:15:15Z",
+          "version": "dd1607e5-9601-7613-91ad-a27e8c80deeb"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                81023.435,
+                381924.489
+              ],
+              [
+                81023.488,
+                381925.711
+              ],
+              [
+                81024.086,
+                381939.414
+              ],
+              [
+                81024.289,
+                381944.071
+              ],
+              [
+                81024.133,
+                381944.571
+              ],
+              [
+                81023.847,
+                381944.818
+              ],
+              [
+                81023.571,
+                381944.984
+              ],
+              [
+                81023.263,
+                381945.108
+              ],
+              [
+                81023.25,
+                381940.31
+              ],
+              [
+                81023.076,
+                381936.326
+              ],
+              [
+                81022.562,
+                381924.536
+              ],
+              [
+                81022.89,
+                381924.518
+              ],
+              [
+                81023.435,
+                381924.489
+              ]
+            ]
+          ]
+        },
+        "id": "7c3b58d9-740f-5706-9244-a6a74201952f"
+      }
+    ],
+    "numberReturned": 23
+  }
+}
