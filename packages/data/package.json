@@ -1,0 +1,14 @@
+{
+  "name": "@vergunbuy/data",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Adapters for public data APIs (PDOK, BAG, BRK, BGT, 3D BAG, DSO). Each adapter validates what it receives and reports to the trace.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@vergunbuy/engine": "workspace:*",
+    "zod": "^3.23.0"
+  }
+}

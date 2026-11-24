@@ -1,0 +1,20 @@
+{
+  "name": "@vergunbuy/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "HTTP API (Hono). Runs as Vercel Functions in production and as a Node server locally.",
+  "scripts": {
+    "dev": "tsx watch src/dev.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.0",
+    "@vergunbuy/data": "workspace:*",
+    "@vergunbuy/engine": "workspace:*",
+    "hono": "^4.6.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0"
+  }
+}

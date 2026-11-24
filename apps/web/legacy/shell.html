@@ -1,0 +1,309 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VergunBuy Carport Check</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Business work tool on white: header bar, then screens. The listing screen has three columns:
+   listing & controls | site plan (2D/3D) | result & checks. Single light theme by design. */
+:root{
+  color-scheme:light;
+  --bg:#ffffff; --panel:#ffffff; --ink:#1b2430; --muted:#5f6b78; --line:#e1e5ea; --soft:#f6f8fa;
+  --accent:#123a63; --accent-soft:#eaf0f7;
+  --ok:#1e7a46; --ok-soft:#e3f3e9; --warn:#a86a00; --warn-soft:#fdf1d8; --bad:#b3261e; --bad-soft:#fbe5e3;
+  --plot:#fbfcfb; --road:#d6dadf; --house:#7b8794; --neigh:#cfd5dc; --tree:#4c8a5a; --ground:#eef1ee;
+  --f-body:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.5}
+.bar{border-bottom:1px solid var(--line);background:var(--bg)}
+.bar-in,.wrap{max-width:1440px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.bar-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo b{display:grid;place-items:center;width:28px;height:28px;background:var(--accent);color:#fff;font-size:12px;border-radius:3px;letter-spacing:.02em}
+.bar .crumb{color:var(--muted);font-size:13px;padding-left:14px;border-left:1px solid var(--line)}
+.tag{font-size:11px;font-weight:600;color:var(--warn);border:1px solid currentColor;border-radius:3px;padding:1px 6px;background:var(--warn-soft);white-space:nowrap}
+.bar .who{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
+.wrap{padding-block:20px 40px}
+.grid{display:grid;grid-template-columns:280px minmax(0,1fr) 360px;align-items:start}
+.grid>*{padding:0 20px;min-width:0}
+.grid>*:first-child{padding-left:0}
+.grid>*:last-child{padding-right:0}
+.grid>*+*{border-left:1px solid var(--line)}
+@media (max-width:1180px){.grid{grid-template-columns:260px minmax(0,1fr)}.right{grid-column:1/-1;border-left:0!important;border-top:1px solid var(--line);padding:20px 0 0!important;margin-top:20px}}
+@media (max-width:780px){.grid{grid-template-columns:minmax(0,1fr)}.grid>*{padding:0!important;border-left:0!important}.grid>*+*{border-top:1px solid var(--line);padding-top:20px!important;margin-top:20px}}
+.stack{display:flex;flex-direction:column;gap:22px;min-width:0}
+h2{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 10px}
+h3{font-size:18px;margin:0;font-weight:600;text-wrap:balance;letter-spacing:-.01em}
+.muted{color:var(--muted)}
+.mono{font-variant-numeric:tabular-nums}
+.big{font-weight:600;font-size:15px}
+label.field{display:block;font-size:12px;color:var(--muted);margin:14px 0 6px}
+.seg{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{flex:1;border:0;background:var(--bg);color:var(--ink);font:inherit;padding:7px 8px;cursor:pointer;font-size:13px}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:500}
+.seg.small button{font-size:12px;padding:5px 10px;white-space:nowrap}
+.toggle{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;cursor:pointer}
+.toggle input{accent-color:var(--accent);width:15px;height:15px}
+.dims{display:flex;gap:12px;flex-wrap:wrap}
+.dims label{display:flex;align-items:center;gap:6px;font-size:13px}
+.dims input{width:68px;font:inherit;font-size:13px;padding:5px 6px;border:1px solid var(--line);border-radius:4px;font-variant-numeric:tabular-nums}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13px;margin:10px 0 12px}
+.kv dt{color:var(--muted)} .kv dd{margin:0;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:11px;font-weight:600;padding:1px 6px;border-radius:3px;white-space:nowrap;border:1px solid currentColor}
+.pill.g{background:var(--ok-soft);color:var(--ok)} .pill.y{background:var(--warn-soft);color:var(--warn)} .pill.r{background:var(--bad-soft);color:var(--bad)} .pill.n{color:var(--muted);background:var(--soft)}
+.reno{display:flex;flex-wrap:wrap;gap:6px}
+.reno span{font-size:12px;padding:3px 8px;border:1px solid var(--line);border-radius:3px;color:var(--muted)}
+.reno span.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:600}
+.lst{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.lst button{display:block;text-align:left;width:100%;border:0;border-bottom:1px solid var(--line);background:var(--bg);padding:10px 8px;cursor:pointer;color:var(--ink);font:inherit;border-left:3px solid transparent}
+.lst button:hover{background:var(--soft)}
+.lst button[aria-pressed="true"]{background:var(--accent-soft);border-left-color:var(--accent)}
+.lst .meta{font-size:12px;color:var(--muted)}
+.viewhead{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.viewhead .seg{margin-left:auto;min-width:150px}
+.stage{position:relative;border:1px solid var(--line);background:var(--ground);overflow:hidden;min-height:200px}
+#plan{display:block;width:100%;height:auto;max-height:640px;touch-action:none}
+#three{width:100%;height:560px;display:block}
+.flag{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:13px;line-height:1.4;margin:10px 0 0;min-height:22px}
+.flag ul{display:contents;list-style:none}.flag li{color:var(--ink)}.flag li+li::before{content:"· ";color:var(--muted)}.flag div{color:var(--muted)}
+#three canvas{touch-action:none}
+.hint3d{position:absolute;right:8px;bottom:8px;font-size:11px;color:var(--muted);background:rgba(255,255,255,.85);padding:2px 6px;border-radius:3px;pointer-events:none}
+.overlay{position:absolute;inset:0;display:grid;place-items:center;background:rgba(255,255,255,.8);font-size:13px;color:var(--muted)}
+.animbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:13px}
+.animbar .lbl{font-weight:600}
+.animmsg{font-size:12px;color:var(--muted)}
+.animmsg.bad{color:var(--bad);font-weight:500}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:10px;vertical-align:-1px;margin-right:6px;border:1px solid var(--line)}
+.hint{font-size:12px;color:var(--muted);margin-top:6px}
+.optlist{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center}
+.optlist .lbl{font-size:12px;color:var(--muted);margin-right:2px}
+.optbtn{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:4px;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.optbtn:hover{background:var(--soft)}
+.optbtn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.dot{width:9px;height:9px;display:inline-block;border-radius:2px}
+.detail-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.verdict{font-size:14px;margin:6px 0 4px}
+details.more{border-top:1px solid var(--line);padding:10px 0}
+details.more>summary{cursor:pointer;font-weight:600;font-size:13px;list-style-position:outside}
+details.more>summary .muted{font-weight:400}
+.group h4{font-size:12px;margin:14px 0 4px;color:var(--muted);font-weight:600}
+.trace{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.trace li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px;font-size:13px;padding:7px 0;border-bottom:1px solid var(--line)}
+.trace .ic{font-weight:700}
+.trace .pass .ic{color:var(--ok)} .trace .cond .ic{color:var(--warn)} .trace .fail .ic{color:var(--bad)} .trace .note .ic{color:var(--accent)} .trace .assume .ic{color:var(--muted)} .trace .missing .ic{color:var(--muted)}
+.trace .src{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.cat{font-size:11px;color:var(--muted);font-weight:600;margin-right:6px}
+.steps{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;padding:7px 0;font-size:13px;border-bottom:1px solid var(--line)}
+.steps .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:1px}
+.steps li.done .n{color:var(--ok);font-weight:600}
+.steps li.active .n{color:var(--accent);font-weight:600}
+.steps .t{font-weight:500}
+.steps .d{font-size:12px;color:var(--muted)}
+.badge{display:inline-block;font-size:10px;font-weight:600;color:var(--warn);border:1px solid currentColor;border-radius:3px;padding:0 4px;margin-left:6px;vertical-align:1px}
+.runbtn{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:4px;padding:4px 10px;font:inherit;font-size:12px;cursor:pointer;margin-top:8px}
+.runbtn:hover{background:var(--soft)}
+.blocked{margin-top:12px;font-size:13px}
+.blocked ul{padding-left:18px;margin:6px 0 0}
+.blocked li{margin-bottom:4px}
+.note{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5}
+.note a{color:var(--accent)}
+.alt{font-size:12px;color:var(--muted);margin:2px 0 0}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+svg text{font-family:var(--f-body)}
+.selfp{cursor:move}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.btn{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:4px;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:#0d2c4c}
+.btn.small{padding:4px 10px;font-size:12px}
+.btn:disabled{opacity:.45;cursor:default}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--accent);text-decoration:none;font-size:13px;margin-bottom:12px}
+.back:hover{text-decoration:underline}
+.login{max-width:380px;margin:48px auto;border:1px solid var(--line);padding:28px}
+.login h1{font-size:22px;margin:0 0 4px;font-weight:600}
+.login label{display:block;font-size:12px;color:var(--muted);margin:16px 0 6px}
+.login input{width:100%;font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
+.demo{font-size:12px;color:var(--muted);background:var(--soft);border-left:3px solid var(--accent);padding:8px 10px;margin-top:16px}
+.page-h{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.page-h h1{font-size:22px;margin:0;font-weight:600;letter-spacing:-.01em}
+.page-h .sub{color:var(--muted);font-size:13px}
+.page-h .act{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.table{width:100%;border-collapse:collapse;font-size:14px}
+.table th{text-align:left;font-size:12px;font-weight:600;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--line)}
+.table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.table tr.row{cursor:pointer}
+.table tr.row:hover td{background:var(--soft)}
+.tablewrap{overflow-x:auto}
+.aboutbox{margin-top:28px}.about{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:12px}
+@media (max-width:900px){.about{grid-template-columns:minmax(0,1fr)}}
+.about h2{font-size:14px}
+.about ul{margin:0;padding-left:18px;font-size:13px}
+.about li{margin-bottom:6px}
+.about p{font-size:13px;margin:0}
+.rep{max-width:880px}
+.rep h2{font-size:16px;margin:0 0 6px}
+.rep .rh{border-top:1px solid var(--line);padding-top:18px;margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px}
+@media (max-width:760px){.rep .rh{grid-template-columns:minmax(0,1fr)}}
+.rep ul{margin:6px 0 0;padding-left:18px;font-size:13px}
+.miniplan{width:100%;height:auto;border:1px solid var(--line);background:var(--ground);display:block}
+.copied{font-size:12px;color:var(--ok)}
+@media print{.bar,.back,.page-h .act,.noprint{display:none!important}.wrap{padding:0}}
+</style>
+
+<header class="bar"><div class="bar-in">
+  <div class="logo"><b>VB</b>VergunBuy</div>
+  <span class="crumb" id="crumb">For selling agents</span>
+  <span class="tag" title="All properties and results in this prototype use fictional sample data">Prototype · sample data</span>
+  <span class="who" id="who" hidden><span>Demo selling agent · Demo makelaardij</span><button class="btn small" id="signout">Sign out</button></span>
+</div></header>
+
+<div class="wrap">
+  <!-- LOGIN -->
+  <section id="v-login" class="view" aria-labelledby="h-login">
+    <div class="login" role="form" aria-labelledby="h-login">
+      <h1 id="h-login">Sign in</h1>
+      <div class="muted" style="font-size:13px">VergunBuy for selling agents</div>
+      <label for="li-email">Email</label>
+      <input id="li-email" type="email" value="demo@vergunbuy.example" autocomplete="off">
+      <label for="li-pass">Password</label>
+      <input id="li-pass" type="password" value="demo" autocomplete="off">
+      <button class="btn primary" type="button" id="signin" style="margin-top:20px;width:100%;justify-content:center">Sign in</button>
+      <div class="demo">Demo only. There are no real accounts: the fields are filled in for you and nothing is sent anywhere. Don't enter a real password.</div>
+    </div>
+  </section>
+
+  <!-- LISTINGS -->
+  <section id="v-listings" class="view" hidden aria-labelledby="h-listings">
+    <div class="page-h"><div><h1 id="h-listings">Your listings</h1><div class="sub">Homes you are selling in Gemeente Woensdrecht · fictional sample data</div></div></div>
+    <div class="tablewrap"><table class="table">
+      <thead><tr><th>Listing</th><th>Type</th><th>Asking price</th><th>Single carport</th><th>Double carport</th><th></th></tr></thead>
+      <tbody id="listing-rows"></tbody>
+    </table></div>
+    <details class="more aboutbox"><summary>About this prototype</summary><div class="about">
+      <div><h2>Works in this prototype</h2><ul>
+        <li>Placement search: every carport position on a 0.5 m grid, in both orientations (opening to the front/back or to the side).</li>
+        <li>Programmed rule checks with an explanation and source for each result.</li>
+        <li>Vehicle check: the full area the car sweeps (6.5 m outer turning radius, 0.5 m clearance), a straight entry into the bay, and for a double carport each car with the other bay occupied.</li>
+        <li>What-if: drag and resize a footprint; the checks update.</li></ul></div>
+      <div><h2>Simulated or still to validate</h2><ul>
+        <li>Property data is fictional. There is no live link to BAG or Kadaster yet.</li>
+        <li>Rule coverage is a sample modelled on Gemeente Woensdrecht, not verified with Vergunklaar.</li>
+        <li>The vehicle model is a provisional assumption, not validated against a standard or real drives. The manoeuvre on the public road is not checked.</li>
+        <li>Zoning, floor heights and underground services are assumed or not checked.</li></ul></div>
+      <div><h2>Why a carport first</h2><p>The planned rear-extension pilot depends on whether a house was extended before, which public data doesn't show. A carport can be checked from the plot alone, and it tests something an extension doesn't: whether a car can actually reach it. The same engine (placement search, rule checks, explanations) carries over to ground-floor extensions and other outbuildings next.</p></div>
+    </div></details>
+  </section>
+
+  <!-- LISTING CHECK -->
+  <div id="v-listing" class="view" hidden>
+  <a class="back" href="#listings">← All listings</a>
+  <div class="grid">
+    <div class="stack">
+      <section aria-labelledby="h-l">
+        <h2 id="h-l">Listing</h2>
+        <div class="big" id="l-addr">—</div>
+        <div class="muted" style="font-size:13px" id="l-sub">—</div>
+        <dl class="kv" id="l-kv"></dl>
+        <a class="btn" id="l-sheet" href="#">Buyer information sheet</a>
+      </section>
+      <section aria-labelledby="h-reno">
+        <h2 id="h-reno">Renovation potential</h2>
+        <div class="reno"><span class="on">Carport</span><span>More renovations · later</span></div>
+        <label class="field" id="lbl-size">Carport</label>
+        <div class="seg" role="group" aria-labelledby="lbl-size">
+          <button data-size="single" aria-pressed="true">Single · 1 car</button>
+          <button data-size="double" aria-pressed="false">Double · 2 cars</button>
+        </div>
+        <label class="field">Footprint · drag it on the plan</label>
+        <div class="dims">
+          <label>Width <input id="in-w" type="number" min="2.5" max="12" step="0.5" inputmode="decimal"> m</label>
+          <label>Depth <input id="in-d" type="number" min="4" max="10" step="0.5" inputmode="decimal"> m</label>
+        </div>
+        <label class="field" id="lbl-o">Orientation · rotates the footprint 90°</label>
+        <div class="seg small" role="group" aria-labelledby="lbl-o">
+          <button data-o="ns" aria-pressed="true" title="Cars drive in from the road side or from the back">Opens front/back</button>
+          <button data-o="ew" aria-pressed="false" title="Cars drive in from the left or right">Opens to the side</button>
+        </div>
+        <button class="btn small" id="reset" style="margin-top:10px" hidden>Back to suggested positions</button>
+        <label class="toggle"><input type="checkbox" id="show-yellow" checked> Show positions that need a permit</label>
+      </section>
+    </div>
+
+    <section aria-labelledby="h-plan">
+      <div class="viewhead">
+        <div style="min-width:0"><h3 id="h-plan">—</h3><div class="muted" id="plan-sub" style="font-size:13px">—</div></div>
+        <div class="seg" role="group" aria-label="View"><button id="v2d" aria-pressed="true">2D plan</button><button id="v3d" aria-pressed="false">3D</button></div>
+      </div>
+      <div class="stage">
+        <svg id="plan" role="img" aria-label="Site plan with carport positions and the car's swept path"></svg>
+        <div id="three" hidden></div>
+        <div class="hint3d" id="hint3d" hidden>Drag to rotate · pinch or scroll to zoom</div>
+        <div class="overlay" id="busy" hidden>Analysing the plot…</div>
+      </div>
+      <div class="flag" id="flag" aria-live="polite"></div>
+      <div class="animbar">
+        <span class="lbl">Drive check</span>
+        <div class="seg small" role="group" aria-label="Which car" id="bayseg" hidden>
+          <button data-bay="0" aria-pressed="true">Car into bay 1</button>
+          <button data-bay="1" aria-pressed="false">Car into bay 2</button>
+        </div><span class="animmsg" id="baynote" hidden>the other bay is occupied</span>
+        <button class="btn small primary" id="play">▶ Drive in</button><button class="btn small" id="play-out">▶ Drive out</button>
+        <span class="animmsg" id="animmsg" role="status"></span>
+      </div>
+      <div class="optlist" id="optlist"></div>
+      <div class="legend">
+        <span><i style="background:var(--ok-soft);border-color:var(--ok)"></i>Potentially permit-free area*</span>
+        <span><i style="background:var(--warn-soft);border-color:var(--warn)"></i>Permit or conditions area*</span>
+        <span><i style="background:var(--accent);opacity:.25;border-color:var(--accent)"></i>Area swept by the car</span>
+        <span><i style="background:var(--house)"></i>House</span>
+        <span><i style="background:var(--neigh)"></i>Neighbours / sheds</span>
+        <span><i style="background:transparent;border:1px dashed var(--bad)"></i>Protected root zone</span>
+        <span><i style="background:var(--ink);width:8px;height:8px;border-radius:50%"></i>Street object (a new exit keeps 1 m away)</span>
+        <span><i style="background:#e6e9ec"></i>Pavement</span>
+        <span><i style="background:#dfe9d7"></i>Verge</span>
+        <span id="lg-exit"><i style="background:var(--accent);border-color:var(--accent);height:4px;vertical-align:2px"></i>Existing driveway exit</span>
+      </div>
+      <div class="hint">* Where a carport of this size can stand. Each footprint is still checked on its own.</div>
+    </section>
+
+    <div class="stack right">
+      <section aria-labelledby="h-res">
+        <h2 id="h-res">Result</h2>
+        <div id="result"></div>
+      </section>
+      <div>
+        <details class="more" id="checks"><summary id="checks-sum">Checks and sources</summary><div id="checklist"></div></details>
+        <details class="more"><summary>How this result was produced</summary>
+          <button class="runbtn" id="run">Replay analysis steps</button>
+          <ol class="steps" id="steps"></ol></details>
+        <p class="note">Sample rules modelled on the <a href="https://lokaleregelgeving.overheid.nl/CVDR696433" target="_blank" rel="noopener">omgevingsplan of Gemeente Woensdrecht</a>, its <a href="https://repository.officiele-overheidspublicaties.nl/CVDR/CVDR110398/4/html/CVDR110398_4.html" target="_blank" rel="noopener">driveway exit policy</a> and its tree rules. Properties are fictional. Indicative only, not legal advice; a permit application is assessed by the municipality.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- BUYER SHEET -->
+  <section id="v-sheet" class="view rep" hidden aria-labelledby="h-sheet">
+    <a class="back" id="sheet-back" href="#">← Back to listing</a>
+    <div class="page-h"><div><h1 id="h-sheet">—</h1><div class="sub" id="sheet-sub">—</div></div>
+      <div class="act"><button class="btn" id="sheet-copy">Copy text</button><button class="btn" id="sheet-print">Print / save as PDF</button><span class="copied" id="sheet-msg" hidden></span></div></div>
+    <div id="sheet-body"></div>
+    <textarea id="sheet-text" aria-label="Sheet text" readonly hidden style="width:100%;height:220px;margin-top:12px;font:inherit;font-size:13px"></textarea>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+/*ENGINE*/
+/*UI*/
+})();
+</script>
