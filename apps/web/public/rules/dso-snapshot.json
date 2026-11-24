@@ -1,0 +1,4506 @@
+{
+ "schema": 1,
+ "takenAt": "2026-11-24T22:41:58.449Z",
+ "points": [
+  {
+   "name": "Putte, Verdelingsweg 514",
+   "x": 86549.8,
+   "y": 376598.204,
+   "checkedAt": "2026-11-24T22:41:58.449Z",
+   "latestAttemptComplete": true,
+   "fingerprint": "63a06a438bb77ae5",
+   "documents": [
+    {
+     "workId": "/akn/nl/act/mnre1034/2020/regOW01",
+     "expressionId": "/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1",
+     "technischId": null,
+     "title": "Omgevingswet",
+     "citeerTitel": "Omgevingswet",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2020-08-01",
+     "validSince": "2020-08-01",
+     "registeredAt": "2021-11-17T13:43:15.981086Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2021/OOWATRXX1",
+     "expressionId": "/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1",
+     "technischId": null,
+     "title": "Aansluitdocument Rijk",
+     "citeerTitel": "Aansluitdocument Rijk",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-12-01",
+     "validSince": "2021-12-01",
+     "registeredAt": "2021-12-02T12:41:34.775823Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/NOVI011",
+     "expressionId": "/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1",
+     "technischId": null,
+     "title": "Nationale Omgevingsvisie",
+     "citeerTitel": "Nationale Omgevingsvisie: Duurzaam perspectief voor onze leefomgeving",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-02-23",
+     "validSince": "2021-02-23",
+     "registeredAt": "2023-03-03T13:02:09.58066Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873",
+     "expressionId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1",
+     "technischId": null,
+     "title": "Voorbeschermingsregels hyperscale datacentra",
+     "citeerTitel": "Voorbeschermingsregels hyperscale datacentra",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2024-01-01",
+     "validSince": "2024-01-01",
+     "registeredAt": "2023-12-21T17:00:38.523473Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086",
+     "technischId": null,
+     "title": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "citeerTitel": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": "2024-08-26",
+     "validSince": "2024-08-26",
+     "registeredAt": "2024-07-15T10:32:22.148232Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22/nld@65",
+     "technischId": null,
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2024-12-05",
+     "validSince": "2024-12-05",
+     "registeredAt": "2024-12-05T15:42:58.096395Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2024/2_22/nld@65"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2024/PEH",
+     "expressionId": "/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2",
+     "technischId": null,
+     "title": "Programma Energiehoofdstructuur",
+     "citeerTitel": "Programma Energiehoofdstructuur",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 2,
+     "inForceSince": "2025-02-20",
+     "validSince": "2025-02-20",
+     "registeredAt": "2025-02-19T17:22:07.541778Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09",
+     "technischId": null,
+     "title": "Programma Integraal Riviermanagement",
+     "citeerTitel": "Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-10",
+     "validSince": "2025-04-10",
+     "registeredAt": "2025-04-10T11:25:37.948251Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/2_25",
+     "expressionId": "/akn/nl/act/pv30/2025/2_25/nld@67",
+     "technischId": null,
+     "title": "Regionaal Water en Bodem Programma",
+     "citeerTitel": "Regionaal Water en Bodem Programma (RWP)",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-17",
+     "validSince": "2025-04-17",
+     "registeredAt": "2025-04-17T08:15:41.240645Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/2_25/nld@67"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14",
+     "technischId": null,
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-01-14",
+     "validSince": "2026-01-14",
+     "registeredAt": "2026-01-14T08:25:49.258497Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef",
+     "expressionId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3",
+     "technischId": null,
+     "title": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "citeerTitel": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 3,
+     "inForceSince": "2026-05-15",
+     "validSince": "2026-05-15",
+     "registeredAt": "2026-05-15T07:54:27.785155Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784",
+     "technischId": null,
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 11,
+     "inForceSince": "2026-05-21",
+     "validSince": "2026-05-21",
+     "registeredAt": "2026-05-20T09:02:49.998344Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506",
+     "technischId": null,
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 3,
+     "inForceSince": "2026-06-15",
+     "validSince": "2026-06-15",
+     "registeredAt": "2026-06-15T07:43:06.464513Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2026/000028",
+     "expressionId": "/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01",
+     "technischId": null,
+     "title": "Programma Mariene Strategie Deel\n                                1",
+     "citeerTitel": "Programma Mariene Strategie Deel 1",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-07-01",
+     "validSince": "2026-07-01",
+     "registeredAt": "2026-07-01T08:08:07.354646Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041330",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over activiteiten in de fysieke leefomgeving (Besluit activiteiten leefomgeving)",
+     "citeerTitel": "Besluit activiteiten leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041313",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over de kwaliteit van de fysieke leefomgeving en de uitoefening van taken en bevoegdheden (Besluit kwaliteit leefomgeving)",
+     "citeerTitel": "Besluit kwaliteit leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041297",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over bouwwerken in de fysieke leefomgeving (Besluit bouwwerken leefomgeving)",
+     "citeerTitel": "Besluit bouwwerken leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2019/reg0001",
+     "expressionId": "/akn/nl/act/mnre1034/2019/reg0001/nld@12-0",
+     "technischId": null,
+     "title": "Regeling van de Minister voor Milieu en Wonen, de Staatssecretaris van Defensie, de Minister van Economische Zaken en Klimaat, de Minister van Infrastructuur en Waterstaat, de Minister van Landbouw, Natuur en Voedselkwaliteit en de Minister van Onderwijs, Cultuur en Wetenschap van 21 november 2019, houdende regels over het beschermen en benutten van de fysieke leefomgeving (Omgevingsregeling)",
+     "citeerTitel": "Omgevingsregeling",
+     "kind": "Ministeriële Regeling",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 13,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2019/reg0001/nld@12-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041278",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende procedurele regels en regels over algemene onderwerpen over het beschermen en benutten van de fysieke leefomgeving (Omgevingsbesluit)",
+     "citeerTitel": "Omgevingsbesluit",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7",
+     "technischId": null,
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 7,
+     "inForceSince": "2026-10-30",
+     "validSince": "2026-10-30",
+     "registeredAt": "2026-10-30T09:04:15.997996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7"
+    }
+   ],
+   "drafts": [
+    {
+     "workId": "/akn/nl/act/mnre1153/2023/NPLG",
+     "expressionId": "/akn/nl/act/mnre1153/2023/NPLG/nld@2023-12-15;1",
+     "technischId": "_akn_nl_act_mnre1153_2023_NPLG_akn_nl_bill_mnre1153_2024_e4ccdd4594b6432c8de1c8bba11063c5",
+     "title": "Nationaal Programma Landelijk Gebied",
+     "citeerTitel": "Nationaal Programma Landelijk Gebied",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1153",
+      "name": "ministerie van Landbouw, Natuur en Voedselkwaliteit",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-11T12:20:01.720194Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1153/2024/e4ccdd4594b6432c8de1c8bba11063c5"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2024-01-31",
+     "technischId": "_akn_nl_act_mnre1130_2024_Ontwerp_IRM_akn_nl_bill_mnre1130_2024_Ontwerp_IRM",
+     "title": "Ontwerp Programma Integraal Riviermanagement",
+     "citeerTitel": "Ontwerp Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-31T14:37:44.475595Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1130/2024/Ontwerp_IRM"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43/nld@2024-02-06",
+     "technischId": "_akn_nl_act_ws0652_2024_Regelinga06cb0dac723494c99283c2dae42af43_akn_nl_bill_ws0652_2024_besluit2668234057eb4c5dbf8329a327cab9ad",
+     "title": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "citeerTitel": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-02-08T13:11:44.451612Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit2668234057eb4c5dbf8329a327cab9ad"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2024-06-12;06254145",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2024_besluit69893c91c11b4e9ca66302ac6772474a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-06-13T12:35:10.239993Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit69893c91c11b4e9ca66302ac6772474a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22_61",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22_61/nld@61",
+     "technischId": "_akn_nl_act_pv30_2024_2_22_61_akn_nl_bill_pv30_2024_2_61",
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid Noord-Brabant",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-07-12T11:29:13.892339Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_61"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_24_64",
+     "expressionId": "/akn/nl/act/pv30/2024/2_24_64/nld@64",
+     "technischId": "_akn_nl_act_pv30_2024_2_24_64_akn_nl_bill_pv30_2024_2_64",
+     "title": "Regionaal Water en Bodem Programma 2022-2027",
+     "citeerTitel": "Addendum Regionaal Water en Bodem Programma 2022-2027",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-10-16T14:26:57.711121Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_64"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000001",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000001/nld@2025-03-28",
+     "technischId": "_akn_nl_act_mnre1171_2025_000001_akn_nl_bill_mnre1171_2025_000001",
+     "title": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "citeerTitel": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-03-31T11:53:58.172878Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000001"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-04-22;15501315",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit7497d6aa77824757a4ae58d61181bb26",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-04-23T08:27:40.691688Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit7497d6aa77824757a4ae58d61181bb26"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2025-05-25",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2025_000007",
+     "title": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-05-26T07:49:07.466639Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2025/000007"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-09-18;12221973",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit6e07742b6c6b4681a6a9ac98f9058de7",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-09-19T07:20:24.733213Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit6e07742b6c6b4681a6a9ac98f9058de7"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000003",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000003/nld@2025-10-04",
+     "technischId": "_akn_nl_act_mnre1171_2025_000003_akn_nl_bill_mnre1171_2025_000003",
+     "title": "Ontwerp Nota Ruimte",
+     "citeerTitel": "Ontwerp Nota Ruimte",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-10-06T07:15:41.382996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000003"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2025-12-09;4",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2025_besluit_omgevingsverordening_20251212_144300",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-12-15T08:16:22.145238Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2025/besluit-omgevingsverordening-20251212-144300"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-15;V1",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2026_ontwerpwijzing000012",
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-01-16T08:18:45.544348Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2026/ontwerpwijzing000012"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-04-07;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260324_141504",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-04-14T08:16:33.752966Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260324-141504"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-05-12;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260508_151417",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-13T08:53:57.800999Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260508-151417"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-20;14033349",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit86d181aef92e42ccb1846b8237dc579a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-21T08:34:04.009842Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit86d181aef92e42ccb1846b8237dc579a"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2026/000008",
+     "expressionId": "/akn/nl/act/mnre1045/2026/000008/nld@2026-05-22",
+     "technischId": "_akn_nl_act_mnre1045_2026_000008_akn_nl_bill_mnre1045_2026_000008",
+     "title": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "citeerTitel": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-22T08:33:00.930467Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1045/2026/000008"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-08-04;07360762",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit5cacffdd8c9743a2b15f7d7d6ee72075",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-08-05T07:37:51.810853Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit5cacffdd8c9743a2b15f7d7d6ee72075"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-09-02;06030214",
+     "technischId": "_akn_nl_act_gm0873_2020_omgevingsplan_akn_nl_bill_gm0873_2026_besluite8ff657e879e488890b7196022be419a",
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-09-03T08:43:25.096028Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/gm0873/2026/besluite8ff657e879e488890b7196022be419a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20260928_142413",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-02T08:30:55.948256Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20260928-142413"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1a",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20261014_172316",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-14T07:34:56.563816Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20261014-172316"
+    }
+   ]
+  },
+  {
+   "name": "Putte, Berkenlaan 1",
+   "x": 85402,
+   "y": 374971,
+   "checkedAt": "2026-11-24T22:41:58.449Z",
+   "latestAttemptComplete": true,
+   "fingerprint": "63a06a438bb77ae5",
+   "documents": [
+    {
+     "workId": "/akn/nl/act/mnre1034/2020/regOW01",
+     "expressionId": "/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1",
+     "technischId": null,
+     "title": "Omgevingswet",
+     "citeerTitel": "Omgevingswet",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2020-08-01",
+     "validSince": "2020-08-01",
+     "registeredAt": "2021-11-17T13:43:15.981086Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2021/OOWATRXX1",
+     "expressionId": "/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1",
+     "technischId": null,
+     "title": "Aansluitdocument Rijk",
+     "citeerTitel": "Aansluitdocument Rijk",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-12-01",
+     "validSince": "2021-12-01",
+     "registeredAt": "2021-12-02T12:41:34.775823Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/NOVI011",
+     "expressionId": "/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1",
+     "technischId": null,
+     "title": "Nationale Omgevingsvisie",
+     "citeerTitel": "Nationale Omgevingsvisie: Duurzaam perspectief voor onze leefomgeving",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-02-23",
+     "validSince": "2021-02-23",
+     "registeredAt": "2023-03-03T13:02:09.58066Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873",
+     "expressionId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1",
+     "technischId": null,
+     "title": "Voorbeschermingsregels hyperscale datacentra",
+     "citeerTitel": "Voorbeschermingsregels hyperscale datacentra",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2024-01-01",
+     "validSince": "2024-01-01",
+     "registeredAt": "2023-12-21T17:00:38.523473Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086",
+     "technischId": null,
+     "title": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "citeerTitel": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": "2024-08-26",
+     "validSince": "2024-08-26",
+     "registeredAt": "2024-07-15T10:32:22.148232Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22/nld@65",
+     "technischId": null,
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2024-12-05",
+     "validSince": "2024-12-05",
+     "registeredAt": "2024-12-05T15:42:58.096395Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2024/2_22/nld@65"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2024/PEH",
+     "expressionId": "/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2",
+     "technischId": null,
+     "title": "Programma Energiehoofdstructuur",
+     "citeerTitel": "Programma Energiehoofdstructuur",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 2,
+     "inForceSince": "2025-02-20",
+     "validSince": "2025-02-20",
+     "registeredAt": "2025-02-19T17:22:07.541778Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09",
+     "technischId": null,
+     "title": "Programma Integraal Riviermanagement",
+     "citeerTitel": "Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-10",
+     "validSince": "2025-04-10",
+     "registeredAt": "2025-04-10T11:25:37.948251Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/2_25",
+     "expressionId": "/akn/nl/act/pv30/2025/2_25/nld@67",
+     "technischId": null,
+     "title": "Regionaal Water en Bodem Programma",
+     "citeerTitel": "Regionaal Water en Bodem Programma (RWP)",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-17",
+     "validSince": "2025-04-17",
+     "registeredAt": "2025-04-17T08:15:41.240645Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/2_25/nld@67"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14",
+     "technischId": null,
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-01-14",
+     "validSince": "2026-01-14",
+     "registeredAt": "2026-01-14T08:25:49.258497Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef",
+     "expressionId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3",
+     "technischId": null,
+     "title": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "citeerTitel": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 3,
+     "inForceSince": "2026-05-15",
+     "validSince": "2026-05-15",
+     "registeredAt": "2026-05-15T07:54:27.785155Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784",
+     "technischId": null,
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 11,
+     "inForceSince": "2026-05-21",
+     "validSince": "2026-05-21",
+     "registeredAt": "2026-05-20T09:02:49.998344Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506",
+     "technischId": null,
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 3,
+     "inForceSince": "2026-06-15",
+     "validSince": "2026-06-15",
+     "registeredAt": "2026-06-15T07:43:06.464513Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2026/000028",
+     "expressionId": "/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01",
+     "technischId": null,
+     "title": "Programma Mariene Strategie Deel\n                                1",
+     "citeerTitel": "Programma Mariene Strategie Deel 1",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-07-01",
+     "validSince": "2026-07-01",
+     "registeredAt": "2026-07-01T08:08:07.354646Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041313",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over de kwaliteit van de fysieke leefomgeving en de uitoefening van taken en bevoegdheden (Besluit kwaliteit leefomgeving)",
+     "citeerTitel": "Besluit kwaliteit leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041330",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over activiteiten in de fysieke leefomgeving (Besluit activiteiten leefomgeving)",
+     "citeerTitel": "Besluit activiteiten leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2019/reg0001",
+     "expressionId": "/akn/nl/act/mnre1034/2019/reg0001/nld@12-0",
+     "technischId": null,
+     "title": "Regeling van de Minister voor Milieu en Wonen, de Staatssecretaris van Defensie, de Minister van Economische Zaken en Klimaat, de Minister van Infrastructuur en Waterstaat, de Minister van Landbouw, Natuur en Voedselkwaliteit en de Minister van Onderwijs, Cultuur en Wetenschap van 21 november 2019, houdende regels over het beschermen en benutten van de fysieke leefomgeving (Omgevingsregeling)",
+     "citeerTitel": "Omgevingsregeling",
+     "kind": "Ministeriële Regeling",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 13,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2019/reg0001/nld@12-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041278",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende procedurele regels en regels over algemene onderwerpen over het beschermen en benutten van de fysieke leefomgeving (Omgevingsbesluit)",
+     "citeerTitel": "Omgevingsbesluit",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041297",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over bouwwerken in de fysieke leefomgeving (Besluit bouwwerken leefomgeving)",
+     "citeerTitel": "Besluit bouwwerken leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7",
+     "technischId": null,
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 7,
+     "inForceSince": "2026-10-30",
+     "validSince": "2026-10-30",
+     "registeredAt": "2026-10-30T09:04:15.997996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7"
+    }
+   ],
+   "drafts": [
+    {
+     "workId": "/akn/nl/act/mnre1153/2023/NPLG",
+     "expressionId": "/akn/nl/act/mnre1153/2023/NPLG/nld@2023-12-15;1",
+     "technischId": "_akn_nl_act_mnre1153_2023_NPLG_akn_nl_bill_mnre1153_2024_e4ccdd4594b6432c8de1c8bba11063c5",
+     "title": "Nationaal Programma Landelijk Gebied",
+     "citeerTitel": "Nationaal Programma Landelijk Gebied",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1153",
+      "name": "ministerie van Landbouw, Natuur en Voedselkwaliteit",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-11T12:20:01.720194Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1153/2024/e4ccdd4594b6432c8de1c8bba11063c5"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2024-01-31",
+     "technischId": "_akn_nl_act_mnre1130_2024_Ontwerp_IRM_akn_nl_bill_mnre1130_2024_Ontwerp_IRM",
+     "title": "Ontwerp Programma Integraal Riviermanagement",
+     "citeerTitel": "Ontwerp Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-31T14:37:44.475595Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1130/2024/Ontwerp_IRM"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43/nld@2024-02-06",
+     "technischId": "_akn_nl_act_ws0652_2024_Regelinga06cb0dac723494c99283c2dae42af43_akn_nl_bill_ws0652_2024_besluit2668234057eb4c5dbf8329a327cab9ad",
+     "title": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "citeerTitel": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-02-08T13:11:44.451612Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit2668234057eb4c5dbf8329a327cab9ad"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2024-06-12;06254145",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2024_besluit69893c91c11b4e9ca66302ac6772474a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-06-13T12:35:10.239993Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit69893c91c11b4e9ca66302ac6772474a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22_61",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22_61/nld@61",
+     "technischId": "_akn_nl_act_pv30_2024_2_22_61_akn_nl_bill_pv30_2024_2_61",
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid Noord-Brabant",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-07-12T11:29:13.892339Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_61"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_24_64",
+     "expressionId": "/akn/nl/act/pv30/2024/2_24_64/nld@64",
+     "technischId": "_akn_nl_act_pv30_2024_2_24_64_akn_nl_bill_pv30_2024_2_64",
+     "title": "Regionaal Water en Bodem Programma 2022-2027",
+     "citeerTitel": "Addendum Regionaal Water en Bodem Programma 2022-2027",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-10-16T14:26:57.711121Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_64"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000001",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000001/nld@2025-03-28",
+     "technischId": "_akn_nl_act_mnre1171_2025_000001_akn_nl_bill_mnre1171_2025_000001",
+     "title": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "citeerTitel": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-03-31T11:53:58.172878Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000001"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-04-22;15501315",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit7497d6aa77824757a4ae58d61181bb26",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-04-23T08:27:40.691688Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit7497d6aa77824757a4ae58d61181bb26"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2025-05-25",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2025_000007",
+     "title": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-05-26T07:49:07.466639Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2025/000007"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-09-18;12221973",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit6e07742b6c6b4681a6a9ac98f9058de7",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-09-19T07:20:24.733213Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit6e07742b6c6b4681a6a9ac98f9058de7"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000003",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000003/nld@2025-10-04",
+     "technischId": "_akn_nl_act_mnre1171_2025_000003_akn_nl_bill_mnre1171_2025_000003",
+     "title": "Ontwerp Nota Ruimte",
+     "citeerTitel": "Ontwerp Nota Ruimte",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-10-06T07:15:41.382996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000003"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2025-12-09;4",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2025_besluit_omgevingsverordening_20251212_144300",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-12-15T08:16:22.145238Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2025/besluit-omgevingsverordening-20251212-144300"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-15;V1",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2026_ontwerpwijzing000012",
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-01-16T08:18:45.544348Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2026/ontwerpwijzing000012"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-04-07;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260324_141504",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-04-14T08:16:33.752966Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260324-141504"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-05-12;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260508_151417",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-13T08:53:57.800999Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260508-151417"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-20;14033349",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit86d181aef92e42ccb1846b8237dc579a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-21T08:34:04.009842Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit86d181aef92e42ccb1846b8237dc579a"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2026/000008",
+     "expressionId": "/akn/nl/act/mnre1045/2026/000008/nld@2026-05-22",
+     "technischId": "_akn_nl_act_mnre1045_2026_000008_akn_nl_bill_mnre1045_2026_000008",
+     "title": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "citeerTitel": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-22T08:33:00.930467Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1045/2026/000008"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-08-04;07360762",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit5cacffdd8c9743a2b15f7d7d6ee72075",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-08-05T07:37:51.810853Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit5cacffdd8c9743a2b15f7d7d6ee72075"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-09-02;06030214",
+     "technischId": "_akn_nl_act_gm0873_2020_omgevingsplan_akn_nl_bill_gm0873_2026_besluite8ff657e879e488890b7196022be419a",
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-09-03T08:43:25.096028Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/gm0873/2026/besluite8ff657e879e488890b7196022be419a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20260928_142413",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-02T08:30:55.948256Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20260928-142413"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1a",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20261014_172316",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-14T07:34:56.563816Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20261014-172316"
+    }
+   ]
+  },
+  {
+   "name": "Huijbergen, Zonnedauw 13",
+   "x": 84909,
+   "y": 383328,
+   "checkedAt": "2026-11-24T22:41:58.449Z",
+   "latestAttemptComplete": true,
+   "fingerprint": "63a06a438bb77ae5",
+   "documents": [
+    {
+     "workId": "/akn/nl/act/mnre1034/2020/regOW01",
+     "expressionId": "/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1",
+     "technischId": null,
+     "title": "Omgevingswet",
+     "citeerTitel": "Omgevingswet",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2020-08-01",
+     "validSince": "2020-08-01",
+     "registeredAt": "2021-11-17T13:43:15.981086Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2021/OOWATRXX1",
+     "expressionId": "/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1",
+     "technischId": null,
+     "title": "Aansluitdocument Rijk",
+     "citeerTitel": "Aansluitdocument Rijk",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-12-01",
+     "validSince": "2021-12-01",
+     "registeredAt": "2021-12-02T12:41:34.775823Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/NOVI011",
+     "expressionId": "/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1",
+     "technischId": null,
+     "title": "Nationale Omgevingsvisie",
+     "citeerTitel": "Nationale Omgevingsvisie: Duurzaam perspectief voor onze leefomgeving",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-02-23",
+     "validSince": "2021-02-23",
+     "registeredAt": "2023-03-03T13:02:09.58066Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873",
+     "expressionId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1",
+     "technischId": null,
+     "title": "Voorbeschermingsregels hyperscale datacentra",
+     "citeerTitel": "Voorbeschermingsregels hyperscale datacentra",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2024-01-01",
+     "validSince": "2024-01-01",
+     "registeredAt": "2023-12-21T17:00:38.523473Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086",
+     "technischId": null,
+     "title": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "citeerTitel": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": "2024-08-26",
+     "validSince": "2024-08-26",
+     "registeredAt": "2024-07-15T10:32:22.148232Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22/nld@65",
+     "technischId": null,
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2024-12-05",
+     "validSince": "2024-12-05",
+     "registeredAt": "2024-12-05T15:42:58.096395Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2024/2_22/nld@65"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2024/PEH",
+     "expressionId": "/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2",
+     "technischId": null,
+     "title": "Programma Energiehoofdstructuur",
+     "citeerTitel": "Programma Energiehoofdstructuur",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 2,
+     "inForceSince": "2025-02-20",
+     "validSince": "2025-02-20",
+     "registeredAt": "2025-02-19T17:22:07.541778Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09",
+     "technischId": null,
+     "title": "Programma Integraal Riviermanagement",
+     "citeerTitel": "Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-10",
+     "validSince": "2025-04-10",
+     "registeredAt": "2025-04-10T11:25:37.948251Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/2_25",
+     "expressionId": "/akn/nl/act/pv30/2025/2_25/nld@67",
+     "technischId": null,
+     "title": "Regionaal Water en Bodem Programma",
+     "citeerTitel": "Regionaal Water en Bodem Programma (RWP)",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-17",
+     "validSince": "2025-04-17",
+     "registeredAt": "2025-04-17T08:15:41.240645Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/2_25/nld@67"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14",
+     "technischId": null,
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-01-14",
+     "validSince": "2026-01-14",
+     "registeredAt": "2026-01-14T08:25:49.258497Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef",
+     "expressionId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3",
+     "technischId": null,
+     "title": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "citeerTitel": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 3,
+     "inForceSince": "2026-05-15",
+     "validSince": "2026-05-15",
+     "registeredAt": "2026-05-15T07:54:27.785155Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784",
+     "technischId": null,
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 11,
+     "inForceSince": "2026-05-21",
+     "validSince": "2026-05-21",
+     "registeredAt": "2026-05-20T09:02:49.998344Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506",
+     "technischId": null,
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 3,
+     "inForceSince": "2026-06-15",
+     "validSince": "2026-06-15",
+     "registeredAt": "2026-06-15T07:43:06.464513Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2026/000028",
+     "expressionId": "/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01",
+     "technischId": null,
+     "title": "Programma Mariene Strategie Deel\n                                1",
+     "citeerTitel": "Programma Mariene Strategie Deel 1",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-07-01",
+     "validSince": "2026-07-01",
+     "registeredAt": "2026-07-01T08:08:07.354646Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041330",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over activiteiten in de fysieke leefomgeving (Besluit activiteiten leefomgeving)",
+     "citeerTitel": "Besluit activiteiten leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041313",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over de kwaliteit van de fysieke leefomgeving en de uitoefening van taken en bevoegdheden (Besluit kwaliteit leefomgeving)",
+     "citeerTitel": "Besluit kwaliteit leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041297",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over bouwwerken in de fysieke leefomgeving (Besluit bouwwerken leefomgeving)",
+     "citeerTitel": "Besluit bouwwerken leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2019/reg0001",
+     "expressionId": "/akn/nl/act/mnre1034/2019/reg0001/nld@12-0",
+     "technischId": null,
+     "title": "Regeling van de Minister voor Milieu en Wonen, de Staatssecretaris van Defensie, de Minister van Economische Zaken en Klimaat, de Minister van Infrastructuur en Waterstaat, de Minister van Landbouw, Natuur en Voedselkwaliteit en de Minister van Onderwijs, Cultuur en Wetenschap van 21 november 2019, houdende regels over het beschermen en benutten van de fysieke leefomgeving (Omgevingsregeling)",
+     "citeerTitel": "Omgevingsregeling",
+     "kind": "Ministeriële Regeling",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 13,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2019/reg0001/nld@12-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041278",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende procedurele regels en regels over algemene onderwerpen over het beschermen en benutten van de fysieke leefomgeving (Omgevingsbesluit)",
+     "citeerTitel": "Omgevingsbesluit",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7",
+     "technischId": null,
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 7,
+     "inForceSince": "2026-10-30",
+     "validSince": "2026-10-30",
+     "registeredAt": "2026-10-30T09:04:15.997996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7"
+    }
+   ],
+   "drafts": [
+    {
+     "workId": "/akn/nl/act/mnre1153/2023/NPLG",
+     "expressionId": "/akn/nl/act/mnre1153/2023/NPLG/nld@2023-12-15;1",
+     "technischId": "_akn_nl_act_mnre1153_2023_NPLG_akn_nl_bill_mnre1153_2024_e4ccdd4594b6432c8de1c8bba11063c5",
+     "title": "Nationaal Programma Landelijk Gebied",
+     "citeerTitel": "Nationaal Programma Landelijk Gebied",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1153",
+      "name": "ministerie van Landbouw, Natuur en Voedselkwaliteit",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-11T12:20:01.720194Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1153/2024/e4ccdd4594b6432c8de1c8bba11063c5"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2024-01-31",
+     "technischId": "_akn_nl_act_mnre1130_2024_Ontwerp_IRM_akn_nl_bill_mnre1130_2024_Ontwerp_IRM",
+     "title": "Ontwerp Programma Integraal Riviermanagement",
+     "citeerTitel": "Ontwerp Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-31T14:37:44.475595Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1130/2024/Ontwerp_IRM"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43/nld@2024-02-06",
+     "technischId": "_akn_nl_act_ws0652_2024_Regelinga06cb0dac723494c99283c2dae42af43_akn_nl_bill_ws0652_2024_besluit2668234057eb4c5dbf8329a327cab9ad",
+     "title": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "citeerTitel": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-02-08T13:11:44.451612Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit2668234057eb4c5dbf8329a327cab9ad"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2024-06-12;06254145",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2024_besluit69893c91c11b4e9ca66302ac6772474a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-06-13T12:35:10.239993Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit69893c91c11b4e9ca66302ac6772474a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22_61",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22_61/nld@61",
+     "technischId": "_akn_nl_act_pv30_2024_2_22_61_akn_nl_bill_pv30_2024_2_61",
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid Noord-Brabant",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-07-12T11:29:13.892339Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_61"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_24_64",
+     "expressionId": "/akn/nl/act/pv30/2024/2_24_64/nld@64",
+     "technischId": "_akn_nl_act_pv30_2024_2_24_64_akn_nl_bill_pv30_2024_2_64",
+     "title": "Regionaal Water en Bodem Programma 2022-2027",
+     "citeerTitel": "Addendum Regionaal Water en Bodem Programma 2022-2027",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-10-16T14:26:57.711121Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_64"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000001",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000001/nld@2025-03-28",
+     "technischId": "_akn_nl_act_mnre1171_2025_000001_akn_nl_bill_mnre1171_2025_000001",
+     "title": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "citeerTitel": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-03-31T11:53:58.172878Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000001"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-04-22;15501315",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit7497d6aa77824757a4ae58d61181bb26",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-04-23T08:27:40.691688Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit7497d6aa77824757a4ae58d61181bb26"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2025-05-25",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2025_000007",
+     "title": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-05-26T07:49:07.466639Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2025/000007"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-09-18;12221973",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit6e07742b6c6b4681a6a9ac98f9058de7",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-09-19T07:20:24.733213Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit6e07742b6c6b4681a6a9ac98f9058de7"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000003",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000003/nld@2025-10-04",
+     "technischId": "_akn_nl_act_mnre1171_2025_000003_akn_nl_bill_mnre1171_2025_000003",
+     "title": "Ontwerp Nota Ruimte",
+     "citeerTitel": "Ontwerp Nota Ruimte",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-10-06T07:15:41.382996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000003"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2025-12-09;4",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2025_besluit_omgevingsverordening_20251212_144300",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-12-15T08:16:22.145238Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2025/besluit-omgevingsverordening-20251212-144300"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-15;V1",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2026_ontwerpwijzing000012",
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-01-16T08:18:45.544348Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2026/ontwerpwijzing000012"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-04-07;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260324_141504",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-04-14T08:16:33.752966Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260324-141504"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-05-12;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260508_151417",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-13T08:53:57.800999Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260508-151417"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-20;14033349",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit86d181aef92e42ccb1846b8237dc579a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-21T08:34:04.009842Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit86d181aef92e42ccb1846b8237dc579a"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2026/000008",
+     "expressionId": "/akn/nl/act/mnre1045/2026/000008/nld@2026-05-22",
+     "technischId": "_akn_nl_act_mnre1045_2026_000008_akn_nl_bill_mnre1045_2026_000008",
+     "title": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "citeerTitel": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-22T08:33:00.930467Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1045/2026/000008"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-08-04;07360762",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit5cacffdd8c9743a2b15f7d7d6ee72075",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-08-05T07:37:51.810853Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit5cacffdd8c9743a2b15f7d7d6ee72075"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-09-02;06030214",
+     "technischId": "_akn_nl_act_gm0873_2020_omgevingsplan_akn_nl_bill_gm0873_2026_besluite8ff657e879e488890b7196022be419a",
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-09-03T08:43:25.096028Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/gm0873/2026/besluite8ff657e879e488890b7196022be419a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20260928_142413",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-02T08:30:55.948256Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20260928-142413"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1a",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20261014_172316",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-14T07:34:56.563816Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20261014-172316"
+    }
+   ]
+  },
+  {
+   "name": "Hoogerheide, Aalbersestraat 1",
+   "x": 81029.282,
+   "y": 381929.681,
+   "checkedAt": "2026-11-24T22:41:58.449Z",
+   "latestAttemptComplete": true,
+   "fingerprint": "63a06a438bb77ae5",
+   "documents": [
+    {
+     "workId": "/akn/nl/act/mnre1034/2020/regOW01",
+     "expressionId": "/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1",
+     "technischId": null,
+     "title": "Omgevingswet",
+     "citeerTitel": "Omgevingswet",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2020-08-01",
+     "validSince": "2020-08-01",
+     "registeredAt": "2021-11-17T13:43:15.981086Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2021/OOWATRXX1",
+     "expressionId": "/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1",
+     "technischId": null,
+     "title": "Aansluitdocument Rijk",
+     "citeerTitel": "Aansluitdocument Rijk",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-12-01",
+     "validSince": "2021-12-01",
+     "registeredAt": "2021-12-02T12:41:34.775823Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/NOVI011",
+     "expressionId": "/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1",
+     "technischId": null,
+     "title": "Nationale Omgevingsvisie",
+     "citeerTitel": "Nationale Omgevingsvisie: Duurzaam perspectief voor onze leefomgeving",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-02-23",
+     "validSince": "2021-02-23",
+     "registeredAt": "2023-03-03T13:02:09.58066Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873",
+     "expressionId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1",
+     "technischId": null,
+     "title": "Voorbeschermingsregels hyperscale datacentra",
+     "citeerTitel": "Voorbeschermingsregels hyperscale datacentra",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2024-01-01",
+     "validSince": "2024-01-01",
+     "registeredAt": "2023-12-21T17:00:38.523473Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086",
+     "technischId": null,
+     "title": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "citeerTitel": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": "2024-08-26",
+     "validSince": "2024-08-26",
+     "registeredAt": "2024-07-15T10:32:22.148232Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22/nld@65",
+     "technischId": null,
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2024-12-05",
+     "validSince": "2024-12-05",
+     "registeredAt": "2024-12-05T15:42:58.096395Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2024/2_22/nld@65"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2024/PEH",
+     "expressionId": "/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2",
+     "technischId": null,
+     "title": "Programma Energiehoofdstructuur",
+     "citeerTitel": "Programma Energiehoofdstructuur",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 2,
+     "inForceSince": "2025-02-20",
+     "validSince": "2025-02-20",
+     "registeredAt": "2025-02-19T17:22:07.541778Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09",
+     "technischId": null,
+     "title": "Programma Integraal Riviermanagement",
+     "citeerTitel": "Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-10",
+     "validSince": "2025-04-10",
+     "registeredAt": "2025-04-10T11:25:37.948251Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/2_25",
+     "expressionId": "/akn/nl/act/pv30/2025/2_25/nld@67",
+     "technischId": null,
+     "title": "Regionaal Water en Bodem Programma",
+     "citeerTitel": "Regionaal Water en Bodem Programma (RWP)",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-17",
+     "validSince": "2025-04-17",
+     "registeredAt": "2025-04-17T08:15:41.240645Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/2_25/nld@67"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14",
+     "technischId": null,
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-01-14",
+     "validSince": "2026-01-14",
+     "registeredAt": "2026-01-14T08:25:49.258497Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef",
+     "expressionId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3",
+     "technischId": null,
+     "title": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "citeerTitel": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 3,
+     "inForceSince": "2026-05-15",
+     "validSince": "2026-05-15",
+     "registeredAt": "2026-05-15T07:54:27.785155Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784",
+     "technischId": null,
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 11,
+     "inForceSince": "2026-05-21",
+     "validSince": "2026-05-21",
+     "registeredAt": "2026-05-20T09:02:49.998344Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506",
+     "technischId": null,
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 3,
+     "inForceSince": "2026-06-15",
+     "validSince": "2026-06-15",
+     "registeredAt": "2026-06-15T07:43:06.464513Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2026/000028",
+     "expressionId": "/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01",
+     "technischId": null,
+     "title": "Programma Mariene Strategie Deel\n                                1",
+     "citeerTitel": "Programma Mariene Strategie Deel 1",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-07-01",
+     "validSince": "2026-07-01",
+     "registeredAt": "2026-07-01T08:08:07.354646Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041330",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over activiteiten in de fysieke leefomgeving (Besluit activiteiten leefomgeving)",
+     "citeerTitel": "Besluit activiteiten leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041313",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over de kwaliteit van de fysieke leefomgeving en de uitoefening van taken en bevoegdheden (Besluit kwaliteit leefomgeving)",
+     "citeerTitel": "Besluit kwaliteit leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041297",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over bouwwerken in de fysieke leefomgeving (Besluit bouwwerken leefomgeving)",
+     "citeerTitel": "Besluit bouwwerken leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2019/reg0001",
+     "expressionId": "/akn/nl/act/mnre1034/2019/reg0001/nld@12-0",
+     "technischId": null,
+     "title": "Regeling van de Minister voor Milieu en Wonen, de Staatssecretaris van Defensie, de Minister van Economische Zaken en Klimaat, de Minister van Infrastructuur en Waterstaat, de Minister van Landbouw, Natuur en Voedselkwaliteit en de Minister van Onderwijs, Cultuur en Wetenschap van 21 november 2019, houdende regels over het beschermen en benutten van de fysieke leefomgeving (Omgevingsregeling)",
+     "citeerTitel": "Omgevingsregeling",
+     "kind": "Ministeriële Regeling",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 13,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2019/reg0001/nld@12-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041278",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende procedurele regels en regels over algemene onderwerpen over het beschermen en benutten van de fysieke leefomgeving (Omgevingsbesluit)",
+     "citeerTitel": "Omgevingsbesluit",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7",
+     "technischId": null,
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 7,
+     "inForceSince": "2026-10-30",
+     "validSince": "2026-10-30",
+     "registeredAt": "2026-10-30T09:04:15.997996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7"
+    }
+   ],
+   "drafts": [
+    {
+     "workId": "/akn/nl/act/mnre1153/2023/NPLG",
+     "expressionId": "/akn/nl/act/mnre1153/2023/NPLG/nld@2023-12-15;1",
+     "technischId": "_akn_nl_act_mnre1153_2023_NPLG_akn_nl_bill_mnre1153_2024_e4ccdd4594b6432c8de1c8bba11063c5",
+     "title": "Nationaal Programma Landelijk Gebied",
+     "citeerTitel": "Nationaal Programma Landelijk Gebied",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1153",
+      "name": "ministerie van Landbouw, Natuur en Voedselkwaliteit",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-11T12:20:01.720194Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1153/2024/e4ccdd4594b6432c8de1c8bba11063c5"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2024-01-31",
+     "technischId": "_akn_nl_act_mnre1130_2024_Ontwerp_IRM_akn_nl_bill_mnre1130_2024_Ontwerp_IRM",
+     "title": "Ontwerp Programma Integraal Riviermanagement",
+     "citeerTitel": "Ontwerp Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-31T14:37:44.475595Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1130/2024/Ontwerp_IRM"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43/nld@2024-02-06",
+     "technischId": "_akn_nl_act_ws0652_2024_Regelinga06cb0dac723494c99283c2dae42af43_akn_nl_bill_ws0652_2024_besluit2668234057eb4c5dbf8329a327cab9ad",
+     "title": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "citeerTitel": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-02-08T13:11:44.451612Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit2668234057eb4c5dbf8329a327cab9ad"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2024-06-12;06254145",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2024_besluit69893c91c11b4e9ca66302ac6772474a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-06-13T12:35:10.239993Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit69893c91c11b4e9ca66302ac6772474a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22_61",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22_61/nld@61",
+     "technischId": "_akn_nl_act_pv30_2024_2_22_61_akn_nl_bill_pv30_2024_2_61",
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid Noord-Brabant",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-07-12T11:29:13.892339Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_61"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_24_64",
+     "expressionId": "/akn/nl/act/pv30/2024/2_24_64/nld@64",
+     "technischId": "_akn_nl_act_pv30_2024_2_24_64_akn_nl_bill_pv30_2024_2_64",
+     "title": "Regionaal Water en Bodem Programma 2022-2027",
+     "citeerTitel": "Addendum Regionaal Water en Bodem Programma 2022-2027",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-10-16T14:26:57.711121Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_64"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000001",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000001/nld@2025-03-28",
+     "technischId": "_akn_nl_act_mnre1171_2025_000001_akn_nl_bill_mnre1171_2025_000001",
+     "title": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "citeerTitel": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-03-31T11:53:58.172878Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000001"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-04-22;15501315",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit7497d6aa77824757a4ae58d61181bb26",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-04-23T08:27:40.691688Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit7497d6aa77824757a4ae58d61181bb26"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2025-05-25",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2025_000007",
+     "title": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-05-26T07:49:07.466639Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2025/000007"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-09-18;12221973",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit6e07742b6c6b4681a6a9ac98f9058de7",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-09-19T07:20:24.733213Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit6e07742b6c6b4681a6a9ac98f9058de7"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000003",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000003/nld@2025-10-04",
+     "technischId": "_akn_nl_act_mnre1171_2025_000003_akn_nl_bill_mnre1171_2025_000003",
+     "title": "Ontwerp Nota Ruimte",
+     "citeerTitel": "Ontwerp Nota Ruimte",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-10-06T07:15:41.382996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000003"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2025-12-09;4",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2025_besluit_omgevingsverordening_20251212_144300",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-12-15T08:16:22.145238Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2025/besluit-omgevingsverordening-20251212-144300"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-15;V1",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2026_ontwerpwijzing000012",
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-01-16T08:18:45.544348Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2026/ontwerpwijzing000012"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-04-07;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260324_141504",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-04-14T08:16:33.752966Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260324-141504"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-05-12;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260508_151417",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-13T08:53:57.800999Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260508-151417"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-20;14033349",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit86d181aef92e42ccb1846b8237dc579a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-21T08:34:04.009842Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit86d181aef92e42ccb1846b8237dc579a"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2026/000008",
+     "expressionId": "/akn/nl/act/mnre1045/2026/000008/nld@2026-05-22",
+     "technischId": "_akn_nl_act_mnre1045_2026_000008_akn_nl_bill_mnre1045_2026_000008",
+     "title": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "citeerTitel": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-22T08:33:00.930467Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1045/2026/000008"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-08-04;07360762",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit5cacffdd8c9743a2b15f7d7d6ee72075",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-08-05T07:37:51.810853Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit5cacffdd8c9743a2b15f7d7d6ee72075"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-09-02;06030214",
+     "technischId": "_akn_nl_act_gm0873_2020_omgevingsplan_akn_nl_bill_gm0873_2026_besluite8ff657e879e488890b7196022be419a",
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-09-03T08:43:25.096028Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/gm0873/2026/besluite8ff657e879e488890b7196022be419a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20260928_142413",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-02T08:30:55.948256Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20260928-142413"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1a",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20261014_172316",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-14T07:34:56.563816Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20261014-172316"
+    }
+   ]
+  },
+  {
+   "name": "Ossendrecht, Markt 10a",
+   "x": 81201.381,
+   "y": 379008.519,
+   "checkedAt": "2026-11-24T22:41:58.449Z",
+   "latestAttemptComplete": true,
+   "fingerprint": "63a06a438bb77ae5",
+   "documents": [
+    {
+     "workId": "/akn/nl/act/mnre1034/2020/regOW01",
+     "expressionId": "/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1",
+     "technischId": null,
+     "title": "Omgevingswet",
+     "citeerTitel": "Omgevingswet",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2020-08-01",
+     "validSince": "2020-08-01",
+     "registeredAt": "2021-11-17T13:43:15.981086Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2021/OOWATRXX1",
+     "expressionId": "/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1",
+     "technischId": null,
+     "title": "Aansluitdocument Rijk",
+     "citeerTitel": "Aansluitdocument Rijk",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-12-01",
+     "validSince": "2021-12-01",
+     "registeredAt": "2021-12-02T12:41:34.775823Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/NOVI011",
+     "expressionId": "/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1",
+     "technischId": null,
+     "title": "Nationale Omgevingsvisie",
+     "citeerTitel": "Nationale Omgevingsvisie: Duurzaam perspectief voor onze leefomgeving",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-02-23",
+     "validSince": "2021-02-23",
+     "registeredAt": "2023-03-03T13:02:09.58066Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873",
+     "expressionId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1",
+     "technischId": null,
+     "title": "Voorbeschermingsregels hyperscale datacentra",
+     "citeerTitel": "Voorbeschermingsregels hyperscale datacentra",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2024-01-01",
+     "validSince": "2024-01-01",
+     "registeredAt": "2023-12-21T17:00:38.523473Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086",
+     "technischId": null,
+     "title": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "citeerTitel": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": "2024-08-26",
+     "validSince": "2024-08-26",
+     "registeredAt": "2024-07-15T10:32:22.148232Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22/nld@65",
+     "technischId": null,
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2024-12-05",
+     "validSince": "2024-12-05",
+     "registeredAt": "2024-12-05T15:42:58.096395Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2024/2_22/nld@65"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2024/PEH",
+     "expressionId": "/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2",
+     "technischId": null,
+     "title": "Programma Energiehoofdstructuur",
+     "citeerTitel": "Programma Energiehoofdstructuur",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 2,
+     "inForceSince": "2025-02-20",
+     "validSince": "2025-02-20",
+     "registeredAt": "2025-02-19T17:22:07.541778Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09",
+     "technischId": null,
+     "title": "Programma Integraal Riviermanagement",
+     "citeerTitel": "Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-10",
+     "validSince": "2025-04-10",
+     "registeredAt": "2025-04-10T11:25:37.948251Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/2_25",
+     "expressionId": "/akn/nl/act/pv30/2025/2_25/nld@67",
+     "technischId": null,
+     "title": "Regionaal Water en Bodem Programma",
+     "citeerTitel": "Regionaal Water en Bodem Programma (RWP)",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-17",
+     "validSince": "2025-04-17",
+     "registeredAt": "2025-04-17T08:15:41.240645Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/2_25/nld@67"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14",
+     "technischId": null,
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-01-14",
+     "validSince": "2026-01-14",
+     "registeredAt": "2026-01-14T08:25:49.258497Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef",
+     "expressionId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3",
+     "technischId": null,
+     "title": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "citeerTitel": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 3,
+     "inForceSince": "2026-05-15",
+     "validSince": "2026-05-15",
+     "registeredAt": "2026-05-15T07:54:27.785155Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784",
+     "technischId": null,
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 11,
+     "inForceSince": "2026-05-21",
+     "validSince": "2026-05-21",
+     "registeredAt": "2026-05-20T09:02:49.998344Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506",
+     "technischId": null,
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 3,
+     "inForceSince": "2026-06-15",
+     "validSince": "2026-06-15",
+     "registeredAt": "2026-06-15T07:43:06.464513Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2026/000028",
+     "expressionId": "/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01",
+     "technischId": null,
+     "title": "Programma Mariene Strategie Deel\n                                1",
+     "citeerTitel": "Programma Mariene Strategie Deel 1",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-07-01",
+     "validSince": "2026-07-01",
+     "registeredAt": "2026-07-01T08:08:07.354646Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041330",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over activiteiten in de fysieke leefomgeving (Besluit activiteiten leefomgeving)",
+     "citeerTitel": "Besluit activiteiten leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041313",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over de kwaliteit van de fysieke leefomgeving en de uitoefening van taken en bevoegdheden (Besluit kwaliteit leefomgeving)",
+     "citeerTitel": "Besluit kwaliteit leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041297",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over bouwwerken in de fysieke leefomgeving (Besluit bouwwerken leefomgeving)",
+     "citeerTitel": "Besluit bouwwerken leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2019/reg0001",
+     "expressionId": "/akn/nl/act/mnre1034/2019/reg0001/nld@12-0",
+     "technischId": null,
+     "title": "Regeling van de Minister voor Milieu en Wonen, de Staatssecretaris van Defensie, de Minister van Economische Zaken en Klimaat, de Minister van Infrastructuur en Waterstaat, de Minister van Landbouw, Natuur en Voedselkwaliteit en de Minister van Onderwijs, Cultuur en Wetenschap van 21 november 2019, houdende regels over het beschermen en benutten van de fysieke leefomgeving (Omgevingsregeling)",
+     "citeerTitel": "Omgevingsregeling",
+     "kind": "Ministeriële Regeling",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 13,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2019/reg0001/nld@12-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041278",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende procedurele regels en regels over algemene onderwerpen over het beschermen en benutten van de fysieke leefomgeving (Omgevingsbesluit)",
+     "citeerTitel": "Omgevingsbesluit",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7",
+     "technischId": null,
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 7,
+     "inForceSince": "2026-10-30",
+     "validSince": "2026-10-30",
+     "registeredAt": "2026-10-30T09:04:15.997996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7"
+    }
+   ],
+   "drafts": [
+    {
+     "workId": "/akn/nl/act/mnre1153/2023/NPLG",
+     "expressionId": "/akn/nl/act/mnre1153/2023/NPLG/nld@2023-12-15;1",
+     "technischId": "_akn_nl_act_mnre1153_2023_NPLG_akn_nl_bill_mnre1153_2024_e4ccdd4594b6432c8de1c8bba11063c5",
+     "title": "Nationaal Programma Landelijk Gebied",
+     "citeerTitel": "Nationaal Programma Landelijk Gebied",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1153",
+      "name": "ministerie van Landbouw, Natuur en Voedselkwaliteit",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-11T12:20:01.720194Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1153/2024/e4ccdd4594b6432c8de1c8bba11063c5"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2024-01-31",
+     "technischId": "_akn_nl_act_mnre1130_2024_Ontwerp_IRM_akn_nl_bill_mnre1130_2024_Ontwerp_IRM",
+     "title": "Ontwerp Programma Integraal Riviermanagement",
+     "citeerTitel": "Ontwerp Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-31T14:37:44.475595Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1130/2024/Ontwerp_IRM"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43/nld@2024-02-06",
+     "technischId": "_akn_nl_act_ws0652_2024_Regelinga06cb0dac723494c99283c2dae42af43_akn_nl_bill_ws0652_2024_besluit2668234057eb4c5dbf8329a327cab9ad",
+     "title": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "citeerTitel": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-02-08T13:11:44.451612Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit2668234057eb4c5dbf8329a327cab9ad"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2024-06-12;06254145",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2024_besluit69893c91c11b4e9ca66302ac6772474a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-06-13T12:35:10.239993Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit69893c91c11b4e9ca66302ac6772474a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22_61",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22_61/nld@61",
+     "technischId": "_akn_nl_act_pv30_2024_2_22_61_akn_nl_bill_pv30_2024_2_61",
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid Noord-Brabant",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-07-12T11:29:13.892339Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_61"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_24_64",
+     "expressionId": "/akn/nl/act/pv30/2024/2_24_64/nld@64",
+     "technischId": "_akn_nl_act_pv30_2024_2_24_64_akn_nl_bill_pv30_2024_2_64",
+     "title": "Regionaal Water en Bodem Programma 2022-2027",
+     "citeerTitel": "Addendum Regionaal Water en Bodem Programma 2022-2027",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-10-16T14:26:57.711121Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_64"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000001",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000001/nld@2025-03-28",
+     "technischId": "_akn_nl_act_mnre1171_2025_000001_akn_nl_bill_mnre1171_2025_000001",
+     "title": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "citeerTitel": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-03-31T11:53:58.172878Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000001"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-04-22;15501315",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit7497d6aa77824757a4ae58d61181bb26",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-04-23T08:27:40.691688Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit7497d6aa77824757a4ae58d61181bb26"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2025-05-25",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2025_000007",
+     "title": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-05-26T07:49:07.466639Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2025/000007"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-09-18;12221973",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit6e07742b6c6b4681a6a9ac98f9058de7",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-09-19T07:20:24.733213Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit6e07742b6c6b4681a6a9ac98f9058de7"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000003",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000003/nld@2025-10-04",
+     "technischId": "_akn_nl_act_mnre1171_2025_000003_akn_nl_bill_mnre1171_2025_000003",
+     "title": "Ontwerp Nota Ruimte",
+     "citeerTitel": "Ontwerp Nota Ruimte",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-10-06T07:15:41.382996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000003"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2025-12-09;4",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2025_besluit_omgevingsverordening_20251212_144300",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-12-15T08:16:22.145238Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2025/besluit-omgevingsverordening-20251212-144300"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-15;V1",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2026_ontwerpwijzing000012",
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-01-16T08:18:45.544348Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2026/ontwerpwijzing000012"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-04-07;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260324_141504",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-04-14T08:16:33.752966Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260324-141504"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-05-12;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260508_151417",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-13T08:53:57.800999Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260508-151417"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-20;14033349",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit86d181aef92e42ccb1846b8237dc579a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-21T08:34:04.009842Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit86d181aef92e42ccb1846b8237dc579a"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2026/000008",
+     "expressionId": "/akn/nl/act/mnre1045/2026/000008/nld@2026-05-22",
+     "technischId": "_akn_nl_act_mnre1045_2026_000008_akn_nl_bill_mnre1045_2026_000008",
+     "title": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "citeerTitel": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-22T08:33:00.930467Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1045/2026/000008"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-08-04;07360762",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit5cacffdd8c9743a2b15f7d7d6ee72075",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-08-05T07:37:51.810853Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit5cacffdd8c9743a2b15f7d7d6ee72075"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-09-02;06030214",
+     "technischId": "_akn_nl_act_gm0873_2020_omgevingsplan_akn_nl_bill_gm0873_2026_besluite8ff657e879e488890b7196022be419a",
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-09-03T08:43:25.096028Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/gm0873/2026/besluite8ff657e879e488890b7196022be419a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20260928_142413",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-02T08:30:55.948256Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20260928-142413"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1a",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20261014_172316",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-14T07:34:56.563816Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20261014-172316"
+    }
+   ]
+  },
+  {
+   "name": "Ossendrecht, Bremweg 1",
+   "x": 81374,
+   "y": 380528,
+   "checkedAt": "2026-11-24T22:41:58.449Z",
+   "latestAttemptComplete": true,
+   "fingerprint": "63a06a438bb77ae5",
+   "documents": [
+    {
+     "workId": "/akn/nl/act/mnre1034/2020/regOW01",
+     "expressionId": "/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1",
+     "technischId": null,
+     "title": "Omgevingswet",
+     "citeerTitel": "Omgevingswet",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2020-08-01",
+     "validSince": "2020-08-01",
+     "registeredAt": "2021-11-17T13:43:15.981086Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2020/regOW01/nld@2020-02-05;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2021/OOWATRXX1",
+     "expressionId": "/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1",
+     "technischId": null,
+     "title": "Aansluitdocument Rijk",
+     "citeerTitel": "Aansluitdocument Rijk",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-12-01",
+     "validSince": "2021-12-01",
+     "registeredAt": "2021-12-02T12:41:34.775823Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2021/OOWATRXX1/nld@2021-10-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/NOVI011",
+     "expressionId": "/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1",
+     "technischId": null,
+     "title": "Nationale Omgevingsvisie",
+     "citeerTitel": "Nationale Omgevingsvisie: Duurzaam perspectief voor onze leefomgeving",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2021-02-23",
+     "validSince": "2021-02-23",
+     "registeredAt": "2023-03-03T13:02:09.58066Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/NOVI011/nld@2023-01-31;1"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873",
+     "expressionId": "/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1",
+     "technischId": null,
+     "title": "Voorbeschermingsregels hyperscale datacentra",
+     "citeerTitel": "Voorbeschermingsregels hyperscale datacentra",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2024-01-01",
+     "validSince": "2024-01-01",
+     "registeredAt": "2023-12-21T17:00:38.523473Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2023/OOWVbbLSDD3TijdelijkDeel0873/nld@2023-01-01;1"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086",
+     "technischId": null,
+     "title": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "citeerTitel": "Definitief Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C ",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": "2024-08-26",
+     "validSince": "2024-08-26",
+     "registeredAt": "2024-07-15T10:32:22.148232Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2024/Regeling61b6a5b3d9194825a5ebdb73a36a40fa/nld@2024-07-11;10591086"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22/nld@65",
+     "technischId": null,
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2024-12-05",
+     "validSince": "2024-12-05",
+     "registeredAt": "2024-12-05T15:42:58.096395Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2024/2_22/nld@65"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2024/PEH",
+     "expressionId": "/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2",
+     "technischId": null,
+     "title": "Programma Energiehoofdstructuur",
+     "citeerTitel": "Programma Energiehoofdstructuur",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 2,
+     "inForceSince": "2025-02-20",
+     "validSince": "2025-02-20",
+     "registeredAt": "2025-02-19T17:22:07.541778Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1045/2024/PEH/nld@2025-01-21;2"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09",
+     "technischId": null,
+     "title": "Programma Integraal Riviermanagement",
+     "citeerTitel": "Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-10",
+     "validSince": "2025-04-10",
+     "registeredAt": "2025-04-10T11:25:37.948251Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2025-04-09"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/2_25",
+     "expressionId": "/akn/nl/act/pv30/2025/2_25/nld@67",
+     "technischId": null,
+     "title": "Regionaal Water en Bodem Programma",
+     "citeerTitel": "Regionaal Water en Bodem Programma (RWP)",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": "2025-04-17",
+     "validSince": "2025-04-17",
+     "registeredAt": "2025-04-17T08:15:41.240645Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/2_25/nld@67"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14",
+     "technischId": null,
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-01-14",
+     "validSince": "2026-01-14",
+     "registeredAt": "2026-01-14T08:25:49.258497Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1018/2025/000007/nld@2026-01-14"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef",
+     "expressionId": "/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3",
+     "technischId": null,
+     "title": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "citeerTitel": "Voorbeschermingsregels Provincie Noord-Brabant ",
+     "kind": "Voorbeschermingsregels Omgevingsplan",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 3,
+     "inForceSince": "2026-05-15",
+     "validSince": "2026-05-15",
+     "registeredAt": "2026-05-15T07:54:27.785155Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2023/tijdelijkdeel-gm0873-b1f7d5fecc82454f9bc4d3249f92c1ef/nld@2026-05-15;3"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784",
+     "technischId": null,
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 11,
+     "inForceSince": "2026-05-21",
+     "validSince": "2026-05-21",
+     "registeredAt": "2026-05-20T09:02:49.998344Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-19;11303784"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506",
+     "technischId": null,
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 3,
+     "inForceSince": "2026-06-15",
+     "validSince": "2026-06-15",
+     "registeredAt": "2026-06-15T07:43:06.464513Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-06-11;12190506"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2026/000028",
+     "expressionId": "/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01",
+     "technischId": null,
+     "title": "Programma Mariene Strategie Deel\n                                1",
+     "citeerTitel": "Programma Mariene Strategie Deel 1",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": "2026-07-01",
+     "validSince": "2026-07-01",
+     "registeredAt": "2026-07-01T08:08:07.354646Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1130/2026/000028/nld@2026-07-01"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041330",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over activiteiten in de fysieke leefomgeving (Besluit activiteiten leefomgeving)",
+     "citeerTitel": "Besluit activiteiten leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041330/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041313",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over de kwaliteit van de fysieke leefomgeving en de uitoefening van taken en bevoegdheden (Besluit kwaliteit leefomgeving)",
+     "citeerTitel": "Besluit kwaliteit leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041313/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041297",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende regels over bouwwerken in de fysieke leefomgeving (Besluit bouwwerken leefomgeving)",
+     "citeerTitel": "Besluit bouwwerken leefomgeving",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041297/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2019/reg0001",
+     "expressionId": "/akn/nl/act/mnre1034/2019/reg0001/nld@12-0",
+     "technischId": null,
+     "title": "Regeling van de Minister voor Milieu en Wonen, de Staatssecretaris van Defensie, de Minister van Economische Zaken en Klimaat, de Minister van Infrastructuur en Waterstaat, de Minister van Landbouw, Natuur en Voedselkwaliteit en de Minister van Onderwijs, Cultuur en Wetenschap van 21 november 2019, houdende regels over het beschermen en benutten van de fysieke leefomgeving (Omgevingsregeling)",
+     "citeerTitel": "Omgevingsregeling",
+     "kind": "Ministeriële Regeling",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 13,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2019/reg0001/nld@12-0"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1034/2018/BWBR0041278",
+     "expressionId": "/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0",
+     "technischId": null,
+     "title": "Besluit van 3 juli 2018, houdende procedurele regels en regels over algemene onderwerpen over het beschermen en benutten van de fysieke leefomgeving (Omgevingsbesluit)",
+     "citeerTitel": "Omgevingsbesluit",
+     "kind": "AMvB",
+     "authority": {
+      "code": "mnre1034",
+      "name": "ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+      "level": "ministerie"
+     },
+     "version": 12,
+     "inForceSince": "2026-10-01",
+     "validSince": "2026-10-01",
+     "registeredAt": "2026-09-30T07:56:52.783581Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/mnre1034/2018/BWBR0041278/nld@11-0"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7",
+     "technischId": null,
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 7,
+     "inForceSince": "2026-10-30",
+     "validSince": "2026-10-30",
+     "registeredAt": "2026-10-30T09:04:15.997996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-10-16;7"
+    }
+   ],
+   "drafts": [
+    {
+     "workId": "/akn/nl/act/mnre1153/2023/NPLG",
+     "expressionId": "/akn/nl/act/mnre1153/2023/NPLG/nld@2023-12-15;1",
+     "technischId": "_akn_nl_act_mnre1153_2023_NPLG_akn_nl_bill_mnre1153_2024_e4ccdd4594b6432c8de1c8bba11063c5",
+     "title": "Nationaal Programma Landelijk Gebied",
+     "citeerTitel": "Nationaal Programma Landelijk Gebied",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1153",
+      "name": "ministerie van Landbouw, Natuur en Voedselkwaliteit",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-11T12:20:01.720194Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1153/2024/e4ccdd4594b6432c8de1c8bba11063c5"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM",
+     "expressionId": "/akn/nl/act/mnre1130/2024/Ontwerp_IRM/nld@2024-01-31",
+     "technischId": "_akn_nl_act_mnre1130_2024_Ontwerp_IRM_akn_nl_bill_mnre1130_2024_Ontwerp_IRM",
+     "title": "Ontwerp Programma Integraal Riviermanagement",
+     "citeerTitel": "Ontwerp Programma Integraal Riviermanagement",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1130",
+      "name": "ministerie van Infrastructuur en Waterstaat",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-01-31T14:37:44.475595Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1130/2024/Ontwerp_IRM"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43",
+     "expressionId": "/akn/nl/act/ws0652/2024/Regelinga06cb0dac723494c99283c2dae42af43/nld@2024-02-06",
+     "technischId": "_akn_nl_act_ws0652_2024_Regelinga06cb0dac723494c99283c2dae42af43_akn_nl_bill_ws0652_2024_besluit2668234057eb4c5dbf8329a327cab9ad",
+     "title": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "citeerTitel": "Ontwerp Projectbesluit Dijkversterkingstraject Weimeren Dijkvak B098C",
+     "kind": "Projectbesluit",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-02-08T13:11:44.451612Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit2668234057eb4c5dbf8329a327cab9ad"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2024-06-12;06254145",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2024_besluit69893c91c11b4e9ca66302ac6772474a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-06-13T12:35:10.239993Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2024/besluit69893c91c11b4e9ca66302ac6772474a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_22_61",
+     "expressionId": "/akn/nl/act/pv30/2024/2_22_61/nld@61",
+     "technischId": "_akn_nl_act_pv30_2024_2_22_61_akn_nl_bill_pv30_2024_2_61",
+     "title": "Actieplan Geluid Noord-Brabant (4e tranche 2024-2029)",
+     "citeerTitel": "Actieplan Geluid Noord-Brabant",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-07-12T11:29:13.892339Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_61"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2024/2_24_64",
+     "expressionId": "/akn/nl/act/pv30/2024/2_24_64/nld@64",
+     "technischId": "_akn_nl_act_pv30_2024_2_24_64_akn_nl_bill_pv30_2024_2_64",
+     "title": "Regionaal Water en Bodem Programma 2022-2027",
+     "citeerTitel": "Addendum Regionaal Water en Bodem Programma 2022-2027",
+     "kind": "Programma",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2024-10-16T14:26:57.711121Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2024/2_64"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000001",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000001/nld@2025-03-28",
+     "technischId": "_akn_nl_act_mnre1171_2025_000001_akn_nl_bill_mnre1171_2025_000001",
+     "title": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "citeerTitel": "Ontwerp Programma Overgedragen Milieuregels Omgevingswet",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-03-31T11:53:58.172878Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000001"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-04-22;15501315",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit7497d6aa77824757a4ae58d61181bb26",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-04-23T08:27:40.691688Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit7497d6aa77824757a4ae58d61181bb26"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2025-05-25",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2025_000007",
+     "title": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Ontwerp Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-05-26T07:49:07.466639Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2025/000007"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2025-09-18;12221973",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2025_besluit6e07742b6c6b4681a6a9ac98f9058de7",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-09-19T07:20:24.733213Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2025/besluit6e07742b6c6b4681a6a9ac98f9058de7"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1171/2025/000003",
+     "expressionId": "/akn/nl/act/mnre1171/2025/000003/nld@2025-10-04",
+     "technischId": "_akn_nl_act_mnre1171_2025_000003_akn_nl_bill_mnre1171_2025_000003",
+     "title": "Ontwerp Nota Ruimte",
+     "citeerTitel": "Ontwerp Nota Ruimte",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "mnre1171",
+      "name": "ministerie van Volkshuisvesting en Ruimtelijke Ordening",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-10-06T07:15:41.382996Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1171/2025/000003"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2025-12-09;4",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2025_besluit_omgevingsverordening_20251212_144300",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2025-12-15T08:16:22.145238Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2025/besluit-omgevingsverordening-20251212-144300"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1018/2025/000007",
+     "expressionId": "/akn/nl/act/mnre1018/2025/000007/nld@2026-01-15;V1",
+     "technischId": "_akn_nl_act_mnre1018_2025_000007_akn_nl_bill_mnre1018_2026_ontwerpwijzing000012",
+     "title": "Nationaal Programma Ruimte voor Defensie",
+     "citeerTitel": "Nationaal Programma Ruimte voor Defensie",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1018",
+      "name": "ministerie van Defensie",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-01-16T08:18:45.544348Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1018/2026/ontwerpwijzing000012"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-04-07;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260324_141504",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-04-14T08:16:33.752966Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260324-141504"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2025/omgevingsverordening",
+     "expressionId": "/akn/nl/act/pv30/2025/omgevingsverordening/nld@2026-05-12;5",
+     "technischId": "_akn_nl_act_pv30_2025_omgevingsverordening_akn_nl_bill_pv30_2026_work_20260508_151417",
+     "title": "Omgevingsverordening Noord-Brabant",
+     "citeerTitel": "Omgevingsverordening Noord-Brabant",
+     "kind": "Omgevingsverordening",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-13T08:53:57.800999Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/work-20260508-151417"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-05-20;14033349",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit86d181aef92e42ccb1846b8237dc579a",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-21T08:34:04.009842Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit86d181aef92e42ccb1846b8237dc579a"
+    },
+    {
+     "workId": "/akn/nl/act/mnre1045/2026/000008",
+     "expressionId": "/akn/nl/act/mnre1045/2026/000008/nld@2026-05-22",
+     "technischId": "_akn_nl_act_mnre1045_2026_000008_akn_nl_bill_mnre1045_2026_000008",
+     "title": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "citeerTitel": "Ontwerp Programma Verbindingen Aanlanding Wind op Zee",
+     "kind": "Programma",
+     "authority": {
+      "code": "mnre1045",
+      "name": "ministerie van Economische Zaken",
+      "level": "ministerie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-05-22T08:33:00.930467Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/mnre1045/2026/000008"
+    },
+    {
+     "workId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415",
+     "expressionId": "/akn/nl/act/ws0652/2023/Regeling32dcc2825f234a7faf0d28ada24eb415/nld@2026-08-04;07360762",
+     "technischId": "_akn_nl_act_ws0652_2023_Regeling32dcc2825f234a7faf0d28ada24eb415_akn_nl_bill_ws0652_2026_besluit5cacffdd8c9743a2b15f7d7d6ee72075",
+     "title": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "citeerTitel": "Waterschapsverordening waterschap Brabantse Delta 2024",
+     "kind": "Waterschapsverordening",
+     "authority": {
+      "code": "ws0652",
+      "name": "waterschap Brabantse Delta",
+      "level": "waterschap"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-08-05T07:37:51.810853Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/ws0652/2026/besluit5cacffdd8c9743a2b15f7d7d6ee72075"
+    },
+    {
+     "workId": "/akn/nl/act/gm0873/2020/omgevingsplan",
+     "expressionId": "/akn/nl/act/gm0873/2020/omgevingsplan/nld@2026-09-02;06030214",
+     "technischId": "_akn_nl_act_gm0873_2020_omgevingsplan_akn_nl_bill_gm0873_2026_besluite8ff657e879e488890b7196022be419a",
+     "title": "Omgevingsplan gemeente Woensdrecht",
+     "citeerTitel": "Omgevingsplan gemeente Woensdrecht",
+     "kind": "Omgevingsplan",
+     "authority": {
+      "code": "gm0873",
+      "name": "gemeente Woensdrecht",
+      "level": "gemeente"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-09-03T08:43:25.096028Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/gm0873/2026/besluite8ff657e879e488890b7196022be419a"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20260928_142413",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-02T08:30:55.948256Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20260928-142413"
+    },
+    {
+     "workId": "/akn/nl/act/pv30/2026/omgevingsvisie",
+     "expressionId": "/akn/nl/act/pv30/2026/omgevingsvisie/nld@2026-09-29;1a",
+     "technischId": "_akn_nl_act_pv30_2026_omgevingsvisie_akn_nl_bill_pv30_2026_besluit_omgevingsvisie_20261014_172316",
+     "title": "Omgevingsvisie Noord-Brabant",
+     "citeerTitel": "Omgevingsvisie Noord-Brabant",
+     "kind": "Omgevingsvisie",
+     "authority": {
+      "code": "pv30",
+      "name": "provincie Noord-Brabant",
+      "level": "provincie"
+     },
+     "version": 1,
+     "inForceSince": null,
+     "validSince": null,
+     "registeredAt": "2026-10-14T07:34:56.563816Z",
+     "publicationId": "https://identifier.overheid.nl/akn/nl/bill/pv30/2026/besluit-omgevingsvisie-20261014-172316"
+    }
+   ]
+  }
+ ]
+}
