@@ -1,0 +1,25 @@
+{
+  "address": "Verlengde Duinstraat 34, 4631HS Hoogerheide",
+  "query": {
+    "postcode": "4631HS",
+    "number": 34
+  },
+  "recordedAt": "2026-11-24",
+  "steps": [
+    "ok find-address: Found Verlengde Duinstraat 34, 4631HS Hoogerheide",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Woensdrecht C 1652, 553 m² drawn",
+    "ok bag-buildings: 1 house, 2 other buildings on plot, 27 nearby; ignored 3 demolished or invalid",
+    "ok 3dbag-heights: Heights for 29 buildings, height scan of 2024",
+    "ok bgt-trees: 0 registered trees, 0 hedges, 0 other vegetation nearby",
+    "ok bgt-public: 22 current public areas; ignored 23 historical records",
+    "ok classify-edges: 11 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 2 tall (2.8 m²), 11 medium (24.8 m²), 1 overhanging from next door (5 m²) in 352 m² of garden"
+  ],
+  "flags": [
+    "BUILDING_ON_BOUNDARY",
+    "OUTBUILDINGS_ON_PLOT",
+    "FRONT_ESTIMATED"
+  ]
+}

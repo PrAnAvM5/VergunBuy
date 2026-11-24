@@ -15,7 +15,7 @@
     "ok bgt-public: 35 current public areas; ignored 87 historical records",
     "ok classify-edges: 10 edge runs",
     "ok bgt-structures: none registered on or at the plot",
-    "ok ahn-obstacles: 2 tall (1245.5 m²), 6 medium (8.8 m²) in 1655.8 m² of garden"
+    "ok ahn-obstacles: 1 tall (910.5 m²), 15 medium (53.3 m²), 2 overhanging from next door (289.8 m²) in 1655.8 m² of garden"
   ],
   "flags": []
 }
