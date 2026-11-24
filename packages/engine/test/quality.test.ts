@@ -120,6 +120,14 @@ describe("pavementCrossings", () => {
     expect(runs[0]!.acrossM).toBeGreaterThanOrEqual(2);
     expect(runs[0]!.acrossM).toBeLessThanOrEqual(2.25);
     expect(runs[0]!.via).toEqual(["voetpad"]);
+    expect(runs[0]!.reaches).toBe("rijbaan lokale weg");
+  });
+
+  it("records which crossing it reaches, so a registered crossing across the pavement is found", () => {
+    const inrit = { id: "inrit-1", outline: rect(2, -3, 6, -2), label: "inrit", kind: "road" };
+    const runs = pavementCrossings(plot, [inrit, pavement, road]);
+    const toInrit = runs.filter((r) => r.reachesId === "inrit-1");
+    expect(toInrit.reduce((s, r) => s + r.lengthM, 0)).toBeCloseTo(4, 6);
   });
 
   it("stops at unmapped ground unless it lies on the road's own parcel", () => {

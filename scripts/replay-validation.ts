@@ -17,8 +17,16 @@ for (const file of readdirSync(`${dir}/recordings`).sort()) {
     gunzipSync(readFileSync(`${dir}/recordings/${file}`)).toString(),
   ) as Record<string, { links?: unknown[] }>;
   for (const body of Object.values(rec)) body.links = []; // pages were merged when recording
-  const doc = (rec.locatieserver as { response: { docs: Record<string, unknown>[] } }).response
-    .docs[0]!;
+  // The recorded address is the one whose label the slug was made from.
+  const docs = (rec.locatieserver as { response: { docs: Record<string, unknown>[] } }).response
+    .docs;
+  const slug = (d: Record<string, unknown>) =>
+    String(d.weergavenaam)
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  const doc = docs.find((d) => `${slug(d)}.json.gz` === file) ?? docs[0]!;
   const addition = `${(doc.huisletter as string) ?? ""}${(doc.huisnummertoevoeging as string) ?? ""}`;
   const fetchFn = fixtureFetch(rec as never);
   const tracer = new Tracer();

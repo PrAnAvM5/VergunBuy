@@ -231,4 +231,11 @@ describe("validation run findings (2026-11-24)", () => {
     const { context } = await run(load("huijbergen-siardus-bogaertslaan-7"), "4635CL", "7");
     expect(context.flags.map((f) => f.code)).not.toContain("POSSIBLE_ACHTERPAD");
   });
+
+  it("Handekenskruid 44: a registered crossing straight across the pavement is this plot's exit", async () => {
+    const { context } = await run(load("huijbergen-handekenskruid-44"), "4635BJ", "44");
+    expect(context.access.level).toBe("registered");
+    expect(context.exits[0]?.acrossM).toBeLessThanOrEqual(3);
+    expect(context.exits[0]?.alongPlotM).toBeGreaterThanOrEqual(2.5);
+  });
 });

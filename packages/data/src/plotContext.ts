@@ -33,6 +33,7 @@ import {
   intersectionArea,
   isCarSurface,
   pavementCrossings,
+  MIN_ACCESS_WIDTH_M,
   type PavementRun,
   newQuality,
   note,
@@ -98,8 +99,10 @@ export interface OtherVegetation {
 export interface Exit {
   id: string;
   outline: Polygon;
-  /** Length of plot boundary that touches the driveway crossing. */
+  /** Length of plot boundary that touches (or faces) the driveway crossing. */
   alongPlotM: number;
+  /** Set when the crossing lies across the pavement rather than against the boundary. */
+  acrossM?: number;
   registeredAt?: string;
 }
 
@@ -293,6 +296,9 @@ const share = (plot: Polygon, b: Polygon) => {
   return a > 0 ? Math.min(1, intersectionArea(plot, b) / a) : 0;
 };
 
+/** A registered crossing further across the pavement than this is not counted as this plot's. */
+const CROSSING_ACROSS_MAX_M = 3;
+
 /** A building with at least one address used for living. */
 const isHome = (b: Building) => (b.addresses ?? 0) > 0 && /woon/i.test(b.use ?? "");
 
@@ -462,6 +468,7 @@ export async function buildPlotContext(
   let neighbours: Building[] = [];
   let otherHomesOnPlot = 0;
   const rearPathCandidates = new Set<string>();
+  const openGround: { id: string; outline: Polygon; label: string; kind: string }[] = [];
   try {
     await tracer.step("bag-buildings", "Buildings on and around the plot (BAG)", async (ctx) => {
       const res = await ogcItems(OGC.bag, "pand", work, ctx, fetchFn);
@@ -690,6 +697,24 @@ export async function buildPlotContext(
         if (!roads.complete || !green.complete || !water.complete)
           truncated("publicArea", "street and public area");
         try {
+          // Unvegetated terrain that is not a private yard (paved verges, open paving, sand).
+          // Used only as ground a car may cross to reach the road (see pavementCrossings).
+          const open = await ogcItems(OGC.bgt, "onbegroeidterreindeel", work, ctx, fetchFn);
+          for (const f of open.features) {
+            const look = str(f.properties.fysiek_voorkomen) ?? "";
+            if (!isCurrentBgt(f) || look === "erf" || look === "") continue;
+            outerRings(f.geometry).forEach((ring, i) =>
+              openGround.push({ id: bgtId(f, i), outline: ring, label: look, kind: "terrain" }),
+            );
+          }
+        } catch {
+          note(
+            quality,
+            "access",
+            "Unpaved and paved terrain could not be loaded; verges may be missed.",
+          );
+        }
+        try {
           const labels = await ogcItems(OGC.bgt, "openbareruimtelabel", work, ctx, fetchFn);
           labelsRead = true;
           allLabels = labels.features
@@ -862,7 +887,7 @@ export async function buildPlotContext(
     publicAreas && exits.length === 0
       ? pavementCrossings(
           plot.outline,
-          publicAreas,
+          [...publicAreas, ...openGround],
           parcels.flatMap((f) =>
             outerRings(f.geometry).map((outline) => ({
               id: str(f.properties.identificatie_lokaal_id) ?? String(f.id),
@@ -871,11 +896,43 @@ export async function buildPlotContext(
           ),
         )
       : [];
+  // A registered crossing reached straight across the pavement: it is this plot's when it faces
+  // at least a car's width of the boundary; less than that and it may be the neighbour's.
+  const partlyFacingCrossings: { facingM: number; acrossM: number }[] = [];
+  const facing = new Map<string, { facingM: number; acrossM: number }>();
+  for (const r of pavementRuns) {
+    if (r.reaches !== "inrit" || !r.reachesId || r.acrossM > CROSSING_ACROSS_MAX_M) continue;
+    const f = facing.get(r.reachesId) ?? { facingM: 0, acrossM: 0 };
+    f.facingM += r.lengthM;
+    f.acrossM = Math.max(f.acrossM, r.acrossM);
+    facing.set(r.reachesId, f);
+  }
+  for (const [id, f] of facing) {
+    const area = byId.get(id);
+    if (!area) continue;
+    if (f.facingM >= MIN_ACCESS_WIDTH_M)
+      exits.push({
+        id,
+        outline: area.outline,
+        alongPlotM: Math.round(f.facingM * 10) / 10,
+        acrossM: f.acrossM,
+        ...(area.registeredAt ? { registeredAt: area.registeredAt } : {}),
+      });
+    else if (f.facingM >= 0.5)
+      partlyFacingCrossings.push({
+        facingM: Math.round(f.facingM * 10) / 10,
+        acrossM: f.acrossM,
+      });
+  }
   const accessResult = assessAccess({
     publicDataAvailable: publicAreas !== null,
     registeredExits: exits.length,
+    ...(exits.length && exits.every((e) => e.acrossM !== undefined)
+      ? { registeredAcrossM: Math.max(...exits.map((e) => e.acrossM ?? 0)) }
+      : {}),
     carReachableRunsM: carReachableEdges.map((e) => e.lengthM),
     pavementRuns,
+    partlyFacingCrossings,
   });
   if (accessResult.level === "registered") {
     // complete

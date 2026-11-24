@@ -39,10 +39,17 @@ export const isCarSurface = (functie: string | undefined) =>
 export interface AccessInput {
   publicDataAvailable: boolean;
   registeredExits: number;
+  /** Set when a registered crossing is reached straight across the pavement, not touching. */
+  registeredAcrossM?: number;
   /** Length of each stretch of plot boundary lying directly on a car-usable surface. */
   carReachableRunsM: number[];
   /** Stretches where a road lies just beyond a pavement or verge (see pavementCrossings). */
   pavementRuns?: { lengthM: number; acrossM: number }[];
+  /**
+   * Registered crossings straight across the pavement from this plot that face less than a car's
+   * width of its boundary: they may serve the neighbour, so they are evidence, not proof.
+   */
+  partlyFacingCrossings?: { facingM: number; acrossM: number }[];
 }
 
 export interface AccessResult {
@@ -67,7 +74,10 @@ export function assessAccess(input: AccessInput): AccessResult {
     return {
       level: "registered",
       outcome: "pass",
-      reason: `${input.registeredExits} registered driveway crossing${input.registeredExits > 1 ? "s" : ""} touch${input.registeredExits > 1 ? "" : "es"} the plot.`,
+      reason:
+        input.registeredAcrossM !== undefined
+          ? `A registered driveway crossing lies straight in front of the plot, ${input.registeredAcrossM.toFixed(1)} m across the pavement.`
+          : `${input.registeredExits} registered driveway crossing${input.registeredExits > 1 ? "s" : ""} touch${input.registeredExits > 1 ? "" : "es"} the plot.`,
     };
   const wide = input.carReachableRunsM.filter((m) => m >= MIN_ACCESS_WIDTH_M);
   if (wide.length > 0)
@@ -77,6 +87,16 @@ export function assessAccess(input: AccessInput): AccessResult {
       outcome: "unknown",
       reason: `A car can reach the plot boundary over ${Math.max(...wide).toFixed(1)} m, but no driveway crossing is registered there. Check the aerial photo; a new exit needs its own permit.`,
     };
+  const partly = input.partlyFacingCrossings ?? [];
+  if (partly.length > 0) {
+    const best = partly.reduce((a, b) => (b.facingM > a.facingM ? b : a));
+    return {
+      level: "possible",
+      route: "across-pavement",
+      outcome: "unknown",
+      reason: `A registered driveway crossing lies ${best.acrossM.toFixed(1)} m in front of the plot, but only ${best.facingM.toFixed(1)} m of it faces this plot, so it may serve the neighbour. Check the aerial photo.`,
+    };
+  }
   const kerb = (input.pavementRuns ?? []).filter((r) => r.lengthM >= MIN_ACCESS_WIDTH_M);
   if (kerb.length > 0) {
     const best = kerb.reduce((a, b) => (b.lengthM > a.lengthM ? b : a));
@@ -105,6 +125,9 @@ export interface PavementRun {
   acrossM: number;
   /** What the car would cross, e.g. ["voetpad", "groenvoorziening"]. */
   via: string[];
+  /** The car surface reached, e.g. "rijbaan lokale weg" or "inrit", and its id when known. */
+  reaches: string;
+  reachesId?: string;
 }
 
 export const PAVEMENT_SETTINGS = {
@@ -128,7 +151,7 @@ export const ROAD_PARCEL_VERGE = "verge on the road's parcel";
  */
 export function pavementCrossings(
   plot: Polygon,
-  areas: { outline: Polygon; label: string; kind: string }[],
+  areas: { id?: string; outline: Polygon; label: string; kind: string }[],
   parcels: { id: string; outline: Polygon }[] = [],
   isCar: (label: string) => boolean = (l) => isCarSurface(l),
 ): PavementRun[] {
@@ -150,6 +173,7 @@ export function pavementCrossings(
       /** Parcels of unmapped ground crossed so far; they must all be the road's parcel. */
       const unmapped = new Set<string>();
       let hit: number | null = null;
+      let reached: { id?: string; label: string } | undefined;
       for (let d = 0.5; d <= S.maxAcrossM; d += S.marchM) {
         const p = at(d);
         const here = areaAt(p);
@@ -159,8 +183,10 @@ export function pavementCrossings(
           if (
             unmapped.size === 0 ||
             (unmapped.size === 1 && roadParcel && unmapped.has(roadParcel))
-          )
+          ) {
             hit = d;
+            reached = here;
+          }
           break;
         }
         if (here) {
@@ -172,18 +198,33 @@ export function pavementCrossings(
         unmapped.add(parcel);
         if (unmapped.size > 1) break;
       }
-      if (hit === null) continue;
+      if (hit === null || !reached) continue;
       if (unmapped.size) via.add(ROAD_PARCEL_VERGE);
       const from = s / steps;
       const to = (s + 1) / steps;
       const last = runs[runs.length - 1];
-      if (last && last.edge === edge && Math.abs(last.to - from) < 1e-9) {
+      if (
+        last &&
+        last.edge === edge &&
+        Math.abs(last.to - from) < 1e-9 &&
+        last.reaches === reached.label &&
+        last.reachesId === reached.id
+      ) {
         last.to = to;
         last.lengthM = len * (last.to - last.from);
         last.acrossM = Math.max(last.acrossM, hit);
         for (const v of via) if (!last.via.includes(v)) last.via.push(v);
       } else {
-        runs.push({ edge, from, to, lengthM: len * (to - from), acrossM: hit, via: [...via] });
+        runs.push({
+          edge,
+          from,
+          to,
+          lengthM: len * (to - from),
+          acrossM: hit,
+          via: [...via],
+          reaches: reached.label,
+          ...(reached.id ? { reachesId: reached.id } : {}),
+        });
       }
     }
   });
