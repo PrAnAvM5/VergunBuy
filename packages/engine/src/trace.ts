@@ -59,7 +59,7 @@ export class Tracer {
       return await run(ctx);
     } catch (err) {
       record.status = "failed";
-      record.error = err instanceof SafeError ? err.message : "This step failed unexpectedly.";
+      record.error = isSafeError(err) ? err.message : "This step failed unexpectedly.";
       throw err;
     } finally {
       record.ms = Math.round(this.now() - started);
@@ -82,4 +82,16 @@ export class SafeError extends Error {
     super(message);
     this.name = "SafeError";
   }
+}
+
+/**
+ * Shape check instead of `instanceof`: if a package is loaded twice (e.g. via two
+ * symlinked paths), `instanceof` fails silently and safe messages would be lost.
+ */
+export function isSafeError(err: unknown): err is SafeError {
+  return (
+    err instanceof Error &&
+    err.name === "SafeError" &&
+    typeof (err as { code?: unknown }).code === "string"
+  );
 }

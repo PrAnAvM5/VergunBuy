@@ -70,9 +70,14 @@ export async function getJson<T>(opts: GetJsonOptions<T>): Promise<T> {
 
   const parsed = schema.safeParse(await res.json().catch(() => undefined));
   if (!parsed.success) {
+    const detail = parsed.error.issues
+      .slice(0, 5)
+      .map((i) => `${i.path.join(".") || "(root)"}: ${i.message}`)
+      .join("; ");
     throw new SafeError(
       "UPSTREAM_INVALID",
       `${capitalise(serviceName)} sent data in an unexpected format.`,
+      detail,
     );
   }
   return parsed.data;

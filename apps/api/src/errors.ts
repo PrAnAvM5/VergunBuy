@@ -1,4 +1,4 @@
-import { SafeError } from "@vergunbuy/engine";
+import { isSafeError } from "@vergunbuy/engine";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
 
 /** Every error code the API can return, with its HTTP status. One place, easy to audit. */
@@ -22,7 +22,7 @@ export interface ErrorBody {
 }
 
 export function toErrorBody(err: unknown): { status: ContentfulStatusCode; body: ErrorBody } {
-  if (err instanceof SafeError) {
+  if (isSafeError(err)) {
     return {
       status: ERROR_STATUS[err.code] ?? 500,
       body: { code: err.code, message: err.message },

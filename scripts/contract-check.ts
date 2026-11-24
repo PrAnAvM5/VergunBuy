@@ -4,7 +4,7 @@
  * (`pnpm contract-check`), never on every push, so upstream hiccups don't block work.
  */
 import { getJson, LOCATIESERVER_FIELDS, LocatieserverResponse } from "@vergunbuy/data";
-import { SafeError, Tracer } from "@vergunbuy/engine";
+import { isSafeError, Tracer } from "@vergunbuy/engine";
 
 const tracer = new Tracer();
 let failed = false;
@@ -14,7 +14,7 @@ async function check(id: string, label: string, run: Parameters<Tracer["step"]>[
     await tracer.step(id, label, run);
   } catch (err) {
     failed = true;
-    if (err instanceof SafeError && err.detail) console.log(`detail   ${id}: ${err.detail}`);
+    if (isSafeError(err) && err.detail) console.log(`detail   ${id}: ${err.detail}`);
   }
 }
 
