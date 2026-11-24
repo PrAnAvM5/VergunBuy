@@ -49,56 +49,31 @@ async function call(method: "GET" | "POST", path: string, body?: unknown) {
 const save = (name: string, data: unknown) =>
   writeFileSync(`${OUT}/${name}.json.gz`, gzipSync(JSON.stringify(data)));
 
-// 1. The API description: paths and the search body schemas.
-for (const p of ["/openapi.json", "/api-docs", "/"]) {
-  const r = await call("GET", p);
-  if (r.status === 200 && r.json) {
-    save("spec", r.json);
-    const paths = Object.keys((r.json as { paths?: object }).paths ?? {});
-    console.log("paths:", paths.join("\n  "));
-    break;
-  }
-}
+const RELEVANT = (p: Record<string, unknown>) =>
+  p.regelBinding === "burgerbindend" &&
+  p.regelStatus === "geldend" &&
+  !p.isHistorisch &&
+  !["ontwerp", "voorontwerp", "geconsolideerd"].includes(
+    String((p.planstatusInfo as { planstatus?: string } | undefined)?.planstatus),
+  );
 
-// 2. Plans at each point, then every object type inside the main plans at that point.
-const OBJECTS = [
-  "bestemmingsvlakken",
-  "bouwvlakken",
-  "functieaanduidingen",
-  "bouwaanduidingen",
-  "gebiedsaanduidingen",
-  "lettertekenaanduidingen",
-  "maatvoeringen",
-  "figuren",
-];
 for (const [name, x, y] of POINTS) {
   const geo = { _geo: { contains: { type: "Point", coordinates: [x, y] } } };
   const plans = await call("POST", "/plannen/_zoek?pageSize=100", geo);
-  const out: Record<string, unknown> = { plans: plans.json };
   const list =
-    (
-      plans.json as {
-        _embedded?: {
-          plannen?: { id: string; naam?: string; planType?: string; planStatusInfo?: unknown }[];
-        };
-      }
-    )?._embedded?.plannen ?? [];
-  for (const p of list) console.log(`  ${name}: ${p.id} ${p.planType} ${p.naam}`);
-  for (const p of list.filter((p) =>
-    /bestemmingsplan|beheersverordening|inpassingsplan|omgevingsvergunning|paraplu/i.test(
-      String(p.planType),
-    ),
-  )) {
-    const objs: Record<string, unknown> = {};
-    for (const o of OBJECTS) {
-      const r = await call(
-        "POST",
-        `/plannen/${encodeURIComponent(p.id)}/${o}/_zoek?pageSize=100`,
-        geo,
-      );
-      objs[o] = r.json ?? { status: r.status, text: r.text.slice(0, 500) };
-    }
-    out[p.id] = objs;
+    (plans.json as { _embedded?: { plannen?: Record<string, unknown>[] } })?._embedded?.plannen ??
+    [];
+  const out: Record<string, unknown> = { plans: plans.json };
+  for (const p of list.filter(RELEVANT)) {
+    const id = String(p.id);
+    console.log(`  ${name}: ${id} ${String(p.type)} ${String(p.naam)}`);
+    const objects = await call("POST", `/plannen/${id}/planobjecten/_zoek?pageSize=100`, geo);
+    const articles = await call(
+      "POST",
+      `/plannen/${id}/artikelen/_zoek?pageSize=100&expand=onderliggendeTeksten`,
+      geo,
+    );
+    out[id] = { objects: objects.json, articles: articles.json ?? articles.text.slice(0, 2000) };
   }
-  save(`point-${name}`, out);
+  save(`point2-${name}`, out);
 }
