@@ -9,11 +9,20 @@
     "ok find-address: Found Bremweg 1, 4641RN Ossendrecht",
     "ok bag-address: Address is in 1 building(s)",
     "ok brk-plot: Plot Ossendrecht B 2087, 5643 m² drawn",
-    "ok bag-buildings: 1 house, 3 other on plot, 0 nearby; ignored 6 demolished or invalid",
-    "ok 3dbag-heights: Heights for 2 buildings, height scan of 2024",
-    "ok bgt-trees: 0 registered trees, 0 hedges nearby (garden trees are not registered)",
+    "ok bag-buildings: 1 house, 3 other buildings on plot, 0 nearby; ignored 6 demolished or invalid",
+    "degraded 3dbag-heights: Heights for 2 buildings, height scan of 2024 (2 building(s) on the plot have no height)",
+    "ok bgt-trees: 0 registered trees, 0 hedges, 0 other vegetation nearby",
     "ok bgt-public: 5 current public areas; ignored 25 historical records",
-    "ok classify-edges: 15 edge runs"
+    "ok classify-edges: 15 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 7 tall (313.5 m²), 14 medium (36.8 m²) in 5023.8 m² of garden"
   ],
-  "flags": ["OUTBUILDINGS_ON_PLOT", "CHANGED_BETWEEN_SCANS", "NO_EXIT_FOUND"]
+  "flags": [
+    "BUILDING_ON_BOUNDARY",
+    "OUTBUILDINGS_ON_PLOT",
+    "HEIGHTS_PARTIAL",
+    "CHANGED_BETWEEN_SCANS",
+    "NO_EXIT_FOUND",
+    "FRONT_ESTIMATED"
+  ]
 }

@@ -5,5 +5,20 @@
     "number": 11
   },
   "recordedAt": "2026-11-24",
-  "source": "validation run 2026-11-24 seed 314"
+  "steps": [
+    "ok find-address: Found Koppelstraat 11, 4645RD Putte",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Putte B 2022, 560 m² drawn",
+    "ok bag-buildings: 1 house, 1 other buildings on plot, 13 nearby; ignored 6 demolished or invalid",
+    "ok 3dbag-heights: Heights for 15 buildings, height scan of 2024",
+    "ok bgt-trees: 9 registered trees, 0 hedges, 0 other vegetation nearby",
+    "ok bgt-public: 11 current public areas; ignored 54 historical records",
+    "ok classify-edges: 9 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 3 tall (97.5 m²), 4 medium (6.5 m²) in 395.3 m² of garden"
+  ],
+  "flags": [
+    "PLOT_AREA_MISMATCH",
+    "OUTBUILDINGS_ON_PLOT"
+  ]
 }

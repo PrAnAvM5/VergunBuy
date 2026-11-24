@@ -9,11 +9,13 @@
     "ok find-address: Found Buurtweg 1, 4635RN Huijbergen",
     "ok bag-address: Address is in 1 building(s)",
     "ok brk-plot: Plot Huijbergen D 320, 2413 m² drawn",
-    "ok bag-buildings: 1 house, 0 other on plot, 0 nearby; ignored 0 demolished or invalid",
+    "ok bag-buildings: 1 house, 0 other buildings on plot, 0 nearby; ignored 0 demolished or invalid",
     "ok 3dbag-heights: Heights for 1 buildings, height scan of 2024",
-    "ok bgt-trees: 12 registered trees, 0 hedges nearby (garden trees are not registered)",
+    "ok bgt-trees: 12 registered trees, 0 hedges, 0 other vegetation nearby",
     "ok bgt-public: 8 current public areas; ignored 12 historical records",
-    "ok classify-edges: 6 edge runs"
+    "ok classify-edges: 6 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 5 tall (141 m²), 15 medium (61.5 m²) in 2098 m² of garden"
   ],
   "flags": []
 }

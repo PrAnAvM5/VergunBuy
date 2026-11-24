@@ -5,5 +5,19 @@
     "number": 44
   },
   "recordedAt": "2026-11-24",
-  "source": "validation run 2026-11-24 seed 7"
+  "steps": [
+    "ok find-address: Found Handekenskruid 44, 4635BJ Huijbergen",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Huijbergen B 972, 482 m² drawn",
+    "ok bag-buildings: 1 house, 2 other buildings on plot, 25 nearby; ignored 8 demolished or invalid",
+    "ok 3dbag-heights: Heights for 27 buildings, height scan of 2024",
+    "ok bgt-trees: 5 registered trees, 8 hedges, 0 other vegetation nearby",
+    "ok bgt-public: 37 current public areas; ignored 58 historical records",
+    "ok classify-edges: 15 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 2 tall (46 m²), 12 medium (24.8 m²) in 322.8 m² of garden"
+  ],
+  "flags": [
+    "OUTBUILDINGS_ON_PLOT"
+  ]
 }

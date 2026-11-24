@@ -5,5 +5,21 @@
     "number": 13
   },
   "recordedAt": "2026-11-24",
-  "source": "validation run 2026-11-24"
+  "steps": [
+    "ok find-address: Found Zonnedauw 13, 4635BL Huijbergen",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Huijbergen B 873, 689 m² drawn",
+    "ok bag-buildings: 1 house, 1 other buildings on plot, 15 nearby; ignored 4 demolished or invalid",
+    "ok 3dbag-heights: Heights for 17 buildings, height scan of 2024",
+    "ok bgt-trees: 0 registered trees, 0 hedges, 0 other vegetation nearby",
+    "ok bgt-public: 26 current public areas; ignored 71 historical records",
+    "ok classify-edges: 4 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 3 tall (289.5 m²), 5 medium (4.3 m²) in 481 m² of garden"
+  ],
+  "flags": [
+    "OUTBUILDINGS_ON_PLOT",
+    "PAVEMENT_CROSSING",
+    "FRONT_ESTIMATED"
+  ]
 }

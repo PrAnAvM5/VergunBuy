@@ -5,5 +5,20 @@
     "number": 7
   },
   "recordedAt": "2026-11-24",
-  "source": "validation run 2026-11-24"
+  "steps": [
+    "ok find-address: Found Siardus Bogaertslaan 7, 4635CL Huijbergen",
+    "ok bag-address: Address is in 1 building(s)",
+    "ok brk-plot: Plot Huijbergen C 1599, 308 m² drawn",
+    "ok bag-buildings: 1 house, 1 other buildings on plot, 15 nearby; ignored 6 demolished or invalid",
+    "ok 3dbag-heights: Heights for 17 buildings, height scan of 2024",
+    "ok bgt-trees: 0 registered trees, 0 hedges, 0 other vegetation nearby",
+    "ok bgt-public: 11 current public areas; ignored 20 historical records",
+    "ok classify-edges: 4 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 0 tall (0 m²), 8 medium (11.5 m²) in 162.5 m² of garden"
+  ],
+  "flags": [
+    "OUTBUILDINGS_ON_PLOT",
+    "PAVEMENT_CROSSING"
+  ]
 }

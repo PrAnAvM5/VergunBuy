@@ -9,11 +9,16 @@
     "ok find-address: Found Aalbersestraat 1, 4631CC Hoogerheide",
     "ok bag-address: Address is in 1 building(s)",
     "ok brk-plot: Plot Woensdrecht D 3512, 110 m² drawn",
-    "ok bag-buildings: 1 house, 1 other on plot, 34 nearby; ignored 5 demolished or invalid",
+    "ok bag-buildings: 1 house, 1 other buildings on plot, 34 nearby; ignored 5 demolished or invalid",
     "ok 3dbag-heights: Heights for 36 buildings, height scan of 2024",
-    "ok bgt-trees: 3 registered trees, 2 hedges nearby (garden trees are not registered)",
+    "ok bgt-trees: 3 registered trees, 2 hedges, 0 other vegetation nearby",
     "ok bgt-public: 23 current public areas; ignored 16 historical records",
-    "ok classify-edges: 8 edge runs"
+    "ok classify-edges: 8 edge runs",
+    "ok bgt-structures: none registered on or at the plot",
+    "ok ahn-obstacles: 0 tall (0 m²), 6 medium (5.3 m²) in 40.5 m² of garden"
   ],
-  "flags": ["OUTBUILDINGS_ON_PLOT", "POSSIBLE_ACHTERPAD", "NO_EXIT_FOUND"]
+  "flags": [
+    "OUTBUILDINGS_ON_PLOT",
+    "POSSIBLE_EXIT"
+  ]
 }
