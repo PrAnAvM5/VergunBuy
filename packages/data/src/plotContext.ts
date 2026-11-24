@@ -296,6 +296,20 @@ const share = (plot: Polygon, b: Polygon) => {
   return a > 0 ? Math.min(1, intersectionArea(plot, b) / a) : 0;
 };
 
+/**
+ * On a parcel shared with other homes, walls between them lie inside the parcel, so the boundary
+ * cannot show them. Count them directly: a house touching other homes is not detached.
+ */
+function houseTypeWithin(fromEdges: HouseType, house: Building[], others: Building[]): HouseType {
+  if (!house.length || !others.length) return fromEdges;
+  const touching = others.filter((o) =>
+    house.some((h) => distanceBetween(h.outline, o.outline) <= 0.3),
+  ).length;
+  if (touching === 0) return fromEdges;
+  if (fromEdges === "corner") return "corner";
+  return touching >= 2 ? "terraced" : "semi-or-end";
+}
+
 /** A registered crossing further across the pavement than this is not counted as this plot's. */
 const CROSSING_ACROSS_MAX_M = 3;
 
@@ -467,6 +481,7 @@ export async function buildPlotContext(
   let outbuildings: Building[] = [];
   let neighbours: Building[] = [];
   let otherHomesOnPlot = 0;
+  const otherHomes: Building[] = [];
   const rearPathCandidates = new Set<string>();
   const openGround: { id: string; outline: Polygon; label: string; kind: string }[] = [];
   try {
@@ -486,6 +501,7 @@ export async function buildPlotContext(
             // Another home on the same parcel (terrace or flats owned by one party). It is a
             // neighbour for every purpose, never an outbuilding of this house.
             otherHomesOnPlot++;
+            otherHomes.push(b);
             neighbours.push(b);
           } else if (b.onPlotShare >= ON_PLOT_SHARE) outbuildings.push(b);
           else neighbours.push(b);
@@ -526,7 +542,7 @@ export async function buildPlotContext(
         complete: res.complete,
       });
       ctx.summarize(
-        `${house.length} house, ${outbuildings.length} other on plot, ${neighbours.length} nearby; ignored ${dropped} demolished or invalid`,
+        `${house.length} house, ${otherHomesOnPlot ? `${otherHomesOnPlot} other homes and ` : ""}${outbuildings.length} other buildings on plot, ${neighbours.length} nearby; ignored ${dropped} demolished or invalid`,
       );
       if (house.length === 0) ctx.degrade("house outline not found");
     });
@@ -1088,7 +1104,7 @@ export async function buildPlotContext(
     frame,
     layout,
     edges,
-    houseType: deriveHouseType(edges),
+    houseType: houseTypeWithin(deriveHouseType(edges), house, otherHomes),
     flags,
     sources,
     quality,

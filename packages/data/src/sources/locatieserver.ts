@@ -88,7 +88,8 @@ export async function findAddress(
   const url = new URL(BASE);
   url.searchParams.set("q", `postcode:${query.postcode} AND huisnummer:${query.number}`);
   url.searchParams.set("fq", "type:adres");
-  url.searchParams.set("rows", "10");
+  // Holiday parks and flats can have dozens of additions on one number (e.g. 8k1 … 8k40).
+  url.searchParams.set("rows", "100");
   url.searchParams.set("fl", LOCATIESERVER_FIELDS);
 
   const data = await getJson({

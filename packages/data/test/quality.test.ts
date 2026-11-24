@@ -225,6 +225,8 @@ describe("validation run findings (2026-11-24)", () => {
     expect(context.flags.map((f) => f.code)).toContain("SHARED_PLOT");
     expect(context.quality.plot.status).toBe("partial");
     expect(context.outbuildings.every((b) => !b.addresses)).toBe(true);
+    // Walls between homes on one parcel are inside it; the house is still attached.
+    expect(context.houseType).not.toBe("detached");
   });
 
   it("a narrow path is flagged as a possible rear path only when it borders the plot", async () => {
