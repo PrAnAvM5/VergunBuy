@@ -203,21 +203,41 @@ export function createDso(cfg: DsoConfig) {
         query.geldigOp = p.geldigOp;
         query.inWerkingOp = p.geldigOp;
       }
+      // Body per the API's own description (RegelingZoekobject): { geometrie: GeoJSON }.
       const res = await post(
         p.env,
         "regelingen/_zoek",
         "/regelingen/_zoek",
         query,
-        { geo: { geometrie: point, spatialOperator: "intersects" } },
+        { geometrie: point },
+        calls,
+      );
+      // Draft rules in procedure at the same spot (no validity dates: drafts are not in force).
+      const drafts = await post(
+        p.env,
+        "ontwerpregelingen/_zoek",
+        "/ontwerpregelingen/_zoek",
+        { size: "50" },
+        { geometrie: point },
         calls,
       );
       const lists = embedded(res.body);
+      const draftLists = embedded(drafts.body);
       return {
         status: res.status,
         calls,
         regelingen: Object.fromEntries(
           Object.entries(lists).map(([name, items]) => [name, items.map((i) => compact(i))]),
         ),
+        drafts: {
+          status: drafts.status,
+          ...Object.fromEntries(
+            Object.entries(draftLists).map(([name, items]) => [name, items.map((i) => compact(i))]),
+          ),
+          ...(drafts.status !== 200 ? { error: truncate(drafts.body) } : {}),
+        },
+        // While the answer format is being learned: one full item, to see every field.
+        sample: Object.values(lists)[0]?.[0] ?? null,
         // While the answer format is being learned: the error body, or the first keys.
         ...(res.status !== 200
           ? { error: truncate(res.body) }

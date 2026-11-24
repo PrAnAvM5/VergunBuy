@@ -65,18 +65,16 @@ describe("DSO routes", () => {
     expect(headers["content-crs"]).toContain("28992");
     // RD coordinates rounded to 3 decimals, as the DSO requires.
     expect(JSON.parse(String(call.init.body))).toEqual({
-      geo: {
-        geometrie: { type: "Point", coordinates: [86549.8, 376598.204] },
-        spatialOperator: "intersects",
-      },
+      geometrie: { type: "Point", coordinates: [86549.8, 376598.204] },
     });
+    expect(seen[1]!.url).toContain("/ontwerpregelingen/_zoek");
   });
 
   it("answers the same question from its cache instead of calling the DSO again", async () => {
     const { app, seen } = setup();
     await app.request("/api/dso/regelingen?x=86549.8&y=376598.2");
     const res = await app.request("/api/dso/regelingen?x=86549.8&y=376598.2");
-    expect(seen).toHaveLength(1);
+    expect(seen).toHaveLength(2); // rules and drafts, each asked once
     expect((await res.json()).data.calls[0].cached).toBe(true);
   });
 
