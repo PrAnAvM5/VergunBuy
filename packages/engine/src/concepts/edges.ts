@@ -10,6 +10,8 @@
  *   rear-path  a narrow path that only serves plots; NOT public area (ADR-017)
  *   shared-wall our house is built against a neighbouring building here
  *   neighbour  a neighbouring private plot
+ *   unknown    public-area data was not available, so we cannot tell public from private.
+ *              Never treated as "neighbour": that could hide a road and create a false green.
  */
 import { derived, type Fact } from "../facts.ts";
 import {
@@ -31,7 +33,7 @@ export interface PublicArea {
   outline: Polygon;
 }
 
-export type EdgeKind = "public" | "water" | "rear-path" | "shared-wall" | "neighbour";
+export type EdgeKind = "public" | "water" | "rear-path" | "shared-wall" | "neighbour" | "unknown";
 
 export interface EdgeRun {
   /** Index of the plot edge (edge i runs from point i to point i+1). */
@@ -49,7 +51,8 @@ export interface EdgeInput {
   plot: Polygon;
   house: Polygon;
   neighbourBuildings: { id: string; outline: Polygon }[];
-  publicAreas: PublicArea[];
+  /** null when public-area data could not be fetched (fallback: edges become "unknown"). */
+  publicAreas: PublicArea[] | null;
 }
 
 export const EDGE_SETTINGS = {
@@ -66,7 +69,7 @@ function sideAt(
   onEdge: Point,
   outside: Point,
 ): Omit<EdgeRun, "edge" | "from" | "to" | "lengthM"> {
-  const area = input.publicAreas.find((a) => contains(a.outline, outside));
+  const area = input.publicAreas?.find((a) => contains(a.outline, outside));
   if (area) {
     const kind: EdgeKind =
       area.kind === "water" ? "water" : area.kind === "rear-path" ? "rear-path" : "public";
@@ -75,6 +78,7 @@ function sideAt(
   const nearHouse = distanceToBoundary(input.house, onEdge) <= EDGE_SETTINGS.wallToleranceM;
   const building = input.neighbourBuildings.find((b) => contains(b.outline, outside));
   if (nearHouse && building) return { kind: "shared-wall", otherSide: building.id };
+  if (input.publicAreas === null) return { kind: "unknown" };
   return { kind: "neighbour" };
 }
 
@@ -138,7 +142,7 @@ export function edgeFacts(input: EdgeInput): {
       step: "classify-edges",
       inputs: ["plot.outline", "house.outline", "neighbours", "publicAreas"],
       sources: [{ name: "BRK perceel" }, { name: "BAG pand" }, { name: "BGT" }],
-      note: `${count("public")} public, ${count("shared-wall")} shared-wall, ${count("neighbour")} neighbour, ${count("rear-path")} rear-path and ${count("water")} water run(s) along the plot boundary.`,
+      note: `${count("public")} public, ${count("shared-wall")} shared-wall, ${count("neighbour")} neighbour, ${count("rear-path")} rear-path, ${count("water")} water and ${count("unknown")} unknown run(s) along the plot boundary.`,
     }),
     houseType: derived(houseType, {
       step: "classify-edges",

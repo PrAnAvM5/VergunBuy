@@ -78,6 +78,13 @@ describe("classifyEdges", () => {
     expect(metres(clockwise, "public")).toBeCloseTo(7, 1);
   });
 
+  it("marks edges unknown (never neighbour) when public-area data is missing", () => {
+    const missing = { ...detached, publicAreas: null };
+    expect(metres(missing, "public")).toBe(0);
+    expect(metres(missing, "neighbour")).toBe(0);
+    expect(metres(missing, "unknown")).toBeCloseTo(60, 0);
+  });
+
   it("returns explainable facts with certainty and a note", () => {
     const facts = edgeFacts(terraced);
     expect(facts.edges.certainty).toBe("derived");
