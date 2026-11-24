@@ -1,1 +1,1 @@
-{"error":{"code":"DSO_NOT_CONFIGURED","message":"No DSO key is set for prod."}}
+{"data":{"status":400,"calls":[{"operation":"regelingen/_zoek","status":400,"ms":275,"cached":false}],"regelingen":{},"error":{"status":400,"type":"https://service.omgevingswet.overheid.nl/publiek/catalogus/bad_request"}},"requestId":"f9183ccb-38fe-4c2a-ab1d-23145734ab43"}

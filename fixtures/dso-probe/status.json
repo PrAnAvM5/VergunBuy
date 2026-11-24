@@ -1,1 +1,1 @@
-{"data":{"prod":false,"pre":false,"variablesSeen":["DS0_API_KEY","RP_API_KEY"]}}
+{"data":{"prod":true,"pre":false,"variablesSeen":["DSO_API_KEY","RP_API_KEY"]}}
