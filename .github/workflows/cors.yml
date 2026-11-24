@@ -1,0 +1,15 @@
+name: Check CORS (manual)
+on: workflow_dispatch
+jobs:
+  cors:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in \
+            "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Hoogerheide&rows=1" \
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&limit=1" \
+            "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?f=json&limit=1" \
+            "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/wegdeel/items?f=json&limit=1"; do
+            echo "== $u"
+            curl -s -o /dev/null -D - -H "Origin: https://pranavm5.github.io" "$u" | grep -i -E "^HTTP|access-control" || true
+          done
