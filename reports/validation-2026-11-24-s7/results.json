@@ -5,7 +5,7 @@
     {
       "village": "Hoogerheide",
       "address": "Maststraat 43, 4631EP Hoogerheide",
-      "ms": 13873,
+      "ms": 17282,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 149,
@@ -48,14 +48,14 @@
       "sides": "front: footpath / pavement 7.2 m | rear: neighbouring plot 7.2 m | left: footpath / pavement 15.5 m, neighbouring plot 5.1 m | right: neighbouring plot 11.8 m, shared wall with the neighbour 8.4 m, footpath / pavement 0.7 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (121 ms): Found Maststraat 43, 4631EP Hoogerheide",
-        "ok bag-address (252 ms): Address is in 1 building(s)",
-        "ok brk-plot (130 ms): Plot Woensdrecht D 2556, 149 m² drawn",
-        "ok bag-buildings (7125 ms): 1 house, 1 other on plot, 46 nearby; ignored 0 demolished or invalid",
-        "ok 3dbag-heights (1037 ms): Heights for 48 buildings, height scan of 2024",
-        "ok bgt-trees (423 ms): 5 registered trees, 6 hedges, 0 other vegetation nearby",
-        "ok bgt-public (4436 ms): 33 current public areas; ignored 32 historical records",
-        "ok classify-edges (28 ms): 12 edge runs"
+        "ok find-address (181 ms): Found Maststraat 43, 4631EP Hoogerheide",
+        "ok bag-address (307 ms): Address is in 1 building(s)",
+        "ok brk-plot (171 ms): Plot Woensdrecht D 2556, 149 m² drawn",
+        "ok bag-buildings (6489 ms): 1 house, 1 other on plot, 46 nearby; ignored 0 demolished or invalid",
+        "ok 3dbag-heights (1255 ms): Heights for 48 buildings, height scan of 2024",
+        "ok bgt-trees (630 ms): 5 registered trees, 6 hedges, 0 other vegetation nearby",
+        "ok bgt-public (7849 ms): 33 current public areas; ignored 32 historical records",
+        "ok classify-edges (34 ms): 12 edge runs"
       ],
       "draw": {
         "plot": [
@@ -199,7 +199,7 @@
     {
       "village": "Hoogerheide",
       "address": "Zandfort 48, 4631RM Hoogerheide",
-      "ms": 8753,
+      "ms": 14373,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 948,
@@ -238,14 +238,14 @@
       "sides": "front: footpath / pavement 24.1 m | rear: neighbouring plot 23.4 m | left: neighbouring plot 39.1 m, footpath / pavement 0.5 m | right: neighbouring plot 39.4 m, footpath / pavement 0.8 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (340 ms): Found Zandfort 48, 4631RM Hoogerheide",
-        "ok bag-address (2352 ms): Address is in 1 building(s)",
-        "ok brk-plot (121 ms): Plot Woensdrecht B 2120, 948 m² drawn",
-        "ok bag-buildings (3179 ms): 1 house, 0 other on plot, 12 nearby; ignored 6 demolished or invalid",
-        "ok 3dbag-heights (986 ms): Heights for 13 buildings, height scan of 2024",
-        "ok bgt-trees (329 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1086 ms): 3 current public areas; ignored 14 historical records",
-        "ok classify-edges (30 ms): 8 edge runs"
+        "ok find-address (458 ms): Found Zandfort 48, 4631RM Hoogerheide",
+        "ok bag-address (312 ms): Address is in 1 building(s)",
+        "ok brk-plot (161 ms): Plot Woensdrecht B 2120, 948 m² drawn",
+        "ok bag-buildings (3940 ms): 1 house, 0 other on plot, 12 nearby; ignored 6 demolished or invalid",
+        "ok 3dbag-heights (1364 ms): Heights for 13 buildings, height scan of 2024",
+        "ok bgt-trees (492 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (7212 ms): 3 current public areas; ignored 14 historical records",
+        "ok classify-edges (35 ms): 8 edge runs"
       ],
       "draw": {
         "plot": [
@@ -389,61 +389,61 @@
     },
     {
       "village": "Hoogerheide",
-      "address": "de Zonnebloem 1, 4631AW Hoogerheide",
-      "ms": 5240,
+      "address": "Aalbersestraat 8, 4631CD Hoogerheide",
+      "ms": 9872,
       "use": "woonfunctie",
-      "houseType": "corner",
-      "plotAreaM2": 156,
+      "houseType": "detached",
+      "plotAreaM2": 1159,
       "frontMethod": "street-label",
-      "frontStreet": "de Zonnebloem",
+      "frontStreet": "Aalbersestraat",
       "access": "possible",
       "route": "direct",
-      "accessReason": "A car can reach the plot boundary over 5.8 m, but no driveway crossing is registered there. Check the aerial photo; a new exit needs its own permit.",
+      "accessReason": "A car can reach the plot boundary over 13.4 m, but no driveway crossing is registered there. Check the aerial photo; a new exit needs its own permit.",
       "pavementRuns": [
         {
-          "lengthM": 0.96,
-          "acrossM": 8,
+          "lengthM": 5.02,
+          "acrossM": 6.75,
           "via": [
-            "voetpad",
+            "gras- en kruidachtigen",
             "green",
+            "open verharding",
+            "gesloten verharding"
+          ]
+        },
+        {
+          "lengthM": 0.5,
+          "acrossM": 7,
+          "via": [
             "gras- en kruidachtigen"
           ]
         },
         {
-          "lengthM": 6.16,
-          "acrossM": 7,
+          "lengthM": 4.99,
+          "acrossM": 8,
           "via": [
-            "planten",
-            "heesters"
+            "gras- en kruidachtigen",
+            "voetpad"
           ]
         },
         {
-          "lengthM": 13.04,
-          "acrossM": 2.25,
+          "lengthM": 27.9,
+          "acrossM": 5,
           "via": [
-            "planten",
-            "heesters"
-          ]
-        },
-        {
-          "lengthM": 7.61,
-          "acrossM": 7,
-          "via": [
-            "planten",
-            "heesters"
+            "heesters",
+            "voetpad"
           ]
         }
       ],
-      "otherHomesOnPlot": 0,
+      "otherHomesOnPlot": 9,
       "exits": [],
-      "carReachableM": 5.8,
+      "carReachableM": 13.5,
       "carReachableSides": [
-        "rear"
+        "front"
       ],
       "nearestInritM": null,
       "inritWithin10m": 0,
       "quality": {
-        "plot": "complete",
+        "plot": "partial",
         "buildings": "complete",
         "heights": "complete",
         "publicArea": "complete",
@@ -452,109 +452,386 @@
         "front": "complete"
       },
       "flags": [
-        "OUTBUILDINGS_ON_PLOT",
+        "SHARED_PLOT",
         "POSSIBLE_EXIT"
       ],
-      "sides": "front: footpath / pavement (de Zonnebloem) 5.8 m | rear: road (de Zonnebloem) 5.8 m | left: neighbouring plot 16 m, shared wall with the neighbour 10.5 m, footpath / pavement (de Zonnebloem) 0.3 m | right: public green 26.8 m",
-      "outbuildings": 1,
+      "sides": "front: public green 22.8 m, road (Aalbersestraat) 13.5 m | rear: public green 29.6 m, footpath / pavement 6.8 m | left: public green 49.1 m, neighbouring plot 10.2 m | right: public green 59.3 m",
+      "outbuildings": 0,
       "steps": [
-        "ok find-address (120 ms): Found de Zonnebloem 1, 4631AW Hoogerheide",
-        "ok bag-address (1266 ms): Address is in 1 building(s)",
-        "ok brk-plot (126 ms): Plot Woensdrecht G 3727, 156 m² drawn",
-        "ok bag-buildings (870 ms): 1 house, 1 other on plot, 15 nearby; ignored 2 demolished or invalid",
-        "ok 3dbag-heights (856 ms): Heights for 17 buildings, height scan of 2024",
-        "ok bgt-trees (302 ms): 15 registered trees, 6 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1199 ms): 34 current public areas; ignored 75 historical records",
-        "ok classify-edges (43 ms): 9 edge runs"
+        "ok find-address (468 ms): Found Aalbersestraat 8, 4631CD Hoogerheide",
+        "ok bag-address (476 ms): Address is in 1 building(s)",
+        "ok brk-plot (182 ms): Plot Woensdrecht D 2459, 1159 m² drawn",
+        "ok bag-buildings (712 ms): 1 house, 0 other on plot, 45 nearby; ignored 7 demolished or invalid",
+        "ok 3dbag-heights (1408 ms): Heights for 44 buildings, height scan of 2024",
+        "ok bgt-trees (338 ms): 16 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (4760 ms): 53 current public areas; ignored 71 historical records",
+        "ok classify-edges (109 ms): 20 edge runs"
       ],
       "draw": {
         "plot": [
           [
-            80436.414,
-            382904.743
+            81050.083,
+            381888.806
           ],
           [
-            80441.786,
-            382904.733
+            81047.371,
+            381845.242
           ],
           [
-            80452.315,
-            382904.712
+            81060.795,
+            381844.424
           ],
           [
-            80463.222,
-            382904.69
+            81064.591,
+            381903.629
           ],
           [
-            80463.24,
-            382910.461
+            81028.302,
+            381905.995
           ],
           [
-            80457.08,
-            382910.49
-          ],
-          [
-            80444.04,
-            382910.55
-          ],
-          [
-            80436.43,
-            382910.585
+            81027.381,
+            381890.392
           ]
         ],
         "house": [
           [
             [
-              80452.315,
-              382904.657
+              81038.332,
+              381903.252
             ],
             [
-              80452.32,
-              382907.85
+              81037.785,
+              381893.69
             ],
             [
-              80457.07,
-              382907.83
+              81045.47,
+              381893.25
             ],
             [
-              80457.08,
-              382910.49
+              81045.617,
+              381895.797
             ],
             [
-              80444.04,
-              382910.55
+              81046.92,
+              381895.75
             ],
             [
-              80444,
-              382907.18
+              81051.42,
+              381895.47
             ],
             [
-              80441.79,
-              382907.12
+              81051.84,
+              381902.19
             ],
             [
-              80441.78,
-              382904.641
+              81047.34,
+              381902.47
+            ],
+            [
+              81047.318,
+              381902.119
+            ],
+            [
+              81045.985,
+              381902.196
+            ],
+            [
+              81046.02,
+              381902.81
+            ],
+            [
+              81044.02,
+              381902.91
+            ],
+            [
+              81043.94,
+              381901.44
+            ],
+            [
+              81040.39,
+              381901.66
+            ],
+            [
+              81040.48,
+              381903.13
+            ]
+          ]
+        ],
+        "outbuildings": [],
+        "exits": [],
+        "inritsNear": [],
+        "carEdges": [
+          [
+            [
+              81047.371,
+              381845.242
+            ],
+            [
+              81048.3691485784,
+              381845.1811771799
+            ]
+          ],
+          [
+            [
+              81050.0280087631,
+              381887.92265256477
+            ],
+            [
+              81050.02086704402,
+              381887.80793211865
+            ]
+          ],
+          [
+            [
+              81060.795,
+              381844.424
+            ],
+            [
+              81060.79553768759,
+              381844.4323861418
+            ]
+          ],
+          [
+            [
+              81060.8536079481,
+              381845.3380894539
+            ],
+            [
+              81060.85898482407,
+              381845.4219508717
+            ]
+          ],
+          [
+            [
+              81064.42696471629,
+              381903.63969490706
+            ],
+            [
+              81063.66146672564,
+              381903.6896044732
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "village": "Hoogerheide",
+      "address": "Rozenlaan 36, 4631AK Hoogerheide",
+      "ms": 13496,
+      "use": "woonfunctie",
+      "houseType": "detached",
+      "plotAreaM2": 1112,
+      "frontMethod": "street-label",
+      "frontStreet": "Rozenlaan",
+      "access": "possible",
+      "route": "across-pavement",
+      "accessReason": "The road lies 5.3 m beyond the plot, across a pavement or verge, over a 14.5 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "pavementRuns": [
+        {
+          "lengthM": 8.08,
+          "acrossM": 7.75,
+          "via": [
+            "voetpad",
+            "gras- en kruidachtigen"
+          ]
+        },
+        {
+          "lengthM": 4.55,
+          "acrossM": 2.25,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 14.48,
+          "acrossM": 5.25,
+          "via": [
+            "voetpad",
+            "gras- en kruidachtigen"
+          ]
+        },
+        {
+          "lengthM": 1.5,
+          "acrossM": 8,
+          "via": [
+            "voetpad",
+            "gras- en kruidachtigen"
+          ]
+        },
+        {
+          "lengthM": 6.08,
+          "acrossM": 7,
+          "via": [
+            "voetpad",
+            "heesters"
+          ]
+        },
+        {
+          "lengthM": 0.5,
+          "acrossM": 7.75,
+          "via": [
+            "heesters",
+            "voetpad"
+          ]
+        }
+      ],
+      "otherHomesOnPlot": 7,
+      "exits": [],
+      "carReachableM": 0,
+      "carReachableSides": [],
+      "nearestInritM": null,
+      "inritWithin10m": 0,
+      "quality": {
+        "plot": "partial",
+        "buildings": "partial",
+        "heights": "complete",
+        "publicArea": "complete",
+        "vegetation": "partial",
+        "access": "assumed",
+        "front": "complete"
+      },
+      "flags": [
+        "BUILDING_ON_BOUNDARY",
+        "SHARED_PLOT",
+        "OUTBUILDINGS_ON_PLOT",
+        "POSSIBLE_ACHTERPAD",
+        "PAVEMENT_CROSSING"
+      ],
+      "sides": "front: public green 20.4 m, footpath / pavement (Rozenlaan) 4.7 m, footpath / pavement 1.8 m, neighbouring plot 0.8 m | rear: footpath / pavement 25.6 m, neighbouring plot 2.6 m | left: footpath / pavement (Rozenlaan) 45.1 m | right: footpath / pavement 25.3 m, neighbouring plot 20 m",
+      "outbuildings": 2,
+      "steps": [
+        "ok find-address (168 ms): Found Rozenlaan 36, 4631AK Hoogerheide",
+        "ok bag-address (966 ms): Address is in 1 building(s)",
+        "ok brk-plot (162 ms): Plot Woensdrecht G 3648, 1112 m² drawn",
+        "ok bag-buildings (709 ms): 1 house, 2 other on plot, 34 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (1083 ms): Heights for 36 buildings, height scan of 2024",
+        "ok bgt-trees (244 ms): 18 registered trees, 8 hedges, 0 other vegetation nearby",
+        "ok bgt-public (9441 ms): 43 current public areas; ignored 104 historical records",
+        "ok classify-edges (38 ms): 20 edge runs"
+      ],
+      "draw": {
+        "plot": [
+          [
+            80626.426,
+            382938.877
+          ],
+          [
+            80637.23,
+            382938.834
+          ],
+          [
+            80637.23,
+            382940.309
+          ],
+          [
+            80647.96,
+            382940.27
+          ],
+          [
+            80648.029,
+            382941.337
+          ],
+          [
+            80655.097,
+            382941.286
+          ],
+          [
+            80655.109,
+            382966.898
+          ],
+          [
+            80642.477,
+            382966.976
+          ],
+          [
+            80642.45,
+            382964.01
+          ],
+          [
+            80609.993,
+            382964.04
+          ],
+          [
+            80609.949,
+            382957.96
+          ],
+          [
+            80609.765,
+            382940.838
+          ],
+          [
+            80626.477,
+            382940.453
+          ]
+        ],
+        "house": [
+          [
+            [
+              80620.965,
+              382957.984
+            ],
+            [
+              80620.824,
+              382948.69
+            ],
+            [
+              80626.225,
+              382948.682
+            ],
+            [
+              80626.442,
+              382963.015
+            ],
+            [
+              80623.88,
+              382963.02
+            ],
+            [
+              80623.9,
+              382957.94
             ]
           ]
         ],
         "outbuildings": [
           [
             [
-              80459.983,
-              382907.855
+              80651.376,
+              382941.403
             ],
             [
-              80460.122,
-              382904.536
+              80654.965,
+              382941.364
             ],
             [
-              80463.104,
-              382904.661
+              80655.005,
+              382945.064
             ],
             [
-              80462.965,
-              382907.98
+              80651.416,
+              382945.102
+            ]
+          ],
+          [
+            [
+              80626.364,
+              382940.277
+            ],
+            [
+              80626.339,
+              382943.238
+            ],
+            [
+              80624.339,
+              382943.221
+            ],
+            [
+              80623.347,
+              382942.251
+            ],
+            [
+              80623.364,
+              382940.251
             ]
           ]
         ],
@@ -563,91 +840,116 @@
         "carEdges": [
           [
             [
-              80436.43,
-              382910.585
+              80655.109,
+              382966.898
             ],
             [
-              80436.42726122218,
-              382909.58500375046
+              80654.46901220063,
+              382966.90195179294
             ]
           ],
           [
             [
-              80463.22459919026,
-              382905.52332927985
+              80654.46901220063,
+              382966.90195179294
             ],
             [
-              80463.22511902831,
-              382905.6899951358
+              80654.10901906349,
+              382966.90417467646
             ]
           ],
           [
             [
-              80463.24,
-              382910.461
+              80642.45,
+              382964.01
             ],
             [
-              80462.24001108148,
-              382910.46570774005
+              80642.00384634442,
+              382964.01041237975
             ]
           ],
           [
             [
-              80457.08,
-              382910.49
+              80641.4961542536,
+              382964.0108816395
             ],
             [
-              80456.08001058547,
-              382910.4946011783
+              80641.45000042717,
+              382964.0109242995
             ]
           ],
           [
             [
-              80444.04,
-              382910.55
+              80609.993,
+              382964.04
             ],
             [
-              80443.0400105762,
-              382910.5545991629
+              80609.98576334739,
+              382963.04002618487
+            ]
+          ],
+          [
+            [
+              80609.949,
+              382957.96
+            ],
+            [
+              80609.94868394741,
+              382957.9305899335
             ]
           ]
         ]
       }
     },
     {
-      "village": "Hoogerheide",
-      "address": "Wouwbaan 102, 4631KP Hoogerheide",
-      "ms": 10688,
+      "village": "Huijbergen",
+      "address": "Meulenven 1, 4635DK Huijbergen",
+      "ms": 12182,
       "use": "woonfunctie",
-      "houseType": "corner",
-      "plotAreaM2": 432,
+      "houseType": "detached",
+      "plotAreaM2": 311,
       "frontMethod": "street-label",
-      "frontStreet": "Wouwbaan",
+      "frontStreet": "Meulenven",
       "access": "possible",
       "route": "across-pavement",
-      "accessReason": "The road lies 4.8 m beyond the plot, across a pavement or verge, over a 22.0 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "accessReason": "The road lies 2.8 m beyond the plot, across a pavement or verge, over a 15.1 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
       "pavementRuns": [
         {
-          "lengthM": 15.85,
-          "acrossM": 3.75,
+          "lengthM": 2.21,
+          "acrossM": 3.5,
           "via": [
             "voetpad",
-            "green"
+            "heesters"
           ]
         },
         {
-          "lengthM": 3.88,
+          "lengthM": 5.16,
           "acrossM": 3.25,
+          "via": [
+            "voetpad",
+            "heesters"
+          ]
+        },
+        {
+          "lengthM": 0.52,
+          "acrossM": 3,
           "via": [
             "voetpad"
           ]
         },
         {
-          "lengthM": 21.98,
-          "acrossM": 4.75,
+          "lengthM": 4.29,
+          "acrossM": 3.25,
           "via": [
             "voetpad",
-            "gras- en kruidachtigen"
+            "heesters"
+          ]
+        },
+        {
+          "lengthM": 15.09,
+          "acrossM": 2.75,
+          "via": [
+            "voetpad"
           ]
         }
       ],
@@ -655,11 +957,11 @@
       "exits": [],
       "carReachableM": 0,
       "carReachableSides": [],
-      "nearestInritM": 1.9,
-      "inritWithin10m": 1,
+      "nearestInritM": null,
+      "inritWithin10m": 0,
       "quality": {
         "plot": "complete",
-        "buildings": "complete",
+        "buildings": "partial",
         "heights": "complete",
         "publicArea": "complete",
         "vegetation": "partial",
@@ -667,192 +969,534 @@
         "front": "complete"
       },
       "flags": [
+        "BUILDING_ON_BOUNDARY",
+        "OUTBUILDINGS_ON_PLOT",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: footpath / pavement (Wouwbaan) 14.6 m, footpath / pavement 1.3 m | rear: neighbouring plot 15 m, shared wall with the neighbour 4 m | left: neighbouring plot 21.5 m | right: footpath / pavement 25.9 m",
-      "outbuildings": 0,
+      "sides": "front: footpath / pavement (Meulenven) 19.4 m | rear: neighbouring plot 18.4 m | left: neighbouring plot 12.9 m, footpath / pavement (Demerstraat) 7.4 m, footpath / pavement (Meulenven) 0.5 m | right: neighbouring plot 23.7 m",
+      "outbuildings": 1,
       "steps": [
-        "ok find-address (131 ms): Found Wouwbaan 102, 4631KP Hoogerheide",
-        "ok bag-address (129 ms): Address is in 1 building(s)",
-        "ok brk-plot (136 ms): Plot Woensdrecht C 1719, 432 m² drawn",
-        "ok bag-buildings (6760 ms): 1 house, 0 other on plot, 17 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (1374 ms): Heights for 18 buildings, height scan of 2024",
-        "ok bgt-trees (606 ms): 8 registered trees, 5 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1360 ms): 33 current public areas; ignored 64 historical records",
-        "ok classify-edges (11 ms): 11 edge runs"
+        "ok find-address (163 ms): Found Meulenven 1, 4635DK Huijbergen",
+        "ok bag-address (440 ms): Address is in 1 building(s)",
+        "ok brk-plot (163 ms): Plot Huijbergen C 2357, 311 m² drawn",
+        "ok bag-buildings (1213 ms): 1 house, 1 other on plot, 23 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (1060 ms): Heights for 24 buildings, height scan of 2024",
+        "ok bgt-trees (689 ms): 26 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (7873 ms): 36 current public areas; ignored 76 historical records",
+        "ok classify-edges (38 ms): 14 edge runs"
       ],
       "draw": {
         "plot": [
           [
-            81450.362,
-            382787.389
+            84489.12,
+            383129.506
           ],
           [
-            81441.46,
-            382774.28
+            84491.004,
+            383130.654
           ],
           [
-            81442.543,
-            382770.551
+            84495.868,
+            383133.588
           ],
           [
-            81462.646,
-            382761.661
+            84496.443,
+            383137.843
           ],
           [
-            81462.661,
-            382761.71
+            84488.705,
+            383150.8
           ],
           [
-            81467.232,
-            382772.162
+            84482.084,
+            383146.7
           ],
           [
-            81470.208,
-            382779.048
+            84468.501,
+            383138.487
+          ],
+          [
+            84473.353,
+            383130.568
+          ],
+          [
+            84474.147,
+            383131.051
+          ],
+          [
+            84476.878,
+            383132.724
+          ],
+          [
+            84479.38,
+            383134.254
+          ],
+          [
+            84481.905,
+            383135.799
+          ],
+          [
+            84484.392,
+            383137.319
           ]
         ],
         "house": [
           [
             [
-              81470.018,
-              382778.652
+              84488.92,
+              383136.561
             ],
             [
-              81466.22,
-              382780.29
+              84492.78,
+              383138.88
             ],
             [
-              81461.63,
-              382782.27
+              84487.103,
+              383148.33
             ],
             [
-              81460.24,
-              382779.06
+              84482.817,
+              383145.755
             ],
             [
-              81454.19,
-              382781.67
+              84480.16,
+              383144.31
             ],
             [
-              81452.62,
-              382778.01
+              84483.8,
+              383138.28
             ],
             [
-              81452.01,
-              382776.356
+              84484.687,
+              383138.816
             ],
             [
-              81452.239,
-              382774.331
+              84486.805,
+              383135.29
             ],
             [
-              81453.87,
-              382773.11
+              84488.427,
+              383132.703
             ],
             [
-              81460.88,
-              382770.09
-            ],
-            [
-              81462.46,
-              382773.74
-            ],
-            [
-              81463.61,
-              382773.25
-            ],
-            [
-              81465.11,
-              382776.66
-            ],
-            [
-              81468.52,
-              382775.18
+              84490.489,
+              383133.96
             ]
           ]
         ],
-        "outbuildings": [],
-        "exits": [],
-        "inritsNear": [
+        "outbuildings": [
           [
             [
-              81464.751,
-              382755.652
+              84471.685,
+              383133.291
             ],
             [
-              81464.748,
-              382755.995
+              84473.385,
+              383130.515
             ],
             [
-              81464.737,
-              382757.494
+              84475.967,
+              383132.092
             ],
             [
-              81465.266,
-              382758.539
+              84474.932,
+              383133.97
             ],
             [
-              81462.469,
-              382759.786
+              84473.387,
+              383134.361
+            ]
+          ]
+        ],
+        "exits": [],
+        "inritsNear": [],
+        "carEdges": [
+          [
+            [
+              84489.12,
+              383129.506
             ],
             [
-              81462.007,
-              382758.715
-            ],
-            [
-              81459.888,
-              382757.815
+              84489.97395338441,
+              383130.0263495145
             ]
           ],
           [
             [
-              81448.783,
-              382801.436
+              84491.004,
+              383130.654
             ],
             [
-              81445.758,
-              382803.689
+              84491.78243540888,
+              383131.123557872
+            ]
+          ],
+          [
+            [
+              84491.78243540888,
+              383131.123557872
             ],
             [
-              81441.584,
-              382798.158
+              84491.86027894977,
+              383131.17051365925
+            ]
+          ],
+          [
+            [
+              84495.868,
+              383133.588
             ],
             [
-              81445.009,
-              382795.846
+              84496.001917896,
+              383134.5789924304
+            ]
+          ],
+          [
+            [
+              84496.443,
+              383137.843
+            ],
+            [
+              84495.93026905623,
+              383138.70154934586
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "village": "Huijbergen",
+      "address": "Waterdrieblad 6, 4635BP Huijbergen",
+      "ms": 8194,
+      "use": "woonfunctie",
+      "houseType": "detached",
+      "plotAreaM2": 681,
+      "frontMethod": "street-label",
+      "frontStreet": "Waterdrieblad",
+      "access": "registered",
+      "accessReason": "1 registered driveway crossing touches the plot.",
+      "pavementRuns": [],
+      "otherHomesOnPlot": 0,
+      "exits": [
+        {
+          "alongPlotM": 8.2
+        }
+      ],
+      "carReachableM": 8.2,
+      "carReachableSides": [
+        "front"
+      ],
+      "nearestInritM": 0,
+      "inritWithin10m": 4,
+      "quality": {
+        "plot": "complete",
+        "buildings": "complete",
+        "heights": "complete",
+        "publicArea": "complete",
+        "vegetation": "partial",
+        "access": "complete",
+        "front": "complete"
+      },
+      "flags": [],
+      "sides": "front: neighbouring plot 15.2 m, driveway crossing (Waterdrieblad) 8.2 m, footpath / pavement 1 m | rear: neighbouring plot 37.1 m | left: neighbouring plot 17.4 m | right: neighbouring plot 29.3 m, public green 0.3 m",
+      "outbuildings": 0,
+      "steps": [
+        "ok find-address (475 ms): Found Waterdrieblad 6, 4635BP Huijbergen",
+        "ok bag-address (199 ms): Address is in 1 building(s)",
+        "ok brk-plot (161 ms): Plot Huijbergen B 831, 681 m² drawn",
+        "ok bag-buildings (1372 ms): 1 house, 0 other on plot, 17 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (997 ms): Heights for 18 buildings, height scan of 2024",
+        "ok bgt-trees (555 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (4391 ms): 31 current public areas; ignored 63 historical records",
+        "ok classify-edges (31 ms): 9 edge runs"
+      ],
+      "draw": {
+        "plot": [
+          [
+            84844.971,
+            383370.274
+          ],
+          [
+            84846.586,
+            383387.583
+          ],
+          [
+            84827.325,
+            383402.699
+          ],
+          [
+            84809.005,
+            383379.46
+          ],
+          [
+            84833.447,
+            383373.217
+          ]
+        ],
+        "house": [
+          [
+            [
+              84831.09,
+              383380.5
+            ],
+            [
+              84835.59,
+              383378.33
+            ],
+            [
+              84837.36,
+              383381.98
+            ],
+            [
+              84835.33,
+              383382.95
+            ],
+            [
+              84836.79,
+              383386
+            ],
+            [
+              84830.35,
+              383389.09
+            ],
+            [
+              84829.95,
+              383388.26
+            ],
+            [
+              84827.85,
+              383389.89
+            ],
+            [
+              84830.69,
+              383393.55
+            ],
+            [
+              84826.77,
+              383396.62
+            ],
+            [
+              84823.69,
+              383392.68
+            ],
+            [
+              84820.809,
+              383388.994
+            ],
+            [
+              84824.673,
+              383385.973
+            ],
+            [
+              84824.3,
+              383385.496
+            ],
+            [
+              84827.543,
+              383382.961
+            ],
+            [
+              84827.117,
+              383382.416
+            ]
+          ]
+        ],
+        "outbuildings": [],
+        "exits": [
+          [
+            [
+              84834.758,
+              383398.991
+            ],
+            [
+              84831.834,
+              383401.276
+            ],
+            [
+              84830.77,
+              383402.107
+            ],
+            [
+              84828.668,
+              383403.749
+            ],
+            [
+              84828.302,
+              383404.035
+            ],
+            [
+              84827.083,
+              383402.458
+            ],
+            [
+              84827.489,
+              383402.148
+            ],
+            [
+              84829.683,
+              383400.615
+            ],
+            [
+              84830.814,
+              383399.978
+            ],
+            [
+              84833.776,
+              383397.734
+            ]
+          ]
+        ],
+        "inritsNear": [
+          [
+            [
+              84831.313,
+              383410.828
+            ],
+            [
+              84829.175,
+              383412.47
+            ],
+            [
+              84828.319,
+              383411.355
+            ],
+            [
+              84828.065,
+              383411.024
+            ],
+            [
+              84828.157,
+              383410.952
+            ],
+            [
+              84830.101,
+              383409.433
+            ],
+            [
+              84830.454,
+              383409.157
+            ],
+            [
+              84831.477,
+              383408.359
+            ],
+            [
+              84832.578,
+              383409.856
+            ],
+            [
+              84831.561,
+              383410.638
+            ]
+          ],
+          [
+            [
+              84851.805,
+              383395.11
+            ],
+            [
+              84851.53,
+              383395.316
+            ],
+            [
+              84848.096,
+              383397.884
+            ],
+            [
+              84846.881,
+              383396.328
+            ],
+            [
+              84847.316,
+              383395.988
+            ],
+            [
+              84850.159,
+              383393.769
+            ],
+            [
+              84850.531,
+              383393.479
+            ]
+          ],
+          [
+            [
+              84851.358,
+              383392.832
+            ],
+            [
+              84851.675,
+              383392.585
+            ],
+            [
+              84855.171,
+              383389.855
+            ],
+            [
+              84856.454,
+              383391.497
+            ],
+            [
+              84852.551,
+              383394.553
+            ],
+            [
+              84851.242,
+              383392.923
+            ]
+          ],
+          [
+            [
+              84834.758,
+              383398.991
+            ],
+            [
+              84831.834,
+              383401.276
+            ],
+            [
+              84830.77,
+              383402.107
+            ],
+            [
+              84828.668,
+              383403.749
+            ],
+            [
+              84828.302,
+              383404.035
+            ],
+            [
+              84827.083,
+              383402.458
+            ],
+            [
+              84827.489,
+              383402.148
+            ],
+            [
+              84829.683,
+              383400.615
+            ],
+            [
+              84830.814,
+              383399.978
+            ],
+            [
+              84833.776,
+              383397.734
             ]
           ]
         ],
         "carEdges": [
           [
             [
-              81450.362,
-              382787.389
+              84846.06423022698,
+              383387.9924840293
             ],
             [
-              81449.80021311366,
-              382786.561718008
-            ]
-          ],
-          [
-            [
-              81441.46,
-              382774.28
-            ],
-            [
-              81441.73890213235,
-              382773.3196804696
-            ]
-          ],
-          [
-            [
-              81442.543,
-              382770.551
-            ],
-            [
-              81443.45756414028,
-              382770.1465591102
+              84845.79933172684,
+              383388.20037592115
             ]
           ]
         ]
@@ -861,15 +1505,14 @@
     {
       "village": "Huijbergen",
       "address": "Handekenskruid 44, 4635BJ Huijbergen",
-      "ms": 4469,
+      "ms": 12898,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 482,
       "frontMethod": "street-label",
       "frontStreet": "Handekenskruid",
-      "access": "possible",
-      "route": "across-pavement",
-      "accessReason": "The road lies 8.0 m beyond the plot, across a pavement or verge, over a 4.4 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "access": "registered",
+      "accessReason": "A registered driveway crossing lies straight in front of the plot, 2.0 m across the pavement.",
       "pavementRuns": [
         {
           "lengthM": 1.37,
@@ -926,17 +1569,28 @@
           ]
         },
         {
-          "lengthM": 3.11,
+          "lengthM": 0.52,
           "acrossM": 8,
           "via": [
             "voetpad",
             "heesters",
             "green"
           ]
+        },
+        {
+          "lengthM": 2.59,
+          "acrossM": 2,
+          "via": [
+            "voetpad"
+          ]
         }
       ],
       "otherHomesOnPlot": 0,
-      "exits": [],
+      "exits": [
+        {
+          "alongPlotM": 2.6
+        }
+      ],
       "carReachableM": 0,
       "carReachableSides": [],
       "nearestInritM": 1.9,
@@ -947,24 +1601,23 @@
         "heights": "complete",
         "publicArea": "complete",
         "vegetation": "partial",
-        "access": "assumed",
+        "access": "complete",
         "front": "complete"
       },
       "flags": [
-        "OUTBUILDINGS_ON_PLOT",
-        "PAVEMENT_CROSSING"
+        "OUTBUILDINGS_ON_PLOT"
       ],
       "sides": "front: footpath / pavement (Handekenskruid) 18.6 m | rear: neighbouring plot 0.8 m | left: neighbouring plot 38.3 m, shared wall with the neighbour 8.7 m | right: neighbouring plot 45.5 m",
       "outbuildings": 2,
       "steps": [
-        "ok find-address (124 ms): Found Handekenskruid 44, 4635BJ Huijbergen",
-        "ok bag-address (831 ms): Address is in 1 building(s)",
-        "ok brk-plot (124 ms): Plot Huijbergen B 972, 482 m² drawn",
-        "ok bag-buildings (429 ms): 1 house, 2 other on plot, 25 nearby; ignored 8 demolished or invalid",
-        "ok 3dbag-heights (1159 ms): Heights for 27 buildings, height scan of 2024",
-        "ok bgt-trees (225 ms): 5 registered trees, 8 hedges, 0 other vegetation nearby",
-        "ok bgt-public (828 ms): 37 current public areas; ignored 58 historical records",
-        "ok classify-edges (48 ms): 15 edge runs"
+        "ok find-address (182 ms): Found Handekenskruid 44, 4635BJ Huijbergen",
+        "ok bag-address (411 ms): Address is in 1 building(s)",
+        "ok brk-plot (160 ms): Plot Huijbergen B 972, 482 m² drawn",
+        "ok bag-buildings (810 ms): 1 house, 2 other on plot, 25 nearby; ignored 8 demolished or invalid",
+        "ok 3dbag-heights (1039 ms): Heights for 27 buildings, height scan of 2024",
+        "ok bgt-trees (412 ms): 5 registered trees, 8 hedges, 0 other vegetation nearby",
+        "ok bgt-public (9005 ms): 37 current public areas; ignored 58 historical records",
+        "ok classify-edges (58 ms): 15 edge runs"
       ],
       "draw": {
         "plot": [
@@ -1127,7 +1780,62 @@
             ]
           ]
         ],
-        "exits": [],
+        "exits": [
+          [
+            [
+              85005.379,
+              383206.342
+            ],
+            [
+              85005.335,
+              383206.16
+            ],
+            [
+              85005.222,
+              383205.693
+            ],
+            [
+              85004.663,
+              383203.378
+            ],
+            [
+              85009.916,
+              383202.078
+            ],
+            [
+              85010.514,
+              383204.507
+            ],
+            [
+              85010.647,
+              383205.046
+            ],
+            [
+              85010.679,
+              383205.176
+            ],
+            [
+              85010.687,
+              383205.208
+            ],
+            [
+              85011.325,
+              383207.801
+            ],
+            [
+              85006.058,
+              383209.152
+            ],
+            [
+              85005.525,
+              383206.947
+            ],
+            [
+              85005.446,
+              383206.62
+            ]
+          ]
+        ],
         "inritsNear": [
           [
             [
@@ -1719,6 +2427,16 @@
               383200.182
             ],
             [
+              85009.57440155165,
+              383200.2227887149
+            ]
+          ],
+          [
+            [
+              85009.57440155165,
+              383200.2227887149
+            ],
+            [
               85008.7664093099,
               383200.4267322897
             ]
@@ -1729,7 +2447,7 @@
     {
       "village": "Huijbergen",
       "address": "Boomstraat 16, 4635CX Huijbergen",
-      "ms": 13130,
+      "ms": 14976,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 881,
@@ -1739,7 +2457,15 @@
       "accessReason": "A car can reach the plot boundary over 42.4 m, but no driveway crossing is registered there. Check the aerial photo; a new exit needs its own permit.",
       "pavementRuns": [
         {
-          "lengthM": 18.08,
+          "lengthM": 4.52,
+          "acrossM": 5.25,
+          "via": [
+            "voetpad",
+            "heesters"
+          ]
+        },
+        {
+          "lengthM": 13.56,
           "acrossM": 5.5,
           "via": [
             "voetpad",
@@ -1773,14 +2499,14 @@
       "sides": "front: road (J.B. van Agtmaalstraat) 42.4 m | rear: neighbouring plot 43 m | left: neighbouring plot 23 m, road (J.B. van Agtmaalstraat) 0.3 m | right: footpath / pavement 18.1 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (127 ms): Found Boomstraat 16, 4635CX Huijbergen",
-        "ok bag-address (264 ms): Address is in 1 building(s)",
-        "ok brk-plot (125 ms): Plot Huijbergen C 1495, 881 m² drawn",
-        "ok bag-buildings (6010 ms): 1 house, 1 other on plot, 23 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (857 ms): Heights for 25 buildings, height scan of 2024",
-        "ok bgt-trees (1984 ms): 26 registered trees, 4 hedges, 0 other vegetation nearby",
-        "ok bgt-public (2720 ms): 36 current public areas; ignored 63 historical records",
-        "ok classify-edges (65 ms): 5 edge runs"
+        "ok find-address (163 ms): Found Boomstraat 16, 4635CX Huijbergen",
+        "ok bag-address (811 ms): Address is in 1 building(s)",
+        "ok brk-plot (172 ms): Plot Huijbergen C 1495, 881 m² drawn",
+        "ok bag-buildings (2631 ms): 1 house, 1 other on plot, 23 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (1366 ms): Heights for 25 buildings, height scan of 2024",
+        "ok bgt-trees (2448 ms): 26 registered trees, 4 hedges, 0 other vegetation nearby",
+        "ok bgt-public (6172 ms): 36 current public areas; ignored 63 historical records",
+        "ok classify-edges (76 ms): 5 edge runs"
       ],
       "draw": {
         "plot": [
@@ -1929,6 +2655,16 @@
               383010.248
             ],
             [
+              84720.1684151156,
+              383010.49637991306
+            ]
+          ],
+          [
+            [
+              84720.1684151156,
+              383010.49637991306
+            ],
+            [
               84720.25366046236,
               383011.2415196522
             ]
@@ -1937,21 +2673,1139 @@
       }
     },
     {
-      "village": "Huijbergen",
-      "address": "4635CM 8k23",
-      "ms": 382,
-      "error": "We could not find that address."
+      "village": "Ossendrecht",
+      "address": "Kapucijnenstraat 9, 4641KH Ossendrecht",
+      "ms": 7190,
+      "use": "woonfunctie",
+      "houseType": "corner",
+      "plotAreaM2": 131,
+      "frontMethod": "street-label",
+      "frontStreet": "Kapucijnenstraat",
+      "access": "possible",
+      "route": "across-pavement",
+      "accessReason": "The road lies 2.0 m beyond the plot, across a pavement or verge, over a 6.1 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "pavementRuns": [
+        {
+          "lengthM": 6.08,
+          "acrossM": 2,
+          "via": [
+            "voetpad"
+          ]
+        }
+      ],
+      "otherHomesOnPlot": 0,
+      "exits": [],
+      "carReachableM": 0,
+      "carReachableSides": [],
+      "nearestInritM": 27.5,
+      "inritWithin10m": 0,
+      "quality": {
+        "plot": "complete",
+        "buildings": "complete",
+        "heights": "complete",
+        "publicArea": "complete",
+        "vegetation": "partial",
+        "access": "assumed",
+        "front": "complete"
+      },
+      "flags": [
+        "OUTBUILDINGS_ON_PLOT",
+        "POSSIBLE_ACHTERPAD",
+        "PAVEMENT_CROSSING"
+      ],
+      "sides": "front: footpath / pavement (Kapucijnenstraat) 6.1 m | rear: footpath / pavement (Kapucijnenstraat) 6.1 m | left: neighbouring plot 13.3 m, shared wall with the neighbour 8.3 m | right: neighbouring plot 13.3 m, shared wall with the neighbour 8.3 m",
+      "outbuildings": 1,
+      "steps": [
+        "ok find-address (162 ms): Found Kapucijnenstraat 9, 4641KH Ossendrecht",
+        "ok bag-address (180 ms): Address is in 1 building(s)",
+        "ok brk-plot (167 ms): Plot Ossendrecht D 5507, 131 m² drawn",
+        "ok bag-buildings (258 ms): 1 house, 1 other on plot, 47 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (1216 ms): Heights for 49 buildings, height scan of 2024",
+        "ok bgt-trees (157 ms): 3 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (4739 ms): 28 current public areas; ignored 36 historical records",
+        "ok classify-edges (27 ms): 10 edge runs"
+      ],
+      "draw": {
+        "plot": [
+          [
+            81681.882,
+            378563.795
+          ],
+          [
+            81682.568,
+            378565.384
+          ],
+          [
+            81684.192,
+            378569.144
+          ],
+          [
+            81664.377,
+            378577.629
+          ],
+          [
+            81661.978,
+            378572.042
+          ],
+          [
+            81681.782,
+            378563.563
+          ]
+        ],
+        "house": [
+          [
+            [
+              81675.802,
+              378572.649
+            ],
+            [
+              81668.199,
+              378575.905
+            ],
+            [
+              81665.842,
+              378570.401
+            ],
+            [
+              81673.446,
+              378567.145
+            ]
+          ]
+        ],
+        "outbuildings": [
+          [
+            [
+              81681.943,
+              378570.227
+            ],
+            [
+              81680.712,
+              378570.819
+            ],
+            [
+              81677.993,
+              378571.923
+            ],
+            [
+              81676.757,
+              378569.006
+            ],
+            [
+              81680.652,
+              378567.405
+            ],
+            [
+              81680.217,
+              378566.399
+            ],
+            [
+              81682.568,
+              378565.384
+            ],
+            [
+              81684.192,
+              378569.144
+            ]
+          ]
+        ],
+        "exits": [],
+        "inritsNear": [],
+        "carEdges": [
+          [
+            [
+              81664.377,
+              378577.629
+            ],
+            [
+              81663.98244561572,
+              378576.7101274094
+            ]
+          ]
+        ]
+      }
     },
     {
-      "village": "Huijbergen",
-      "address": "4635RW 69",
-      "ms": 271,
-      "error": "The building register has no object for this address."
+      "village": "Ossendrecht",
+      "address": "Burgemeester van Gilshof 51, 4641TK Ossendrecht",
+      "ms": 13808,
+      "use": "woonfunctie",
+      "houseType": "detached",
+      "plotAreaM2": 983,
+      "frontMethod": "street-label",
+      "frontStreet": "Burgemeester van Gilshof",
+      "access": "possible",
+      "route": "across-pavement",
+      "accessReason": "The road lies 1.3 m beyond the plot, across a pavement or verge, over a 43.3 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "pavementRuns": [
+        {
+          "lengthM": 6.47,
+          "acrossM": 8,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 9.64,
+          "acrossM": 2.5,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 11.76,
+          "acrossM": 2.5,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 6.16,
+          "acrossM": 3.25,
+          "via": [
+            "voetpad",
+            "verge on the road's parcel"
+          ]
+        },
+        {
+          "lengthM": 43.32,
+          "acrossM": 1.25,
+          "via": [
+            "voetpad"
+          ]
+        }
+      ],
+      "otherHomesOnPlot": 0,
+      "exits": [],
+      "carReachableM": 0,
+      "carReachableSides": [],
+      "nearestInritM": null,
+      "inritWithin10m": 0,
+      "quality": {
+        "plot": "complete",
+        "buildings": "complete",
+        "heights": "complete",
+        "publicArea": "complete",
+        "vegetation": "partial",
+        "access": "assumed",
+        "front": "complete"
+      },
+      "flags": [
+        "OUTBUILDINGS_ON_PLOT",
+        "PAVEMENT_CROSSING"
+      ],
+      "sides": "front: footpath / pavement (Burgemeester van Gilshof) 43.3 m | rear: footpath / pavement (Burgemeester van Gilshof) 14.2 m, neighbouring plot 0.3 m | left: footpath / pavement (Burgemeester van Gilshof) 21.9 m, neighbouring plot 5.7 m | right: neighbouring plot 51.3 m",
+      "outbuildings": 1,
+      "steps": [
+        "ok find-address (497 ms): Found Burgemeester van Gilshof 51, 4641TK Ossendrecht",
+        "ok bag-address (160 ms): Address is in 1 building(s)",
+        "ok brk-plot (160 ms): Plot Ossendrecht D 6159, 983 m² drawn",
+        "ok bag-buildings (2523 ms): 1 house, 1 other on plot, 25 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (815 ms): Heights for 26 buildings, height scan of 2024",
+        "ok bgt-trees (160 ms): 3 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (8898 ms): 17 current public areas; ignored 20 historical records",
+        "ok classify-edges (45 ms): 10 edge runs"
+      ],
+      "draw": {
+        "plot": [
+          [
+            80840.327,
+            378731.506
+          ],
+          [
+            80818.102,
+            378730.825
+          ],
+          [
+            80818.509,
+            378716.387
+          ],
+          [
+            80825.18,
+            378709.422
+          ],
+          [
+            80833.667,
+            378701.278
+          ],
+          [
+            80839.802,
+            378700.754
+          ],
+          [
+            80869.338,
+            378732.442
+          ]
+        ],
+        "house": [
+          [
+            [
+              80838.608,
+              378714.691
+            ],
+            [
+              80832.392,
+              378720.889
+            ],
+            [
+              80829.287,
+              378717.772
+            ],
+            [
+              80830.409,
+              378716.633
+            ],
+            [
+              80826.855,
+              378713.122
+            ],
+            [
+              80830.692,
+              378709.3
+            ],
+            [
+              80830.284,
+              378708.911
+            ],
+            [
+              80833.246,
+              378705.944
+            ],
+            [
+              80833.661,
+              378706.342
+            ],
+            [
+              80837.486,
+              378702.533
+            ],
+            [
+              80844.117,
+              378709.197
+            ],
+            [
+              80840.884,
+              378712.421
+            ],
+            [
+              80841.584,
+              378713.408
+            ],
+            [
+              80839.377,
+              378715.643
+            ]
+          ]
+        ],
+        "outbuildings": [
+          [
+            [
+              80828.766,
+              378726.457
+            ],
+            [
+              80833.272,
+              378726.344
+            ],
+            [
+              80833.376,
+              378730.489
+            ],
+            [
+              80828.87,
+              378730.602
+            ]
+          ]
+        ],
+        "exits": [],
+        "inritsNear": [],
+        "carEdges": [
+          [
+            [
+              80818.11754665172,
+              378730.27349494473
+            ],
+            [
+              80818.13017830624,
+              378729.8253970873
+            ]
+          ],
+          [
+            [
+              80818.509,
+              378716.387
+            ],
+            [
+              80819.20070039976,
+              378715.6648154273
+            ]
+          ],
+          [
+            [
+              80825.18,
+              378709.422
+            ],
+            [
+              80825.90153680903,
+              378708.72962392215
+            ]
+          ],
+          [
+            [
+              80833.667,
+              378701.278
+            ],
+            [
+              80834.66337226819,
+              378701.1928982773
+            ]
+          ],
+          [
+            [
+              80839.802,
+              378700.754
+            ],
+            [
+              80840.48383118077,
+              378701.4855095631
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "village": "Ossendrecht",
+      "address": "Looizicht 8, 4641TE Ossendrecht",
+      "ms": 18471,
+      "use": "woonfunctie",
+      "houseType": "detached",
+      "plotAreaM2": 11667,
+      "frontMethod": "none",
+      "access": "unknown",
+      "accessReason": "Street data could not be loaded, so car access is unknown.",
+      "pavementRuns": [],
+      "otherHomesOnPlot": 24,
+      "exits": [],
+      "carReachableM": 0,
+      "carReachableSides": [],
+      "nearestInritM": null,
+      "inritWithin10m": 0,
+      "quality": {
+        "plot": "partial",
+        "buildings": "complete",
+        "heights": "complete",
+        "publicArea": "missing",
+        "vegetation": "partial",
+        "access": "missing",
+        "front": "missing"
+      },
+      "flags": [
+        "PLOT_AREA_MISMATCH",
+        "SHARED_PLOT",
+        "OUTBUILDINGS_ON_PLOT",
+        "PUBLIC_AREA_UNKNOWN"
+      ],
+      "sides": "front: unknown (data missing) 237.1 m | rear: unknown (data missing) 250 m | left: unknown (data missing) 270.1 m | right: unknown (data missing) 231.2 m",
+      "outbuildings": 12,
+      "steps": [
+        "ok find-address (455 ms): Found Looizicht 8, 4641TE Ossendrecht",
+        "ok bag-address (625 ms): Address is in 1 building(s)",
+        "ok brk-plot (161 ms): Plot Ossendrecht D 6989, 11667 m² drawn",
+        "ok bag-buildings (2203 ms): 1 house, 12 other on plot, 191 nearby; ignored 42 demolished or invalid",
+        "ok 3dbag-heights (6294 ms): Heights for 195 buildings, height scan of 2024",
+        "ok bgt-trees (548 ms): 30 registered trees, 13 hedges, 0 other vegetation nearby",
+        "failed bgt-public (8002 ms): ",
+        "degraded classify-edges (181 ms): 99 edge runs (some edges unknown)"
+      ],
+      "draw": {
+        "plot": [
+          [
+            81325.894,
+            378644.02
+          ],
+          [
+            81326.537,
+            378643.845
+          ],
+          [
+            81329.973,
+            378640.604
+          ],
+          [
+            81333.185,
+            378637.79
+          ],
+          [
+            81336.177,
+            378635.877
+          ],
+          [
+            81339.941,
+            378633.535
+          ],
+          [
+            81343.507,
+            378631.444
+          ],
+          [
+            81348.096,
+            378629.099
+          ],
+          [
+            81351.514,
+            378627.534
+          ],
+          [
+            81356.704,
+            378625.211
+          ],
+          [
+            81360.048,
+            378623.946
+          ],
+          [
+            81356.953,
+            378618.831
+          ],
+          [
+            81363.931,
+            378619.979
+          ],
+          [
+            81366.444,
+            378619.765
+          ],
+          [
+            81372.302,
+            378619.266
+          ],
+          [
+            81381.178,
+            378619.352
+          ],
+          [
+            81400.47,
+            378621.654
+          ],
+          [
+            81411.019,
+            378623.02
+          ],
+          [
+            81416.066,
+            378622.422
+          ],
+          [
+            81422.009,
+            378620.871
+          ],
+          [
+            81425.001,
+            378619.965
+          ],
+          [
+            81424.519,
+            378624.643
+          ],
+          [
+            81424.103,
+            378628.766
+          ],
+          [
+            81427.692,
+            378631.026
+          ],
+          [
+            81431.906,
+            378633.708
+          ],
+          [
+            81433.435,
+            378633.199
+          ],
+          [
+            81455.876,
+            378625.284
+          ],
+          [
+            81471.603,
+            378619.737
+          ],
+          [
+            81487.764,
+            378614.037
+          ],
+          [
+            81503.793,
+            378608.383
+          ],
+          [
+            81504.447,
+            378606.989
+          ],
+          [
+            81492.254,
+            378578.889
+          ],
+          [
+            81492.439,
+            378578.811
+          ],
+          [
+            81481.485,
+            378555.121
+          ],
+          [
+            81478.843,
+            378555.419
+          ],
+          [
+            81473.626,
+            378558.3
+          ],
+          [
+            81463.75,
+            378569.808
+          ],
+          [
+            81453.712,
+            378583.43
+          ],
+          [
+            81458.414,
+            378575.954
+          ],
+          [
+            81462.793,
+            378570.506
+          ],
+          [
+            81469.272,
+            378563.148
+          ],
+          [
+            81481.323,
+            378549.445
+          ],
+          [
+            81482.783,
+            378554.44
+          ],
+          [
+            81492.158,
+            378575.734
+          ],
+          [
+            81528.87,
+            378663.011
+          ],
+          [
+            81515.633,
+            378667.723
+          ],
+          [
+            81514.849,
+            378668.001
+          ],
+          [
+            81507.341,
+            378670.69
+          ],
+          [
+            81500.325,
+            378673.204
+          ],
+          [
+            81492.724,
+            378675.926
+          ],
+          [
+            81485.358,
+            378678.565
+          ],
+          [
+            81477.737,
+            378681.295
+          ],
+          [
+            81470.419,
+            378683.916
+          ],
+          [
+            81462.888,
+            378686.653
+          ],
+          [
+            81455.521,
+            378689.291
+          ],
+          [
+            81447.933,
+            378692.009
+          ],
+          [
+            81441.397,
+            378694.319
+          ],
+          [
+            81435.04,
+            378696.587
+          ],
+          [
+            81426.857,
+            378699.505
+          ],
+          [
+            81415.562,
+            378703.534
+          ],
+          [
+            81412.234,
+            378704.722
+          ],
+          [
+            81408.918,
+            378705.837
+          ],
+          [
+            81383.103,
+            378714.994
+          ],
+          [
+            81385.115,
+            378729.035
+          ],
+          [
+            81388.539,
+            378745.72
+          ],
+          [
+            81388.946,
+            378748.787
+          ],
+          [
+            81388.953,
+            378748.843
+          ],
+          [
+            81393.747,
+            378778.138
+          ],
+          [
+            81393.708,
+            378778.147
+          ],
+          [
+            81389.76,
+            378779.153
+          ],
+          [
+            81384.331,
+            378749.439
+          ],
+          [
+            81383.634,
+            378749.57
+          ],
+          [
+            81380.097,
+            378728.319
+          ],
+          [
+            81375.693,
+            378723.347
+          ],
+          [
+            81367.626,
+            378724.7
+          ],
+          [
+            81357.246,
+            378726.44
+          ],
+          [
+            81346.764,
+            378728.198
+          ],
+          [
+            81336.451,
+            378729.987
+          ],
+          [
+            81334.883,
+            378721.603
+          ],
+          [
+            81339.33,
+            378720.81
+          ],
+          [
+            81341.86,
+            378720.38
+          ],
+          [
+            81377.144,
+            378715.467
+          ],
+          [
+            81377.602,
+            378712.725
+          ],
+          [
+            81377.911,
+            378710.032
+          ],
+          [
+            81378.094,
+            378707.366
+          ],
+          [
+            81376.859,
+            378700.528
+          ],
+          [
+            81374.307,
+            378685.802
+          ],
+          [
+            81371.536,
+            378669.808
+          ],
+          [
+            81365.097,
+            378634.012
+          ],
+          [
+            81363.162,
+            378627.984
+          ],
+          [
+            81345.939,
+            378633.185
+          ],
+          [
+            81346.48,
+            378636.175
+          ],
+          [
+            81344.233,
+            378637.466
+          ],
+          [
+            81339.721,
+            378640.261
+          ],
+          [
+            81335.035,
+            378643.482
+          ],
+          [
+            81331.447,
+            378646.048
+          ],
+          [
+            81328.831,
+            378648.159
+          ],
+          [
+            81326.943,
+            378650.01
+          ],
+          [
+            81326.71,
+            378648.68
+          ]
+        ],
+        "house": [
+          [
+            [
+              81411.757,
+              378689.834
+            ],
+            [
+              81407.598,
+              378678.122
+            ],
+            [
+              81409.681,
+              378677.384
+            ],
+            [
+              81410.79,
+              378680.515
+            ],
+            [
+              81411.221,
+              378680.363
+            ],
+            [
+              81411.731,
+              378681.8
+            ],
+            [
+              81415.038,
+              378680.628
+            ],
+            [
+              81415.9,
+              378683.06
+            ],
+            [
+              81417.57,
+              378687.77
+            ]
+          ]
+        ],
+        "outbuildings": [
+          [
+            [
+              81481.439,
+              378635.073
+            ],
+            [
+              81486.057,
+              378633.409
+            ],
+            [
+              81487.777,
+              378638.182
+            ],
+            [
+              81483.159,
+              378639.846
+            ]
+          ],
+          [
+            [
+              81404.918,
+              378671.434
+            ],
+            [
+              81403.301,
+              378672.052
+            ],
+            [
+              81400.688,
+              378673.051
+            ],
+            [
+              81399.702,
+              378670.471
+            ],
+            [
+              81404.098,
+              378668.791
+            ],
+            [
+              81405.084,
+              378671.371
+            ]
+          ],
+          [
+            [
+              81399.804,
+              378651.902
+            ],
+            [
+              81401.441,
+              378656.187
+            ],
+            [
+              81395.952,
+              378658.134
+            ],
+            [
+              81394.365,
+              378653.98
+            ]
+          ],
+          [
+            [
+              81418.992,
+              378656.241
+            ],
+            [
+              81421.778,
+              378665.132
+            ],
+            [
+              81417.935,
+              378666.336
+            ],
+            [
+              81415.15,
+              378657.445
+            ]
+          ],
+          [
+            [
+              81482.271,
+              378656.47
+            ],
+            [
+              81483.02,
+              378658.499
+            ],
+            [
+              81479.095,
+              378659.83
+            ],
+            [
+              81478.775,
+              378658.951
+            ],
+            [
+              81476.493,
+              378659.707
+            ],
+            [
+              81476.073,
+              378658.655
+            ]
+          ],
+          [
+            [
+              81403.301,
+              378672.052
+            ],
+            [
+              81404.918,
+              378671.434
+            ],
+            [
+              81407.156,
+              378677.196
+            ],
+            [
+              81405.368,
+              378677.852
+            ]
+          ],
+          [
+            [
+              81499.481,
+              378651.351
+            ],
+            [
+              81500.606,
+              378654.132
+            ],
+            [
+              81495.043,
+              378656.382
+            ],
+            [
+              81493.425,
+              378652.382
+            ],
+            [
+              81496.207,
+              378651.257
+            ],
+            [
+              81496.7,
+              378652.475
+            ]
+          ],
+          [
+            [
+              81497.988,
+              378666.496
+            ],
+            [
+              81498.81,
+              378668.758
+            ],
+            [
+              81495.969,
+              378669.791
+            ],
+            [
+              81495.146,
+              378667.529
+            ]
+          ],
+          [
+            [
+              81499.41,
+              378662.01
+            ],
+            [
+              81497.2,
+              378662.71
+            ],
+            [
+              81496.19,
+              378659.637
+            ],
+            [
+              81498.393,
+              378658.914
+            ]
+          ],
+          [
+            [
+              81499.41,
+              378662.01
+            ],
+            [
+              81500.92,
+              378666.78
+            ],
+            [
+              81498.71,
+              378667.48
+            ],
+            [
+              81497.2,
+              378662.71
+            ]
+          ],
+          [
+            [
+              81474.657,
+              378645.985
+            ],
+            [
+              81469.624,
+              378647.749
+            ],
+            [
+              81468.752,
+              378645.415
+            ],
+            [
+              81473.779,
+              378643.642
+            ]
+          ],
+          [
+            [
+              81416.919,
+              378663.091
+            ],
+            [
+              81417.935,
+              378666.336
+            ],
+            [
+              81416.026,
+              378666.934
+            ],
+            [
+              81415.01,
+              378663.689
+            ]
+          ]
+        ],
+        "exits": [],
+        "inritsNear": [],
+        "carEdges": []
+      }
     },
     {
       "village": "Ossendrecht",
       "address": "Markt 10a, 4641HR Ossendrecht",
-      "ms": 4322,
+      "ms": 7844,
       "use": "winkelfunctie,woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 274,
@@ -1959,7 +3813,7 @@
       "frontStreet": "Markt",
       "access": "possible",
       "route": "across-pavement",
-      "accessReason": "The road lies 3.8 m beyond the plot, across a pavement or verge, over a 14.5 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "accessReason": "The road lies 2.0 m beyond the plot, across a pavement or verge, over a 6.5 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
       "pavementRuns": [
         {
           "lengthM": 1.17,
@@ -1970,11 +3824,33 @@
           ]
         },
         {
-          "lengthM": 14.47,
+          "lengthM": 1,
           "acrossM": 3.75,
           "via": [
             "voetpad",
             "green"
+          ]
+        },
+        {
+          "lengthM": 6.49,
+          "acrossM": 2,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 1.5,
+          "acrossM": 3.75,
+          "via": [
+            "voetpad",
+            "green"
+          ]
+        },
+        {
+          "lengthM": 5.49,
+          "acrossM": 2,
+          "via": [
+            "voetpad"
           ]
         }
       ],
@@ -2001,14 +3877,14 @@
       "sides": "front: footpath / pavement (Markt) 15.6 m | rear: neighbouring plot 15.5 m | left: neighbouring plot 18.7 m | right: shared wall with the neighbour 9.8 m, neighbouring plot 9 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (338 ms): Found Markt 10a, 4641HR Ossendrecht",
-        "ok bag-address (296 ms): Address is in 1 building(s)",
-        "ok brk-plot (123 ms): Plot Ossendrecht D 4233, 274 m² drawn",
-        "ok bag-buildings (606 ms): 1 house, 1 other on plot, 27 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (862 ms): Heights for 29 buildings, height scan of 2024",
-        "ok bgt-trees (346 ms): 14 registered trees, 13 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1363 ms): 38 current public areas; ignored 92 historical records",
-        "ok classify-edges (28 ms): 12 edge runs"
+        "ok find-address (164 ms): Found Markt 10a, 4641HR Ossendrecht",
+        "ok bag-address (337 ms): Address is in 1 building(s)",
+        "ok brk-plot (159 ms): Plot Ossendrecht D 4233, 274 m² drawn",
+        "ok bag-buildings (2379 ms): 1 house, 1 other on plot, 27 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (1411 ms): Heights for 29 buildings, height scan of 2024",
+        "ok bgt-trees (630 ms): 14 registered trees, 13 hedges, 0 other vegetation nearby",
+        "ok bgt-public (2330 ms): 38 current public areas; ignored 92 historical records",
+        "ok classify-edges (32 ms): 12 edge runs"
       ],
       "draw": {
         "plot": [
@@ -2132,6 +4008,36 @@
               379013.61
             ],
             [
+              81212.71107938234,
+              379013.6075118222
+            ]
+          ],
+          [
+            [
+              81212.71107938234,
+              379013.6075118222
+            ],
+            [
+              81212.26309536748,
+              379013.5913386667
+            ]
+          ],
+          [
+            [
+              81212.26309536748,
+              379013.5913386667
+            ],
+            [
+              81212.15971444099,
+              379013.5876064
+            ]
+          ],
+          [
+            [
+              81212.15971444099,
+              379013.5876064
+            ],
+            [
               81211.78065104381,
               379013.5739214223
             ]
@@ -2140,255 +4046,196 @@
       }
     },
     {
-      "village": "Ossendrecht",
-      "address": "Zandvlietseweg 5, 4641SR Ossendrecht",
-      "ms": 4458,
+      "village": "Putte",
+      "address": "Leliestraat 10, 4645CL Putte",
+      "ms": 9808,
       "use": "woonfunctie",
       "houseType": "detached",
-      "plotAreaM2": 1248,
-      "frontMethod": "street-label",
-      "frontStreet": "Zandvlietseweg",
-      "access": "registered",
-      "accessReason": "1 registered driveway crossing touches the plot.",
-      "pavementRuns": [],
-      "otherHomesOnPlot": 0,
-      "exits": [
+      "plotAreaM2": 294,
+      "frontMethod": "longest-public",
+      "access": "possible",
+      "route": "across-pavement",
+      "accessReason": "The road lies 6.8 m beyond the plot, across a pavement or verge, over a 13.5 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "pavementRuns": [
         {
-          "alongPlotM": 4
+          "lengthM": 13.51,
+          "acrossM": 6.75,
+          "via": [
+            "gras- en kruidachtigen",
+            "voetpad",
+            "green"
+          ]
         }
       ],
-      "carReachableM": 4,
-      "carReachableSides": [
-        "front"
-      ],
-      "nearestInritM": 0,
-      "inritWithin10m": 1,
+      "otherHomesOnPlot": 2,
+      "exits": [],
+      "carReachableM": 0,
+      "carReachableSides": [],
+      "nearestInritM": null,
+      "inritWithin10m": 0,
       "quality": {
-        "plot": "complete",
+        "plot": "partial",
         "buildings": "complete",
         "heights": "complete",
         "publicArea": "complete",
         "vegetation": "partial",
-        "access": "complete",
-        "front": "complete"
+        "access": "assumed",
+        "front": "assumed"
       },
-      "flags": [],
-      "sides": "front: neighbouring plot 21.7 m, driveway crossing (Zandvlietseweg) 4 m | rear: neighbouring plot 25.9 m | left: neighbouring plot 46.8 m | right: neighbouring plot 48.8 m",
+      "flags": [
+        "SHARED_PLOT",
+        "POSSIBLE_ACHTERPAD",
+        "PAVEMENT_CROSSING",
+        "FRONT_ESTIMATED"
+      ],
+      "sides": "front: public green 13.5 m, footpath / pavement 6.7 m | rear: neighbouring plot 13.7 m, public green 6.4 m | left: footpath / pavement 18.3 m, neighbouring plot 3 m | right: public green 21.2 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (132 ms): Found Zandvlietseweg 5, 4641SR Ossendrecht",
-        "ok bag-address (143 ms): Address is in 1 building(s)",
-        "ok brk-plot (113 ms): Plot Ossendrecht E 956, 1248 m² drawn",
-        "ok bag-buildings (2594 ms): 1 house, 0 other on plot, 0 nearby; ignored 1 demolished or invalid",
-        "ok 3dbag-heights (547 ms): Heights for 1 buildings, height scan of 2024",
-        "ok bgt-trees (121 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (776 ms): 8 current public areas; ignored 18 historical records",
-        "ok classify-edges (29 ms): 12 edge runs"
+        "ok find-address (178 ms): Found Leliestraat 10, 4645CL Putte",
+        "ok bag-address (559 ms): Address is in 1 building(s)",
+        "ok brk-plot (172 ms): Plot Putte B 3399, 294 m² drawn",
+        "ok bag-buildings (318 ms): 1 house, 0 other on plot, 35 nearby; ignored 1 demolished or invalid",
+        "ok 3dbag-heights (1436 ms): Heights for 35 buildings, height scan of 2024",
+        "ok bgt-trees (386 ms): 20 registered trees, 6 hedges, 0 other vegetation nearby",
+        "ok bgt-public (6152 ms): 26 current public areas; ignored 108 historical records",
+        "ok classify-edges (37 ms): 13 edge runs"
       ],
       "draw": {
         "plot": [
           [
-            82094.006,
-            377392.458
+            86157.985,
+            374828.955
           ],
           [
-            82091.143,
-            377366.948
+            86170.56,
+            374834.34
           ],
           [
-            82139.98,
-            377366.783
+            86167.693,
+            374841.046
           ],
           [
-            82140.541,
-            377392.636
+            86164.61,
+            374839.72
           ],
           [
-            82136.898,
-            377392.033
+            86161.842,
+            374846.162
           ],
           [
-            82134.668,
-            377392.143
+            86158.8,
+            374844.8
           ],
           [
-            82126.237,
-            377393.6
+            86156.075,
+            374851.254
           ],
           [
-            82123.566,
-            377393.768
+            86143.682,
+            374845.864
           ],
           [
-            82115.915,
-            377393.597
+            86146.665,
+            374839.003
           ],
           [
-            82100.772,
-            377392.81
+            86149.32,
+            374840.162
+          ],
+          [
+            86152.107,
+            374833.778
+          ],
+          [
+            86155.275,
+            374835.162
           ]
         ],
         "house": [
           [
             [
-              82098.691,
-              377376
+              86158.8,
+              374844.8
             ],
             [
-              82104.264,
-              377375.403
+              86157.77,
+              374847.24
             ],
             [
-              82104.765,
-              377380.082
+              86156.83,
+              374846.83
             ],
             [
-              82101.111,
-              377380.473
+              86155.1,
+              374850.83
             ],
             [
-              82102.221,
-              377390.854
+              86146.34,
+              374847.02
             ],
             [
-              82100.3,
-              377391.06
+              86148.33,
+              374842.43
             ],
             [
-              82095.332,
-              377391.59
+              86149.32,
+              374840.162
             ],
             [
-              82093.721,
-              377376.53
+              86152.488,
+              374841.545
+            ],
+            [
+              86152.351,
+              374841.858
+            ],
+            [
+              86158.857,
+              374844.665
             ]
           ]
         ],
         "outbuildings": [],
-        "exits": [
-          [
-            [
-              82092.083,
-              377373.484
-            ],
-            [
-              82091.427,
-              377373.745
-            ],
-            [
-              82090.431,
-              377374.419
-            ],
-            [
-              82089.859,
-              377375.041
-            ],
-            [
-              82089.199,
-              377368.974
-            ],
-            [
-              82089.466,
-              377369.067
-            ],
-            [
-              82090.135,
-              377369.381
-            ],
-            [
-              82091.017,
-              377369.704
-            ],
-            [
-              82091.904,
-              377369.956
-            ]
-          ]
-        ],
-        "inritsNear": [
-          [
-            [
-              82092.083,
-              377373.484
-            ],
-            [
-              82091.427,
-              377373.745
-            ],
-            [
-              82090.431,
-              377374.419
-            ],
-            [
-              82089.859,
-              377375.041
-            ],
-            [
-              82089.199,
-              377368.974
-            ],
-            [
-              82089.466,
-              377369.067
-            ],
-            [
-              82090.135,
-              377369.381
-            ],
-            [
-              82091.017,
-              377369.704
-            ],
-            [
-              82091.904,
-              377369.956
-            ]
-          ]
-        ],
+        "exits": [],
+        "inritsNear": [],
         "carEdges": [
           [
             [
-              82093.9237058013,
-              377391.72473943105
+              86156.075,
+              374851.254
             ],
             [
-              82093.90638070683,
-              377391.57036878495
+              86155.15797700593,
+              374850.85516566306
             ]
           ]
         ]
       }
     },
     {
-      "village": "Ossendrecht",
-      "address": "Dominicanenstraat 22, 4641KK Ossendrecht",
-      "ms": 4860,
+      "village": "Putte",
+      "address": "Keizerstraat 67, 4645GP Putte",
+      "ms": 15633,
       "use": "woonfunctie",
       "houseType": "corner",
-      "plotAreaM2": 142,
+      "plotAreaM2": 130,
       "frontMethod": "street-label",
-      "frontStreet": "Dominicanenstraat",
+      "frontStreet": "Keizerstraat",
       "access": "possible",
-      "route": "across-pavement",
-      "accessReason": "The road lies 2.3 m beyond the plot, across a pavement or verge, over a 5.9 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
-      "pavementRuns": [
-        {
-          "lengthM": 5.91,
-          "acrossM": 2.25,
-          "via": [
-            "voetpad"
-          ]
-        }
-      ],
+      "route": "direct",
+      "accessReason": "A car can reach the plot boundary over 6.0 m, but no driveway crossing is registered there. Check the aerial photo; a new exit needs its own permit.",
+      "pavementRuns": [],
       "otherHomesOnPlot": 0,
       "exits": [],
-      "carReachableM": 0,
-      "carReachableSides": [],
-      "nearestInritM": 27.9,
+      "carReachableM": 6,
+      "carReachableSides": [
+        "front"
+      ],
+      "nearestInritM": null,
       "inritWithin10m": 0,
       "quality": {
         "plot": "complete",
-        "buildings": "partial",
+        "buildings": "complete",
         "heights": "complete",
         "publicArea": "complete",
         "vegetation": "partial",
@@ -2396,95 +4243,345 @@
         "front": "complete"
       },
       "flags": [
-        "BUILDING_ON_BOUNDARY",
-        "OUTBUILDINGS_ON_PLOT",
         "POSSIBLE_ACHTERPAD",
-        "PAVEMENT_CROSSING"
+        "POSSIBLE_EXIT"
       ],
-      "sides": "front: footpath / pavement (Dominicanenstraat) 5.9 m | rear: neighbouring plot 5.9 m | left: neighbouring plot 14.5 m, shared wall with the neighbour 8.3 m, footpath / pavement (Augustijnenstraat) 1.3 m | right: neighbouring plot 14 m, shared wall with the neighbour 8.5 m, footpath / pavement (Augustijnenstraat) 1.5 m",
-      "outbuildings": 1,
+      "sides": "front: road (Keizerstraat) 6 m, shared wall with the neighbour 1 m, neighbouring plot 0.8 m | rear: footpath / pavement 5.7 m, neighbouring plot 1.1 m, shared wall with the neighbour 1 m | left: neighbouring plot 13.3 m, shared wall with the neighbour 8.4 m | right: shared wall with the neighbour 12.1 m, neighbouring plot 9.7 m",
+      "outbuildings": 0,
       "steps": [
-        "ok find-address (120 ms): Found Dominicanenstraat 22, 4641KK Ossendrecht",
-        "ok bag-address (856 ms): Address is in 1 building(s)",
-        "ok brk-plot (118 ms): Plot Ossendrecht D 5930, 142 m² drawn",
-        "ok bag-buildings (625 ms): 1 house, 1 other on plot, 31 nearby; ignored 0 demolished or invalid",
-        "ok 3dbag-heights (796 ms): Heights for 33 buildings, height scan of 2024",
-        "ok bgt-trees (416 ms): 9 registered trees, 3 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1416 ms): 30 current public areas; ignored 67 historical records",
-        "ok classify-edges (41 ms): 12 edge runs"
+        "ok find-address (171 ms): Found Keizerstraat 67, 4645GP Putte",
+        "ok bag-address (657 ms): Address is in 1 building(s)",
+        "ok brk-plot (160 ms): Plot Putte B 3314, 130 m² drawn",
+        "ok bag-buildings (760 ms): 1 house, 0 other on plot, 30 nearby; ignored 9 demolished or invalid",
+        "ok 3dbag-heights (1086 ms): Heights for 31 buildings, height scan of 2024",
+        "ok bgt-trees (220 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (12546 ms): 9 current public areas; ignored 13 historical records",
+        "ok classify-edges (2 ms): 16 edge runs"
       ],
       "draw": {
         "plot": [
           [
-            81691.884,
-            378526.463
+            85751.441,
+            375338.993
           ],
           [
-            81669.824,
-            378535.882
+            85746.103,
+            375336.341
           ],
           [
-            81669.744,
-            378535.698
+            85749.233,
+            375329.951
           ],
           [
-            81667.468,
-            378530.453
+            85749.93,
+            375330.287
           ],
           [
-            81689.552,
-            378521.037
+            85751.874,
+            375326.848
+          ],
+          [
+            85750.977,
+            375326.412
+          ],
+          [
+            85755.613,
+            375316.793
+          ],
+          [
+            85761.017,
+            375319.401
+          ],
+          [
+            85756.379,
+            375329.016
+          ],
+          [
+            85757.234,
+            375329.428
+          ],
+          [
+            85755.246,
+            375332.85
+          ],
+          [
+            85754.52,
+            375332.509
           ]
         ],
         "house": [
           [
             [
-              81687.319,
-              378528.415
+              85754.525,
+              375319.051
             ],
             [
-              81679.448,
-              378531.772
+              85759.928,
+              375321.657
             ],
             [
-              81675.904,
-              378533.284
+              85756.379,
+              375329.016
             ],
             [
-              81674.803,
-              378530.704
+              85757.234,
+              375329.428
             ],
             [
-              81678.58,
-              378529.093
+              85755.246,
+              375332.85
             ],
             [
-              81677.257,
-              378525.99
+              85754.832,
+              375332.651
             ],
             [
-              81684.894,
-              378522.732
+              85753.765,
+              375332.136
+            ],
+            [
+              85755.479,
+              375328.582
+            ],
+            [
+              85751.874,
+              375326.847
+            ],
+            [
+              85750.977,
+              375326.411
+            ]
+          ]
+        ],
+        "outbuildings": [],
+        "exits": [],
+        "inritsNear": [],
+        "carEdges": [
+          [
+            [
+              85755.613,
+              375316.793
+            ],
+            [
+              85756.51360562768,
+              375317.22763720894
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "village": "Putte",
+      "address": "1e Verdelingsweg 514, 4645RT Putte",
+      "ms": 17540,
+      "use": "logiesfunctie,woonfunctie",
+      "houseType": "detached",
+      "plotAreaM2": 608,
+      "frontMethod": "longest-public",
+      "access": "possible",
+      "route": "across-pavement",
+      "accessReason": "The road lies 1.5 m beyond the plot, across a pavement or verge, over a 12.0 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "pavementRuns": [
+        {
+          "lengthM": 12.04,
+          "acrossM": 1.5,
+          "via": [
+            "verge on the road's parcel"
+          ]
+        }
+      ],
+      "otherHomesOnPlot": 0,
+      "exits": [],
+      "carReachableM": 0,
+      "carReachableSides": [],
+      "nearestInritM": null,
+      "inritWithin10m": 0,
+      "quality": {
+        "plot": "complete",
+        "buildings": "complete",
+        "heights": "complete",
+        "publicArea": "complete",
+        "vegetation": "partial",
+        "access": "assumed",
+        "front": "assumed"
+      },
+      "flags": [
+        "OUTBUILDINGS_ON_PLOT",
+        "PAVEMENT_CROSSING",
+        "FRONT_ESTIMATED"
+      ],
+      "sides": "front: neighbouring plot 14.7 m | rear: neighbouring plot 15.5 m | left: neighbouring plot 44.7 m | right: neighbouring plot 43.8 m",
+      "outbuildings": 3,
+      "steps": [
+        "ok find-address (481 ms): Found 1e Verdelingsweg 514, 4645RT Putte",
+        "ok bag-address (509 ms): Address is in 1 building(s)",
+        "ok brk-plot (172 ms): Plot Putte A 875, 608 m² drawn",
+        "ok bag-buildings (981 ms): 1 house, 3 other on plot, 30 nearby; ignored 23 demolished or invalid",
+        "ok 3dbag-heights (1253 ms): Heights for 30 buildings, height scan of 2024",
+        "ok bgt-trees (195 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (11772 ms): 2 current public areas; ignored 9 historical records",
+        "ok classify-edges (129 ms): 13 edge runs"
+      ],
+      "draw": {
+        "plot": [
+          [
+            86542.787,
+            376594.675
+          ],
+          [
+            86547.929,
+            376587.38
+          ],
+          [
+            86555.25,
+            376576.996
+          ],
+          [
+            86565.4,
+            376583.48
+          ],
+          [
+            86550.917,
+            376606.457
+          ],
+          [
+            86553.088,
+            376607.901
+          ],
+          [
+            86544.441,
+            376622.121
+          ],
+          [
+            86544.415,
+            376622.106
+          ],
+          [
+            86542.622,
+            376621.073
+          ],
+          [
+            86538.926,
+            376618.943
+          ],
+          [
+            86531.624,
+            376614.736
+          ],
+          [
+            86537.491,
+            376603.719
+          ],
+          [
+            86536.855,
+            376603.408
+          ]
+        ],
+        "house": [
+          [
+            [
+              86545.37,
+              376595.266
+            ],
+            [
+              86547.184,
+              376596.282
+            ],
+            [
+              86548.846,
+              376593.316
+            ],
+            [
+              86554.622,
+              376596.552
+            ],
+            [
+              86549.88,
+              376605.014
+            ],
+            [
+              86545.248,
+              376602.419
+            ],
+            [
+              86543.292,
+              376605.908
+            ],
+            [
+              86540.326,
+              376604.246
             ]
           ]
         ],
         "outbuildings": [
           [
             [
-              81673.432,
-              378534.341
+              86545.644,
+              376606.981
             ],
             [
-              81671.152,
-              378535.315
+              86546.885,
+              376604.679
             ],
             [
-              81669.534,
-              378531.605
+              86550.901,
+              376606.845
             ],
             [
-              81671.807,
-              378530.614
+              86549.66,
+              376609.147
+            ]
+          ],
+          [
+            [
+              86547.498,
+              376616.503
+            ],
+            [
+              86545.675,
+              376616.865
+            ],
+            [
+              86544.381,
+              376615.966
+            ],
+            [
+              86544.052,
+              376614.243
+            ],
+            [
+              86544.909,
+              376612.904
+            ],
+            [
+              86546.686,
+              376612.553
+            ],
+            [
+              86548.079,
+              376613.453
+            ],
+            [
+              86548.419,
+              376615.133
+            ]
+          ],
+          [
+            [
+              86536.432,
+              376616.57
+            ],
+            [
+              86533.241,
+              376615.095
+            ],
+            [
+              86534.728,
+              376611.879
+            ],
+            [
+              86537.919,
+              376613.354
             ]
           ]
         ],
@@ -2493,27 +4590,21 @@
         "carEdges": [
           [
             [
-              81689.552,
-              378521.037
+              86555.25,
+              376576.996
             ],
             [
-              81689.94685912212,
-              378521.9557416795
+              86556.09272346427,
+              376577.53434669384
             ]
           ]
         ]
       }
     },
     {
-      "village": "Ossendrecht",
-      "address": "4641TL 1k26",
-      "ms": 114,
-      "error": "We could not find that address."
-    },
-    {
       "village": "Putte",
       "address": "Tulpstraat 26, 4645CT Putte",
-      "ms": 10924,
+      "ms": 16228,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 1824,
@@ -2569,14 +4660,14 @@
       "sides": "front: footpath / pavement (Tulpstraat) 71.3 m, footpath / pavement (Breestraat) 0.3 m | rear: neighbouring plot 63.6 m, footpath / pavement 15.1 m | left: footpath / pavement (Tulpstraat) 27.2 m, footpath / pavement (Breestraat) 20.7 m | right: neighbouring plot 43.1 m",
       "outbuildings": 2,
       "steps": [
-        "ok find-address (364 ms): Found Tulpstraat 26, 4645CT Putte",
-        "ok bag-address (2123 ms): Address is in 1 building(s)",
-        "ok brk-plot (118 ms): Plot Putte B 3366, 1824 m² drawn",
-        "ok bag-buildings (537 ms): 1 house, 2 other on plot, 71 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (2045 ms): Heights for 72 buildings, height scan of 2024",
-        "ok bgt-trees (346 ms): 18 registered trees, 3 hedges, 0 other vegetation nearby",
-        "ok bgt-public (3046 ms): 41 current public areas; ignored 92 historical records",
-        "ok classify-edges (114 ms): 25 edge runs"
+        "ok find-address (173 ms): Found Tulpstraat 26, 4645CT Putte",
+        "ok bag-address (265 ms): Address is in 1 building(s)",
+        "ok brk-plot (162 ms): Plot Putte B 3366, 1824 m² drawn",
+        "ok bag-buildings (709 ms): 1 house, 2 other on plot, 71 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (3674 ms): Heights for 72 buildings, height scan of 2024",
+        "ok bgt-trees (656 ms): 18 registered trees, 3 hedges, 0 other vegetation nearby",
+        "ok bgt-public (7842 ms): 41 current public areas; ignored 92 historical records",
+        "ok classify-edges (127 ms): 25 edge runs"
       ],
       "draw": {
         "plot": [
@@ -2813,1038 +4904,38 @@
       }
     },
     {
-      "village": "Putte",
-      "address": "Breestraat 43, 4645EC Putte",
-      "ms": 12478,
+      "village": "Woensdrecht",
+      "address": "Tuinstraat 3, 4634VR Woensdrecht",
+      "ms": 16154,
       "use": "woonfunctie",
       "houseType": "detached",
-      "plotAreaM2": 929,
+      "plotAreaM2": 343,
       "frontMethod": "street-label",
-      "frontStreet": "Breestraat",
-      "access": "registered",
-      "accessReason": "2 registered driveway crossings touch the plot.",
-      "pavementRuns": [],
-      "otherHomesOnPlot": 0,
-      "exits": [
-        {
-          "alongPlotM": 4
-        },
-        {
-          "alongPlotM": 1
-        }
-      ],
-      "carReachableM": 5,
-      "carReachableSides": [
-        "left",
-        "right"
-      ],
-      "nearestInritM": 0,
-      "inritWithin10m": 3,
-      "quality": {
-        "plot": "complete",
-        "buildings": "complete",
-        "heights": "complete",
-        "publicArea": "complete",
-        "vegetation": "partial",
-        "access": "complete",
-        "front": "complete"
-      },
-      "flags": [
-        "OUTBUILDINGS_ON_PLOT"
-      ],
-      "sides": "front: footpath / pavement (Breestraat) 24.6 m | rear: public green 20.8 m | left: neighbouring plot 46.5 m, driveway crossing (Breestraat) 1 m, footpath / pavement (Breestraat) 0.3 m | right: public green 32.8 m, driveway crossing 4 m, footpath / pavement (Breestraat) 2.3 m",
-      "outbuildings": 2,
-      "steps": [
-        "ok find-address (120 ms): Found Breestraat 43, 4645EC Putte",
-        "ok bag-address (1000 ms): Address is in 1 building(s)",
-        "ok brk-plot (117 ms): Plot Putte B 2246, 929 m² drawn",
-        "ok bag-buildings (7624 ms): 1 house, 2 other on plot, 49 nearby; ignored 5 demolished or invalid",
-        "ok 3dbag-heights (1419 ms): Heights for 51 buildings, height scan of 2024",
-        "ok bgt-trees (1022 ms): 14 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1113 ms): 36 current public areas; ignored 66 historical records",
-        "ok classify-edges (53 ms): 12 edge runs"
-      ],
-      "draw": {
-        "plot": [
-          [
-            86042.593,
-            374968.576
-          ],
-          [
-            86023.903,
-            374959.416
-          ],
-          [
-            86040,
-            374914.508
-          ],
-          [
-            86056.955,
-            374932.279
-          ]
-        ],
-        "house": [
-          [
-            [
-              86041.41,
-              374938.61
-            ],
-            [
-              86040.703,
-              374937.881
-            ],
-            [
-              86037.682,
-              374940.969
-            ],
-            [
-              86033.039,
-              374936.417
-            ],
-            [
-              86036.179,
-              374933.214
-            ],
-            [
-              86038,
-              374931.45
-            ],
-            [
-              86041.6,
-              374927.98
-            ],
-            [
-              86050.27,
-              374936.99
-            ],
-            [
-              86044.89,
-              374942.2
-            ]
-          ]
-        ],
-        "outbuildings": [
-          [
-            [
-              86027.104,
-              374952.455
-            ],
-            [
-              86030.302,
-              374953.919
-            ],
-            [
-              86028.807,
-              374957.186
-            ],
-            [
-              86035.28,
-              374960.36
-            ],
-            [
-              86033.72,
-              374963.6
-            ],
-            [
-              86026.52,
-              374960.07
-            ],
-            [
-              86024.121,
-              374958.972
-            ]
-          ],
-          [
-            [
-              86035.28,
-              374960.36
-            ],
-            [
-              86037.533,
-              374961.445
-            ],
-            [
-              86035.973,
-              374964.685
-            ],
-            [
-              86033.72,
-              374963.6
-            ]
-          ]
-        ],
-        "exits": [
-          [
-            [
-              86046.73,
-              374970.566
-            ],
-            [
-              86045.991,
-              374969.626
-            ],
-            [
-              86042.56,
-              374968.266
-            ],
-            [
-              86044.119,
-              374964.697
-            ],
-            [
-              86047.993,
-              374966.212
-            ]
-          ],
-          [
-            [
-              86042.006,
-              374917.164
-            ],
-            [
-              86041.151,
-              374917.734
-            ],
-            [
-              86038.568,
-              374915.061
-            ],
-            [
-              86039.003,
-              374914.219
-            ]
-          ]
-        ],
-        "inritsNear": [
-          [
-            [
-              86046.73,
-              374970.566
-            ],
-            [
-              86045.991,
-              374969.626
-            ],
-            [
-              86042.56,
-              374968.266
-            ],
-            [
-              86044.119,
-              374964.697
-            ],
-            [
-              86047.993,
-              374966.212
-            ]
-          ],
-          [
-            [
-              86042.006,
-              374917.164
-            ],
-            [
-              86041.151,
-              374917.734
-            ],
-            [
-              86038.568,
-              374915.061
-            ],
-            [
-              86039.003,
-              374914.219
-            ]
-          ],
-          [
-            [
-              86035.874,
-              374911.151
-            ],
-            [
-              86035.276,
-              374911.352
-            ],
-            [
-              86032.748,
-              374909.073
-            ],
-            [
-              86033.233,
-              374908.562
-            ]
-          ]
-        ],
-        "carEdges": [
-          [
-            [
-              86024.23158934689,
-              374958.4992894086
-            ],
-            [
-              86024.23865578446,
-              374958.47957520233
-            ]
-          ],
-          [
-            [
-              86056.62716916754,
-              374933.1075249774
-            ],
-            [
-              86056.58943324437,
-              374933.202894759
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "village": "Putte",
-      "address": "Prins Bernhardstraat 1, 4645HT Putte",
-      "ms": 7772,
-      "use": "woonfunctie",
-      "houseType": "corner",
-      "plotAreaM2": 988,
-      "frontMethod": "street-label",
-      "frontStreet": "Prins Bernhardstraat",
+      "frontStreet": "Tuinstraat",
       "access": "possible",
       "route": "across-pavement",
-      "accessReason": "The road lies 1.8 m beyond the plot, across a pavement or verge, over a 31.3 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "accessReason": "The road lies 2.5 m beyond the plot, across a pavement or verge, over a 10.7 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
       "pavementRuns": [
         {
-          "lengthM": 2.78,
-          "acrossM": 1.25,
-          "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 9.97,
-          "acrossM": 8,
-          "via": [
-            "voetpad",
-            "gras- en kruidachtigen"
-          ]
-        },
-        {
-          "lengthM": 5.98,
-          "acrossM": 8,
-          "via": [
-            "voetpad",
-            "gras- en kruidachtigen"
-          ]
-        },
-        {
-          "lengthM": 1.44,
-          "acrossM": 3.75,
-          "via": [
-            "voetpad",
-            "gras- en kruidachtigen"
-          ]
-        },
-        {
-          "lengthM": 0.61,
+          "lengthM": 10.65,
           "acrossM": 2.5,
           "via": [
             "voetpad"
           ]
         },
         {
-          "lengthM": 0.65,
-          "acrossM": 2.25,
+          "lengthM": 3.55,
+          "acrossM": 2.5,
           "via": [
             "voetpad"
           ]
         },
         {
-          "lengthM": 0.62,
-          "acrossM": 2,
+          "lengthM": 7.9,
+          "acrossM": 7.5,
           "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 0.61,
-          "acrossM": 1.75,
-          "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 0.66,
-          "acrossM": 1.75,
-          "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 0.3,
-          "acrossM": 1.75,
-          "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 0.31,
-          "acrossM": 1.75,
-          "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 31.29,
-          "acrossM": 1.75,
-          "via": [
-            "voetpad"
-          ]
-        }
-      ],
-      "otherHomesOnPlot": 0,
-      "exits": [],
-      "carReachableM": 0,
-      "carReachableSides": [],
-      "nearestInritM": 1,
-      "inritWithin10m": 5,
-      "quality": {
-        "plot": "complete",
-        "buildings": "partial",
-        "heights": "complete",
-        "publicArea": "complete",
-        "vegetation": "partial",
-        "access": "assumed",
-        "front": "complete"
-      },
-      "flags": [
-        "BUILDING_ON_BOUNDARY",
-        "PAVEMENT_CROSSING"
-      ],
-      "sides": "front: footpath / pavement (Prins Bernhardstraat) 35.1 m | rear: neighbouring plot 33.7 m, shared wall with the neighbour 1 m | left: footpath / pavement (Prins Bernhardstraat) 29.1 m | right: neighbouring plot 30 m",
-      "outbuildings": 0,
-      "steps": [
-        "ok find-address (122 ms): Found Prins Bernhardstraat 1, 4645HT Putte",
-        "ok bag-address (219 ms): Address is in 1 building(s)",
-        "ok brk-plot (125 ms): Plot Putte C 1026, 988 m² drawn",
-        "ok bag-buildings (2368 ms): 1 house, 0 other on plot, 21 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (862 ms): Heights for 21 buildings, height scan of 2024",
-        "ok bgt-trees (195 ms): 8 registered trees, 1 hedges, 0 other vegetation nearby",
-        "ok bgt-public (3210 ms): 42 current public areas; ignored 59 historical records",
-        "ok classify-edges (37 ms): 15 edge runs"
-      ],
-      "draw": {
-        "plot": [
-          [
-            85599.437,
-            374941.419
-          ],
-          [
-            85607.669,
-            374907.755
-          ],
-          [
-            85610.033,
-            374909.227
-          ],
-          [
-            85631.19,
-            374922.4
-          ],
-          [
-            85632.3,
-            374923.32
-          ],
-          [
-            85632.446,
-            374923.916
-          ],
-          [
-            85632.537,
-            374924.562
-          ],
-          [
-            85632.561,
-            374925.177
-          ],
-          [
-            85632.525,
-            374925.781
-          ],
-          [
-            85632.419,
-            374926.437
-          ],
-          [
-            85632.341,
-            374926.731
-          ],
-          [
-            85632.26,
-            374927.028
-          ],
-          [
-            85624.801,
-            374957.421
-          ]
-        ],
-        "house": [
-          [
-            [
-              85613.878,
-              374921.422
-            ],
-            [
-              85622.242,
-              374923.391
-            ],
-            [
-              85621.404,
-              374926.949
-            ],
-            [
-              85621.861,
-              374927.056
-            ],
-            [
-              85619.331,
-              374937.803
-            ],
-            [
-              85618.849,
-              374937.689
-            ],
-            [
-              85618.345,
-              374939.831
-            ],
-            [
-              85618.856,
-              374939.951
-            ],
-            [
-              85617.502,
-              374945.704
-            ],
-            [
-              85616.407,
-              374945.446
-            ],
-            [
-              85615.11,
-              374950.836
-            ],
-            [
-              85599.78,
-              374940.795
-            ],
-            [
-              85600.272,
-              374938.756
-            ],
-            [
-              85609.252,
-              374940.92
-            ],
-            [
-              85610.009,
-              374937.779
-            ],
-            [
-              85610.514,
-              374937.901
-            ],
-            [
-              85611.019,
-              374935.806
-            ],
-            [
-              85610.519,
-              374935.686
-            ],
-            [
-              85612.652,
-              374926.627
-            ]
-          ]
-        ],
-        "outbuildings": [],
-        "exits": [],
-        "inritsNear": [
-          [
-            [
-              85636.375,
-              374941.946
-            ],
-            [
-              85638.21,
-              374942.37
-            ],
-            [
-              85636.909,
-              374947.65
-            ],
-            [
-              85635.083,
-              374947.21
-            ]
-          ],
-          [
-            [
-              85628.571,
-              374948.956
-            ],
-            [
-              85627.41,
-              374953.663
-            ],
-            [
-              85627.386,
-              374953.653
-            ],
-            [
-              85626.806,
-              374953.505
-            ],
-            [
-              85627.958,
-              374948.799
-            ]
-          ],
-          [
-            [
-              85632.329,
-              374966.458
-            ],
-            [
-              85632.894,
-              374966.623
-            ],
-            [
-              85631.273,
-              374973.062
-            ],
-            [
-              85630.706,
-              374972.918
-            ]
-          ],
-          [
-            [
-              85638.21,
-              374942.37
-            ],
-            [
-              85638.789,
-              374942.504
-            ],
-            [
-              85637.479,
-              374947.774
-            ],
-            [
-              85636.909,
-              374947.65
-            ]
-          ],
-          [
-            [
-              85640.779,
-              374926.469
-            ],
-            [
-              85639.653,
-              374931.162
-            ],
-            [
-              85639.068,
-              374931.024
-            ],
-            [
-              85640.219,
-              374926.324
-            ]
-          ],
-          [
-            [
-              85632.329,
-              374966.458
-            ],
-            [
-              85630.706,
-              374972.918
-            ],
-            [
-              85628.881,
-              374972.48
-            ],
-            [
-              85630.469,
-              374966.01
-            ]
-          ],
-          [
-            [
-              85603.273,
-              374902.867
-            ],
-            [
-              85612.007,
-              374908.311
-            ],
-            [
-              85612.011,
-              374908.314
-            ],
-            [
-              85611.707,
-              374908.795
-            ],
-            [
-              85602.982,
-              374903.387
-            ],
-            [
-              85602.973,
-              374903.382
-            ]
-          ],
-          [
-            [
-              85622.989,
-              374971.598
-            ],
-            [
-              85621.857,
-              374976.239
-            ],
-            [
-              85621.274,
-              374976.096
-            ],
-            [
-              85622.413,
-              374971.448
-            ]
-          ]
-        ],
-        "carEdges": [
-          [
-            [
-              85607.669,
-              374907.755
-            ],
-            [
-              85608.51788474873,
-              374908.2835779823
-            ]
-          ],
-          [
-            [
-              85610.033,
-              374909.227
-            ],
-            [
-              85610.37256039405,
-              374909.4384207624
-            ]
-          ],
-          [
-            [
-              85610.6781647487,
-              374909.62869944866
-            ],
-            [
-              85610.88190098513,
-              374909.7555519061
-            ]
-          ],
-          [
-            [
-              85631.19,
-              374922.4
-            ],
-            [
-              85631.95992418923,
-              374923.03813536407
-            ]
-          ],
-          [
-            [
-              85632.3,
-              374923.32
-            ],
-            [
-              85632.53793148228,
-              374924.2912819414
-            ]
-          ],
-          [
-            [
-              85632.446,
-              374923.916
-            ],
-            [
-              85632.58548969137,
-              374924.90622352326
-            ]
-          ],
-          [
-            [
-              85632.537,
-              374924.562
-            ],
-            [
-              85632.57599470897,
-              374925.56123941706
-            ]
-          ],
-          [
-            [
-              85632.561,
-              374925.177
-            ],
-            [
-              85632.50150293822,
-              374926.1752284807
-            ]
-          ],
-          [
-            [
-              85632.525,
-              374925.781
-            ],
-            [
-              85632.36548368743,
-              374926.7681952928
-            ]
-          ],
-          [
-            [
-              85632.419,
-              374926.437
-            ],
-            [
-              85632.16256530103,
-              374927.4035615579
-            ]
-          ],
-          [
-            [
-              85632.341,
-              374926.731
-            ],
-            [
-              85632.07788259417,
-              374927.69576382125
-            ]
-          ],
-          [
-            [
-              85632.26,
-              374927.028
-            ],
-            [
-              85632.02165449917,
-              374927.9991804272
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "village": "Putte",
-      "address": "Postbaan 32, 4645GT Putte",
-      "ms": 4643,
-      "use": "woonfunctie",
-      "houseType": "corner",
-      "plotAreaM2": 475,
-      "frontMethod": "street-label",
-      "frontStreet": "Postbaan",
-      "access": "possible",
-      "route": "across-pavement",
-      "accessReason": "The road lies 1.8 m beyond the plot, across a pavement or verge, over a 10.8 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
-      "pavementRuns": [
-        {
-          "lengthM": 10.82,
-          "acrossM": 1.75,
-          "via": [
-            "voetpad"
-          ]
-        }
-      ],
-      "otherHomesOnPlot": 0,
-      "exits": [],
-      "carReachableM": 0,
-      "carReachableSides": [],
-      "nearestInritM": 9.3,
-      "inritWithin10m": 1,
-      "quality": {
-        "plot": "complete",
-        "buildings": "partial",
-        "heights": "complete",
-        "publicArea": "complete",
-        "vegetation": "partial",
-        "access": "assumed",
-        "front": "complete"
-      },
-      "flags": [
-        "BUILDING_ON_BOUNDARY",
-        "OUTBUILDINGS_ON_PLOT",
-        "PAVEMENT_CROSSING"
-      ],
-      "sides": "front: footpath / pavement (Postbaan) 10.8 m | rear: neighbouring plot 12.4 m, footpath / pavement 0.3 m | left: neighbouring plot 40.8 m | right: neighbouring plot 30.3 m, shared wall with the neighbour 10.1 m",
-      "outbuildings": 1,
-      "steps": [
-        "ok find-address (354 ms): Found Postbaan 32, 4645GT Putte",
-        "ok bag-address (335 ms): Address is in 1 building(s)",
-        "ok brk-plot (137 ms): Plot Putte B 2916, 475 m² drawn",
-        "ok bag-buildings (857 ms): 1 house, 1 other on plot, 37 nearby; ignored 8 demolished or invalid",
-        "ok 3dbag-heights (1040 ms): Heights for 38 buildings, height scan of 2024",
-        "ok bgt-trees (155 ms): 3 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (890 ms): 28 current public areas; ignored 32 historical records",
-        "ok classify-edges (44 ms): 8 edge runs"
-      ],
-      "draw": {
-        "plot": [
-          [
-            85877.951,
-            375480.374
-          ],
-          [
-            85883.847,
-            375468.993
-          ],
-          [
-            85896.373,
-            375444.441
-          ],
-          [
-            85907.789,
-            375449.931
-          ],
-          [
-            85900.473,
-            375462.739
-          ],
-          [
-            85887.542,
-            375485.378
-          ]
-        ],
-        "house": [
-          [
-            [
-              85879.177,
-              375478.007
-            ],
-            [
-              85883.847,
-              375468.992
-            ],
-            [
-              85890.894,
-              375472.664
-            ],
-            [
-              85892.348,
-              375473.476
-            ],
-            [
-              85889.323,
-              375479.314
-            ],
-            [
-              85887.553,
-              375478.397
-            ],
-            [
-              85885.94,
-              375481.51
-            ]
-          ]
-        ],
-        "outbuildings": [
-          [
-            [
-              85891.151,
-              375471.7
-            ],
-            [
-              85897.013,
-              375461.679
-            ],
-            [
-              85900.105,
-              375463.487
-            ],
-            [
-              85894.243,
-              375473.508
-            ]
-          ]
-        ],
-        "exits": [],
-        "inritsNear": [
-          [
-            [
-              85882.136,
-              375493.023
-            ],
-            [
-              85877.395,
-              375494.609
-            ],
-            [
-              85872.199,
-              375492.464
-            ],
-            [
-              85871.308,
-              375489.7
-            ],
-            [
-              85869.875,
-              375486.616
-            ]
-          ]
-        ],
-        "carEdges": [
-          [
-            [
-              85887.542,
-              375485.378
-            ],
-            [
-              85886.65541515383,
-              375484.91543399333
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "village": "Woensdrecht",
-      "address": "Vinkenslag 30, 4634TE Woensdrecht",
-      "ms": 8682,
-      "use": "woonfunctie",
-      "houseType": "corner",
-      "plotAreaM2": 234,
-      "frontMethod": "longest-public",
-      "access": "possible",
-      "route": "across-pavement",
-      "accessReason": "The road lies 2.3 m beyond the plot, across a pavement or verge, over a 4.4 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
-      "pavementRuns": [
-        {
-          "lengthM": 3.56,
-          "acrossM": 2.25,
-          "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 4.38,
-          "acrossM": 2.25,
-          "via": [
-            "voetpad"
+            "voetpad",
+            "gras- en kruidachtigen"
           ]
         }
       ],
@@ -3856,188 +4947,7 @@
       "inritWithin10m": 0,
       "quality": {
         "plot": "complete",
-        "buildings": "complete",
-        "heights": "complete",
-        "publicArea": "complete",
-        "vegetation": "partial",
-        "access": "assumed",
-        "front": "assumed"
-      },
-      "flags": [
-        "PAVEMENT_CROSSING",
-        "FRONT_ESTIMATED"
-      ],
-      "sides": "front: public green 10.1 m | rear: footpath / pavement 7.9 m | left: neighbouring plot 16 m, shared wall with the neighbour 9.8 m | right: neighbouring plot 15.4 m, shared wall with the neighbour 10.9 m",
-      "outbuildings": 0,
-      "steps": [
-        "ok find-address (118 ms): Found Vinkenslag 30, 4634TE Woensdrecht",
-        "ok bag-address (247 ms): Address is in 1 building(s)",
-        "ok brk-plot (140 ms): Plot Woensdrecht G 3995, 234 m² drawn",
-        "ok bag-buildings (4504 ms): 1 house, 0 other on plot, 34 nearby; ignored 2 demolished or invalid",
-        "ok 3dbag-heights (1799 ms): Heights for 35 buildings, height scan of 2024",
-        "ok bgt-trees (498 ms): 1 registered trees, 1 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1063 ms): 10 current public areas; ignored 18 historical records",
-        "ok classify-edges (16 ms): 10 edge runs"
-      ],
-      "draw": {
-        "plot": [
-          [
-            79629.098,
-            382907.11
-          ],
-          [
-            79638.621,
-            382910.313
-          ],
-          [
-            79634.947,
-            382918.716
-          ],
-          [
-            79632.221,
-            382925.058
-          ],
-          [
-            79628.068,
-            382934.331
-          ],
-          [
-            79624.777,
-            382932.973
-          ],
-          [
-            79620.656,
-            382931.486
-          ],
-          [
-            79625.266,
-            382918.203
-          ]
-        ],
-        "house": [
-          [
-            [
-              79622.023,
-              382927.45
-            ],
-            [
-              79625.275,
-              382918.207
-            ],
-            [
-              79628.562,
-              382919.363
-            ],
-            [
-              79628.891,
-              382918.589
-            ],
-            [
-              79629.482,
-              382918.275
-            ],
-            [
-              79630.975,
-              382918.752
-            ],
-            [
-              79631.616,
-              382917.268
-            ],
-            [
-              79633.291,
-              382913.579
-            ],
-            [
-              79636.52,
-              382915.053
-            ],
-            [
-              79632.19,
-              382925.01
-            ],
-            [
-              79629.228,
-              382923.695
-            ],
-            [
-              79627.264,
-              382929.29
-            ]
-          ]
-        ],
-        "outbuildings": [],
-        "exits": [],
-        "inritsNear": [],
-        "carEdges": [
-          [
-            [
-              79628.068,
-              382934.331
-            ],
-            [
-              79627.14360720082,
-              382933.94955806097
-            ]
-          ],
-          [
-            [
-              79624.777,
-              382932.973
-            ],
-            [
-              79623.83636308428,
-              382932.63358551473
-            ]
-          ]
-        ]
-      }
-    },
-    {
-      "village": "Woensdrecht",
-      "address": "Veerstraat 6, 4634VZ Woensdrecht",
-      "ms": 9164,
-      "use": "woonfunctie",
-      "houseType": "detached",
-      "plotAreaM2": 420,
-      "frontMethod": "street-label",
-      "frontStreet": "Veerstraat",
-      "access": "possible",
-      "route": "across-pavement",
-      "accessReason": "The road lies 2.3 m beyond the plot, across a pavement or verge, over a 22.6 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
-      "pavementRuns": [
-        {
-          "lengthM": 22.62,
-          "acrossM": 2.25,
-          "via": [
-            "voetpad"
-          ]
-        },
-        {
-          "lengthM": 5.23,
-          "acrossM": 3,
-          "via": [
-            "voetpad",
-            "verge on the road's parcel"
-          ]
-        },
-        {
-          "lengthM": 11.47,
-          "acrossM": 2,
-          "via": [
-            "voetpad"
-          ]
-        }
-      ],
-      "otherHomesOnPlot": 0,
-      "exits": [],
-      "carReachableM": 0,
-      "carReachableSides": [],
-      "nearestInritM": 6.6,
-      "inritWithin10m": 3,
-      "quality": {
-        "plot": "complete",
-        "buildings": "complete",
+        "buildings": "partial",
         "heights": "complete",
         "publicArea": "complete",
         "vegetation": "partial",
@@ -4045,230 +4955,160 @@
         "front": "complete"
       },
       "flags": [
+        "BUILDING_ON_BOUNDARY",
         "OUTBUILDINGS_ON_PLOT",
         "PAVEMENT_CROSSING"
       ],
-      "sides": "front: footpath / pavement 36.8 m, neighbouring plot 2.5 m | rear: neighbouring plot 29.1 m | left: neighbouring plot 16 m",
+      "sides": "front: footpath / pavement (Tuinstraat) 14.2 m | rear: neighbouring plot 9.1 m | left: neighbouring plot 28.9 m | right: neighbouring plot 17.8 m, footpath / pavement (Tuinstraat) 4 m, public green 4 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (127 ms): Found Veerstraat 6, 4634VZ Woensdrecht",
-        "ok bag-address (261 ms): Address is in 1 building(s)",
-        "ok brk-plot (119 ms): Plot Woensdrecht G 4619, 420 m² drawn",
-        "ok bag-buildings (4386 ms): 1 house, 1 other on plot, 24 nearby; ignored 16 demolished or invalid",
-        "ok 3dbag-heights (2848 ms): Heights for 26 buildings, height scan of 2024",
-        "ok bgt-trees (364 ms): 2 registered trees, 2 hedges, 0 other vegetation nearby",
-        "ok bgt-public (642 ms): 22 current public areas; ignored 14 historical records",
-        "ok classify-edges (26 ms): 8 edge runs"
+        "ok find-address (162 ms): Found Tuinstraat 3, 4634VR Woensdrecht",
+        "ok bag-address (388 ms): Address is in 1 building(s)",
+        "ok brk-plot (173 ms): Plot Woensdrecht G 2645, 343 m² drawn",
+        "ok bag-buildings (2385 ms): 1 house, 1 other on plot, 21 nearby; ignored 10 demolished or invalid",
+        "ok 3dbag-heights (1707 ms): Heights for 22 buildings, height scan of 2024",
+        "ok bgt-trees (470 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (10545 ms): 9 current public areas; ignored 12 historical records",
+        "ok classify-edges (21 ms): 9 edge runs"
       ],
       "draw": {
         "plot": [
           [
-            79968.727,
-            382627.875
+            79820.28,
+            382683.703
           ],
           [
-            79957.223,
-            382647.352
+            79837.553,
+            382688.033
           ],
           [
-            79952.263,
-            382649.007
+            79837.418,
+            382689.033
           ],
           [
-            79941.727,
-            382644.484
+            79836.34,
+            382697.033
           ],
           [
-            79950.263,
-            382628.38
+            79819.611,
+            382698.224
           ],
           [
-            79955.463,
-            382618.854
+            79807.886,
+            382695.172
+          ],
+          [
+            79811.539,
+            382685.165
+          ],
+          [
+            79812.621,
+            382681.783
           ]
         ],
         "house": [
           [
             [
-              79954.961,
-              382639.808
+              79815.09,
+              382693.6
             ],
             [
-              79952.592,
-              382644.208
+              79810.25,
+              382692.33
             ],
             [
-              79946.578,
-              382640.94
+              79812.09,
+              382685.31
             ],
             [
-              79951.371,
-              382632.118
+              79821.53,
+              382687.79
             ],
             [
-              79954.918,
-              382634.069
+              79822.41,
+              382684.34
             ],
             [
-              79957.283,
-              382629.664
+              79827.25,
+              382685.58
             ],
             [
-              79962.596,
-              382632.515
+              79829.617,
+              382686.186
             ],
             [
-              79959.053,
-              382639.118
+              79828.376,
+              382691.145
             ],
             [
-              79957.859,
-              382641.346
+              79821.374,
+              382689.393
+            ],
+            [
+              79820.61,
+              382692.446
+            ],
+            [
+              79819.999,
+              382694.889
+            ],
+            [
+              79816.411,
+              382693.947
             ]
           ]
         ],
         "outbuildings": [
           [
             [
-              79957.277,
-              382621.478
+              79836.027,
+              382689.074
             ],
             [
-              79955.814,
-              382624.098
+              79835.333,
+              382696.542
             ],
             [
-              79954.068,
-              382623.123
+              79832.346,
+              382696.264
             ],
             [
-              79955.531,
-              382620.503
+              79833.04,
+              382688.797
             ]
           ]
         ],
         "exits": [],
-        "inritsNear": [
-          [
-            [
-              79958.569,
-              382658.34
-            ],
-            [
-              79957.962,
-              382658.052
-            ],
-            [
-              79957.285,
-              382657.731
-            ],
-            [
-              79958.535,
-              382655.424
-            ],
-            [
-              79959.332,
-              382655.765
-            ],
-            [
-              79960.008,
-              382656.054
-            ]
-          ],
-          [
-            [
-              79976.788,
-              382627.374
-            ],
-            [
-              79976.39,
-              382627.279
-            ],
-            [
-              79975.39,
-              382627.04
-            ],
-            [
-              79981.308,
-              382617.912
-            ],
-            [
-              79981.577,
-              382618.75
-            ],
-            [
-              79981.767,
-              382619.341
-            ]
-          ],
-          [
-            [
-              79940.115,
-              382655.485
-            ],
-            [
-              79934.39,
-              382653.374
-            ],
-            [
-              79935.44,
-              382650.411
-            ],
-            [
-              79934.774,
-              382648.683
-            ],
-            [
-              79940.978,
-              382651.33
-            ],
-            [
-              79939.481,
-              382651.766
-            ],
-            [
-              79939.026,
-              382652.073
-            ],
-            [
-              79938.859,
-              382652.596
-            ],
-            [
-              79938.787,
-              382653.048
-            ]
-          ]
-        ],
+        "inritsNear": [],
         "carEdges": [
           [
             [
-              79968.727,
-              382627.875
+              79807.886,
+              382695.172
             ],
             [
-              79968.21843899682,
-              382628.7360259613
+              79808.22891104859,
+              382694.23263212066
             ]
           ],
           [
             [
-              79957.223,
-              382647.352
+              79811.539,
+              382685.165
             ],
             [
-              79956.27441236908,
-              382647.66851462284
+              79811.84371441556,
+              382684.21255623526
             ]
           ],
           [
             [
-              79952.263,
-              382649.007
+              79812.621,
+              382681.783
             ],
             [
-              79951.34409423091,
-              382648.6125228935
+              79813.59098585258,
+              382682.02616135747
             ]
           ]
         ]
@@ -4276,26 +5116,35 @@
     },
     {
       "village": "Woensdrecht",
-      "address": "Molenakkers 16, 4634VE Woensdrecht",
-      "ms": 5248,
+      "address": "Mgr van Mensstraat 63, 4634VB Woensdrecht",
+      "ms": 9715,
       "use": "woonfunctie",
       "houseType": "detached",
-      "plotAreaM2": 504,
-      "frontMethod": "street-label",
-      "frontStreet": "Molenakkers",
+      "plotAreaM2": 576,
+      "frontMethod": "longest-public",
       "access": "possible",
       "route": "across-pavement",
-      "accessReason": "The road lies 3.0 m beyond the plot, across a pavement or verge, over a 30.9 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "accessReason": "The road lies 8.0 m beyond the plot, across a pavement or verge, over a 11.1 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
       "pavementRuns": [
         {
-          "lengthM": 30.92,
-          "acrossM": 3,
+          "lengthM": 2,
+          "acrossM": 5,
           "via": [
+            "bodembedekkers",
             "voetpad"
+          ]
+        },
+        {
+          "lengthM": 11.12,
+          "acrossM": 8,
+          "via": [
+            "heesters",
+            "voetpad",
+            "verge on the road's parcel"
           ]
         }
       ],
-      "otherHomesOnPlot": 4,
+      "otherHomesOnPlot": 3,
       "exits": [],
       "carReachableM": 0,
       "carReachableSides": [],
@@ -4303,200 +5152,180 @@
       "inritWithin10m": 0,
       "quality": {
         "plot": "partial",
-        "buildings": "partial",
-        "heights": "complete",
+        "buildings": "complete",
+        "heights": "partial",
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
-        "front": "complete"
+        "front": "assumed"
       },
       "flags": [
-        "BUILDING_ON_BOUNDARY",
         "SHARED_PLOT",
         "OUTBUILDINGS_ON_PLOT",
-        "POSSIBLE_ACHTERPAD",
-        "PAVEMENT_CROSSING"
+        "HEIGHTS_PARTIAL",
+        "PAVEMENT_CROSSING",
+        "FRONT_ESTIMATED"
       ],
-      "sides": "front: footpath / pavement (Molenakkers) 30.9 m, neighbouring plot 0.9 m | rear: footpath / pavement 21.8 m, neighbouring plot 10 m | left: neighbouring plot 10.7 m, footpath / pavement 6.6 m | right: neighbouring plot 15.6 m, footpath / pavement 1.9 m",
+      "sides": "front: footpath / pavement (Molenakkers) 29.1 m | rear: neighbouring plot 27 m, public green 2 m | left: neighbouring plot 12.2 m, public green 7.5 m | right: footpath / pavement (Molenakkers) 20 m",
       "outbuildings": 5,
       "steps": [
-        "ok find-address (119 ms): Found Molenakkers 16, 4634VE Woensdrecht",
-        "ok bag-address (877 ms): Address is in 1 building(s)",
-        "ok brk-plot (117 ms): Plot Woensdrecht G 3559, 504 m² drawn",
-        "ok bag-buildings (223 ms): 1 house, 5 other on plot, 42 nearby; ignored 9 demolished or invalid",
-        "ok 3dbag-heights (2232 ms): Heights for 46 buildings, height scan of 2024",
-        "ok bgt-trees (155 ms): 9 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (950 ms): 35 current public areas; ignored 38 historical records",
-        "ok classify-edges (32 ms): 14 edge runs"
+        "ok find-address (474 ms): Found Mgr van Mensstraat 63, 4634VB Woensdrecht",
+        "ok bag-address (270 ms): Address is in 1 building(s)",
+        "ok brk-plot (161 ms): Plot Woensdrecht G 3126, 576 m² drawn",
+        "ok bag-buildings (1773 ms): 1 house, 5 other on plot, 37 nearby; ignored 2 demolished or invalid",
+        "degraded 3dbag-heights (3210 ms): Heights for 41 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
+        "ok bgt-trees (469 ms): 11 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (2795 ms): 38 current public areas; ignored 64 historical records",
+        "ok classify-edges (46 ms): 6 edge runs"
       ],
       "draw": {
         "plot": [
           [
-            79722.385,
-            382870.655
+            79699.12,
+            382904.403
           ],
           [
-            79721.355,
-            382864.113
+            79670.506,
+            382899.167
           ],
           [
-            79720.663,
-            382859.955
+            79674.141,
+            382879.546
           ],
           [
-            79719.802,
-            382855.291
-          ],
-          [
-            79721.117,
-            382855.082
-          ],
-          [
-            79731.029,
-            382853.508
-          ],
-          [
-            79741.303,
-            382851.876
-          ],
-          [
-            79741.008,
-            382850.053
-          ],
-          [
-            79750.919,
-            382848.473
-          ],
-          [
-            79752.157,
-            382855.721
-          ],
-          [
-            79752.588,
-            382858.246
-          ],
-          [
-            79751.697,
-            382858.403
-          ],
-          [
-            79752.89,
-            382865.63
+            79702.577,
+            382884.991
           ]
         ],
         "house": [
           [
             [
-              79734.441,
-              382868.669
+              79681.487,
+              382884.895
             ],
             [
-              79728.357,
-              382869.671
+              79680.041,
+              382892.671
             ],
             [
-              79727.279,
-              382863.127
+              79673.761,
+              382891.479
             ],
             [
-              79733.362,
-              382862.115
+              79674.3,
+              382888.64
+            ],
+            [
+              79675.22,
+              382883.73
             ]
           ]
         ],
         "outbuildings": [
           [
             [
-              79726.292,
-              382857.14
+              79678.551,
+              382900.658
             ],
             [
-              79725.83,
-              382854.334
+              79672.295,
+              382899.481
             ],
             [
-              79731.922,
-              382853.366
+              79672.703,
+              382897.311
             ],
             [
-              79732.384,
-              382856.172
+              79678.987,
+              382898.323
             ]
           ],
           [
             [
-              79744.564,
-              382854.237
+              79678.551,
+              382900.658
             ],
             [
-              79744.102,
-              382851.432
+              79678.987,
+              382898.323
             ],
             [
-              79750.531,
-              382850.411
+              79679.24,
+              382898.364
             ],
             [
-              79750.96,
-              382853.221
+              79681.354,
+              382898.72
+            ],
+            [
+              79685.065,
+              382899.428
+            ],
+            [
+              79684.623,
+              382901.8
             ]
           ],
           [
             [
-              79744.102,
-              382851.432
+              79691.134,
+              382900.585
             ],
             [
-              79744.564,
-              382854.237
+              79697.43,
+              382901.785
             ],
             [
-              79738.473,
-              382855.205
+              79697.101,
+              382904.148
             ],
             [
-              79738.011,
-              382852.399
+              79690.695,
+              382902.943
             ]
           ],
           [
             [
-              79732.384,
-              382856.172
+              79684.623,
+              382901.8
             ],
             [
-              79731.922,
-              382853.366
+              79685.065,
+              382899.428
             ],
             [
-              79738.011,
-              382852.399
+              79691.134,
+              382900.585
             ],
             [
-              79738.473,
-              382855.205
+              79690.695,
+              382902.943
             ]
           ],
           [
             [
-              79720.203,
-              382858.108
+              79673.761,
+              382891.479
             ],
             [
-              79719.741,
-              382855.301
+              79673.171,
+              382891.368
             ],
             [
-              79725.83,
-              382854.334
+              79672.161,
+              382891.178
             ],
             [
-              79726.292,
-              382857.14
+              79673.466,
+              382883.949
             ],
             [
-              79720.351,
-              382858.084
+              79675.121,
+              382884.259
+            ],
+            [
+              79674.3,
+              382888.64
             ]
           ]
         ],
@@ -4505,12 +5334,22 @@
         "carEdges": [
           [
             [
-              79752.89,
-              382865.63
+              79675.05542148849,
+              382879.7210958294
             ],
             [
-              79751.9032974908,
-              382865.79253663693
+              79675.12315641357,
+              382879.73406589084
+            ]
+          ],
+          [
+            [
+              79702.577,
+              382884.991
+            ],
+            [
+              79702.47809747064,
+              382885.54636473826
             ]
           ]
         ]
@@ -4518,261 +5357,286 @@
     },
     {
       "village": "Woensdrecht",
-      "address": "Melis Blecklaan 1, 4634VX Woensdrecht",
-      "ms": 5396,
+      "address": "Mgr van Mensstraat 8, 4634VC Woensdrecht",
+      "ms": 11305,
       "use": "woonfunctie",
-      "houseType": "corner",
-      "plotAreaM2": 326,
-      "frontMethod": "longest-public",
+      "houseType": "detached",
+      "plotAreaM2": 941,
+      "frontMethod": "street-label",
+      "frontStreet": "Mgr van Mensstraat",
       "access": "possible",
-      "route": "direct",
-      "accessReason": "A car can reach the plot boundary over 8.2 m, but no driveway crossing is registered there. Check the aerial photo; a new exit needs its own permit.",
-      "pavementRuns": [],
-      "otherHomesOnPlot": 0,
-      "exits": [],
-      "carReachableM": 39.8,
-      "carReachableSides": [
-        "front",
-        "right"
+      "route": "across-pavement",
+      "accessReason": "The road lies 3.3 m beyond the plot, across a pavement or verge, over a 33.0 m stretch. Most homes are reached this way, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+      "pavementRuns": [
+        {
+          "lengthM": 18.97,
+          "acrossM": 2.25,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 2.73,
+          "acrossM": 3.25,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 9.5,
+          "acrossM": 3.5,
+          "via": [
+            "voetpad",
+            "heesters"
+          ]
+        },
+        {
+          "lengthM": 33,
+          "acrossM": 3.25,
+          "via": [
+            "voetpad",
+            "heesters"
+          ]
+        }
       ],
+      "otherHomesOnPlot": 5,
+      "exits": [],
+      "carReachableM": 0,
+      "carReachableSides": [],
       "nearestInritM": null,
       "inritWithin10m": 0,
       "quality": {
-        "plot": "complete",
+        "plot": "partial",
         "buildings": "complete",
-        "heights": "complete",
+        "heights": "partial",
         "publicArea": "complete",
         "vegetation": "partial",
         "access": "assumed",
-        "front": "assumed"
+        "front": "complete"
       },
       "flags": [
+        "SHARED_PLOT",
         "OUTBUILDINGS_ON_PLOT",
-        "POSSIBLE_EXIT",
-        "FRONT_ESTIMATED"
+        "HEIGHTS_PARTIAL",
+        "POSSIBLE_ACHTERPAD",
+        "PAVEMENT_CROSSING"
       ],
-      "sides": "front: parking spaces 30.1 m, neighbouring plot 3.2 m | rear: neighbouring plot 16.9 m, shared wall with the neighbour 11.5 m | left: neighbouring plot 13.2 m | right: parking spaces 9.7 m",
-      "outbuildings": 2,
+      "sides": "front: footpath / pavement (Mgr van Mensstraat) 42.5 m | rear: footpath / pavement 39 m, neighbouring plot 3 m | left: footpath / pavement (Mgr van Mensstraat) 21.7 m, neighbouring plot 1.7 m | right: footpath / pavement 24 m",
+      "outbuildings": 7,
       "steps": [
-        "ok find-address (139 ms): Found Melis Blecklaan 1, 4634VX Woensdrecht",
-        "ok bag-address (212 ms): Address is in 1 building(s)",
-        "ok brk-plot (119 ms): Plot Woensdrecht G 4403, 326 m² drawn",
-        "ok bag-buildings (177 ms): 1 house, 2 other on plot, 29 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (2255 ms): Heights for 31 buildings, height scan of 2024",
-        "ok bgt-trees (213 ms): 2 registered trees, 2 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1617 ms): 15 current public areas; ignored 10 historical records",
-        "ok classify-edges (47 ms): 29 edge runs"
+        "ok find-address (173 ms): Found Mgr van Mensstraat 8, 4634VC Woensdrecht",
+        "ok bag-address (542 ms): Address is in 1 building(s)",
+        "ok brk-plot (169 ms): Plot Woensdrecht G 3565, 941 m² drawn",
+        "ok bag-buildings (1571 ms): 1 house, 7 other on plot, 56 nearby; ignored 5 demolished or invalid",
+        "degraded 3dbag-heights (4899 ms): Heights for 63 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
+        "ok bgt-trees (1110 ms): 2 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (2618 ms): 38 current public areas; ignored 62 historical records",
+        "ok classify-edges (15 ms): 15 edge runs"
       ],
       "draw": {
         "plot": [
           [
-            79626.088,
-            382958.543
+            79559.795,
+            382799.504
           ],
           [
-            79626.458,
-            382956.043
+            79582.816,
+            382806.215
           ],
           [
-            79629.587,
-            382956.501
+            79581.426,
+            382811.264
           ],
           [
-            79630.9,
-            382947.17
+            79579.788,
+            382816.988
           ],
           [
-            79630.95,
-            382946.99
+            79578.251,
+            382822.457
           ],
           [
-            79633.75,
-            382948.54
+            79576.612,
+            382822.167
           ],
           [
-            79638.624,
-            382951.715
+            79575.605,
+            382827.244
           ],
           [
-            79645.212,
-            382956.663
+            79574.552,
+            382833.225
           ],
           [
-            79648.579,
-            382959.598
+            79573.467,
+            382839.213
           ],
           [
-            79653.27,
-            382963.671
+            79572.071,
+            382846.808
           ],
           [
-            79653.848,
-            382964.298
+            79553.426,
+            382843.311
           ],
           [
-            79653.94,
-            382964.498
-          ],
-          [
-            79654.091,
-            382964.777
-          ],
-          [
-            79654.242,
-            382965.137
-          ],
-          [
-            79654.306,
-            382965.524
-          ],
-          [
-            79654.343,
-            382965.909
-          ],
-          [
-            79654.334,
-            382966.253
-          ],
-          [
-            79654.297,
-            382966.62
-          ],
-          [
-            79654.165,
-            382967.047
-          ],
-          [
-            79654.027,
-            382967.361
-          ],
-          [
-            79653.799,
-            382967.76
-          ],
-          [
-            79652.473,
-            382969.662
-          ],
-          [
-            79649.971,
-            382974.008
-          ],
-          [
-            79643.344,
-            382969.529
-          ],
-          [
-            79633.387,
-            382962.901
-          ],
-          [
-            79629.007,
-            382960.002
-          ],
-          [
-            79629.167,
-            382958.983
+            79551.676,
+            382841.222
           ]
         ],
         "house": [
           [
             [
-              79643.373,
-              382969.548
+              79568.41,
+              382810.758
             ],
             [
-              79635.813,
-              382964.525
+              79561.509,
+              382808.725
             ],
             [
-              79635.776,
-              382964.581
+              79563.2,
+              382802.8
             ],
             [
-              79633.723,
-              382963.168
+              79568.01,
+              382804.17
             ],
             [
-              79633.419,
-              382962.959
-            ],
-            [
-              79634.773,
-              382960.937
-            ],
-            [
-              79637.221,
-              382962.575
-            ],
-            [
-              79639.018,
-              382959.892
-            ],
-            [
-              79646.489,
-              382964.893
-            ],
-            [
-              79645.331,
-              382966.623
-            ],
-            [
-              79645.795,
-              382966.965
-            ],
-            [
-              79645.946,
-              382967.77
-            ],
-            [
-              79644.821,
-              382969.459
-            ],
-            [
-              79643.943,
-              382969.629
-            ],
-            [
-              79643.501,
-              382969.356
+              79570.143,
+              382804.789
             ]
           ]
         ],
         "outbuildings": [
           [
             [
-              79626.458,
-              382956.043
+              79571.361,
+              382835.756
             ],
             [
-              79629.592,
-              382956.502
+              79571.906,
+              382832.746
             ],
             [
-              79629.236,
-              382958.993
+              79574.552,
+              382833.225
             ],
             [
-              79626.088,
-              382958.543
+              79574.01,
+              382836.219
             ]
           ],
           [
             [
-              79646.823,
-              382959.201
+              79577.73,
+              382813.332
             ],
             [
-              79644.866,
-              382962.102
+              79578.557,
+              382810.443
             ],
             [
-              79641.55,
-              382959.866
+              79581.426,
+              382811.264
             ],
             [
-              79643.507,
-              382956.964
+              79580.607,
+              382814.126
+            ]
+          ],
+          [
+            [
+              79580.607,
+              382814.126
+            ],
+            [
+              79579.788,
+              382816.988
+            ],
+            [
+              79576.919,
+              382816.167
+            ],
+            [
+              79577.73,
+              382813.332
+            ]
+          ],
+          [
+            [
+              79573.222,
+              382824.728
+            ],
+            [
+              79575.995,
+              382825.278
+            ],
+            [
+              79575.605,
+              382827.244
+            ],
+            [
+              79572.832,
+              382826.694
+            ]
+          ],
+          [
+            [
+              79571.361,
+              382835.756
+            ],
+            [
+              79574.01,
+              382836.219
+            ],
+            [
+              79573.467,
+              382839.213
+            ],
+            [
+              79570.821,
+              382838.734
+            ]
+          ],
+          [
+            [
+              79575.995,
+              382825.278
+            ],
+            [
+              79573.222,
+              382824.728
+            ],
+            [
+              79573.997,
+              382820.821
+            ],
+            [
+              79576.77,
+              382821.371
+            ],
+            [
+              79576.483,
+              382822.818
+            ]
+          ],
+          [
+            [
+              79575.089,
+              382816.898
+            ],
+            [
+              79574.648,
+              382818.418
+            ],
+            [
+              79572.287,
+              382817.733
+            ],
+            [
+              79572.728,
+              382816.213
             ]
           ]
         ],
@@ -4781,192 +5645,269 @@
         "carEdges": [
           [
             [
-              79630.95,
-              382946.99
+              79572.071,
+              382846.808
             ],
             [
-              79631.82489320803,
-              382947.474315883
+              79571.08813795961,
+              382846.6236573583
             ]
           ],
           [
             [
-              79633.75,
-              382948.54
+              79553.426,
+              382843.311
             ],
             [
-              79634.58790117895,
-              382949.08582196204
+              79552.78383258323,
+              382842.5444355808
             ]
           ],
           [
             [
-              79638.624,
-              382951.715
+              79551.676,
+              382841.222
             ],
             [
-              79639.42359200872,
-              382952.31554360344
+              79551.71870130143,
+              382841.0025871545
             ]
           ],
           [
             [
-              79645.212,
-              382956.663
+              79551.71870130143,
+              382841.0025871545
             ],
             [
-              79645.96580969387,
-              382957.3200927982
+              79551.86703213796,
+              382840.2404162174
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "village": "Woensdrecht",
+      "address": "Dorpsstraat 53e, 4634TN Woensdrecht",
+      "ms": 8945,
+      "use": "gezondheidszorgfunctie,industriefunctie,woonfunctie",
+      "houseType": "corner",
+      "plotAreaM2": 1376,
+      "frontMethod": "longest-public",
+      "access": "possible",
+      "route": "direct",
+      "accessReason": "A car can reach the plot boundary over 64.3 m, but no driveway crossing is registered there. Check the aerial photo; a new exit needs its own permit.",
+      "pavementRuns": [
+        {
+          "lengthM": 0.49,
+          "acrossM": 2.25,
+          "via": [
+            "voetpad"
+          ]
+        },
+        {
+          "lengthM": 6.15,
+          "acrossM": 2.25,
+          "via": [
+            "voetpad"
+          ]
+        }
+      ],
+      "otherHomesOnPlot": 0,
+      "exits": [],
+      "carReachableM": 130.3,
+      "carReachableSides": [
+        "front"
+      ],
+      "nearestInritM": null,
+      "inritWithin10m": 0,
+      "quality": {
+        "plot": "complete",
+        "buildings": "complete",
+        "heights": "complete",
+        "publicArea": "assumed",
+        "vegetation": "partial",
+        "access": "assumed",
+        "front": "assumed"
+      },
+      "flags": [
+        "WATER_NEARBY",
+        "POSSIBLE_EXIT",
+        "FRONT_ESTIMATED"
+      ],
+      "sides": "front: road 130.3 m, footpath / pavement 3 m | rear: neighbouring plot 101.7 m, shared wall with the neighbour 26.3 m, footpath / pavement 3 m, water 0.3 m | left: water 10.1 m, neighbouring plot 0.3 m | right: footpath / pavement 6.2 m, shared wall with the neighbour 3 m, neighbouring plot 2.5 m",
+      "outbuildings": 0,
+      "steps": [
+        "ok find-address (171 ms): Found Dorpsstraat 53e, 4634TN Woensdrecht",
+        "ok bag-address (945 ms): Address is in 1 building(s)",
+        "ok brk-plot (158 ms): Plot Woensdrecht G 3842, 1376 m² drawn",
+        "ok bag-buildings (1503 ms): 1 house, 0 other on plot, 21 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (3037 ms): Heights for 20 buildings, height scan of 2024",
+        "ok bgt-trees (467 ms): 8 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (2116 ms): 13 current public areas; ignored 40 historical records",
+        "ok classify-edges (43 ms): 21 edge runs"
+      ],
+      "draw": {
+        "plot": [
+          [
+            79667.569,
+            382777.986
+          ],
+          [
+            79666.598,
+            382770.914
+          ],
+          [
+            79664.656,
+            382755.762
+          ],
+          [
+            79659.12,
+            382756.478
+          ],
+          [
+            79653.144,
+            382712.219
+          ],
+          [
+            79650.597,
+            382693.355
+          ],
+          [
+            79646.098,
+            382648.551
+          ],
+          [
+            79656.235,
+            382646.608
+          ],
+          [
+            79664.65,
+            382710.37
+          ],
+          [
+            79666.62,
+            382725.311
+          ],
+          [
+            79672.53,
+            382770.12
+          ],
+          [
+            79673.668,
+            382778.811
+          ]
+        ],
+        "house": [
+          [
+            [
+              79658.998,
+              382756.494
+            ],
+            [
+              79658.896,
+              382755.742
+            ],
+            [
+              79657.92,
+              382747.589
+            ],
+            [
+              79653.099,
+              382711.884
+            ],
+            [
+              79654.018,
+              382711.763
+            ],
+            [
+              79656.285,
+              382711.466
+            ],
+            [
+              79664.65,
+              382710.37
+            ],
+            [
+              79672.53,
+              382770.12
+            ],
+            [
+              79666.597,
+              382770.905
+            ],
+            [
+              79664.656,
+              382755.762
+            ],
+            [
+              79661.67,
+              382756.134
+            ]
+          ]
+        ],
+        "outbuildings": [],
+        "exits": [],
+        "inritsNear": [],
+        "carEdges": [
+          [
+            [
+              79656.235,
+              382646.608
+            ],
+            [
+              79656.36584062198,
+              382647.59940341517
             ]
           ],
           [
             [
-              79648.579,
-              382959.598
+              79664.65,
+              382710.37
             ],
             [
-              79649.33409393036,
-              382960.253616623
+              79664.78072056272,
+              382711.36141925264
             ]
           ],
           [
             [
-              79653.27,
-              382963.671
+              79666.62,
+              382725.311
             ],
             [
-              79653.94779290972,
-              382964.4062528623
+              79666.75076070646,
+              382726.30241395877
             ]
           ],
           [
             [
-              79653.848,
-              382964.298
+              79672.53,
+              382770.12
             ],
             [
-              79654.26590560822,
-              382965.2064904527
+              79672.61531802744,
+              382770.771580823
             ]
           ],
           [
             [
-              79653.94,
-              382964.498
+              79672.6165545206,
+              382770.7810240233
             ],
             [
-              79654.41597848022,
-              382965.377456927
+              79672.62376739732,
+              382770.8361093586
             ]
           ],
           [
             [
-              79654.091,
-              382964.777
+              79673.668,
+              382778.811
             ],
             [
-              79654.28439847413,
-              382965.2380824549
-            ]
-          ],
-          [
-            [
-              79654.28439847413,
-              382965.2380824549
-            ],
-            [
-              79654.47779694827,
-              382965.6991649098
-            ]
-          ],
-          [
-            [
-              79654.242,
-              382965.137
-            ],
-            [
-              79654.40515863127,
-              382966.1235998485
-            ]
-          ],
-          [
-            [
-              79654.306,
-              382965.524
-            ],
-            [
-              79654.40166314103,
-              382966.51941376494
-            ]
-          ],
-          [
-            [
-              79654.343,
-              382965.909
-            ],
-            [
-              79654.31684615884,
-              382966.9086579298
-            ]
-          ],
-          [
-            [
-              79654.334,
-              382966.253
-            ],
-            [
-              79654.2336910504,
-              382967.2479563381
-            ]
-          ],
-          [
-            [
-              79654.297,
-              382966.62
-            ],
-            [
-              79654.00165659607,
-              382967.5753911627
-            ]
-          ],
-          [
-            [
-              79654.165,
-              382967.047
-            ],
-            [
-              79653.76265224861,
-              382967.9624869125
-            ]
-          ],
-          [
-            [
-              79654.027,
-              382967.361
-            ],
-            [
-              79653.53086106168,
-              382968.2292431421
-            ]
-          ],
-          [
-            [
-              79653.799,
-              382967.76
-            ],
-            [
-              79653.22710178487,
-              382968.58032458916
-            ]
-          ],
-          [
-            [
-              79652.473,
-              382969.662
-            ],
-            [
-              79651.97407186225,
-              382970.52864335995
+              79672.67702506171,
+              382778.676952726
             ]
           ]
         ]
