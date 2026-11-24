@@ -1,0 +1,37 @@
+name: DSO document texts (manual)
+
+# Downloads the full text structure of rule documents into fixtures/dso-docs/ (gzipped), so rule
+# records can be written and re-verified against the exact text. Uses the DSO_API_KEY secret.
+on:
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: "JSON list of [name, path] pairs"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Fetch
+        env:
+          DSO_API_KEY: ${{ secrets.DSO_API_KEY }}
+          TARGETS: ${{ inputs.targets }}
+        run: pnpm exec tsx scripts/dso-docs.ts
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fixtures/dso-docs
+          git commit -m "DSO document texts" || echo "nothing to commit"
+          git pull --rebase && git push
