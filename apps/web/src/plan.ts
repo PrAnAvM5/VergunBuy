@@ -205,8 +205,10 @@ export function legend(): string {
       "Car could reach the boundary here (dashed: possible, not proven)",
     ],
     ["#3f8f3a", "Registered tree"],
-    ["#d63c3c", "Tall obstacle from the height scan (tree, high structure)"],
-    ["#e6aa14", "Medium obstacle (hedge, shrub, maybe a parked car)"],
+    ["#d63c3c", "Height scan: 2.5 m and higher (tree crown, high structure)"],
+    ["#e8961e", "Height scan: 1.5 – 2.5 m (hedge, shrub, car)"],
+    ["#f0d04a", "Height scan: 1.0 – 1.5 m (low hedge, shrub)"],
+    ["#8a7fd6", "Branches overhanging from a tree next door"],
     ["#00b8d9", "Registered canopy, pool or other structure"],
     ["#4f8a3c", "Hedge"],
   ];

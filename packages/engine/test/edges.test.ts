@@ -109,3 +109,39 @@ describe("orientedBox", () => {
     expect(box.widthM).toBeCloseTo(6, 1);
   });
 });
+
+describe("change points along an edge", () => {
+  it("are located to within 1 cm, not to the 25 cm sample spacing", () => {
+    // Front edge y = 0 from x = 0 to 10; a road in front only from x = 3.37 onwards.
+    const plot: Polygon = [
+      [0, 0],
+      [10, 0],
+      [10, 20],
+      [0, 20],
+    ];
+    const road = {
+      id: "road",
+      kind: "road" as const,
+      outline: [
+        [3.37, -5],
+        [20, -5],
+        [20, 0],
+        [3.37, 0],
+      ] as Polygon,
+    };
+    const runs = classifyEdges({
+      plot,
+      house: [
+        [2, 5],
+        [8, 5],
+        [8, 15],
+        [2, 15],
+      ],
+      neighbourBuildings: [],
+      publicAreas: [road],
+    }).filter((r) => r.edge === 0);
+    expect(runs.map((r) => r.kind)).toEqual(["neighbour", "public"]);
+    expect(Math.abs(runs[0]!.lengthM - 3.37)).toBeLessThanOrEqual(0.01);
+    expect(Math.abs(runs[1]!.lengthM - 6.63)).toBeLessThanOrEqual(0.01);
+  });
+});

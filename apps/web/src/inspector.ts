@@ -3,6 +3,7 @@
  * where it comes from and how it was derived. The developer layer adds the raw record.
  */
 import { STRUCTURE_TEXT, type PlotContext } from "@vergunbuy/data";
+import { HEIGHT_BANDS, OBSTACLE_KIND_TEXT } from "./format.ts";
 import { area } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc, isOtherHomeOnParcel, m, m2 } from "./format.ts";
 
@@ -192,23 +193,57 @@ function describe(ctx: PlotContext, key: string): View | undefined {
   if (type === "obstacle") {
     const o = ctx.obstacles?.obstacles.find((x) => x.id === id);
     if (!o) return undefined;
+    const s = ctx.obstacles!.settings;
+    const scan = ctx.house.find((h) => h.heights?.scanYear)?.heights;
+    const bands = HEIGHT_BANDS.map((b, i) => {
+      const upper = HEIGHT_BANDS[i - 1]?.minM ?? Infinity;
+      const n = o.cellHeights.filter((h) => h >= b.minM && h < upper).length;
+      return n ? `${b.label}: ${m2(n * ctx.obstacles!.res ** 2)}` : "";
+    }).filter(Boolean);
     return {
-      title: o.kind === "tall" ? "Tall obstacle (tree or high structure)" : "Medium obstacle",
+      title: OBSTACLE_KIND_TEXT[o.kind] ?? o.kind,
       rows: [
-        { label: "Area", value: m2(o.areaM2), certainty: "measured" },
-        { label: "Highest point", value: `${o.maxHeightM} m above ground`, certainty: "measured" },
         {
-          label: "Likely",
-          value:
-            o.kind === "tall"
-              ? "A tree or a high garden structure: treat as fixed"
-              : "A hedge, shrub or low structure, or something movable (a parked car, a trailer) that stood there during the scan",
-          certainty: "assumed",
+          label: "On this plot",
+          value: `${m2(o.areaM2)} (${Math.round(o.insideShare * 100)}% of the whole group, ${m2(o.totalAreaM2)})`,
+          certainty: "measured",
+        },
+        {
+          label: "Heights on the plot",
+          value: `typical ${o.medianHeightM} m, 9 in 10 cells below ${o.p90HeightM} m`,
+          certainty: "measured",
+        },
+        { label: "Height bands", value: esc(bands.join("; ")), certainty: "measured" },
+        {
+          label: "Highest point",
+          value: `${o.maxHeightM} m, ${o.peakInside ? "inside the plot" : "outside the plot: the tree stands next door"}`,
+          certainty: "measured",
+        },
+        ...(o.groundFilledShare > 0
+          ? [
+              {
+                label: "Ground filled in",
+                value: `${Math.round(o.groundFilledShare * 100)}% of its cells (no laser points reached the ground there)`,
+                certainty: "derived" as const,
+              },
+            ]
+          : []),
+        {
+          label: "Laser scan",
+          value: scan?.scanYear
+            ? `${scan.scanSource ?? "AHN"}, ${scan.scanYear} (date of the scan over this house)`
+            : "AHN, latest available (date not known here)",
+          certainty: "measured",
         },
       ],
-      source: "AHN (national laser height scan, 0.5 m), via PDOK, CC0",
-      how: "Surface height minus ground height, inside the plot and outside registered buildings. Cells of 0.5 × 0.5 m above 1 m that touch form one obstacle; it is tall when at least 1 m² reaches 2.5 m. The scan is a snapshot of one date, so check the aerial photo or Street View for what is there now.",
-      raw: { ...o, cells: `${o.cells.length} cells`, cellHeights: undefined },
+      source:
+        "AHN, the national laser height scan (0.5 m surface and ground models), via PDOK, CC0",
+      how: `No machine learning: height above ground = surface minus ground, per 0.5 × 0.5 m cell, over the plot and ${8} m around it, leaving out registered buildings and ${s.buildingBufferM} m around them. Cells of ${s.tallM} m or more that touch form a tree; it takes in the lower cells right around it (its crown edge). Other touching cells of ${s.mediumM} m or more form a hedge or shrub. A tree whose highest point lies outside the plot is overhang from next door. Each cell is coloured by its own height. The scan is a snapshot of one date: check the aerial photo or Street View for what is there now.`,
+      raw: {
+        ...o,
+        cells: `${o.cells.length} cells`,
+        cellHeights: `${o.cellHeights.length} values`,
+      },
     };
   }
   if (type === "structure") {

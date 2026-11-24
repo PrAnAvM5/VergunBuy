@@ -4,7 +4,7 @@
  */
 import type { PlotContext } from "@vergunbuy/data";
 import { polyToLocal, toLocal, type Point, type Polygon } from "@vergunbuy/engine";
-import { esc, isOtherHomeOnParcel } from "./format.ts";
+import { bandOf, esc, isOtherHomeOnParcel, OVERHANG_COLOR } from "./format.ts";
 
 const W = 820;
 const H = 620;
@@ -86,21 +86,24 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
   const half = (ctx.obstacles?.res ?? 0.5) / 2;
   for (const o of ctx.obstacles?.obstacles ?? []) {
     const key = `obstacle:${o.id}`;
-    const d = o.cells
-      .map(([x, y]) =>
-        path(
-          polyToLocal(f, [
-            [x - half, y - half],
-            [x + half, y - half],
-            [x + half, y + half],
-            [x - half, y + half],
-          ]),
-        ),
-      )
-      .join("");
-    parts.push(
-      `<path class="obj${sel(key)}" data-sel="${esc(key)}" d="${d}" fill="${o.kind === "tall" ? "#d63c3c" : "#e6aa14"}" fill-opacity="${o.kind === "tall" ? 0.55 : 0.5}" stroke="none"/>`,
-    );
+    // One path per colour: each cell coloured by its own height.
+    const byColor = new Map<string, string[]>();
+    o.cells.forEach(([x, y], i) => {
+      const color = o.kind === "overhang" ? OVERHANG_COLOR : bandOf(o.cellHeights[i] ?? 1).color;
+      const d = path(
+        polyToLocal(f, [
+          [x - half, y - half],
+          [x + half, y - half],
+          [x + half, y + half],
+          [x - half, y + half],
+        ]),
+      );
+      byColor.set(color, [...(byColor.get(color) ?? []), d]);
+    });
+    for (const [color, ds] of byColor)
+      parts.push(
+        `<path class="obj${sel(key)}" data-sel="${esc(key)}" d="${ds.join("")}" fill="${color}" fill-opacity="0.6" stroke="none"/>`,
+      );
   }
   for (const s of ctx.structures) {
     const key = `structure:${s.id}`;

@@ -15,6 +15,21 @@ export const isOtherHomeOnParcel = (b: {
   use?: string;
 }) => (b.onPlotShare ?? 0) >= 0.5 && (b.addresses ?? 0) > 0 && /woon/i.test(b.use ?? "");
 
+/** Colour of one obstacle cell by its own height; overhang has its own colour. */
+export const HEIGHT_BANDS: { minM: number; color: string; label: string }[] = [
+  { minM: 2.5, color: "#d63c3c", label: "2.5 m and higher" },
+  { minM: 1.5, color: "#e8961e", label: "1.5 – 2.5 m" },
+  { minM: 1.0, color: "#f0d04a", label: "1.0 – 1.5 m" },
+];
+export const OVERHANG_COLOR = "#8a7fd6";
+export const bandOf = (h: number) => HEIGHT_BANDS.find((b) => h >= b.minM) ?? HEIGHT_BANDS[2]!;
+
+export const OBSTACLE_KIND_TEXT: Record<string, string> = {
+  tall: "Tall: tree or high structure on the plot",
+  medium: "Medium: hedge, shrub, low structure, or something movable",
+  overhang: "Branches hanging over from a tree next door",
+};
+
 export const m = (n: number, digits = 1) => `${n.toFixed(digits)} m`;
 export const m2 = (n: number) => `${Math.round(n)} m²`;
 

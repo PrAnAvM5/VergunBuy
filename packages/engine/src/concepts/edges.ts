@@ -62,6 +62,8 @@ export const EDGE_SETTINGS = {
   probeM: 0.5,
   /** A plot edge counts as "at the house" when the house wall is this close to it. */
   wallToleranceM: 0.3,
+  /** Where the answer changes along an edge, the change point is located to within this. */
+  refineM: 0.01,
 } as const;
 
 function sideAt(
@@ -88,15 +90,19 @@ export function classifyEdges(input: EdgeInput): EdgeRun[] {
     const len = length(a, b);
     const n = outwardNormal(input.plot, a, b);
     const steps = Math.max(1, Math.round(len / EDGE_SETTINGS.stepM));
+    const sideAtT = (t: number) => {
+      const p = lerp(a, b, t);
+      return sideAt(input, p, [
+        p[0] + n[0] * EDGE_SETTINGS.probeM,
+        p[1] + n[1] * EDGE_SETTINGS.probeM,
+      ]);
+    };
+    let prevMid = 0;
     for (let s = 0; s < steps; s++) {
       const from = s / steps;
       const to = (s + 1) / steps;
-      const mid = lerp(a, b, (from + to) / 2);
-      const outside: Point = [
-        mid[0] + n[0] * EDGE_SETTINGS.probeM,
-        mid[1] + n[1] * EDGE_SETTINGS.probeM,
-      ];
-      const side = sideAt(input, mid, outside);
+      const mid = (from + to) / 2;
+      const side = sideAtT(mid);
       const last = runs[runs.length - 1];
       if (
         last &&
@@ -106,9 +112,25 @@ export function classifyEdges(input: EdgeInput): EdgeRun[] {
       ) {
         last.to = to;
         last.lengthM = len * (last.to - last.from);
+      } else if (last && last.edge === edge) {
+        // The answer changed between two samples: pin the change point down by halving the
+        // interval until it is under ~1 cm, instead of putting it halfway at sample spacing.
+        let lo = prevMid;
+        let hi = mid;
+        while ((hi - lo) * len > EDGE_SETTINGS.refineM) {
+          const m = (lo + hi) / 2;
+          const sm = sideAtT(m);
+          if (sm.kind === last.kind && sm.otherSide === last.otherSide) lo = m;
+          else hi = m;
+        }
+        const cut = (lo + hi) / 2;
+        last.to = cut;
+        last.lengthM = len * (last.to - last.from);
+        runs.push({ edge, from: cut, to, lengthM: len * (to - cut), ...side });
       } else {
         runs.push({ edge, from, to, lengthM: len * (to - from), ...side });
       }
+      prevMid = mid;
     }
   });
   return runs.map((r) => ({ ...r, lengthM: Math.round(r.lengthM * 100) / 100 }));

@@ -19,7 +19,7 @@ import { defaults as defaultControls, ScaleLine } from "ol/control.js";
 import { defaults as defaultInteractions } from "ol/interaction.js";
 import { Circle, Fill, Stroke, Style, Text } from "ol/style.js";
 import type { FeatureLike } from "ol/Feature.js";
-import { EDGE_TEXT, isOtherHomeOnParcel } from "./format.ts";
+import { bandOf, EDGE_TEXT, isOtherHomeOnParcel, OVERHANG_COLOR } from "./format.ts";
 import "ol/ol.css";
 
 /** Overlay groups the user can switch on and off. */
@@ -108,25 +108,35 @@ export function mountMap(
     );
   }
   // Obstacles: every 0.5 m cell as a square, one feature per obstacle so a click opens it.
+  // Each cell is coloured by its own height (not by the obstacle's highest point); cells of a
+  // neighbour's overhanging tree get their own colour.
   for (const o of ctx.obstacles?.obstacles ?? []) {
     const half = (ctx.obstacles?.res ?? 0.5) / 2;
-    const squares = o.cells.map(([x, y]) => [
-      [
-        [x - half, y - half],
-        [x + half, y - half],
-        [x + half, y + half],
-        [x - half, y + half],
-        [x - half, y - half],
-      ],
-    ]);
-    add(
-      "obstacles",
-      new Feature({
-        geometry: new MultiPolygon(squares),
-        kind: o.kind === "tall" ? "obstacle-tall" : "obstacle-medium",
-        sel: `obstacle:${o.id}`,
-      }),
-    );
+    const byColor = new Map<string, number[][][][]>();
+    o.cells.forEach(([x, y], i) => {
+      const color = o.kind === "overhang" ? OVERHANG_COLOR : bandOf(o.cellHeights[i] ?? 1).color;
+      const list = byColor.get(color) ?? [];
+      list.push([
+        [
+          [x - half, y - half],
+          [x + half, y - half],
+          [x + half, y + half],
+          [x - half, y + half],
+          [x - half, y - half],
+        ],
+      ]);
+      byColor.set(color, list);
+    });
+    for (const [color, squares] of byColor)
+      add(
+        "obstacles",
+        new Feature({
+          geometry: new MultiPolygon(squares),
+          kind: "obstacle",
+          color,
+          sel: `obstacle:${o.id}`,
+        }),
+      );
   }
   for (const s of ctx.structures)
     add("obstacles", poly(s.outline, { kind: "structure", sel: `structure:${s.id}` }));
@@ -297,6 +307,11 @@ export function mountMap(
   };
 }
 
+function hexAlpha(hex: string, a: number): string {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+}
+
 /** "10, 10a, 10b" stays readable; long lists of flats become "2–48 (24)". */
 function compactNumbers(labels: string[]): string {
   if (labels.length <= 3) return labels.join(", ");
@@ -368,10 +383,8 @@ function styleFor(
         stroke: stroke(e?.color ?? "#000", 4, e?.dash ? e.dash.split(" ").map(Number) : undefined),
       });
     }
-    case "obstacle-tall":
-      return new Style({ fill: fill(photo ? "rgba(235,50,50,0.45)" : "rgba(214,60,60,0.55)") });
-    case "obstacle-medium":
-      return new Style({ fill: fill(photo ? "rgba(255,200,0,0.45)" : "rgba(230,170,20,0.5)") });
+    case "obstacle":
+      return new Style({ fill: fill(hexAlpha(String(f.get("color")), photo ? 0.5 : 0.6)) });
     case "structure":
       return new Style({ stroke: stroke("#00b8d9", 2.5), fill: fill("rgba(0,184,217,0.15)") });
     case "hedge":

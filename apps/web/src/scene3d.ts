@@ -170,6 +170,7 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
     trunk: new THREE.MeshLambertMaterial({ color: "#6b4f35" }),
     crown: new THREE.MeshLambertMaterial({ color: "#4d8f3f", transparent: true, opacity: 0.9 }),
     obstacle: new THREE.MeshLambertMaterial({ color: "#d9a520", transparent: true, opacity: 0.85 }),
+    overhang: new THREE.MeshLambertMaterial({ color: "#8a7fd6", transparent: true, opacity: 0.55 }),
   };
 
   for (const a of ctx.publicAreas ?? []) {
@@ -210,16 +211,20 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
   // Obstacles from the height scan as 0.5 m columns of their measured height.
   if (ctx.obstacles) {
     const res = ctx.obstacles.res;
-    for (const kind of ["tall", "medium"] as const) {
-      const cells = ctx.obstacles.obstacles
-        .filter((o) => o.kind === kind)
-        .flatMap((o) => o.cells.map((p, i) => [p, o.cellHeights[i] ?? 1] as const));
+    const all = ctx.obstacles.obstacles.flatMap((o) =>
+      o.cells.map((p, i) => ({ p, h: o.cellHeights[i] ?? 1, overhang: o.kind === "overhang" })),
+    );
+    // Green for crowns (2.5 m and up), amber for hedges and shrubs, violet for a neighbour's
+    // overhanging tree: each cell by its own measured height.
+    const groupsByMat: [THREE.Material, typeof all][] = [
+      [mats.crown, all.filter((c) => !c.overhang && c.h >= 2.5)],
+      [mats.obstacle, all.filter((c) => !c.overhang && c.h < 2.5)],
+      [mats.overhang, all.filter((c) => c.overhang)],
+    ];
+    for (const [mat, list] of groupsByMat) {
+      const cells = list.map((c) => [c.p, c.h] as const);
       if (!cells.length) continue;
-      const mesh = new THREE.InstancedMesh(
-        new THREE.BoxGeometry(res, 1, res),
-        kind === "tall" ? mats.crown : mats.obstacle,
-        cells.length,
-      );
+      const mesh = new THREE.InstancedMesh(new THREE.BoxGeometry(res, 1, res), mat, cells.length);
       const mx = new THREE.Matrix4();
       cells.forEach(([p, h], i) => {
         const [x, y] = toLocal(ctx.frame, p);

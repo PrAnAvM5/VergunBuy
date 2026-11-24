@@ -1175,7 +1175,8 @@ export async function buildPlotContext(
         const xs = plot.outline.map((p) => p[0]);
         const ys = plot.outline.map((p) => p[1]);
         const grid = await fetchHeightGrid(
-          [Math.min(...xs) - 2, Math.min(...ys) - 2, Math.max(...xs) + 2, Math.max(...ys) + 2],
+          // 8 m around the plot, so a tree standing next door is seen whole (overhang vs own).
+          [Math.min(...xs) - 8, Math.min(...ys) - 8, Math.max(...xs) + 8, Math.max(...ys) + 8],
           ctx,
           fetchFn,
         );
@@ -1184,8 +1185,9 @@ export async function buildPlotContext(
           plot.outline,
           [...house, ...outbuildings, ...neighbours].map((b) => b.outline),
         );
+        const n = (k: string) => result.obstacles.filter((o) => o.kind === k).length;
         ctx.summarize(
-          `${result.obstacles.filter((o) => o.kind === "tall").length} tall (${result.tallM2} m²), ${result.obstacles.filter((o) => o.kind === "medium").length} medium (${result.mediumM2} m²) in ${result.yardM2} m² of garden`,
+          `${n("tall")} tall (${result.tallM2} m²), ${n("medium")} medium (${result.mediumM2} m²), ${n("overhang")} overhanging from next door (${result.overhangM2} m²) in ${result.yardM2} m² of garden`,
         );
         return result;
       },

@@ -72,6 +72,41 @@ describe("detectObstacles", () => {
   });
 });
 
+describe("trees, hedges and overhang", () => {
+  it("keeps a hedge that touches a tree as its own medium obstacle", () => {
+    const g = grid((x, y) => {
+      if (Math.hypot(x - 14, y - 14) < 1.5) return 8; // tree
+      if (y > 14.5 && y < 15.1 && x > 3 && x < 13.5) return 1.6; // hedge running up to the crown
+      return 0;
+    });
+    const r = detectObstacles(g, plot, []);
+    const kinds = r.obstacles.map((o) => o.kind).sort();
+    expect(kinds).toEqual(["medium", "tall"]);
+    const hedge = r.obstacles.find((o) => o.kind === "medium")!;
+    expect(hedge.maxHeightM).toBeLessThan(2.5);
+  });
+
+  it("calls a crown whose tree stands outside the plot 'overhang', not an obstacle on the plot", () => {
+    // Tree centred just outside the right boundary (x = 19), crown radius 2.5 m.
+    const g = grid((x, y) =>
+      Math.hypot(x - 20, y - 10) < 2.5 ? 9 - Math.hypot(x - 20, y - 10) : 0,
+    );
+    const r = detectObstacles(g, plot, []);
+    expect(r.obstacles).toHaveLength(1);
+    expect(r.obstacles[0]!.kind).toBe("overhang");
+    expect(r.obstacles[0]!.peakInside).toBe(false);
+    expect(r.tallM2).toBe(0);
+    expect(r.overhangM2).toBeGreaterThan(0);
+  });
+
+  it("reports the spread of heights, not only the top", () => {
+    const g = grid((x, y) => (x > 12 && x < 16 && y > 12 && y < 16 ? (x > 15.5 ? 9 : 2.6) : 0));
+    const o = detectObstacles(g, plot, []).obstacles[0]!;
+    expect(o.maxHeightM).toBeCloseTo(9, 1);
+    expect(o.medianHeightM).toBeCloseTo(2.6, 1);
+  });
+});
+
 describe("fillGaps", () => {
   it("leaves known values and fills holes", () => {
     const v = Float32Array.from([1, Number.NaN, 3, Number.NaN]);

@@ -118,11 +118,15 @@ function obstacleText(ctx: PlotContext): string {
   if (!o) return "Unknown: the height scan could not be loaded";
   const tall = o.obstacles.filter((x) => x.kind === "tall");
   const medium = o.obstacles.filter((x) => x.kind === "medium");
+  const over = o.obstacles.filter((x) => x.kind === "overhang");
   const structures = ctx.structures.filter((s) => s.onPlotShare > 0.3);
   const parts = [
     tall.length ? `${tall.length} tall (trees or high structures), ${o.tallM2} m²` : "",
     medium.length
       ? `${medium.length} medium (hedges, shrubs, maybe a parked car), ${o.mediumM2} m²`
+      : "",
+    over.length
+      ? `branches from ${over.length} tree(s) next door hang over ${o.overhangM2} m²`
       : "",
     structures.length
       ? `registered: ${structures.map((s) => STRUCTURE_TEXT[s.type] ?? s.type).join(", ")}`
