@@ -8,3 +8,4 @@ fixtures/probe2
 fixtures/*/responses.json
 reports
 apps/web/public/validation
+fixtures
