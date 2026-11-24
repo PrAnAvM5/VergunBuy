@@ -72,6 +72,11 @@ describe("classifyEdges", () => {
     expect(deriveHouseType(classifyEdges(detached))).toBe("detached");
   });
 
+  it("detached on a corner (no shared wall, two public sides) is still detached", () => {
+    const rural = { ...corner, neighbourBuildings: [] };
+    expect(deriveHouseType(classifyEdges(rural))).toBe("detached");
+  });
+
   it("does not depend on the winding direction of the plot polygon", () => {
     const clockwise = { ...terraced, plot: [...terraced.plot].reverse() };
     expect(metres(clockwise, "shared-wall")).toBeCloseTo(8, 0);

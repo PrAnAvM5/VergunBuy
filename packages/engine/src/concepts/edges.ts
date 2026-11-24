@@ -123,11 +123,12 @@ export type HouseType = "detached" | "semi-or-end" | "terraced" | "corner";
 export function deriveHouseType(runs: EdgeRun[]): HouseType {
   const edgesWith = (kind: EdgeKind) =>
     new Set(runs.filter((r) => r.kind === kind).map((r) => r.edge)).size;
-  if (edgesWith("public") >= 2) return "corner";
   const walls = edgesWith("shared-wall");
-  if (walls >= 2) return "terraced";
-  if (walls === 1) return "semi-or-end";
-  return "detached";
+  // A house with no shared wall is detached, even when two sides face public land
+  // (seen on real rural plots in Ossendrecht and Putte). "Corner" only applies to attached houses.
+  if (walls === 0) return "detached";
+  if (edgesWith("public") >= 2) return "corner";
+  return walls >= 2 ? "terraced" : "semi-or-end";
 }
 
 export function edgeFacts(input: EdgeInput): {
