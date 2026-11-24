@@ -200,8 +200,11 @@
       "article": "22.28, eerste en tweede lid",
       "quote": "Op een activiteit die wordt verricht in, aan of op een gemeentelijk monument, voorbeschermd gemeentelijk monument, provinciaal monument, voorbeschermd provinciaal monument, rijksmonument of voorbeschermd rijksmonument is Artikel 22.27 niet van toepassing.",
       "evaluation": {
-        "kind": "needs-data",
-        "data": ["national monuments register (RCE)", "Woensdrecht municipal monuments list"]
+        "kind": "check",
+        "check": "legalExclusion",
+        "params": {
+          "sources": "national monuments (RCE via PDOK) and Woensdrecht's municipal register"
+        }
       },
       "excludes": "22.27"
     },
@@ -214,8 +217,11 @@
       "article": "22.28, derde lid",
       "quote": "Op een activiteit die wordt verricht op een locatie waaraan in dit omgevingsplan de functie-aanduiding rijksbeschermd stads- of dorpsgezicht is gegeven, is Artikel 22.27 alleen van toepassing voor zover het gaat om",
       "evaluation": {
-        "kind": "needs-data",
-        "data": ["functie-aanduiding rijksbeschermd stads- of dorpsgezicht at the plot"]
+        "kind": "check",
+        "check": "legalExclusion",
+        "params": {
+          "sources": "protected views (RCE via PDOK) and zoning plan designations"
+        }
       },
       "excludes": "22.27"
     },
@@ -228,8 +234,11 @@
       "article": "22.28, vierde lid",
       "quote": "het bouwwerk waarop de activiteit betrekking heeft een oppervlakte heeft van minder dan 50 m 2",
       "evaluation": {
-        "kind": "needs-data",
-        "data": ["archaeology rules of the old zoning plan (tijdelijk deel) at the plot"]
+        "kind": "check",
+        "check": "legalExclusion",
+        "params": {
+          "sources": "archaeology double zoning in the old zoning plans (Ruimtelijke Plannen)"
+        }
       },
       "excludes": "22.27"
     },
@@ -330,12 +339,11 @@
       "article": "22.38",
       "quote": "Artikel 22.36 is niet van toepassing op een activiteit die wordt verricht: a. in, aan, op of bij een gemeentelijk monument",
       "evaluation": {
-        "kind": "needs-data",
-        "data": [
-          "national monuments register (RCE)",
-          "Woensdrecht municipal monuments list",
-          "functie-aanduiding rijksbeschermd stads- of dorpsgezicht"
-        ]
+        "kind": "check",
+        "check": "legalExclusion",
+        "params": {
+          "sources": "national and municipal monument registers, protected views"
+        }
       },
       "excludes": "22.36"
     },
@@ -348,11 +356,11 @@
       "article": "22.39",
       "quote": "op een locatie in een in het tijdelijke deel van dit omgevingsplan, bedoeld in artikel 22.1, onder a, van de Omgevingswet, opgenomen veiligheidszone, getypeerd als A-zone of B-zone, rondom een munitieopslag",
       "evaluation": {
-        "kind": "needs-data",
-        "data": [
-          "safety zones of the old zoning plan (tijdelijk deel)",
-          "Bal safety distances (risicokaart)"
-        ]
+        "kind": "check",
+        "check": "legalExclusion",
+        "params": {
+          "sources": "safety zones and pipeline strips in the old zoning plans; zoning within 120 m that could hold a Bal safety-distance installation"
+        }
       },
       "excludes": "22.36"
     }
@@ -371,8 +379,8 @@
   ],
   "openPoints": [
     "Article 22.27 keeps the rest of the omgevingsplan in force. When the 22.36 conditions are not all met, the old zoning plan (tijdelijk deel, from Ruimtelijke Plannen) decides; until that is read, the answer is 'unknown', never green.",
+    "External safety: small gas cabinets in public green and installations inside a business site are not in open data. A home within the Bal safety distance of a business, farm, shop or fuel-station zoning gets 'unknown' for 22.36 until checked on the risk map (Atlas Leefomgeving).",
     "The definition of 'oorspronkelijk hoofdgebouw' (original main building) still has to be located and quoted.",
-    "Monuments, protected village views, archaeology and safety zones need their own data sources before they can be checked.",
     "Civil-law advice (roof water onto the neighbour's land, Burgerlijk Wetboek 5:53) is not part of this rule set yet."
   ]
 }

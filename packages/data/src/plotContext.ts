@@ -58,7 +58,11 @@ import {
   type Tracer,
   detectObstacles,
   type ObstacleResult,
+  assessExclusions,
+  type ExclusionResult,
+  type LegalFacts,
 } from "@vergunbuy/engine";
+import { fetchHeritage, fetchZoning, municipalMonumentsAt } from "./sources/legal.ts";
 import type { FetchFn } from "./http.ts";
 import type { Address } from "./sources/locatieserver.ts";
 import { num, OGC, ogcItems, outerRings, str, type Bbox, type Feature } from "./sources/ogc.ts";
@@ -204,6 +208,8 @@ export interface PlotContext {
   structures: Structure[];
   /** Trees and other obstacles in the garden from the laser height scan; absent if unavailable. */
   obstacles?: ObstacleResult;
+  /** Zoning plans, monuments and protected views, and the rule exclusions they trigger. */
+  legal: LegalFacts & { exclusions: ExclusionResult[] };
   measurements: Measurements;
   /** The plot's own frame (street at the bottom) and its main dimensions. */
   frame: PlotFrame;
@@ -1213,6 +1219,85 @@ export async function buildPlotContext(
     );
   }
 
+  // 7b. Legal facts: old zoning plans, monuments, protected views. Never critical: anything
+  // missing makes the affected exclusions "unknown", which can never give a green result.
+  const legal = await gatherLegal();
+  async function gatherLegal(): Promise<PlotContext["legal"]> {
+    let zoning: LegalFacts["zoning"] = { status: "missing", plans: [], objects: [] };
+    try {
+      zoning = await tracer.step(
+        "zoning-plans",
+        "Old zoning plans at and around the plot (Ruimtelijke Plannen)",
+        async (ctx) => {
+          const z = await fetchZoning(plot.outline, ctx, fetchFn);
+          const at = z.objects.filter((o) =>
+            o.outlines.some((p) => intersectionArea(p, plot.outline) > 0.05),
+          );
+          ctx.summarize(
+            `${z.plans.length} binding plan(s); on the plot: ${[...new Set(at.map((o) => o.name))].join(", ") || "nothing"}${z.status === "complete" ? "" : " (incomplete)"}`,
+          );
+          return z;
+        },
+      );
+    } catch {
+      /* stays missing */
+    }
+    let monuments: LegalFacts["monuments"] = {
+      status: "missing",
+      items: [],
+      municipalRegisterCheckedOn: "",
+    };
+    let protectedViews: LegalFacts["protectedViews"] = { status: "missing", names: [] };
+    try {
+      const h = await tracer.step(
+        "heritage",
+        "Monuments and protected views (RCE register, municipal register)",
+        async (ctx) => {
+          const neighbourParcels = parcels.flatMap((f) => outerRings(f.geometry));
+          const national = await fetchHeritage(plot.outline, neighbourParcels, ctx, fetchFn);
+          const municipal = municipalMonumentsAt(address.municipality, [
+            { street: address.street, number: address.number, town: address.town },
+          ]);
+          const items = [...national.monuments, ...(municipal?.items ?? [])];
+          const close = items.filter((m) => m.relation !== "nearby");
+          ctx.summarize(
+            `${close.length ? close.map((m) => `${m.name} (${m.relation})`).join(", ") : "no monument on or next to the plot"}${national.views.length ? `; protected view: ${national.views.join(", ")}` : ""}${municipal ? "" : "; no municipal register for this municipality"}`,
+          );
+          return { national, municipal };
+        },
+      );
+      monuments = {
+        status: h.national.complete && h.municipal ? "complete" : "incomplete",
+        items: [...h.national.monuments, ...(h.municipal?.items ?? [])],
+        municipalRegisterCheckedOn: h.municipal?.checkedOn ?? "",
+      };
+      protectedViews = {
+        status: h.national.complete ? "complete" : "incomplete",
+        names: h.national.views,
+      };
+    } catch {
+      /* stays missing */
+    }
+    const facts: LegalFacts = { zoning, monuments, protectedViews };
+    const exclusions = assessExclusions(plot.outline, facts);
+    const statuses = [zoning.status, monuments.status, protectedViews.status];
+    if (statuses.includes("missing"))
+      downgrade(
+        quality,
+        "legal",
+        "missing",
+        "Zoning plans or monument registers could not be loaded.",
+      );
+    else if (statuses.includes("incomplete"))
+      downgrade(
+        quality,
+        "legal",
+        "partial",
+        "Zoning plans or monument registers were read only partly.",
+      );
+    return { ...facts, exclusions };
+  }
+
   // 8. Measurements.
   const publicOutlines = (publicAreas ?? [])
     .filter((a) => a.kind !== "water")
@@ -1269,6 +1354,7 @@ export async function buildPlotContext(
     unitsInHouse,
     structures,
     ...(obstacles ? { obstacles } : {}),
+    legal,
     measurements,
     frame,
     layout,

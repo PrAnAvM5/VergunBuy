@@ -16,7 +16,12 @@ export const ALLOWED_HOSTS = new Set([
   "api.3dbag.nl",
   "service.pdok.nl",
   "service.omgevingswet.overheid.nl",
+  // Our own server: holds the keys for the DSO and the old zoning plans (Ruimtelijke Plannen).
+  "vergunbuy-inky.vercel.app",
 ]);
+
+/** Our own server (Vercel). Keys for key-protected public APIs live only there. */
+export const VERGUNBUY_API = "https://vergunbuy-inky.vercel.app";
 
 export const DEFAULT_TIMEOUT_MS = 8000;
 
@@ -31,6 +36,8 @@ export interface GetJsonOptions<T> {
   headers?: Record<string, string>;
   /** Name of the service in user-facing errors, e.g. "the address service". */
   serviceName: string;
+  /** Send this JSON body with POST instead of a GET. */
+  postBody?: unknown;
 }
 
 export async function getJson<T>(opts: GetJsonOptions<T>): Promise<T> {
@@ -51,7 +58,14 @@ export async function getJson<T>(opts: GetJsonOptions<T>): Promise<T> {
   let res: Response;
   try {
     res = await fetchFn(url, {
-      headers: { accept: "application/json", ...opts.headers },
+      ...(opts.postBody !== undefined
+        ? { method: "POST", body: JSON.stringify(opts.postBody) }
+        : {}),
+      headers: {
+        accept: "application/json",
+        ...(opts.postBody !== undefined ? { "content-type": "application/json" } : {}),
+        ...opts.headers,
+      },
       signal: AbortSignal.timeout(opts.timeoutMs ?? DEFAULT_TIMEOUT_MS),
     });
   } catch (err) {
