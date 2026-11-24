@@ -94,7 +94,7 @@ export function assessAccess(input: AccessInput): AccessResult {
       level: "possible",
       route: "across-pavement",
       outcome: "unknown",
-      reason: `A registered driveway crossing lies ${best.acrossM.toFixed(1)} m in front of the plot, but only ${best.facingM.toFixed(1)} m of it faces this plot, so it may serve the neighbour. Check the aerial photo.`,
+      reason: `A registered driveway crossing ${best.acrossM < 0.3 ? "touches the plot" : `lies ${best.acrossM.toFixed(1)} m in front of the plot`}, but only ${best.facingM.toFixed(1)} m of it faces this plot, so it may serve the neighbour. Check the aerial photo.`,
     };
   }
   const kerb = (input.pavementRuns ?? []).filter((r) => r.lengthM >= MIN_ACCESS_WIDTH_M);
@@ -241,4 +241,28 @@ function samePolygon(a: Polygon, b: Polygon): boolean {
     a.length === b.length &&
     a.every((p, i) => Math.abs(p[0] - b[i]![0]) < 1e-6 && Math.abs(p[1] - b[i]![1]) < 1e-6)
   );
+}
+
+/**
+ * How much of the plot boundary faces a shape directly: walking the boundary in small steps and
+ * looking straight out up to maxM, how many metres see the shape. A crossing that only touches a
+ * corner of the plot faces (almost) nothing, even when it lies within maxM of it.
+ */
+export function facingLengthM(plot: Polygon, target: Polygon, maxM = 1.0, stepM = 0.25): number {
+  let total = 0;
+  edges(plot).forEach(([a, b]) => {
+    const len = length(a, b);
+    const n = outwardNormal(plot, a, b);
+    const steps = Math.max(1, Math.round(len / stepM));
+    for (let s = 0; s < steps; s++) {
+      const mid = lerp(a, b, (s + 0.5) / steps);
+      for (let d = 0.1; d <= maxM + 1e-9; d += 0.15) {
+        if (contains(target, [mid[0] + n[0] * d, mid[1] + n[1] * d])) {
+          total += len / steps;
+          break;
+        }
+      }
+    }
+  });
+  return Math.round(total * 100) / 100;
 }

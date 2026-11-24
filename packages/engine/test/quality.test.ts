@@ -6,6 +6,7 @@ import {
   isCarSurface,
   newQuality,
   pavementCrossings,
+  facingLengthM,
   ROAD_PARCEL_VERGE,
   type Polygon,
   type DataStatus,
@@ -169,5 +170,33 @@ describe("pavementCrossings", () => {
         pavementRuns: [{ lengthM: 2, acrossM: 2 }],
       }).level,
     ).toBe("none-found");
+  });
+});
+
+describe("facingLengthM", () => {
+  const plot: Polygon = [
+    [0, 0],
+    [10, 0],
+    [10, 20],
+    [0, 20],
+  ];
+  it("counts the boundary that looks straight at the shape", () => {
+    // Crossing 4 m wide, right in front of the plot.
+    const inFront: Polygon = [
+      [3, -2],
+      [7, -2],
+      [7, 0],
+      [3, 0],
+    ];
+    expect(facingLengthM(plot, inFront)).toBeCloseTo(4, 1);
+  });
+  it("gives (almost) nothing for a shape that only touches a corner", () => {
+    const atCorner: Polygon = [
+      [-4, -2],
+      [0, -2],
+      [0, 0],
+      [-4, 0],
+    ];
+    expect(facingLengthM(plot, atCorner)).toBeLessThan(0.5);
   });
 });

@@ -257,4 +257,11 @@ describe("validation run findings (2026-11-24)", () => {
     );
     expect(context.house[0]?.addressLabels).toEqual(["10", "10a", "10b"]);
   });
+
+  it("Koppelstraat 11: a crossing that only touches a corner of the plot is not its exit", async () => {
+    const { context } = await run(load("putte-koppelstraat-11"), "4645RD", "11");
+    expect(context.access.level).toBe("registered");
+    expect(context.exits).toHaveLength(1);
+    expect(context.exits[0]!.alongPlotM).toBeGreaterThanOrEqual(2.5);
+  });
 });

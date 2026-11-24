@@ -33,6 +33,7 @@ import {
   intersectionArea,
   isCarSurface,
   pavementCrossings,
+  facingLengthM,
   MIN_ACCESS_WIDTH_M,
   type PavementRun,
   newQuality,
@@ -913,16 +914,22 @@ export async function buildPlotContext(
 
   // 6. Car access: registered crossings, then boundary stretches directly on car-usable surfaces.
   const byId = new Map((publicAreas ?? []).map((a) => [a.id, a]));
+  // A registered crossing is this plot's exit only when it lies against the boundary over at least
+  // a car's width. Within 1 m but facing less (e.g. touching a corner) it may be the neighbour's.
   const exits: Exit[] = [];
+  const partlyFacingCrossings: { facingM: number; acrossM: number }[] = [];
   for (const a of publicAreas ?? []) {
     if (a.label !== "inrit" || distanceBetween(a.outline, plot.outline) > 1.0) continue;
-    const along = edges.filter((r) => r.otherSide === a.id).reduce((s, r) => s + r.lengthM, 0);
-    exits.push({
-      id: a.id,
-      outline: a.outline,
-      alongPlotM: Math.round(along * 10) / 10,
-      ...(a.registeredAt ? { registeredAt: a.registeredAt } : {}),
-    });
+    const facingM = facingLengthM(plot.outline, a.outline, 1.0);
+    if (facingM >= MIN_ACCESS_WIDTH_M)
+      exits.push({
+        id: a.id,
+        outline: a.outline,
+        alongPlotM: Math.round(facingM * 10) / 10,
+        ...(a.registeredAt ? { registeredAt: a.registeredAt } : {}),
+      });
+    else if (facingM >= 0.5)
+      partlyFacingCrossings.push({ facingM: Math.round(facingM * 10) / 10, acrossM: 0 });
   }
   const carReachableEdges: CarReachableEdge[] = edges
     .filter((r) => r.kind === "public" && isCarSurface(byId.get(r.otherSide ?? "")?.label))
@@ -948,7 +955,6 @@ export async function buildPlotContext(
       : [];
   // A registered crossing reached straight across the pavement: it is this plot's when it faces
   // at least a car's width of the boundary; less than that and it may be the neighbour's.
-  const partlyFacingCrossings: { facingM: number; acrossM: number }[] = [];
   const facing = new Map<string, { facingM: number; acrossM: number }>();
   for (const r of pavementRuns) {
     if (r.reaches !== "inrit" || !r.reachesId || r.acrossM > CROSSING_ACROSS_MAX_M) continue;
