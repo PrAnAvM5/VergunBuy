@@ -15,5 +15,9 @@
     "ok bgt-public: 5 current public areas; ignored 25 historical records",
     "ok classify-edges: 15 edge runs"
   ],
-  "flags": ["OUTBUILDINGS_ON_PLOT", "CHANGED_BETWEEN_SCANS", "NO_EXIT_FOUND"]
+  "flags": [
+    "OUTBUILDINGS_ON_PLOT",
+    "CHANGED_BETWEEN_SCANS",
+    "NO_EXIT_FOUND"
+  ]
 }
