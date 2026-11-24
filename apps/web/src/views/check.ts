@@ -119,11 +119,15 @@ function obstacleText(ctx: PlotContext): string {
   const tall = o.obstacles.filter((x) => x.kind === "tall");
   const medium = o.obstacles.filter((x) => x.kind === "medium");
   const over = o.obstacles.filter((x) => x.kind === "overhang");
+  const onLine = o.obstacles.filter((x) => x.kind === "boundary");
   const structures = ctx.structures.filter((s) => s.onPlotShare > 0.3);
   const parts = [
     tall.length ? `${tall.length} tall (trees or high structures), ${o.tallM2} m²` : "",
     medium.length
       ? `${medium.length} medium (hedges, shrubs, maybe a parked car), ${o.mediumM2} m²`
+      : "",
+    onLine.length
+      ? `${onLine.length} tree(s) on the boundary line, ${o.boundaryM2} m² over the plot`
       : "",
     over.length
       ? `branches from ${over.length} tree(s) next door hang over ${o.overhangM2} m²`

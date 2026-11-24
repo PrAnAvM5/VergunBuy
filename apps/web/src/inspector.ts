@@ -215,9 +215,21 @@ function describe(ctx: PlotContext, key: string): View | undefined {
         },
         { label: "Height bands", value: esc(bands.join("; ")), certainty: "measured" },
         {
-          label: "Highest point",
-          value: `${o.maxHeightM} m, ${o.peakInside ? "inside the plot" : "outside the plot: the tree stands next door"}`,
+          label: "Top of the tree",
+          value: `${o.maxHeightM} m high, ${Math.abs(o.peakToLineM)} m ${o.peakToLineM >= 0 ? "inside" : "outside"} the plot line`,
           certainty: "measured",
+        },
+        {
+          label: "Where it stands",
+          value:
+            o.kind === "tall"
+              ? "On this plot: its top is well inside the line"
+              : o.kind === "overhang"
+                ? `Next door: its top is outside the line; the crown reaches ${o.reachIntoPlotM} m into this plot`
+                : o.kind === "boundary"
+                  ? `On or at the line: its top is within ${s.boundaryToleranceM} m of it, and the cadastral line itself is only accurate to about a metre, so it may stand on either side. Treated as fixed.`
+                  : "Not a tree: a hedge, shrub or low structure",
+          certainty: o.kind === "boundary" ? "assumed" : "derived",
         },
         ...(o.groundFilledShare > 0
           ? [
@@ -238,7 +250,7 @@ function describe(ctx: PlotContext, key: string): View | undefined {
       ],
       source:
         "AHN, the national laser height scan (0.5 m surface and ground models), via PDOK, CC0",
-      how: `No machine learning: height above ground = surface minus ground, per 0.5 × 0.5 m cell, over the plot and ${8} m around it, leaving out registered buildings and ${s.buildingBufferM} m around them. Cells of ${s.tallM} m or more that touch form a tree; it takes in the lower cells right around it (its crown edge). Other touching cells of ${s.mediumM} m or more form a hedge or shrub. A tree whose highest point lies outside the plot is overhang from next door. Each cell is coloured by its own height. The scan is a snapshot of one date: check the aerial photo or Street View for what is there now.`,
+      how: `No machine learning. Height above ground = surface minus ground, per 0.5 × 0.5 m cell, over the plot and 8 m around it, leaving out registered buildings and ${s.buildingBufferM} m around them. Trees are separated one by one, because the crowns of neighbouring trees often touch: on cells of ${s.tallM} m or more (lightly smoothed), every cell climbs to its highest neighbour until it reaches a top; tops closer than ${s.treetopMergeM} m to a higher top are the same tree; each cell belongs to the top it climbed to, plus the lower cells right around the crown. A tree stands where its top is: well inside the line = on this plot, well outside = next door (overhang), within ${s.boundaryToleranceM} m = on the boundary. Other touching cells of ${s.mediumM} m or more are hedges or shrubs. Each cell is coloured by its own height. The scan is a snapshot of one date: check the aerial photo or Street View for what is there now.`,
       raw: {
         ...o,
         cells: `${o.cells.length} cells`,

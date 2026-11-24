@@ -266,12 +266,14 @@ describe("validation run findings (2026-11-24)", () => {
     expect(context.exits[0]!.alongPlotM).toBeGreaterThanOrEqual(2.5);
   });
 
-  it("Verlengde Duinstraat 34: a neighbour's tree hanging over the corner is overhang, kept apart from the hedge", async () => {
+  it("Verlengde Duinstraat 34: the corner tree is judged by its own top, kept apart from the hedge", async () => {
     const { context } = await run(load("hoogerheide-verlengde-duinstraat-34"), "4631HS", "34");
     const o = context.obstacles!;
-    const over = o.obstacles.filter((x) => x.kind === "overhang");
-    expect(over.length).toBeGreaterThanOrEqual(1);
-    expect(over.every((x) => !x.peakInside)).toBe(true);
+    // The corner tree's top is 0.7 m outside the cadastral line, within its ~1 m accuracy:
+    // "on the boundary", never "tall on the plot" and never stretched over the whole hedge.
+    const corner = o.obstacles.filter((x) => x.kind === "overhang" || x.kind === "boundary");
+    expect(corner.length).toBeGreaterThanOrEqual(1);
+    expect(corner.every((x) => x.peakToLineM < 0)).toBe(true);
     // No single obstacle on the plot is reported by a far-away peak: tall ones peak inside.
     expect(o.obstacles.filter((x) => x.kind === "tall").every((x) => x.peakInside)).toBe(true);
     expect(o.obstacles.some((x) => x.kind === "medium")).toBe(true);

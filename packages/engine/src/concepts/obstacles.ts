@@ -9,13 +9,21 @@
  *  1. Fill gaps in the ground model (no laser points reach the ground under roofs and dense
  *     crowns) from the surrounding ground: fillGaps.
  *  2. Leave out cells on or within buildingBufferM of a registered building (roof overhang).
- *  3. Trees: cells ≥ tallM that touch (8 directions) form one tall group; each group takes in
- *     the lower cells directly around it (one cell wide), its crown edge.
+ *  3. Trees, one by one (crowns of neighbouring trees often touch, so "touching tall cells" is
+ *     not one tree). On cells ≥ tallM, lightly smoothed (3 × 3 mean):
+ *       a. from every cell, step to the highest neighbouring cell until no neighbour is higher:
+ *          that cell is a local top;
+ *       b. local tops closer than TREETOP_MERGE_M to a higher top belong to that higher top
+ *          (one tree with several leaders);
+ *       c. every crown cell belongs to the top it climbed to: one tree per remaining top.
+ *     Each tree then takes in the lower cells directly around it (one cell wide), its crown edge.
  *  4. Everything else ≥ mediumM that touches forms a medium group (hedges, shrubs, low
  *     structures, or a car that stood there during the scan).
- *  5. Only groups that reach into the plot are kept. A tall group whose highest point lies
- *     outside the plot is a neighbour's tree hanging over ("overhang"), not an obstacle on the
- *     plot; one whose highest point is inside is "tall".
+ *  5. Only groups that reach into the plot are kept. Where a tree stands is where its top is:
+ *       top inside the plot, more than boundaryToleranceM from the line → "tall" (on the plot);
+ *       top outside, more than boundaryToleranceM from the line → "overhang" (next door);
+ *       top within boundaryToleranceM of the line → "boundary" (the cadastral line itself is
+ *       only accurate to about a metre, so it may stand on either side; treated as fixed).
  *  6. Each group reports only its cells inside the plot, with every cell's own height.
  */
 import { contains, distanceToBoundary, type Point, type Polygon } from "../geometry.ts";
@@ -41,6 +49,10 @@ export interface ObstacleSettings {
   buildingBufferM: number;
   /** Groups with less than this inside the plot are ignored as noise. */
   minAreaM2: number;
+  /** Local tops closer than this to a higher top are the same tree. */
+  treetopMergeM: number;
+  /** A treetop this close to the plot line may stand on either side. */
+  boundaryToleranceM: number;
 }
 
 export const OBSTACLE_SETTINGS: ObstacleSettings = {
@@ -48,15 +60,18 @@ export const OBSTACLE_SETTINGS: ObstacleSettings = {
   tallM: 2.5,
   buildingBufferM: 0.75,
   minAreaM2: 0.5,
+  treetopMergeM: 2.5,
+  boundaryToleranceM: 1.0,
 };
 
-export type ObstacleKind = "tall" | "medium" | "overhang";
+export type ObstacleKind = "tall" | "medium" | "overhang" | "boundary";
 
 export interface Obstacle {
   id: string;
   /**
    * tall: a tree or high structure standing on the plot. medium: hedge, shrub, low structure
-   * or something movable. overhang: the crown of a tree standing outside the plot.
+   * or something movable. overhang: the crown of a tree standing outside the plot. boundary: a
+   * tree whose top is within a metre of the plot line, so it may stand on either side.
    */
   kind: ObstacleKind;
   /** Centres of the cells inside the plot, RD New; each cell is res × res. */
@@ -73,6 +88,10 @@ export interface Obstacle {
   maxHeightM: number;
   peakInside: boolean;
   peak: Point;
+  /** Distance from the top to the plot line (m); positive inside the plot, negative outside. */
+  peakToLineM: number;
+  /** For overhang: how far the crown reaches into the plot from the line (m). */
+  reachIntoPlotM: number;
   /** Heights of the cells inside the plot. */
   medianHeightM: number;
   p90HeightM: number;
@@ -90,6 +109,9 @@ export interface ObstacleResult {
   tallM2: number;
   mediumM2: number;
   overhangM2: number;
+  boundaryM2: number;
+  /** Number of separate trees found (tops), on and around the plot. */
+  treesFound: number;
   /** Share of examined plot cells whose ground height had to be filled in. */
   groundFilledShare: number;
   /** Area inside the plot above each height, for comparing thresholds. */
@@ -241,18 +263,87 @@ export function detectObstacles(
     }
     groups.push({ cells, tall });
   };
-  // 3. Tall groups, then their one-cell fringe of lower cells.
-  for (let i = 0; i < N; i++)
-    if (group[i] === -1 && height[i]! >= settings.tallM) flood(i, (h) => h >= settings.tallM, true);
-  for (const g of groups) {
-    const fringe: number[] = [];
-    for (const i of g.cells)
-      for (const j of neighbours(i))
-        if (group[j] === -1 && height[j]! >= settings.mediumM) {
-          group[j] = groups.indexOf(g);
-          fringe.push(j);
-        }
-    g.cells.push(...fringe);
+  // 3. Trees one by one: smoothed crown heights, climb to local tops, merge close tops.
+  const canopy = (i: number) => height[i]! >= settings.tallM;
+  const smooth = new Float32Array(N).fill(Number.NaN);
+  for (let i = 0; i < N; i++) {
+    if (!canopy(i)) continue;
+    let sum = height[i]!;
+    let n = 1;
+    for (const j of neighbours(i))
+      if (canopy(j)) {
+        sum += height[j]!;
+        n++;
+      }
+    smooth[i] = sum / n;
+  }
+  // Total order on crown cells: smoothed height, then position, so a flat crown has one top.
+  const higher = (a: number, b: number) =>
+    smooth[a]! > smooth[b]! || (smooth[a] === smooth[b] && a > b);
+  const climbTo = new Int32Array(N).fill(-1);
+  const climb = (start: number): number => {
+    let i = start;
+    const path: number[] = [];
+    for (;;) {
+      if (climbTo[i] !== -1) {
+        i = climbTo[i]!;
+        break;
+      }
+      path.push(i);
+      let best = i;
+      for (const j of neighbours(i)) if (canopy(j) && higher(j, best)) best = j;
+      if (best === i) break;
+      i = best;
+    }
+    for (const p of path) climbTo[p] = i;
+    return i;
+  };
+  const tops = new Set<number>();
+  for (let i = 0; i < N; i++) if (canopy(i)) tops.add(climb(i));
+  // Merge each top into the highest top within treetopMergeM, repeatedly, so chains resolve.
+  const mergeR = settings.treetopMergeM / res;
+  const topList = [...tops].sort((a, b) => (higher(a, b) ? -1 : 1));
+  const rootOf = new Map<number, number>();
+  for (const t of topList) {
+    const tr = Math.floor(t / cols);
+    const tc = t % cols;
+    let root = t;
+    for (const u of topList) {
+      if (!higher(u, t)) break; // sorted: only higher tops can absorb this one
+      const ur = Math.floor(u / cols);
+      const uc = u % cols;
+      if (Math.hypot(ur - tr, uc - tc) <= mergeR) {
+        root = rootOf.get(u) ?? u;
+        break;
+      }
+    }
+    rootOf.set(t, root);
+  }
+  const treeIndex = new Map<number, number>();
+  for (let i = 0; i < N; i++) {
+    if (!canopy(i)) continue;
+    const root = rootOf.get(climbTo[i]!)!;
+    let id = treeIndex.get(root);
+    if (id === undefined) {
+      id = groups.length;
+      treeIndex.set(root, id);
+      groups.push({ cells: [], tall: true });
+    }
+    group[i] = id;
+    groups[id]!.cells.push(i);
+  }
+  // Crown edge: lower cells right next to a tree join the tree of their highest crown neighbour.
+  const fringe: [number, number][] = [];
+  for (let i = 0; i < N; i++) {
+    if (group[i] !== -1 || !(height[i]! >= settings.mediumM)) continue;
+    let best = -1;
+    for (const j of neighbours(i))
+      if (canopy(j) && (best === -1 || height[j]! > height[best]!)) best = j;
+    if (best !== -1) fringe.push([i, group[best]!]);
+  }
+  for (const [i, id] of fringe) {
+    group[i] = id;
+    groups[id]!.cells.push(i);
   }
   // 4. Medium groups from what is left.
   for (let i = 0; i < N; i++)
@@ -272,7 +363,31 @@ export function detectObstacles(
     const q = (f: number) =>
       Math.round((hs[Math.min(hs.length - 1, Math.floor(f * hs.length))] ?? 0) * 10) / 10;
     const pts = inside.map(centre);
-    const kind: ObstacleKind = !g.tall ? "medium" : peakInside ? "tall" : "overhang";
+    // Where a tree stands is where its top is; within the tolerance of the line, either side.
+    const peakPt = centre(peak);
+    const lineDist = distanceToBoundary(plot, peakPt);
+    const peakToLineM = Math.round((peakInside ? lineDist : -lineDist) * 10) / 10;
+    // A crown cut off by the edge of the loaded area has its real top further out; if what we
+    // see of it is all outside the plot, it stands next door.
+    const atGridEdge = g.cells.some((i) => {
+      const r = Math.floor(i / cols);
+      const c = i % cols;
+      return r === 0 || c === 0 || r === rows - 1 || c === cols - 1;
+    });
+    const kind: ObstacleKind = !g.tall
+      ? "medium"
+      : atGridEdge && !peakInside
+        ? "overhang"
+        : lineDist <= settings.boundaryToleranceM
+          ? "boundary"
+          : peakInside
+            ? "tall"
+            : "overhang";
+    const reachIntoPlotM =
+      kind === "overhang"
+        ? Math.round(Math.max(0, ...inside.map((i) => distanceToBoundary(plot, centre(i)))) * 10) /
+          10
+        : 0;
     obstacles.push({
       id: "",
       kind,
@@ -283,7 +398,9 @@ export function detectObstacles(
       insideShare: Math.round((inside.length / g.cells.length) * 100) / 100,
       maxHeightM: Math.round(height[peak]! * 10) / 10,
       peakInside,
-      peak: centre(peak),
+      peak: peakPt,
+      peakToLineM,
+      reachIntoPlotM,
       medianHeightM: q(0.5),
       p90HeightM: q(0.9),
       groundFilledShare:
@@ -308,6 +425,8 @@ export function detectObstacles(
     tallM2: sum("tall"),
     mediumM2: sum("medium"),
     overhangM2: sum("overhang"),
+    boundaryM2: sum("boundary"),
+    treesFound: groups.filter((g) => g.tall).length,
     groundFilledShare: yard ? Math.round((filled / yard) * 100) / 100 : 0,
     areaAboveM2: Object.fromEntries(
       Object.entries(areaAbove).map(([k, v]) => [k, Math.round(v * 10) / 10]),

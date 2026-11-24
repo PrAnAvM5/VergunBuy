@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { detectObstacles, fillGaps, type HeightGrid, type Polygon } from "../src/index.ts";
 
-/** 20 × 20 m grid at 0.5 m, flat ground at 10 m. */
+/** 30 × 20 m grid at 0.5 m (the plot is 1–19 m, so there is room around it), ground at 10 m. */
 function grid(
   surface: (x: number, y: number) => number,
   groundHole?: (x: number, y: number) => boolean,
 ): HeightGrid {
-  const cols = 40;
+  const cols = 60;
   const rows = 40;
   const dsm = new Float32Array(cols * rows);
   const dtm = new Float32Array(cols * rows);
@@ -89,7 +89,7 @@ describe("trees, hedges and overhang", () => {
   it("calls a crown whose tree stands outside the plot 'overhang', not an obstacle on the plot", () => {
     // Tree centred just outside the right boundary (x = 19), crown radius 2.5 m.
     const g = grid((x, y) =>
-      Math.hypot(x - 20, y - 10) < 2.5 ? 9 - Math.hypot(x - 20, y - 10) : 0,
+      Math.hypot(x - 21.5, y - 10) < 3.5 ? 9 - Math.hypot(x - 21.5, y - 10) : 0,
     );
     const r = detectObstacles(g, plot, []);
     expect(r.obstacles).toHaveLength(1);
@@ -97,6 +97,8 @@ describe("trees, hedges and overhang", () => {
     expect(r.obstacles[0]!.peakInside).toBe(false);
     expect(r.tallM2).toBe(0);
     expect(r.overhangM2).toBeGreaterThan(0);
+    expect(r.obstacles[0]!.peakToLineM).toBeLessThan(-1);
+    expect(r.obstacles[0]!.reachIntoPlotM).toBeLessThanOrEqual(1.5);
   });
 
   it("reports the spread of heights, not only the top", () => {
@@ -104,6 +106,33 @@ describe("trees, hedges and overhang", () => {
     const o = detectObstacles(g, plot, []).obstacles[0]!;
     expect(o.maxHeightM).toBeCloseTo(9, 1);
     expect(o.medianHeightM).toBeCloseTo(2.6, 1);
+  });
+});
+
+describe("touching crowns", () => {
+  it("splits two trees whose crowns touch, and judges each by where its own top is", () => {
+    // Tree A inside the plot (top at x = 12), tree B outside (top at x = 22.5, plot ends at 19):
+    // crowns touch around x = 17. Before, one merged group was judged by B's higher top.
+    const g = grid((x, y) => {
+      const a = Math.hypot(x - 12, y - 10);
+      const b = Math.hypot(x - 22.5, y - 10);
+      return Math.max(a < 5.5 ? 9 - a : 0, b < 6 ? 14 - b : 0);
+    });
+    const r = detectObstacles(g, plot, []);
+    expect(r.treesFound).toBe(2);
+    const kinds = r.obstacles
+      .filter((o) => o.kind !== "medium")
+      .map((o) => o.kind)
+      .sort();
+    expect(kinds).toEqual(["overhang", "tall"]);
+    const tall = r.obstacles.find((o) => o.kind === "tall")!;
+    expect(tall.maxHeightM).toBeCloseTo(9, 0);
+  });
+
+  it("calls a tree whose top is within a metre of the line 'boundary'", () => {
+    const g = grid((x, y) => (Math.hypot(x - 19.4, y - 10) < 3 ? 8 : 0));
+    const r = detectObstacles(g, plot, []);
+    expect(r.obstacles[0]!.kind).toBe("boundary");
   });
 });
 

@@ -28,6 +28,7 @@ export const OBSTACLE_KIND_TEXT: Record<string, string> = {
   tall: "Tall: tree or high structure on the plot",
   medium: "Medium: hedge, shrub, low structure, or something movable",
   overhang: "Branches hanging over from a tree next door",
+  boundary: "Tree on the boundary line (may stand on either side)",
 };
 
 export const m = (n: number, digits = 1) => `${n.toFixed(digits)} m`;
