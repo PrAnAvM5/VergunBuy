@@ -11,5 +11,6 @@ jobs:
             "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1/collections/perceel/items?f=json&limit=1" \
             "https://api.pdok.nl/kadaster/bgt/ogc/v1/collections/wegdeel/items?f=json&limit=1"; do
             echo "== $u"
-            curl -s -o /dev/null -D - -H "Origin: https://pranavm5.github.io" "$u" | grep -i -E "^HTTP|access-control" || true
+            curl -s -o /dev/null -D - -H "Origin: https://pranavm5.github.io" "$u" | sed 's/^/H /'
+            curl -s -o /dev/null -D - -X OPTIONS -H "Origin: https://pranavm5.github.io" -H "Access-Control-Request-Method: GET" "$u" | sed 's/^/P /' 
           done
