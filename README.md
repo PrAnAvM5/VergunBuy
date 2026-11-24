@@ -49,6 +49,7 @@ Requires Node 22 and pnpm 10.
 pnpm install
 pnpm check            # lint, formatting, typecheck, tests
 pnpm dev:api          # http://localhost:8787/api/health
+pnpm --filter @vergunbuy/web dev   # the web app on http://localhost:5173
 pnpm contract-check   # calls the real public APIs (needs internet)
 ```
 
@@ -68,6 +69,12 @@ Every response is `{ data?, error?, trace, requestId }`. Errors have a stable `c
 
 PDOK Locatieserver, BAG, BRK Kadastrale kaart, BGT (via PDOK), 3D BAG (CC BY 4.0), DSO
 Omgevingsdocumenten. Plot boundaries from the BRK are indicative, not legal boundaries.
+
+## Live site
+
+https://pranavm5.github.io/VergunBuy/ (deployed from `main` by GitHub Actions). The site calls the
+public PDOK services directly from the browser (they allow it). A server is only needed once secret
+keys (DSO) are involved. Add `?demo` to a check URL to replay a recorded real response set.
 
 ## Status
 
