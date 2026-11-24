@@ -1,3 +1,4 @@
+/* global fetch, console, Buffer */
 // Third discovery run: BGT walls/fences/canopies and the AHN height rasters (DSM, DTM).
 // Saves small JSON summaries and the raw GeoTIFFs to fixtures/probe3 for offline analysis.
 import { mkdirSync, writeFileSync } from "node:fs";
