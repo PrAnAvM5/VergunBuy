@@ -20,6 +20,8 @@ export interface SideSummary {
   side: Side;
   lengthM: number;
   parts: SidePart[];
+  /** A road lies just beyond this side, across a pavement or verge (see pavementCrossings). */
+  roadBeyond?: { acrossM: number; lengthM: number; via: string[] };
 }
 
 /** Which side a plot edge belongs to, from its outward normal in the plot's own frame. */

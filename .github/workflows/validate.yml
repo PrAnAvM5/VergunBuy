@@ -28,7 +28,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec tsx scripts/validate.ts "${{ inputs.per_village }}" "${{ inputs.seed }}"
-      - run: pip install pillow && python scripts/validate_images.py reports/validation-$(date -u +%F)
+      - run: pip install pillow && python scripts/validate_images.py reports/validation-$(date -u +%F)-s${{ inputs.seed }}
       - name: Commit report
         run: |
           git config user.name "github-actions[bot]"

@@ -10,6 +10,7 @@ import { AERIAL_YEARS, drawPlan, legend, type Layers } from "../plan.ts";
 import { drawWorkspacePlan } from "../plan2d.ts";
 import { lastRun, runCheck, type RunResult } from "../run.ts";
 import type { SceneHandle } from "../scene3d.ts";
+import { SURFACE_TEXT } from "@vergunbuy/data";
 
 export type View = "map" | "2d" | "3d";
 
@@ -17,6 +18,14 @@ let scene: SceneHandle | undefined;
 export const disposeScene = () => {
   scene?.dispose();
   scene = undefined;
+};
+
+const VIA_TEXT: Record<string, string> = {
+  voetpad: "the pavement",
+  "verge on the road's parcel": "a verge that belongs to the road",
+  "gras- en kruidachtigen": "a grass verge",
+  heesters: "a shrub border",
+  green: "public green",
 };
 
 const SIDE_TEXT: Record<string, string> = {
@@ -135,7 +144,11 @@ export async function renderCheck(
               (s) =>
                 `<div class="qrow"><div><div>${esc(SIDE_TEXT[s.side] ?? s.side)} <span class="small muted">(${s.lengthM} m)</span></div>${s.parts
                   .map((p) => `<div class="small muted">${esc(p.label)}: ${p.lengthM} m</div>`)
-                  .join("")}</div></div>`,
+                  .join("")}${
+                  s.roadBeyond
+                    ? `<div class="small">Road ${s.roadBeyond.acrossM} m beyond, across ${esc(s.roadBeyond.via.map((v) => VIA_TEXT[v] ?? SURFACE_TEXT[v] ?? v).join(" and "))} (${s.roadBeyond.lengthM} m of boundary)</div>`
+                    : ""
+                }</div></div>`,
             )
             .join("")}
         </div>

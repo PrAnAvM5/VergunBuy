@@ -1,7 +1,7 @@
 /**
  * Generic reader for PDOK OGC API Features collections (BAG, BRK, BGT), in RD New.
  */
-import type { Polygon, StepContext } from "@vergunbuy/engine";
+import { cleanPolygon, type Polygon, type StepContext } from "@vergunbuy/engine";
 import { z } from "zod";
 import { getJson, type FetchFn } from "../http.ts";
 
@@ -82,10 +82,8 @@ export async function ogcItems(
 export function outerRings(geometry: Feature["geometry"]): Polygon[] {
   if (!geometry) return [];
   const close = (ring: number[][]): Polygon => {
-    const pts = ring.map((p) => [Number(p[0]), Number(p[1])] as const);
-    const first = pts[0];
-    const last = pts[pts.length - 1];
-    return first && last && first[0] === last[0] && first[1] === last[1] ? pts.slice(0, -1) : pts;
+    // Drops the closing point and any repeated points (see cleanPolygon).
+    return cleanPolygon(ring.map((p) => [Number(p[0]), Number(p[1])] as const));
   };
   if (geometry.type === "Polygon") {
     const rings = geometry.coordinates as number[][][];

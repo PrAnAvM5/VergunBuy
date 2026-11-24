@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   area,
+  cleanPolygon,
+  validatePolygon,
   centroid,
   distanceBetween,
   intersectionArea,
@@ -91,5 +93,24 @@ describe("intersectionArea", () => {
     // A building over the inner corner: half of it lies in the notch outside the L.
     const b = rect(1, 1, 5, 5);
     expect(intersectionArea(L, b)).toBeCloseTo(area(rect(1, 1, 5, 2)) + area(rect(1, 2, 2, 5)), 6);
+  });
+});
+
+describe("cleanPolygon", () => {
+  it("drops repeated and closing points without changing the shape", () => {
+    const dirty: Polygon = [
+      [0, 0],
+      [10, 0],
+      [10, 0],
+      [10, 5],
+      [0, 5],
+      [0, 5.0004],
+      [0, 0],
+    ];
+    const clean = cleanPolygon(dirty);
+    expect(clean).toHaveLength(4);
+    expect(validatePolygon(clean).valid).toBe(true);
+    expect(validatePolygon(dirty).valid).toBe(false);
+    expect(area(clean)).toBeCloseTo(50, 6);
   });
 });

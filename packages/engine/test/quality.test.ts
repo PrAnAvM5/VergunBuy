@@ -5,6 +5,9 @@ import {
   gate,
   isCarSurface,
   newQuality,
+  pavementCrossings,
+  ROAD_PARCEL_VERGE,
+  type Polygon,
   type DataStatus,
   type Domain,
   type Outcome,
@@ -89,5 +92,74 @@ describe("assessAccess", () => {
     expect(isCarSurface("parkeervlak")).toBe(true);
     expect(isCarSurface("voetpad")).toBe(false);
     expect(isCarSurface("fietspad")).toBe(false);
+  });
+});
+
+describe("pavementCrossings", () => {
+  // Plot 10 m wide, front edge on y = 0. Pavement 0..-2, road -2..-8.
+  const plot: Polygon = [
+    [0, 0],
+    [10, 0],
+    [10, 20],
+    [0, 20],
+  ];
+  const rect = (x0: number, y0: number, x1: number, y1: number): Polygon => [
+    [x0, y0],
+    [x1, y0],
+    [x1, y1],
+    [x0, y1],
+  ];
+  const pavement = { outline: rect(-5, -2, 15, 0), label: "voetpad", kind: "footpath" };
+  const road = { outline: rect(-5, -8, 15, -2), label: "rijbaan lokale weg", kind: "road" };
+
+  it("finds the road across the pavement along the whole front", () => {
+    const runs = pavementCrossings(plot, [pavement, road]);
+    expect(runs).toHaveLength(1);
+    expect(runs[0]!.lengthM).toBeCloseTo(10, 6);
+    // Measured in 0.25 m steps, so within one step of the true 2 m.
+    expect(runs[0]!.acrossM).toBeGreaterThanOrEqual(2);
+    expect(runs[0]!.acrossM).toBeLessThanOrEqual(2.25);
+    expect(runs[0]!.via).toEqual(["voetpad"]);
+  });
+
+  it("stops at unmapped ground unless it lies on the road's own parcel", () => {
+    // Gap 0..-3 not mapped in BGT; road -3..-8.
+    const road2 = { outline: rect(-5, -8, 15, -3), label: "rijbaan lokale weg", kind: "road" };
+    expect(pavementCrossings(plot, [road2])).toHaveLength(0);
+    const roadParcel = { id: "road", outline: rect(-5, -9, 15, 0) };
+    const runs = pavementCrossings(plot, [road2], [roadParcel]);
+    expect(runs[0]?.via).toContain(ROAD_PARCEL_VERGE);
+    // A different (private) parcel in the gap blocks it.
+    const garden = { id: "garden", outline: rect(-5, -3, 15, 0) };
+    const roadOnly = { id: "road", outline: rect(-5, -9, 15, -3) };
+    expect(pavementCrossings(plot, [road2], [garden, roadOnly])).toHaveLength(0);
+  });
+
+  it("never crosses water, and ignores roads further than the limit", () => {
+    const ditch = { outline: rect(-5, -2, 15, 0), label: "sloot", kind: "water" };
+    expect(pavementCrossings(plot, [ditch, road])).toHaveLength(0);
+    const farRoad = { outline: rect(-5, -20, 15, -10), label: "rijbaan lokale weg", kind: "road" };
+    const wide = { outline: rect(-5, -10, 15, 0), label: "voetpad", kind: "footpath" };
+    expect(pavementCrossings(plot, [wide, farRoad])).toHaveLength(0);
+  });
+
+  it("access ladder: a pavement crossing is 'possible', never a pass", () => {
+    const r = assessAccess({
+      publicDataAvailable: true,
+      registeredExits: 0,
+      carReachableRunsM: [],
+      pavementRuns: [{ lengthM: 10, acrossM: 2 }],
+    });
+    expect(r.level).toBe("possible");
+    expect(r.route).toBe("across-pavement");
+    expect(r.outcome).toBe("unknown");
+    expect(
+      assessAccess({
+        publicDataAvailable: true,
+        registeredExits: 0,
+        carReachableRunsM: [],
+        pavementRuns: [{ lengthM: 2, acrossM: 2 }],
+      }).level,
+    ).toBe("none-found");
   });
 });

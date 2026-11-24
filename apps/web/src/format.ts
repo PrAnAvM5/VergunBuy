@@ -31,7 +31,7 @@ export const FLAG_TEXT: Record<string, string> = {
   PUBLIC_AREA_UNKNOWN:
     "Streets and public areas could not be loaded, so edges toward them are marked unknown.",
   POSSIBLE_ACHTERPAD:
-    "There are narrow footpaths nearby. We treat them as public (the safe choice). If one is a rear path that only serves the gardens, more positions may be allowed.",
+    "A narrow footpath that does not run along a road borders the plot. We treat it as public (the safe choice). If it is a rear path that only serves the gardens, more positions may be allowed.",
   WATER_NEARBY:
     "Water borders the plot. Whether it counts as public area is not known from the data.",
   NEIGHBOURS_UNKNOWN:
@@ -45,6 +45,10 @@ export const FLAG_TEXT: Record<string, string> = {
     "The national height scans show the house changed between two scans. This can mean an extension or a new roof, which matters for how much more may be built.",
   NO_EXIT_FOUND:
     "No registered driveway crossing and no road along the plot. Registers often miss exits, especially rural and rear ones, so check the aerial photo. A new exit needs its own permit.",
+  PAVEMENT_CROSSING:
+    "The road lies just beyond a pavement or verge, the usual way Dutch homes are reached, but no driveway crossing is registered there. Check the aerial photo; a new crossing needs its own permit.",
+  SHARED_PLOT:
+    "This parcel also holds other homes, as with housing-association terraces or flats. Plot size, garden and setbacks are for the whole parcel, not just this home, and the owner of the parcel would have to agree to any build.",
   POSSIBLE_EXIT:
     "A road or parking area runs directly along the plot, so a car can reach it, but no driveway crossing is registered there. Check the aerial photo.",
   BUILDING_ON_BOUNDARY:

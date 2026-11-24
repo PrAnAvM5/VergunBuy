@@ -194,3 +194,41 @@ describe("surroundings per side (real data)", () => {
     expect(by.right?.parts.some((p) => p.kind === "shared-wall")).toBe(true);
   });
 });
+
+describe("validation run findings (2026-11-24)", () => {
+  it("repeated points in register shapes are cleaned, not reported as invalid geometry", async () => {
+    const { context } = await run(load("huijbergen-siardus-bogaertslaan-7"), "4635CL", "7");
+    expect(context.flags.map((f) => f.code)).not.toContain("INVALID_GEOMETRY");
+  });
+
+  it("Siardus Bogaertslaan 7: pavement then road in front is 'possible across pavement', never pass", async () => {
+    const { context } = await run(load("huijbergen-siardus-bogaertslaan-7"), "4635CL", "7");
+    expect(context.access.level).toBe("possible");
+    expect(context.access.route).toBe("across-pavement");
+    expect(context.access.outcome).toBe("unknown");
+    expect(context.flags.map((f) => f.code)).toContain("PAVEMENT_CROSSING");
+    expect(context.sides.find((s) => s.side === "front")?.roadBeyond).toBeDefined();
+  });
+
+  it("Zonnedauw 13: a verge on the road's own parcel is crossed; the front is found through it", async () => {
+    const { context } = await run(load("huijbergen-zonnedauw-13"), "4635BL", "13");
+    expect(context.access.route).toBe("across-pavement");
+    expect(context.pavementRuns.some((r) => r.via.includes("verge on the road's parcel"))).toBe(
+      true,
+    );
+    expect(context.frame.method).not.toBe("none");
+  });
+
+  it("Geyssendorfferlaan 23: other homes on the same parcel are neighbours, not outbuildings", async () => {
+    const { context } = await run(load("hoogerheide-geyssendorfferlaan-23"), "4631HW", "23");
+    expect(context.otherHomesOnPlot).toBeGreaterThan(5);
+    expect(context.flags.map((f) => f.code)).toContain("SHARED_PLOT");
+    expect(context.quality.plot.status).toBe("partial");
+    expect(context.outbuildings.every((b) => !b.addresses)).toBe(true);
+  });
+
+  it("a narrow path is flagged as a possible rear path only when it borders the plot", async () => {
+    const { context } = await run(load("huijbergen-siardus-bogaertslaan-7"), "4635CL", "7");
+    expect(context.flags.map((f) => f.code)).not.toContain("POSSIBLE_ACHTERPAD");
+  });
+});

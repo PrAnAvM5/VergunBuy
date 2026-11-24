@@ -70,7 +70,10 @@ interface Row {
   frontMethod?: string;
   frontStreet?: string | undefined;
   access?: string;
+  route?: string;
   accessReason?: string;
+  pavementRuns?: { lengthM: number; acrossM: number; via: string[] }[];
+  otherHomesOnPlot?: number;
   exits?: { alongPlotM: number }[];
   carReachableM?: number;
   carReachableSides?: string[];
@@ -84,7 +87,7 @@ interface Row {
   draw?: unknown;
 }
 
-const outDir = `reports/validation-${new Date().toISOString().slice(0, 10)}`;
+const outDir = `reports/validation-${new Date().toISOString().slice(0, 10)}-s${seed}`;
 mkdirSync(`${outDir}/recordings`, { recursive: true });
 
 function slugOf(s: string) {
@@ -108,7 +111,14 @@ function summarise(village: string, ctx: PlotContext, ms: number, tracer: Tracer
     frontMethod: ctx.frame.method,
     frontStreet: ctx.frame.streetName,
     access: ctx.access.level,
+    ...(ctx.access.route ? { route: ctx.access.route } : {}),
     accessReason: ctx.access.reason,
+    pavementRuns: ctx.pavementRuns.map((r) => ({
+      lengthM: r.lengthM,
+      acrossM: r.acrossM,
+      via: r.via,
+    })),
+    otherHomesOnPlot: ctx.otherHomesOnPlot,
     exits: ctx.exits.map((e) => ({ alongPlotM: e.alongPlotM })),
     carReachableM: Math.round(ctx.carReachableEdges.reduce((s, e) => s + e.lengthM, 0) * 10) / 10,
     carReachableSides: ctx.sides
@@ -129,7 +139,7 @@ function summarise(village: string, ctx: PlotContext, ms: number, tracer: Tracer
       outbuildings: ctx.outbuildings.map((b) => b.outline),
       exits: ctx.exits.map((e) => e.outline),
       inritsNear: inrits.filter((_, i) => (dists[i] ?? 99) <= 15).map((a) => a.outline),
-      carEdges: ctx.carReachableEdges.map((e) => {
+      carEdges: [...ctx.carReachableEdges, ...ctx.pavementRuns].map((e) => {
         const p = ctx.plot.outline;
         const a = p[e.edge]!;
         const b = p[(e.edge + 1) % p.length]!;
@@ -196,6 +206,11 @@ for (const village of VILLAGES) {
       done++;
       console.log(`ok    ${address.label}: ${row.access}, exits ${row.exits?.length}, ${ms} ms`);
     } catch (e) {
+      // "12" next to "12A": the site asks the user which one; the sampler just draws again.
+      if ((e as { code?: string }).code === "ADDRESS_AMBIGUOUS") {
+        console.log(`skip  ${label} (needs a letter or addition)`);
+        continue;
+      }
       const ms = Math.round(performance.now() - t0);
       rows.push({ village, address: label, ms, error: String((e as Error).message ?? e) });
       done++;
@@ -211,14 +226,16 @@ const ok = rows.filter((r) => !r.error);
 const pct = (n: number) => `${n} (${Math.round((100 * n) / Math.max(ok.length, 1))}%)`;
 const count = (f: (r: Row) => boolean) => ok.filter(f).length;
 const lines = [
-  `# Validation run ${outDir.slice(-10)}`,
+  `# Validation run ${outDir.replace("reports/validation-", "")}`,
   "",
   `Seed ${seed}, ${perVillage} homes per village, ${rows.length} addresses, ${rows.length - ok.length} errors.`,
   "",
   "## Totals",
   "",
   `- Access registered (driveway crossing in BGT): ${pct(count((r) => r.access === "registered"))}`,
-  `- Access possible (plot touches road/parking): ${pct(count((r) => r.access === "possible"))}`,
+  `- Access possible, plot touches road/parking: ${pct(count((r) => r.access === "possible" && r.route === "direct"))}`,
+  `- Access possible, road just beyond pavement/verge: ${pct(count((r) => r.access === "possible" && r.route === "across-pavement"))}`,
+  `- Parcel shared with other homes: ${pct(count((r) => (r.otherHomesOnPlot ?? 0) > 0))}`,
   `- No access found: ${pct(count((r) => r.access === "none-found"))}`,
   `- Access unknown (data missing): ${pct(count((r) => r.access === "unknown"))}`,
   `- A driveway crossing within 10 m but not touching the plot: ${pct(count((r) => r.access !== "registered" && (r.inritWithin10m ?? 0) > 0))}`,
@@ -235,7 +252,7 @@ const lines = [
   ...rows.map((r) =>
     r.error
       ? `| ${r.village} | ${r.address} | error | ${r.error} | | | | | |`
-      : `| ${r.village} | ${r.address} | ${r.houseType} | ${r.access} | ${r.exits?.length} | ${r.carReachableM} m | ${r.nearestInritM ?? "none"} m | ${r.frontMethod} | ${r.flags?.join(", ")} |`,
+      : `| ${r.village} | ${r.address} | ${r.houseType} | ${r.access}${r.route ? ` (${r.route})` : ""} | ${r.exits?.length} | ${r.carReachableM} m | ${r.nearestInritM ?? "none"} m | ${r.frontMethod} | ${r.flags?.join(", ")} |`,
   ),
   "",
 ];

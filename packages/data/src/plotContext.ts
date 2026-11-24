@@ -25,12 +25,15 @@ import {
   contains,
   deriveHouseType,
   describeSides,
+  sideOfEdge,
   type SideSummary,
   distanceBetween,
   downgrade,
   gate,
   intersectionArea,
   isCarSurface,
+  pavementCrossings,
+  type PavementRun,
   newQuality,
   note,
   orientedBox,
@@ -137,7 +140,9 @@ export type FlagCode =
   | "DATA_TRUNCATED"
   | "FRONT_ESTIMATED"
   | "PLOT_AREA_MISMATCH"
-  | "INVALID_GEOMETRY";
+  | "INVALID_GEOMETRY"
+  | "SHARED_PLOT"
+  | "PAVEMENT_CROSSING";
 
 export interface Flag {
   code: FlagCode;
@@ -173,7 +178,15 @@ export interface PlotContext {
   exits: Exit[];
   carReachableEdges: CarReachableEdge[];
   /** Carport precondition: can a car get onto the plot? Gated by data quality. */
-  access: GatedOutcome & { level: AccessLevel; reason: string };
+  access: GatedOutcome & {
+    level: AccessLevel;
+    route?: "direct" | "across-pavement";
+    reason: string;
+  };
+  /** Boundary stretches with a road just beyond a pavement or verge (only when no exit is registered). */
+  pavementRuns: PavementRun[];
+  /** Other home buildings on the same cadastral parcel (terraces or flats owned by one party). */
+  otherHomesOnPlot: number;
   measurements: Measurements;
   /** The plot's own frame (street at the bottom) and its main dimensions. */
   frame: PlotFrame;
@@ -279,6 +292,9 @@ const share = (plot: Polygon, b: Polygon) => {
   const a = area(b);
   return a > 0 ? Math.min(1, intersectionArea(plot, b) / a) : 0;
 };
+
+/** A building with at least one address used for living. */
+const isHome = (b: Building) => (b.addresses ?? 0) > 0 && /woon/i.test(b.use ?? "");
 
 function toBuilding(f: Feature): Building[] {
   return outerRings(f.geometry).map((outline, i) => {
@@ -444,6 +460,8 @@ export async function buildPlotContext(
   let house: Building[] = [];
   let outbuildings: Building[] = [];
   let neighbours: Building[] = [];
+  let otherHomesOnPlot = 0;
+  const rearPathCandidates = new Set<string>();
   try {
     await tracer.step("bag-buildings", "Buildings on and around the plot (BAG)", async (ctx) => {
       const res = await ogcItems(OGC.bag, "pand", work, ctx, fetchFn);
@@ -457,7 +475,12 @@ export async function buildPlotContext(
           if (!validatePolygon(b.outline).valid) invalid++;
           b.onPlotShare = Math.round(share(plot.outline, b.outline) * 100) / 100;
           if (housePandUuids.has(String(f.id))) house.push(b);
-          else if (b.onPlotShare >= ON_PLOT_SHARE) outbuildings.push(b);
+          else if (b.onPlotShare >= ON_PLOT_SHARE && isHome(b)) {
+            // Another home on the same parcel (terrace or flats owned by one party). It is a
+            // neighbour for every purpose, never an outbuilding of this house.
+            otherHomesOnPlot++;
+            neighbours.push(b);
+          } else if (b.onPlotShare >= ON_PLOT_SHARE) outbuildings.push(b);
           else neighbours.push(b);
           if (
             !housePandUuids.has(String(f.id)) &&
@@ -509,6 +532,18 @@ export async function buildPlotContext(
   }
   if (house.length === 0)
     downgrade(quality, "buildings", "missing", "The house outline was not found.");
+  if (otherHomesOnPlot > 0) {
+    downgrade(
+      quality,
+      "plot",
+      "partial",
+      `This parcel also holds ${otherHomesOnPlot} other home building(s), so the part that belongs to this home is not on the cadastral map.`,
+    );
+    flag(
+      "SHARED_PLOT",
+      `This parcel also holds ${otherHomesOnPlot} other home building(s), as with housing-association terraces or flats. Plot size, garden and setbacks below are for the whole parcel, not this home.`,
+    );
+  }
   if (house.length > 1)
     flag("MULTIPLE_HOUSE_BUILDINGS", `${house.length} building outlines belong to this address.`);
   const houseShare = house.length ? Math.max(...house.map((h) => h.onPlotShare ?? 0)) : 1;
@@ -675,7 +710,6 @@ export async function buildPlotContext(
         }
         const out: (PublicArea & { label: string; registeredAt?: string })[] = [];
         let history = 0;
-        let narrowPaths = 0;
         const add = (
           fs: Feature[],
           kindOf: (f: Feature, ring: Polygon) => PublicAreaKind | null,
@@ -701,10 +735,9 @@ export async function buildPlotContext(
         };
         add(
           roads.features,
-          (f, ring) => {
+          (f) => {
             const functie = str(f.properties.functie) ?? "";
             // Narrow footpaths may be rear paths, but pavements are narrow too: treat as public (safe).
-            if (functie === "voetpad" && widthM(ring) < 2.5) narrowPaths++;
             return functie.includes("voetpad") || functie.includes("fietspad")
               ? "footpath"
               : "road";
@@ -722,7 +755,9 @@ export async function buildPlotContext(
           () => "water",
           (f) => str(f.properties.type) ?? "water",
         );
-        const badAreas = out.filter((a) => !validatePolygon(a.outline).valid).length;
+        const badAreas = out.filter(
+          (a) => !validatePolygon(a.outline).valid && distanceBetween(a.outline, plot.outline) <= 1,
+        ).length;
         if (badAreas > 0) {
           downgrade(
             quality,
@@ -740,12 +775,14 @@ export async function buildPlotContext(
           complete: roads.complete && green.complete && water.complete,
         });
         ctx.summarize(`${out.length} current public areas; ignored ${history} historical records`);
-        if (narrowPaths > 0) {
-          note(quality, "publicArea", "Narrow footpaths are treated as public (the safe choice).");
-          flag(
-            "POSSIBLE_ACHTERPAD",
-            `${narrowPaths} narrow footpath(s) nearby are treated as public. If one is a rear path serving only the plots, more positions may be allowed.`,
-          );
+        // A narrow footpath that touches no road is a candidate rear path (achterpad); a pavement
+        // along a road is not. Either way it stays public (the safe choice); we only flag it
+        // when it borders this plot (see the edge step).
+        const cars = out.filter((a) => isCarSurface(a.label));
+        for (const a of out) {
+          if (a.label !== "voetpad" || widthM(a.outline) >= 2.5) continue;
+          if (!cars.some((c) => distanceBetween(c.outline, a.outline) <= 0.3))
+            rearPathCandidates.add(a.id);
         }
         return out;
       },
@@ -780,6 +817,20 @@ export async function buildPlotContext(
         "Water borders the plot; whether it counts as public is not known from data.",
       );
     }
+    const rearPathM = runs
+      .filter((r) => r.otherSide && rearPathCandidates.has(r.otherSide))
+      .reduce((m, r) => m + r.lengthM, 0);
+    if (rearPathM >= 1) {
+      note(
+        quality,
+        "publicArea",
+        "A narrow footpath along the plot is treated as public (the safe choice).",
+      );
+      flag(
+        "POSSIBLE_ACHTERPAD",
+        `A narrow footpath that does not lead along a road borders the plot over ${rearPathM.toFixed(1)} m. It is treated as public; if it is a rear path serving only the plots, more positions may be allowed.`,
+      );
+    }
     ctx.summarize(`${runs.length} edge runs`);
     if (kinds.has("unknown")) ctx.degrade("some edges unknown");
     return runs;
@@ -807,16 +858,33 @@ export async function buildPlotContext(
       lengthM: r.lengthM,
       surface: byId.get(r.otherSide ?? "")?.label ?? "road",
     }));
+  const pavementRuns: PavementRun[] =
+    publicAreas && exits.length === 0
+      ? pavementCrossings(
+          plot.outline,
+          publicAreas,
+          parcels.flatMap((f) =>
+            outerRings(f.geometry).map((outline) => ({
+              id: str(f.properties.identificatie_lokaal_id) ?? String(f.id),
+              outline,
+            })),
+          ),
+        )
+      : [];
   const accessResult = assessAccess({
     publicDataAvailable: publicAreas !== null,
     registeredExits: exits.length,
     carReachableRunsM: carReachableEdges.map((e) => e.lengthM),
+    pavementRuns,
   });
   if (accessResult.level === "registered") {
     // complete
   } else if (accessResult.level === "possible") {
     downgrade(quality, "access", "assumed", accessResult.reason);
-    flag("POSSIBLE_EXIT", accessResult.reason);
+    flag(
+      accessResult.route === "across-pavement" ? "PAVEMENT_CROSSING" : "POSSIBLE_EXIT",
+      accessResult.reason,
+    );
   } else if (accessResult.level === "none-found") {
     downgrade(quality, "access", "partial", accessResult.reason);
     flag("NO_EXIT_FOUND", accessResult.reason);
@@ -826,6 +894,7 @@ export async function buildPlotContext(
   const access = {
     ...gate(accessResult.outcome, ["access"], quality),
     level: accessResult.level,
+    ...(accessResult.route ? { route: accessResult.route } : {}),
     reason: accessResult.reason,
   };
 
@@ -844,7 +913,21 @@ export async function buildPlotContext(
 
   // 7. The plot's own frame: street at the bottom.
   const kindById = new Map((publicAreas ?? []).map((a) => [a.id, a.kind]));
-  const frame = plotFrame(plot.outline, edges, streetLabels, (id) =>
+  // When no edge touches public ground directly (a verge on the road's parcel lies in between),
+  // the stretches with a road just beyond stand in for the street side.
+  const frameRuns: EdgeRun[] = edges.some((r) => r.kind === "public")
+    ? edges
+    : [
+        ...edges,
+        ...pavementRuns.map((r) => ({
+          edge: r.edge,
+          from: r.from,
+          to: r.to,
+          kind: "public" as const,
+          lengthM: r.lengthM,
+        })),
+      ];
+  const frame = plotFrame(plot.outline, frameRuns, streetLabels, (id) =>
     id ? kindById.get(id) : undefined,
   );
   if (frame.method === "longest-public") {
@@ -879,6 +962,17 @@ export async function buildPlotContext(
       (a.kind === "green" ? "public green" : a.kind === "water" ? "water" : a.label);
     return a.streetName ? `${what} (${a.streetName})` : what;
   });
+
+  for (const r of pavementRuns) {
+    const side = sides.find((x) => x.side === sideOfEdge(frame, plot.outline, r.edge));
+    if (!side) continue;
+    const prev = side.roadBeyond;
+    side.roadBeyond = {
+      acrossM: Math.max(prev?.acrossM ?? 0, r.acrossM),
+      lengthM: Math.round(((prev?.lengthM ?? 0) + r.lengthM) * 10) / 10,
+      via: [...new Set([...(prev?.via ?? []), ...r.via])],
+    };
+  }
 
   // 8. Measurements.
   const publicOutlines = (publicAreas ?? [])
@@ -931,6 +1025,8 @@ export async function buildPlotContext(
     exits,
     carReachableEdges,
     access,
+    pavementRuns,
+    otherHomesOnPlot,
     measurements,
     frame,
     layout,

@@ -155,7 +155,8 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
   }
 
   // Stretches of boundary where a car can reach the plot.
-  for (const e of ctx.carReachableEdges) {
+  // Same marking for stretches where the road lies just beyond a pavement or verge.
+  for (const e of [...ctx.carReachableEdges, ...(ctx.pavementRuns ?? [])]) {
     const a = at(ctx.plot.outline, e.edge);
     const b = at(ctx.plot.outline, e.edge + 1);
     const p = (t: number) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t] as const;

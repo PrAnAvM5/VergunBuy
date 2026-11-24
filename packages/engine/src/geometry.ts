@@ -236,6 +236,27 @@ export interface PolygonCheck {
  * non-zero area, no repeated consecutive points and no edges crossing each other.
  * Invalid geometry must never be measured silently: callers lower data quality instead.
  */
+/**
+ * Removes consecutive points closer than tolTo (default 1 mm), including a repeated closing point.
+ * Public registers (BGT, BRK) often repeat a point where an arc was densified; that changes
+ * nothing about the shape but makes a zero-length edge, which would look like a self-intersection.
+ */
+export function cleanPolygon(poly: Polygon, tol = 0.001): Polygon {
+  const out: Point[] = [];
+  for (const p of poly) {
+    const last = out[out.length - 1];
+    if (last && Math.abs(last[0] - p[0]) <= tol && Math.abs(last[1] - p[1]) <= tol) continue;
+    out.push(p);
+  }
+  while (out.length > 1) {
+    const first = out[0]!;
+    const last = out[out.length - 1]!;
+    if (Math.abs(last[0] - first[0]) <= tol && Math.abs(last[1] - first[1]) <= tol) out.pop();
+    else break;
+  }
+  return out;
+}
+
 export function validatePolygon(poly: Polygon, minAreaM2 = 0.01): PolygonCheck {
   const issues: string[] = [];
   if (poly.length < 3) issues.push("fewer than 3 points");
