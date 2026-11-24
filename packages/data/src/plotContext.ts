@@ -32,6 +32,7 @@ import {
   newQuality,
   note,
   orientedBox,
+  validatePolygon,
   plotFrame,
   plotLayout,
   SafeError,
@@ -133,7 +134,8 @@ export type FlagCode =
   | "TREES_UNKNOWN"
   | "DATA_TRUNCATED"
   | "FRONT_ESTIMATED"
-  | "PLOT_AREA_MISMATCH";
+  | "PLOT_AREA_MISMATCH"
+  | "INVALID_GEOMETRY";
 
 export interface Flag {
   code: FlagCode;
@@ -183,6 +185,9 @@ const IN_USE = new Set([
   "Verbouwing pand",
   "Sloopvergunning verleend",
 ]);
+
+const INVALID_TEXT =
+  "Some shapes from the registers are not clean (for example, edges crossing each other). Measurements on them may be off.";
 
 /** Footprint share on the plot from which a building counts as standing on it. */
 export const ON_PLOT_SHARE = 0.5;
@@ -333,6 +338,16 @@ export async function buildPlotContext(
         const id =
           `${str(f.properties.kadastrale_gemeente_waarde) ?? ""} ${str(f.properties.sectie) ?? ""} ${num(f.properties.perceelnummer) ?? ""}`.trim();
         const reg = num(f.properties.kadastrale_grootte_waarde);
+        const check = validatePolygon(outline);
+        if (!check.valid) {
+          downgrade(
+            quality,
+            "plot",
+            "partial",
+            `The plot outline from the cadastral map is not a clean shape (${check.issues.join(", ")}).`,
+          );
+          flag("INVALID_GEOMETRY", INVALID_TEXT);
+        }
         const drawn = area(outline);
         ctx.summarize(`Plot ${id}, ${Math.round(drawn)} m² drawn`);
         sources.push({
@@ -389,8 +404,10 @@ export async function buildPlotContext(
       const current = res.features.filter((f) => IN_USE.has(str(f.properties.status) ?? ""));
       const dropped = res.features.length - current.length;
       let straddling = 0;
+      let invalid = 0;
       for (const f of current) {
         for (const b of toBuilding(f)) {
+          if (!validatePolygon(b.outline).valid) invalid++;
           b.onPlotShare = Math.round(share(plot.outline, b.outline) * 100) / 100;
           if (housePandUuids.has(String(f.id))) house.push(b);
           else if (b.onPlotShare >= ON_PLOT_SHARE) outbuildings.push(b);
@@ -402,6 +419,15 @@ export async function buildPlotContext(
           )
             straddling++;
         }
+      }
+      if (invalid > 0) {
+        downgrade(
+          quality,
+          "buildings",
+          "partial",
+          `${invalid} building outline(s) are not clean shapes, so their measurements may be off.`,
+        );
+        flag("INVALID_GEOMETRY", INVALID_TEXT);
       }
       if (straddling > 0) {
         downgrade(
@@ -644,6 +670,16 @@ export async function buildPlotContext(
           () => "water",
           (f) => str(f.properties.type) ?? "water",
         );
+        const badAreas = out.filter((a) => !validatePolygon(a.outline).valid).length;
+        if (badAreas > 0) {
+          downgrade(
+            quality,
+            "publicArea",
+            "partial",
+            `${badAreas} street or public-area shape(s) are not clean shapes.`,
+          );
+          flag("INVALID_GEOMETRY", INVALID_TEXT);
+        }
         sources.push({
           name: "BGT",
           licence: "CC0",

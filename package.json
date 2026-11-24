@@ -23,6 +23,7 @@
     "@vergunbuy/data": "workspace:*",
     "@vergunbuy/engine": "workspace:*",
     "eslint": "^9.0.0",
+    "fast-check": "^3.23.2",
     "prettier": "^3.0.0",
     "tsx": "^4.23.15",
     "typescript": "^5.6.0",

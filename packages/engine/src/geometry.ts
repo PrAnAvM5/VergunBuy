@@ -8,11 +8,15 @@ export type Point = readonly [number, number];
 export type Polygon = readonly Point[];
 
 export function signedArea(poly: Polygon): number {
+  // Relative to the first vertex: with RD coordinates (~10^5 m) the raw shoelace formula
+  // multiplies large numbers and loses precision; differences keep it exact to sub-millimetre.
+  const o = poly[0];
+  if (!o) return 0;
   let sum = 0;
   for (let i = 0; i < poly.length; i++) {
     const [x1, y1] = at(poly, i);
     const [x2, y2] = at(poly, i + 1);
-    sum += x1 * y2 - x2 * y1;
+    sum += (x1 - o[0]) * (y2 - o[1]) - (x2 - o[0]) * (y1 - o[1]);
   }
   return sum / 2;
 }
@@ -173,16 +177,22 @@ export function distanceBetween(a: Polygon, b: Polygon): number {
  * vertices, it does not shift towards the side that happens to have more corner points.
  */
 export function centroid(poly: Polygon): Point {
+  const o = poly[0];
+  if (!o) return [NaN, NaN];
   let a = 0;
   let cx = 0;
   let cy = 0;
   for (let i = 0; i < poly.length; i++) {
     const [x1, y1] = at(poly, i);
     const [x2, y2] = at(poly, i + 1);
-    const cross = x1 * y2 - x2 * y1;
+    const ax = x1 - o[0];
+    const ay = y1 - o[1];
+    const bx = x2 - o[0];
+    const by = y2 - o[1];
+    const cross = ax * by - bx * ay;
     a += cross;
-    cx += (x1 + x2) * cross;
-    cy += (y1 + y2) * cross;
+    cx += (ax + bx) * cross;
+    cy += (ay + by) * cross;
   }
   if (Math.abs(a) < 1e-12) {
     // Degenerate (no area): fall back to the vertex average.
@@ -191,14 +201,16 @@ export function centroid(poly: Polygon): Point {
       poly.reduce((s, p) => s + p[1], 0) / poly.length,
     ];
   }
-  return [cx / (3 * a), cy / (3 * a)];
+  return [o[0] + cx / (3 * a), o[1] + cy / (3 * a)];
 }
 
 /** Area (m²) of the overlap of two simple polygons, using a robust clipping library. */
 export function intersectionArea(a: Polygon, b: Polygon): number {
   if (a.length < 3 || b.length < 3) return 0;
+  // Clip in local coordinates around a shared origin, for numerical robustness at RD scale.
+  const o = a[0] as Point;
   const ring = (p: Polygon): [number, number][] => {
-    const r = p.map((q) => [q[0], q[1]] as [number, number]);
+    const r = p.map((q) => [q[0] - o[0], q[1] - o[1]] as [number, number]);
     const f = r[0]!;
     r.push([f[0], f[1]]);
     return r;
@@ -212,4 +224,39 @@ export function intersectionArea(a: Polygon, b: Polygon): number {
     });
   }
   return total;
+}
+
+export interface PolygonCheck {
+  valid: boolean;
+  issues: string[];
+}
+
+/**
+ * Checks that a ring from a data source is a usable simple polygon: at least 3 distinct points,
+ * non-zero area, no repeated consecutive points and no edges crossing each other.
+ * Invalid geometry must never be measured silently: callers lower data quality instead.
+ */
+export function validatePolygon(poly: Polygon, minAreaM2 = 0.01): PolygonCheck {
+  const issues: string[] = [];
+  if (poly.length < 3) issues.push("fewer than 3 points");
+  for (let i = 0; i < poly.length; i++) {
+    const a = at(poly, i);
+    const b = at(poly, i + 1);
+    if (Math.abs(a[0] - b[0]) < 1e-9 && Math.abs(a[1] - b[1]) < 1e-9) {
+      issues.push("repeated consecutive point");
+      break;
+    }
+  }
+  if (poly.length >= 3 && area(poly) < minAreaM2) issues.push("no area");
+  const n = poly.length;
+  outer: for (let i = 0; i < n; i++) {
+    for (let j = i + 2; j < n; j++) {
+      if (i === 0 && j === n - 1) continue; // adjacent through the closing edge
+      if (segmentsIntersect(at(poly, i), at(poly, i + 1), at(poly, j), at(poly, j + 1))) {
+        issues.push("edges cross each other (self-intersection)");
+        break outer;
+      }
+    }
+  }
+  return { valid: issues.length === 0, issues };
 }

@@ -159,3 +159,26 @@ describe("zero false greens, end to end", () => {
     expect(context.quality.publicArea.status).toBe("missing");
   });
 });
+
+describe("invalid geometry is never measured silently", () => {
+  it("flags a self-intersecting building outline and lowers building quality", async () => {
+    const rec = clone(aalbers());
+    const { context: base } = await run(rec, "4631CC", "1");
+    const [x, y] = base.plot.outline[0]!;
+    const bowtie = [
+      [x + 50, y + 50],
+      [x + 54, y + 54],
+      [x + 54, y + 50],
+      [x + 50, y + 54],
+      [x + 50, y + 50],
+    ];
+    (rec["bag/pand"] as FC).features.push({
+      id: "bowtie",
+      geometry: { type: "Polygon", coordinates: [bowtie] },
+      properties: { identificatie: "BOWTIE", status: "Pand in gebruik" },
+    });
+    const { context } = await run(rec, "4631CC", "1");
+    expect(context.flags.map((f) => f.code)).toContain("INVALID_GEOMETRY");
+    expect(context.quality.buildings.status).toBe("partial");
+  });
+});

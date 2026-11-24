@@ -54,6 +54,8 @@ export const FLAG_TEXT: Record<string, string> = {
     "Not all records could be read for this area. Checks that depend on them show as 'needs a check'.",
   FRONT_ESTIMATED:
     "The front of the plot is estimated (the street name was not found next to it). On corner and rural plots this can be the wrong side.",
+  INVALID_GEOMETRY:
+    "Some shapes from the registers are not clean (for example, edges crossing each other). Measurements on them may be off.",
   PLOT_AREA_MISMATCH:
     "The drawn plot differs from the registered plot area by more than 5%. Boundaries may be inaccurate.",
 };
