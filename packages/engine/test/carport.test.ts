@@ -4,11 +4,13 @@ import { describe, expect, it } from "vitest";
 import {
   backYard,
   CARPORT_PRESETS,
+  contains,
+  driveOut,
   evaluate,
   prepare,
   regionArea,
   RuleSet,
-  suggest,
+  options,
   type AreaTableParams,
   type CarportSite,
   type ExclusionResult,
@@ -41,7 +43,11 @@ const EXCL = [
   "ex-safety-2236",
 ];
 
-/** Detached house on a 20 × 40 m plot, street at the bottom, driveway on the left. */
+/**
+ * Detached house on a 20 × 40 m plot, street at the bottom, driveway on the left. A car (turning
+ * radius about 4.5 m) reaches the back garden right of x ≈ 2 m forwards with a loop; spots right
+ * behind the house (x ≈ 0) need more room to swing round.
+ */
 function site(over: Partial<CarportSite> = {}): CarportSite {
   return {
     plot: box(-10, 0, 10, 40),
@@ -59,8 +65,10 @@ function site(over: Partial<CarportSite> = {}): CarportSite {
           [-6.5, 0],
         ],
       ],
+      frontage: [],
       note: "registered exit",
     },
+    streetTrees: [],
     obstacles: { cells: [], cellM: 0.5 },
     exclusions: EXCL.map(clear),
     extensionEvidence: [],
@@ -111,7 +119,7 @@ describe("back-yard area (achtererfgebied)", () => {
 
 describe("carport verdict", () => {
   it("is green in the back garden of an ordinary detached house", () => {
-    const v = evaluate(prepare(site()), { x: 0, y: 25, ...single });
+    const v = evaluate(prepare(site()), { x: 4, y: 25, ...single });
     expect(v.checks.filter((c) => c.outcome !== "pass").map((c) => c.id)).toEqual([]);
     expect(v.colour).toBe("green");
   });
@@ -119,22 +127,24 @@ describe("carport verdict", () => {
   it("needs a permit in the front yard", () => {
     const v = evaluate(prepare(site()), { x: -8, y: 2.6, ...single });
     expect(outcome(v, "back-yard")).toBe("fail");
-    expect(v.colour).toBe("red");
-    expect(v.headline).toBe("Permit needed");
+    expect(outcome(v, "car-route")).toBe("pass");
+    expect(v.colour).toBe("amber");
+    expect(v.headline).toBe("Possible with a building permit");
   });
 
   it("is not possible where a car cannot get to (house fills the width)", () => {
     const s = site({ house: [{ outline: box(-9, 5, 9, 15), heightM: 8, isDwelling: true }] });
-    const v = evaluate(prepare(s), { x: 0, y: 25, ...single });
+    const v = evaluate(prepare(s), { x: 4, y: 25, ...single });
     expect(outcome(v, "car-route")).toBe("fail");
-    expect(v.headline).toBe("Not possible here");
+    expect(v.colour).toBe("red");
+    expect(v.headline).toBe("Not possible here: a car cannot drive in");
   });
 
   it("is never green within 1 m of public area", () => {
-    const s = site({ publicAreas: [box(-30, -10, 30, 0), box(10, 0, 14, 40)] });
-    const v = evaluate(prepare(s), { x: 8.4, y: 25, ...single });
+    const s = site({ publicAreas: [box(-30, -10, 30, 0), box(-30, 40, 30, 44)] });
+    const v = evaluate(prepare(s), { x: 4, y: 37.4, ...single });
     expect(outcome(v, "public-distance")).toBe("fail");
-    expect(v.colour).toBe("red");
+    expect(v.colour).toBe("amber");
   });
 
   it("a monument on the plot means a permit", () => {
@@ -144,7 +154,9 @@ describe("carport verdict", () => {
         { ruleId: "ex-monument-2227", state: "applies", reason: "monument" },
       ],
     });
-    expect(evaluate(prepare(s), { x: 0, y: 25, ...single }).colour).toBe("red");
+    const v = evaluate(prepare(s), { x: 4, y: 25, ...single });
+    expect(outcome(v, "ex-monument-2227")).toBe("fail");
+    expect(v.colour).toBe("amber");
   });
 
   it("archaeology only matters for 50 m² or more inside the zone", () => {
@@ -158,7 +170,7 @@ describe("carport verdict", () => {
       exclusions: [...EXCL.filter((e) => e !== "ex-archaeology-2227").map(clear), zone],
     });
     const p = prepare(s);
-    expect(evaluate(p, { x: 0, y: 25, ...single }).colour).toBe("green");
+    expect(evaluate(p, { x: 4, y: 25, ...single }).colour).toBe("green");
     expect(
       outcome(
         evaluate(p, { x: 0, y: 30, widthM: 6, lengthM: 9, rotation: 0 }),
@@ -169,7 +181,7 @@ describe("carport verdict", () => {
 
   it("is amber when a rule's document changed since it was verified", () => {
     const s = site({ freshness: { known: true, staleRules: ["pf-back-yard"], note: "changed" } });
-    const v = evaluate(prepare(s), { x: 0, y: 25, ...single });
+    const v = evaluate(prepare(s), { x: 4, y: 25, ...single });
     expect(outcome(v, "back-yard")).toBe("unknown");
     expect(v.colour).toBe("amber");
   });
@@ -184,44 +196,84 @@ describe("carport verdict", () => {
             [-6.5, 0],
           ],
         ],
+        frontage: [],
         note: "across the pavement",
       },
     });
-    expect(evaluate(prepare(s), { x: 0, y: 25, ...single }).colour).toBe("amber");
+    expect(evaluate(prepare(s), { x: 4, y: 25, ...single }).colour).toBe("amber");
   });
 
   it("lets a possible house extension decide when the room is tight", () => {
-    const shed = { id: "shed", outline: box(-10, 34, 0, 40), label: "shed", onPlot: true };
+    const shed = { id: "shed", outline: box(6.5, 0, 10, 22), label: "shed", onPlot: true };
     const s = site({ buildings: [shed], extensionEvidence: ["permit 2019: extension"] });
-    const v = evaluate(prepare(s), { x: 0, y: 25, widthM: 6, lengthM: 5, rotation: 0 });
+    const v = evaluate(prepare(s), { x: 4, y: 25, widthM: 6, lengthM: 5, rotation: 0 });
     expect(outcome(v, "area")).toBe("unknown");
     expect(v.colour).toBe("amber");
   });
 
-  it("warns about a tree where the carport would stand", () => {
-    const s = site({
-      obstacles: { cells: [{ at: [0, 25], heightM: 7, kind: "tall" }], cellM: 0.5, scanYear: 2024 },
+  it("is red over a tree and amber over shrubs", () => {
+    const cells = (h: number, tree: boolean) => ({
+      cells: [{ at: [4, 25] as const, heightM: h, kind: tree ? "tall" : "medium", tree }],
+      cellM: 0.5,
+      scanYear: 2024,
     });
-    const v = evaluate(prepare(s), { x: 0, y: 25, ...single });
-    expect(v.warnings.map((w) => w.id)).toContain("obstacle");
+    const t = evaluate(prepare(site({ obstacles: cells(7, true) })), { x: 4, y: 25, ...single });
+    expect(outcome(t, "no-tree")).toBe("fail");
+    expect(t.colour).toBe("red");
+    const s = evaluate(prepare(site({ obstacles: cells(1.6, false) })), { x: 4, y: 25, ...single });
+    expect(outcome(s, "no-tree")).toBe("unknown");
+    expect(s.colour).toBe("amber");
+  });
+
+  it("a car of adjustable size: too big for the bay is not feasible", () => {
+    const big = prepare(site(), { widthM: 2.2, lengthM: 5.2, outerRadiusM: 7, clearanceM: 0.5 });
+    const v = evaluate(big, { x: 4, y: 25, ...single });
+    expect(outcome(v, "car-fit")).toBe("fail");
+    expect(v.colour).toBe("red");
+  });
+
+  it("a double carport is reached in both bays and the car can drive out", () => {
+    const p = prepare(site());
+    const v = evaluate(p, { x: 4, y: 25, widthM: 6, lengthM: 5, rotation: 0 });
+    expect(v.access.rect.bays).toBe(2);
+    expect(v.access.bays.every((b) => b.route)).toBe(true);
+    expect(driveOut(v.access, 0)).not.toBeNull();
   });
 });
 
-describe("suggestions", () => {
-  it("finds a green spot in the back garden, away from trees", () => {
-    const tree = { at: [0, 30] as const, heightM: 8, kind: "tall" };
+describe("numbered options", () => {
+  const overlaps = (a: Polygon, b: Polygon) => {
+    const bb = (p: Polygon) => [
+      Math.min(...p.map((q) => q[0])),
+      Math.min(...p.map((q) => q[1])),
+      Math.max(...p.map((q) => q[0])),
+      Math.max(...p.map((q) => q[1])),
+    ];
+    const [a0, a1, a2, a3] = bb(a);
+    const [b0, b1, b2, b3] = bb(b);
+    return a0! < b2! && b0! < a2! && a1! < b3! && b1! < a3!;
+  };
+
+  it("offers non-overlapping spots, green first, never over a tree", () => {
+    const tree = { at: [0, 30] as const, heightM: 8, kind: "tall", tree: true };
     const p = prepare(site({ obstacles: { cells: [tree], cellM: 0.5 } }));
-    const { best, green } = suggest(p, CARPORT_PRESETS.single);
-    expect(best?.verdict.colour).toBe("green");
-    expect(best?.verdict.warnings).toEqual([]);
-    expect(green.length).toBeGreaterThan(20);
+    const opts = options(p, CARPORT_PRESETS.single);
+    expect(opts.length).toBeGreaterThanOrEqual(3);
+    expect(opts[0]!.verdict.colour).toBe("green");
+    expect(opts.map((o) => o.n)).toEqual(opts.map((_, i) => i + 1));
+    expect(opts.every((o) => o.verdict.colour !== "red")).toBe(true);
+    expect(opts.some((o) => contains(o.verdict.outline, tree.at))).toBe(false);
+    for (const a of opts)
+      for (const b of opts)
+        if (a !== b) expect(overlaps(a.verdict.outline, b.verdict.outline)).toBe(false);
+    expect(new Set(opts.map((o) => o.zone)).size).toBeGreaterThan(1);
   });
 
-  it("finds nothing green when the only way in is blocked", () => {
+  it("offers nothing green when the only way in is blocked", () => {
     const p = prepare(
       site({ house: [{ outline: box(-9, 5, 9, 15), heightM: 8, isDwelling: true }] }),
     );
-    const { best } = suggest(p, CARPORT_PRESETS.single);
-    expect(best?.verdict.colour).not.toBe("green");
+    const opts = options(p, CARPORT_PRESETS.single);
+    expect(opts.every((o) => o.verdict.colour === "amber")).toBe(true);
   });
 });

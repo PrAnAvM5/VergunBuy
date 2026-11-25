@@ -13,6 +13,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export interface SceneHandle {
   dispose(): void;
+  /** The live scene: objects added to it are drawn from the next frame on. */
+  scene: THREE.Scene;
 }
 
 // Local plan (x, y) and height h → three.js (X = x, Y = h, Z = -y), so the street faces the camera.
@@ -276,6 +278,7 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
   loop();
 
   return {
+    scene,
     dispose() {
       running = false;
       ro.disconnect();

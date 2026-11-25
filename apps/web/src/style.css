@@ -757,3 +757,84 @@ select {
 .carport-msg {
   padding: 24px;
 }
+
+/* Carport 2D / 3D planner */
+.cp-lbl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  min-width: 74px;
+}
+.cp-tools [aria-pressed="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.optbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  font: inherit;
+  font-size: 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  cursor: pointer;
+}
+.optbtn .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+.cp-car {
+  font-size: 13px;
+}
+.cp-car summary {
+  cursor: pointer;
+  color: var(--accent);
+}
+.cp-car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 6px 12px;
+  margin: 6px 0;
+}
+.cp-car-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+}
+.cp-car-grid input {
+  width: 90px;
+  padding: 4px 6px;
+  font: inherit;
+}
+.linkbtn {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+.cp-msg {
+  flex-basis: 100%;
+  color: var(--ink-2);
+}
+.cp-msg.bad {
+  color: var(--bad);
+}
+.cp-busy {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 12px;
+  color: var(--ink-2);
+}
+#cp-3d canvas {
+  display: block;
+}

@@ -140,6 +140,14 @@ export function carportSite(
   if (!entries.length)
     entries = ctx.pavementRuns.map((r) => segmentOf(ctx.plot.outline, r.edge, r.from, r.to));
   const localEntries = entries.map(([a, b]) => [toLocal(f, a), toLocal(f, b)] as [Point, Point]);
+  // Where a new exit could go (registered plots): road contact and pavement crossings.
+  const frontage =
+    lvl === "registered"
+      ? [
+          ...ctx.carReachableEdges.map((r) => segmentOf(ctx.plot.outline, r.edge, r.from, r.to)),
+          ...(ctx.frontageRuns ?? []).map((r) => segmentOf(ctx.plot.outline, r.edge, r.from, r.to)),
+        ].map(([a, b]) => [toLocal(f, a), toLocal(f, b)] as [Point, Point])
+      : [];
 
   const obstacles = ctx.obstacles
     ? {
@@ -148,6 +156,8 @@ export function carportSite(
             at: toLocal(f, c),
             heightM: o.cellHeights[i] ?? 0,
             kind: o.kind,
+            // The whole crown of a tree (2.5 m+) counts, also its lower edge (decision 2026-11-25).
+            tree: o.kind !== "medium",
           })),
         ),
         cellM: ctx.obstacles.res,
@@ -213,7 +223,8 @@ export function carportSite(
           : f.method === "longest-public"
             ? "estimated"
             : "none",
-      access: { level, entries: localEntries, note: ctx.access.reason },
+      access: { level, entries: localEntries, frontage, note: ctx.access.reason },
+      streetTrees: (ctx.trees ?? []).map((t) => toLocal(f, t.at)),
       obstacles,
       exclusions,
       extensionEvidence,

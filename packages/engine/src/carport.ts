@@ -6,8 +6,9 @@
  * builder (data layer) converts every register geometry into this frame.
  *
  * Two questions, kept apart and both shown:
- *  1. Feasible: on the plot, not on a building, and reachable by car from the plot's exit.
- *     A spot a car cannot reach is not feasible (decision of 2026-11-25).
+ *  1. Feasible: on the plot, not on a building or a tree, and a car (adjustable size, turning
+ *     radius and clearance) can actually drive in and park with room to open its doors. The
+ *     swept-path planner (vehicle.ts) decides that. A spot a car cannot reach is not feasible.
  *  2. Permit: the carport rule set (Bbl 2.25, omgevingsplan 22.27 and 22.36 with exclusions
  *     22.28, 22.38, 22.39). Every check names the rule id it implements, so the verdict can show
  *     the article and the exact words it rests on.
@@ -22,7 +23,6 @@ import {
   clipRegions,
   contains,
   distanceBetween,
-  distanceToSegment,
   edges,
   intersectionArea,
   outwardNormal,
@@ -33,6 +33,22 @@ import {
   type Polygon,
   type Region,
 } from "./geometry.ts";
+import {
+  DEFAULT_VEHICLE,
+  accessCarport,
+  buildLattice,
+  buildWorld,
+  carOf,
+  leaveCarport,
+  parkingFit,
+  type BayAccess,
+  type Car,
+  type CarportRect,
+  type Gate,
+  type Lattice,
+  type LeaveRoute,
+  type VehicleParams,
+} from "./vehicle.ts";
 
 /** Fixed standard height of the presets (decision of 2026-11-25: no height dragging). */
 export const CARPORT_HEIGHT_M = 2.5;
@@ -44,8 +60,8 @@ export const CARPORT_PRESETS = {
 
 export const CARPORT_LIMITS = { minWidthM: 2.5, maxWidthM: 9, minLengthM: 4, maxLengthM: 9 };
 
-/** Car routing: the narrowest passage a car needs (gate or side path), in metres. */
-export const ROUTE = { passageM: 2.3, comfortableM: 3, cellM: 0.25 };
+/** Room beside a parked car to open its doors (each side). */
+export const DOOR_GAP_M = 0.5;
 
 /**
  * The first floor of a house with more than one storey is assumed to be at least 2.4 m above
@@ -73,11 +89,16 @@ export interface CarportSite {
     level: "registered" | "possible" | "none";
     /** Boundary stretches where a car can come in (local segments on the plot boundary). */
     entries: [Point, Point][];
+    /** Road-side stretches where a new exit could be made (needs an exit permit). */
+    frontage: [Point, Point][];
     note: string;
   };
+  /** Registered street trees (local), kept clear of by a new exit. */
+  streetTrees: Point[];
   /** Height-scan obstacle cells (local centres) with heights; null when unavailable. */
   obstacles: {
-    cells: { at: Point; heightM: number; kind: string }[];
+    /** tree: part of the crown of something 2.5 m or higher (blocks cars, cannot be built on). */
+    cells: { at: Point; heightM: number; kind: string; tree: boolean }[];
     cellM: number;
     scanYear?: number;
   } | null;
@@ -132,6 +153,8 @@ export interface CarportVerdict {
   checks: CarportCheck[];
   warnings: CarportWarning[];
   outline: Polygon;
+  /** How the car gets in (routes per bay), for drawing and animating. */
+  access: CarAccess;
 }
 
 export function rectangle(p: Placement): Polygon {
@@ -227,176 +250,45 @@ export function backYard(site: CarportSite): BackYard {
 }
 
 // ---------------------------------------------------------------------------------------------
-// Car routing on a grid
+// Evaluating one placement
 // ---------------------------------------------------------------------------------------------
 
-export interface RouteGrid {
+/** Two worlds for the car: through the existing exit(s) only, and with a new exit anywhere on
+ *  the road-side frontage (which needs an exit permit, "uitwegvergunning"). */
+export interface VehicleWorlds {
+  car: Car;
+  params: VehicleParams;
+  existing: Lattice | null;
+  /** Existing exits plus the frontage; null when there is no frontage beyond the exits. */
+  any: Lattice | null;
+}
+
+export interface ScreenGrid {
   minX: number;
   minY: number;
   nx: number;
   ny: number;
   cell: number;
-  /** Cell can hold the centre line of a car (enough room on both sides). */
-  passable: Uint8Array;
-  /** Steps from the nearest entry (Infinity: unreachable). */
-  dist: Float32Array;
-  /** Same, using only cells with room for a comfortable 3 m passage. */
-  distWide: Float32Array;
-  hasEntry: boolean;
 }
-
-/**
- * Where a car can drive: free ground on the plot (no building, no roofed structure), plus a band
- * just outside the entry stretches so the car can come in from the road. A cell is passable when
- * the nearest obstacle is at least half the passage width away; reachable cells are those
- * connected to an entry through passable cells.
- */
-export function routeGrid(site: CarportSite, ignore: Polygon[] = []): RouteGrid {
-  const cell = ROUTE.cellM;
-  const xs = site.plot.map((p) => p[0]);
-  const ys = site.plot.map((p) => p[1]);
-  const m = 4;
-  const minX = Math.min(...xs) - m;
-  const minY = Math.min(...ys) - m;
-  const nx = Math.ceil((Math.max(...xs) + m - minX) / cell);
-  const ny = Math.ceil((Math.max(...ys) + m - minY) / cell);
-  const blocked = new Uint8Array(nx * ny);
-  const solid = [
-    ...site.house.map((h) => h.outline),
-    ...site.buildings.map((b) => b.outline),
-    ...site.structures.filter((s) => s.roofed).map((s) => s.outline),
-  ].filter((p) => !ignore.includes(p));
-  const gridDims = { minX, minY, nx, ny, cell };
-  const plotMask = new Uint8Array(nx * ny);
-  rasterize(site.plot, gridDims, plotMask);
-  const solidMask = new Uint8Array(nx * ny);
-  for (const x of solid) rasterize(x, gridDims, solidMask);
-  const isEntry = new Uint8Array(nx * ny);
-  // The band just outside each entry stretch (up to 3 m out), where a car comes from the road.
-  for (const [a, b] of site.access.entries) {
-    const i0 = Math.max(0, Math.floor((Math.min(a[0], b[0]) - 3 - minX) / cell));
-    const i1 = Math.min(nx - 1, Math.ceil((Math.max(a[0], b[0]) + 3 - minX) / cell));
-    const j0 = Math.max(0, Math.floor((Math.min(a[1], b[1]) - 3 - minY) / cell));
-    const j1 = Math.min(ny - 1, Math.ceil((Math.max(a[1], b[1]) + 3 - minY) / cell));
-    for (let j = j0; j <= j1; j++)
-      for (let i = i0; i <= i1; i++) {
-        const k = j * nx + i;
-        if (plotMask[k]) continue;
-        const p: Point = [minX + (i + 0.5) * cell, minY + (j + 0.5) * cell];
-        if (distanceToSegment(p, a, b) <= 3) isEntry[k] = 1;
-      }
-  }
-  for (let k = 0; k < nx * ny; k++)
-    blocked[k] = (plotMask[k] ? !solidMask[k] : isEntry[k] === 1) ? 0 : 1;
-  // Distance to the nearest blocked cell (two-pass chamfer, in metres).
-  const d = new Float32Array(nx * ny).fill(BIG);
-  for (let k = 0; k < nx * ny; k++) if (blocked[k]) d[k] = 0;
-  const a = cell;
-  const b = cell * Math.SQRT2;
-  for (let j = 0; j < ny; j++)
-    for (let i = 0; i < nx; i++) {
-      const k = j * nx + i;
-      if (i > 0) d[k] = Math.min(d[k]!, d[k - 1]! + a);
-      if (j > 0) d[k] = Math.min(d[k]!, d[k - nx]! + a);
-      if (i > 0 && j > 0) d[k] = Math.min(d[k]!, d[k - nx - 1]! + b);
-      if (i < nx - 1 && j > 0) d[k] = Math.min(d[k]!, d[k - nx + 1]! + b);
-    }
-  for (let j = ny - 1; j >= 0; j--)
-    for (let i = nx - 1; i >= 0; i--) {
-      const k = j * nx + i;
-      if (i < nx - 1) d[k] = Math.min(d[k]!, d[k + 1]! + a);
-      if (j < ny - 1) d[k] = Math.min(d[k]!, d[k + nx]! + a);
-      if (i < nx - 1 && j < ny - 1) d[k] = Math.min(d[k]!, d[k + nx + 1]! + b);
-      if (i > 0 && j < ny - 1) d[k] = Math.min(d[k]!, d[k + nx - 1]! + b);
-    }
-  const passable = new Uint8Array(nx * ny);
-  const wide = new Uint8Array(nx * ny);
-  // A cell next to an obstacle has distance one cell, so subtract half a cell for its centre.
-  for (let k = 0; k < nx * ny; k++) {
-    passable[k] = d[k]! - cell / 2 >= ROUTE.passageM / 2 ? 1 : 0;
-    wide[k] = d[k]! - cell / 2 >= ROUTE.comfortableM / 2 ? 1 : 0;
-  }
-  const flood = (ok: Uint8Array) => {
-    const dist = new Float32Array(nx * ny).fill(Infinity);
-    const queue: number[] = [];
-    for (let k = 0; k < nx * ny; k++)
-      if (isEntry[k] && ok[k]) {
-        dist[k] = 0;
-        queue.push(k);
-      }
-    for (let q = 0; q < queue.length; q++) {
-      const k = queue[q]!;
-      const i = k % nx;
-      const j = (k - i) / nx;
-      for (const [di, dj] of [
-        [1, 0],
-        [-1, 0],
-        [0, 1],
-        [0, -1],
-      ] as const) {
-        const ii = i + di;
-        const jj = j + dj;
-        if (ii < 0 || jj < 0 || ii >= nx || jj >= ny) continue;
-        const kk = jj * nx + ii;
-        if (!ok[kk] || dist[kk] !== Infinity) continue;
-        dist[kk] = dist[k]! + 1;
-        queue.push(kk);
-      }
-    }
-    return { dist, any: queue.length > 0 };
-  };
-  const narrow = flood(passable);
-  const comfy = flood(wide);
-  return {
-    minX,
-    minY,
-    nx,
-    ny,
-    cell,
-    passable,
-    dist: narrow.dist,
-    distWide: comfy.dist,
-    hasEntry: narrow.any,
-  };
-}
-
-/** Shortest route (m) from an entry to a point inside the outline, or null if none. */
-export function routeTo(grid: RouteGrid, outline: Polygon, wide = false): number | null {
-  const field = wide ? grid.distWide : grid.dist;
-  const xs = outline.map((p) => p[0]);
-  const ys = outline.map((p) => p[1]);
-  const i0 = Math.max(0, Math.floor((Math.min(...xs) - grid.minX) / grid.cell));
-  const i1 = Math.min(grid.nx - 1, Math.floor((Math.max(...xs) - grid.minX) / grid.cell));
-  const j0 = Math.max(0, Math.floor((Math.min(...ys) - grid.minY) / grid.cell));
-  const j1 = Math.min(grid.ny - 1, Math.floor((Math.max(...ys) - grid.minY) / grid.cell));
-  let best = Infinity;
-  for (let j = j0; j <= j1; j++)
-    for (let i = i0; i <= i1; i++) {
-      const k = j * grid.nx + i;
-      const dd = field[k]!;
-      if (dd >= best) continue;
-      const p: Point = [grid.minX + (i + 0.5) * grid.cell, grid.minY + (j + 0.5) * grid.cell];
-      if (contains(outline, p)) best = dd;
-    }
-  return Number.isFinite(best) ? best * grid.cell : null;
-}
-
-// ---------------------------------------------------------------------------------------------
-// Evaluating one placement
-// ---------------------------------------------------------------------------------------------
 
 export interface Prepared {
   site: CarportSite;
   yard: BackYard;
-  grid: RouteGrid;
-  /** Per route-grid cell, for fast screening of many positions (confirmed by evaluate()). */
+  vehicle: VehicleWorlds;
+  /** Per screening cell, for fast screening of many positions (confirmed by evaluate()). */
+  grid: ScreenGrid;
   screen: {
     onPlot: Uint8Array;
     solid: Uint8Array;
     yard: Uint8Array;
+    /** 2: tree crown (2.5 m+), 1: shrub or low object (1–2.5 m). */
     obstacle: Uint8Array;
     /** Distance (m) to the nearest public-area cell. */
     publicM: Float32Array;
+    /** Distance driven from the road to this point, per world and per orientation of the car
+     *  (ns: heading along y, as parked in a rotation-0 carport; ew: along x); Infinity: none. */
+    reachExisting: { ns: Float32Array; ew: Float32Array };
+    reachAny: { ns: Float32Array; ew: Float32Array };
   };
   /** Annex area already standing in the back yard (sheds, garages, roofed canopies). */
   existingAnnexM2: number;
@@ -404,20 +296,67 @@ export interface Prepared {
   houseM2: number;
 }
 
-/** Heavy, placement-independent work, done once per plot. */
-export function prepare(site: CarportSite): Prepared {
+const segBox = (p: Point, r: number): Polygon => box(p[0] - r, p[1] - r, p[0] + r, p[1] + r);
+
+/** The car's worlds for a site: obstacles, gates, lattices. */
+export function vehicleWorlds(
+  site: CarportSite,
+  params: VehicleParams = DEFAULT_VEHICLE,
+): VehicleWorlds {
+  const car = carOf(params);
+  const solids = [
+    ...site.house.map((h) => h.outline),
+    ...site.buildings.map((b) => b.outline),
+    // A street tree's trunk: a new exit keeps about 1 m from it (with the car's clearance).
+    ...site.streetTrees.map((t) => segBox(t, 0.5)),
+  ];
+  const scan = (site.obstacles?.cells ?? []).map((c) => ({ at: c.at, blocks: c.tree }));
+  const scanCellM = site.obstacles?.cellM ?? 0.5;
+  const existingGates: Gate[] =
+    site.access.level === "registered"
+      ? site.access.entries.map(([a, b]) => ({ a, b, kind: "existing" }))
+      : [];
+  const frontGates: Gate[] = [
+    ...(site.access.level === "registered" ? [] : site.access.entries),
+    ...site.access.frontage,
+  ].map(([a, b]) => ({ a, b, kind: "frontage" }));
+  const world = (gates: Gate[]) =>
+    gates.length
+      ? buildLattice(buildWorld({ plot: site.plot, solids, scan, scanCellM, gates }), car)
+      : null;
+  return {
+    car,
+    params,
+    existing: world(existingGates),
+    any: frontGates.length ? world([...existingGates, ...frontGates]) : null,
+  };
+}
+
+/** Heavy, placement-independent work, done once per plot (and again when the car changes). */
+export function prepare(site: CarportSite, params: VehicleParams = DEFAULT_VEHICLE): Prepared {
   const yard = backYard(site);
-  const grid = routeGrid(site);
+  const vehicle = vehicleWorlds(site, params);
   const inYard = (p: Polygon) =>
     yard.region.reduce((s, part) => s + intersectionArea(part.outer, p), 0);
   const existingAnnexM2 =
     site.buildings.filter((b) => b.onPlot).reduce((s, b) => s + inYard(b.outline), 0) +
     site.structures.filter((s) => s.roofed).reduce((s, x) => s + inYard(x.outline), 0);
+  const xs = site.plot.map((p) => p[0]);
+  const ys = site.plot.map((p) => p[1]);
+  const cell = 0.25;
+  const grid: ScreenGrid = {
+    minX: Math.min(...xs) - 2,
+    minY: Math.min(...ys) - 2,
+    nx: Math.ceil((Math.max(...xs) - Math.min(...xs) + 4) / cell),
+    ny: Math.ceil((Math.max(...ys) - Math.min(...ys) + 4) / cell),
+    cell,
+  };
   return {
     site,
     yard,
+    vehicle,
     grid,
-    screen: screening(site, yard, grid),
+    screen: screening(site, yard, grid, vehicle),
     existingAnnexM2,
     yardM2: regionArea(yard.region),
     houseM2: site.house.reduce((s, h) => s + area(h.outline), 0),
@@ -461,7 +400,43 @@ function bboxOf(poly: Polygon) {
   return { x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) };
 }
 
-function screening(site: CarportSite, yard: BackYard, g: RouteGrid): Prepared["screen"] {
+/** Per screening cell: the shortest drive from the road to a lattice point there, with the car
+ *  along y (headings 0 and 4) or along x (2 and 6). */
+function reachField(L: Lattice | null, g: ScreenGrid): { ns: Float32Array; ew: Float32Array } {
+  return { ns: reachFor(L, g, [0, 4]), ew: reachFor(L, g, [2, 6]) };
+}
+
+function reachFor(L: Lattice | null, g: ScreenGrid, headings: number[]): Float32Array {
+  const out = new Float32Array(g.nx * g.ny).fill(Infinity);
+  if (!L) return out;
+  const { w, res } = L;
+  for (let j = 0; j < w.NJ; j++)
+    for (let i = 0; i < w.NI; i++) {
+      let d = Infinity;
+      const base = (j * w.NI + i) * 8;
+      for (const h of headings) d = Math.min(d, res.dist[base + h]!);
+      if (d === Infinity) continue;
+      const x = (w.i0 + i) * 0.5;
+      const y = (w.j0 + j) * 0.5;
+      // Spread over the 0.5 m around the lattice point.
+      for (let dj = -1; dj <= 1; dj++)
+        for (let di = -1; di <= 1; di++) {
+          const ii = Math.floor((x + di * 0.25 - g.minX) / g.cell);
+          const jj = Math.floor((y + dj * 0.25 - g.minY) / g.cell);
+          if (ii < 0 || jj < 0 || ii >= g.nx || jj >= g.ny) continue;
+          const k = jj * g.nx + ii;
+          if (d < out[k]!) out[k] = d;
+        }
+    }
+  return out;
+}
+
+function screening(
+  site: CarportSite,
+  yard: BackYard,
+  g: ScreenGrid,
+  v: VehicleWorlds,
+): Prepared["screen"] {
   const n = g.nx * g.ny;
   const onPlot = new Uint8Array(n);
   const solid = new Uint8Array(n);
@@ -476,16 +451,18 @@ function screening(site: CarportSite, yard: BackYard, g: RouteGrid): Prepared["s
     for (const hole of part.holes) rasterize(hole, g, inYard, 0);
   }
   for (const a of site.publicAreas ?? []) rasterize(a, g, pub);
+  const half = (site.obstacles?.cellM ?? 0.5) / 2;
   for (const c of site.obstacles?.cells ?? []) {
-    if (c.heightM < 1) continue;
-    const i = Math.floor((c.at[0] - g.minX) / g.cell);
-    const j = Math.floor((c.at[1] - g.minY) / g.cell);
-    const r = Math.max(0, Math.round((site.obstacles!.cellM / g.cell - 1) / 2));
-    for (let dj = -r; dj <= r; dj++)
-      for (let di = -r; di <= r; di++) {
-        const ii = i + di;
-        const jj = j + dj;
-        if (ii >= 0 && jj >= 0 && ii < g.nx && jj < g.ny) obstacle[jj * g.nx + ii] = 1;
+    const level = c.tree ? 2 : c.heightM >= 1 ? 1 : 0;
+    if (!level) continue;
+    const i0 = Math.max(0, Math.floor((c.at[0] - half - g.minX) / g.cell));
+    const i1 = Math.min(g.nx - 1, Math.ceil((c.at[0] + half - g.minX) / g.cell) - 1);
+    const j0 = Math.max(0, Math.floor((c.at[1] - half - g.minY) / g.cell));
+    const j1 = Math.min(g.ny - 1, Math.ceil((c.at[1] + half - g.minY) / g.cell) - 1);
+    for (let j = j0; j <= j1; j++)
+      for (let i = i0; i <= i1; i++) {
+        const k = j * g.nx + i;
+        if (level > obstacle[k]!) obstacle[k] = level;
       }
   }
   // Distance to public area, by breadth-first growth (city-block, an under-estimate: safe).
@@ -515,7 +492,15 @@ function screening(site: CarportSite, yard: BackYard, g: RouteGrid): Prepared["s
       queue.push(kk);
     }
   }
-  return { onPlot, solid, yard: inYard, obstacle, publicM };
+  return {
+    onPlot,
+    solid,
+    yard: inYard,
+    obstacle,
+    publicM,
+    reachExisting: reachField(v.existing, g),
+    reachAny: reachField(v.any, g),
+  };
 }
 
 const overlapM2 = (a: Polygon, b: Polygon) => {
@@ -549,7 +534,7 @@ function samples(r: Polygon, step = 0.5): Point[] {
 const fmt = (n: number) => (Math.round(n * 10) / 10).toString();
 
 export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
-  const { site, yard, grid } = prep;
+  const { site, yard } = prep;
   const r = rectangle(pl);
   const carportM2 = pl.widthM * pl.lengthM;
   const checks: CarportCheck[] = [];
@@ -582,54 +567,82 @@ export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
       ? `Overlaps ${[...new Set(hits.map((h) => h.label))].join(", ")}.`
       : "No registered building stands where the carport would go.",
   });
-  const route = routeTo(grid, r);
-  const accessOutcome: CheckOutcome =
-    site.access.level === "none" || !grid.hasEntry
+  // Trees and shrubs where the carport would stand (laser scan). A tree would have to be felled:
+  // not offered (red). Shrubs and low objects can be cleared: amber with a warning.
+  const cellsIn = (site.obstacles?.cells ?? []).filter((c) => contains(r, c.at));
+  const treeCells = cellsIn.filter((c) => c.tree);
+  const shrubCells = cellsIn.filter((c) => !c.tree && c.heightM >= 1);
+  const cellM2 = (site.obstacles?.cellM ?? 0.5) ** 2;
+  const scanNote = site.obstacles?.scanYear ? ` (laser scan ${site.obstacles.scanYear})` : "";
+  add({
+    id: "no-tree",
+    group: "feasible",
+    label: "No tree in the way",
+    outcome: !site.obstacles
       ? "unknown"
-      : route === null
+      : treeCells.length
         ? "fail"
-        : site.access.level === "registered"
-          ? "pass"
-          : "unknown";
+        : shrubCells.length
+          ? "unknown"
+          : "pass",
+    detail: !site.obstacles
+      ? "The height scan could not be loaded, so trees on the spot are not known."
+      : treeCells.length
+        ? `${fmt(treeCells.length * cellM2)} m² of tree crown (2.5 m or higher, up to ${fmt(Math.max(...treeCells.map((c) => c.heightM)))} m)${scanNote} is where the carport would stand. It would have to be felled${treeCells.some((c) => c.kind === "overhang") ? " or cut back (a neighbour's tree)" : ""}; such spots are not offered.`
+        : shrubCells.length
+          ? `${fmt(shrubCells.length * cellM2)} m² of shrubs, hedge or low objects (1–2.5 m)${scanNote} would have to be cleared first. Check on site what it is.`
+          : `Nothing 1 m or higher stands here${scanNote}.`,
+  });
+
+  const access = carAccess(prep, pl);
+  const car = prep.vehicle.car;
+  add({
+    id: "car-fit",
+    group: "feasible",
+    label: "The car fits, doors open",
+    outcome: access.fit.fits ? "pass" : "fail",
+    detail: access.fit.fits
+      ? `A ${fmt(car.l)} × ${fmt(car.w)} m car fits ${access.rect.bays === 2 ? "in each of the two bays" : ""} with ${fmt(access.fit.gapM)} m beside it on each side (at least ${DOOR_GAP_M} m for the doors).`
+      : `A ${fmt(car.l)} × ${fmt(car.w)} m car needs ${fmt(car.l)} m of depth and ${fmt(car.w + 2 * DOOR_GAP_M)} m of width per bay (doors open ${DOOR_GAP_M} m).`,
+  });
+  const noGates = !prep.vehicle.existing && !prep.vehicle.any;
+  const blockers = access.bays.filter((b) => !b.route);
   add({
     id: "car-route",
     group: "feasible",
     label: "A car can drive in",
-    outcome: accessOutcome,
-    detail:
-      site.access.level === "none" || !grid.hasEntry
+    outcome: !access.fit.fits
+      ? "unknown"
+      : noGates
+        ? "unknown"
+        : access.via === "existing"
+          ? "pass"
+          : access.via
+            ? "unknown"
+            : "fail",
+    detail: !access.fit.fits
+      ? "Not checked: the car does not fit."
+      : noGates
         ? `No way onto the plot was found for a car. ${site.access.note}`
-        : route === null
-          ? `No route of at least ${ROUTE.passageM} m wide leads from the plot's way in to this spot (the house or other buildings are in the way).`
-          : site.access.level === "registered"
-            ? route < 1
-              ? "Right at the registered exit."
-              : `About ${Math.round(route)} m from the registered exit, with at least ${ROUTE.passageM} m of room all the way.`
-            : `A ${ROUTE.passageM} m wide route exists (about ${Math.round(route)} m), but the way onto the plot is not a registered exit: ${site.access.note}`,
+        : access.via === "existing"
+          ? `Drives in through the existing exit ${access.bays.map((b) => b.route!.how).join(" / ")} (turning radius ${fmt(car.rt)} m, ${fmt(car.clr)} m clear of walls and trees all the way).`
+          : access.via === "new-exit"
+            ? "Not through the existing exit, but through a new exit from the street. A new exit needs an exit permit (uitwegvergunning) from the municipality."
+            : access.via === "unregistered"
+              ? `A car can drive in from the street, but no exit is registered here: ${site.access.note}`
+              : `A car cannot get there: ${blockers.some((b) => b.blocker === "car") ? "the other bay's car is in the way" : blockers.some((b) => b.blocker === "post") ? "a carport post is in the way" : `the house, buildings or trees leave no path with ${fmt(car.clr)} m clearance and a ${fmt(car.rt)} m turning radius`}.`,
   });
-  if (route !== null && routeTo(grid, r, true) === null)
-    warnings.push({
-      id: "narrow-route",
-      text: `The only way for a car is a passage under ${ROUTE.comfortableM} m wide (at least ${ROUTE.passageM} m). Fences, gates and hedges are not in the public registers: check on site that nothing blocks it.`,
-    });
   const struct = site.structures.filter((s) => overlapM2(s.outline, r) > 0.05);
   if (struct.length)
     warnings.push({
       id: "structure",
       text: `Stands on ${struct.map((s) => s.label).join(", ")}: it would have to be removed or replaced.`,
     });
-  if (site.obstacles) {
-    const inside = site.obstacles.cells.filter((c) => c.heightM >= 1 && contains(r, c.at));
-    if (inside.length) {
-      const top = Math.max(...inside.map((c) => c.heightM));
-      const overhang = inside.some((c) => c.kind === "overhang");
-      const m2 = inside.length * site.obstacles.cellM ** 2;
-      warnings.push({
-        id: "obstacle",
-        text: `${fmt(m2)} m² of vegetation or objects up to ${fmt(top)} m high stands here (laser scan ${site.obstacles.scanYear ?? ""}). ${overhang ? "Part is a neighbour's tree hanging over: trimming needs care and may need their agreement. " : ""}A tree would have to go; check whether felling needs a permit (Woensdrecht protects valuable trees).`,
-      });
-    }
-  }
+  if (access.via)
+    warnings.push({
+      id: "fences",
+      text: "Fences, gates and garden walls are not in the public registers: check on site that nothing blocks the drive.",
+    });
 
   // --- Technical (Bbl 2.25) ------------------------------------------------------------------
   add({
@@ -817,7 +830,7 @@ export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
     detail: site.freshness.note,
   });
 
-  return verdictFrom(checks, warnings, r, site);
+  return verdictFrom(checks, warnings, r, site, access);
 }
 
 function combine(outcomes: CheckOutcome[]): CheckOutcome {
@@ -831,6 +844,7 @@ function verdictFrom(
   warnings: CarportWarning[],
   outline: Polygon,
   site: CarportSite,
+  access: CarAccess,
 ): CarportVerdict {
   const stale = new Set(site.freshness.staleRules);
   // A check whose rule is not the verified version can at best be unknown.
@@ -851,10 +865,16 @@ function verdictFrom(
   let headline: string;
   if (feasible === "fail") {
     colour = "red";
-    headline = "Not possible here";
-  } else if (permitFree === "fail") {
-    colour = "red";
-    headline = "Permit needed";
+    const failed = (id: string) => checks.some((c) => c.id === id && c.outcome === "fail");
+    headline = failed("no-building")
+      ? "Not possible here: a building is in the way"
+      : failed("no-tree")
+        ? "Not possible here: a tree would have to be felled"
+        : failed("car-fit")
+          ? "Not possible here: the car does not fit"
+          : failed("car-route")
+            ? "Not possible here: a car cannot drive in"
+            : "Not possible here";
   } else if (
     feasible === "pass" &&
     permitFree === "pass" &&
@@ -865,22 +885,100 @@ function verdictFrom(
     headline = "Permit-free and allowed";
   } else {
     colour = "amber";
+    const shrubs = checks.some((c) => c.id === "no-tree" && c.outcome === "unknown");
     headline =
-      permitFree === "pass" && allowedByLaw === "fail"
-        ? "No permit needed, but the old zoning plan decides whether it is allowed"
-        : feasible === "unknown"
-          ? "Possibly permit-free; car access needs a check"
-          : "Possibly permit-free; something needs a check";
+      access.via === "new-exit"
+        ? `Needs a new exit (exit permit)${permitFree === "fail" ? " and a building permit" : ""}`
+        : permitFree === "fail"
+          ? "Possible with a building permit"
+          : permitFree === "pass" && allowedByLaw === "fail"
+            ? "No permit needed, but the old zoning plan decides whether it is allowed"
+            : shrubs
+              ? "Possibly permit-free; shrubs must be cleared"
+              : feasible === "unknown"
+                ? "Possibly permit-free; car access needs a check"
+                : "Possibly permit-free; something needs a check";
   }
-  return { colour, headline, feasible, permitFree, allowedByLaw, checks, warnings, outline };
+  return {
+    colour,
+    headline,
+    feasible,
+    permitFree,
+    allowedByLaw,
+    checks,
+    warnings,
+    outline,
+    access,
+  };
 }
 
 // ---------------------------------------------------------------------------------------------
-// Suggestions
+// Car access for one placement
+// ---------------------------------------------------------------------------------------------
+
+export interface CarAccess {
+  rect: CarportRect;
+  fit: { fits: boolean; gapM: number };
+  /** existing: through the existing exit; new-exit: only through a new exit (exit permit);
+   *  unregistered: from the street where no exit is registered; null: no way in. */
+  via: "existing" | "new-exit" | "unregistered" | null;
+  bays: BayAccess[];
+  /** The world the routes were found in (for driving out). */
+  lattice: Lattice | null;
+}
+
+/** The carport as the vehicle planner sees it: cars park along its length, one or two bays. */
+export function carportRect(pl: Placement, car: Car): CarportRect {
+  const r = rectangle(pl);
+  const across = pl.widthM;
+  return {
+    x0: r[0]![0],
+    y0: r[0]![1],
+    x1: r[2]![0],
+    y1: r[2]![1],
+    o: pl.rotation === 0 ? "ns" : "ew",
+    bays: across >= 2 * (car.w + 2 * DOOR_GAP_M) ? 2 : 1,
+  };
+}
+
+export function carAccess(prep: Prepared, pl: Placement): CarAccess {
+  const { car, existing, any } = prep.vehicle;
+  const rect = carportRect(pl, car);
+  const fit = parkingFit(car, rect, DOOR_GAP_M);
+  if (!fit.fits) return { rect, fit, via: null, bays: [], lattice: null };
+  let last: { bays: BayAccess[]; lattice: Lattice | null } = { bays: [], lattice: null };
+  if (existing) {
+    const bays = accessCarport(existing, rect, false);
+    if (bays.every((b) => b.route)) return { rect, fit, via: "existing", bays, lattice: existing };
+    last = { bays, lattice: existing };
+  }
+  if (any) {
+    const bays = accessCarport(any, rect, false);
+    if (bays.every((b) => b.route))
+      return {
+        rect,
+        fit,
+        via: prep.site.access.level === "registered" ? "new-exit" : "unregistered",
+        bays,
+        lattice: any,
+      };
+    last = { bays, lattice: any };
+  }
+  return { rect, fit, via: null, ...last };
+}
+
+/** How the car in one bay leaves (reversing, turning where there is room). Null: not found. */
+export function driveOut(access: CarAccess, bay: number): LeaveRoute | null {
+  if (!access.lattice || !access.via) return null;
+  return leaveCarport(access.lattice, access.rect, access.bays, bay);
+}
+
+// ---------------------------------------------------------------------------------------------
+// Numbered options
 // ---------------------------------------------------------------------------------------------
 
 /** Checks whose outcome does not depend on where the carport stands (for the same size). */
-const POSITION_FREE = [
+export const POSITION_FREE = [
   "area",
   "at-house",
   "tech-height",
@@ -889,99 +987,154 @@ const POSITION_FREE = [
   "ex-monument-village-2236",
 ];
 
-export interface Suggestion {
+export type CarportZone = "back" | "side" | "front";
+
+export interface CarportOption {
+  /** 1, 2, 3 ... in the order shown. */
+  n: number;
   placement: Placement;
   verdict: CarportVerdict;
-  routeM: number | null;
+  zone: CarportZone;
 }
 
+const ZONE_ORDER: CarportZone[] = ["back", "side", "front"];
+
 /**
- * Searches positions for one size (both orientations) over the plot, every 0.5 m (coarser on
- * very large plots). Best = green before amber before red; then no obstacle warnings; then the shortest
- * drive from the exit. Also returns every centre where the carport would be green ("heat").
+ * Hand-picked placements for one size, like the MVP: positions every 0.5 m (1 m on large plots) in
+ * both orientations are screened cheaply (on the plot, clear of buildings and trees, reachable),
+ * then confirmed with the full evaluation, taking turns between the back yard, the side and the
+ * front so the options differ. Never red: no spot that needs a tree felled or that a car cannot
+ * reach. Green ones first, then those that need a permit, a new exit or a check.
  */
-export function suggest(
+export function options(
   prep: Prepared,
   size: { widthM: number; lengthM: number },
-  stepM = 0.5,
-): { best: Suggestion | null; green: { x: number; y: number; rotation: 0 | 90 }[] } {
-  const { site, grid: g, screen } = prep;
+  max = 6,
+): CarportOption[] {
+  const { site, grid: g, screen, yard } = prep;
   const xs = site.plot.map((p) => p[0]);
   const ys = site.plot.map((p) => p[1]);
-  type Cand = { pl: Placement; score: number; likelyGreen: boolean };
-  const cands: Cand[] = [];
+  const plotM2 = area(site.plot);
+  const step = plotM2 > 3000 ? 1 : 0.5;
+  const hasWorld = !!(prep.vehicle.existing || prep.vehicle.any);
+  const houseMinY = Math.min(...site.house.flatMap((h) => h.outline.map((p) => p[1])));
+  // Zones where a rule exception depends on the position (archaeology from 50 m², safety zones):
+  // spots outside them come first.
+  const zones = site.exclusions
+    .filter((e) => e.state === "depends-on-placement")
+    .filter((e) => e.ruleId !== "ex-archaeology-2227" || size.widthM * size.lengthM >= 50)
+    .flatMap((e) => e.zones ?? []);
+  const zoneMask = new Uint8Array(g.nx * g.ny);
+  for (const zz of zones) rasterize(zz, g, zoneMask);
+  type Cand = { pl: Placement; score: number; zone: CarportZone };
+  const queues: Record<CarportZone, Cand[]> = { back: [], side: [], front: [] };
   for (const rotation of [0, 90] as const) {
     const w = rotation === 0 ? size.widthM : size.lengthM;
     const h = rotation === 0 ? size.lengthM : size.widthM;
-    for (let y = Math.min(...ys) + h / 2; y <= Math.max(...ys) - h / 2 + 1e-9; y += stepM)
-      for (let x = Math.min(...xs) + w / 2; x <= Math.max(...xs) - w / 2 + 1e-9; x += stepM) {
-        // Cells whose centre lies inside the rectangle.
+    const rE = rotation === 0 ? screen.reachExisting.ns : screen.reachExisting.ew;
+    const rA = rotation === 0 ? screen.reachAny.ns : screen.reachAny.ew;
+    for (let y = Math.min(...ys) + h / 2; y <= Math.max(...ys) - h / 2 + 1e-9; y += step)
+      for (let x = Math.min(...xs) + w / 2; x <= Math.max(...xs) - w / 2 + 1e-9; x += step) {
         const i0 = Math.ceil((x - w / 2 - g.minX) / g.cell - 0.5);
         const i1 = Math.floor((x + w / 2 - g.minX) / g.cell - 0.5);
         const j0 = Math.ceil((y - h / 2 - g.minY) / g.cell - 0.5);
         const j1 = Math.floor((y + h / 2 - g.minY) / g.cell - 0.5);
         let ok = true;
-        let reach = Infinity;
+        let reachE = Infinity;
+        let reachA = Infinity;
         let allYard = true;
         let minPub = BIG;
-        let obstacles = 0;
+        let shrubs = 0;
+        let inZone = false;
         for (let j = j0; j <= j1 && ok; j++)
           for (let i = i0; i <= i1; i++) {
             const k = j * g.nx + i;
-            if (!screen.onPlot[k] || screen.solid[k]) {
+            if (!screen.onPlot[k] || screen.solid[k] || screen.obstacle[k] === 2) {
               ok = false;
               break;
             }
-            if (g.dist[k]! < reach) reach = g.dist[k]!;
+            reachE = Math.min(reachE, rE[k]!);
+            reachA = Math.min(reachA, rA[k]!);
             if (!screen.yard[k]) allYard = false;
-            if (screen.publicM[k]! < minPub) minPub = screen.publicM[k]!;
-            obstacles += screen.obstacle[k]!;
+            minPub = Math.min(minPub, screen.publicM[k]!);
+            shrubs += screen.obstacle[k]!;
+            if (zoneMask[k]) inZone = true;
           }
         if (!ok) continue;
-        if (g.hasEntry && !Number.isFinite(reach)) continue; // a car cannot get there
+        const reach = Math.min(reachE, reachA);
+        if (hasWorld && reach === Infinity) continue;
+        const zone: CarportZone = allYard
+          ? "back"
+          : yard.frontLineY !== null
+            ? y + h / 2 <= yard.frontLineY || y + h / 2 <= houseMinY
+              ? "front"
+              : "side"
+            : "side";
         const pubOk = minPub - g.cell > 1;
-        const likelyGreen = allYard && pubOk && Number.isFinite(reach);
         const score =
+          (inZone ? 0 : 1.5e6) +
           (allYard ? 4e6 : 0) +
-          (pubOk ? 2e6 : 0) -
-          obstacles * 1e3 -
-          (Number.isFinite(reach) ? reach * g.cell : 500);
-        cands.push({ pl: { x, y, rotation, ...size }, score, likelyGreen });
+          (pubOk ? 2e6 : 0) +
+          (reachE < Infinity ? 1e6 : 0) -
+          shrubs * 1e3 -
+          (reach < Infinity ? reach : 500);
+        queues[zone].push({ pl: { x, y, rotation, ...size }, score, zone });
       }
   }
-  if (!cands.length) return { best: null, green: [] };
-  // Confirm the most promising positions with the full evaluation.
-  cands.sort((a, b) => b.score - a.score);
-  const rank = { green: 2, amber: 1, red: 0 } as const;
-  let best: Suggestion | null = null;
-  let bestScore = -Infinity;
-  for (const c of cands.slice(0, 25)) {
-    const v = evaluate(prep, c.pl);
-    if (v.feasible === "fail") continue;
-    const routeM = routeTo(g, v.outline);
-    const score =
-      rank[v.colour] * 1e9 - v.checks.filter((x) => x.outcome !== "pass").length * 1e7 + c.score;
-    if (score > bestScore) {
-      bestScore = score;
-      best = { placement: c.pl, verdict: v, routeM };
+  for (const z of ZONE_ORDER) queues[z].sort((a, b) => b.score - a.score);
+  const chosen: { c: Cand; v: CarportVerdict }[] = [];
+  // Options are spread out: no overlap, and centres apart by at least the carport's diagonal or
+  // an eighth of the plot's size, whichever is more.
+  const diag = Math.hypot(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys));
+  const apart = Math.max(Math.hypot(size.widthM, size.lengthM), diag / 8);
+  const clash = (pl: Placement) => {
+    const r = bboxOf(rectangle(pl));
+    return chosen.some(({ c }) => {
+      const o = bboxOf(rectangle(c.pl));
+      const overlap =
+        r.x0 < o.x1 + 0.5 && o.x0 < r.x1 + 0.5 && r.y0 < o.y1 + 0.5 && o.y0 < r.y1 + 0.5;
+      return overlap || Math.hypot(pl.x - c.pl.x, pl.y - c.pl.y) < apart;
+    });
+  };
+  // Full evaluations: at most 240 in all and 40 per zone per turn, so one zone full of spots the
+  // car cannot reach does not use up the search for the others.
+  let budget = 240;
+  // One pick for a zone: among the next spots a car can reach (up to 8 that are not red), a green
+  // one if there is any, else the best-scoring. Spots looked at but not picked go back in line.
+  const next = (z: CarportZone): void => {
+    const q = queues[z];
+    let turn = 40;
+    const seen: { c: Cand; v: CarportVerdict }[] = [];
+    while (q.length && budget > 0 && turn-- > 0 && seen.length < 8) {
+      const c = q.shift()!;
+      if (clash(c.pl)) continue;
+      budget--;
+      const v = evaluate(prep, c.pl);
+      if (v.colour === "red") continue;
+      seen.push({ c, v });
+      if (v.colour === "green") break;
+    }
+    if (!seen.length) return;
+    const pick = seen.find((x) => x.v.colour === "green") ?? seen[0]!;
+    chosen.push(pick);
+    q.unshift(...seen.filter((x) => x !== pick).map((x) => x.c));
+  };
+  // Take turns between zones until enough options or nothing left.
+  while (chosen.length < max && budget > 0 && ZONE_ORDER.some((z) => queues[z].length)) {
+    for (const z of ZONE_ORDER) {
+      if (chosen.length >= max) break;
+      next(z);
     }
   }
-  // Heat: positions the screening finds in the back yard, clear of public area and reachable, and
-  // clear of placement-dependent exclusion zones — shown when nothing independent of position
-  // (area limit, monuments, ...) already rules permit-free out. A guide only: a placed carport is
-  // always fully evaluated.
-  const zones = site.exclusions
-    .filter((e) => e.state === "depends-on-placement")
-    .filter((e) => e.ruleId !== "ex-archaeology-2227" || size.widthM * size.lengthM >= 50)
-    .flatMap((e) => e.zones ?? []);
-  const green =
-    best && !best.verdict.checks.some((c) => POSITION_FREE.includes(c.id) && c.outcome === "fail")
-      ? cands
-          .filter((c) => c.likelyGreen)
-          .filter((c) => !zones.some((z) => overlapM2(z, rectangle(c.pl)) > 0.05))
-          .map((c) => ({ x: c.pl.x, y: c.pl.y, rotation: c.pl.rotation }))
-      : [];
-  return { best, green };
+  const rank = { green: 0, amber: 1, red: 2 } as const;
+  return chosen
+    .sort(
+      (a, b) =>
+        rank[a.v.colour] - rank[b.v.colour] ||
+        ZONE_ORDER.indexOf(a.c.zone) - ZONE_ORDER.indexOf(b.c.zone) ||
+        b.c.score - a.c.score,
+    )
+    .map(({ c, v }, i) => ({ n: i + 1, placement: c.pl, verdict: v, zone: c.zone }));
 }
 
 /** The segment gate: homes where a carport check is not offered on its own. */

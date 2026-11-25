@@ -201,6 +201,8 @@ export interface PlotContext {
   };
   /** Boundary stretches with a road just beyond a pavement or verge (only when no exit is registered). */
   pavementRuns: PavementRun[];
+  /** Like pavementRuns, but computed also when an exit is registered (where a new exit could go). */
+  frontageRuns: PavementRun[];
   /** Other home buildings on the same cadastral parcel (terraces or flats owned by one party). */
   otherHomesOnPlot: number;
   /** Addresses in the house's building; more than 1 means this home is a unit (flat). */
@@ -975,8 +977,8 @@ export async function buildPlotContext(
       lengthM: r.lengthM,
       surface: byId.get(r.otherSide ?? "")?.label ?? "road",
     }));
-  const pavementRuns: PavementRun[] =
-    publicAreas && exits.length === 0
+  const crossings = (): PavementRun[] =>
+    publicAreas
       ? pavementCrossings(
           plot.outline,
           [...publicAreas, ...openGround],
@@ -988,6 +990,9 @@ export async function buildPlotContext(
           ),
         )
       : [];
+  const pavementRuns: PavementRun[] = exits.length === 0 ? crossings() : [];
+  // Where a new exit could be made across the pavement, also when an exit is registered.
+  const frontageRuns: PavementRun[] = exits.length === 0 ? pavementRuns : crossings();
   // A registered crossing reached straight across the pavement: it is this plot's when it faces
   // at least a car's width of the boundary; less than that and it may be the neighbour's.
   const facing = new Map<string, { facingM: number; acrossM: number }>();
@@ -1408,6 +1413,7 @@ export async function buildPlotContext(
     carReachableEdges,
     access,
     pavementRuns,
+    frontageRuns,
     otherHomesOnPlot,
     unitsInHouse,
     structures,

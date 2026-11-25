@@ -1,10 +1,10 @@
 /**
- * Runs the carport engine on every recorded example home (offline): best spot for a single and a
- * double carport, the verdict, what keeps it from green, and how long the search took.
+ * Runs the carport engine on every recorded example home (offline): the numbered options for a
+ * single and a double carport (with the car's routes), what keeps #1 from green, and the time.
  */
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
-import { prepare, RuleSet, suggest, CARPORT_PRESETS, Tracer } from "@vergunbuy/engine";
+import { prepare, RuleSet, options, CARPORT_PRESETS, Tracer } from "@vergunbuy/engine";
 import { buildPlotContext, carportSite, findAddress, fixtureFetch } from "@vergunbuy/data";
 
 const rules = RuleSet.parse(
@@ -70,10 +70,18 @@ for (const run of readdirSync(dir).filter((d) => !d.endsWith(".json"))) {
       }
       const t0 = performance.now();
       const prep = prepare(site);
-      const one = suggest(prep, CARPORT_PRESETS.single);
-      const two = suggest(prep, CARPORT_PRESETS.double);
+      const tPrep = Math.round(performance.now() - t0);
+      const one = options(prep, CARPORT_PRESETS.single);
+      const two = options(prep, CARPORT_PRESETS.double);
       const ms = Math.round(performance.now() - t0);
-      const v = one.best?.verdict;
+      const v = one[0]?.verdict;
+      const list = (o: typeof one) =>
+        o
+          .map(
+            (x) =>
+              `${x.verdict.colour[0]}${x.zone[0]}${x.verdict.access.via === "new-exit" ? "*" : ""}`,
+          )
+          .join(" ") || "–";
       const colour = v?.colour ?? "none";
       tally[colour] = (tally[colour] ?? 0) + 1;
       const notPass = v
@@ -81,7 +89,7 @@ for (const run of readdirSync(dir).filter((d) => !d.endsWith(".json"))) {
         : ["no spot"];
       for (const n of notPass) blockers[n] = (blockers[n] ?? 0) + 1;
       rows.push(
-        `| ${a.label} | ${colour} / ${two.best?.verdict.colour ?? "none"} | ${ms} ms | ${notPass.join(", ")} |`,
+        `| ${a.label} | ${list(one)} | ${list(two)} | ${tPrep} / ${ms} ms | ${notPass.join(", ")} |`,
       );
     } catch (e) {
       rows.push(`| ${f} | error | | ${(e as Error).message} |`);
@@ -91,18 +99,20 @@ for (const run of readdirSync(dir).filter((d) => !d.endsWith(".json"))) {
 const out = [
   `# Carport engine on the recorded example homes`,
   "",
-  `Best single carport per home: ${Object.entries(tally)
+  `Option #1 (single carport) per home: ${Object.entries(tally)
     .map(([k, v]) => `${k} ${v}`)
     .join(", ")}`,
   "",
-  "What keeps the best spot from green (count of homes):",
+  "What keeps option #1 from green (count of homes):",
   "",
   ...Object.entries(blockers)
     .sort((a, b) => b[1] - a[1])
     .map(([k, v]) => `- ${k}: ${v}`),
   "",
-  "| Home | Single / double | Search | Not passing (single) |",
-  "|---|---|---|---|",
+  "Options: colour (g/a) + zone (b back, s side, f front); * = via a new exit.",
+  "",
+  "| Home | Single options | Double options | Prepare / total | Not passing (#1 single) |",
+  "|---|---|---|---|---|",
   ...rows,
 ].join("\n");
 writeFileSync("/tmp/carport-report.md", out);

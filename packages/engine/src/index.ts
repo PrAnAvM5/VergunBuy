@@ -13,3 +13,4 @@ export * from "./rd.ts";
 export * from "./concepts/obstacles.ts";
 export * from "./concepts/legal.ts";
 export * from "./carport.ts";
+export * from "./vehicle.ts";

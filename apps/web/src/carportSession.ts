@@ -1,0 +1,440 @@
+/**
+ * Carport planner state, shared by the "Carport 2D" and "Carport 3D" tabs: the site, the car
+ * (adjustable), the numbered options, the placed carport and its verdict, and the animation.
+ * Also the controls and the verdict panel, which look the same in both tabs.
+ */
+import type { PlotContext } from "@vergunbuy/data";
+import { carportSite } from "@vergunbuy/data";
+import {
+  CARPORT_HEIGHT_M,
+  CARPORT_PRESETS,
+  DEFAULT_VEHICLE,
+  driveOut,
+  evaluate,
+  options,
+  prepare,
+  RuleSet,
+  type CarportCheck,
+  type CarportOption,
+  type CarportSite,
+  type CarportVerdict,
+  type CurrentVersion,
+  type Placement,
+  type Pose,
+  type Prepared,
+  type VehicleParams,
+} from "@vergunbuy/engine";
+import rulesJson from "../../../rulesets/woensdrecht/carport/2026-11-24.json";
+import { esc } from "./format.ts";
+
+export const RULES = RuleSet.parse(rulesJson);
+export const COLOUR = { green: "#2f7d32", amber: "#b26a00", red: "#b3261e" } as const;
+export const ZONE_TEXT = {
+  back: "back yard",
+  side: "beside the house",
+  front: "front yard",
+} as const;
+
+interface Snapshot {
+  takenAt: string;
+  points: { documents: CurrentVersion[]; drafts: CurrentVersion[] }[];
+}
+let snapshot: Promise<Snapshot | null> | undefined;
+function loadSnapshot(): Promise<Snapshot | null> {
+  snapshot ??= fetch(`${import.meta.env.BASE_URL}rules/dso-snapshot.json`)
+    .then((r) => (r.ok ? (r.json() as Promise<Snapshot>) : null))
+    .catch(() => null);
+  return snapshot;
+}
+
+/** Lets the browser paint (a spinner) before heavy work on the main thread. */
+const yieldToPaint = () => new Promise<void>((r) => setTimeout(r, 30));
+
+export type SizeKey = "single" | "double";
+
+export interface Session {
+  ctx: PlotContext;
+  site: CarportSite;
+  prep: Prepared;
+  params: VehicleParams;
+  sizeKey: SizeKey | "custom";
+  size: { widthM: number; lengthM: number };
+  opts: CarportOption[];
+  /** Index into opts of the selected option; null when the carport was moved by hand. */
+  sel: number | null;
+  pl: Placement | null;
+  verdict: CarportVerdict | null;
+  bay: number;
+  busy: string | null;
+  message: { text: string; bad: boolean } | null;
+  listeners: Set<() => void>;
+  /** The animated car's pose, or null when not animating. */
+  moving: Pose | null;
+  anim: number;
+}
+
+const sessions = new WeakMap<PlotContext, Promise<Session | { gate: string }>>();
+
+export function getSession(ctx: PlotContext): Promise<Session | { gate: string }> {
+  let s = sessions.get(ctx);
+  if (!s) {
+    s = build(ctx);
+    sessions.set(ctx, s);
+  }
+  return s;
+}
+
+async function build(ctx: PlotContext): Promise<Session | { gate: string }> {
+  const dsoSnap = await loadSnapshot();
+  const { site, gate } = carportSite(ctx, RULES, {
+    current: dsoSnap
+      ? {
+          inForce: dsoSnap.points.flatMap((p) => p.documents),
+          drafts: dsoSnap.points.flatMap((p) => p.drafts),
+        }
+      : null,
+    checkedAt: dsoSnap?.takenAt ?? null,
+    source: dsoSnap ? "snapshot" : "none",
+  });
+  if (!site) return { gate: gate ?? "No carport check for this home." };
+  await yieldToPaint();
+  const prep = prepare(site, DEFAULT_VEHICLE);
+  const s: Session = {
+    ctx,
+    site,
+    prep,
+    params: { ...DEFAULT_VEHICLE },
+    sizeKey: "single",
+    size: { ...CARPORT_PRESETS.single },
+    opts: [],
+    sel: null,
+    pl: null,
+    verdict: null,
+    bay: 0,
+    busy: null,
+    message: null,
+    listeners: new Set(),
+    moving: null,
+    anim: 0,
+  };
+  refreshOptions(s);
+  return s;
+}
+
+function refreshOptions(s: Session): void {
+  s.opts = options(s.prep, s.size);
+  select(s, s.opts.length ? 0 : null, false);
+  if (!s.opts.length) {
+    // Nothing to offer: still put a carport in the garden, so the user can drag it and see why.
+    const xs = s.site.plot.map((p) => p[0]);
+    const ys = s.site.plot.map((p) => p[1]);
+    const pl: Placement = {
+      x: (Math.min(...xs) + Math.max(...xs)) / 2,
+      y: Math.max(...ys) - s.size.lengthM / 2 - 1,
+      rotation: 0,
+      ...s.size,
+    };
+    s.pl = pl;
+    s.verdict = evaluate(s.prep, pl);
+    s.message = {
+      text: "No good spot found for this size: drag the carport to see what stands in the way.",
+      bad: true,
+    };
+  }
+}
+
+export function notify(s: Session): void {
+  for (const l of s.listeners) l();
+}
+
+export function select(s: Session, i: number | null, tell = true): void {
+  stopAnim(s);
+  s.sel = i;
+  s.bay = 0;
+  s.message = null;
+  const o = i === null ? undefined : s.opts[i];
+  s.pl = o ? o.placement : null;
+  s.verdict = o ? o.verdict : null;
+  if (tell) notify(s);
+}
+
+/** The carport moved or resized by hand. */
+export function place(s: Session, pl: Placement): void {
+  stopAnim(s);
+  s.pl = pl;
+  s.sel = null;
+  s.message = null;
+  s.verdict = evaluate(s.prep, pl);
+  if (s.bay >= s.verdict.access.bays.length) s.bay = 0;
+  notify(s);
+}
+
+export async function setSize(s: Session, key: SizeKey): Promise<void> {
+  s.sizeKey = key;
+  s.size = { ...CARPORT_PRESETS[key] };
+  s.busy = "Finding good spots…";
+  notify(s);
+  await yieldToPaint();
+  refreshOptions(s);
+  s.busy = null;
+  notify(s);
+}
+
+export async function setCar(s: Session, params: VehicleParams): Promise<void> {
+  s.params = params;
+  s.busy = "Recomputing every route for this car…";
+  notify(s);
+  await yieldToPaint();
+  const custom = s.sel === null ? s.pl : null;
+  s.prep = prepare(s.site, params);
+  refreshOptions(s);
+  if (custom) place(s, custom);
+  s.busy = null;
+  notify(s);
+}
+
+// ---------------------------------------------------------------------------------------------
+// Animation: drive in along the planned route, drive out (reversing, turning where possible)
+// ---------------------------------------------------------------------------------------------
+
+export function stopAnim(s: Session): void {
+  if (s.anim) cancelAnimationFrame(s.anim);
+  s.anim = 0;
+  s.moving = null;
+}
+
+const reduceMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+
+export function play(s: Session, mode: "in" | "out"): void {
+  stopAnim(s);
+  const v = s.verdict;
+  const B = v?.access.bays[s.bay];
+  const other = (v?.access.bays.length ?? 0) > 1 ? ` with bay ${2 - s.bay} occupied` : "";
+  if (!v || !B?.route) {
+    s.message = {
+      text: !v
+        ? "Place a carport first."
+        : !s.prep.vehicle.existing && !s.prep.vehicle.any
+          ? "No way in for a car is known on this plot (no registered exit and no road along it), so there is no route to show."
+          : !v.access.fit.fits
+            ? "The car does not fit in this carport."
+            : "No route: the car cannot reach this spot with its turning circle and clearance.",
+      bad: true,
+    };
+    notify(s);
+    return;
+  }
+  let poses: Pose[];
+  let text: string;
+  if (mode === "in") {
+    poses = B.route.poses;
+    text = `In: from the street ${B.route.how}${other}.`;
+  } else {
+    const out = driveOut(v.access, s.bay);
+    poses = out ? out.poses : [...B.route.poses].reverse().map((p) => ({ ...p, rev: true }));
+    text = `Out: ${out ? out.text : "reverses all the way back along the way in"}${other}.`;
+  }
+  const cum = [0];
+  for (let i = 1; i < poses.length; i++)
+    cum.push(
+      cum[i - 1]! + Math.hypot(poses[i]!.x - poses[i - 1]!.x, poses[i]!.y - poses[i - 1]!.y) + 1e-6,
+    );
+  const total = cum[cum.length - 1]!;
+  const at = (d: number): Pose => {
+    let lo = 0;
+    let hi = cum.length - 1;
+    while (hi - lo > 1) {
+      const m = (lo + hi) >> 1;
+      if (cum[m]! <= d) lo = m;
+      else hi = m;
+    }
+    const f = (d - cum[lo]!) / (cum[hi]! - cum[lo]! || 1);
+    const a = poses[lo]!;
+    const b = poses[hi]!;
+    let da = (b.a - a.a) % (2 * Math.PI);
+    if (da > Math.PI) da -= 2 * Math.PI;
+    if (da < -Math.PI) da += 2 * Math.PI;
+    return {
+      x: a.x + (b.x - a.x) * f,
+      y: a.y + (b.y - a.y) * f,
+      a: a.a + da * f,
+      ...(a.rev ? { rev: true } : {}),
+    };
+  };
+  const finish = () => {
+    s.anim = 0;
+    s.moving = mode === "out" ? at(total) : null;
+    s.message = { text, bad: false };
+    notify(s);
+  };
+  if (reduceMotion() || total < 0.1) {
+    finish();
+    return;
+  }
+  // About 3 m/s forwards, slower when reversing.
+  s.message = { text: mode === "in" ? `Driving in${other}…` : `Leaving${other}…`, bad: false };
+  const start = performance.now();
+  let last = start;
+  let d = 0;
+  const step = (now: number) => {
+    const p = at(d);
+    d += ((now - last) / 1000) * (p.rev ? 2 : 3.5);
+    last = now;
+    if (d >= total) {
+      finish();
+      return;
+    }
+    s.moving = at(d);
+    notify(s);
+    s.anim = requestAnimationFrame(step);
+  };
+  s.anim = requestAnimationFrame(step);
+  notify(s);
+}
+
+// ---------------------------------------------------------------------------------------------
+// Controls and verdict (same in both tabs)
+// ---------------------------------------------------------------------------------------------
+
+export const fmtM = (v: number) => (Math.round(v * 10) / 10).toString().replace(".", ",");
+
+const STATUS_TEXT = (v: CarportVerdict) =>
+  v.colour === "green"
+    ? "permit-free"
+    : v.access.via === "new-exit"
+      ? "new exit"
+      : v.checks.some((c) => c.group === "permit-free" && c.outcome === "fail")
+        ? "needs a permit"
+        : "needs a check";
+
+export function controlsHtml(s: Session): string {
+  const car = s.prep.vehicle.car;
+  const bays = s.verdict?.access.bays.length ?? 0;
+  return `
+    <div class="cp-tools">
+      <span class="cp-lbl">Carport</span>
+      <button data-size="single" class="btn small" aria-pressed="${s.sizeKey === "single"}">Single 3 × 5 m</button>
+      <button data-size="double" class="btn small" aria-pressed="${s.sizeKey === "double"}">Double 6 × 5 m</button>
+      <button data-act="rotate" class="btn small">Rotate</button>
+      <span class="small muted">${s.pl ? `${fmtM(s.pl.widthM)} × ${fmtM(s.pl.lengthM)} m, ${fmtM(CARPORT_HEIGHT_M)} m high` : ""}</span>
+    </div>
+    <div class="cp-tools cp-opts">
+      <span class="cp-lbl">Good spots</span>
+      ${
+        s.opts.length
+          ? s.opts
+              .map(
+                (o, i) =>
+                  `<button class="optbtn" data-opt="${i}" aria-pressed="${s.sel === i}"><span class="dot" style="background:${COLOUR[o.verdict.colour]}"></span>#${o.n} ${esc(ZONE_TEXT[o.zone])} · ${esc(STATUS_TEXT(o.verdict))}</button>`,
+              )
+              .join("")
+          : `<span class="small muted">No spot on this plot where a car can get to a carport of this size without felling a tree.</span>`
+      }
+    </div>
+    <div class="cp-tools">
+      <span class="cp-lbl">Car</span>
+      ${bays > 1 ? `<span class="small">Bay</span><button class="btn small" data-bay="0" aria-pressed="${s.bay === 0}">1</button><button class="btn small" data-bay="1" aria-pressed="${s.bay === 1}">2</button>` : ""}
+      <button class="btn small primary" data-act="in">▶ Drive in</button>
+      <button class="btn small" data-act="out">◀ Drive out</button>
+      <details class="cp-car"><summary>Car size and turning circle</summary>
+        <div class="cp-car-grid">
+          <label>Width (m) <input type="number" step="0.1" min="1.4" max="2.6" data-car="widthM" value="${s.params.widthM}"></label>
+          <label>Length (m) <input type="number" step="0.1" min="3" max="6.5" data-car="lengthM" value="${s.params.lengthM}"></label>
+          <label>Turning circle, outer corner (m) <input type="number" step="0.1" min="4.5" max="9" data-car="outerRadiusM" value="${s.params.outerRadiusM}"></label>
+          <label>Clearance (m) <input type="number" step="0.1" min="0" max="1.5" data-car="clearanceM" value="${s.params.clearanceM}"></label>
+        </div>
+        <div class="small muted">The rear axle then turns on a ${fmtM(car.rt)} m radius. Clearance is kept free all round the car, from walls, buildings, carport posts and trees (2.5 m and higher, the whole crown). Hedges, shrubs and lawn may be driven over. <button class="linkbtn" data-act="car-reset">Standard car</button></div>
+      </details>
+      <span class="small cp-msg ${s.message?.bad ? "bad" : ""}">${esc(s.message?.text ?? "")}</span>
+    </div>
+    ${s.busy ? `<div class="cp-busy"><div class="spinner"></div>${esc(s.busy)}</div>` : ""}`;
+}
+
+export function bindControls(root: HTMLElement, s: Session): void {
+  root
+    .querySelectorAll<HTMLButtonElement>("[data-size]")
+    .forEach((b) => b.addEventListener("click", () => void setSize(s, b.dataset.size as SizeKey)));
+  root
+    .querySelectorAll<HTMLButtonElement>("[data-opt]")
+    .forEach((b) => b.addEventListener("click", () => select(s, Number(b.dataset.opt))));
+  root.querySelectorAll<HTMLButtonElement>("[data-bay]").forEach((b) =>
+    b.addEventListener("click", () => {
+      stopAnim(s);
+      s.bay = Number(b.dataset.bay);
+      s.message = null;
+      notify(s);
+    }),
+  );
+  root.querySelector('[data-act="rotate"]')?.addEventListener("click", () => {
+    if (s.pl) place(s, { ...s.pl, rotation: s.pl.rotation === 0 ? 90 : 0 });
+  });
+  root.querySelector('[data-act="in"]')?.addEventListener("click", () => play(s, "in"));
+  root.querySelector('[data-act="out"]')?.addEventListener("click", () => play(s, "out"));
+  root.querySelector('[data-act="car-reset"]')?.addEventListener("click", (e) => {
+    e.preventDefault();
+    void setCar(s, { ...DEFAULT_VEHICLE });
+  });
+  root.querySelectorAll<HTMLInputElement>("[data-car]").forEach((inp) =>
+    inp.addEventListener("change", () => {
+      const v = Number(inp.value.replace(",", "."));
+      const key = inp.dataset.car as keyof VehicleParams;
+      if (!Number.isFinite(v)) return;
+      const lim = {
+        widthM: [1.4, 2.6],
+        lengthM: [3, 6.5],
+        outerRadiusM: [4.5, 9],
+        clearanceM: [0, 1.5],
+      }[key];
+      const next = { ...s.params, [key]: Math.min(lim[1]!, Math.max(lim[0]!, v)) };
+      if (next.outerRadiusM < next.lengthM * 0.8 + 0.5)
+        next.outerRadiusM = next.lengthM * 0.8 + 0.5;
+      void setCar(s, next);
+    }),
+  );
+  // Keep the car settings open across re-renders.
+  const det = root.querySelector<HTMLDetailsElement>(".cp-car");
+  if (det) {
+    det.open = carOpen;
+    det.addEventListener("toggle", () => (carOpen = det.open));
+  }
+}
+let carOpen = false;
+
+const GROUPS: [CarportCheck["group"], string][] = [
+  ["feasible", "Can it stand here, and can the car get in?"],
+  ["permit-free", "Permit-free (omgevingsplan art. 22.27)"],
+  ["allowed-by-law", "Allowed regardless of the old zoning plan (art. 22.36)"],
+  ["exclusion", "Exceptions (art. 22.28, 22.38, 22.39)"],
+  ["technical", "Technical building rules (Bbl 2.25)"],
+  ["freshness", "Rules up to date"],
+];
+const ICON = { pass: "✓", fail: "✕", unknown: "?" } as const;
+
+export function verdictHtml(s: Session): string {
+  const v = s.verdict;
+  if (!v)
+    return `<div class="cp-headline" style="border-color:${COLOUR.red}"><b style="color:${COLOUR.red}">No spot found</b><div class="small">There is no place on this plot where a ${fmtM(s.size.widthM)} × ${fmtM(s.size.lengthM)} m carport fits clear of buildings and trees and a car can drive in.</div></div>`;
+  const col = COLOUR[v.colour];
+  const o = s.sel !== null ? s.opts[s.sel] : undefined;
+  const route = v.access.bays[s.bay]?.route;
+  const groups = GROUPS.map(([g, title]) => {
+    const list = v.checks.filter((c) => c.group === g);
+    if (!list.length) return "";
+    return `<div class="cp-group"><h4>${esc(title)}</h4>${list
+      .map((c) => {
+        const rule = c.ruleId ? RULES.rules.find((r) => r.id === c.ruleId) : undefined;
+        const doc = rule ? RULES.documents[rule.document] : undefined;
+        return `<div class="cp-check ${c.outcome}"><span class="cp-icon">${ICON[c.outcome]}</span><div><div>${esc(c.label)}</div><div class="small muted">${esc(c.detail)}</div>${
+          rule && doc
+            ? `<details class="small"><summary>${esc(doc.title)}, art. ${esc(rule.article)}</summary><blockquote lang="nl">"${esc(rule.quote)}"</blockquote><div class="muted">${esc(rule.plain)} Verified ${esc(doc.verifiedOn)} against ${esc(doc.verifiedExpressionId.split("/").pop() ?? "")}.</div></details>`
+            : ""
+        }</div></div>`;
+      })
+      .join("")}</div>`;
+  }).join("");
+  return `<div class="cp-headline" style="border-color:${col}">
+      <b style="color:${col}">${o ? `#${o.n} · ` : ""}${esc(v.headline)}</b>
+      ${route ? `<div class="small">Car route: in from the street ${esc(route.how)}, about ${Math.round(route.lengthM)} m. Press “Drive out” to see how it leaves.</div>` : ""}
+      ${v.warnings.map((w) => `<div class="small cp-warn">⚠ ${esc(w.text)}</div>`).join("")}
+    </div>${groups}`;
+}
