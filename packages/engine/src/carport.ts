@@ -158,6 +158,8 @@ export interface BackYard {
 }
 
 const BIG = 1e4;
+/** Shortest street-facing wall that counts as (part of) the front façade. */
+export const FACADE_MIN_M = 1.5;
 const box = (minX: number, minY: number, maxX: number, maxY: number): Polygon => [
   [minX, minY],
   [maxX, minY],
@@ -172,8 +174,9 @@ const box = (minX: number, minY: number, maxX: number, maxY: number): Polygon =>
  * het hoofdgebouw te komen".
  *
  * Construction (conservative where the definition leaves room):
- *  - the voorkant is the street-facing façade visible from the street; when it is stepped, the
- *    deepest visible part is used, so the line never lies further forward than the law allows;
+ *  - the voorkant is the street-facing façade visible from the street (walls of at least 1.5 m;
+ *    smaller jogs are not a façade); when it is stepped, the deepest visible part is used, so the
+ *    line never lies further forward than the law allows;
  *  - the line runs parallel to the street, across the whole plot;
  *  - on a corner plot, the strip between the house and a public side is left out entirely.
  */
@@ -185,6 +188,8 @@ export function backYard(site: CarportSite): BackYard {
     for (const [a, b] of edges(h)) {
       const n = outwardNormal(h, a, b);
       if (n[1] > -0.5) continue; // not facing the street
+      // Small jogs in a wall (under 1.5 m) are not a façade.
+      if (Math.abs(b[0] - a[0]) < FACADE_MIN_M) continue;
       const mid: Point = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
       // Visible from the street: nothing of the house lies straight in front of it.
       const probe: Point = [mid[0], mid[1] - 0.05];
@@ -259,17 +264,28 @@ export function routeGrid(site: CarportSite, ignore: Polygon[] = []): RouteGrid 
     ...site.buildings.map((b) => b.outline),
     ...site.structures.filter((s) => s.roofed).map((s) => s.outline),
   ].filter((p) => !ignore.includes(p));
-  const entryBand = (p: Point) =>
-    site.access.entries.some(([a, b]) => distanceToSegment(p, a, b) <= 3);
+  const gridDims = { minX, minY, nx, ny, cell };
+  const plotMask = new Uint8Array(nx * ny);
+  rasterize(site.plot, gridDims, plotMask);
+  const solidMask = new Uint8Array(nx * ny);
+  for (const x of solid) rasterize(x, gridDims, solidMask);
   const isEntry = new Uint8Array(nx * ny);
-  for (let j = 0; j < ny; j++)
-    for (let i = 0; i < nx; i++) {
-      const p: Point = [minX + (i + 0.5) * cell, minY + (j + 0.5) * cell];
-      const onPlot = contains(site.plot, p);
-      const free = onPlot ? !solid.some((s) => contains(s, p)) : entryBand(p);
-      blocked[j * nx + i] = free ? 0 : 1;
-      if (!onPlot && free) isEntry[j * nx + i] = 1;
-    }
+  // The band just outside each entry stretch (up to 3 m out), where a car comes from the road.
+  for (const [a, b] of site.access.entries) {
+    const i0 = Math.max(0, Math.floor((Math.min(a[0], b[0]) - 3 - minX) / cell));
+    const i1 = Math.min(nx - 1, Math.ceil((Math.max(a[0], b[0]) + 3 - minX) / cell));
+    const j0 = Math.max(0, Math.floor((Math.min(a[1], b[1]) - 3 - minY) / cell));
+    const j1 = Math.min(ny - 1, Math.ceil((Math.max(a[1], b[1]) + 3 - minY) / cell));
+    for (let j = j0; j <= j1; j++)
+      for (let i = i0; i <= i1; i++) {
+        const k = j * nx + i;
+        if (plotMask[k]) continue;
+        const p: Point = [minX + (i + 0.5) * cell, minY + (j + 0.5) * cell];
+        if (distanceToSegment(p, a, b) <= 3) isEntry[k] = 1;
+      }
+  }
+  for (let k = 0; k < nx * ny; k++)
+    blocked[k] = (plotMask[k] ? !solidMask[k] : isEntry[k] === 1) ? 0 : 1;
   // Distance to the nearest blocked cell (two-pass chamfer, in metres).
   const d = new Float32Array(nx * ny).fill(BIG);
   for (let k = 0; k < nx * ny; k++) if (blocked[k]) d[k] = 0;
@@ -351,6 +367,15 @@ export interface Prepared {
   site: CarportSite;
   yard: BackYard;
   grid: RouteGrid;
+  /** Per route-grid cell, for fast screening of many positions (confirmed by evaluate()). */
+  screen: {
+    onPlot: Uint8Array;
+    solid: Uint8Array;
+    yard: Uint8Array;
+    obstacle: Uint8Array;
+    /** Distance (m) to the nearest public-area cell. */
+    publicM: Float32Array;
+  };
   /** Annex area already standing in the back yard (sheds, garages, roofed canopies). */
   existingAnnexM2: number;
   yardM2: number;
@@ -370,10 +395,105 @@ export function prepare(site: CarportSite): Prepared {
     site,
     yard,
     grid,
+    screen: screening(site, yard, grid),
     existingAnnexM2,
     yardM2: regionArea(yard.region),
     houseM2: site.house.reduce((s, h) => s + area(h.outline), 0),
   };
+}
+
+/**
+ * Marks (value 1) or clears (value 0) the grid cells whose centre lies inside a polygon, by
+ * scanline: per row, the crossings with the polygon's edges are sorted and filled in pairs.
+ */
+function rasterize(
+  poly: Polygon,
+  g: { minX: number; minY: number; nx: number; ny: number; cell: number },
+  out: Uint8Array,
+  value: 0 | 1 = 1,
+): void {
+  const ys = poly.map((p) => p[1]);
+  const j0 = Math.max(0, Math.ceil((Math.min(...ys) - g.minY) / g.cell - 0.5));
+  const j1 = Math.min(g.ny - 1, Math.floor((Math.max(...ys) - g.minY) / g.cell - 0.5));
+  const xsAt: number[] = [];
+  for (let j = j0; j <= j1; j++) {
+    const y = g.minY + (j + 0.5) * g.cell;
+    xsAt.length = 0;
+    for (let e = 0; e < poly.length; e++) {
+      const a = poly[e]!;
+      const b = poly[(e + 1) % poly.length]!;
+      if (a[1] > y !== b[1] > y) xsAt.push(a[0] + ((y - a[1]) * (b[0] - a[0])) / (b[1] - a[1]));
+    }
+    xsAt.sort((u, v) => u - v);
+    for (let q = 0; q + 1 < xsAt.length; q += 2) {
+      const i0 = Math.max(0, Math.ceil((xsAt[q]! - g.minX) / g.cell - 0.5));
+      const i1 = Math.min(g.nx - 1, Math.floor((xsAt[q + 1]! - g.minX) / g.cell - 0.5));
+      for (let i = i0; i <= i1; i++) out[j * g.nx + i] = value;
+    }
+  }
+}
+
+function bboxOf(poly: Polygon) {
+  const xs = poly.map((p) => p[0]);
+  const ys = poly.map((p) => p[1]);
+  return { x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) };
+}
+
+function screening(site: CarportSite, yard: BackYard, g: RouteGrid): Prepared["screen"] {
+  const n = g.nx * g.ny;
+  const onPlot = new Uint8Array(n);
+  const solid = new Uint8Array(n);
+  const inYard = new Uint8Array(n);
+  const obstacle = new Uint8Array(n);
+  const pub = new Uint8Array(n);
+  rasterize(site.plot, g, onPlot);
+  for (const x of [...site.house.map((h) => h.outline), ...site.buildings.map((b) => b.outline)])
+    rasterize(x, g, solid);
+  for (const part of yard.region) {
+    rasterize(part.outer, g, inYard);
+    for (const hole of part.holes) rasterize(hole, g, inYard, 0);
+  }
+  for (const a of site.publicAreas ?? []) rasterize(a, g, pub);
+  for (const c of site.obstacles?.cells ?? []) {
+    if (c.heightM < 1) continue;
+    const i = Math.floor((c.at[0] - g.minX) / g.cell);
+    const j = Math.floor((c.at[1] - g.minY) / g.cell);
+    const r = Math.max(0, Math.round((site.obstacles!.cellM / g.cell - 1) / 2));
+    for (let dj = -r; dj <= r; dj++)
+      for (let di = -r; di <= r; di++) {
+        const ii = i + di;
+        const jj = j + dj;
+        if (ii >= 0 && jj >= 0 && ii < g.nx && jj < g.ny) obstacle[jj * g.nx + ii] = 1;
+      }
+  }
+  // Distance to public area, by breadth-first growth (city-block, an under-estimate: safe).
+  const publicM = new Float32Array(n).fill(BIG);
+  const queue: number[] = [];
+  for (let k = 0; k < n; k++)
+    if (pub[k]) {
+      publicM[k] = 0;
+      queue.push(k);
+    }
+  for (let qi = 0; qi < queue.length; qi++) {
+    const k = queue[qi]!;
+    const i = k % g.nx;
+    const j = (k - i) / g.nx;
+    for (const [di, dj] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ] as const) {
+      const ii = i + di;
+      const jj = j + dj;
+      if (ii < 0 || jj < 0 || ii >= g.nx || jj >= g.ny) continue;
+      const kk = jj * g.nx + ii;
+      if (publicM[kk]! <= publicM[k]! + g.cell) continue;
+      publicM[kk] = publicM[k]! + g.cell;
+      queue.push(kk);
+    }
+  }
+  return { onPlot, solid, yard: inYard, obstacle, publicM };
 }
 
 const overlapM2 = (a: Polygon, b: Polygon) => {
@@ -520,9 +640,12 @@ export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
   });
   let publicD: number | null = null;
   if (site.publicAreas) {
-    publicD = site.publicAreas.length
-      ? Math.min(...site.publicAreas.map((a) => distanceBetween(a, r)))
-      : Infinity;
+    const rb = bboxOf(r);
+    const nearby = site.publicAreas.filter((a) => {
+      const b = bboxOf(a);
+      return b.x0 <= rb.x1 + 20 && b.x1 >= rb.x0 - 20 && b.y0 <= rb.y1 + 20 && b.y1 >= rb.y0 - 20;
+    });
+    publicD = nearby.length ? Math.min(...nearby.map((a) => distanceBetween(a, r))) : Infinity;
   }
   add({
     id: "public-distance",
@@ -741,44 +864,83 @@ export interface Suggestion {
 export function suggest(
   prep: Prepared,
   size: { widthM: number; lengthM: number },
-  stepM?: number,
+  stepM = 0.5,
 ): { best: Suggestion | null; green: { x: number; y: number; rotation: 0 | 90 }[] } {
-  const xs = prep.site.plot.map((p) => p[0]);
-  const ys = prep.site.plot.map((p) => p[1]);
-  // 0.5 m steps, coarser on very large plots so a search stays around 2,500 spots per orientation.
-  const spanM2 = (Math.max(...xs) - Math.min(...xs)) * (Math.max(...ys) - Math.min(...ys));
-  const step = stepM ?? Math.max(0.5, Math.round(Math.sqrt(spanM2 / 2500) * 2) / 2);
-  const green: { x: number; y: number; rotation: 0 | 90 }[] = [];
-  let best: Suggestion | null = null;
-  let bestScore = -Infinity;
-  const rank = { green: 2, amber: 1, red: 0 } as const;
+  const { site, grid: g, screen } = prep;
+  const xs = site.plot.map((p) => p[0]);
+  const ys = site.plot.map((p) => p[1]);
+  type Cand = { pl: Placement; score: number; likelyGreen: boolean };
+  const cands: Cand[] = [];
   for (const rotation of [0, 90] as const) {
     const w = rotation === 0 ? size.widthM : size.lengthM;
     const h = rotation === 0 ? size.lengthM : size.widthM;
-    for (let y = Math.min(...ys) + h / 2; y <= Math.max(...ys) - h / 2 + 1e-9; y += step)
-      for (let x = Math.min(...xs) + w / 2; x <= Math.max(...xs) - w / 2 + 1e-9; x += step) {
-        const pl: Placement = { x, y, rotation, ...size };
-        const r = rectangle(pl);
-        // Cheap filters before the full evaluation.
-        if (!r.every((p) => contains(prep.site.plot, p))) continue;
-        if (prep.site.house.some((hh) => overlapM2(hh.outline, r) > 0.05)) continue;
-        if (prep.site.buildings.some((b) => overlapM2(b.outline, r) > 0.05)) continue;
-        const routeM = routeTo(prep.grid, r);
-        if (routeM === null && prep.grid.hasEntry) continue;
-        const v = evaluate(prep, pl);
-        if (v.colour === "green") green.push({ x, y, rotation });
-        if (v.feasible === "fail") continue;
+    for (let y = Math.min(...ys) + h / 2; y <= Math.max(...ys) - h / 2 + 1e-9; y += stepM)
+      for (let x = Math.min(...xs) + w / 2; x <= Math.max(...xs) - w / 2 + 1e-9; x += stepM) {
+        // Cells whose centre lies inside the rectangle.
+        const i0 = Math.ceil((x - w / 2 - g.minX) / g.cell - 0.5);
+        const i1 = Math.floor((x + w / 2 - g.minX) / g.cell - 0.5);
+        const j0 = Math.ceil((y - h / 2 - g.minY) / g.cell - 0.5);
+        const j1 = Math.floor((y + h / 2 - g.minY) / g.cell - 0.5);
+        let ok = true;
+        let reach = Infinity;
+        let allYard = true;
+        let minPub = BIG;
+        let obstacles = 0;
+        for (let j = j0; j <= j1 && ok; j++)
+          for (let i = i0; i <= i1; i++) {
+            const k = j * g.nx + i;
+            if (!screen.onPlot[k] || screen.solid[k]) {
+              ok = false;
+              break;
+            }
+            if (g.dist[k]! < reach) reach = g.dist[k]!;
+            if (!screen.yard[k]) allYard = false;
+            if (screen.publicM[k]! < minPub) minPub = screen.publicM[k]!;
+            obstacles += screen.obstacle[k]!;
+          }
+        if (!ok) continue;
+        if (g.hasEntry && !Number.isFinite(reach)) continue; // a car cannot get there
+        const pubOk = minPub - g.cell > 1;
+        const likelyGreen = allYard && pubOk && Number.isFinite(reach);
         const score =
-          rank[v.colour] * 1e6 -
-          v.warnings.filter((x) => x.id === "obstacle").length * 1e4 -
-          v.checks.filter((c) => c.outcome !== "pass").length * 1e3 -
-          (routeM ?? 500);
-        if (score > bestScore) {
-          bestScore = score;
-          best = { placement: pl, verdict: v, routeM };
-        }
+          (allYard ? 4e6 : 0) +
+          (pubOk ? 2e6 : 0) -
+          obstacles * 1e3 -
+          (Number.isFinite(reach) ? reach * g.cell : 500);
+        cands.push({ pl: { x, y, rotation, ...size }, score, likelyGreen });
       }
   }
+  if (!cands.length) return { best: null, green: [] };
+  // Confirm the most promising positions with the full evaluation.
+  cands.sort((a, b) => b.score - a.score);
+  const rank = { green: 2, amber: 1, red: 0 } as const;
+  let best: Suggestion | null = null;
+  let bestScore = -Infinity;
+  for (const c of cands.slice(0, 25)) {
+    const v = evaluate(prep, c.pl);
+    if (v.feasible === "fail") continue;
+    const routeM = routeTo(g, v.outline);
+    const score =
+      rank[v.colour] * 1e9 - v.checks.filter((x) => x.outcome !== "pass").length * 1e7 + c.score;
+    if (score > bestScore) {
+      bestScore = score;
+      best = { placement: c.pl, verdict: v, routeM };
+    }
+  }
+  // Heat: positions the screening finds in the back yard, clear of public area, reachable, and
+  // — when the best spot is green, so everything independent of position passes — clear of
+  // placement-dependent exclusion zones. A guide only: a placed carport is always fully evaluated.
+  const zones = site.exclusions
+    .filter((e) => e.state === "depends-on-placement")
+    .filter((e) => e.ruleId !== "ex-archaeology-2227" || size.widthM * size.lengthM >= 50)
+    .flatMap((e) => e.zones ?? []);
+  const green =
+    best?.verdict.colour === "green"
+      ? cands
+          .filter((c) => c.likelyGreen)
+          .filter((c) => !zones.some((z) => overlapM2(z, rectangle(c.pl)) > 0.05))
+          .map((c) => ({ x: c.pl.x, y: c.pl.y, rotation: c.pl.rotation }))
+      : [];
   return { best, green };
 }
 

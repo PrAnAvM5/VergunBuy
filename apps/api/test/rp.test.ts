@@ -118,4 +118,17 @@ describe("old zoning plans (Ruimtelijke Plannen)", () => {
     const res = await app.request("/api/rp/zoning", { method: "POST", body: "{}" });
     expect(res.status).toBe(400);
   });
+
+  it("waits and retries when the API says too many requests", async () => {
+    let calls = 0;
+    const fetchFn: typeof fetch = async () => {
+      calls++;
+      if (calls < 3) return new Response("Too Many Requests", { status: 429 });
+      return new Response(JSON.stringify({ _embedded: { plannen: [] } }));
+    };
+    const rp = createRp({ key: KEY, fetchFn, retryBaseMs: 1 });
+    const r = (await rp.zoningForPlot(ring as [number, number][])) as { complete: boolean };
+    expect(calls).toBe(3);
+    expect(r.complete).toBe(true);
+  });
 });

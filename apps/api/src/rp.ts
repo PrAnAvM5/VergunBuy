@@ -24,6 +24,9 @@ export interface RpConfig {
   fetchFn?: typeof fetch;
   timeoutMs?: number;
   cacheMs?: number;
+  /** Retries after "too many requests" (429) or 503; waits retryBaseMs × 2^attempt. */
+  retries?: number;
+  retryBaseMs?: number;
 }
 
 export class RpNotConfigured extends Error {
@@ -103,7 +106,12 @@ export function createRp(cfg: RpConfig) {
   const cacheMs = cfg.cacheMs ?? 24 * 3600_000;
   const cache = new Map<string, { at: number; value: unknown }>();
 
-  async function post(path: string, body: unknown) {
+  /** One request; on "too many requests" or a temporary failure, waits and tries again. */
+  async function post(
+    path: string,
+    body: unknown,
+    attempt = 0,
+  ): Promise<{ status: number | null; body: unknown }> {
     if (!cfg.key) throw new RpNotConfigured();
     const res = await fetchFn(BASE + path, {
       method: "POST",
@@ -117,6 +125,15 @@ export function createRp(cfg: RpConfig) {
       body: JSON.stringify(body),
       signal: AbortSignal.timeout(cfg.timeoutMs ?? 20000),
     }).catch(() => null);
+    if ((!res || res.status === 429 || res.status === 503) && attempt < (cfg.retries ?? 4)) {
+      const after = Number(res?.headers.get("retry-after"));
+      const waitMs =
+        Number.isFinite(after) && after > 0
+          ? Math.min(after, 10) * 1000
+          : (cfg.retryBaseMs ?? 800) * 2 ** attempt;
+      await new Promise((r) => setTimeout(r, waitMs));
+      return post(path, body, attempt + 1);
+    }
     if (!res) return { status: null, body: null };
     const text = await res.text();
     let parsed: unknown = null;
@@ -189,8 +206,8 @@ export function createRp(cfg: RpConfig) {
       const objects: ZoningObject[] = [];
       let complete = plans.complete;
       const errors: unknown[] = plans.complete ? [] : [plans.error];
-      // Plans and object kinds read 6 at a time (pages of one kind in sequence).
-      const limit = pool(6);
+      // Plans and object kinds read 3 at a time (pages of one kind in sequence).
+      const limit = pool(3);
       const results = await Promise.all(
         planList.flatMap((p) =>
           OBJECT_KINDS.map((kind) =>
