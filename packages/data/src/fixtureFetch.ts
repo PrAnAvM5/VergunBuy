@@ -20,6 +20,10 @@ export function fixtureKey(url: URL): string | undefined {
     return "vergunbuy/rp-zoning";
   if (url.hostname === "vergunbuy-inky.vercel.app" && url.pathname === "/api/permits")
     return "vergunbuy/permits";
+  if (url.hostname === "vergunbuy-inky.vercel.app" && url.pathname === "/api/ahn/echoes")
+    return "vergunbuy/ahn-echoes";
+  if (url.hostname === "service.pdok.nl" && url.pathname.includes("/luchtfotocir/"))
+    return `cir/${url.searchParams.get("layers") ?? "?"}`;
   const rce = /\/rce\/[^/]+\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(url.pathname);
   if (rce) return `rce/${rce[1]}`;
   const m = /\/kadaster\/(bag|bgt|brk)[^/]*\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(

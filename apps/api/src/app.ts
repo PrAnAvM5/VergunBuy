@@ -87,6 +87,8 @@ export function createApp(deps: AppDeps) {
           error: {
             code: "UPSTREAM_UNAVAILABLE",
             message: "The laser point cloud could not be read right now.",
+            // Upstream failure text only (no secrets are involved in this route).
+            detail: String(err).slice(0, 200),
           },
           requestId: c.get("requestId"),
         },

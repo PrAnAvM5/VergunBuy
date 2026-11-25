@@ -27,6 +27,7 @@ export type Domain =
   | "access"
   | "front"
   | "obstacles"
+  | "boundary"
   | "legal";
 
 export interface DomainQuality {
@@ -59,6 +60,7 @@ export function newQuality(): DataQuality {
     vegetation: q(),
     access: q(),
     obstacles: q(),
+    boundary: q(),
     legal: q(),
     front: q(),
   };

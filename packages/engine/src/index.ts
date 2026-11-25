@@ -11,6 +11,7 @@ export * from "./concepts/access.ts";
 export * from "./concepts/sides.ts";
 export * from "./rd.ts";
 export * from "./concepts/obstacles.ts";
+export * from "./concepts/boundary.ts";
 export * from "./concepts/legal.ts";
 export * from "./carport.ts";
 export * from "./vehicle.ts";

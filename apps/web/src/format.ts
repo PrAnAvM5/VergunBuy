@@ -122,6 +122,7 @@ export const DOMAIN_TEXT: Record<string, string> = {
   access: "Car access",
   front: "Front of the plot",
   obstacles: "Obstacles in the garden",
+  boundary: "Plot line and what things are made of",
   legal: "Zoning plans and monuments",
 };
 

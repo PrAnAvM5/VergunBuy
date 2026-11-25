@@ -27,6 +27,7 @@
  *  6. Each group reports only its cells inside the plot, with every cell's own height.
  */
 import { contains, distanceToBoundary, type Point, type Polygon } from "../geometry.ts";
+import type { Material } from "./boundary.ts";
 
 export interface HeightGrid {
   /** Top-left corner of the grid (RD New), rows run southwards. */
@@ -92,6 +93,12 @@ export interface Obstacle {
   peakToLineM: number;
   /** For overhang: how far the crown reaches into the plot from the line (m). */
   reachIntoPlotM: number;
+  /**
+   * What it is made of (laser echoes and infrared photo; see boundary.ts), per cell and for the
+   * group. Set by the data layer when that data is available.
+   */
+  material?: Material;
+  cellMaterials?: Material[];
   /** Heights of the cells inside the plot. */
   medianHeightM: number;
   p90HeightM: number;

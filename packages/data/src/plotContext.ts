@@ -57,6 +57,11 @@ import {
   type PublicAreaKind,
   type Tracer,
   detectObstacles,
+  boundaryPieces,
+  majority,
+  materialAt,
+  type BoundaryPiece,
+  type HeightGrid,
   type ObstacleResult,
   assessExclusions,
   type ExclusionResult,
@@ -69,6 +74,7 @@ import type { Address } from "./sources/locatieserver.ts";
 import { num, OGC, ogcItems, outerRings, str, type Bbox, type Feature } from "./sources/ogc.ts";
 import { fetchHeights, type BuildingHeights } from "./sources/threedbag.ts";
 import { fetchHeightGrid } from "./sources/ahn.ts";
+import { fetchEchoes, fetchMapBarriers, fetchNdvi } from "./sources/boundary.ts";
 
 export interface Building {
   id: string;
@@ -211,6 +217,16 @@ export interface PlotContext {
   structures: Structure[];
   /** Trees and other obstacles in the garden from the laser height scan; absent if unavailable. */
   obstacles?: ObstacleResult;
+  /**
+   * What stands on the plot line, piece by piece, and where the material data came from.
+   * Absent when the height scan is missing.
+   */
+  boundary?: {
+    pieces: BoundaryPiece[];
+    echo: { version: string; points: number } | null;
+    ndviLayer: string | null;
+    mapTypes: Record<string, number>;
+  };
   /** Zoning plans, monuments and protected views, and the rule exclusions they trigger. */
   legal: LegalFacts & { exclusions: ExclusionResult[] };
   /** Published permit applications and decisions for this home (official publications). */
@@ -1181,6 +1197,7 @@ export async function buildPlotContext(
   }
 
   let obstacles: ObstacleResult | undefined;
+  let heightGrid: HeightGrid | undefined;
   try {
     obstacles = await tracer.step(
       "ahn-obstacles",
@@ -1194,6 +1211,7 @@ export async function buildPlotContext(
           ctx,
           fetchFn,
         );
+        heightGrid = grid;
         const result = detectObstacles(
           grid,
           plot.outline,
@@ -1226,6 +1244,95 @@ export async function buildPlotContext(
       "The national laser height scan could not be loaded, so trees and other obstacles in the garden are unknown.",
     );
   }
+
+  // 7a. What things are made of (laser echoes, infrared photo) and what stands on the plot line.
+  let boundary: PlotContext["boundary"];
+  if (heightGrid) {
+    const grid = heightGrid;
+    try {
+      boundary = await tracer.step(
+        "plot-line",
+        "What stands on the plot line, and plants vs solid objects (laser echoes, infrared photo)",
+        async (ctx) => {
+          const xs = plot.outline.map((p) => p[0]);
+          const ys = plot.outline.map((p) => p[1]);
+          const bbox: [number, number, number, number] = [
+            Math.min(...xs) - 3,
+            Math.min(...ys) - 3,
+            Math.max(...xs) + 3,
+            Math.max(...ys) + 3,
+          ];
+          const [echo, ndvi, map] = await Promise.all([
+            fetchEchoes(bbox, ctx, fetchFn).catch(() => null),
+            fetchNdvi(bbox, ctx, fetchFn).catch(() => null),
+            fetchMapBarriers(bbox, ctx, fetchFn).catch(() => null),
+          ]);
+          for (const o of obstacles?.obstacles ?? []) {
+            const ms = o.cells.map((c) => materialAt(c, echo, ndvi).material);
+            o.cellMaterials = ms;
+            o.material = majority(ms);
+          }
+          const pieces = boundaryPieces({
+            plot: plot.outline,
+            streetRuns: edges
+              .filter((r) => r.kind === "public")
+              .map((r) => {
+                const a = plot.outline[r.edge]!;
+                const b = plot.outline[(r.edge + 1) % plot.outline.length]!;
+                const lerp = (t: number) =>
+                  [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t] as const;
+                return { a: lerp(r.from), b: lerp(r.to) };
+              }),
+            exits: exits.map((e) => e.outline),
+            grid,
+            buildings: [...house, ...outbuildings, ...neighbours].map((b) => b.outline),
+            echo,
+            ndvi,
+            mapBarriers: map?.barriers ?? [],
+            mapHedges: map?.hedges ?? [],
+          });
+          const street = pieces.filter((p) => p.side === "street");
+          const m = (st: string) => street.filter((p) => p.state === st).length * 0.5;
+          ctx.summarize(
+            `street side: ${m("exit")} m exit, ${m("open")} m open, ${m("hedge")} m hedge, ${m("barrier")} m fence or wall, ${m("unknown")} m unknown; echoes ${echo ? `${echo.version}, ${echo.points} points` : "missing"}, infrared photo ${ndvi ? "loaded" : "missing"}`,
+          );
+          if (!echo) ctx.degrade("laser echoes missing");
+          if (!ndvi) ctx.degrade("infrared photo missing");
+          return {
+            pieces,
+            echo: echo ? { version: echo.version, points: echo.points } : null,
+            ndviLayer: ndvi?.layer ?? null,
+            mapTypes: map?.types ?? {},
+          };
+        },
+      );
+      note(
+        quality,
+        "boundary",
+        "Fences, walls and hedges are read from the laser scan and the infrared photo, which are snapshots (spring, before leaves). Gates and thin wire fences do not show up.",
+      );
+      if (!boundary.echo || !boundary.ndviLayer)
+        downgrade(
+          quality,
+          "boundary",
+          "partial",
+          `${!boundary.echo ? "The laser point cloud" : "The infrared photo"} could not be loaded, so some plants and solid objects could not be told apart.`,
+        );
+    } catch {
+      downgrade(
+        quality,
+        "boundary",
+        "missing",
+        "What stands on the plot line could not be worked out.",
+      );
+    }
+  } else
+    downgrade(
+      quality,
+      "boundary",
+      "missing",
+      "Without the height scan, fences, walls and hedges on the plot line are unknown.",
+    );
 
   // 7b. Legal facts: old zoning plans, monuments, protected views. Never critical: anything
   // missing makes the affected exclusions "unknown", which can never give a green result.
@@ -1418,6 +1525,7 @@ export async function buildPlotContext(
     unitsInHouse,
     structures,
     ...(obstacles ? { obstacles } : {}),
+    ...(boundary ? { boundary } : {}),
     legal,
     permits,
     measurements,
