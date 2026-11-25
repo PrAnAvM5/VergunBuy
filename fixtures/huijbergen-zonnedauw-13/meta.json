@@ -4,7 +4,7 @@
     "postcode": "4635BL",
     "number": 13
   },
-  "recordedAt": "2026-11-24",
+  "recordedAt": "2026-11-25",
   "steps": [
     "ok find-address: Found Zonnedauw 13, 4635BL Huijbergen",
     "ok bag-address: Address is in 1 building(s)",
@@ -16,8 +16,10 @@
     "ok classify-edges: 4 edge runs",
     "ok bgt-structures: none registered on or at the plot",
     "ok ahn-obstacles: 9 tall (134.8 m²), 9 medium (11.5 m²), 3 overhanging from next door (44 m²) in 481 m² of garden",
-    "ok zoning-plans: 8 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied (incomplete)",
-    "ok heritage: no monument on or next to the plot"
+    "ok zoning-plans: 8 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+    "ok heritage: no monument on or next to the plot",
+    "ok business-units: 0 non-residential unit(s) within 50 m",
+    "ok permit-history: 0 publication(s) for this home; source reaches back to 2018-01-03"
   ],
   "flags": [
     "OUTBUILDINGS_ON_PLOT",

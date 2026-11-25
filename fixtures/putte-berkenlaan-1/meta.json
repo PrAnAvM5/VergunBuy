@@ -4,7 +4,7 @@
     "postcode": "4645JE",
     "number": 1
   },
-  "recordedAt": "2026-11-24",
+  "recordedAt": "2026-11-25",
   "steps": [
     "ok find-address: Found Berkenlaan 1, 4645JE Putte",
     "ok bag-address: Address is in 1 building(s)",
@@ -16,8 +16,10 @@
     "ok classify-edges: 10 edge runs",
     "ok bgt-structures: none registered on or at the plot",
     "ok ahn-obstacles: 52 tall (1068.8 m²), 15 medium (53.3 m²), 7 overhanging from next door (30.3 m²) in 1655.8 m² of garden",
-    "ok zoning-plans: 8 binding plan(s); on the plot: Wonen - 1, bouwvlak, vrijwaringszone - radar, maximale goot- en bouwhoogte (m) (incomplete)",
-    "ok heritage: no monument on or next to the plot"
+    "ok zoning-plans: 8 binding plan(s); on the plot: Wonen - 1, bouwvlak, vrijwaringszone - radar, maximale goot- en bouwhoogte (m)",
+    "ok heritage: no monument on or next to the plot",
+    "ok business-units: 0 non-residential unit(s) within 50 m",
+    "ok permit-history: 0 publication(s) for this home; source reaches back to 2017-08-09"
   ],
   "flags": []
 }

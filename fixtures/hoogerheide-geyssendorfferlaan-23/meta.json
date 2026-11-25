@@ -4,7 +4,7 @@
     "postcode": "4631HW",
     "number": 23
   },
-  "recordedAt": "2026-11-24",
+  "recordedAt": "2026-11-25",
   "steps": [
     "ok find-address: Found Geyssendorfferlaan 23, 4631HW Hoogerheide",
     "ok bag-address: Address is in 1 building(s)",
@@ -16,8 +16,10 @@
     "ok classify-edges: 11 edge runs",
     "ok bgt-structures: none registered on or at the plot",
     "ok ahn-obstacles: 11 tall (52.8 m²), 26 medium (80.5 m²), 0 overhanging from next door (0 m²) in 1039.3 m² of garden",
-    "ok zoning-plans: 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar (incomplete)",
-    "ok heritage: no monument on or next to the plot"
+    "ok zoning-plans: 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar",
+    "ok heritage: no monument on or next to the plot",
+    "ok business-units: 20 non-residential unit(s) within 50 m",
+    "ok permit-history: 0 publication(s) for this home; source reaches back to 2026-01-21"
   ],
   "flags": [
     "SHARED_PLOT",

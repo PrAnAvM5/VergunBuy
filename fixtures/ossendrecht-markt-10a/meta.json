@@ -5,7 +5,7 @@
     "number": 10,
     "addition": "a"
   },
-  "recordedAt": "2026-11-24",
+  "recordedAt": "2026-11-25",
   "steps": [
     "ok find-address: Found Markt 10a, 4641HR Ossendrecht",
     "ok bag-address: Address is in 1 building(s)",
@@ -17,8 +17,10 @@
     "ok classify-edges: 12 edge runs",
     "ok bgt-structures: none registered on or at the plot",
     "ok ahn-obstacles: 1 tall (0.5 m²), 2 medium (1 m²), 0 overhanging from next door (0 m²) in 21.8 m² of garden",
-    "ok zoning-plans: 4 binding plan(s); on the plot: Centrum, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied, maximale goot- en bouwhoogte (m) (incomplete)",
-    "ok heritage: no monument on or next to the plot"
+    "ok zoning-plans: 4 binding plan(s); on the plot: Centrum, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied, maximale goot- en bouwhoogte (m)",
+    "ok heritage: no monument on or next to the plot",
+    "ok business-units: 17 non-residential unit(s) within 50 m",
+    "ok permit-history: 3 publication(s) for this home: 2024 granted; 2024 applied; 2023 applied; source reaches back to 2016-12-02"
   ],
   "flags": [
     "SHARED_PLOT",
