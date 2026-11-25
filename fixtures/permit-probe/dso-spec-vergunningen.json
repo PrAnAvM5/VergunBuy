@@ -1,0 +1,564 @@
+{
+ "part": {
+  "/omgevingsvergunningen": {
+   "get": {
+    "tags": [
+     "Omgevingsvergunningen"
+    ],
+    "summary": "Alle omgevingsvergunningen opvragen",
+    "operationId": "getOmgevingsvergunningen",
+    "parameters": [
+     {
+      "name": "geldigOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de geldigheids-tijdsas. \nDeze tijdreis toont de versie van het object die op de opgegeven datum materieel geldig is. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'vandaag'.\nEen gecombineerde tijdreisvraag langs `geldigOp` en `inWerkingOp` geeft de versie van het object\ndie op de opgegeven datum juridisch geldig is.\nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date",
+       "example": "2020-05-09"
+      }
+     },
+     {
+      "name": "inWerkingOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de juridische-werking-tijdsas. \nDeze tijdreis toont de versie van het object die op de opgegeven datum juridisch in werking is. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'vandaag'.\nEen gecombineerde tijdreisvraag langs `geldigOp` en `inWerkingOp` geeft de versie van het object\ndie op de opgegeven datum juridisch geldig is.\nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date",
+       "example": "2020-05-08"
+      }
+     },
+     {
+      "name": "beschikbaarOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de 'beschikbaar'-tijdsas. \nDeze tijdreis toont de versie van het object die beschikbaar is op de opgegeven UTC datumtijd. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'nu', d.w.z. de huidige UTC datumtijd. \nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links en wordt naar boven afgerond op hele seconden.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date-time",
+       "example": "2022-07-07T11:34:01Z"
+      }
+     },
+     {
+      "name": "synchroniseerMetTileset",
+      "in": "query",
+      "description": "Voer een tijdreis uit langs de beschikbaarheids-as naar het moment dat de huidige tileset aangevraagd werd.\nHiermee garandeer je dat de data die je opvraagt correspondeert met het kaartbeeld dat in de huidige tileset weergegeven wordt.\nEr kan een tijdreis uitgevoerd worden naar het moment van aanvragen van een van beide tilesets:\n  - `actueel`: tijdreis naar het aanvraagmoment van de tileset bij de actueel geldige gegevens;\n  - `volledig`: tijdreis naar het aanvraagmoment van de tileset bij alle gegevens, ook historische en niet meer geldige gegevens.\n\nCombineren van deze parameter met een expliciete tijdreis langs de beschikbaarOp tijdsas is niet mogelijk. \nWanneer beide parameters meegegeven worden, dan krijgt de expliciete `beschikbaarOp`-parameter voorrang boven deze parameter.\n",
+      "required": false,
+      "schema": {
+       "$ref": "#/components/schemas/Tileset"
+      }
+     },
+     {
+      "name": "_expand",
+      "in": "query",
+      "description": "Meeladen van embedded resources met omgevingsvergunninggebieden",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      }
+     },
+     {
+      "name": "page",
+      "in": "query",
+      "description": "De page moet minimaal een waarde van 1 hebben.",
+      "required": false,
+      "schema": {
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "example": 1,
+       "default": 1
+      }
+     },
+     {
+      "name": "size",
+      "in": "query",
+      "description": "De pagesize moet minimaal een waarde van 1 hebben en maximaal een waarde van 200.",
+      "required": false,
+      "schema": {
+       "maximum": 200,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "example": 20,
+       "default": 20
+      }
+     },
+     {
+      "name": "_sort",
+      "in": "query",
+      "description": "Sortering van de resultaten, waarden kunnen komma gescheiden opgegeven worden, sortering is ascending, descending kan door een - teken",
+      "required": false,
+      "explode": false,
+      "schema": {
+       "type": "array",
+       "items": {
+        "$ref": "#/components/schemas/OmgevingsvergunningenSort"
+       }
+      },
+      "example": [
+       "identificatie",
+       "-registratietijdstip"
+      ]
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "headers": {
+       "API-version": {
+        "$ref": "#/components/headers/api-version"
+       }
+      },
+      "content": {
+       "application/hal+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Omgevingsvergunningen"
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/BadRequest"
+     },
+     "500": {
+      "$ref": "#/components/responses/ServerError"
+     }
+    }
+   }
+  },
+  "/omgevingsvergunningen/{uriIdentificatie}": {
+   "get": {
+    "tags": [
+     "Omgevingsvergunningen"
+    ],
+    "summary": "Een enkele omgevingsvergunning opvragen",
+    "operationId": "getOmgevingsvergunning",
+    "parameters": [
+     {
+      "name": "uriIdentificatie",
+      "in": "path",
+      "description": "Een identificatie van een omgevingsvergunning, zoals gedefinieerd in de STOP-standaard, waarbij de schuine strepen en koppeltekens zijn vervangen door lage streepjes (onderstrepingstekens).",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "example": "gm0599_Vergunning1234_01"
+      }
+     },
+     {
+      "name": "geldigOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de geldigheids-tijdsas. \nDeze tijdreis toont de versie van het object die op de opgegeven datum materieel geldig is. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'vandaag'.\nEen gecombineerde tijdreisvraag langs `geldigOp` en `inWerkingOp` geeft de versie van het object\ndie op de opgegeven datum juridisch geldig is.\nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date",
+       "example": "2020-05-09"
+      }
+     },
+     {
+      "name": "inWerkingOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de juridische-werking-tijdsas. \nDeze tijdreis toont de versie van het object die op de opgegeven datum juridisch in werking is. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'vandaag'.\nEen gecombineerde tijdreisvraag langs `geldigOp` en `inWerkingOp` geeft de versie van het object\ndie op de opgegeven datum juridisch geldig is.\nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date",
+       "example": "2020-05-08"
+      }
+     },
+     {
+      "name": "beschikbaarOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de 'beschikbaar'-tijdsas. \nDeze tijdreis toont de versie van het object die beschikbaar is op de opgegeven UTC datumtijd. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'nu', d.w.z. de huidige UTC datumtijd. \nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links en wordt naar boven afgerond op hele seconden.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date-time",
+       "example": "2022-07-07T11:34:01Z"
+      }
+     },
+     {
+      "name": "synchroniseerMetTileset",
+      "in": "query",
+      "description": "Voer een tijdreis uit langs de beschikbaarheids-as naar het moment dat de huidige tileset aangevraagd werd.\nHiermee garandeer je dat de data die je opvraagt correspondeert met het kaartbeeld dat in de huidige tileset weergegeven wordt.\nEr kan een tijdreis uitgevoerd worden naar het moment van aanvragen van een van beide tilesets:\n  - `actueel`: tijdreis naar het aanvraagmoment van de tileset bij de actueel geldige gegevens;\n  - `volledig`: tijdreis naar het aanvraagmoment van de tileset bij alle gegevens, ook historische en niet meer geldige gegevens.\n\nCombineren van deze parameter met een expliciete tijdreis langs de beschikbaarOp tijdsas is niet mogelijk. \nWanneer beide parameters meegegeven worden, dan krijgt de expliciete `beschikbaarOp`-parameter voorrang boven deze parameter.\n",
+      "required": false,
+      "schema": {
+       "$ref": "#/components/schemas/Tileset"
+      }
+     },
+     {
+      "name": "_expand",
+      "in": "query",
+      "description": "Meeladen van embedded resources met omgevingsvergunninggebieden",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "headers": {
+       "API-version": {
+        "$ref": "#/components/headers/api-version"
+       }
+      },
+      "content": {
+       "application/hal+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Omgevingsvergunning"
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/BadRequest"
+     },
+     "404": {
+      "$ref": "#/components/responses/NotFound"
+     },
+     "500": {
+      "$ref": "#/components/responses/ServerError"
+     }
+    }
+   }
+  },
+  "/omgevingsvergunningen/_zoek": {
+   "post": {
+    "tags": [
+     "Omgevingsvergunningen"
+    ],
+    "summary": "Omgevingsvergunningen opvragen die voldoen aan zoekobject-parameters",
+    "operationId": "zoekOmgevingsvergunningen",
+    "parameters": [
+     {
+      "name": "Content-Crs",
+      "in": "header",
+      "description": "De CRS van de meegeleverde geometrie-content. Wanneer de Content-Crs header ontbreekt, dan wordt de 'default' Crs aangenomen. Dat is WSG84 (CRS84) en dat ondersteunen wij niet.",
+      "required": false,
+      "schema": {
+       "$ref": "#/components/schemas/Crs"
+      }
+     },
+     {
+      "name": "geldigOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de geldigheids-tijdsas. \nDeze tijdreis toont de versie van het object die op de opgegeven datum materieel geldig is. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'vandaag'.\nEen gecombineerde tijdreisvraag langs `geldigOp` en `inWerkingOp` geeft de versie van het object\ndie op de opgegeven datum juridisch geldig is.\nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date",
+       "example": "2020-05-09"
+      }
+     },
+     {
+      "name": "inWerkingOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de juridische-werking-tijdsas. \nDeze tijdreis toont de versie van het object die op de opgegeven datum juridisch in werking is. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'vandaag'.\nEen gecombineerde tijdreisvraag langs `geldigOp` en `inWerkingOp` geeft de versie van het object\ndie op de opgegeven datum juridisch geldig is.\nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date",
+       "example": "2020-05-08"
+      }
+     },
+     {
+      "name": "beschikbaarOp",
+      "in": "query",
+      "description": "Een tijdreisparameter langs de 'beschikbaar'-tijdsas. \nDeze tijdreis toont de versie van het object die beschikbaar is op de opgegeven UTC datumtijd. \nWanneer deze parameter niet opgegeven wordt, dan wordt een tijdreisvraag gesteld met als parameter 'nu', d.w.z. de huidige UTC datumtijd. \nDe tijdreisparameter wordt doorgegeven aan onderliggende hal-links en wordt naar boven afgerond op hele seconden.\n",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "format": "date-time",
+       "example": "2022-07-07T11:34:01Z"
+      }
+     },
+     {
+      "name": "synchroniseerMetTileset",
+      "in": "query",
+      "description": "Voer een tijdreis uit langs de beschikbaarheids-as naar het moment dat de huidige tileset aangevraagd werd.\nHiermee garandeer je dat de data die je opvraagt correspondeert met het kaartbeeld dat in de huidige tileset weergegeven wordt.\nEr kan een tijdreis uitgevoerd worden naar het moment van aanvragen van een van beide tilesets:\n  - `actueel`: tijdreis naar het aanvraagmoment van de tileset bij de actueel geldige gegevens;\n  - `volledig`: tijdreis naar het aanvraagmoment van de tileset bij alle gegevens, ook historische en niet meer geldige gegevens.\n\nCombineren van deze parameter met een expliciete tijdreis langs de beschikbaarOp tijdsas is niet mogelijk. \nWanneer beide parameters meegegeven worden, dan krijgt de expliciete `beschikbaarOp`-parameter voorrang boven deze parameter.\n",
+      "required": false,
+      "schema": {
+       "$ref": "#/components/schemas/Tileset"
+      }
+     },
+     {
+      "name": "_expand",
+      "in": "query",
+      "description": "Meeladen van embedded resources met omgevingsvergunninggebieden",
+      "required": false,
+      "schema": {
+       "type": "boolean"
+      }
+     },
+     {
+      "name": "page",
+      "in": "query",
+      "description": "De page moet minimaal een waarde van 1 hebben.",
+      "required": false,
+      "schema": {
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "example": 1,
+       "default": 1
+      }
+     },
+     {
+      "name": "size",
+      "in": "query",
+      "description": "De pagesize moet minimaal een waarde van 1 hebben en maximaal een waarde van 200.",
+      "required": false,
+      "schema": {
+       "maximum": 200,
+       "minimum": 1,
+       "type": "integer",
+       "format": "int32",
+       "example": 20,
+       "default": 20
+      }
+     },
+     {
+      "name": "_sort",
+      "in": "query",
+      "description": "Sortering van de resultaten, waarden kunnen komma gescheiden opgegeven worden, sortering is ascending, descending kan door een - teken",
+      "required": false,
+      "explode": false,
+      "schema": {
+       "type": "array",
+       "items": {
+        "$ref": "#/components/schemas/OmgevingsvergunningenSort"
+       }
+      },
+      "example": [
+       "identificatie",
+       "-registratietijdstip"
+      ]
+     }
+    ],
+    "requestBody": {
+     "description": "Zoekobject",
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OmgevingsvergunningZoekobject"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "OK",
+      "headers": {
+       "API-version": {
+        "$ref": "#/components/headers/api-version"
+       }
+      },
+      "content": {
+       "application/hal+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Omgevingsvergunningen"
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/BadRequest"
+     },
+     "415": {
+      "$ref": "#/components/responses/UnsupportedMediaType"
+     },
+     "422": {
+      "$ref": "#/components/responses/UnprocessableContent"
+     },
+     "500": {
+      "$ref": "#/components/responses/ServerError"
+     }
+    }
+   }
+  }
+ },
+ "schemas": {
+  "OmgevingsvergunningenSort": {
+   "title": "OmgevingsvergunningenSort",
+   "type": "string",
+   "enum": [
+    "identificatie",
+    "-identificatie",
+    "registratietijdstip",
+    "-registratietijdstip",
+    "geldigVanaf",
+    "-geldigVanaf",
+    "inwerkingVanaf",
+    "-inwerkingVanaf"
+   ]
+  },
+  "Omgevingsvergunningen": {
+   "title": "Omgevingsvergunningen",
+   "required": [
+    "_embedded",
+    "_links",
+    "page"
+   ],
+   "type": "object",
+   "properties": {
+    "_embedded": {
+     "title": "OmgevingsvergunningenEmbedded",
+     "required": [
+      "omgevingsvergunningen"
+     ],
+     "type": "object",
+     "properties": {
+      "omgevingsvergunningen": {
+       "type": "array",
+       "items": {
+        "$ref": "#/components/schemas/Omgevingsvergunning"
+       }
+      }
+     }
+    },
+    "_links": {
+     "$ref": "#/components/schemas/HalPaginationLinks"
+    },
+    "page": {
+     "$ref": "#/components/schemas/Page"
+    }
+   }
+  },
+  "Omgevingsvergunning": {
+   "title": "Omgevingsvergunning",
+   "type": "object",
+   "description": "Een vergunning verleend voor het gebruiken van gronden of bouwwerken in strijd met geldende omgevingsdocumenten.",
+   "allOf": [
+    {
+     "$ref": "#/components/schemas/Omgevingsdocument"
+    },
+    {
+     "required": [
+      "_links",
+      "geregistreerdMet",
+      "publicatieID",
+      "referentienummer",
+      "type"
+     ],
+     "type": "object",
+     "properties": {
+      "referentienummer": {
+       "title": "referentienummer",
+       "type": "string"
+      },
+      "type": {
+       "$ref": "#/components/schemas/SoortVergunning"
+      },
+      "geregistreerdMet": {
+       "$ref": "#/components/schemas/Registratiegegevens"
+      },
+      "iMROPlanidentificatie": {
+       "title": "IMRO-planidentificatie",
+       "minItems": 0,
+       "type": "array",
+       "description": "het IMRO-plan-ID waar deze vergunning bij hoort/van afwijkt.",
+       "items": {
+        "type": "string"
+       }
+      },
+      "publicatieID": {
+       "title": "publicatie-ID",
+       "type": "string"
+      },
+      "_embedded": {
+       "type": "object",
+       "properties": {
+        "vergunningsgebied": {
+         "$ref": "#/components/schemas/EmbeddedLocatie"
+        }
+       }
+      },
+      "_links": {
+       "$ref": "#/components/schemas/OmgevingsvergunningLinks"
+      }
+     }
+    }
+   ]
+  },
+  "OmgevingsvergunningZoekobject": {
+   "title": "OmgevingsvergunningZoekobject",
+   "type": "object",
+   "properties": {
+    "typeBevoegdGezag": {
+     "minItems": 1,
+     "type": "array",
+     "items": {
+      "$ref": "#/components/schemas/BevoegdGezagType"
+     }
+    },
+    "bevoegdGezag": {
+     "minItems": 1,
+     "type": "array",
+     "items": {
+      "$ref": "#/components/schemas/BevoegdGezagCode"
+     }
+    },
+    "geometrie": {
+     "$ref": "#/components/schemas/Geometry"
+    }
+   },
+   "description": "Zoekobject voor specifieke Omgevingsvergunning-bevragingen.",
+   "example": {
+    "typeBevoegdGezag": [
+     "gemeente",
+     "provincie"
+    ],
+    "bevoegdGezag": [
+     "gm0000",
+     "pv0000"
+    ],
+    "geometrie": {
+     "type": "Point",
+     "coordinates": [
+      139784,
+      442870
+     ]
+    }
+   }
+  },
+  "SoortVergunning": {
+   "title": "SoortVergunning",
+   "required": [
+    "code",
+    "waarde"
+   ],
+   "type": "object",
+   "properties": {
+    "code": {
+     "title": "code",
+     "type": "string"
+    },
+    "waarde": {
+     "title": "waarde",
+     "type": "string"
+    }
+   }
+  },
+  "OmgevingsvergunningLinks": {
+   "title": "OmgevingsvergunningLinks",
+   "required": [
+    "self"
+   ],
+   "type": "object",
+   "properties": {
+    "self": {
+     "$ref": "#/components/schemas/HalLink"
+    },
+    "heeftVergunningsgebied": {
+     "$ref": "#/components/schemas/HalLink"
+    }
+   }
+  }
+ }
+}
