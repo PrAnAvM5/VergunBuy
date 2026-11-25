@@ -1,0 +1,38 @@
+name: Re-record the example homes (manual)
+
+# Runs the live pipeline again for exactly the homes in reports/validation-*, storing every
+# answer (also binary ones), and commits the new recordings.
+on:
+  workflow_dispatch:
+    inputs:
+      filter:
+        description: Only run folders whose name contains this (empty = all)
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rerecord
+  cancel-in-progress: false
+
+jobs:
+  rerecord:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec tsx scripts/rerecord.ts "${{ inputs.filter }}"
+      - name: Commit recordings
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports
+          git commit -m "Re-recorded example homes (${{ inputs.filter || 'all' }})" || echo "nothing to commit"
+          git pull --rebase && git push
