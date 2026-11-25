@@ -21,6 +21,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Example recordings
+        run: pnpm exec tsx scripts/validation-index.ts
       - name: Probe
         env:
           RP_API_KEY: ${{ secrets.RP_API_KEY }}
