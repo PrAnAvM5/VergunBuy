@@ -13,7 +13,9 @@
     "@vergunbuy/data": "workspace:*",
     "@vergunbuy/engine": "workspace:*",
     "hono": "^4.6.0",
-    "zod": "^3.23.0"
+    "zod": "^3.23.0",
+    "copc": "^0.0.9",
+    "laz-perf": "^0.0.7"
   },
   "devDependencies": {
     "esbuild": "^0.24.2",

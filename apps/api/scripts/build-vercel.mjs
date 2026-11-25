@@ -5,7 +5,9 @@
  * Output: <repo root>/.vercel/output/{config.json, static/, functions/api.func/}
  */
 import { build } from "esbuild";
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { createRequire } from "node:module";
+import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 // Vercel looks for .vercel/output at the root of the repository (the project root).
@@ -29,6 +31,9 @@ await build({
   },
   logLevel: "info",
 });
+// The LAZ decoder (laser point clouds) is WebAssembly: ship its .wasm next to the bundle.
+const lazPerfDir = dirname(createRequire(import.meta.url).resolve("laz-perf"));
+copyFileSync(`${lazPerfDir}/laz-perf.wasm`, `${fn}/laz-perf.wasm`);
 writeFileSync(
   `${fn}/.vc-config.json`,
   JSON.stringify(

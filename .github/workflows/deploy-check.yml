@@ -33,3 +33,8 @@ jobs:
           jq '{complete: .data.complete, plans: (.data.plans | length), objects: (.data.objects | length)}' zoning.json
           jq -e '.data.complete == true and (.data.plans | length) > 0' zoning.json > /dev/null \
             || { echo "::error::The zoning plan search is incomplete or empty"; exit 1; }
+          curl -sS -X POST "$SERVER/api/ahn/echoes" -H "content-type: application/json" \
+            -d '{"bbox":[84900,383320,84940,383360]}' > echoes.json
+          jq '{version: .data.version, points: .data.points, ms: .data.ms, error: .error}' echoes.json
+          jq -e '.data.points > 0' echoes.json > /dev/null \
+            || { echo "::error::The laser point cloud could not be read"; exit 1; }

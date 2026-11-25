@@ -16,11 +16,13 @@ import { rateLimit } from "./rateLimit.ts";
 import { createDso, DsoNotConfigured, RdPoint } from "./dso.ts";
 import { createRp, PlotPolygon } from "./rp.ts";
 import { createPermits, PermitQuery } from "./permits.ts";
+import { createAhn, EchoQuery } from "./ahn.ts";
 
 export interface AppDeps {
   dso?: ReturnType<typeof createDso>;
   rp?: ReturnType<typeof createRp>;
   permits?: ReturnType<typeof createPermits>;
+  ahn?: ReturnType<typeof createAhn>;
   fetchFn?: FetchFn;
   allowedOrigins: string[];
   version: string;
@@ -55,6 +57,43 @@ export function createApp(deps: AppDeps) {
   const rp = deps.rp ?? createRp({});
   const permits = deps.permits ?? createPermits();
   app.use("/permits", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
+  const ahn = deps.ahn ?? createAhn();
+  app.use("/ahn/*", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
+
+  /**
+   * Laser-scan echoes around a plot: per 0.5 m cell, non-ground points and how many came from
+   * pulses with several echoes (leaves) rather than one (walls, fences, roofs). Body: { bbox }
+   * in RD New, at most 220 m per side.
+   */
+  app.post("/ahn/echoes", async (c) => {
+    const parsed = EchoQuery.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success)
+      return c.json(
+        {
+          error: {
+            code: "INVALID_INPUT",
+            message: "Give bbox: [xmin, ymin, xmax, ymax] in RD New, at most 220 m per side.",
+          },
+        },
+        400,
+      );
+    try {
+      const data = await ahn.echoes(parsed.data.bbox);
+      return c.json({ data, requestId: c.get("requestId") });
+    } catch (err) {
+      log({ level: "error", path: "/ahn/echoes", message: String(err).slice(0, 300) });
+      return c.json(
+        {
+          error: {
+            code: "UPSTREAM_UNAVAILABLE",
+            message: "The laser point cloud could not be read right now.",
+          },
+          requestId: c.get("requestId"),
+        },
+        502,
+      );
+    }
+  });
 
   /**
    * Permit history of a home from the municipality's official publications (Gemeenteblad).
