@@ -12,16 +12,16 @@
  *     laser-scan object class the share of points with several echoes (leaves) vs one (solid).
  *  4. CORS headers for each source as the browser would see them.
  *
- * Output: fixtures/coverage/report.json, fixtures/coverage/report.md, fixtures/coverage/img/*.png
+ * Output: fixtures/edge-probe/report.json, fixtures/edge-probe/img/*.jpg (infrared crops)
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
-import { PNG } from "pngjs";
+import jpeg from "jpeg-js";
 import { Copc } from "copc";
 import { Tracer, contains, type Polygon } from "@vergunbuy/engine";
 import { buildPlotContext, findAddress, fixtureFetch } from "@vergunbuy/data";
 
-const OUT = "fixtures/coverage";
+const OUT = "fixtures/edge-probe";
 mkdirSync(`${OUT}/img`, { recursive: true });
 const ORIGIN = "https://pranavm5.github.io";
 const RD = "http://www.opengis.net/def/crs/EPSG/0/28992";
@@ -153,12 +153,12 @@ async function cirCrop(bbox: number[], res = 0.25) {
     bbox: bbox.join(","),
     width: String(w),
     height: String(h),
-    format: "image/png",
+    format: "image/jpeg",
   }))
     u.searchParams.set(k, v);
   const r = await fetch(u, { headers: { Origin: ORIGIN } });
   const buf = Buffer.from(await r.arrayBuffer());
-  const png = PNG.sync.read(buf);
+  const png = jpeg.decode(buf, { useTArray: true });
   // False-colour infrared: red channel = near infrared, green channel = red light.
   const ndviAt = (x: number, y: number) => {
     const i = Math.floor((bbox[3]! - y) / res);
@@ -315,7 +315,7 @@ for (const { run, file } of homes.slice(0, LIMIT)) {
 
     // 2. Infrared
     const cir = await cirCrop(bbox);
-    writeFileSync(`${OUT}/img/${slug(name)}.png`, cir.buf);
+    writeFileSync(`${OUT}/img/${slug(name)}.jpg`, cir.buf);
     corsSeen.cir = cir.allowOrigin;
     const cells = ctx.obstacles?.obstacles ?? [];
     const stat = (vals: number[]) => {
