@@ -1,0 +1,4058 @@
+{
+ "cors": {
+  "cir": "*",
+  "ahn": {
+   "status": 206,
+   "allowOrigin": null,
+   "acceptRanges": "bytes",
+   "length": "1024"
+  },
+  "bgt": {
+   "status": 200,
+   "allowOrigin": "*",
+   "acceptRanges": null,
+   "length": "811"
+  },
+  "cirCaps": {
+   "status": 200,
+   "allowOrigin": "*",
+   "acceptRanges": "bytes",
+   "length": "32198"
+  }
+ },
+ "cirLayers": [
+  "Actueel_orthoHRIR",
+  "Actueel_ortho25IR",
+  "2026_orthoHRIR",
+  "2025_orthoHRIR",
+  "2025_ortho25IR",
+  "2024_ortho25IR",
+  "2023_ortho25IR",
+  "2022_ortho25IR",
+  "2020_ortho25IR",
+  "2019_ortho25IR",
+  "2018_ortho25IR",
+  "2017_ortho25IR",
+  "2016_ortho25IR"
+ ],
+ "homes": [
+  {
+   "home": "Antwerpsestraat 184, 4645BN Putte",
+   "slug": "antwerpsestraat-184-4645bn-putte",
+   "boundaryM": 79,
+   "streetM": 34.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 37,
+     "median": 0.359,
+     "plantShare": 0.89
+    },
+    "medium": {
+     "n": 36,
+     "median": 0.221,
+     "plantShare": 0.53
+    },
+    "overhang": null,
+    "roof": {
+     "n": 316,
+     "median": -0.041,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 24231,
+    "classes": {
+     "1": 6624,
+     "2": 11589,
+     "6": 6018
+    },
+    "multiEchoTall": 0.88,
+    "multiEchoMedium": 0.27,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Berglaan 11, 4634VG Woensdrecht",
+   "slug": "berglaan-11-4634vg-woensdrecht",
+   "boundaryM": 202.5,
+   "streetM": 180.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 374,
+     "median": 0.117,
+     "plantShare": 0.16
+    },
+    "medium": {
+     "n": 419,
+     "median": 0.043,
+     "plantShare": 0.29
+    },
+    "overhang": {
+     "n": 2,
+     "median": 0.068,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 190,
+     "median": -0.045,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 76501,
+    "classes": {
+     "1": 24906,
+     "2": 32581,
+     "6": 19014
+    },
+    "multiEchoTall": 0.73,
+    "multiEchoMedium": 0.39,
+    "multiEchoRoof": 0.11
+   }
+  },
+  {
+   "home": "Binnenpad 13, 4635CH Huijbergen",
+   "slug": "binnenpad-13-4635ch-huijbergen",
+   "boundaryM": 66.5,
+   "streetM": 14.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 34,
+     "median": -0.258,
+     "plantShare": 0
+    },
+    "overhang": null,
+    "roof": {
+     "n": 208,
+     "median": -0.184,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 15890,
+    "classes": {
+     "1": 3197,
+     "2": 7354,
+     "6": 5313,
+     "9": 26
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.3,
+    "multiEchoRoof": 0.08
+   }
+  },
+  {
+   "home": "Bradfordstraat 39, 4645HE Putte",
+   "slug": "bradfordstraat-39-4645he-putte",
+   "boundaryM": 259,
+   "streetM": 173,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 155,
+     "median": -0.082,
+     "plantShare": 0.08
+    },
+    "medium": {
+     "n": 243,
+     "median": -0.032,
+     "plantShare": 0.21
+    },
+    "overhang": {
+     "n": 32,
+     "median": 0.265,
+     "plantShare": 0.88
+    },
+    "roof": {
+     "n": 1432,
+     "median": -0.111,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 116318,
+    "classes": {
+     "1": 30191,
+     "2": 54497,
+     "6": 31621,
+     "9": 9
+    },
+    "multiEchoTall": 0.52,
+    "multiEchoMedium": 0.23,
+    "multiEchoRoof": 0.06
+   }
+  },
+  {
+   "home": "Dominicanenstraat 18, 4641KK Ossendrecht",
+   "slug": "dominicanenstraat-18-4641kk-ossendrecht",
+   "boundaryM": 60,
+   "streetM": 15,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 18,
+     "median": -0.119,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 20,
+     "median": -0.103,
+     "plantShare": 0.1
+    },
+    "overhang": null,
+    "roof": {
+     "n": 206,
+     "median": 0.009,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 12480,
+    "classes": {
+     "1": 2607,
+     "2": 4696,
+     "6": 5177
+    },
+    "multiEchoTall": 0.13,
+    "multiEchoMedium": 0.34,
+    "multiEchoRoof": 0.1
+   }
+  },
+  {
+   "home": "Dorpsstraat 32b, 4641HX Ossendrecht",
+   "slug": "dorpsstraat-32b-4641hx-ossendrecht",
+   "boundaryM": 120,
+   "streetM": 67,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": null,
+    "overhang": null,
+    "roof": {
+     "n": 967,
+     "median": -0.085,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 12863,
+    "classes": {
+     "1": 1905,
+     "2": 6006,
+     "6": 4952
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": null,
+    "multiEchoRoof": 0.08
+   }
+  },
+  {
+   "home": "Eiland 3, 4635EC Huijbergen",
+   "slug": "eiland-3-4635ec-huijbergen",
+   "boundaryM": 313,
+   "streetM": 107.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 1684,
+     "median": 0.16,
+     "plantShare": 0.38
+    },
+    "medium": {
+     "n": 506,
+     "median": 0.116,
+     "plantShare": 0.2
+    },
+    "overhang": {
+     "n": 289,
+     "median": 0.145,
+     "plantShare": 0.36
+    },
+    "roof": {
+     "n": 664,
+     "median": -0.016,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 467893,
+    "classes": {
+     "1": 204276,
+     "2": 242471,
+     "6": 18968,
+     "9": 2178
+    },
+    "multiEchoTall": 0.97,
+    "multiEchoMedium": 0.85,
+    "multiEchoRoof": 0.15
+   }
+  },
+  {
+   "home": "Flemingstraat 14, 4631LJ Hoogerheide",
+   "slug": "flemingstraat-14-4631lj-hoogerheide",
+   "boundaryM": 79.5,
+   "streetM": 12,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 2,
+     "median": -0.049,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 46,
+     "median": -0.032,
+     "plantShare": 0.07
+    },
+    "overhang": null,
+    "roof": {
+     "n": 276,
+     "median": -0.195,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 46597,
+    "classes": {
+     "1": 5558,
+     "2": 26450,
+     "6": 14589
+    },
+    "multiEchoTall": 0.74,
+    "multiEchoMedium": 0.09,
+    "multiEchoRoof": 0.08
+   }
+  },
+  {
+   "home": "Fortuinstraat 10, 4634TD Woensdrecht",
+   "slug": "fortuinstraat-10-4634td-woensdrecht",
+   "boundaryM": 100.5,
+   "streetM": 66,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 237,
+     "median": 0,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 209,
+     "median": 0,
+     "plantShare": 0
+    },
+    "overhang": {
+     "n": 52,
+     "median": 0,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 534,
+     "median": 0,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 17292,
+    "classes": {
+     "1": 8968,
+     "2": 5548,
+     "6": 2776
+    },
+    "multiEchoTall": 0.92,
+    "multiEchoMedium": 0.17,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Geyssendorfferlaan 23, 4631HW Hoogerheide",
+   "slug": "geyssendorfferlaan-23-4631hw-hoogerheide",
+   "boundaryM": 203,
+   "streetM": 203,
+   "bgt": {
+    "scheiding": {},
+    "haag": 3,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 211,
+     "median": -0.286,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 322,
+     "median": -0.333,
+     "plantShare": 0
+    },
+    "overhang": null,
+    "roof": {
+     "n": 198,
+     "median": -0.405,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 217604,
+    "classes": {
+     "1": 43842,
+     "2": 109824,
+     "6": 63938
+    },
+    "multiEchoTall": 0.59,
+    "multiEchoMedium": 0.44,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Huijgensstraat 27, 4631GK Hoogerheide",
+   "slug": "huijgensstraat-27-4631gk-hoogerheide",
+   "boundaryM": 158,
+   "streetM": 158,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 93,
+     "median": 0.025,
+     "plantShare": 0.12
+    },
+    "medium": {
+     "n": 267,
+     "median": -0.05,
+     "plantShare": 0.12
+    },
+    "overhang": null,
+    "roof": {
+     "n": 192,
+     "median": -0.194,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 54122,
+    "classes": {
+     "1": 11837,
+     "2": 26922,
+     "6": 15363
+    },
+    "multiEchoTall": 0.8,
+    "multiEchoMedium": 0.31,
+    "multiEchoRoof": 0.11
+   }
+  },
+  {
+   "home": "Looipad 10, 4641TD Ossendrecht",
+   "slug": "looipad-10-4641td-ossendrecht",
+   "boundaryM": 77,
+   "streetM": 10.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 2,
+     "median": 0.118,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 67,
+     "median": -0.007,
+     "plantShare": 0
+    },
+    "overhang": null,
+    "roof": {
+     "n": 248,
+     "median": -0.053,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 27656,
+    "classes": {
+     "1": 5026,
+     "2": 13517,
+     "6": 9113
+    },
+    "multiEchoTall": 0.45,
+    "multiEchoMedium": 0.08,
+    "multiEchoRoof": 0.11
+   }
+  },
+  {
+   "home": "Melis Blecklaan 45, 4634VX Woensdrecht",
+   "slug": "melis-blecklaan-45-4634vx-woensdrecht",
+   "boundaryM": 74.5,
+   "streetM": 9.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 4,
+     "median": 0.185,
+     "plantShare": 0.25
+    },
+    "overhang": {
+     "n": 30,
+     "median": -0.035,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 374,
+     "median": -0.123,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 21680,
+    "classes": {
+     "1": 7553,
+     "2": 7796,
+     "6": 6331
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.31,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Mgr van Mensstraat 31, 4634VB Woensdrecht",
+   "slug": "mgr-van-mensstraat-31-4634vb-woensdrecht",
+   "boundaryM": 158,
+   "streetM": 158,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": null,
+    "overhang": null,
+    "roof": {
+     "n": 165,
+     "median": -0.173,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 53183,
+    "classes": {
+     "1": 15882,
+     "2": 27155,
+     "6": 10146
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": null,
+    "multiEchoRoof": 0.1
+   }
+  },
+  {
+   "home": "Siardus Bogaertslaan 7, 4635CL Huijbergen",
+   "slug": "siardus-bogaertslaan-7-4635cl-huijbergen",
+   "boundaryM": 76,
+   "streetM": 12,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 5,
+     "median": -0.205,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 40,
+     "median": -0.2,
+     "plantShare": 0
+    },
+    "overhang": null,
+    "roof": {
+     "n": 381,
+     "median": -0.32,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 11845,
+    "classes": {
+     "1": 2114,
+     "2": 6676,
+     "6": 3055
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.63,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Wouwbaan 80, 4631KP Hoogerheide",
+   "slug": "wouwbaan-80-4631kp-hoogerheide",
+   "boundaryM": 73.5,
+   "streetM": 24,
+   "bgt": {
+    "scheiding": {
+     "hek": 1
+    },
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 61,
+     "median": -0.183,
+     "plantShare": 0.13
+    },
+    "medium": {
+     "n": 47,
+     "median": 0.043,
+     "plantShare": 0.13
+    },
+    "overhang": null,
+    "roof": {
+     "n": 358,
+     "median": -0.109,
+     "plantShare": 0.03
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 47475,
+    "classes": {
+     "1": 19731,
+     "2": 18877,
+     "6": 8867
+    },
+    "multiEchoTall": 0.37,
+    "multiEchoMedium": 0.85,
+    "multiEchoRoof": 0.16
+   }
+  },
+  {
+   "home": "Zes-oktoberlaan 35, 4645GE Putte",
+   "slug": "zes-oktoberlaan-35-4645ge-putte",
+   "boundaryM": 85,
+   "streetM": 30.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 11,
+     "median": 0,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 75,
+     "median": 0.23,
+     "plantShare": 0.55
+    },
+    "overhang": null,
+    "roof": {
+     "n": 369,
+     "median": -0.014,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 22426,
+    "classes": {
+     "1": 5985,
+     "2": 11383,
+     "6": 5058
+    },
+    "multiEchoTall": 0.04,
+    "multiEchoMedium": 0.25,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Zonnedauw 13, 4635BL Huijbergen",
+   "slug": "zonnedauw-13-4635bl-huijbergen",
+   "boundaryM": 105,
+   "streetM": 0,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": null,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": null
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 539,
+     "median": 0.109,
+     "plantShare": 0.05
+    },
+    "medium": {
+     "n": 46,
+     "median": 0.169,
+     "plantShare": 0.41
+    },
+    "overhang": {
+     "n": 176,
+     "median": 0.102,
+     "plantShare": 0.14
+    },
+    "roof": {
+     "n": 493,
+     "median": -0.09,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 103875,
+    "classes": {
+     "1": 66581,
+     "2": 29904,
+     "6": 7390
+    },
+    "multiEchoTall": 0.96,
+    "multiEchoMedium": 0.61,
+    "multiEchoRoof": 0.14
+   }
+  },
+  {
+   "home": "Zr Marie Adolphinestr 20, 4641CP Ossendrecht",
+   "slug": "zr-marie-adolphinestr-20-4641cp-ossendrecht",
+   "boundaryM": 122.5,
+   "streetM": 37.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 23,
+     "median": 0,
+     "plantShare": 0.22
+    },
+    "medium": {
+     "n": 25,
+     "median": 0.12,
+     "plantShare": 0.44
+    },
+    "overhang": null,
+    "roof": {
+     "n": 741,
+     "median": -0.01,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 21559,
+    "classes": {
+     "1": 3136,
+     "2": 9257,
+     "6": 9166
+    },
+    "multiEchoTall": 0.76,
+    "multiEchoMedium": 0.25,
+    "multiEchoRoof": 0.07
+   }
+  },
+  {
+   "home": "Zr Will van Hooijdonkstraat 17, 4645RX Putte",
+   "slug": "zr-will-van-hooijdonkstraat-17-4645rx-putte",
+   "boundaryM": 59,
+   "streetM": 15,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 7,
+     "median": 0.144,
+     "plantShare": 0.29
+    },
+    "overhang": null,
+    "roof": {
+     "n": 237,
+     "median": -0.032,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 12421,
+    "classes": {
+     "1": 2263,
+     "2": 4645,
+     "6": 5513
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.59,
+    "multiEchoRoof": 0.07
+   }
+  },
+  {
+   "home": "Bakkerstraat 29, 4635EA Huijbergen",
+   "slug": "bakkerstraat-29-4635ea-huijbergen",
+   "boundaryM": 88.5,
+   "streetM": 0,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": null,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": null
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 98,
+     "median": 0.22,
+     "plantShare": 0.55
+    },
+    "medium": {
+     "n": 94,
+     "median": 0.136,
+     "plantShare": 0.39
+    },
+    "overhang": {
+     "n": 2,
+     "median": 0.146,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 539,
+     "median": -0.189,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 49435,
+    "classes": {
+     "1": 25259,
+     "2": 14498,
+     "6": 9678
+    },
+    "multiEchoTall": 0.95,
+    "multiEchoMedium": 0.53,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Bergsestraat 46, 4635RD Huijbergen",
+   "slug": "bergsestraat-46-4635rd-huijbergen",
+   "boundaryM": 146.5,
+   "streetM": 27,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 300,
+     "median": 0.179,
+     "plantShare": 0.46
+    },
+    "medium": {
+     "n": 80,
+     "median": 0.043,
+     "plantShare": 0.1
+    },
+    "overhang": {
+     "n": 138,
+     "median": 0.118,
+     "plantShare": 0.25
+    },
+    "roof": {
+     "n": 546,
+     "median": -0.159,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 77700,
+    "classes": {
+     "1": 42490,
+     "2": 28098,
+     "6": 7112
+    },
+    "multiEchoTall": 0.98,
+    "multiEchoMedium": 0.62,
+    "multiEchoRoof": 0.19
+   }
+  },
+  {
+   "home": "Calfven 106, 4641RE Ossendrecht",
+   "slug": "calfven-106-4641re-ossendrecht",
+   "boundaryM": 108.5,
+   "streetM": 17,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 55,
+     "median": -0.074,
+     "plantShare": 0.11
+    },
+    "medium": {
+     "n": 61,
+     "median": 0.31,
+     "plantShare": 0.69
+    },
+    "overhang": {
+     "n": 26,
+     "median": 0.385,
+     "plantShare": 1
+    },
+    "roof": {
+     "n": 503,
+     "median": -0.103,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 25531,
+    "classes": {
+     "1": 7446,
+     "2": 13493,
+     "6": 4592
+    },
+    "multiEchoTall": 0.2,
+    "multiEchoMedium": 0.25,
+    "multiEchoRoof": 0.11
+   }
+  },
+  {
+   "home": "Cameronlaan 8, 4631NW Hoogerheide",
+   "slug": "cameronlaan-8-4631nw-hoogerheide",
+   "boundaryM": 172,
+   "streetM": 61.5,
+   "bgt": {
+    "scheiding": {
+     "hek": 1
+    },
+    "haag": 0,
+    "wallShareAll": 0.1308139534883721,
+    "wallShareStreet": 0.34959349593495936,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 1527,
+     "median": 0.16,
+     "plantShare": 0.28
+    },
+    "medium": {
+     "n": 530,
+     "median": 0.118,
+     "plantShare": 0.35
+    },
+    "overhang": {
+     "n": 81,
+     "median": 0.126,
+     "plantShare": 0.36
+    },
+    "roof": {
+     "n": 423,
+     "median": -0.256,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 180850,
+    "classes": {
+     "1": 114563,
+     "2": 54895,
+     "6": 11392
+    },
+    "multiEchoTall": 0.93,
+    "multiEchoMedium": 0.51,
+    "multiEchoRoof": 0.18
+   }
+  },
+  {
+   "home": "de Zonnebloem 17, 4631AW Hoogerheide",
+   "slug": "de-zonnebloem-17-4631aw-hoogerheide",
+   "boundaryM": 66,
+   "streetM": 25.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 3,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0.12121212121212122,
+    "hedgeShareStreet": 0.21568627450980393
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 24,
+     "median": -0.139,
+     "plantShare": 0.08
+    },
+    "overhang": null,
+    "roof": {
+     "n": 252,
+     "median": -0.302,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 8396,
+    "classes": {
+     "1": 3302,
+     "2": 2803,
+     "6": 2291
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.22,
+    "multiEchoRoof": 0.13
+   }
+  },
+  {
+   "home": "Doktersstraat 9, 4641HS Ossendrecht",
+   "slug": "doktersstraat-9-4641hs-ossendrecht",
+   "boundaryM": 151.5,
+   "streetM": 84.5,
+   "bgt": {
+    "scheiding": {
+     "hek": 2
+    },
+    "haag": 0,
+    "wallShareAll": 0.3927392739273927,
+    "wallShareStreet": 0.7041420118343196,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 12,
+     "median": -0.155,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 193,
+     "median": 0.029,
+     "plantShare": 0.2
+    },
+    "overhang": {
+     "n": 102,
+     "median": 0.138,
+     "plantShare": 0.3
+    },
+    "roof": {
+     "n": 268,
+     "median": 0.028,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 82628,
+    "classes": {
+     "1": 47804,
+     "2": 28270,
+     "6": 6554
+    },
+    "multiEchoTall": 0.62,
+    "multiEchoMedium": 0.36,
+    "multiEchoRoof": 0.16
+   }
+  },
+  {
+   "home": "Dorpsstraat 37, 4634TM Woensdrecht",
+   "slug": "dorpsstraat-37-4634tm-woensdrecht",
+   "boundaryM": 118,
+   "streetM": 15,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 281,
+     "median": 0.132,
+     "plantShare": 0.16
+    },
+    "medium": {
+     "n": 92,
+     "median": 0.26,
+     "plantShare": 0.58
+    },
+    "overhang": {
+     "n": 7,
+     "median": 0.154,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 286,
+     "median": -0.246,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 30496,
+    "classes": {
+     "1": 12010,
+     "2": 11916,
+     "6": 6570
+    },
+    "multiEchoTall": 0.88,
+    "multiEchoMedium": 0.44,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Fortuinstraat 8, 4634TD Woensdrecht",
+   "slug": "fortuinstraat-8-4634td-woensdrecht",
+   "boundaryM": 101,
+   "streetM": 32.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 51,
+     "median": -0.254,
+     "plantShare": 0.37
+    },
+    "medium": {
+     "n": 110,
+     "median": -0.023,
+     "plantShare": 0.28
+    },
+    "overhang": null,
+    "roof": {
+     "n": 600,
+     "median": -0.256,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 14788,
+    "classes": {
+     "1": 5117,
+     "2": 5390,
+     "6": 4281
+    },
+    "multiEchoTall": 0.97,
+    "multiEchoMedium": 0.68,
+    "multiEchoRoof": 0.14
+   }
+  },
+  {
+   "home": "Hollandseweg 24, 4635BE Huijbergen",
+   "slug": "hollandseweg-24-4635be-huijbergen",
+   "boundaryM": 162,
+   "streetM": 12,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 1172,
+     "median": 0.131,
+     "plantShare": 0.19
+    },
+    "medium": {
+     "n": 102,
+     "median": 0.109,
+     "plantShare": 0.26
+    },
+    "overhang": {
+     "n": 266,
+     "median": 0.23,
+     "plantShare": 0.57
+    },
+    "roof": {
+     "n": 763,
+     "median": -0.03,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 145113,
+    "classes": {
+     "1": 100456,
+     "2": 35851,
+     "6": 8806
+    },
+    "multiEchoTall": 0.98,
+    "multiEchoMedium": 0.34,
+    "multiEchoRoof": 0.14
+   }
+  },
+  {
+   "home": "Keizerstraat 44, 4645GR Putte",
+   "slug": "keizerstraat-44-4645gr-putte",
+   "boundaryM": 139.5,
+   "streetM": 0,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": null,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": null
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 215,
+     "median": 0.275,
+     "plantShare": 0.71
+    },
+    "medium": {
+     "n": 190,
+     "median": 0.288,
+     "plantShare": 0.66
+    },
+    "overhang": {
+     "n": 95,
+     "median": 0.294,
+     "plantShare": 0.98
+    },
+    "roof": {
+     "n": 546,
+     "median": -0.027,
+     "plantShare": 0.01
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 63480,
+    "classes": {
+     "1": 25643,
+     "2": 22517,
+     "6": 15320
+    },
+    "multiEchoTall": 0.83,
+    "multiEchoMedium": 0.46,
+    "multiEchoRoof": 0.13
+   }
+  },
+  {
+   "home": "Koppelstraat 11, 4645RD Putte",
+   "slug": "koppelstraat-11-4645rd-putte",
+   "boundaryM": 109.5,
+   "streetM": 7,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 92,
+     "median": 0.066,
+     "plantShare": 0.22
+    },
+    "medium": {
+     "n": 122,
+     "median": 0.318,
+     "plantShare": 0.7
+    },
+    "overhang": {
+     "n": 142,
+     "median": 0.329,
+     "plantShare": 0.83
+    },
+    "roof": {
+     "n": 296,
+     "median": 0.022,
+     "plantShare": 0.01
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 50795,
+    "classes": {
+     "1": 31216,
+     "2": 16236,
+     "6": 3343
+    },
+    "multiEchoTall": 0.42,
+    "multiEchoMedium": 0.25,
+    "multiEchoRoof": 0.25
+   }
+  },
+  {
+   "home": "Koppelstraat 21, 4645RD Putte",
+   "slug": "koppelstraat-21-4645rd-putte",
+   "boundaryM": 203.5,
+   "streetM": 1.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 3328,
+     "median": 0.247,
+     "plantShare": 0.71
+    },
+    "medium": {
+     "n": 115,
+     "median": 0.282,
+     "plantShare": 0.73
+    },
+    "overhang": {
+     "n": 382,
+     "median": 0.238,
+     "plantShare": 0.65
+    },
+    "roof": {
+     "n": 1265,
+     "median": 0.009,
+     "plantShare": 0.09
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 212278,
+    "classes": {
+     "1": 150040,
+     "2": 52477,
+     "6": 9761
+    },
+    "multiEchoTall": 0.98,
+    "multiEchoMedium": 0.87,
+    "multiEchoRoof": 0.27
+   }
+  },
+  {
+   "home": "Lievevrouwestraat 13, 4641EK Ossendrecht",
+   "slug": "lievevrouwestraat-13-4641ek-ossendrecht",
+   "boundaryM": 55,
+   "streetM": 9,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": null,
+    "overhang": null,
+    "roof": {
+     "n": 285,
+     "median": -0.181,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 8658,
+    "classes": {
+     "1": 1951,
+     "2": 3936,
+     "6": 2771
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": null,
+    "multiEchoRoof": 0.07
+   }
+  },
+  {
+   "home": "Mgr van Mensstraat 5, 4634VA Woensdrecht",
+   "slug": "mgr-van-mensstraat-5-4634va-woensdrecht",
+   "boundaryM": 123.5,
+   "streetM": 77,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 310,
+     "median": 0.103,
+     "plantShare": 0.37
+    },
+    "medium": {
+     "n": 215,
+     "median": 0.057,
+     "plantShare": 0.37
+    },
+    "overhang": null,
+    "roof": {
+     "n": 199,
+     "median": -0.253,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 32270,
+    "classes": {
+     "1": 10222,
+     "2": 14256,
+     "6": 7792
+    },
+    "multiEchoTall": 0.78,
+    "multiEchoMedium": 0.46,
+    "multiEchoRoof": 0.1
+   }
+  },
+  {
+   "home": "Moleneind 54, 4641SB Ossendrecht",
+   "slug": "moleneind-54-4641sb-ossendrecht",
+   "boundaryM": 118,
+   "streetM": 43,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 39,
+     "median": 0.068,
+     "plantShare": 0.15
+    },
+    "overhang": {
+     "n": 2,
+     "median": 0.196,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 433,
+     "median": -0.014,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 23636,
+    "classes": {
+     "1": 3514,
+     "2": 15184,
+     "6": 4933,
+     "9": 5
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.64,
+    "multiEchoRoof": 0.1
+   }
+  },
+  {
+   "home": "Norbartstraat 18, 4631BS Hoogerheide",
+   "slug": "norbartstraat-18-4631bs-hoogerheide",
+   "boundaryM": 68.5,
+   "streetM": 10,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 30,
+     "median": 0.025,
+     "plantShare": 0
+    },
+    "overhang": {
+     "n": 12,
+     "median": 0.183,
+     "plantShare": 0.42
+    },
+    "roof": {
+     "n": 352,
+     "median": -0.077,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 18107,
+    "classes": {
+     "1": 4754,
+     "2": 7550,
+     "6": 5803
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.52,
+    "multiEchoRoof": 0.1
+   }
+  },
+  {
+   "home": "Tulpstraat 46, 4645CV Putte",
+   "slug": "tulpstraat-46-4645cv-putte",
+   "boundaryM": 241,
+   "streetM": 134.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 119,
+     "median": 0.012,
+     "plantShare": 0.16
+    },
+    "medium": {
+     "n": 145,
+     "median": 0.197,
+     "plantShare": 0.5
+    },
+    "overhang": {
+     "n": 18,
+     "median": 0.346,
+     "plantShare": 0.89
+    },
+    "roof": {
+     "n": 351,
+     "median": -0.034,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 222100,
+    "classes": {
+     "1": 88499,
+     "2": 90953,
+     "6": 42639,
+     "9": 9
+    },
+    "multiEchoTall": 0.52,
+    "multiEchoMedium": 0.41,
+    "multiEchoRoof": 0.08
+   }
+  },
+  {
+   "home": "Vennekensstraat 6, 4635RS Huijbergen",
+   "slug": "vennekensstraat-6-4635rs-huijbergen",
+   "boundaryM": 342.5,
+   "streetM": 0,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": null,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": null
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 9685,
+     "median": 0.239,
+     "plantShare": 0.65
+    },
+    "medium": {
+     "n": 727,
+     "median": 0.176,
+     "plantShare": 0.46
+    },
+    "overhang": {
+     "n": 339,
+     "median": 0.253,
+     "plantShare": 0.7
+    },
+    "roof": {
+     "n": 662,
+     "median": -0.313,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 326741,
+    "classes": {
+     "1": 228931,
+     "2": 96448,
+     "6": 1362
+    },
+    "multiEchoTall": 0.91,
+    "multiEchoMedium": 0.15,
+    "multiEchoRoof": 0.36
+   }
+  },
+  {
+   "home": "Verlengde Duinstraat 34, 4631HS Hoogerheide",
+   "slug": "verlengde-duinstraat-34-4631hs-hoogerheide",
+   "boundaryM": 101.5,
+   "streetM": 17,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 11,
+     "median": 0.122,
+     "plantShare": 0.09
+    },
+    "medium": {
+     "n": 99,
+     "median": -0.052,
+     "plantShare": 0.15
+    },
+    "overhang": null,
+    "roof": {
+     "n": 403,
+     "median": -0.176,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 71588,
+    "classes": {
+     "1": 14348,
+     "2": 34949,
+     "6": 22291
+    },
+    "multiEchoTall": 0.76,
+    "multiEchoMedium": 0.53,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Vinkenslag 22, 4634TE Woensdrecht",
+   "slug": "vinkenslag-22-4634te-woensdrecht",
+   "boundaryM": 80.5,
+   "streetM": 18,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 14,
+     "median": -0.311,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 41,
+     "median": 0.061,
+     "plantShare": 0.15
+    },
+    "overhang": null,
+    "roof": {
+     "n": 323,
+     "median": -0.2,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 12062,
+    "classes": {
+     "1": 3300,
+     "2": 5057,
+     "6": 3705
+    },
+    "multiEchoTall": 0.17,
+    "multiEchoMedium": 0.43,
+    "multiEchoRoof": 0.1
+   }
+  },
+  {
+   "home": "1e Verdelingsweg 514, 4645RT Putte",
+   "slug": "1e-verdelingsweg-514-4645rt-putte",
+   "boundaryM": 118.5,
+   "streetM": 0,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": null,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": null
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 109,
+     "median": 0.288,
+     "plantShare": 0.72
+    },
+    "overhang": {
+     "n": 31,
+     "median": 0.333,
+     "plantShare": 0.97
+    },
+    "roof": {
+     "n": 364,
+     "median": -0.039,
+     "plantShare": 0.01
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 47102,
+    "classes": {
+     "1": 19206,
+     "2": 19450,
+     "6": 8446
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.32,
+    "multiEchoRoof": 0.13
+   }
+  },
+  {
+   "home": "Aalbersestraat 8, 4631CD Hoogerheide",
+   "slug": "aalbersestraat-8-4631cd-hoogerheide",
+   "boundaryM": 191.5,
+   "streetM": 185,
+   "bgt": {
+    "scheiding": {},
+    "haag": 2,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 87,
+     "median": -0.271,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 42,
+     "median": -0.05,
+     "plantShare": 0.14
+    },
+    "overhang": {
+     "n": 3,
+     "median": -0.176,
+     "plantShare": 0.33
+    },
+    "roof": {
+     "n": 426,
+     "median": -0.161,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 193419,
+    "classes": {
+     "1": 64473,
+     "2": 90763,
+     "6": 38183
+    },
+    "multiEchoTall": 0.56,
+    "multiEchoMedium": 0.71,
+    "multiEchoRoof": 0.11
+   }
+  },
+  {
+   "home": "Boomstraat 16, 4635CX Huijbergen",
+   "slug": "boomstraat-16-4635cx-huijbergen",
+   "boundaryM": 127,
+   "streetM": 61,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 432,
+     "median": -0.143,
+     "plantShare": 0.16
+    },
+    "medium": {
+     "n": 395,
+     "median": -0.069,
+     "plantShare": 0.18
+    },
+    "overhang": null,
+    "roof": {
+     "n": 427,
+     "median": -0.231,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 29803,
+    "classes": {
+     "1": 6256,
+     "2": 16027,
+     "6": 7520
+    },
+    "multiEchoTall": 0.08,
+    "multiEchoMedium": 0.39,
+    "multiEchoRoof": 0.15
+   }
+  },
+  {
+   "home": "Burgemeester van Gilshof 51, 4641TK Ossendrecht",
+   "slug": "burgemeester-van-gilshof-51-4641tk-ossendrecht",
+   "boundaryM": 136.5,
+   "streetM": 86.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 660,
+     "median": 0.256,
+     "plantShare": 0.66
+    },
+    "medium": {
+     "n": 166,
+     "median": 0.269,
+     "plantShare": 0.64
+    },
+    "overhang": null,
+    "roof": {
+     "n": 612,
+     "median": 0.019,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 93079,
+    "classes": {
+     "1": 38190,
+     "2": 45680,
+     "6": 9209
+    },
+    "multiEchoTall": 0.68,
+    "multiEchoMedium": 0.61,
+    "multiEchoRoof": 0.14
+   }
+  },
+  {
+   "home": "Dorpsstraat 53e, 4634TN Woensdrecht",
+   "slug": "dorpsstraat-53e-4634tn-woensdrecht",
+   "boundaryM": 286.5,
+   "streetM": 153.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 58,
+     "median": 0,
+     "plantShare": 0
+    },
+    "overhang": {
+     "n": 6,
+     "median": 0,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 2451,
+     "median": 0,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 116751,
+    "classes": {
+     "1": 36767,
+     "2": 63201,
+     "6": 16783
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.32,
+    "multiEchoRoof": 0.06
+   }
+  },
+  {
+   "home": "Handekenskruid 44, 4635BJ Huijbergen",
+   "slug": "handekenskruid-44-4635bj-huijbergen",
+   "boundaryM": 111.5,
+   "streetM": 19,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 65,
+     "median": 0.068,
+     "plantShare": 0.05
+    },
+    "medium": {
+     "n": 139,
+     "median": 0.121,
+     "plantShare": 0.4
+    },
+    "overhang": null,
+    "roof": {
+     "n": 315,
+     "median": -0.104,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 35354,
+    "classes": {
+     "1": 15369,
+     "2": 13960,
+     "6": 6025
+    },
+    "multiEchoTall": 0.99,
+    "multiEchoMedium": 0.38,
+    "multiEchoRoof": 0.15
+   }
+  },
+  {
+   "home": "Kapucijnenstraat 9, 4641KH Ossendrecht",
+   "slug": "kapucijnenstraat-9-4641kh-ossendrecht",
+   "boundaryM": 55,
+   "streetM": 12,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 5,
+     "median": -0.079,
+     "plantShare": 0
+    },
+    "overhang": null,
+    "roof": {
+     "n": 197,
+     "median": 0,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 11164,
+    "classes": {
+     "1": 1993,
+     "2": 4362,
+     "6": 4809
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.36,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Keizerstraat 67, 4645GP Putte",
+   "slug": "keizerstraat-67-4645gp-putte",
+   "boundaryM": 59,
+   "streetM": 11.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 6,
+     "median": 0.119,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 48,
+     "median": 0.068,
+     "plantShare": 0.19
+    },
+    "overhang": null,
+    "roof": {
+     "n": 226,
+     "median": -0.009,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 11595,
+    "classes": {
+     "1": 2444,
+     "2": 4653,
+     "6": 4498
+    },
+    "multiEchoTall": 1,
+    "multiEchoMedium": 0.67,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Leliestraat 10, 4645CL Putte",
+   "slug": "leliestraat-10-4645cl-putte",
+   "boundaryM": 83.5,
+   "streetM": 67,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 9,
+     "median": 0.032,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 7,
+     "median": 0.097,
+     "plantShare": 0
+    },
+    "overhang": {
+     "n": 27,
+     "median": 0.122,
+     "plantShare": 0.19
+    },
+    "roof": {
+     "n": 289,
+     "median": 0.012,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 43737,
+    "classes": {
+     "1": 18471,
+     "2": 16537,
+     "6": 8729
+    },
+    "multiEchoTall": 0.87,
+    "multiEchoMedium": 0.4,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Looizicht 8, 4641TE Ossendrecht",
+   "slug": "looizicht-8-4641te-ossendrecht",
+   "boundaryM": 986,
+   "streetM": 918,
+   "bgt": {
+    "scheiding": {
+     "hek": 2
+    },
+    "haag": 6,
+    "wallShareAll": 0.03701825557809331,
+    "wallShareStreet": 0.0332244008714597,
+    "hedgeShareAll": 0.028904665314401622,
+    "hedgeShareStreet": 0.03104575163398693
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 3450,
+     "median": 0.173,
+     "plantShare": 0.44
+    },
+    "medium": {
+     "n": 2524,
+     "median": 0.123,
+     "plantShare": 0.36
+    },
+    "overhang": {
+     "n": 115,
+     "median": 0.022,
+     "plantShare": 0.15
+    },
+    "roof": {
+     "n": 231,
+     "median": -0.023,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 1493991,
+    "classes": {
+     "1": 388638,
+     "2": 792876,
+     "6": 312477
+    },
+    "multiEchoTall": 0.66,
+    "multiEchoMedium": 0.47,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Markt 10a, 4641HR Ossendrecht",
+   "slug": "markt-10a-4641hr-ossendrecht",
+   "boundaryM": 68.5,
+   "streetM": 15.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 3,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 2,
+     "median": -0.022,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 4,
+     "median": -0.138,
+     "plantShare": 0
+    },
+    "overhang": null,
+    "roof": {
+     "n": 329,
+     "median": -0.106,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 6645,
+    "classes": {
+     "1": 1383,
+     "2": 1508,
+     "6": 3754
+    },
+    "multiEchoTall": 0.75,
+    "multiEchoMedium": 0.59,
+    "multiEchoRoof": 0.11
+   }
+  },
+  {
+   "home": "Maststraat 43, 4631EP Hoogerheide",
+   "slug": "maststraat-43-4631ep-hoogerheide",
+   "boundaryM": 55.5,
+   "streetM": 35.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 15,
+     "median": 0.132,
+     "plantShare": 0
+    },
+    "medium": null,
+    "overhang": null,
+    "roof": {
+     "n": 248,
+     "median": -0.012,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 16821,
+    "classes": {
+     "1": 6019,
+     "2": 3491,
+     "6": 7311
+    },
+    "multiEchoTall": 0.97,
+    "multiEchoMedium": null,
+    "multiEchoRoof": 0.13
+   }
+  },
+  {
+   "home": "Meulenven 1, 4635DK Huijbergen",
+   "slug": "meulenven-1-4635dk-huijbergen",
+   "boundaryM": 82.5,
+   "streetM": 27,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 25,
+     "median": 0.029,
+     "plantShare": 0.16
+    },
+    "overhang": {
+     "n": 42,
+     "median": -0.027,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 366,
+     "median": -0.055,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 20636,
+    "classes": {
+     "1": 5374,
+     "2": 8421,
+     "6": 6841
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.27,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Mgr van Mensstraat 63, 4634VB Woensdrecht",
+   "slug": "mgr-van-mensstraat-63-4634vb-woensdrecht",
+   "boundaryM": 97.5,
+   "streetM": 81,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 84,
+     "median": -0.324,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 152,
+     "median": -0.129,
+     "plantShare": 0.14
+    },
+    "overhang": {
+     "n": 20,
+     "median": 0.101,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 201,
+     "median": -0.282,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 26523,
+    "classes": {
+     "1": 9875,
+     "2": 10700,
+     "6": 5948
+    },
+    "multiEchoTall": 0.19,
+    "multiEchoMedium": 0.28,
+    "multiEchoRoof": 0.12
+   }
+  },
+  {
+   "home": "Mgr van Mensstraat 8, 4634VC Woensdrecht",
+   "slug": "mgr-van-mensstraat-8-4634vc-woensdrecht",
+   "boundaryM": 130.5,
+   "streetM": 125.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 176,
+     "median": 0.048,
+     "plantShare": 0.03
+    },
+    "medium": {
+     "n": 291,
+     "median": -0.152,
+     "plantShare": 0.05
+    },
+    "overhang": null,
+    "roof": {
+     "n": 178,
+     "median": -0.13,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 39734,
+    "classes": {
+     "1": 12004,
+     "2": 18244,
+     "6": 9486
+    },
+    "multiEchoTall": 0.87,
+    "multiEchoMedium": 0.41,
+    "multiEchoRoof": 0.11
+   }
+  },
+  {
+   "home": "Rozenlaan 36, 4631AK Hoogerheide",
+   "slug": "rozenlaan-36-4631ak-hoogerheide",
+   "boundaryM": 145.5,
+   "streetM": 125.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 4,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 68,
+     "median": -0.041,
+     "plantShare": 0
+    },
+    "medium": {
+     "n": 317,
+     "median": 0.078,
+     "plantShare": 0.32
+    },
+    "overhang": {
+     "n": 9,
+     "median": 0.09,
+     "plantShare": 0
+    },
+    "roof": {
+     "n": 235,
+     "median": -0.288,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 36350,
+    "classes": {
+     "1": 11976,
+     "2": 13536,
+     "6": 10838
+    },
+    "multiEchoTall": 0.63,
+    "multiEchoMedium": 0.37,
+    "multiEchoRoof": 0.07
+   }
+  },
+  {
+   "home": "Tuinstraat 3, 4634VR Woensdrecht",
+   "slug": "tuinstraat-3-4634vr-woensdrecht",
+   "boundaryM": 78,
+   "streetM": 22,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 32,
+     "median": -0.262,
+     "plantShare": 0
+    },
+    "overhang": null,
+    "roof": {
+     "n": 444,
+     "median": -0.208,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 14840,
+    "classes": {
+     "1": 2310,
+     "2": 7807,
+     "6": 4723
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.23,
+    "multiEchoRoof": 0.08
+   }
+  },
+  {
+   "home": "Tulpstraat 26, 4645CT Putte",
+   "slug": "tulpstraat-26-4645ct-putte",
+   "boundaryM": 241,
+   "streetM": 134.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 1,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 119,
+     "median": 0.012,
+     "plantShare": 0.16
+    },
+    "medium": {
+     "n": 145,
+     "median": 0.197,
+     "plantShare": 0.5
+    },
+    "overhang": {
+     "n": 18,
+     "median": 0.346,
+     "plantShare": 0.89
+    },
+    "roof": {
+     "n": 282,
+     "median": -0.032,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 222100,
+    "classes": {
+     "1": 88499,
+     "2": 90953,
+     "6": 42639,
+     "9": 9
+    },
+    "multiEchoTall": 0.52,
+    "multiEchoMedium": 0.41,
+    "multiEchoRoof": 0.08
+   }
+  },
+  {
+   "home": "Waterdrieblad 6, 4635BP Huijbergen",
+   "slug": "waterdrieblad-6-4635bp-huijbergen",
+   "boundaryM": 108.5,
+   "streetM": 9.5,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": null,
+    "medium": {
+     "n": 231,
+     "median": -0.163,
+     "plantShare": 0.06
+    },
+    "overhang": {
+     "n": 74,
+     "median": 0.34,
+     "plantShare": 0.78
+    },
+    "roof": {
+     "n": 516,
+     "median": -0.217,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 69451,
+    "classes": {
+     "1": 25234,
+     "2": 35597,
+     "6": 8620
+    },
+    "multiEchoTall": null,
+    "multiEchoMedium": 0.09,
+    "multiEchoRoof": 0.09
+   }
+  },
+  {
+   "home": "Zandfort 48, 4631RM Hoogerheide",
+   "slug": "zandfort-48-4631rm-hoogerheide",
+   "boundaryM": 127,
+   "streetM": 25,
+   "bgt": {
+    "scheiding": {},
+    "haag": 0,
+    "wallShareAll": 0,
+    "wallShareStreet": 0,
+    "hedgeShareAll": 0,
+    "hedgeShareStreet": 0
+   },
+   "cir": {
+    "layer": "Actueel_orthoHRIR",
+    "tall": {
+     "n": 713,
+     "median": 0.119,
+     "plantShare": 0.11
+    },
+    "medium": {
+     "n": 97,
+     "median": -0.021,
+     "plantShare": 0.28
+    },
+    "overhang": null,
+    "roof": {
+     "n": 681,
+     "median": -0.162,
+     "plantShare": 0
+    }
+   },
+   "ahn": {
+    "version": "AHN5",
+    "pdrf": 6,
+    "dims": [
+     "X",
+     "Y",
+     "Z",
+     "Intensity",
+     "ReturnNumber",
+     "NumberOfReturns",
+     "Synthetic",
+     "KeyPoint",
+     "Withheld",
+     "Overlap",
+     "ScannerChannel",
+     "ScanDirectionFlag",
+     "EdgeOfFlightLine",
+     "Classification",
+     "UserData",
+     "ScanAngle",
+     "PointSourceId",
+     "GpsTime"
+    ],
+    "points": 93086,
+    "classes": {
+     "1": 44194,
+     "2": 34433,
+     "6": 14459
+    },
+    "multiEchoTall": 0.95,
+    "multiEchoMedium": 0.43,
+    "multiEchoRoof": 0.1
+   }
+  }
+ ]
+}
