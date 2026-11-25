@@ -32,7 +32,8 @@ const Answer = z.object({
 /** What a publication is about, from its text: the kinds of work that matter for annexes. */
 const TOPICS: [string, RegExp][] = [
   ["carport", /carport|overkapping/i],
-  ["extension", /aanbouw|uitbouw|uitbreid|uitbreiding van de woning|serre|erker/i],
+  ["extension", /aanbouw|uitbouw|uitbreid|uitbreiding|dakopbouw|serre|erker/i],
+  ["conversion", /verbouw|transform|wijzigen van (het )?(pand|gebruik)|splitsen/i],
   ["outbuilding", /bijgebouw|berging|schuur|tuinhuis|garage|bijbehorend bouwwerk|poolhouse/i],
   ["dormer", /dakkapel/i],
   ["exit", /uitweg|inrit|uitrit/i],
@@ -46,6 +47,24 @@ const STAGE: [string, RegExp][] = [
   ["applied", /aangevraagd|ingekomen|binnengekomen|aanvraag/i],
   ["notice", /melding/i],
 ];
+
+/** Publications that are not about building on the plot (events, traffic, cables). */
+const UNRELATED =
+  /alcoholwet|evenement|verkeersmaatregel|verkeersbesluit|kabels en leidingen|standplaats|drank- en horeca|exploitatievergunning/i;
+const BUILDING = /omgevingsvergunning|bouw|sloop|kap/i;
+
+/** What the work is: the "Beschrijving:" field, or the sentence after the address. */
+export function describe(text: string): string | undefined {
+  const field = /Beschrijving:\s*([^]*?)(?:\s+(?:Verzonden|Ontvangen|Datum|Hoogerheide,)|$)/i.exec(
+    text,
+  )?.[1];
+  if (field) return field.trim().slice(0, 260);
+  const after =
+    /\d{4}\s?[A-Z]{2}\s+(?:in\s+)?[A-Z][a-z]+\s+(.*?)(?:\s+(?:Verzonden|Ontvangen|Hoogerheide,))/.exec(
+      text,
+    )?.[1];
+  return after?.trim().slice(0, 260);
+}
 
 export interface PermitRecord {
   id: string;
@@ -88,24 +107,23 @@ export async function fetchPermitHistory(
       ring: plot.map(([x, y]) => [x, y]),
     },
   });
-  const records = answer.data.publications.map((p) => {
-    const all = `${p.title} ${p.text ?? ""}`;
-    // The sentence naming this address usually says what the work is.
-    const near = (p.text ?? "").match(
-      new RegExp(`${address.street}[^.;]{0,20}${address.number}[^.;]{0,240}`, "i"),
-    )?.[0];
-    return {
-      id: p.id,
-      date: p.date,
-      title: p.title,
-      stage: STAGE.find(([, re]) => re.test(p.title) || re.test(all))?.[0] ?? "other",
-      topics: TOPICS.filter(([, re]) => re.test(near ?? all)).map(([t]) => t),
-      label: p.label,
-      url: p.url,
-      match: p.match ?? "address",
-      summary: (near ?? p.title).slice(0, 260),
-    };
-  });
+  const records = answer.data.publications
+    .filter((p) => !UNRELATED.test(`${p.title} ${p.text ?? ""}`) || BUILDING.test(p.title))
+    .map((p) => {
+      const all = `${p.title} ${p.text ?? ""}`;
+      const near = describe(p.text ?? "");
+      return {
+        id: p.id,
+        date: p.date,
+        title: p.title,
+        stage: STAGE.find(([, re]) => re.test(p.title) || re.test(all))?.[0] ?? "other",
+        topics: TOPICS.filter(([, re]) => re.test(near ?? all)).map(([t]) => t),
+        label: p.label,
+        url: p.url,
+        match: p.match ?? "address",
+        summary: (near ?? p.title).slice(0, 260),
+      };
+    });
   return {
     status: answer.data.complete ? "complete" : "incomplete",
     records,

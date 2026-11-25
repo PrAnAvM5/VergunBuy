@@ -161,13 +161,12 @@ const STAGE_TEXT: Record<string, { cls: string; label: string }> = {
 function permitCard(ctx: PlotContext): string {
   const p = ctx.permits;
   if (!p) return "";
-  const since = p.earliestOnStreet ? p.earliestOnStreet.slice(0, 4) : "2014";
   return `<div class="card">
     <h3>Permit history</h3>
     <p class="small muted" style="margin:0 0 6px">${
       p.status === "missing"
         ? "The municipality's publications could not be searched."
-        : `From the municipality's official publications (Gemeenteblad), searchable from ${since}. Older permits are not in this source.`
+        : `From the municipality's official publications (Gemeenteblad), digital since about 2010. Older permits are not in this source, so "none found" says nothing about earlier work.`
     }</p>
     ${
       p.records.length
@@ -179,7 +178,7 @@ function permitCard(ctx: PlotContext): string {
             .join("")
         : p.status === "missing"
           ? ""
-          : `<p class="small" style="margin:0">No published applications or permits for this home since ${since}.</p>`
+          : `<p class="small" style="margin:0">No published applications or permits found for this home.</p>`
     }
   </div>`;
 }
