@@ -31,7 +31,12 @@ await build({
 });
 writeFileSync(
   `${fn}/.vc-config.json`,
-  JSON.stringify({ runtime: "nodejs22.x", handler: "index.mjs", launcherType: "Nodejs" }, null, 2),
+  JSON.stringify(
+    // Zoning searches read many pages; allow up to 60 s (the Hobby plan maximum).
+    { runtime: "nodejs22.x", handler: "index.mjs", launcherType: "Nodejs", maxDuration: 60 },
+    null,
+    2,
+  ),
 );
 writeFileSync(`${fn}/package.json`, JSON.stringify({ type: "module" }));
 writeFileSync(

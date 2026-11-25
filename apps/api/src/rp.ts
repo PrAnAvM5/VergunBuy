@@ -80,6 +80,22 @@ export const OBJECT_KINDS = [
   "figuren",
 ] as const;
 
+/** Runs at most n tasks at the same time. */
+function pool(n: number) {
+  let active = 0;
+  const queue: (() => void)[] = [];
+  return async <T>(task: () => Promise<T>): Promise<T> => {
+    if (active >= n) await new Promise<void>((r) => queue.push(r));
+    active++;
+    try {
+      return await task();
+    } finally {
+      active--;
+      queue.shift()?.();
+    }
+  };
+}
+
 const str = (v: unknown): string | null => (typeof v === "string" && v !== "" ? v : null);
 
 export function createRp(cfg: RpConfig) {
@@ -173,33 +189,44 @@ export function createRp(cfg: RpConfig) {
       const objects: ZoningObject[] = [];
       let complete = plans.complete;
       const errors: unknown[] = plans.complete ? [] : [plans.error];
-      for (const p of planList)
-        for (const kind of OBJECT_KINDS) {
-          const r = await searchAll(
-            `/plannen/${encodeURIComponent(p.id)}/${kind}/_zoek?expand=geometrie`,
-            geo,
-            kind,
-          );
-          if (!r.complete) {
-            complete = false;
-            errors.push({ plan: p.id, kind, error: r.error ?? "incomplete" });
-          }
-          for (const o of r.items) {
-            const links = o._links as { teksten?: { tekstId?: string }[] } | undefined;
-            objects.push({
-              planId: p.id,
-              id: String(o.id),
-              kind: String(o._kind),
-              type: str(o.type),
-              name: String(o.naam ?? ""),
-              mainGroup: str(o.bestemmingshoofdgroep),
-              article: str(o.artikelnummer),
-              textIds: (links?.teksten ?? []).map((t) => String(t.tekstId)),
-              values: o.omvang ?? o.waarden ?? null,
-              geometry: o.geometrie ?? null,
-            });
-          }
+      // Plans and object kinds read 6 at a time (pages of one kind in sequence).
+      const limit = pool(6);
+      const results = await Promise.all(
+        planList.flatMap((p) =>
+          OBJECT_KINDS.map((kind) =>
+            limit(async () => ({
+              plan: p.id,
+              kind,
+              r: await searchAll(
+                `/plannen/${encodeURIComponent(p.id)}/${kind}/_zoek?expand=geometrie`,
+                geo,
+                kind,
+              ),
+            })),
+          ),
+        ),
+      );
+      for (const { plan, kind, r } of results) {
+        if (!r.complete) {
+          complete = false;
+          errors.push({ plan, kind, error: r.error ?? "incomplete" });
         }
+        for (const o of r.items) {
+          const links = o._links as { teksten?: { tekstId?: string }[] } | undefined;
+          objects.push({
+            planId: plan,
+            id: String(o.id),
+            kind: String(o._kind),
+            type: str(o.type),
+            name: String(o.naam ?? ""),
+            mainGroup: str(o.bestemmingshoofdgroep),
+            article: str(o.artikelnummer),
+            textIds: (links?.teksten ?? []).map((t) => String(t.tekstId)),
+            values: o.omvang ?? o.waarden ?? null,
+            geometry: o.geometrie ?? null,
+          });
+        }
+      }
       const value = {
         complete,
         plans: planList,
