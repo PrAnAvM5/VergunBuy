@@ -879,6 +879,16 @@ function verdictFrom(
 // Suggestions
 // ---------------------------------------------------------------------------------------------
 
+/** Checks whose outcome does not depend on where the carport stands (for the same size). */
+const POSITION_FREE = [
+  "area",
+  "at-house",
+  "tech-height",
+  "ex-monument-2227",
+  "ex-village-view-2227",
+  "ex-monument-village-2236",
+];
+
 export interface Suggestion {
   placement: Placement;
   verdict: CarportVerdict;
@@ -965,7 +975,7 @@ export function suggest(
     .filter((e) => e.ruleId !== "ex-archaeology-2227" || size.widthM * size.lengthM >= 50)
     .flatMap((e) => e.zones ?? []);
   const green =
-    best && best.verdict.permitFree !== "fail" && best.verdict.allowedByLaw !== "fail"
+    best && !best.verdict.checks.some((c) => POSITION_FREE.includes(c.id) && c.outcome === "fail")
       ? cands
           .filter((c) => c.likelyGreen)
           .filter((c) => !zones.some((z) => overlapM2(z, rectangle(c.pl)) > 0.05))
