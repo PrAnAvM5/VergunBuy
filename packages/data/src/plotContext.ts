@@ -63,6 +63,7 @@ import {
   type LegalFacts,
 } from "@vergunbuy/engine";
 import { fetchHeritage, fetchZoning, municipalMonumentsAt } from "./sources/legal.ts";
+import { fetchPermitHistory, type PermitHistory } from "./sources/permits.ts";
 import type { FetchFn } from "./http.ts";
 import type { Address } from "./sources/locatieserver.ts";
 import { num, OGC, ogcItems, outerRings, str, type Bbox, type Feature } from "./sources/ogc.ts";
@@ -210,6 +211,8 @@ export interface PlotContext {
   obstacles?: ObstacleResult;
   /** Zoning plans, monuments and protected views, and the rule exclusions they trigger. */
   legal: LegalFacts & { exclusions: ExclusionResult[] };
+  /** Published permit applications and decisions for this home (official publications). */
+  permits: PermitHistory;
   measurements: Measurements;
   /** The plot's own frame (street at the bottom) and its main dimensions. */
   frame: PlotFrame;
@@ -1335,6 +1338,24 @@ export async function buildPlotContext(
     return { ...facts, exclusions };
   }
 
+  // 7c. Permit history: what was applied for, granted or refused on this plot.
+  let permits: PermitHistory = { status: "missing", records: [], earliestOnStreet: null };
+  try {
+    permits = await tracer.step(
+      "permit-history",
+      "Permit history (official publications of the municipality)",
+      async (ctx) => {
+        const h = await fetchPermitHistory(address, plot.outline, ctx, fetchFn);
+        ctx.summarize(
+          `${h.records.length} publication(s) for this home${h.records.length ? `: ${h.records.map((r) => `${r.date?.slice(0, 4)} ${r.stage}${r.topics.length ? ` (${r.topics.join(", ")})` : ""}`).join("; ")}` : ""}; source reaches back to ${h.earliestOnStreet ?? "unknown"}${h.status === "complete" ? "" : " (incomplete)"}`,
+        );
+        return h;
+      },
+    );
+  } catch {
+    /* stays missing */
+  }
+
   // 8. Measurements.
   const publicOutlines = (publicAreas ?? [])
     .filter((a) => a.kind !== "water")
@@ -1392,6 +1413,7 @@ export async function buildPlotContext(
     structures,
     ...(obstacles ? { obstacles } : {}),
     legal,
+    permits,
     measurements,
     frame,
     layout,

@@ -18,6 +18,8 @@ export function fixtureKey(url: URL): string | undefined {
     return "3dbag/pand";
   if (url.hostname === "vergunbuy-inky.vercel.app" && url.pathname === "/api/rp/zoning")
     return "vergunbuy/rp-zoning";
+  if (url.hostname === "vergunbuy-inky.vercel.app" && url.pathname === "/api/permits")
+    return "vergunbuy/permits";
   const rce = /\/rce\/[^/]+\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(url.pathname);
   if (rce) return `rce/${rce[1]}`;
   const m = /\/kadaster\/(bag|bgt|brk)[^/]*\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(

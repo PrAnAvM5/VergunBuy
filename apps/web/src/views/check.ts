@@ -149,6 +149,41 @@ function legalCard(ctx: PlotContext): string {
   </div>`;
 }
 
+const STAGE_TEXT: Record<string, { cls: string; label: string }> = {
+  granted: { cls: "ok", label: "Granted" },
+  refused: { cls: "bad", label: "Refused" },
+  applied: { cls: "grey", label: "Applied" },
+  notice: { cls: "grey", label: "Notice" },
+  other: { cls: "grey", label: "Publication" },
+};
+
+/** Published permit applications and decisions for this home. */
+function permitCard(ctx: PlotContext): string {
+  const p = ctx.permits;
+  if (!p) return "";
+  const since = p.earliestOnStreet ? p.earliestOnStreet.slice(0, 4) : "2014";
+  return `<div class="card">
+    <h3>Permit history</h3>
+    <p class="small muted" style="margin:0 0 6px">${
+      p.status === "missing"
+        ? "The municipality's publications could not be searched."
+        : `From the municipality's official publications (Gemeenteblad), searchable from ${since}. Older permits are not in this source.`
+    }</p>
+    ${
+      p.records.length
+        ? p.records
+            .map(
+              (r) =>
+                `<div class="qrow"><div><div>${esc(r.date ?? "")} <span class="pill ${STAGE_TEXT[r.stage]?.cls ?? "grey"}">${STAGE_TEXT[r.stage]?.label ?? r.stage}</span> ${r.topics.map((t) => `<span class="pill grey">${esc(t)}</span>`).join(" ")}</div><div class="small muted">${esc(r.summary)}${r.url ? ` · <a href="${esc(r.url)}" target="_blank" rel="noopener">publication</a>` : ""}</div></div></div>`,
+            )
+            .join("")
+        : p.status === "missing"
+          ? ""
+          : `<p class="small" style="margin:0">No published applications or permits for this home since ${since}.</p>`
+    }
+  </div>`;
+}
+
 function obstacleText(ctx: PlotContext): string {
   const o = ctx.obstacles;
   if (!o) return "Unknown: the height scan could not be loaded";
@@ -328,6 +363,7 @@ export async function renderCheck(
           </dl>
         </div>
         ${legalCard(ctx)}
+        ${permitCard(ctx)}
         <div class="card">
           <h3>Surroundings</h3>
           <p class="small muted" style="margin:0 0 6px">What lies along each side of the plot.</p>

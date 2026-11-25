@@ -3,3 +3,4 @@ export * from "./sources/locatieserver.ts";
 export * from "./sources/ogc.ts";
 export * from "./plotContext.ts";
 export * from "./fixtureFetch.ts";
+export * from "./sources/permits.ts";

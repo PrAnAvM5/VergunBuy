@@ -15,10 +15,12 @@ import { toErrorBody } from "./errors.ts";
 import { rateLimit } from "./rateLimit.ts";
 import { createDso, DsoNotConfigured, RdPoint } from "./dso.ts";
 import { createRp, PlotPolygon } from "./rp.ts";
+import { createPermits, PermitQuery } from "./permits.ts";
 
 export interface AppDeps {
   dso?: ReturnType<typeof createDso>;
   rp?: ReturnType<typeof createRp>;
+  permits?: ReturnType<typeof createPermits>;
   fetchFn?: FetchFn;
   allowedOrigins: string[];
   version: string;
@@ -51,6 +53,27 @@ export function createApp(deps: AppDeps) {
   app.use("/rp/*", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
   const dso = deps.dso ?? createDso({ keys: {} });
   const rp = deps.rp ?? createRp({});
+  const permits = deps.permits ?? createPermits();
+  app.use("/permits", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
+
+  /**
+   * Permit history of a home from the municipality's official publications (Gemeenteblad).
+   * Body: { municipality, street, number, letter?, ring: [[x, y], ...] } (plot outline, RD New).
+   */
+  app.post("/permits", async (c) => {
+    const parsed = PermitQuery.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success)
+      return c.json(
+        {
+          error: {
+            code: "INVALID_INPUT",
+            message: "Give municipality, street, number and the plot ring.",
+          },
+        },
+        400,
+      );
+    return c.json({ data: await permits.historyFor(parsed.data), requestId: c.get("requestId") });
+  });
 
   /**
    * Old zoning plans (tijdelijk deel of the omgevingsplan) at a plot: the binding plans and every
