@@ -44,9 +44,13 @@ export function lookAround(ctx: PlotContext): string {
   const v = viewpoint(ctx);
   const sv = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${f(v.street.lat)},${f(v.street.lon)}&heading=${v.heading}&pitch=0&fov=80`;
   const earth = `https://earth.google.com/web/@${f(v.target.lat)},${f(v.target.lon)},15a,90d,35y,${v.heading}h,60t,0r`;
+  // Straight down from about 110 m, street at the bottom (heading = facing the house).
+  const earthTop = `https://earth.google.com/web/@${f(v.target.lat)},${f(v.target.lon)},15a,110d,35y,${v.heading}h,0t,0r`;
   const mapillary = `https://www.mapillary.com/app/?lat=${f(v.street.lat)}&lng=${f(v.street.lon)}&z=19`;
-  const card = (title: string, body: string, href: string, button: string) =>
-    `<div class="look"><h3>${esc(title)}</h3><p class="small muted">${esc(body)}</p><a class="btn" href="${esc(href)}" target="_blank" rel="noopener">${esc(button)} ↗</a></div>`;
+  const link = (href: string, button: string) =>
+    `<a class="btn" href="${esc(href)}" target="_blank" rel="noopener">${esc(button)} ↗</a>`;
+  const card = (title: string, body: string, href: string, button: string, more = "") =>
+    `<div class="look"><h3>${esc(title)}</h3><p class="small muted">${esc(body)}</p>${link(href, button)}${more}</div>`;
   return `<div class="looks">
     ${card(
       "Street View from the road",
@@ -56,9 +60,10 @@ export function lookAround(ctx: PlotContext): string {
     )}
     ${card(
       "3D photo model you can fly around",
-      "Google Earth's photo-realistic 3D: tilt, rotate and zoom around the house and garden. Good for trees and what stands in the garden. Free to look at, but it may not be used for measuring.",
+      "Google Earth's photo-realistic 3D: tilt, rotate and zoom around the house and garden. The top view looks straight down with the street at the bottom, like the 2D plan. Good for trees, hedges, sheds and what stands on the plot line. Free to look at, but it may not be used for measuring.",
       earth,
-      "Open Google Earth 3D",
+      "Open 3D from the street",
+      ` ${link(earthTop, "Open 3D top view")}`,
     )}
     ${card(
       "Mapillary street photos (open)",
