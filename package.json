@@ -20,10 +20,13 @@
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/node": "^22.0.0",
+    "@types/pngjs": "^6.0.5",
     "@vergunbuy/data": "workspace:*",
     "@vergunbuy/engine": "workspace:*",
+    "copc": "^0.0.9",
     "eslint": "^9.0.0",
     "fast-check": "^3.23.2",
+    "pngjs": "^7.0.0",
     "prettier": "^3.0.0",
     "tsx": "^4.23.15",
     "typescript": "^5.6.0",
