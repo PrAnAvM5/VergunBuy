@@ -3,18 +3,66 @@
  * (street at the bottom), with architectural dimension lines drawn outside the shapes.
  */
 import type { PlotContext } from "@vergunbuy/data";
-import { polyToLocal, toLocal, type Point, type Polygon } from "@vergunbuy/engine";
+import { boundaryRuns, polyToLocal, toLocal, type Point, type Polygon } from "@vergunbuy/engine";
 import { bandOf, esc, isOtherHomeOnParcel, OVERHANG_COLOR } from "./format.ts";
 
 const W = 820;
 const H = 620;
 
+/** Colours of the street-side plot line by what stands on it. */
+export const LINE_COLORS = {
+  exit: "#f2b134",
+  open: "#1f6fd1",
+  hedge: "#2f7d32",
+  barrier: "#3a3a3a",
+  unknown: "#9a6fd0",
+} as const;
+export const LINE_TEXT = {
+  exit: "Plot line: registered driveway crossing",
+  open: "Plot line on the street side: open (nothing 0.6 m or higher)",
+  hedge: "Plot line on the street side: hedge",
+  barrier: "Plot line on the street side: fence or wall",
+  unknown: "Plot line on the street side: something, make-up unknown",
+} as const;
+/** Laser-scan cells of something solid (not a plant): a wall, a car, a shed not registered. */
+export const SOLID_COLOR = "#6d6a65";
+
+export interface PlanScene {
+  /** SVG content (no <svg> wrapper). */
+  body: string;
+  W: number;
+  H: number;
+  /** Plot-frame metres to SVG units, and back. */
+  tx: (x: number) => number;
+  ty: (y: number) => number;
+  fromSvg: (px: number, py: number) => [number, number];
+  scale: number;
+}
+
 export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims = true): string {
+  const s = planScene(ctx, { selected, showDims });
+  return `<svg viewBox="0 0 ${s.W} ${s.H}" role="img" aria-label="Plot plan with the street at the bottom and main dimensions">${s.body}</svg>`;
+}
+
+/**
+ * The 2D plan as a reusable scene, so the carport planner draws on exactly the same plan.
+ * `padBottom`: room below the plot for the street (the carport planner needs more, for the car).
+ */
+export function planScene(
+  ctx: PlotContext,
+  opts: {
+    selected?: string | undefined;
+    showDims?: boolean;
+    padBottom?: number;
+  } = {},
+): PlanScene {
+  const selected = opts.selected;
+  const showDims = opts.showDims ?? true;
   const f = ctx.frame;
   const L = ctx.layout;
   const plot = polyToLocal(f, ctx.plot.outline);
   // Room around the plot for the street strip and the dimension lines.
-  const pad = { left: 9, right: 9, top: 7, bottom: 10 };
+  const pad = { left: 9, right: 9, top: 7, bottom: opts.padBottom ?? 10 };
   const minX = L.plot.minX - pad.left;
   const maxX = L.plot.maxX + pad.right;
   const minY = L.plot.minY - pad.bottom;
@@ -89,7 +137,12 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
     // One path per colour: each cell coloured by its own height.
     const byColor = new Map<string, string[]>();
     o.cells.forEach(([x, y], i) => {
-      const color = o.kind === "overhang" ? OVERHANG_COLOR : bandOf(o.cellHeights[i] ?? 1).color;
+      const color =
+        o.kind === "overhang"
+          ? OVERHANG_COLOR
+          : o.kind === "medium" && o.cellMaterials?.[i] === "solid"
+            ? SOLID_COLOR
+            : bandOf(o.cellHeights[i] ?? 1).color;
       const d = path(
         polyToLocal(f, [
           [x - half, y - half],
@@ -117,6 +170,16 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
     const key = `tree:${t.id}`;
     parts.push(
       `<circle class="obj${sel(key)}" data-sel="${esc(key)}" cx="${tx(p[0]).toFixed(1)}" cy="${ty(p[1]).toFixed(1)}" r="${((t.crownM / 2) * scale).toFixed(1)}" fill="#3f8f3a" fill-opacity="0.4" stroke="#1f5e1c" stroke-dasharray="3 2"/>`,
+    );
+  }
+
+  // What stands on the plot line, on the street side.
+  for (const r of boundaryRuns(ctx.boundary?.pieces ?? [])) {
+    if (r.side !== "street") continue;
+    const a = toLocal(f, r.a);
+    const b = toLocal(f, r.b);
+    parts.push(
+      `<line x1="${tx(a[0]).toFixed(1)}" y1="${ty(a[1]).toFixed(1)}" x2="${tx(b[0]).toFixed(1)}" y2="${ty(b[1]).toFixed(1)}" stroke="${LINE_COLORS[r.state]}" stroke-width="${r.state === "open" ? 3 : 6}" stroke-linecap="butt" ${r.state === "open" || r.state === "unknown" ? 'stroke-dasharray="7 5"' : ""}><title>${esc(`${LINE_TEXT[r.state]}, ${r.lengthM} m${r.heightM !== null && r.state !== "exit" ? `, up to ${r.heightM} m high` : ""}`)}</title></line>`,
     );
   }
 
@@ -206,5 +269,13 @@ export function drawWorkspacePlan(ctx: PlotContext, selected?: string, showDims 
   parts.push(
     `<g font-family="system-ui" font-size="11" fill="#5a5e66"><line x1="16" y1="${H - 16}" x2="${16 + bar}" y2="${H - 16}" stroke="#5a5e66" stroke-width="2"/><text x="16" y="${H - 24}">5 m</text></g>`,
   );
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Plot plan with the street at the bottom and main dimensions">${parts.join("")}</svg>`;
+  return {
+    body: parts.join(""),
+    W,
+    H,
+    tx,
+    ty,
+    fromSvg: (px, py) => [(px - ox) / scale + minX, (H - py - oy) / scale + minY],
+    scale,
+  };
 }

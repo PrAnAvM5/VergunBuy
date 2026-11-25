@@ -26,9 +26,7 @@ import {
   type Session,
 } from "./carportSession.ts";
 import { esc } from "./format.ts";
-
-const W = 860;
-const H = 640;
+import { planScene } from "./plan2d.ts";
 
 export interface CarportView {
   dispose(): void;
@@ -43,77 +41,53 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
   const s: Session = got;
   const site = s.site;
 
-  // View: the plot plus 8 m around it (the street in front, where the car comes from).
+  // The 2D plan itself (same drawing as the "2D plan" tab, without dimension lines), with more
+  // room below the plot: the car comes from the street.
+  const scene = planScene(ctx, { showDims: false, padBottom: 13 });
+  const W = scene.W;
+  const H = scene.H;
+  const S = scene.scale;
   const xs = site.plot.map((p) => p[0]);
   const ys = site.plot.map((p) => p[1]);
-  const [x0, x1, y0, y1] = [
-    Math.min(...xs) - 5,
-    Math.max(...xs) + 5,
-    Math.min(...ys) - 9,
-    Math.max(...ys) + 3,
-  ];
-  const S = Math.min(W / (x1 - x0), H / (y1 - y0));
-  const ox = (W - (x1 - x0) * S) / 2;
-  const oy = (H - (y1 - y0) * S) / 2;
-  const X = (x: number) => ox + (x - x0) * S;
-  const Y = (y: number) => H - (oy + (y - y0) * S);
-  const fromScreen = (px: number, py: number): [number, number] => [
-    (px - ox) / S + x0,
-    (H - py - oy) / S + y0,
-  ];
+  const X = scene.tx;
+  const Y = scene.ty;
+  const fromScreen = scene.fromSvg;
   const path = (p: Polygon) =>
     `M${p.map((q) => `${X(q[0]).toFixed(1)},${Y(q[1]).toFixed(1)}`).join("L")}Z`;
   const line = (a: readonly [number, number], b: readonly [number, number], attrs: string) =>
     `<line x1="${X(a[0]).toFixed(1)}" y1="${Y(a[1]).toFixed(1)}" x2="${X(b[0]).toFixed(1)}" y2="${Y(b[1]).toFixed(1)}" ${attrs}/>`;
 
   const background = (): string => {
-    const parts: string[] = [`<rect width="${W}" height="${H}" fill="#f4f2ec"/>`];
-    for (const a of site.publicAreas ?? [])
-      parts.push(`<path d="${path(a)}" fill="#dedbd3" stroke="#cbc7bd"/>`);
-    parts.push(`<path d="${path(site.plot)}" fill="#eef5e8" stroke="#222" stroke-width="2"/>`);
+    const parts: string[] = [scene.body];
+    // Back yard (permit-free area) and zones where an exception depends on the position.
     for (const part of s.prep.yard.region)
       parts.push(
-        `<path d="${path(part.outer)}${part.holes.map((h) => path(h)).join("")}" fill="#cfe8c0" fill-opacity="0.45" fill-rule="evenodd" stroke="#4c8a3a" stroke-dasharray="6 4"/>`,
+        `<path d="${path(part.outer)}${part.holes.map((h) => path(h)).join("")}" fill="#cfe8c0" fill-opacity="0.3" fill-rule="evenodd" stroke="#4c8a3a" stroke-dasharray="6 4" pointer-events="none"/>`,
       );
     for (const e of site.exclusions)
       for (const z of e.state === "depends-on-placement" ? (e.zones ?? []) : [])
-        parts.push(`<path d="${path(z)}" fill="url(#cp-hatch)" clip-path="url(#cp-plotclip)"/>`);
-    const cs = (site.obstacles?.cellM ?? 0.5) * S;
-    for (const c of site.obstacles?.cells ?? []) {
-      if (!c.tree && c.heightM < 1) continue;
-      const col = c.kind === "overhang" ? "#8a63d2" : c.tree ? "#2e6b2a" : "#e0a83a";
-      parts.push(
-        `<rect x="${(X(c.at[0]) - cs / 2).toFixed(1)}" y="${(Y(c.at[1]) - cs / 2).toFixed(1)}" width="${(cs + 0.3).toFixed(1)}" height="${(cs + 0.3).toFixed(1)}" fill="${col}" fill-opacity="${c.tree ? 0.6 : 0.5}"/>`,
-      );
+        parts.push(
+          `<path d="${path(z)}" fill="url(#cp-hatch)" clip-path="url(#cp-plotclip)" pointer-events="none"/>`,
+        );
+    // Without plot-line data, show where a car could come in, as before.
+    if (!site.boundary) {
+      for (const [a, b] of site.access.frontage)
+        parts.push(
+          line(
+            a,
+            b,
+            `stroke="#1f6fd1" stroke-width="4" stroke-dasharray="6 5" stroke-opacity="0.7"`,
+          ),
+        );
+      for (const [a, b] of site.access.entries)
+        parts.push(
+          line(
+            a,
+            b,
+            `stroke="#1f6fd1" stroke-width="7" stroke-linecap="round" ${site.access.level === "registered" ? "" : 'stroke-dasharray="10 6"'}`,
+          ),
+        );
     }
-    for (const st of site.structures)
-      parts.push(
-        `<path d="${path(st.outline)}" fill="none" stroke="#7b4aa0" stroke-dasharray="4 3"/>`,
-      );
-    for (const b of site.buildings)
-      parts.push(`<path d="${path(b.outline)}" fill="#c9c6bf" stroke="#77736a"/>`);
-    for (const h of site.house)
-      parts.push(`<path d="${path(h.outline)}" fill="#c98b5a" stroke="#6d4528"/>`);
-    for (const t of site.streetTrees)
-      parts.push(
-        `<circle cx="${X(t[0]).toFixed(1)}" cy="${Y(t[1]).toFixed(1)}" r="${(1.2 * S).toFixed(1)}" fill="#3f7d34" fill-opacity="0.7"/>`,
-      );
-    for (const [a, b] of site.access.frontage)
-      parts.push(
-        line(a, b, `stroke="#1f6fd1" stroke-width="4" stroke-dasharray="6 5" stroke-opacity="0.7"`),
-      );
-    for (const [a, b] of site.access.entries)
-      parts.push(
-        line(
-          a,
-          b,
-          `stroke="#1f6fd1" stroke-width="7" stroke-linecap="round" ${site.access.level === "registered" ? "" : 'stroke-dasharray="10 6"'}`,
-        ),
-      );
-    // Scale bar.
-    parts.push(
-      `<g transform="translate(14,${H - 16})"><rect width="${5 * S}" height="5" fill="#333"/><rect x="${5 * S}" width="${5 * S}" height="5" fill="#fff" stroke="#333"/><text y="-5" font-size="11" fill="#333">0</text><text x="${10 * S - 18}" y="-5" font-size="11" fill="#333">10 m</text></g>`,
-    );
     return parts.join("");
   };
 
@@ -245,7 +219,7 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     <div class="cp-stage"><svg id="cp-svg" viewBox="0 0 ${W} ${H}" style="touch-action:none">
       <defs><clipPath id="cp-plotclip"><path d="${path(site.plot)}"/></clipPath><pattern id="cp-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#9a5" stroke-width="1.5"/></pattern></defs>
       <g id="cp-bg">${background()}</g><g id="cp-fg"></g></svg></div>
-    <div class="small muted cp-legend">Numbered: hand-picked spots (green: permit-free; amber: needs a permit, a new exit or a check). Drag the carport to move it, drag its corner to resize: it turns red over a tree (2.5 m or higher) and amber over shrubs. Dark green: tree crowns, which the car keeps ${fmtM(s.params.clearanceM)} m away from; orange: shrubs and hedges (1–2.5 m), which may be driven over; violet: a neighbour's tree hanging over. Blue: the way in for a car (dashed thin: where a new exit could go). Light blue: the space the car body sweeps on the way in. Green dashed: back-yard area.</div>
+    <div class="small muted cp-legend">The plan is the same as the 2D plan tab. Numbered: hand-picked spots (green: permit-free; amber: possible with a condition, such as a permit, a new exit, or shrubs to clear). Drag the carport to move it, drag its corner to resize: it turns red over a tree (2.5 m or higher) and amber over shrubs or something solid. The street side of the plot line shows what stands on it: orange = registered driveway crossing, blue dashed = open, green = hedge, dark grey = fence or wall, purple dashed = unknown. Light blue: the space the car body sweeps on the way in, keeping ${fmtM(s.params.clearanceM)} m from walls and tree crowns. Green dashed: back yard.</div>
     <div id="cp-verdict"></div>`;
   const svg = el.querySelector<SVGSVGElement>("#cp-svg")!;
   const fg = el.querySelector<SVGGElement>("#cp-fg")!;

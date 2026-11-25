@@ -7,6 +7,7 @@
 import type { PlotContext } from "@vergunbuy/data";
 import { at, type Polygon } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc } from "./format.ts";
+import { LINE_COLORS, LINE_TEXT, SOLID_COLOR } from "./plan2d.ts";
 
 export interface Layers {
   context: boolean;
@@ -209,13 +210,17 @@ export function legend(): string {
     ["#e8961e", "Height scan: 1.5 – 2.5 m (hedge, shrub, car)"],
     ["#f0d04a", "Height scan: 1.0 – 1.5 m (low hedge, shrub)"],
     ["#8a7fd6", "Branches overhanging from a tree next door"],
+    [SOLID_COLOR, "Height scan: solid, not a plant (wall, car, unregistered shed)"],
     ["#00b8d9", "Registered canopy, pool or other structure"],
     ["#4f8a3c", "Hedge"],
   ];
   const edges = Object.values(EDGE_TEXT).map(
     (e) => [e.color, `Edge: ${e.label}`] as [string, string],
   );
-  return [...items, ...edges]
+  const line = Object.entries(LINE_TEXT).map(
+    ([k, l]) => [LINE_COLORS[k as keyof typeof LINE_COLORS], l] as [string, string],
+  );
+  return [...items, ...line, ...edges]
     .map(([c, l]) => `<span><i style="background:${c}"></i>${esc(l)}</span>`)
     .join("");
 }

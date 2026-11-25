@@ -271,14 +271,14 @@ export function play(s: Session, mode: "in" | "out"): void {
     finish();
     return;
   }
-  // About 3 m/s forwards, slower when reversing.
   s.message = { text: mode === "in" ? `Driving in${other}…` : `Leaving${other}…`, bad: false };
   const start = performance.now();
   let last = start;
   let d = 0;
   const step = (now: number) => {
     const p = at(d);
-    d += ((now - last) / 1000) * (p.rev ? 2 : 3.5);
+    // About 9 m/s forwards and 6 m/s reversing: a typical drive-in takes 3–5 s.
+    d += ((now - last) / 1000) * (p.rev ? 6 : 9);
     last = now;
     if (d >= total) {
       finish();
