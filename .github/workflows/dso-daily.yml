@@ -35,6 +35,11 @@ jobs:
           SERVER: https://vergunbuy-inky.vercel.app
           CHANGES_OUT: ${{ runner.temp }}/changes.md
         run: pnpm exec tsx scripts/dso-snapshot.ts
+      - name: Re-check rule sets against today's versions
+        env:
+          DSO_API_KEY: ${{ secrets.DSO_API_KEY }}
+          CHANGES_OUT: ${{ runner.temp }}/changes.md
+        run: pnpm exec tsx scripts/rule-recheck.ts
       - name: Commit the snapshot
         run: |
           git config user.name "github-actions[bot]"
