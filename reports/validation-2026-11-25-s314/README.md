@@ -20,7 +20,7 @@ Seed 314, 4 homes per village, 20 addresses, 0 errors.
 - ex-village-view-2227: clear 20, applies 0, depends-on-placement 0, unknown 0
 - ex-archaeology-2227: clear 8, applies 0, depends-on-placement 12, unknown 0
 - ex-safety-2236: clear 11, applies 0, depends-on-placement 3, unknown 6
-- Median time: 13530 ms
+- Median time: 25214 ms
 
 ## Per address
 
@@ -34,7 +34,7 @@ Seed 314, 4 homes per village, 20 addresses, 0 errors.
 | Huijbergen | Bakkerstraat 29, 4635EA Huijbergen | detached | none-found | 0 | 0 m | none m | none | depends-on-placement | unknown | NO_EXIT_FOUND |
 | Huijbergen | Bergsestraat 46, 4635RD Huijbergen | detached | registered | 1 | 6 m | 0 m | street-label | depends-on-placement | depends-on-placement | OUTBUILDINGS_ON_PLOT |
 | Huijbergen | Vennekensstraat 6, 4635RS Huijbergen | detached | none-found | 0 | 0 m | 28.9 m | none | depends-on-placement | depends-on-placement | OUTBUILDINGS_ON_PLOT, NO_EXIT_FOUND |
-| Ossendrecht | Calfven 106, 4641RE Ossendrecht | detached | possible (direct) | 0 | 8 m | none m | street-label | depends-on-placement | unknown | PLOT_AREA_MISMATCH, OUTBUILDINGS_ON_PLOT, POSSIBLE_EXIT |
+| Ossendrecht | Calfven 106, 4641RE Ossendrecht | detached | possible (direct) | 0 | 8 m | none m | street-label | depends-on-placement | unknown | PLOT_AREA_MISMATCH, OUTBUILDINGS_ON_PLOT, HEIGHTS_MISSING, POSSIBLE_EXIT |
 | Ossendrecht | Doktersstraat 9, 4641HS Ossendrecht | detached | registered | 1 | 2.8 m | 0.1 m | street-label | clear | unknown | OUTBUILDINGS_ON_PLOT |
 | Ossendrecht | Lievevrouwestraat 13, 4641EK Ossendrecht | corner | possible (across-pavement) | 0 | 0 m | 4.4 m | street-label | clear | unknown | OUTBUILDINGS_ON_PLOT, HEIGHTS_PARTIAL, PAVEMENT_CROSSING |
 | Ossendrecht | Moleneind 54, 4641SB Ossendrecht | detached | registered | 1 | 10.8 m | 0 m | longest-public | depends-on-placement | depends-on-placement | OUTBUILDINGS_ON_PLOT, FRONT_ESTIMATED |
