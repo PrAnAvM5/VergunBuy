@@ -27,7 +27,12 @@ await build({
   outfile: `${fn}/index.mjs`,
   // Some dependencies use require(); give the ESM bundle a require function.
   banner: {
-    js: "import { createRequire } from 'module'; const require = createRequire(import.meta.url);",
+    // ... and __dirname / __filename (the LAZ decoder looks for its .wasm next to itself).
+    js: [
+      "import { createRequire } from 'module'; const require = createRequire(import.meta.url);",
+      "import { fileURLToPath as __vbPath } from 'url'; import { dirname as __vbDir } from 'path';",
+      "const __filename = __vbPath(import.meta.url); const __dirname = __vbDir(__filename);",
+    ].join("\n"),
   },
   logLevel: "info",
 });

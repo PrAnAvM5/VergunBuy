@@ -158,6 +158,7 @@ export function carportSite(
             kind: o.kind,
             // The whole crown of a tree (2.5 m+) counts, also its lower edge (decision 2026-11-25).
             tree: o.kind !== "medium",
+            material: o.cellMaterials?.[i] ?? null,
           })),
         ),
         cellM: ctx.obstacles.res,
@@ -225,6 +226,14 @@ export function carportSite(
             : "none",
       access: { level, entries: localEntries, frontage, note: ctx.access.reason },
       streetTrees: (ctx.trees ?? []).map((t) => toLocal(f, t.at)),
+      boundary: ctx.boundary
+        ? ctx.boundary.pieces.map((p) => ({
+            a: toLocal(f, p.a),
+            b: toLocal(f, p.b),
+            side: p.side,
+            state: p.state,
+          }))
+        : null,
       obstacles,
       exclusions,
       extensionEvidence,
