@@ -5,7 +5,7 @@
     {
       "village": "Hoogerheide",
       "address": "Huijgensstraat 27, 4631GK Hoogerheide",
-      "ms": 13119,
+      "ms": 15259,
       "use": "woonfunctie",
       "houseType": "terraced",
       "plotAreaM2": 1345,
@@ -91,7 +91,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -102,29 +102,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Huijgensstraat) 53.8 m | rear: footpath / pavement 51.9 m, footpath / pavement (Huijgensstraat) 2.1 m | left: public green 25 m | right: footpath / pavement (Huijgensstraat) 25 m",
       "outbuildings": 8,
       "steps": [
-        "ok find-address (105 ms): Found Huijgensstraat 27, 4631GK Hoogerheide",
-        "ok bag-address (141 ms): Address is in 1 building(s)",
-        "ok brk-plot (98 ms): Plot Woensdrecht C 1463, 1345 m² drawn",
-        "ok bag-buildings (726 ms): 1 house, 7 other homes and 8 other buildings on plot, 43 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (2122 ms): Heights for 52 buildings, height scan of 2020",
-        "ok bgt-trees (108 ms): 15 registered trees, 2 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1036 ms): 51 current public areas; ignored 62 historical records",
-        "ok classify-edges (58 ms): 12 edge runs",
-        "ok bgt-structures (92 ms): none registered on or at the plot",
-        "ok ahn-obstacles (617 ms): 4 tall (23.3 m²), 34 medium (66.8 m²), 0 overhanging from next door (0 m²) in 679.8 m² of garden",
-        "ok zoning-plans (6126 ms): 8 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar (incomplete)",
-        "ok heritage (343 ms): no monument on or next to the plot",
-        "ok business-units (265 ms): 1 non-residential unit(s) within 50 m",
-        "ok permit-history (367 ms): 0 publication(s) for this home; source reaches back to 2016-01-14"
+        "ok find-address (141 ms): Found Huijgensstraat 27, 4631GK Hoogerheide",
+        "ok bag-address (230 ms): Address is in 1 building(s)",
+        "ok brk-plot (134 ms): Plot Woensdrecht C 1463, 1345 m² drawn",
+        "ok bag-buildings (1680 ms): 1 house, 7 other homes and 8 other buildings on plot, 43 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (2355 ms): Heights for 52 buildings, height scan of 2020",
+        "ok bgt-trees (364 ms): 15 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1237 ms): 51 current public areas; ignored 62 historical records",
+        "ok classify-edges (59 ms): 12 edge runs",
+        "ok bgt-structures (140 ms): none registered on or at the plot",
+        "ok ahn-obstacles (765 ms): 4 tall (23.3 m²), 34 medium (66.8 m²), 0 overhanging from next door (0 m²) in 679.8 m² of garden",
+        "ok zoning-plans (5473 ms): 8 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar",
+        "ok heritage (479 ms): no monument on or next to the plot",
+        "ok business-units (181 ms): 1 non-residential unit(s) within 50 m",
+        "ok permit-history (1050 ms): 0 publication(s) for this home; source reaches back to 2016-01-14"
       ],
       "draw": {
         "plot": [
@@ -436,7 +436,7 @@
     {
       "village": "Hoogerheide",
       "address": "Flemingstraat 14, 4631LJ Hoogerheide",
-      "ms": 12703,
+      "ms": 13509,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 251,
@@ -503,7 +503,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -512,29 +512,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (St Lucasplein) 7.9 m | rear: neighbouring plot 7.9 m | left: neighbouring plot 17.1 m, shared wall with the neighbour 13 m, footpath / pavement (St Lucasplein) 1.7 m | right: neighbouring plot 29.3 m, footpath / pavement (Flemingstraat) 2.6 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (267 ms): Found Flemingstraat 14, 4631LJ Hoogerheide",
-        "ok bag-address (92 ms): Address is in 1 building(s)",
-        "ok brk-plot (94 ms): Plot Woensdrecht B 3236, 251 m² drawn",
-        "ok bag-buildings (988 ms): 1 house, 1 other buildings on plot, 44 nearby; ignored 5 demolished or invalid",
-        "ok 3dbag-heights (1201 ms): Heights for 45 buildings, height scan of 2024",
-        "ok bgt-trees (94 ms): 1 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (761 ms): 17 current public areas; ignored 19 historical records",
-        "ok classify-edges (30 ms): 11 edge runs",
-        "ok bgt-structures (90 ms): none registered on or at the plot",
-        "ok ahn-obstacles (450 ms): 1 tall (0.5 m²), 2 medium (11.5 m²), 0 overhanging from next door (0 m²) in 129.8 m² of garden",
-        "ok zoning-plans (6374 ms): 9 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 2, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar 2 (incomplete)",
-        "ok heritage (342 ms): no monument on or next to the plot",
-        "ok business-units (1022 ms): 40 non-residential unit(s) within 50 m",
-        "ok permit-history (495 ms): 0 publication(s) for this home; source reaches back to 2017-11-08"
+        "ok find-address (370 ms): Found Flemingstraat 14, 4631LJ Hoogerheide",
+        "ok bag-address (275 ms): Address is in 1 building(s)",
+        "ok brk-plot (127 ms): Plot Woensdrecht B 3236, 251 m² drawn",
+        "ok bag-buildings (1554 ms): 1 house, 1 other buildings on plot, 44 nearby; ignored 5 demolished or invalid",
+        "ok 3dbag-heights (1553 ms): Heights for 45 buildings, height scan of 2024",
+        "ok bgt-trees (126 ms): 1 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1090 ms): 17 current public areas; ignored 19 historical records",
+        "ok classify-edges (28 ms): 11 edge runs",
+        "ok bgt-structures (123 ms): none registered on or at the plot",
+        "ok ahn-obstacles (497 ms): 1 tall (0.5 m²), 2 medium (11.5 m²), 0 overhanging from next door (0 m²) in 129.8 m² of garden",
+        "ok zoning-plans (5530 ms): 9 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 2, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar 2",
+        "ok heritage (472 ms): no monument on or next to the plot",
+        "ok business-units (853 ms): 40 non-residential unit(s) within 50 m",
+        "ok permit-history (487 ms): 0 publication(s) for this home; source reaches back to 2017-11-08"
       ],
       "draw": {
         "plot": [
@@ -715,7 +715,7 @@
     {
       "village": "Hoogerheide",
       "address": "Geyssendorfferlaan 23, 4631HW Hoogerheide",
-      "ms": 12369,
+      "ms": 18251,
       "use": "woonfunctie",
       "houseType": "semi-or-end",
       "plotAreaM2": 2037,
@@ -785,20 +785,20 @@
       "sides": "front: footpath / pavement (Geyssendorfferlaan) 21.1 m, footpath / pavement 9 m | rear: footpath / pavement (Geyssendorfferlaan) 29.8 m | left: footpath / pavement (Geyssendorfferlaan) 59.7 m, footpath / pavement 12.1 m | right: footpath / pavement (Geyssendorfferlaan) 71.7 m",
       "outbuildings": 12,
       "steps": [
-        "ok find-address (261 ms): Found Geyssendorfferlaan 23, 4631HW Hoogerheide",
-        "ok bag-address (280 ms): Address is in 1 building(s)",
-        "ok brk-plot (204 ms): Plot Woensdrecht C 1738, 2037 m² drawn",
-        "ok bag-buildings (461 ms): 1 house, 11 other homes and 12 other buildings on plot, 116 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (2016 ms): Heights for 126 buildings, height scan of 2024",
-        "ok bgt-trees (124 ms): 20 registered trees, 4 hedges, 0 other vegetation nearby",
-        "ok bgt-public (779 ms): 60 current public areas; ignored 78 historical records",
-        "ok classify-edges (68 ms): 11 edge runs",
-        "ok bgt-structures (105 ms): none registered on or at the plot",
-        "ok ahn-obstacles (601 ms): 11 tall (52.8 m²), 26 medium (80.5 m²), 0 overhanging from next door (0 m²) in 1039.3 m² of garden",
-        "ok zoning-plans (4079 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar",
-        "ok heritage (350 ms): no monument on or next to the plot",
-        "ok business-units (1124 ms): 20 non-residential unit(s) within 50 m",
-        "ok permit-history (859 ms): 0 publication(s) for this home; source reaches back to 2026-01-21"
+        "ok find-address (370 ms): Found Geyssendorfferlaan 23, 4631HW Hoogerheide",
+        "ok bag-address (232 ms): Address is in 1 building(s)",
+        "ok brk-plot (124 ms): Plot Woensdrecht C 1738, 2037 m² drawn",
+        "ok bag-buildings (2331 ms): 1 house, 11 other homes and 12 other buildings on plot, 116 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (4740 ms): Heights for 126 buildings, height scan of 2024",
+        "ok bgt-trees (377 ms): 20 registered trees, 4 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1077 ms): 60 current public areas; ignored 78 historical records",
+        "ok classify-edges (66 ms): 11 edge runs",
+        "ok bgt-structures (127 ms): none registered on or at the plot",
+        "ok ahn-obstacles (865 ms): 11 tall (52.8 m²), 26 medium (80.5 m²), 0 overhanging from next door (0 m²) in 1039.3 m² of garden",
+        "ok zoning-plans (4580 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1, vrijwaringszone - radar",
+        "ok heritage (477 ms): no monument on or next to the plot",
+        "ok business-units (855 ms): 20 non-residential unit(s) within 50 m",
+        "ok permit-history (856 ms): 0 publication(s) for this home; source reaches back to 2026-01-21"
       ],
       "draw": {
         "plot": [
@@ -1152,7 +1152,7 @@
     {
       "village": "Hoogerheide",
       "address": "Wouwbaan 80, 4631KP Hoogerheide",
-      "ms": 7595,
+      "ms": 10623,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 296,
@@ -1204,20 +1204,20 @@
       "sides": "front: footpath / pavement 11.9 m | rear: footpath / pavement (Parmentierlaan) 11.5 m | left: shared wall with the neighbour 13.2 m, neighbouring plot 11.7 m, footpath / pavement (Parmentierlaan) 0.2 m | right: neighbouring plot 24.8 m, footpath / pavement (Parmentierlaan) 0.3 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (276 ms): Found Wouwbaan 80, 4631KP Hoogerheide",
-        "ok bag-address (575 ms): Address is in 1 building(s)",
-        "ok brk-plot (104 ms): Plot Woensdrecht C 2439, 296 m² drawn",
-        "ok bag-buildings (941 ms): 1 house, 0 other buildings on plot, 36 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (1177 ms): Heights for 36 buildings, height scan of 2024",
-        "ok bgt-trees (95 ms): 7 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (879 ms): 19 current public areas; ignored 38 historical records",
-        "ok classify-edges (25 ms): 11 edge runs",
-        "ok bgt-structures (90 ms): none registered on or at the plot",
-        "ok ahn-obstacles (328 ms): 2 tall (15.3 m²), 5 medium (11.8 m²), 0 overhanging from next door (0 m²) in 170.8 m² of garden",
-        "ok zoning-plans (1900 ms): 3 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1",
-        "ok heritage (175 ms): no monument on or next to the plot",
-        "ok business-units (115 ms): 1 non-residential unit(s) within 50 m",
-        "ok permit-history (528 ms): 0 publication(s) for this home; source reaches back to 2017-08-09"
+        "ok find-address (371 ms): Found Wouwbaan 80, 4631KP Hoogerheide",
+        "ok bag-address (138 ms): Address is in 1 building(s)",
+        "ok brk-plot (496 ms): Plot Woensdrecht C 2439, 296 m² drawn",
+        "ok bag-buildings (1304 ms): 1 house, 0 other buildings on plot, 36 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (1038 ms): Heights for 36 buildings, height scan of 2024",
+        "ok bgt-trees (127 ms): 7 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1087 ms): 19 current public areas; ignored 38 historical records",
+        "ok classify-edges (23 ms): 11 edge runs",
+        "ok bgt-structures (127 ms): none registered on or at the plot",
+        "ok ahn-obstacles (530 ms): 2 tall (15.3 m²), 5 medium (11.8 m²), 0 overhanging from next door (0 m²) in 170.8 m² of garden",
+        "ok zoning-plans (3206 ms): 3 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar 1",
+        "ok heritage (248 ms): no monument on or next to the plot",
+        "ok business-units (736 ms): 1 non-residential unit(s) within 50 m",
+        "ok permit-history (786 ms): 0 publication(s) for this home; source reaches back to 2017-08-09"
       ],
       "draw": {
         "plot": [
@@ -1322,7 +1322,7 @@
     {
       "village": "Huijbergen",
       "address": "Zonnedauw 13, 4635BL Huijbergen",
-      "ms": 10535,
+      "ms": 12600,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 689,
@@ -1362,7 +1362,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -1372,29 +1372,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: verge belonging to the road 25.1 m | rear: neighbouring plot 25.1 m | left: neighbouring plot 27.5 m | right: neighbouring plot 27.5 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (103 ms): Found Zonnedauw 13, 4635BL Huijbergen",
-        "ok bag-address (99 ms): Address is in 1 building(s)",
-        "ok brk-plot (99 ms): Plot Huijbergen B 873, 689 m² drawn",
-        "ok bag-buildings (196 ms): 1 house, 1 other buildings on plot, 15 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (914 ms): Heights for 17 buildings, height scan of 2024",
-        "ok bgt-trees (90 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (709 ms): 26 current public areas; ignored 71 historical records",
-        "ok classify-edges (45 ms): 4 edge runs",
-        "ok bgt-structures (89 ms): none registered on or at the plot",
-        "ok ahn-obstacles (340 ms): 9 tall (134.8 m²), 9 medium (11.5 m²), 3 overhanging from next door (44 m²) in 481 m² of garden",
-        "ok zoning-plans (6195 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied (incomplete)",
-        "ok heritage (339 ms): no monument on or next to the plot",
-        "ok business-units (324 ms): 0 non-residential unit(s) within 50 m",
-        "ok permit-history (396 ms): 0 publication(s) for this home; source reaches back to 2018-01-03"
+        "ok find-address (167 ms): Found Zonnedauw 13, 4635BL Huijbergen",
+        "ok bag-address (152 ms): Address is in 1 building(s)",
+        "ok brk-plot (127 ms): Plot Huijbergen B 873, 689 m² drawn",
+        "ok bag-buildings (1443 ms): 1 house, 1 other buildings on plot, 15 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (2016 ms): Heights for 17 buildings, height scan of 2024",
+        "ok bgt-trees (124 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1098 ms): 26 current public areas; ignored 71 historical records",
+        "ok classify-edges (44 ms): 4 edge runs",
+        "ok bgt-structures (122 ms): none registered on or at the plot",
+        "ok ahn-obstacles (537 ms): 9 tall (134.8 m²), 9 medium (11.5 m²), 3 overhanging from next door (44 m²) in 481 m² of garden",
+        "ok zoning-plans (4828 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+        "ok heritage (475 ms): no monument on or next to the plot",
+        "ok business-units (220 ms): 0 non-residential unit(s) within 50 m",
+        "ok permit-history (461 ms): 0 publication(s) for this home; source reaches back to 2018-01-03"
       ],
       "draw": {
         "plot": [
@@ -1607,7 +1607,7 @@
     {
       "village": "Huijbergen",
       "address": "Siardus Bogaertslaan 7, 4635CL Huijbergen",
-      "ms": 12275,
+      "ms": 13464,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 308,
@@ -1639,7 +1639,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -1648,29 +1648,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Siardus Bogaertslaan) 12 m | rear: neighbouring plot 12.2 m | left: neighbouring plot 24.3 m | right: neighbouring plot 27.7 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (104 ms): Found Siardus Bogaertslaan 7, 4635CL Huijbergen",
-        "ok bag-address (91 ms): Address is in 1 building(s)",
-        "ok brk-plot (95 ms): Plot Huijbergen C 1599, 308 m² drawn",
-        "ok bag-buildings (1630 ms): 1 house, 1 other buildings on plot, 15 nearby; ignored 6 demolished or invalid",
-        "ok 3dbag-heights (1051 ms): Heights for 17 buildings, height scan of 2024",
-        "ok bgt-trees (91 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (626 ms): 11 current public areas; ignored 20 historical records",
-        "ok classify-edges (23 ms): 4 edge runs",
-        "ok bgt-structures (97 ms): none registered on or at the plot",
-        "ok ahn-obstacles (366 ms): 1 tall (1.3 m²), 8 medium (10 m²), 0 overhanging from next door (0 m²) in 162.5 m² of garden",
-        "ok zoning-plans (6877 ms): 5 binding plan(s); on the plot: luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied (incomplete)",
-        "ok heritage (349 ms): no monument on or next to the plot",
-        "ok business-units (135 ms): 3 non-residential unit(s) within 50 m",
-        "ok permit-history (444 ms): 2 publication(s) for this home: 2026 granted (extension); 2025 applied (extension); source reaches back to 2018-03-14"
+        "ok find-address (128 ms): Found Siardus Bogaertslaan 7, 4635CL Huijbergen",
+        "ok bag-address (145 ms): Address is in 1 building(s)",
+        "ok brk-plot (124 ms): Plot Huijbergen C 1599, 308 m² drawn",
+        "ok bag-buildings (3252 ms): 1 house, 1 other buildings on plot, 15 nearby; ignored 6 demolished or invalid",
+        "ok 3dbag-heights (1771 ms): Heights for 17 buildings, height scan of 2024",
+        "ok bgt-trees (353 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (832 ms): 11 current public areas; ignored 20 historical records",
+        "ok classify-edges (21 ms): 4 edge runs",
+        "ok bgt-structures (128 ms): none registered on or at the plot",
+        "ok ahn-obstacles (520 ms): 1 tall (1.3 m²), 8 medium (10 m²), 0 overhanging from next door (0 m²) in 162.5 m² of garden",
+        "ok zoning-plans (3562 ms): 5 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 3, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - molenbiotoop, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+        "ok heritage (471 ms): no monument on or next to the plot",
+        "ok business-units (697 ms): 3 non-residential unit(s) within 50 m",
+        "ok permit-history (1150 ms): 2 publication(s) for this home: 2026 granted (extension); 2025 applied (extension); source reaches back to 2018-03-14"
       ],
       "draw": {
         "plot": [
@@ -1786,7 +1786,7 @@
     {
       "village": "Huijbergen",
       "address": "Eiland 3, 4635EC Huijbergen",
-      "ms": 8413,
+      "ms": 12122,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 4656,
@@ -1833,20 +1833,20 @@
       "sides": "front: neighbouring plot 32.1 m, road (Eiland) 4.8 m, driveway crossing 3 m | left: neighbouring plot 112 m, water 30 m | right: water 75.7 m, neighbouring plot 55.2 m",
       "outbuildings": 3,
       "steps": [
-        "ok find-address (268 ms): Found Eiland 3, 4635EC Huijbergen",
-        "ok bag-address (264 ms): Address is in 1 building(s)",
-        "ok brk-plot (89 ms): Plot Huijbergen C 2500, 4656 m² drawn",
-        "ok bag-buildings (637 ms): 1 house, 3 other buildings on plot, 9 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (1286 ms): Heights for 11 buildings, height scan of 2024",
-        "ok bgt-trees (90 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (574 ms): 13 current public areas; ignored 19 historical records",
-        "ok classify-edges (59 ms): 18 edge runs",
-        "ok bgt-structures (94 ms): canopy (roof without walls, e.g. a carport)",
-        "ok ahn-obstacles (646 ms): 37 tall (421 m²), 58 medium (126.5 m²), 8 overhanging from next door (72.3 m²) in 4235 m² of garden",
-        "ok zoning-plans (3600 ms): 6 binding plan(s); on the plot: overige zone - beperkingen veehouderij, overige zone - groenblauwe mantel, overige zone - reserveringsgebied - waterberging, milieuzone - grondwaterbeschermingsgebied, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar, Agrarisch met waarden - Natuur- en landschapswaarden, Water, Agrarisch met waarden - Landschapswaarden, other: zoekgebied voor behoud en herstel watersystemen, other: reserveringsgebied - waterberging, geluidzone - industrie",
-        "ok heritage (173 ms): no monument on or next to the plot",
-        "ok business-units (107 ms): 0 non-residential unit(s) within 50 m",
-        "ok permit-history (231 ms): 0 publication(s) for this home; source reaches back to 2009-05-27"
+        "ok find-address (370 ms): Found Eiland 3, 4635EC Huijbergen",
+        "ok bag-address (172 ms): Address is in 1 building(s)",
+        "ok brk-plot (146 ms): Plot Huijbergen C 2500, 4656 m² drawn",
+        "ok bag-buildings (1050 ms): 1 house, 3 other buildings on plot, 9 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (1106 ms): Heights for 11 buildings, height scan of 2024",
+        "ok bgt-trees (121 ms): 0 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (757 ms): 13 current public areas; ignored 19 historical records",
+        "ok classify-edges (66 ms): 18 edge runs",
+        "ok bgt-structures (135 ms): canopy (roof without walls, e.g. a carport)",
+        "ok ahn-obstacles (946 ms): 37 tall (421 m²), 58 medium (126.5 m²), 8 overhanging from next door (72.3 m²) in 4235 m² of garden",
+        "ok zoning-plans (4891 ms): 6 binding plan(s); on the plot: overige zone - beperkingen veehouderij, overige zone - groenblauwe mantel, overige zone - reserveringsgebied - waterberging, milieuzone - grondwaterbeschermingsgebied, Wonen - 1, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar, Agrarisch met waarden - Natuur- en landschapswaarden, Water, Agrarisch met waarden - Landschapswaarden, other: zoekgebied voor behoud en herstel watersystemen, other: reserveringsgebied - waterberging, geluidzone - industrie",
+        "ok heritage (471 ms): no monument on or next to the plot",
+        "ok business-units (1142 ms): 0 non-residential unit(s) within 50 m",
+        "ok permit-history (474 ms): 0 publication(s) for this home; source reaches back to 2009-05-27"
       ],
       "draw": {
         "plot": [
@@ -2532,7 +2532,7 @@
     {
       "village": "Huijbergen",
       "address": "Binnenpad 13, 4635CH Huijbergen",
-      "ms": 11074,
+      "ms": 18696,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 165,
@@ -2564,7 +2564,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -2574,29 +2574,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Binnenpad) 6 m | rear: neighbouring plot 4.6 m, footpath / pavement 1.5 m | left: neighbouring plot 18.8 m, shared wall with the neighbour 8.7 m | right: neighbouring plot 18.8 m, shared wall with the neighbour 8.8 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (271 ms): Found Binnenpad 13, 4635CH Huijbergen",
-        "ok bag-address (93 ms): Address is in 1 building(s)",
-        "ok brk-plot (99 ms): Plot Huijbergen C 2700, 165 m² drawn",
-        "ok bag-buildings (522 ms): 1 house, 1 other buildings on plot, 17 nearby; ignored 2 demolished or invalid",
-        "ok 3dbag-heights (1145 ms): Heights for 18 buildings, height scan of 2024",
-        "ok bgt-trees (92 ms): 1 registered trees, 1 hedges, 0 other vegetation nearby",
-        "ok bgt-public (681 ms): 25 current public areas; ignored 37 historical records",
-        "ok classify-edges (26 ms): 9 edge runs",
-        "ok bgt-structures (92 ms): none registered on or at the plot",
-        "ok ahn-obstacles (306 ms): 0 tall (0 m²), 4 medium (8.5 m²), 0 overhanging from next door (0 m²) in 81.5 m² of garden",
-        "ok zoning-plans (5850 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied (incomplete)",
-        "ok heritage (338 ms): no monument on or next to the plot",
-        "ok business-units (852 ms): 0 non-residential unit(s) within 50 m",
-        "ok permit-history (374 ms): 0 publication(s) for this home; source reaches back to 2017-08-09"
+        "ok find-address (362 ms): Found Binnenpad 13, 4635CH Huijbergen",
+        "ok bag-address (338 ms): Address is in 1 building(s)",
+        "ok brk-plot (130 ms): Plot Huijbergen C 2700, 165 m² drawn",
+        "ok bag-buildings (689 ms): 1 house, 1 other buildings on plot, 17 nearby; ignored 2 demolished or invalid",
+        "ok 3dbag-heights (1665 ms): Heights for 18 buildings, height scan of 2024",
+        "ok bgt-trees (124 ms): 1 registered trees, 1 hedges, 0 other vegetation nearby",
+        "ok bgt-public (8208 ms): 25 current public areas; ignored 37 historical records",
+        "ok classify-edges (23 ms): 9 edge runs",
+        "ok bgt-structures (126 ms): none registered on or at the plot",
+        "ok ahn-obstacles (511 ms): 0 tall (0 m²), 4 medium (8.5 m²), 0 overhanging from next door (0 m²) in 81.5 m² of garden",
+        "ok zoning-plans (4768 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, vrijwaringszone - radar, milieuzone - grondwaterbeschermingsgebied",
+        "ok heritage (476 ms): no monument on or next to the plot",
+        "ok business-units (388 ms): 0 non-residential unit(s) within 50 m",
+        "ok permit-history (537 ms): 0 publication(s) for this home; source reaches back to 2017-08-09"
       ],
       "draw": {
         "plot": [
@@ -2688,7 +2688,7 @@
     {
       "village": "Ossendrecht",
       "address": "Dominicanenstraat 18, 4641KK Ossendrecht",
-      "ms": 10972,
+      "ms": 13432,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 143,
@@ -2720,7 +2720,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -2730,29 +2730,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Dominicanenstraat) 6 m | rear: neighbouring plot 6 m | left: neighbouring plot 13.9 m, shared wall with the neighbour 8.6 m, footpath / pavement (Kapucijnenstraat) 1.5 m | right: neighbouring plot 13.8 m, shared wall with the neighbour 8.6 m, footpath / pavement (Kapucijnenstraat) 1.6 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (106 ms): Found Dominicanenstraat 18, 4641KK Ossendrecht",
-        "ok bag-address (108 ms): Address is in 1 building(s)",
-        "ok brk-plot (413 ms): Plot Ossendrecht D 6748, 143 m² drawn",
-        "ok bag-buildings (894 ms): 1 house, 1 other buildings on plot, 38 nearby; ignored 0 demolished or invalid",
-        "ok 3dbag-heights (812 ms): Heights for 40 buildings, height scan of 2024",
-        "ok bgt-trees (93 ms): 6 registered trees, 2 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1007 ms): 28 current public areas; ignored 53 historical records",
-        "ok classify-edges (54 ms): 10 edge runs",
-        "ok bgt-structures (93 ms): none registered on or at the plot",
-        "ok ahn-obstacles (421 ms): 1 tall (4.5 m²), 3 medium (5 m²), 0 overhanging from next door (0 m²) in 58.5 m² of garden",
-        "ok zoning-plans (5081 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar, Verkeer (incomplete)",
-        "ok heritage (345 ms): no monument on or next to the plot",
-        "ok business-units (598 ms): 0 non-residential unit(s) within 50 m",
-        "ok permit-history (204 ms): 0 publication(s) for this home; source reaches back to 2023-02-22"
+        "ok find-address (123 ms): Found Dominicanenstraat 18, 4641KK Ossendrecht",
+        "ok bag-address (220 ms): Address is in 1 building(s)",
+        "ok brk-plot (1143 ms): Plot Ossendrecht D 6748, 143 m² drawn",
+        "ok bag-buildings (1279 ms): 1 house, 1 other buildings on plot, 38 nearby; ignored 0 demolished or invalid",
+        "ok 3dbag-heights (945 ms): Heights for 40 buildings, height scan of 2024",
+        "ok bgt-trees (130 ms): 6 registered trees, 2 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1121 ms): 28 current public areas; ignored 53 historical records",
+        "ok classify-edges (53 ms): 10 edge runs",
+        "ok bgt-structures (147 ms): none registered on or at the plot",
+        "ok ahn-obstacles (568 ms): 1 tall (4.5 m²), 3 medium (5 m²), 0 overhanging from next door (0 m²) in 58.5 m² of garden",
+        "ok zoning-plans (4772 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar, Verkeer",
+        "ok heritage (479 ms): no monument on or next to the plot",
+        "ok business-units (802 ms): 0 non-residential unit(s) within 50 m",
+        "ok permit-history (861 ms): 0 publication(s) for this home; source reaches back to 2023-02-22"
       ],
       "draw": {
         "plot": [
@@ -2832,7 +2832,7 @@
     {
       "village": "Ossendrecht",
       "address": "Looipad 10, 4641TD Ossendrecht",
-      "ms": 12446,
+      "ms": 13809,
       "use": "woonfunctie",
       "houseType": "semi-or-end",
       "plotAreaM2": 295,
@@ -2858,7 +2858,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -2868,29 +2868,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: road (Looipad) 10.6 m | rear: neighbouring plot 10.6 m | left: neighbouring plot 15.6 m, shared wall with the neighbour 12.2 m | right: neighbouring plot 27.6 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (278 ms): Found Looipad 10, 4641TD Ossendrecht",
-        "ok bag-address (170 ms): Address is in 1 building(s)",
-        "ok brk-plot (97 ms): Plot Ossendrecht D 5540, 295 m² drawn",
-        "ok bag-buildings (2413 ms): 1 house, 1 other buildings on plot, 22 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (677 ms): Heights for 24 buildings, height scan of 2024",
-        "ok bgt-trees (98 ms): 0 registered trees, 1 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1229 ms): 11 current public areas; ignored 20 historical records",
-        "ok classify-edges (45 ms): 7 edge runs",
-        "ok bgt-structures (90 ms): none registered on or at the plot",
-        "ok ahn-obstacles (422 ms): 1 tall (0.5 m²), 3 medium (16.8 m²), 0 overhanging from next door (0 m²) in 169.8 m² of garden",
-        "ok zoning-plans (5155 ms): 8 binding plan(s); on the plot: luchtvaartverkeerzone - 1, vrijwaringszone - radar (incomplete)",
-        "ok heritage (338 ms): no monument on or next to the plot",
-        "ok business-units (98 ms): 1 non-residential unit(s) within 50 m",
-        "ok permit-history (751 ms): 0 publication(s) for this home; source reaches back to 2021-10-27"
+        "ok find-address (357 ms): Found Looipad 10, 4641TD Ossendrecht",
+        "ok bag-address (133 ms): Address is in 1 building(s)",
+        "ok brk-plot (883 ms): Plot Ossendrecht D 5540, 295 m² drawn",
+        "ok bag-buildings (1409 ms): 1 house, 1 other buildings on plot, 22 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (1638 ms): Heights for 24 buildings, height scan of 2024",
+        "ok bgt-trees (362 ms): 0 registered trees, 1 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1033 ms): 11 current public areas; ignored 20 historical records",
+        "ok classify-edges (40 ms): 7 edge runs",
+        "ok bgt-structures (123 ms): none registered on or at the plot",
+        "ok ahn-obstacles (528 ms): 1 tall (0.5 m²), 3 medium (16.8 m²), 0 overhanging from next door (0 m²) in 169.8 m² of garden",
+        "ok zoning-plans (4915 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar",
+        "ok heritage (472 ms): no monument on or next to the plot",
+        "ok business-units (820 ms): 1 non-residential unit(s) within 50 m",
+        "ok permit-history (466 ms): 0 publication(s) for this home; source reaches back to 2021-10-27"
       ],
       "draw": {
         "plot": [
@@ -2978,7 +2978,7 @@
     {
       "village": "Ossendrecht",
       "address": "Dorpsstraat 32b, 4641HX Ossendrecht",
-      "ms": 9769,
+      "ms": 12696,
       "use": "woonfunctie",
       "houseType": "unit",
       "plotAreaM2": 468,
@@ -3123,20 +3123,20 @@
       "sides": "front: public green 50.3 m | rear: neighbouring plot 37.8 m, shared wall with the neighbour 10.6 m, bus or tram lane 0.8 m, footpath / pavement 0.4 m | left: road 5.3 m, neighbouring plot 4.8 m | right: footpath / pavement 9.9 m",
       "outbuildings": 2,
       "steps": [
-        "ok find-address (265 ms): Found Dorpsstraat 32b, 4641HX Ossendrecht",
-        "ok bag-address (95 ms): Address is in 1 building(s)",
-        "ok brk-plot (93 ms): Plot Ossendrecht D 5072, 468 m² drawn",
-        "ok bag-buildings (1795 ms): 1 house, 2 other buildings on plot, 37 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (1409 ms): Heights for 39 buildings, height scan of 2024",
-        "ok bgt-trees (95 ms): 11 registered trees, 4 hedges, 0 other vegetation nearby",
-        "ok bgt-public (647 ms): 55 current public areas; ignored 64 historical records",
+        "ok find-address (368 ms): Found Dorpsstraat 32b, 4641HX Ossendrecht",
+        "ok bag-address (382 ms): Address is in 1 building(s)",
+        "ok brk-plot (204 ms): Plot Ossendrecht D 5072, 468 m² drawn",
+        "ok bag-buildings (2958 ms): 1 house, 2 other buildings on plot, 37 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (1073 ms): Heights for 39 buildings, height scan of 2024",
+        "ok bgt-trees (352 ms): 11 registered trees, 4 hedges, 0 other vegetation nearby",
+        "ok bgt-public (822 ms): 55 current public areas; ignored 64 historical records",
         "ok classify-edges (24 ms): 12 edge runs",
-        "ok bgt-structures (95 ms): none registered on or at the plot",
-        "ok ahn-obstacles (416 ms): 2 tall (18.8 m²), 5 medium (4 m²), 0 overhanging from next door (0 m²) in 160 m² of garden",
-        "ok zoning-plans (2433 ms): 5 binding plan(s); on the plot: Detailhandel, Verkeer - Verblijfsgebied, bouwvlak, specifieke vorm van detailhandel - bakkerij, luchtvaartverkeerzone - 1, vrijwaringszone - radar",
-        "ok heritage (173 ms): no monument on or next to the plot",
-        "ok business-units (957 ms): 12 non-residential unit(s) within 50 m",
-        "ok permit-history (964 ms): 0 publication(s) for this home; source reaches back to 2013-06-19"
+        "ok bgt-structures (127 ms): none registered on or at the plot",
+        "ok ahn-obstacles (512 ms): 2 tall (18.8 m²), 5 medium (4 m²), 0 overhanging from next door (0 m²) in 160 m² of garden",
+        "ok zoning-plans (3467 ms): 5 binding plan(s); on the plot: Detailhandel, Verkeer - Verblijfsgebied, bouwvlak, specifieke vorm van detailhandel - bakkerij, luchtvaartverkeerzone - 1, vrijwaringszone - radar",
+        "ok heritage (244 ms): no monument on or next to the plot",
+        "ok business-units (586 ms): 12 non-residential unit(s) within 50 m",
+        "ok permit-history (1270 ms): 0 publication(s) for this home; source reaches back to 2013-06-19"
       ],
       "draw": {
         "plot": [
@@ -3539,7 +3539,7 @@
     {
       "village": "Ossendrecht",
       "address": "Zr Marie Adolphinestr 20, 4641CP Ossendrecht",
-      "ms": 8778,
+      "ms": 13985,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 469,
@@ -3622,20 +3622,20 @@
       "sides": "front: parking spaces (De Cichorei) 22.7 m, verge belonging to the road 16.3 m, public green 4.4 m, neighbouring plot 1.4 m, footpath / pavement 0.2 m | rear: neighbouring plot 35.7 m, shared wall with the neighbour 5.2 m | left: neighbouring plot 19 m | right: footpath / pavement 9.4 m, neighbouring plot 7.8 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (262 ms): Found Zr Marie Adolphinestr 20, 4641CP Ossendrecht",
-        "ok bag-address (199 ms): Address is in 1 building(s)",
-        "ok brk-plot (96 ms): Plot Ossendrecht D 6468, 469 m² drawn",
-        "ok bag-buildings (221 ms): 1 house, 1 other buildings on plot, 24 nearby; ignored 1 demolished or invalid",
-        "ok 3dbag-heights (968 ms): Heights for 26 buildings, height scan of 2024",
-        "ok bgt-trees (97 ms): 5 registered trees, 1 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1083 ms): 35 current public areas; ignored 38 historical records",
-        "ok classify-edges (78 ms): 21 edge runs",
-        "ok bgt-structures (94 ms): none registered on or at the plot",
-        "ok ahn-obstacles (352 ms): 3 tall (5.8 m²), 5 medium (6.3 m²), 0 overhanging from next door (0 m²) in 174.8 m² of garden",
-        "ok zoning-plans (3221 ms): 6 binding plan(s); on the plot: Wonen - 3, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar, maximale goot- en bouwhoogte (m)",
-        "ok heritage (181 ms): no monument on or next to the plot",
-        "ok business-units (546 ms): 13 non-residential unit(s) within 50 m",
-        "ok permit-history (517 ms): 0 publication(s) for this home; source reaches back to 2018-06-06"
+        "ok find-address (364 ms): Found Zr Marie Adolphinestr 20, 4641CP Ossendrecht",
+        "ok bag-address (642 ms): Address is in 1 building(s)",
+        "ok brk-plot (134 ms): Plot Ossendrecht D 6468, 469 m² drawn",
+        "ok bag-buildings (1870 ms): 1 house, 1 other buildings on plot, 24 nearby; ignored 1 demolished or invalid",
+        "ok 3dbag-heights (1967 ms): Heights for 26 buildings, height scan of 2024",
+        "ok bgt-trees (358 ms): 5 registered trees, 1 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1017 ms): 35 current public areas; ignored 38 historical records",
+        "ok classify-edges (75 ms): 21 edge runs",
+        "ok bgt-structures (124 ms): none registered on or at the plot",
+        "ok ahn-obstacles (558 ms): 3 tall (5.8 m²), 5 medium (6.3 m²), 0 overhanging from next door (0 m²) in 174.8 m² of garden",
+        "ok zoning-plans (4058 ms): 6 binding plan(s); on the plot: Wonen - 3, Verkeer - Verblijfsgebied, bouwvlak, luchtvaartverkeerzone - 1, vrijwaringszone - radar, maximale goot- en bouwhoogte (m)",
+        "ok heritage (474 ms): no monument on or next to the plot",
+        "ok business-units (432 ms): 13 non-residential unit(s) within 50 m",
+        "ok permit-history (924 ms): 0 publication(s) for this home; source reaches back to 2018-06-06"
       ],
       "draw": {
         "plot": [
@@ -3936,7 +3936,7 @@
     {
       "village": "Putte",
       "address": "Bradfordstraat 39, 4645HE Putte",
-      "ms": 8946,
+      "ms": 20189,
       "use": "woonfunctie",
       "houseType": "unit",
       "plotAreaM2": 2895,
@@ -4016,20 +4016,20 @@
       "sides": "front: road (Bradfordstraat) 49.1 m, verge belonging to the road 5 m, footpath / pavement 4.8 m | rear: neighbouring plot 54.1 m, road (Bradfordstraat) 2.3 m | left: neighbouring plot 41.6 m, road (Bradfordstraat) 22.5 m, parking spaces 5.8 m, verge belonging to the road 1.6 m, footpath / pavement (Bradfordstraat) 1.1 m | right: neighbouring plot 67.2 m, road (Bradfordstraat) 4 m, footpath / pavement 0.5 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (91 ms): Found Bradfordstraat 39, 4645HE Putte",
-        "ok bag-address (260 ms): Address is in 1 building(s)",
-        "ok brk-plot (96 ms): Plot Putte C 1886, 2895 m² drawn",
-        "ok bag-buildings (315 ms): 1 house, 1 other homes and 1 other buildings on plot, 39 nearby; ignored 5 demolished or invalid",
-        "ok 3dbag-heights (1479 ms): Heights for 41 buildings, height scan of 2024",
-        "ok bgt-trees (92 ms): 2 registered trees, 7 hedges, 0 other vegetation nearby",
-        "ok bgt-public (510 ms): 83 current public areas; ignored 62 historical records",
-        "ok classify-edges (45 ms): 42 edge runs",
-        "ok bgt-structures (104 ms): none registered on or at the plot",
-        "ok ahn-obstacles (664 ms): 11 tall (38.8 m²), 32 medium (60.8 m²), 2 overhanging from next door (8 m²) in 1855.8 m² of garden",
-        "ok zoning-plans (3635 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 4, bouwvlak, vrijwaringszone - radar",
-        "ok heritage (341 ms): rijksmonument 53634.00 (adjacent-parcel)",
-        "ok business-units (513 ms): 33 non-residential unit(s) within 50 m",
-        "ok permit-history (368 ms): 0 publication(s) for this home; source reaches back to 2010-12-08"
+        "ok find-address (124 ms): Found Bradfordstraat 39, 4645HE Putte",
+        "ok bag-address (134 ms): Address is in 1 building(s)",
+        "ok brk-plot (128 ms): Plot Putte C 1886, 2895 m² drawn",
+        "ok bag-buildings (1744 ms): 1 house, 1 other homes and 1 other buildings on plot, 39 nearby; ignored 5 demolished or invalid",
+        "ok 3dbag-heights (1965 ms): Heights for 41 buildings, height scan of 2024",
+        "ok bgt-trees (135 ms): 2 registered trees, 7 hedges, 0 other vegetation nearby",
+        "ok bgt-public (8731 ms): 83 current public areas; ignored 62 historical records",
+        "ok classify-edges (42 ms): 42 edge runs",
+        "ok bgt-structures (139 ms): none registered on or at the plot",
+        "ok ahn-obstacles (704 ms): 11 tall (38.8 m²), 32 medium (60.8 m²), 2 overhanging from next door (8 m²) in 1855.8 m² of garden",
+        "ok zoning-plans (4468 ms): 7 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 4, bouwvlak, vrijwaringszone - radar",
+        "ok heritage (473 ms): rijksmonument 53634.00 (adjacent-parcel)",
+        "ok business-units (534 ms): 33 non-residential unit(s) within 50 m",
+        "ok permit-history (496 ms): 0 publication(s) for this home; source reaches back to 2010-12-08"
       ],
       "draw": {
         "plot": [
@@ -4457,7 +4457,7 @@
     {
       "village": "Putte",
       "address": "Antwerpsestraat 184, 4645BN Putte",
-      "ms": 10313,
+      "ms": 11057,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 377,
@@ -4596,7 +4596,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -4606,29 +4606,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Postbaan) 28.3 m | rear: neighbouring plot 15 m, shared wall with the neighbour 12 m | left: neighbouring plot 18.1 m | right: footpath / pavement 7.4 m, footpath / pavement (Postbaan) 1 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (264 ms): Found Antwerpsestraat 184, 4645BN Putte",
-        "ok bag-address (387 ms): Address is in 1 building(s)",
-        "ok brk-plot (93 ms): Plot Putte B 4117, 377 m² drawn",
-        "ok bag-buildings (807 ms): 1 house, 1 other buildings on plot, 26 nearby; ignored 4 demolished or invalid",
-        "ok 3dbag-heights (693 ms): Heights for 27 buildings, height scan of 2024",
-        "ok bgt-trees (89 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1058 ms): 15 current public areas; ignored 40 historical records",
-        "ok classify-edges (13 ms): 22 edge runs",
-        "ok bgt-structures (88 ms): none registered on or at the plot",
-        "ok ahn-obstacles (445 ms): 2 tall (9.3 m²), 4 medium (9 m²), 0 overhanging from next door (0 m²) in 238.5 m² of garden",
-        "ok zoning-plans (3452 ms): 4 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar (incomplete)",
-        "ok heritage (174 ms): no monument on or next to the plot",
-        "ok business-units (553 ms): 1 non-residential unit(s) within 50 m",
-        "ok permit-history (2008 ms): 0 publication(s) for this home; source reaches back to 2013-05-08"
+        "ok find-address (375 ms): Found Antwerpsestraat 184, 4645BN Putte",
+        "ok bag-address (158 ms): Address is in 1 building(s)",
+        "ok brk-plot (125 ms): Plot Putte B 4117, 377 m² drawn",
+        "ok bag-buildings (401 ms): 1 house, 1 other buildings on plot, 26 nearby; ignored 4 demolished or invalid",
+        "ok 3dbag-heights (1905 ms): Heights for 27 buildings, height scan of 2024",
+        "ok bgt-trees (123 ms): 2 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1386 ms): 15 current public areas; ignored 40 historical records",
+        "ok classify-edges (14 ms): 22 edge runs",
+        "ok bgt-structures (121 ms): none registered on or at the plot",
+        "ok ahn-obstacles (537 ms): 2 tall (9.3 m²), 4 medium (9 m²), 0 overhanging from next door (0 m²) in 238.5 m² of garden",
+        "ok zoning-plans (3096 ms): 4 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar",
+        "ok heritage (239 ms): no monument on or next to the plot",
+        "ok business-units (433 ms): 1 non-residential unit(s) within 50 m",
+        "ok permit-history (1922 ms): 0 publication(s) for this home; source reaches back to 2013-05-08"
       ],
       "draw": {
         "plot": [
@@ -4920,7 +4920,7 @@
     {
       "village": "Putte",
       "address": "Zr Will van Hooijdonkstraat 17, 4645RX Putte",
-      "ms": 10041,
+      "ms": 13512,
       "use": "woonfunctie",
       "houseType": "corner",
       "plotAreaM2": 131,
@@ -4951,7 +4951,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -4962,29 +4962,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement 5.4 m | rear: public green 5.4 m | left: neighbouring plot 11 m, shared wall with the neighbour 11 m, footpath / pavement 2.2 m | right: neighbouring plot 13.2 m, shared wall with the neighbour 11 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (274 ms): Found Zr Will van Hooijdonkstraat 17, 4645RX Putte",
-        "ok bag-address (101 ms): Address is in 1 building(s)",
-        "ok brk-plot (91 ms): Plot Putte B 4145, 131 m² drawn",
-        "ok bag-buildings (413 ms): 1 house, 1 other buildings on plot, 25 nearby; ignored 1 demolished or invalid",
-        "ok 3dbag-heights (659 ms): Heights for 27 buildings, height scan of 2024",
-        "ok bgt-trees (91 ms): 4 registered trees, 4 hedges, 0 other vegetation nearby",
-        "ok bgt-public (775 ms): 18 current public areas; ignored 21 historical records",
-        "ok classify-edges (4 ms): 12 edge runs",
-        "ok bgt-structures (87 ms): none registered on or at the plot",
-        "ok ahn-obstacles (374 ms): 0 tall (0 m²), 2 medium (1.8 m²), 0 overhanging from next door (0 m²) in 48.5 m² of garden",
-        "ok zoning-plans (6264 ms): 11 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Waarde - Archeologie, specifieke vorm van wonen - te bebouwen en gebruiken als wonen, vrijwaringszone - radar, Wonen - 3, bouwvlak, maximale goot- en bouwhoogte (m) (incomplete)",
-        "ok heritage (348 ms): no monument on or next to the plot",
-        "ok business-units (208 ms): 0 non-residential unit(s) within 50 m",
-        "ok permit-history (242 ms): 0 publication(s) for this home; source reaches back to 2017-07-26"
+        "ok find-address (364 ms): Found Zr Will van Hooijdonkstraat 17, 4645RX Putte",
+        "ok bag-address (225 ms): Address is in 1 building(s)",
+        "ok brk-plot (129 ms): Plot Putte B 4145, 131 m² drawn",
+        "ok bag-buildings (1710 ms): 1 house, 1 other buildings on plot, 25 nearby; ignored 1 demolished or invalid",
+        "ok 3dbag-heights (1171 ms): Heights for 27 buildings, height scan of 2024",
+        "ok bgt-trees (122 ms): 4 registered trees, 4 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1037 ms): 18 current public areas; ignored 21 historical records",
+        "ok classify-edges (6 ms): 12 edge runs",
+        "ok bgt-structures (123 ms): none registered on or at the plot",
+        "ok ahn-obstacles (526 ms): 0 tall (0 m²), 2 medium (1.8 m²), 0 overhanging from next door (0 m²) in 48.5 m² of garden",
+        "ok zoning-plans (6467 ms): 11 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Waarde - Archeologie, specifieke vorm van wonen - te bebouwen en gebruiken als wonen, vrijwaringszone - radar, Wonen - 3, bouwvlak, maximale goot- en bouwhoogte (m)",
+        "ok heritage (475 ms): no monument on or next to the plot",
+        "ok business-units (377 ms): 0 non-residential unit(s) within 50 m",
+        "ok permit-history (542 ms): 0 publication(s) for this home; source reaches back to 2017-07-26"
       ],
       "draw": {
         "plot": [
@@ -5080,7 +5080,7 @@
     {
       "village": "Putte",
       "address": "Zes-oktoberlaan 35, 4645GE Putte",
-      "ms": 8500,
+      "ms": 10479,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 398,
@@ -5145,20 +5145,20 @@
       "sides": "front: footpath / pavement (Zes-oktoberlaan) 16.3 m | rear: neighbouring plot 12.5 m | left: neighbouring plot 30.4 m | right: footpath / pavement (Zes-oktoberlaan) 13.8 m, neighbouring plot 11.8 m",
       "outbuildings": 1,
       "steps": [
-        "ok find-address (265 ms): Found Zes-oktoberlaan 35, 4645GE Putte",
-        "ok bag-address (454 ms): Address is in 1 building(s)",
-        "ok brk-plot (169 ms): Plot Putte B 3304, 398 m² drawn",
-        "ok bag-buildings (214 ms): 1 house, 1 other buildings on plot, 23 nearby; ignored 7 demolished or invalid",
-        "ok 3dbag-heights (947 ms): Heights for 22 buildings, height scan of 2024",
-        "ok bgt-trees (95 ms): 3 registered trees, 1 hedges, 0 other vegetation nearby",
-        "ok bgt-public (866 ms): 9 current public areas; ignored 29 historical records",
-        "ok classify-edges (18 ms): 7 edge runs",
-        "ok bgt-structures (96 ms): none registered on or at the plot",
-        "ok ahn-obstacles (413 ms): 1 tall (2.8 m²), 6 medium (18.8 m²), 0 overhanging from next door (0 m²) in 253.8 m² of garden",
-        "ok zoning-plans (3661 ms): 5 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar, maximale goot- en bouwhoogte (m)",
-        "ok heritage (348 ms): no monument on or next to the plot",
-        "ok business-units (323 ms): 0 non-residential unit(s) within 50 m",
-        "ok permit-history (330 ms): 0 publication(s) for this home; source reaches back to 2017-07-20"
+        "ok find-address (362 ms): Found Zes-oktoberlaan 35, 4645GE Putte",
+        "ok bag-address (355 ms): Address is in 1 building(s)",
+        "ok brk-plot (124 ms): Plot Putte B 3304, 398 m² drawn",
+        "ok bag-buildings (925 ms): 1 house, 1 other buildings on plot, 23 nearby; ignored 7 demolished or invalid",
+        "ok 3dbag-heights (1528 ms): Heights for 22 buildings, height scan of 2024",
+        "ok bgt-trees (125 ms): 3 registered trees, 1 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1143 ms): 9 current public areas; ignored 29 historical records",
+        "ok classify-edges (19 ms): 7 edge runs",
+        "ok bgt-structures (126 ms): none registered on or at the plot",
+        "ok ahn-obstacles (425 ms): 1 tall (2.8 m²), 6 medium (18.8 m²), 0 overhanging from next door (0 m²) in 253.8 m² of garden",
+        "ok zoning-plans (3582 ms): 5 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, vrijwaringszone - radar, maximale goot- en bouwhoogte (m)",
+        "ok heritage (237 ms): no monument on or next to the plot",
+        "ok business-units (686 ms): 0 non-residential unit(s) within 50 m",
+        "ok permit-history (526 ms): 0 publication(s) for this home; source reaches back to 2017-07-20"
       ],
       "draw": {
         "plot": [
@@ -5294,7 +5294,7 @@
     {
       "village": "Woensdrecht",
       "address": "Melis Blecklaan 45, 4634VX Woensdrecht",
-      "ms": 10289,
+      "ms": 13457,
       "use": "woonfunctie",
       "houseType": "semi-or-end",
       "plotAreaM2": 260,
@@ -5319,7 +5319,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -5328,29 +5328,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "depends-on-placement",
         "ex-safety-2236": "unknown"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: parking spaces 9.4 m | rear: neighbouring plot 9.5 m | left: neighbouring plot 27.2 m | right: shared wall with the neighbour 14 m, neighbouring plot 13.8 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (103 ms): Found Melis Blecklaan 45, 4634VX Woensdrecht",
-        "ok bag-address (107 ms): Address is in 1 building(s)",
-        "ok brk-plot (95 ms): Plot Woensdrecht G 4273, 260 m² drawn",
-        "ok bag-buildings (458 ms): 1 house, 0 other buildings on plot, 20 nearby; ignored 6 demolished or invalid",
-        "ok 3dbag-heights (1503 ms): Heights for 20 buildings, height scan of 2024",
-        "ok bgt-trees (94 ms): 1 registered trees, 0 hedges, 0 other vegetation nearby",
-        "ok bgt-public (932 ms): 15 current public areas; ignored 25 historical records",
-        "ok classify-edges (45 ms): 8 edge runs",
-        "ok bgt-structures (98 ms): none registered on or at the plot",
-        "ok ahn-obstacles (655 ms): 0 tall (0 m²), 2 medium (1 m²), 2 overhanging from next door (7.5 m²) in 141.3 m² of garden",
-        "ok zoning-plans (4054 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Verkeer - Verblijfsgebied, Wonen - 2, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2, vrijwaringszone - radar (incomplete)",
-        "ok heritage (344 ms): no monument on or next to the plot",
-        "ok business-units (778 ms): 1 non-residential unit(s) within 50 m",
-        "ok permit-history (208 ms): 0 publication(s) for this home; source reaches back to 2021-09-29"
+        "ok find-address (154 ms): Found Melis Blecklaan 45, 4634VX Woensdrecht",
+        "ok bag-address (177 ms): Address is in 1 building(s)",
+        "ok brk-plot (161 ms): Plot Woensdrecht G 4273, 260 m² drawn",
+        "ok bag-buildings (1225 ms): 1 house, 0 other buildings on plot, 20 nearby; ignored 6 demolished or invalid",
+        "ok 3dbag-heights (1673 ms): Heights for 20 buildings, height scan of 2024",
+        "ok bgt-trees (125 ms): 1 registered trees, 0 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1233 ms): 15 current public areas; ignored 25 historical records",
+        "ok classify-edges (46 ms): 8 edge runs",
+        "ok bgt-structures (132 ms): none registered on or at the plot",
+        "ok ahn-obstacles (558 ms): 0 tall (0 m²), 2 medium (1 m²), 2 overhanging from next door (7.5 m²) in 141.3 m² of garden",
+        "ok zoning-plans (5344 ms): 8 binding plan(s); on the plot: Waarde - Archeologie, Verkeer - Verblijfsgebied, Wonen - 2, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2, vrijwaringszone - radar",
+        "ok heritage (469 ms): no monument on or next to the plot",
+        "ok business-units (856 ms): 1 non-residential unit(s) within 50 m",
+        "ok permit-history (458 ms): 0 publication(s) for this home; source reaches back to 2021-09-29"
       ],
       "draw": {
         "plot": [
@@ -5451,7 +5451,7 @@
     {
       "village": "Woensdrecht",
       "address": "Berglaan 11, 4634VG Woensdrecht",
-      "ms": 10727,
+      "ms": 15806,
       "use": "woonfunctie",
       "houseType": "terraced",
       "plotAreaM2": 1576,
@@ -5526,7 +5526,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "complete"
       },
       "flags": [
@@ -5539,29 +5539,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement (Berglaan) 41.6 m | rear: footpath / pavement 68.2 m, neighbouring plot 36 m | right: footpath / pavement (Berglaan) 55.9 m, neighbouring plot 1 m",
       "outbuildings": 11,
       "steps": [
-        "ok find-address (263 ms): Found Berglaan 11, 4634VG Woensdrecht",
-        "ok bag-address (211 ms): Address is in 1 building(s)",
-        "ok brk-plot (91 ms): Plot Woensdrecht G 3567, 1576 m² drawn",
-        "ok bag-buildings (1189 ms): 1 house, 9 other homes and 11 other buildings on plot, 66 nearby; ignored 10 demolished or invalid",
-        "degraded 3dbag-heights (2492 ms): Heights for 77 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
-        "ok bgt-trees (122 ms): 25 registered trees, 3 hedges, 0 other vegetation nearby",
-        "ok bgt-public (1267 ms): 50 current public areas; ignored 59 historical records",
+        "ok find-address (383 ms): Found Berglaan 11, 4634VG Woensdrecht",
+        "ok bag-address (353 ms): Address is in 1 building(s)",
+        "ok brk-plot (127 ms): Plot Woensdrecht G 3567, 1576 m² drawn",
+        "ok bag-buildings (2873 ms): 1 house, 9 other homes and 11 other buildings on plot, 66 nearby; ignored 10 demolished or invalid",
+        "degraded 3dbag-heights (1562 ms): Heights for 77 buildings, height scan of 2024 (1 building(s) on the plot have no height)",
+        "ok bgt-trees (350 ms): 25 registered trees, 3 hedges, 0 other vegetation nearby",
+        "ok bgt-public (1534 ms): 50 current public areas; ignored 59 historical records",
         "ok classify-edges (116 ms): 20 edge runs",
-        "ok bgt-structures (108 ms): none registered on or at the plot",
-        "ok ahn-obstacles (451 ms): 12 tall (93.5 m²), 29 medium (104.8 m²), 1 overhanging from next door (0.5 m²) in 741.8 m² of garden",
-        "ok zoning-plans (1192 ms): 0 binding plan(s); on the plot: nothing (incomplete)",
-        "ok heritage (174 ms): no monument on or next to the plot",
-        "ok business-units (1142 ms): 11 non-residential unit(s) within 50 m",
-        "ok permit-history (331 ms): 0 publication(s) for this home; source reaches back to 2017-07-25"
+        "ok bgt-structures (131 ms): none registered on or at the plot",
+        "ok ahn-obstacles (536 ms): 12 tall (93.5 m²), 29 medium (104.8 m²), 1 overhanging from next door (0.5 m²) in 741.8 m² of garden",
+        "ok zoning-plans (4466 ms): 6 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2",
+        "ok heritage (506 ms): no monument on or next to the plot",
+        "ok business-units (370 ms): 11 non-residential unit(s) within 50 m",
+        "ok permit-history (867 ms): 0 publication(s) for this home; source reaches back to 2017-07-25"
       ],
       "draw": {
         "plot": [
@@ -5973,7 +5973,7 @@
     {
       "village": "Woensdrecht",
       "address": "Fortuinstraat 10, 4634TD Woensdrecht",
-      "ms": 8758,
+      "ms": 8987,
       "use": "woonfunctie",
       "houseType": "detached",
       "plotAreaM2": 557,
@@ -6017,20 +6017,20 @@
       "sides": "front: public green 34.4 m | rear: neighbouring plot 34.7 m | left: public green 16.1 m | right: public green 12.8 m, driveway crossing 3.4 m",
       "outbuildings": 0,
       "steps": [
-        "ok find-address (264 ms): Found Fortuinstraat 10, 4634TD Woensdrecht",
-        "ok bag-address (94 ms): Address is in 1 building(s)",
-        "ok brk-plot (180 ms): Plot Woensdrecht G 4290, 557 m² drawn",
-        "ok bag-buildings (329 ms): 1 house, 0 other buildings on plot, 5 nearby; ignored 3 demolished or invalid",
-        "ok 3dbag-heights (1683 ms): Heights for 5 buildings, height scan of 2024",
-        "ok bgt-trees (96 ms): 9 registered trees, 1 hedges, 0 other vegetation nearby",
-        "ok bgt-public (672 ms): 30 current public areas; ignored 46 historical records",
-        "ok classify-edges (41 ms): 7 edge runs",
-        "ok bgt-structures (100 ms): none registered on or at the plot",
-        "ok ahn-obstacles (405 ms): 7 tall (59.3 m²), 16 medium (52.3 m²), 4 overhanging from next door (13 m²) in 381 m² of garden",
-        "ok zoning-plans (3521 ms): 4 binding plan(s); on the plot: Waarde - Archeologie, Sport, specifieke vorm van wonen - te bebouwen en gebruiken als wonen, overige zone - aardkundig waardevol gebied, luchtvaartverkeerzone - 2, vrijwaringszone - radar 2, luchtvaartverkeerzone - 8, Verkeer - Verblijfsgebied, Wonen - 1, bouwvlak, other: ohter: aardkundig waardevol gebied, maximale goot- en bouwhoogte (m)",
-        "ok heritage (179 ms): no monument on or next to the plot",
-        "ok business-units (557 ms): 3 non-residential unit(s) within 50 m",
-        "ok permit-history (590 ms): 0 publication(s) for this home; source reaches back to 2010-09-01"
+        "ok find-address (361 ms): Found Fortuinstraat 10, 4634TD Woensdrecht",
+        "ok bag-address (125 ms): Address is in 1 building(s)",
+        "ok brk-plot (124 ms): Plot Woensdrecht G 4290, 557 m² drawn",
+        "ok bag-buildings (795 ms): 1 house, 0 other buildings on plot, 5 nearby; ignored 3 demolished or invalid",
+        "ok 3dbag-heights (1354 ms): Heights for 5 buildings, height scan of 2024",
+        "ok bgt-trees (128 ms): 9 registered trees, 1 hedges, 0 other vegetation nearby",
+        "ok bgt-public (771 ms): 30 current public areas; ignored 46 historical records",
+        "ok classify-edges (42 ms): 7 edge runs",
+        "ok bgt-structures (125 ms): none registered on or at the plot",
+        "ok ahn-obstacles (530 ms): 7 tall (59.3 m²), 16 medium (52.3 m²), 4 overhanging from next door (13 m²) in 381 m² of garden",
+        "ok zoning-plans (3432 ms): 4 binding plan(s); on the plot: Waarde - Archeologie, Sport, specifieke vorm van wonen - te bebouwen en gebruiken als wonen, overige zone - aardkundig waardevol gebied, luchtvaartverkeerzone - 2, vrijwaringszone - radar 2, luchtvaartverkeerzone - 8, Verkeer - Verblijfsgebied, Wonen - 1, bouwvlak, other: ohter: aardkundig waardevol gebied, maximale goot- en bouwhoogte (m)",
+        "ok heritage (242 ms): no monument on or next to the plot",
+        "ok business-units (228 ms): 3 non-residential unit(s) within 50 m",
+        "ok permit-history (678 ms): 0 publication(s) for this home; source reaches back to 2010-09-01"
       ],
       "draw": {
         "plot": [
@@ -6237,7 +6237,7 @@
     {
       "village": "Woensdrecht",
       "address": "Mgr van Mensstraat 31, 4634VB Woensdrecht",
-      "ms": 13987,
+      "ms": 13091,
       "use": "woonfunctie",
       "houseType": "terraced",
       "plotAreaM2": 1242,
@@ -6277,7 +6277,7 @@
         "vegetation": "partial",
         "access": "assumed",
         "obstacles": "complete",
-        "legal": "partial",
+        "legal": "complete",
         "front": "assumed"
       },
       "flags": [
@@ -6288,29 +6288,29 @@
       ],
       "legal": {
         "ex-monument-2227": "clear",
-        "ex-village-view-2227": "unknown",
-        "ex-monument-village-2236": "unknown",
-        "ex-archaeology-2227": "unknown",
-        "ex-safety-2236": "unknown"
+        "ex-village-view-2227": "clear",
+        "ex-monument-village-2236": "clear",
+        "ex-archaeology-2227": "clear",
+        "ex-safety-2236": "clear"
       },
-      "zoningStatus": "incomplete",
+      "zoningStatus": "complete",
       "sides": "front: footpath / pavement 57.9 m | rear: footpath / pavement 56.9 m | left: public green 15.4 m, footpath / pavement 6.4 m | right: footpath / pavement 21.5 m",
       "outbuildings": 9,
       "steps": [
-        "ok find-address (272 ms): Found Mgr van Mensstraat 31, 4634VB Woensdrecht",
-        "ok bag-address (591 ms): Address is in 1 building(s)",
-        "ok brk-plot (90 ms): Plot Woensdrecht G 3562, 1242 m² drawn",
-        "ok bag-buildings (567 ms): 1 house, 8 other homes and 9 other buildings on plot, 49 nearby; ignored 7 demolished or invalid",
-        "ok 3dbag-heights (2819 ms): Heights for 59 buildings, height scan of 2024",
-        "ok bgt-trees (277 ms): 13 registered trees, 5 hedges, 0 other vegetation nearby",
-        "ok bgt-public (743 ms): 53 current public areas; ignored 89 historical records",
-        "ok classify-edges (46 ms): 13 edge runs",
-        "ok bgt-structures (92 ms): none registered on or at the plot",
-        "ok ahn-obstacles (521 ms): 3 tall (44.8 m²), 25 medium (48.8 m²), 1 overhanging from next door (1.8 m²) in 610 m² of garden",
-        "ok zoning-plans (5753 ms): 8 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2 (incomplete)",
-        "ok heritage (344 ms): no monument on or next to the plot",
-        "ok business-units (720 ms): 0 non-residential unit(s) within 50 m",
-        "ok permit-history (375 ms): 0 publication(s) for this home; source reaches back to 2014-02-19"
+        "ok find-address (386 ms): Found Mgr van Mensstraat 31, 4634VB Woensdrecht",
+        "ok bag-address (491 ms): Address is in 1 building(s)",
+        "ok brk-plot (128 ms): Plot Woensdrecht G 3562, 1242 m² drawn",
+        "ok bag-buildings (815 ms): 1 house, 8 other homes and 9 other buildings on plot, 49 nearby; ignored 7 demolished or invalid",
+        "ok 3dbag-heights (2091 ms): Heights for 59 buildings, height scan of 2024",
+        "ok bgt-trees (138 ms): 13 registered trees, 5 hedges, 0 other vegetation nearby",
+        "ok bgt-public (883 ms): 53 current public areas; ignored 89 historical records",
+        "ok classify-edges (48 ms): 13 edge runs",
+        "ok bgt-structures (126 ms): none registered on or at the plot",
+        "ok ahn-obstacles (642 ms): 3 tall (44.8 m²), 25 medium (48.8 m²), 1 overhanging from next door (1.8 m²) in 610 m² of garden",
+        "ok zoning-plans (5268 ms): 8 binding plan(s); on the plot: Verkeer - Verblijfsgebied, Wonen - 3, bouwvlak, luchtvaartverkeerzone - 2, luchtvaartverkeerzone - 8, other: ohter: aardkundig waardevol gebied, vrijwaringszone - radar 2",
+        "ok heritage (478 ms): no monument on or next to the plot",
+        "ok business-units (452 ms): 0 non-residential unit(s) within 50 m",
+        "ok permit-history (456 ms): 0 publication(s) for this home; source reaches back to 2014-02-19"
       ],
       "draw": {
         "plot": [
