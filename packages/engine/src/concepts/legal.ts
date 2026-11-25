@@ -40,7 +40,15 @@ export interface MonumentFact {
   relation: "on-plot" | "adjacent-parcel" | "nearby";
 }
 
+/** A registered unit (BAG verblijfsobject) that is not a home, near the plot. */
+export interface BusinessUnit {
+  at: Point;
+  use: string;
+}
+
 export interface LegalFacts {
+  /** Non-residential BAG units within 50 m (shops, workshops, storage); null when not read. */
+  businessUnits?: BusinessUnit[] | null;
   zoning: {
     status: SourceStatus;
     plans: { id: string; name: string; date: string | null }[];
@@ -69,29 +77,45 @@ export const BAL_MAX_DISTANCE_M = 120;
  * 4.524 to 4.1101): LNG tanks at fuel stations 120 m; biogas and propane tanks 50 m; gas pressure
  * stations up to 25 m; packaged dangerous goods 20 m.
  */
-const RISK_SOURCES: { test: RegExp; withinM: number; what: string }[] = [
+const RISK_SOURCES: {
+  test: RegExp;
+  withinM: number;
+  what: string;
+  /**
+   * What must be present inside the zone, within the distance, for it to count: the zone itself
+   * (conservative); a building block (a farm without a farmyard holds no tank); or a registered
+   * non-residential unit (a centre or mixed-use zone with only homes in reach holds no store).
+   */
+  needs: "zone" | "block" | "business-unit";
+}[] = [
   {
     test: /motorbrandstof|tankstation|lpg|lng|cng|waterstof/i,
     withinM: 120,
     what: "a fuel station",
+    needs: "zone",
   },
   {
     test: /nutsvoorziening|gasdruk|gasontvang/i,
     withinM: 25,
     what: "a utility site (gas pressure station)",
+    needs: "zone",
   },
   {
     test: /^bedrijf|bedrijventerrein|industrie/i,
     withinM: 50,
     what: "a business site (propane tank, biogas, dangerous goods)",
+    needs: "zone",
   },
-  { test: /^agrarisch/i, withinM: 50, what: "a farm (propane tank or biogas)" },
+  { test: /^agrarisch/i, withinM: 50, what: "a farm (propane tank or biogas)", needs: "block" },
   {
     test: /detailhandel|centrum|gemengd/i,
     withinM: 20,
     what: "a shop or mixed-use site (packaged dangerous goods)",
+    needs: "business-unit",
   },
 ];
+
+const BUSINESS_USE = /winkel|industrie|overige gebruiks|bijeenkomst|kantoor/i;
 
 const ARCHAEOLOGY = /archeolog/i;
 const SAFETY_ZONE =
@@ -222,6 +246,19 @@ export function assessExclusions(plot: Polygon, facts: LegalFacts): ExclusionRes
           .filter((b) => b.planId === o.planId)
           .flatMap((b) => b.outlines)
           .filter((b) => o.outlines.some((z) => overlaps(z, b)));
+        if (src.needs === "block" && !inZone.length) return [];
+        if (src.needs === "business-unit") {
+          // Unknown units data: fall back to the zone itself (conservative).
+          if (facts.businessUnits) {
+            const units = facts.businessUnits.filter(
+              (u) =>
+                BUSINESS_USE.test(u.use) &&
+                o.outlines.some((z) => contains(z, u.at)) &&
+                distanceBetween([u.at, u.at, u.at], plot) <= src.withinM,
+            );
+            if (!units.length) return [];
+          }
+        }
         const measured = inZone.length ? inZone : o.outlines;
         const d = Math.min(...measured.map((p) => distanceBetween(p, plot)));
         return d <= src.withinM

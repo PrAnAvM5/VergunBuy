@@ -117,4 +117,40 @@ describe("rule exclusions from legal facts", () => {
     );
     expect(r.every((x) => x.state === "unknown")).toBe(true);
   });
+
+  it("a shop zone counts only with a registered shop or workshop in reach; a farm only with a farmyard", () => {
+    const shopZone = zone("Gemengd - 3", sq(25, 0, 10));
+    const homesOnly = facts({
+      zoning: { status: "complete", plans: [], objects: [shopZone] },
+      businessUnits: [],
+    });
+    expect(state(homesOnly, "ex-safety-2236").state).toBe("clear");
+    const withShop = facts({
+      zoning: { status: "complete", plans: [], objects: [shopZone] },
+      businessUnits: [{ at: [30, 5] as const, use: "winkelfunctie" }],
+    });
+    expect(state(withShop, "ex-safety-2236").state).toBe("unknown");
+    const unitsUnknown = facts({ zoning: { status: "complete", plans: [], objects: [shopZone] } });
+    expect(state(unitsUnknown, "ex-safety-2236").state).toBe("unknown");
+
+    const field = facts({
+      zoning: {
+        status: "complete",
+        plans: [],
+        objects: [zone("Agrarisch met waarden", sq(25, 0, 20))],
+      },
+    });
+    expect(state(field, "ex-safety-2236").state).toBe("clear");
+    const farmyard = facts({
+      zoning: {
+        status: "complete",
+        plans: [],
+        objects: [
+          zone("Agrarisch met waarden", sq(25, 0, 20)),
+          zone("bouwvlak", sq(30, 5, 8), { kind: "bouwvlakken", type: null }),
+        ],
+      },
+    });
+    expect(state(farmyard, "ex-safety-2236").state).toBe("unknown");
+  });
 });

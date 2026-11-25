@@ -1278,7 +1278,44 @@ export async function buildPlotContext(
     } catch {
       /* stays missing */
     }
-    const facts: LegalFacts = { zoning, monuments, protectedViews };
+    // Non-residential units within 50 m: evidence that a nearby shop or business zone is in use.
+    let businessUnits: LegalFacts["businessUnits"] = null;
+    try {
+      businessUnits = await tracer.step(
+        "business-units",
+        "Shops and businesses within 50 m (BAG)",
+        async (ctx) => {
+          const xs = plot.outline.map((p) => p[0]);
+          const ys = plot.outline.map((p) => p[1]);
+          const r = await ogcItems(
+            OGC.bag,
+            "verblijfsobject",
+            [
+              Math.min(...xs) - 50,
+              Math.min(...ys) - 50,
+              Math.max(...xs) + 50,
+              Math.max(...ys) + 50,
+            ],
+            ctx,
+            fetchFn,
+          );
+          if (!r.complete) throw new Error("incomplete");
+          const units = r.features.flatMap((f) => {
+            const use = String(f.properties.gebruiksdoel ?? "");
+            const status = String(f.properties.status ?? "");
+            if (!f.geometry || f.geometry.type !== "Point" || /^woonfunctie$/.test(use)) return [];
+            if (!/in gebruik|verbouwing/i.test(status)) return [];
+            const c = f.geometry.coordinates as [number, number];
+            return [{ at: [c[0], c[1]] as Point, use }];
+          });
+          ctx.summarize(`${units.length} non-residential unit(s) within 50 m`);
+          return units;
+        },
+      );
+    } catch {
+      /* stays null: zones are then judged conservatively */
+    }
+    const facts: LegalFacts = { zoning, monuments, protectedViews, businessUnits };
     const exclusions = assessExclusions(plot.outline, facts);
     const statuses = [zoning.status, monuments.status, protectedViews.status];
     if (statuses.includes("missing"))
