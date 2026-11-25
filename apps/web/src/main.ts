@@ -57,7 +57,7 @@ function route(): void {
       query,
       params.has("demo") || params.has("rec") ? "demo" : "live",
       params.has("dev"),
-      (["2d", "3d", "street"] as const).find((v) => v === params.get("view")) ?? "map",
+      (["map", "2d", "3d", "street"] as const).find((v) => v === params.get("view")) ?? "carport",
       params.get("rec") ?? undefined,
     );
   } else if (page === "examples") void renderExamples(app);

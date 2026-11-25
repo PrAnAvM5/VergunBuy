@@ -45,7 +45,7 @@ export const CARPORT_PRESETS = {
 export const CARPORT_LIMITS = { minWidthM: 2.5, maxWidthM: 9, minLengthM: 4, maxLengthM: 9 };
 
 /** Car routing: the narrowest passage a car needs (gate or side path), in metres. */
-export const ROUTE = { passageM: 2.3, cellM: 0.25 };
+export const ROUTE = { passageM: 2.3, comfortableM: 3, cellM: 0.25 };
 
 /**
  * The first floor of a house with more than one storey is assumed to be at least 2.4 m above
@@ -240,6 +240,8 @@ export interface RouteGrid {
   passable: Uint8Array;
   /** Steps from the nearest entry (Infinity: unreachable). */
   dist: Float32Array;
+  /** Same, using only cells with room for a comfortable 3 m passage. */
+  distWide: Float32Array;
   hasEntry: boolean;
 }
 
@@ -308,39 +310,59 @@ export function routeGrid(site: CarportSite, ignore: Polygon[] = []): RouteGrid 
       if (i > 0 && j < ny - 1) d[k] = Math.min(d[k]!, d[k + nx - 1]! + b);
     }
   const passable = new Uint8Array(nx * ny);
+  const wide = new Uint8Array(nx * ny);
   // A cell next to an obstacle has distance one cell, so subtract half a cell for its centre.
-  for (let k = 0; k < nx * ny; k++) passable[k] = d[k]! - cell / 2 >= ROUTE.passageM / 2 ? 1 : 0;
-  const dist = new Float32Array(nx * ny).fill(Infinity);
-  const queue: number[] = [];
-  for (let k = 0; k < nx * ny; k++)
-    if (isEntry[k] && passable[k]) {
-      dist[k] = 0;
-      queue.push(k);
-    }
-  for (let q = 0; q < queue.length; q++) {
-    const k = queue[q]!;
-    const i = k % nx;
-    const j = (k - i) / nx;
-    for (const [di, dj] of [
-      [1, 0],
-      [-1, 0],
-      [0, 1],
-      [0, -1],
-    ] as const) {
-      const ii = i + di;
-      const jj = j + dj;
-      if (ii < 0 || jj < 0 || ii >= nx || jj >= ny) continue;
-      const kk = jj * nx + ii;
-      if (!passable[kk] || dist[kk] !== Infinity) continue;
-      dist[kk] = dist[k]! + 1;
-      queue.push(kk);
-    }
+  for (let k = 0; k < nx * ny; k++) {
+    passable[k] = d[k]! - cell / 2 >= ROUTE.passageM / 2 ? 1 : 0;
+    wide[k] = d[k]! - cell / 2 >= ROUTE.comfortableM / 2 ? 1 : 0;
   }
-  return { minX, minY, nx, ny, cell, passable, dist, hasEntry: queue.length > 0 };
+  const flood = (ok: Uint8Array) => {
+    const dist = new Float32Array(nx * ny).fill(Infinity);
+    const queue: number[] = [];
+    for (let k = 0; k < nx * ny; k++)
+      if (isEntry[k] && ok[k]) {
+        dist[k] = 0;
+        queue.push(k);
+      }
+    for (let q = 0; q < queue.length; q++) {
+      const k = queue[q]!;
+      const i = k % nx;
+      const j = (k - i) / nx;
+      for (const [di, dj] of [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ] as const) {
+        const ii = i + di;
+        const jj = j + dj;
+        if (ii < 0 || jj < 0 || ii >= nx || jj >= ny) continue;
+        const kk = jj * nx + ii;
+        if (!ok[kk] || dist[kk] !== Infinity) continue;
+        dist[kk] = dist[k]! + 1;
+        queue.push(kk);
+      }
+    }
+    return { dist, any: queue.length > 0 };
+  };
+  const narrow = flood(passable);
+  const comfy = flood(wide);
+  return {
+    minX,
+    minY,
+    nx,
+    ny,
+    cell,
+    passable,
+    dist: narrow.dist,
+    distWide: comfy.dist,
+    hasEntry: narrow.any,
+  };
 }
 
 /** Shortest route (m) from an entry to a point inside the outline, or null if none. */
-export function routeTo(grid: RouteGrid, outline: Polygon): number | null {
+export function routeTo(grid: RouteGrid, outline: Polygon, wide = false): number | null {
+  const field = wide ? grid.distWide : grid.dist;
   const xs = outline.map((p) => p[0]);
   const ys = outline.map((p) => p[1]);
   const i0 = Math.max(0, Math.floor((Math.min(...xs) - grid.minX) / grid.cell));
@@ -351,7 +373,7 @@ export function routeTo(grid: RouteGrid, outline: Polygon): number | null {
   for (let j = j0; j <= j1; j++)
     for (let i = i0; i <= i1; i++) {
       const k = j * grid.nx + i;
-      const dd = grid.dist[k]!;
+      const dd = field[k]!;
       if (dd >= best) continue;
       const p: Point = [grid.minX + (i + 0.5) * grid.cell, grid.minY + (j + 0.5) * grid.cell];
       if (contains(outline, p)) best = dd;
@@ -580,9 +602,16 @@ export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
         : route === null
           ? `No route of at least ${ROUTE.passageM} m wide leads from the plot's way in to this spot (the house or other buildings are in the way).`
           : site.access.level === "registered"
-            ? `About ${Math.round(route)} m from the registered exit, with at least ${ROUTE.passageM} m of room all the way.`
+            ? route < 1
+              ? "Right at the registered exit."
+              : `About ${Math.round(route)} m from the registered exit, with at least ${ROUTE.passageM} m of room all the way.`
             : `A ${ROUTE.passageM} m wide route exists (about ${Math.round(route)} m), but the way onto the plot is not a registered exit: ${site.access.note}`,
   });
+  if (route !== null && routeTo(grid, r, true) === null)
+    warnings.push({
+      id: "narrow-route",
+      text: `The only way for a car is a passage under ${ROUTE.comfortableM} m wide (at least ${ROUTE.passageM} m). Fences, gates and hedges are not in the public registers: check on site that nothing blocks it.`,
+    });
   const struct = site.structures.filter((s) => overlapM2(s.outline, r) > 0.05);
   if (struct.length)
     warnings.push({
@@ -927,15 +956,16 @@ export function suggest(
       best = { placement: c.pl, verdict: v, routeM };
     }
   }
-  // Heat: positions the screening finds in the back yard, clear of public area, reachable, and
-  // — when the best spot is green, so everything independent of position passes — clear of
-  // placement-dependent exclusion zones. A guide only: a placed carport is always fully evaluated.
+  // Heat: positions the screening finds in the back yard, clear of public area and reachable, and
+  // clear of placement-dependent exclusion zones — shown when nothing independent of position
+  // (area limit, monuments, ...) already rules permit-free out. A guide only: a placed carport is
+  // always fully evaluated.
   const zones = site.exclusions
     .filter((e) => e.state === "depends-on-placement")
     .filter((e) => e.ruleId !== "ex-archaeology-2227" || size.widthM * size.lengthM >= 50)
     .flatMap((e) => e.zones ?? []);
   const green =
-    best?.verdict.colour === "green"
+    best && best.verdict.permitFree !== "fail" && best.verdict.allowedByLaw !== "fail"
       ? cands
           .filter((c) => c.likelyGreen)
           .filter((c) => !zones.some((z) => overlapM2(z, rectangle(c.pl)) > 0.05))

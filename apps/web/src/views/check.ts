@@ -14,7 +14,7 @@ import type { MapHandle, OverlayId } from "../map.ts";
 import { lookAround } from "../streetview.ts";
 import { STRUCTURE_TEXT, SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
 
-export type View = "map" | "2d" | "3d" | "street";
+export type View = "carport" | "map" | "2d" | "3d" | "street";
 
 let scene: SceneHandle | undefined;
 let mapView: MapHandle | undefined;
@@ -107,7 +107,7 @@ async function open3d(
 function rememberView(view: View): void {
   const [path = "", search = ""] = location.hash.split("?");
   const params = new URLSearchParams(search);
-  if (view === "map") params.delete("view");
+  if (view === "carport") params.delete("view");
   else params.set("view", view);
   const q = params.toString();
   history.replaceState(null, "", `${path}${q ? `?${q}` : ""}`);
@@ -248,7 +248,7 @@ export async function renderCheck(
   query: RunResult["query"],
   mode: RunResult["mode"],
   developer: boolean,
-  initialView: View = "map",
+  initialView: View = "carport",
   rec?: string,
 ): Promise<void> {
   disposeScene();
@@ -320,6 +320,7 @@ export async function renderCheck(
       <div>
         <div class="card plan-wrap">
           <div class="tabs">
+            <button data-view="carport">Carport</button>
             <button data-view="map">Map and aerial photo</button>
             <button data-view="2d">2D plan</button>
             <button data-view="3d">3D view</button>
@@ -337,15 +338,13 @@ export async function renderCheck(
             <span class="small">${frontNote}</span>
             <span style="margin-left:auto">Click any object to inspect it</span>
           </div>
+          <div class="plan-tools" id="tools-carport"><span class="small">Every rule is checked live as you move the carport. Rules: omgevingsplan Woensdrecht and Bbl, versions shown per check.</span></div>
           <div class="plan-tools" id="tools-street"><span>Free outside viewers, opened at this house in a new tab.</span></div>
           <div class="plan-tools" id="tools-3d"><span>Drag to rotate · scroll to zoom · right-drag to move. Shapes from 3D BAG (CC BY 4.0).</span></div>
           <div class="plan-tools"><label><input type="checkbox" id="l-dev" ${developer ? "checked" : ""} /> Developer details in the Inspector</label></div>
           <div class="legend" id="legend">${legend()}</div>
         </div>
-        <div class="card coming" style="margin-top:14px">
-          <h3>Next: carport positions</h3>
-          <p class="small muted" style="margin:0">The carport will be placed and dragged in the 2D plan and 3D view, with every rule checked live, as in the prototype, now on the real plot.</p>
-        </div>
+
       </div>
       <aside class="side">
         <div class="card">
@@ -405,7 +404,10 @@ export async function renderCheck(
     "2d": root.querySelector("#tools-2d"),
     "3d": root.querySelector("#tools-3d"),
     street: root.querySelector("#tools-street"),
+    carport: root.querySelector("#tools-carport"),
   };
+  let carportView: { dispose(): void } | undefined;
+  let mountingCarport = false;
   const legendEl = root.querySelector<HTMLElement>("#legend");
 
   let mounting3d = false;
@@ -422,7 +424,13 @@ export async function renderCheck(
     root
       .querySelectorAll<HTMLButtonElement>(".tabs button")
       .forEach((b) => b.classList.toggle("on", b.dataset.view === view));
-    if (legendEl) legendEl.style.display = view === "3d" || view === "street" ? "none" : "";
+    if (legendEl)
+      legendEl.style.display =
+        view === "3d" || view === "street" || view === "carport" ? "none" : "";
+    if (view !== "carport") {
+      carportView?.dispose();
+      carportView = undefined;
+    }
     if (view !== "3d") {
       scene?.dispose();
       scene = undefined;
@@ -456,6 +464,25 @@ export async function renderCheck(
           );
         } finally {
           mountingMap = false;
+        }
+      }
+    } else if (view === "carport") {
+      if (!carportView && !mountingCarport) {
+        viewEl.className = "";
+        viewEl.innerHTML = `<div class="loading" style="padding:30px"><div class="spinner"></div>Finding the best spot for a carport…</div>`;
+        mountingCarport = true;
+        try {
+          const { mountCarport } = await import("../carport.ts");
+          if (view === "carport") carportView = await mountCarport(viewEl, ctx);
+        } catch (err) {
+          console.error(err);
+          viewEl.innerHTML = message3d(
+            "The carport check could not be loaded",
+            "The site was probably updated while this page was open.",
+            true,
+          );
+        } finally {
+          mountingCarport = false;
         }
       }
     } else if (view === "street") {

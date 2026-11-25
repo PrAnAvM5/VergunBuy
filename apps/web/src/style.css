@@ -679,3 +679,81 @@ select {
   margin-top: auto;
   align-self: flex-start;
 }
+
+/* Carport workspace */
+.cp-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px 0;
+}
+.cp-tools .btn.small {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+.cp-stage svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+.cp-note {
+  font-size: 11px;
+  fill: #4c8a3a;
+}
+.cp-legend {
+  padding: 4px 12px 8px;
+}
+#cp-verdict {
+  padding: 0 12px 12px;
+}
+.cp-headline {
+  border-left: 4px solid;
+  padding: 8px 12px;
+  margin: 6px 0 10px;
+  background: #fff;
+}
+.cp-headline b {
+  font-size: 17px;
+}
+.cp-warn {
+  margin-top: 4px;
+  color: #8a5300;
+}
+.cp-group h4 {
+  margin: 12px 0 4px;
+  font-size: 13px;
+  text-transform: none;
+  color: #555;
+}
+.cp-check {
+  display: flex;
+  gap: 8px;
+  padding: 5px 0;
+  border-top: 1px solid #eee;
+}
+.cp-icon {
+  width: 20px;
+  flex: none;
+  text-align: center;
+  font-weight: 700;
+}
+.cp-check.pass .cp-icon {
+  color: #2f7d32;
+}
+.cp-check.fail .cp-icon {
+  color: #b3261e;
+}
+.cp-check.unknown .cp-icon {
+  color: #b26a00;
+}
+.cp-check blockquote {
+  margin: 4px 0;
+  padding-left: 8px;
+  border-left: 2px solid #ccc;
+  font-style: italic;
+}
+.carport-msg {
+  padding: 24px;
+}
