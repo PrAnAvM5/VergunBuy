@@ -281,3 +281,40 @@ export function validatePolygon(poly: Polygon, minAreaM2 = 0.01): PolygonCheck {
   }
   return { valid: issues.length === 0, issues };
 }
+
+/** An area that may consist of several parts, each with holes (e.g. a garden around a house). */
+export type Region = { outer: Polygon; holes: Polygon[] }[];
+
+/** Boolean operation on regions with a robust clipping library (local coordinates). */
+export function clipRegions(
+  a: Region,
+  b: Region,
+  op: "intersection" | "difference" | "union",
+): Region {
+  const toGeom = (r: Region) =>
+    r.map((part) =>
+      [part.outer, ...part.holes].map((ring) => {
+        const rr = ring.map((q) => [q[0], q[1]] as [number, number]);
+        rr.push([ring[0]![0], ring[0]![1]]);
+        return rr;
+      }),
+    );
+  if (!a.length) return op === "union" ? b : [];
+  if (!b.length) return op === "intersection" ? [] : a;
+  const res = polygonClipping[op](toGeom(a), toGeom(b));
+  return res.map((poly) => ({
+    outer: poly[0]!.slice(0, -1) as unknown as Polygon,
+    holes: poly.slice(1).map((r) => r.slice(0, -1) as unknown as Polygon),
+  }));
+}
+
+export const regionOf = (...polys: Polygon[]): Region =>
+  polys.filter((p) => p.length >= 3).map((outer) => ({ outer, holes: [] }));
+
+export function regionArea(r: Region): number {
+  return r.reduce((s, p) => s + area(p.outer) - p.holes.reduce((h, x) => h + area(x), 0), 0);
+}
+
+export function regionContains(r: Region, p: Point): boolean {
+  return r.some((part) => contains(part.outer, p) && !part.holes.some((h) => contains(h, p)));
+}
