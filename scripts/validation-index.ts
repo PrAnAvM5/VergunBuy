@@ -16,7 +16,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { join } from "node:path";
-import { gunzipSync } from "node:zlib";
+import { gunzipSync, gzipSync } from "node:zlib";
 import { buildPlotContext, findAddress, fixtureFetch } from "@vergunbuy/data";
 import { Tracer } from "@vergunbuy/engine";
 
@@ -93,11 +93,17 @@ for (const dir of dirs) {
     // replaces the original one.
     const newer = newestRecording(file);
     if (!row.error && (newer || recordings.includes(file))) {
-      const source = newer ?? join(recDir, file);
-      const rec = JSON.parse(gunzipSync(readFileSync(source)).toString()) as Record<
+      type Rec = Record<
         string,
         { links?: unknown[]; response?: { docs?: Record<string, string | number>[] } }
       >;
+      const read = (p: string) => JSON.parse(gunzipSync(readFileSync(p)).toString()) as Rec;
+      // Merge: the run's own recording plus anything only the later sweep recorded (the height
+      // scan), and the other way round (zoning, monuments, permits were added after the sweep).
+      const own = recordings.includes(file) ? read(join(recDir, file)) : {};
+      const rec: Rec = { ...own, ...(newer ? read(newer) : {}) };
+      for (const [k, v] of Object.entries(own))
+        if (!(k in rec) || k.startsWith("vergunbuy/") || k.startsWith("rce/")) rec[k] = v;
       const doc = rec.locatieserver?.response?.docs?.find(
         (d) => slug(String(d.weergavenaam)) === slug(row.address),
       );
@@ -108,7 +114,10 @@ for (const dir of dirs) {
         if (addition) home.addition = addition;
         home.rec = `${id}/${slug(row.address)}`;
         await replay(home, rec);
-        copyFileSync(source, join(out, id, `${slug(row.address)}.json.gz.bin`));
+        writeFileSync(
+          join(out, id, `${slug(row.address)}.json.gz.bin`),
+          gzipSync(JSON.stringify(rec)),
+        );
       }
     }
     const img = `${imageSlug(row.address)}.jpg`;
