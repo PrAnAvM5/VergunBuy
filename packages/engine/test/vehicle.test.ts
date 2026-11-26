@@ -45,7 +45,7 @@ function treeCells(cx: number, cy: number, r: number, h: number) {
 
 describe("vehicle model", () => {
   it("derives a rear-axle turning radius of about 4.5 m from a 6.5 m outer sweep", () => {
-    const car = carOf(DEFAULT_VEHICLE);
+    const car = carOf({ ...DEFAULT_VEHICLE, outerRadiusM: 6.5 });
     expect(car.rt).toBeGreaterThan(4.3);
     expect(car.rt).toBeLessThan(4.7);
   });
@@ -121,5 +121,14 @@ describe("driving into a carport in the back yard", () => {
     );
     const acc = accessCarport(L, { x0: 15, y0: 20, x1: 21, y1: 25, o: "ns", bays: 2 }, false);
     expect(acc.every((b) => b.route)).toBe(true);
+  });
+});
+
+describe("default car", () => {
+  it("a typical hatchback: about 4 m rear-axle radius, 0.3 m clearance", () => {
+    const car = carOf(DEFAULT_VEHICLE);
+    expect(car.rt).toBeGreaterThan(3.7);
+    expect(car.rt).toBeLessThan(4.2);
+    expect(car.clr).toBe(0.3);
   });
 });

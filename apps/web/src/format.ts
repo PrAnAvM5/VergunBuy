@@ -101,7 +101,7 @@ export const EDGE_TEXT: Record<string, { label: string; color: string; dash?: st
   public: { label: "Public area (street, path, green)", color: "#2f6fbf" },
   water: { label: "Water", color: "#2aa3c9" },
   "rear-path": { label: "Rear path", color: "#b07a1a", dash: "6 4" },
-  "shared-wall": { label: "Shared wall", color: "#d0582b" },
+  "shared-wall": { label: "Shared wall", color: "#8c5a3c" },
   neighbour: { label: "Neighbouring plot", color: "#8a8e96" },
   unknown: { label: "Unknown (data missing)", color: "#b23a3a", dash: "2 4" },
 };

@@ -3,7 +3,7 @@
  * where it comes from and how it was derived. The developer layer adds the raw record.
  */
 import { STRUCTURE_TEXT, SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
-import { HEIGHT_BANDS, OBSTACLE_KIND_TEXT } from "./format.ts";
+import { OBSTACLE_KIND_TEXT } from "./format.ts";
 import { area, at, sideOfEdge } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc, isOtherHomeOnParcel, m, m2 } from "./format.ts";
 
@@ -195,56 +195,45 @@ function describe(ctx: PlotContext, key: string): View | undefined {
     if (!o) return undefined;
     const s = ctx.obstacles!.settings;
     const scan = ctx.house.find((h) => h.heights?.scanYear)?.heights;
-    const bands = HEIGHT_BANDS.map((b, i) => {
-      const upper = HEIGHT_BANDS[i - 1]?.minM ?? Infinity;
-      const n = o.cellHeights.filter((h) => h >= b.minM && h < upper).length;
-      return n ? `${b.label}: ${m2(n * ctx.obstacles!.res ** 2)}` : "";
-    }).filter(Boolean);
+    const mats = o.cellMaterials ?? [];
+    const share = (m: string) =>
+      mats.length ? Math.round((mats.filter((x) => x === m).length / mats.length) * 100) : 0;
+    const madeOf =
+      o.material === undefined
+        ? "Unknown (no echo data)"
+        : `${o.material === "plant" ? "Plant" : o.material === "solid" ? "Solid, not a plant" : "Unclear"} · ${share("plant")}% plant, ${share("solid")}% solid`;
     return {
-      title: OBSTACLE_KIND_TEXT[o.kind] ?? o.kind,
+      title:
+        o.kind === "medium"
+          ? o.material === "solid"
+            ? "Solid object, 1–2.5 m (wall, car or unregistered shed)"
+            : "Shrub or hedge, 1–2.5 m"
+          : (OBSTACLE_KIND_TEXT[o.kind] ?? o.kind),
       rows: [
+        { label: "Size on this plot", value: m2(o.areaM2), certainty: "measured" },
         {
-          label: "On this plot",
-          value: `${m2(o.areaM2)} (${Math.round(o.insideShare * 100)}% of the whole group, ${m2(o.totalAreaM2)})`,
+          label: "Height",
+          value: `typically ${o.medianHeightM} m, top ${o.maxHeightM} m`,
           certainty: "measured",
         },
+        { label: "Made of", value: esc(madeOf), certainty: "derived" },
         {
-          label: "Heights on the plot",
-          value: `typical ${o.medianHeightM} m, 9 in 10 cells below ${o.p90HeightM} m`,
-          certainty: "measured",
-        },
-        { label: "Height bands", value: esc(bands.join("; ")), certainty: "measured" },
-        {
-          label: "Top of the tree",
-          value: `${o.maxHeightM} m high, ${Math.abs(o.peakToLineM)} m ${o.peakToLineM >= 0 ? "inside" : "outside"} the plot line`,
-          certainty: "measured",
-        },
-        {
-          label: "Where it stands",
+          label: "Where",
           value:
             o.kind === "tall"
-              ? "On this plot: its top is well inside the line"
+              ? "On this plot"
               : o.kind === "overhang"
-                ? `Next door: its top is outside the line; the crown reaches ${o.reachIntoPlotM} m into this plot`
+                ? `Next door, reaching ${o.reachIntoPlotM} m in`
                 : o.kind === "boundary"
-                  ? `On or at the line: its top is within ${s.boundaryToleranceM} m of it, and the cadastral line itself is only accurate to about a metre, so it may stand on either side. Treated as fixed.`
-                  : "Not a tree: a hedge, shrub or low structure",
+                  ? "On the plot line (either side)"
+                  : "In the garden",
           certainty: o.kind === "boundary" ? "assumed" : "derived",
         },
-        ...(o.groundFilledShare > 0
-          ? [
-              {
-                label: "Ground filled in",
-                value: `${Math.round(o.groundFilledShare * 100)}% of its cells (no laser points reached the ground there)`,
-                certainty: "derived" as const,
-              },
-            ]
-          : []),
         {
-          label: "Laser scan",
+          label: "Scan",
           value: scan?.scanYear
-            ? `${scan.scanSource ?? "AHN"}, ${scan.scanYear} (date of the scan over this house)`
-            : "AHN, latest available (date not known here)",
+            ? `${scan.scanSource ?? "AHN"} ${scan.scanYear}`
+            : "AHN (date unknown)",
           certainty: "measured",
         },
       ],
@@ -385,14 +374,13 @@ export function renderInspector(
   developer: boolean,
 ): string {
   if (!ctx || !key)
-    return `<h3>Inspector</h3><p class="inspector-empty">Click anything on the plan to see what we know about it and where it comes from.</p>`;
+    return `<h3>Inspector</h3><p class="inspector-empty">Click an object on the plan.</p>`;
   const v = describe(ctx, key);
   if (!v)
     return `<h3>Inspector</h3><p class="inspector-empty">Nothing to show for this object.</p>`;
   return `<h3>${esc(v.title)}</h3>
     <dl class="facts">${v.rows.map((r) => `<dt>${esc(r.label)}</dt><dd>${r.value}${certPill(r.certainty)}</dd>`).join("")}</dl>
-    <p class="small muted" style="margin:12px 0 4px"><strong>Source.</strong> ${esc(v.source)}</p>
-    <p class="small muted" style="margin:0"><strong>How we know.</strong> ${esc(v.how)}</p>
+    <details class="small muted" style="margin-top:8px"><summary>Source and method</summary><p style="margin:6px 0 4px">${esc(v.source)}</p><p style="margin:0">${esc(v.how)}</p></details>
     ${key.startsWith("outbuilding:") ? askOutbuilding(ctx, key.slice("outbuilding:".length)) : ""}
     ${developer ? `<pre class="raw mono">${esc(JSON.stringify(v.raw, null, 1))}</pre>` : ""}`;
 }

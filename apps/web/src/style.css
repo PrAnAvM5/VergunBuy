@@ -838,3 +838,152 @@ select {
 #cp-3d canvas {
   display: block;
 }
+
+/* Carport planner: compact verdict and legend */
+.cp-num {
+  width: 58px;
+  padding: 3px 5px;
+  font: inherit;
+}
+.cp-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  align-items: center;
+}
+.cp-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.cp-legend .sw {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.cp-legend .ln {
+  width: 18px;
+  height: 8px;
+  border: 2px solid;
+  border-radius: 2px;
+  display: inline-block;
+}
+.cp-legend .ln.dash {
+  border-style: dashed;
+}
+.cp-needs {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+}
+.cp-needs li {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fbefd9;
+  color: #7a4a00;
+}
+.cp-needs li.fail {
+  background: #f8dcd9;
+  color: #8e1f17;
+}
+details.cp-group {
+  border-top: 1px solid var(--line);
+  padding: 6px 0;
+}
+details.cp-group > summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+.cp-t {
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 6px;
+}
+.cp-t.pass {
+  color: #2f7d32;
+}
+.cp-t.unknown {
+  color: #b26a00;
+}
+.cp-t.fail {
+  color: #b3261e;
+}
+details.cp-warn > summary {
+  cursor: pointer;
+  color: #7a4a00;
+}
+
+/* Side panel: folding cards */
+details.card > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+details.card > summary::-webkit-details-marker {
+  display: none;
+}
+details.card > summary h3 {
+  margin: 0;
+}
+details.card > summary::after {
+  content: "▸";
+  color: var(--muted, #777);
+}
+details.card[open] > summary::after {
+  content: "▾";
+}
+details.card > summary .sumnote {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--muted, #777);
+  font-weight: 400;
+}
+
+/* Grouped legend */
+.legend {
+  flex-direction: column;
+  gap: 6px;
+}
+.lg-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+}
+.lg-group b {
+  min-width: 128px;
+  font-weight: 600;
+  color: #444;
+}
+.legend i.ln {
+  height: 0;
+  width: 16px;
+  border-top: 4px solid;
+  border-radius: 0;
+  background: none;
+}
+
+/* Examples page */
+.ex-batch {
+  margin-bottom: 10px;
+}
+.ex-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  columns: 2 300px;
+}
+.ex-list li {
+  padding: 3px 0;
+  break-inside: avoid;
+}

@@ -135,7 +135,11 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     if (!s.pl || !v) return parts.join("");
     const col = COLOUR[v.colour];
     // Swept path of the selected bay (the whole car body, with its clearance shown as the outline).
-    const B = v.access.bays[s.bay];
+    // No route for a carport that is off the plot or on a building: there is nothing to reach.
+    const placeable = !v.checks.some(
+      (c) => (c.id === "on-plot" || c.id === "no-building") && c.outcome === "fail",
+    );
+    const B = placeable ? v.access.bays[s.bay] : undefined;
     if (B?.route) {
       parts.push(
         `<path d="${sweptPath(car, B.route.poses)}" fill="#1f6fd1" fill-opacity="0.13" pointer-events="none"/>`,
@@ -196,10 +200,23 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
         `<g pointer-events="none"><circle cx="${X(r[3]![0]).toFixed(1)}" cy="${Y(r[3]![1]).toFixed(1)}" r="12" fill="${col}" stroke="#fff" stroke-width="2"/><text x="${X(r[3]![0]).toFixed(1)}" y="${(Y(r[3]![1]) + 4.5).toFixed(1)}" font-size="13" font-weight="700" text-anchor="middle" fill="#fff">${o.n}</text></g>`,
       );
     }
+    // A car that does not fit is still drawn, in red, in the middle of the carport.
+    if (!v.access.fit.fits) {
+      const a = v.access.rect.o === "ns" ? 0 : Math.PI / 2;
+      const cx = (v.access.rect.x0 + v.access.rect.x1) / 2;
+      const cy = (v.access.rect.y0 + v.access.rect.y1) / 2;
+      parts.push(
+        carSvg(
+          car,
+          { x: cx - car.bodyC * Math.sin(a), y: cy - car.bodyC * Math.cos(a), a },
+          "#f6d3d0",
+          "#b3261e",
+        ),
+      );
+    }
     // Parked cars (the selected bay's car is hidden while it drives).
     v.access.bays.forEach((b, i) => {
       if (i === s.bay && s.moving) return;
-      if (!v.access.fit.fits) return;
       parts.push(
         i === s.bay
           ? carSvg(car, b.parked, b.route ? "#cfe0f7" : "#f6d3d0", b.route ? "#1f6fd1" : "#b3261e")
@@ -219,7 +236,14 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     <div class="cp-stage"><svg id="cp-svg" viewBox="0 0 ${W} ${H}" style="touch-action:none">
       <defs><clipPath id="cp-plotclip"><path d="${path(site.plot)}"/></clipPath><pattern id="cp-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#9a5" stroke-width="1.5"/></pattern></defs>
       <g id="cp-bg">${background()}</g><g id="cp-fg"></g></svg></div>
-    <div class="small muted cp-legend">The plan is the same as the 2D plan tab. Numbered: hand-picked spots (green: permit-free; amber: possible with a condition, such as a permit, a new exit, or shrubs to clear). Drag the carport to move it, drag its corner to resize: it turns red over a tree (2.5 m or higher) and amber over shrubs or something solid. The street side of the plot line shows what stands on it: orange = registered driveway crossing, blue dashed = open, green = hedge, dark grey = fence or wall, purple dashed = unknown. Light blue: the space the car body sweeps on the way in, keeping ${fmtM(s.params.clearanceM)} m from walls and tree crowns. Green dashed: back yard.</div>
+    <div class="cp-legend small">
+      <span><i class="sw" style="background:${COLOUR.green}"></i>permit-free</span>
+      <span><i class="sw" style="background:${COLOUR.amber}"></i>with a condition</span>
+      <span><i class="sw" style="background:${COLOUR.red}"></i>not possible</span>
+      <span><i class="ln" style="border-color:#1f6fd1;background:#1f6fd122"></i>car's path</span>
+      <span><i class="ln dash" style="border-color:#4c8a3a"></i>back yard</span>
+      <span class="muted">Drag to move · corner to resize · plot line and garden colours as in the 2D plan</span>
+    </div>
     <div id="cp-verdict"></div>`;
   const svg = el.querySelector<SVGSVGElement>("#cp-svg")!;
   const fg = el.querySelector<SVGGElement>("#cp-fg")!;

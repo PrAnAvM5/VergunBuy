@@ -74,8 +74,9 @@ export const BOUNDARY_SETTINGS = {
   bandOutM: 0.25,
   /** A registered fence, wall or hedge this close to a piece applies to it. */
   bgtNearM: 1,
-  /** A registered exit straight outside a piece, within this distance, makes it an exit. */
-  exitNearM: 1,
+  /** A registered exit straight outside a piece, within this distance, makes it an exit (the
+   *  driveway crossing often starts at the kerb, across a pavement of 1–3 m). */
+  exitNearM: 3,
   /** Cells this close to a building are left out (walls and eaves are not a fence). */
   buildingBufferM: 0.5,
 };
@@ -225,7 +226,7 @@ export function boundaryPieces(input: BoundaryInput, s = BOUNDARY_SETTINGS): Bou
       // A registered exit directly outside this piece (looking straight out up to exitNearM).
       const exit =
         street &&
-        [0.1, s.exitNearM / 2, s.exitNearM].some((d) => {
+        [0.1, 0.75, 1.5, 2.25, s.exitNearM].some((d) => {
           const q: Point = [m[0] + out_[0] * d, m[1] + out_[1] * d];
           return input.exits.some((e) => contains(e, q));
         });

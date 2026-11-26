@@ -12,6 +12,7 @@ import { lastRun, runCheck, type RunResult } from "../run.ts";
 import type { SceneHandle } from "../scene3d.ts";
 import type { MapHandle, OverlayId } from "../map.ts";
 import { lookAround } from "../streetview.ts";
+import { rememberExample } from "../remember.ts";
 import { STRUCTURE_TEXT, SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
 
 export type View = "map" | "2d" | "3d" | "street" | "carport2d" | "carport3d";
@@ -111,6 +112,7 @@ function rememberView(view: View): void {
   else params.set("view", view);
   const q = params.toString();
   history.replaceState(null, "", `${path}${q ? `?${q}` : ""}`);
+  rememberExample();
 }
 
 const EXCLUSION_TEXT: Record<string, string> = {
@@ -132,21 +134,22 @@ function legalCard(ctx: PlotContext): string {
   const l = ctx.legal;
   if (!l) return "";
   const plans = l.zoning.plans;
-  return `<div class="card">
-    <h3>Zoning plans and monuments</h3>
-    <p class="small muted" style="margin:0 0 6px">${
+  const ex = l.exclusions.filter((e) => e.ruleId !== "ex-monument-village-2236");
+  const toCheck = ex.filter((e) => e.state !== "clear").length;
+  return `<details class="card">
+    <summary><h3>Zoning and monuments</h3><span class="sumnote">${
       l.zoning.status === "missing"
-        ? "The old zoning plans could not be loaded."
-        : `${plans.length} binding zoning plan(s): ${plans.map((p) => esc(p.name)).join("; ")}`
-    }</p>
-    ${l.exclusions
-      .filter((e) => e.ruleId !== "ex-monument-village-2236")
+        ? "plans missing"
+        : `${plans.length} plan${plans.length === 1 ? "" : "s"}`
+    } · ${toCheck ? `${toCheck} to check` : "all clear"}</span></summary>
+    <p class="small muted" style="margin:8px 0 6px">${plans.map((p) => esc(p.name)).join("; ")}</p>
+    ${ex
       .map(
         (e) =>
-          `<div class="qrow"><div><div>${esc(EXCLUSION_TEXT[e.ruleId] ?? e.ruleId)} <span class="pill ${STATE_PILL[e.state]?.cls ?? "grey"}">${STATE_PILL[e.state]?.label ?? e.state}</span></div><div class="small muted">${esc(e.reason)}</div></div></div>`,
+          `<div class="qrow"><div><div>${esc(EXCLUSION_TEXT[e.ruleId] ?? e.ruleId)} <span class="pill ${STATE_PILL[e.state]?.cls ?? "grey"}">${STATE_PILL[e.state]?.label ?? e.state}</span></div>${e.state === "clear" ? "" : `<div class="small muted">${esc(e.reason)}</div>`}</div></div>`,
       )
       .join("")}
-  </div>`;
+  </details>`;
 }
 
 const STAGE_TEXT: Record<string, { cls: string; label: string }> = {
@@ -161,52 +164,37 @@ const STAGE_TEXT: Record<string, { cls: string; label: string }> = {
 function permitCard(ctx: PlotContext): string {
   const p = ctx.permits;
   if (!p) return "";
-  return `<div class="card">
-    <h3>Permit history</h3>
-    <p class="small muted" style="margin:0 0 6px">${
-      p.status === "missing"
-        ? "The municipality's publications could not be searched."
-        : `From the municipality's official publications (Gemeenteblad), digital since about 2010. Older permits are not in this source, so "none found" says nothing about earlier work.`
-    }</p>
-    ${
-      p.records.length
-        ? p.records
-            .map(
-              (r) =>
-                `<div class="qrow"><div><div>${esc(r.date ?? "")} <span class="pill ${STAGE_TEXT[r.stage]?.cls ?? "grey"}">${STAGE_TEXT[r.stage]?.label ?? r.stage}</span> ${r.topics.map((t) => `<span class="pill grey">${esc(t)}</span>`).join(" ")}</div><div class="small muted">${esc(r.summary)}${r.url ? ` · <a href="${esc(r.url)}" target="_blank" rel="noopener">publication</a>` : ""}</div></div></div>`,
-            )
-            .join("")
-        : p.status === "missing"
-          ? ""
-          : `<p class="small" style="margin:0">No published applications or permits found for this home.</p>`
-    }
-  </div>`;
+  return `<details class="card">
+    <summary><h3>Permit history</h3><span class="sumnote">${
+      p.status === "missing" ? "not searched" : `${p.records.length} found since ~2010`
+    }</span></summary>
+    ${p.records
+      .map(
+        (r) =>
+          `<div class="qrow"><div><div>${esc(r.date ?? "")} <span class="pill ${STAGE_TEXT[r.stage]?.cls ?? "grey"}">${STAGE_TEXT[r.stage]?.label ?? r.stage}</span> ${r.topics.map((t) => `<span class="pill grey">${esc(t)}</span>`).join(" ")}</div><div class="small muted">${esc(r.summary)}${r.url ? ` · <a href="${esc(r.url)}" target="_blank" rel="noopener">publication</a>` : ""}</div></div></div>`,
+      )
+      .join("")}
+    <p class="small muted" style="margin:6px 0 0">Gemeenteblad publications only start around 2010.</p>
+  </details>`;
 }
 
 function obstacleText(ctx: PlotContext): string {
   const o = ctx.obstacles;
-  if (!o) return "Unknown: the height scan could not be loaded";
-  const tall = o.obstacles.filter((x) => x.kind === "tall");
-  const medium = o.obstacles.filter((x) => x.kind === "medium");
-  const over = o.obstacles.filter((x) => x.kind === "overhang");
-  const onLine = o.obstacles.filter((x) => x.kind === "boundary");
+  if (!o) return "Unknown (no height scan)";
+  const n = (f: (x: (typeof o.obstacles)[number]) => boolean) => o.obstacles.filter(f).length;
+  const trees = n((x) => x.kind === "tall" || x.kind === "boundary");
+  const shrubs = n((x) => x.kind === "medium" && x.material !== "solid");
+  const solid = n((x) => x.kind === "medium" && x.material === "solid");
+  const over = n((x) => x.kind === "overhang");
   const structures = ctx.structures.filter((s) => s.onPlotShare > 0.3);
   const parts = [
-    tall.length ? `${tall.length} tall (trees or high structures), ${o.tallM2} m²` : "",
-    medium.length
-      ? `${medium.length} medium (hedges, shrubs, maybe a parked car), ${o.mediumM2} m²`
-      : "",
-    onLine.length
-      ? `${onLine.length} tree(s) on the boundary line, ${o.boundaryM2} m² over the plot`
-      : "",
-    over.length
-      ? `branches from ${over.length} tree(s) next door hang over ${o.overhangM2} m²`
-      : "",
-    structures.length
-      ? `registered: ${structures.map((s) => STRUCTURE_TEXT[s.type] ?? s.type).join(", ")}`
-      : "",
+    trees ? `${trees} tree${trees > 1 ? "s" : ""}` : "",
+    shrubs ? `${shrubs} shrub/hedge` : "",
+    solid ? `${solid} solid object${solid > 1 ? "s" : ""}` : "",
+    over ? `${over} overhanging` : "",
+    ...structures.map((s) => STRUCTURE_TEXT[s.type] ?? s.type),
   ].filter(Boolean);
-  return `${parts.length ? esc(parts.join("; ")) : "None found above 1 m"}<div class="small muted">In ${o.yardM2} m² of open garden, from the laser height scan (a snapshot; trees change).</div>`;
+  return parts.length ? esc(parts.join(" · ")) : "Nothing above 1 m";
 }
 
 /** Overlay names for the map's menu (kept here so the map code loads only when shown). */
@@ -339,7 +327,7 @@ export async function renderCheck(
             <span class="small">${frontNote}</span>
             <span style="margin-left:auto">Click any object to inspect it</span>
           </div>
-          <div class="plan-tools" id="tools-carport"><span class="small">Two checks for every spot: the rules (omgevingsplan Woensdrecht and Bbl, versions shown per check) and whether a car can really drive in, planned with its size, turning circle and clearance.</span></div>
+          <div class="plan-tools" id="tools-carport"><span class="small">Every spot: the rules and a real car route.</span></div>
           <div class="plan-tools" id="tools-street"><span>Free outside viewers, opened at this house in a new tab.</span></div>
           <div class="plan-tools" id="tools-3d"><span>Drag to rotate · scroll to zoom · right-drag to move. Shapes from 3D BAG (CC BY 4.0).</span></div>
           <div class="plan-tools"><label><input type="checkbox" id="l-dev" ${developer ? "checked" : ""} /> Developer details in the Inspector</label></div>
@@ -348,6 +336,7 @@ export async function renderCheck(
 
       </div>
       <aside class="side">
+        <div class="card" id="inspector"></div>
         <div class="card">
           <h2>This plot</h2>
           <dl class="facts">
@@ -363,9 +352,8 @@ export async function renderCheck(
         </div>
         ${legalCard(ctx)}
         ${permitCard(ctx)}
-        <div class="card">
-          <h3>Surroundings</h3>
-          <p class="small muted" style="margin:0 0 6px">What lies along each side of the plot.</p>
+        <details class="card">
+          <summary><h3>Surroundings</h3><span class="sumnote">${ctx.sides.length} sides</span></summary>
           ${ctx.sides
             .map(
               (s) =>
@@ -378,9 +366,9 @@ export async function renderCheck(
                 }</div></div>`,
             )
             .join("")}
-        </div>
-        <div class="card">
-          <h3>Worth knowing</h3>
+        </details>
+        <details class="card"${ctx.flags.length ? " open" : ""}>
+          <summary><h3>Worth knowing</h3><span class="sumnote">${ctx.flags.length || "nothing unusual"}</span></summary>
           ${
             ctx.flags.length
               ? ctx.flags
@@ -389,11 +377,10 @@ export async function renderCheck(
                       `<div class="flag"><span class="dot"></span><span>${esc(FLAG_TEXT[f.code] ?? f.detail)}</span></div>`,
                   )
                   .join("")
-              : `<p class="small muted" style="margin:0">Nothing unusual found in the data for this plot.</p>`
+              : ""
           }
-        </div>
-        <div class="card">${qualityCard(ctx.quality)}</div>
-        <div class="card" id="inspector"></div>
+        </details>
+        <details class="card"><summary><h3>Data quality</h3></summary>${qualityCard(ctx.quality)}</details>
       </aside>
     </div>`;
 

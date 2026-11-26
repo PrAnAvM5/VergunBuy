@@ -36,8 +36,9 @@ export interface VehicleParams {
 export const DEFAULT_VEHICLE: VehicleParams = {
   widthM: 1.8,
   lengthM: 4.5,
-  outerRadiusM: 6.5,
-  clearanceM: 0.5,
+  // A typical hatchback at walking pace (about 10.5–11 m kerb to kerb), decision 2026-11-26.
+  outerRadiusM: 6,
+  clearanceM: 0.3,
 };
 
 export interface Car {
@@ -849,6 +850,8 @@ const inflate = (r: Rect, m: number): Rect => ({
 });
 
 export const POST_M = 0.1;
+/** Inside the carport the car creeps: it passes posts and the other bay's car this close. */
+export const INSIDE_CLEARANCE_M = 0.1;
 function postRects(r: CarportRect): Rect[] {
   const P = POST_M;
   return [
@@ -1107,7 +1110,7 @@ export interface BayAccess {
 export function accessCarport(L: Lattice, r: CarportRect, frontOnly: boolean): BayAccess[] {
   const car = L.car;
   const bays = baysOf(car, r, frontOnly);
-  const posts = postRects(r).map((p) => inflate(p, car.clr));
+  const posts = postRects(r).map((p) => inflate(p, Math.min(car.clr, INSIDE_CLEARANCE_M)));
   const parked = bays.map((B) =>
     inflate(
       carRectAt(car, B.entries[0]!.Af.x, B.entries[0]!.Af.y, HEADA(B.entries[0]!.h)),
@@ -1190,7 +1193,7 @@ export function leaveCarport(
   const car = L.car;
   const B = access[bi];
   if (!B?.route) return null;
-  const posts = postRects(r).map((p) => inflate(p, car.clr));
+  const posts = postRects(r).map((p) => inflate(p, Math.min(car.clr, INSIDE_CLEARANCE_M)));
   const others = access
     .filter((_, k) => k !== bi)
     .map((q) => inflate(carRectAt(car, q.parked.x, q.parked.y, q.parked.a), car.clr));

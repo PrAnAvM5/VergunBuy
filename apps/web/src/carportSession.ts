@@ -6,7 +6,7 @@
 import type { PlotContext } from "@vergunbuy/data";
 import { carportSite } from "@vergunbuy/data";
 import {
-  CARPORT_HEIGHT_M,
+  CARPORT_LIMITS,
   CARPORT_PRESETS,
   DEFAULT_VEHICLE,
   driveOut,
@@ -298,57 +298,63 @@ export function play(s: Session, mode: "in" | "out"): void {
 
 export const fmtM = (v: number) => (Math.round(v * 10) / 10).toString().replace(".", ",");
 
-const STATUS_TEXT = (v: CarportVerdict) =>
-  v.colour === "green"
-    ? "permit-free"
-    : v.access.via === "new-exit"
-      ? "new exit"
-      : v.checks.some((c) => c.group === "permit-free" && c.outcome === "fail")
-        ? "needs a permit"
-        : "needs a check";
+/** Two or three words for a spot: what it needs. */
+export const STATUS_TEXT = (v: CarportVerdict): string => {
+  if (v.colour === "green") return "permit-free";
+  if (v.colour === "red") return "not possible";
+  const permit = v.checks.some((c) => c.group === "permit-free" && c.outcome === "fail");
+  const via = v.access.via;
+  return via === "new-exit" || via === "unregistered"
+    ? "new exit"
+    : via === "through-barrier"
+      ? "open hedge/fence"
+      : permit
+        ? "building permit"
+        : "check on site";
+};
 
 export function controlsHtml(s: Session): string {
   const car = s.prep.vehicle.car;
   const bays = s.verdict?.access.bays.length ?? 0;
+  const pl = s.pl;
   return `
     <div class="cp-tools">
-      <span class="cp-lbl">Carport</span>
-      <button data-size="single" class="btn small" aria-pressed="${s.sizeKey === "single"}">Single 3 × 5 m</button>
-      <button data-size="double" class="btn small" aria-pressed="${s.sizeKey === "double"}">Double 6 × 5 m</button>
-      <button data-act="rotate" class="btn small">Rotate</button>
-      <span class="small muted">${s.pl ? `${fmtM(s.pl.widthM)} × ${fmtM(s.pl.lengthM)} m, ${fmtM(CARPORT_HEIGHT_M)} m high` : ""}</span>
+      <button data-size="single" class="btn small" aria-pressed="${s.sizeKey === "single"}">Single 3 × 5</button>
+      <button data-size="double" class="btn small" aria-pressed="${s.sizeKey === "double"}">Double 6 × 5</button>
+      <label class="small">W <input class="cp-num" type="number" step="0.1" min="${CARPORT_LIMITS.minWidthM}" max="${CARPORT_LIMITS.maxWidthM}" data-dim="widthM" value="${pl ? fmtNum(pl.widthM) : ""}"></label>
+      <label class="small">L <input class="cp-num" type="number" step="0.1" min="${CARPORT_LIMITS.minLengthM}" max="${CARPORT_LIMITS.maxLengthM}" data-dim="lengthM" value="${pl ? fmtNum(pl.lengthM) : ""}"> m</label>
+      <button data-act="rotate" class="btn small" title="Turn the carport 90°">↻ 90°</button>
     </div>
     <div class="cp-tools cp-opts">
-      <span class="cp-lbl">Good spots</span>
       ${
         s.opts.length
           ? s.opts
               .map(
                 (o, i) =>
-                  `<button class="optbtn" data-opt="${i}" aria-pressed="${s.sel === i}"><span class="dot" style="background:${COLOUR[o.verdict.colour]}"></span>#${o.n} ${esc(ZONE_TEXT[o.zone])} · ${esc(STATUS_TEXT(o.verdict))}</button>`,
+                  `<button class="optbtn" data-opt="${i}" aria-pressed="${s.sel === i}"><span class="dot" style="background:${COLOUR[o.verdict.colour]}"></span>#${o.n} ${esc(STATUS_TEXT(o.verdict))}</button>`,
               )
               .join("")
-          : `<span class="small muted">No spot on this plot where a car can get to a carport of this size without felling a tree.</span>`
+          : `<span class="small muted">No spot found for this size.</span>`
       }
     </div>
     <div class="cp-tools">
-      <span class="cp-lbl">Car</span>
       ${bays > 1 ? `<span class="small">Bay</span><button class="btn small" data-bay="0" aria-pressed="${s.bay === 0}">1</button><button class="btn small" data-bay="1" aria-pressed="${s.bay === 1}">2</button>` : ""}
       <button class="btn small primary" data-act="in">▶ Drive in</button>
       <button class="btn small" data-act="out">◀ Drive out</button>
-      <details class="cp-car"><summary>Car size and turning circle</summary>
+      <details class="cp-car"><summary>Car</summary>
         <div class="cp-car-grid">
           <label>Width (m) <input type="number" step="0.1" min="1.4" max="2.6" data-car="widthM" value="${s.params.widthM}"></label>
           <label>Length (m) <input type="number" step="0.1" min="3" max="6.5" data-car="lengthM" value="${s.params.lengthM}"></label>
           <label>Turning circle, outer corner (m) <input type="number" step="0.1" min="4.5" max="9" data-car="outerRadiusM" value="${s.params.outerRadiusM}"></label>
           <label>Clearance (m) <input type="number" step="0.1" min="0" max="1.5" data-car="clearanceM" value="${s.params.clearanceM}"></label>
         </div>
-        <div class="small muted">The rear axle then turns on a ${fmtM(car.rt)} m radius. Clearance is kept free all round the car, from walls, buildings, carport posts and trees (2.5 m and higher, the whole crown). Hedges, shrubs and lawn may be driven over. <button class="linkbtn" data-act="car-reset">Standard car</button></div>
+        <div class="small muted">Rear axle turns on ${fmtM(car.rt)} m. <button class="linkbtn" data-act="car-reset">Standard car</button></div>
       </details>
       <span class="small cp-msg ${s.message?.bad ? "bad" : ""}">${esc(s.message?.text ?? "")}</span>
     </div>
     ${s.busy ? `<div class="cp-busy"><div class="spinner"></div>${esc(s.busy)}</div>` : ""}`;
 }
+const fmtNum = (v: number) => String(Math.round(v * 10) / 10);
 
 export function bindControls(root: HTMLElement, s: Session): void {
   root
@@ -363,6 +369,20 @@ export function bindControls(root: HTMLElement, s: Session): void {
       s.bay = Number(b.dataset.bay);
       s.message = null;
       notify(s);
+    }),
+  );
+  root.querySelectorAll<HTMLInputElement>("[data-dim]").forEach((inp) =>
+    inp.addEventListener("change", () => {
+      if (!s.pl) return;
+      const v = Number(inp.value.replace(",", "."));
+      if (!Number.isFinite(v)) return;
+      const key = inp.dataset.dim as "widthM" | "lengthM";
+      const lim =
+        key === "widthM"
+          ? [CARPORT_LIMITS.minWidthM, CARPORT_LIMITS.maxWidthM]
+          : [CARPORT_LIMITS.minLengthM, CARPORT_LIMITS.maxLengthM];
+      s.sizeKey = "custom";
+      place(s, { ...s.pl, [key]: Math.min(lim[1]!, Math.max(lim[0]!, v)) });
     }),
   );
   root.querySelector('[data-act="rotate"]')?.addEventListener("click", () => {
@@ -401,11 +421,11 @@ export function bindControls(root: HTMLElement, s: Session): void {
 let carOpen = false;
 
 const GROUPS: [CarportCheck["group"], string][] = [
-  ["feasible", "Can it stand here, and can the car get in?"],
-  ["permit-free", "Permit-free (omgevingsplan art. 22.27)"],
-  ["allowed-by-law", "Allowed regardless of the old zoning plan (art. 22.36)"],
-  ["exclusion", "Exceptions (art. 22.28, 22.38, 22.39)"],
-  ["technical", "Technical building rules (Bbl 2.25)"],
+  ["feasible", "Fits and car gets in"],
+  ["permit-free", "Permit-free (art. 22.27)"],
+  ["allowed-by-law", "Allowed by law (art. 22.36)"],
+  ["exclusion", "Exceptions (22.28, 22.38, 22.39)"],
+  ["technical", "Building rules (Bbl 2.25)"],
   ["freshness", "Rules up to date"],
 ];
 const ICON = { pass: "✓", fail: "✕", unknown: "?" } as const;
@@ -413,28 +433,33 @@ const ICON = { pass: "✓", fail: "✕", unknown: "?" } as const;
 export function verdictHtml(s: Session): string {
   const v = s.verdict;
   if (!v)
-    return `<div class="cp-headline" style="border-color:${COLOUR.red}"><b style="color:${COLOUR.red}">No spot found</b><div class="small">There is no place on this plot where a ${fmtM(s.size.widthM)} × ${fmtM(s.size.lengthM)} m carport fits clear of buildings and trees and a car can drive in.</div></div>`;
+    return `<div class="cp-headline" style="border-color:${COLOUR.red}"><b style="color:${COLOUR.red}">No spot found</b></div>`;
   const col = COLOUR[v.colour];
   const o = s.sel !== null ? s.opts[s.sel] : undefined;
   const route = v.access.bays[s.bay]?.route;
+  // What stands between this spot and green, one short line each.
+  const open = v.checks.filter((c) => c.outcome !== "pass");
   const groups = GROUPS.map(([g, title]) => {
     const list = v.checks.filter((c) => c.group === g);
     if (!list.length) return "";
-    return `<div class="cp-group"><h4>${esc(title)}</h4>${list
+    const n = (o: string) => list.filter((c) => c.outcome === o).length;
+    const tally = `${n("pass") ? `<span class="cp-t pass">✓${n("pass")}</span>` : ""}${n("unknown") ? `<span class="cp-t unknown">?${n("unknown")}</span>` : ""}${n("fail") ? `<span class="cp-t fail">✕${n("fail")}</span>` : ""}`;
+    return `<details class="cp-group"${n("fail") ? " open" : ""}><summary>${esc(title)} ${tally}</summary>${list
       .map((c) => {
         const rule = c.ruleId ? RULES.rules.find((r) => r.id === c.ruleId) : undefined;
         const doc = rule ? RULES.documents[rule.document] : undefined;
         return `<div class="cp-check ${c.outcome}"><span class="cp-icon">${ICON[c.outcome]}</span><div><div>${esc(c.label)}</div><div class="small muted">${esc(c.detail)}</div>${
           rule && doc
-            ? `<details class="small"><summary>${esc(doc.title)}, art. ${esc(rule.article)}</summary><blockquote lang="nl">"${esc(rule.quote)}"</blockquote><div class="muted">${esc(rule.plain)} Verified ${esc(doc.verifiedOn)} against ${esc(doc.verifiedExpressionId.split("/").pop() ?? "")}.</div></details>`
+            ? `<details class="small"><summary>${esc(doc.title)}, art. ${esc(rule.article)}</summary><blockquote lang="nl">"${esc(rule.quote)}"</blockquote><div class="muted">${esc(rule.plain)} Verified ${esc(doc.verifiedOn)}.</div></details>`
             : ""
         }</div></div>`;
       })
-      .join("")}</div>`;
+      .join("")}</details>`;
   }).join("");
   return `<div class="cp-headline" style="border-color:${col}">
       <b style="color:${col}">${o ? `#${o.n} · ` : ""}${esc(v.headline)}</b>
-      ${route ? `<div class="small">Car route: in from the street ${esc(route.how)}, about ${Math.round(route.lengthM)} m. Press “Drive out” to see how it leaves.</div>` : ""}
-      ${v.warnings.map((w) => `<div class="small cp-warn">⚠ ${esc(w.text)}</div>`).join("")}
+      ${route ? `<div class="small muted">Route ${esc(route.how)}, ~${Math.round(route.lengthM)} m</div>` : ""}
+      ${open.length ? `<ul class="cp-needs">${open.map((c) => `<li class="${c.outcome}" title="${esc(c.detail)}">${ICON[c.outcome]} ${esc(c.label)}</li>`).join("")}</ul>` : ""}
+      ${v.warnings.length ? `<details class="small cp-warn"><summary>⚠ ${v.warnings.length} note${v.warnings.length > 1 ? "s" : ""}</summary>${v.warnings.map((w) => `<div>${esc(w.text)}</div>`).join("")}</details>` : ""}
     </div>${groups}`;
 }

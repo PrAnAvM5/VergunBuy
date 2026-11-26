@@ -11,6 +11,7 @@ import "./style.css";
 import { renderAbout } from "./views/about.ts";
 import { disposeScene, renderCheck } from "./views/check.ts";
 import { renderExamples } from "./views/examples.ts";
+import { rememberExample } from "./remember.ts";
 import { renderHome } from "./views/home.ts";
 import { renderSystem } from "./views/system.ts";
 
@@ -31,6 +32,7 @@ function route(): void {
   });
   window.scrollTo(0, 0);
   disposeScene();
+  rememberExample();
 
   if (page === "plot" && parts[1] && parts[2]) {
     const query = {

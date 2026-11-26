@@ -5,9 +5,9 @@
  * overlays are drawn as thin outlines so they never wash out the photo.
  */
 import type { PlotContext } from "@vergunbuy/data";
-import { at, type Polygon } from "@vergunbuy/engine";
+import { at, boundaryRuns, type Polygon } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc } from "./format.ts";
-import { LINE_COLORS, LINE_TEXT, SOLID_COLOR } from "./plan2d.ts";
+import { LINE_COLORS, SOLID_COLOR } from "./plan2d.ts";
 
 export interface Layers {
   context: boolean;
@@ -103,7 +103,7 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
     }
     for (const h of ctx.hedges)
       parts.push(
-        `<path class="obj" data-sel="hedge:${esc(h.id)}" d="${path(h.outline)}" fill="#4f8a3c" fill-opacity="${photo ? 0.001 : 0.7}" stroke="${photo ? "#9be07f" : "#2f5d22"}" stroke-width="${photo ? 1.2 : 0.6}"/>`,
+        `<path class="obj" data-sel="hedge:${esc(h.id)}" d="${path(h.outline)}" fill="#2f7d32" fill-opacity="${photo ? 0.001 : 0.7}" stroke="${photo ? "#9be07f" : "#2f5d22"}" stroke-width="${photo ? 1.2 : 0.6}"/>`,
       );
     for (const b of ctx.neighbours) {
       const key = `neighbour:${b.id}`;
@@ -149,10 +149,18 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
       const [x2, y2] = p(run.to);
       const style = EDGE_TEXT[run.kind] ?? { color: "#000" };
       const key = `edge:${i}`;
+      // The street side is drawn by what stands on it (below), when that is known.
+      const color = run.kind === "public" && ctx.boundary ? "#bfc3ca" : style.color;
       parts.push(
-        `<line class="edge${sel(key)}" data-sel="${key}" x1="${tx(x1).toFixed(1)}" y1="${ty(y1).toFixed(1)}" x2="${tx(x2).toFixed(1)}" y2="${ty(y2).toFixed(1)}" stroke="${style.color}" stroke-width="5" stroke-linecap="butt"${style.dash ? ` stroke-dasharray="${style.dash}"` : ""}/>`,
+        `<line class="edge${sel(key)}" data-sel="${key}" x1="${tx(x1).toFixed(1)}" y1="${ty(y1).toFixed(1)}" x2="${tx(x2).toFixed(1)}" y2="${ty(y2).toFixed(1)}" stroke="${color}" stroke-width="5" stroke-linecap="butt"${style.dash ? ` stroke-dasharray="${style.dash}"` : ""}/>`,
       );
     });
+    for (const r of boundaryRuns(ctx.boundary?.pieces ?? [])) {
+      if (r.side !== "street" || r.state === "exit") continue;
+      parts.push(
+        `<line x1="${tx(r.a[0]).toFixed(1)}" y1="${ty(r.a[1]).toFixed(1)}" x2="${tx(r.b[0]).toFixed(1)}" y2="${ty(r.b[1]).toFixed(1)}" stroke="${LINE_COLORS[r.state]}" stroke-width="${r.state === "open" ? 3 : 6}" pointer-events="none"${r.state === "open" || r.state === "unknown" ? ' stroke-dasharray="7 5"' : ""}/>`,
+      );
+    }
   }
 
   // Stretches of boundary where a car can reach the plot.
@@ -191,36 +199,43 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Map of the plot with house, neighbours and public areas">${parts.join("")}</svg>`;
 }
 
+/** The legend, in four plain groups. Same colours on the map, the 2D plan and Carport 2D. */
 export function legend(): string {
-  const items: [string, string][] = [
-    ["var(--house)", "House"],
-    ["#b9aee8", "Other building on plot"],
-    ["#2a9d8f", "Other home on the same parcel"],
-    ["#a8a296", "Neighbouring buildings"],
-    ["var(--road)", "Road"],
-    ["var(--path)", "Footpath"],
-    ["var(--green)", "Public green"],
-    ["#f2b134", "Registered driveway crossing (solid)"],
-    [
-      "repeating-linear-gradient(90deg,#f2b134 0 6px,transparent 6px 10px)",
-      "Car could reach the boundary here (dashed: possible, not proven)",
-    ],
-    ["#3f8f3a", "Registered tree"],
-    ["#d63c3c", "Height scan: 2.5 m and higher (tree crown, high structure)"],
-    ["#e8961e", "Height scan: 1.5 – 2.5 m (hedge, shrub, car)"],
-    ["#f0d04a", "Height scan: 1.0 – 1.5 m (low hedge, shrub)"],
-    ["#8a7fd6", "Branches overhanging from a tree next door"],
-    [SOLID_COLOR, "Height scan: solid, not a plant (wall, car, unregistered shed)"],
-    ["#00b8d9", "Registered canopy, pool or other structure"],
-    ["#4f8a3c", "Hedge"],
-  ];
-  const edges = Object.values(EDGE_TEXT).map(
-    (e) => [e.color, `Edge: ${e.label}`] as [string, string],
-  );
-  const line = Object.entries(LINE_TEXT).map(
-    ([k, l]) => [LINE_COLORS[k as keyof typeof LINE_COLORS], l] as [string, string],
-  );
-  return [...items, ...line, ...edges]
-    .map(([c, l]) => `<span><i style="background:${c}"></i>${esc(l)}</span>`)
-    .join("");
+  const sw = (c: string, l: string, line = false) =>
+    `<span><i class="${line ? "ln" : ""}" style="${line ? `border-color:${c}` : `background:${c}`}"></i>${esc(l)}</span>`;
+  const group = (title: string, items: string[]) =>
+    `<div class="lg-group"><b>${esc(title)}</b>${items.join("")}</div>`;
+  return [
+    group("Buildings", [
+      sw("var(--house)", "House"),
+      sw("#b9aee8", "Other building on the plot"),
+      sw("#2a9d8f", "Other home, same parcel"),
+      sw("#a8a296", "Neighbours"),
+      sw("#00b8d9", "Canopy, pool (registered)"),
+    ]),
+    group("Street", [
+      sw("var(--road)", "Road"),
+      sw("var(--path)", "Footpath"),
+      sw("var(--green)", "Public green"),
+      sw("#3f8f3a", "Street tree"),
+      sw("#f2b134", "Driveway crossing"),
+    ]),
+    group("Garden (laser scan)", [
+      sw("#d63c3c", "Tree, 2.5 m+"),
+      sw("#e8961e", "1.5–2.5 m"),
+      sw("#f0d04a", "1–1.5 m"),
+      sw(SOLID_COLOR, "Solid, not a plant"),
+      sw("#8a7fd6", "Neighbour's tree overhanging"),
+      sw("#2f7d32", "Hedge (registered)"),
+    ]),
+    group("Plot line", [
+      sw(LINE_COLORS.open, "Street side: open", true),
+      sw(LINE_COLORS.hedge, "hedge", true),
+      sw(LINE_COLORS.barrier, "fence or wall", true),
+      sw(LINE_COLORS.unknown, "unclear", true),
+      ...["neighbour", "shared-wall", "rear-path", "water"].map((k) =>
+        sw(EDGE_TEXT[k]!.color, EDGE_TEXT[k]!.label, true),
+      ),
+    ]),
+  ].join("");
 }
