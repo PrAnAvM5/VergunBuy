@@ -10,6 +10,16 @@ const W = 820;
 const H = 620;
 
 /** Colours of the street-side plot line by what stands on it. */
+/** A lamp post (yellow dot) or another pole, bollard or cabinet (small dark square) in the street. */
+export function streetObjectSvg(x: number, y: number, kind: string): string {
+  const t = `<title>${esc(kind[0]!.toUpperCase() + kind.slice(1))} (map register)</title>`;
+  return kind === "lamp post"
+    ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="${LAMP_COLOR}" stroke="#5b4a00" stroke-width="1.3">${t}</circle>`
+    : `<rect x="${(x - 2.5).toFixed(1)}" y="${(y - 2.5).toFixed(1)}" width="5" height="5" fill="${POLE_COLOR}" stroke="#fff" stroke-width="0.8">${t}</rect>`;
+}
+export const LAMP_COLOR = "#ffd23f";
+export const POLE_COLOR = "#4a4f57";
+
 export const LINE_COLORS = {
   exit: "#f2b134",
   open: "#1f6fd1",
@@ -171,6 +181,12 @@ export function planScene(
     parts.push(
       `<circle class="obj${sel(key)}" data-sel="${esc(key)}" cx="${tx(p[0]).toFixed(1)}" cy="${ty(p[1]).toFixed(1)}" r="${((t.crownM / 2) * scale).toFixed(1)}" fill="#3f8f3a" fill-opacity="0.4" stroke="#1f5e1c" stroke-dasharray="3 2"/>`,
     );
+  }
+
+  for (const o of ctx.streetObjects ?? []) {
+    const p = toLocal(f, o.at);
+    if (p[0] < minX || p[0] > maxX || p[1] < minY || p[1] > maxY) continue;
+    parts.push(streetObjectSvg(tx(p[0]), ty(p[1]), o.kind));
   }
 
   // What stands on the plot line, on the street side.

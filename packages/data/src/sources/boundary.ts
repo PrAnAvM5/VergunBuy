@@ -145,3 +145,70 @@ export async function fetchMapBarriers(
     });
   return { barriers, hedges, types };
 }
+
+/** A fixed object in the street a car must miss: lamp post, pole, bollard, cabinet. */
+export interface StreetObject {
+  at: Point;
+  /** BGT kind in plain words ("lamp post", "pole", "bollard", "cabinet", …). */
+  kind: string;
+  /** The BGT type as registered (e.g. "lichtmast"). */
+  type: string;
+}
+
+const STREET_OBJECT_TEXT: Record<string, string> = {
+  lichtmast: "lamp post",
+  verkeersbordpaal: "sign post",
+  poller: "bollard",
+  drukknoppaal: "push-button post",
+  portaal: "gantry",
+  haltepaal: "bus stop post",
+  hekwerk: "railing",
+  verkeersregelinstallatiepaal: "traffic light",
+  straatnaambord: "street sign",
+  "telecom kast": "telecom cabinet",
+  elektrakast: "power cabinet",
+  gaskast: "gas cabinet",
+  "CAI-kast": "cable cabinet",
+};
+
+/** Lamp posts, poles, bollards and cabinets in the street (BGT paal and kast, current only). */
+export async function fetchStreetObjects(
+  bbox: Bbox,
+  ctx: StepContext,
+  fetchFn?: FetchFn,
+): Promise<StreetObject[]> {
+  const sets = await Promise.all(
+    ["paal", "kast"].map((c) => ogcItems(OGC.bgt, c, bbox, ctx, fetchFn)),
+  );
+  const out: StreetObject[] = [];
+  sets.forEach((set, i) => {
+    for (const f of set.features) {
+      if (f.properties.eind_registratie) continue;
+      const type = str(f.properties.plus_type) ?? str(f.properties.type) ?? "";
+      if (type === "niet-bgt" || type === "transitie") continue;
+      const g = f.geometry as { type: string; coordinates: unknown } | null;
+      let at: Point | null = null;
+      if (g?.type === "Point") {
+        const c = g.coordinates as number[];
+        at = [Number(c[0]), Number(c[1])];
+      } else if (g?.type === "MultiPoint") {
+        const c = (g.coordinates as number[][])[0];
+        if (c) at = [Number(c[0]), Number(c[1])];
+      } else if (g?.type === "Polygon") {
+        const ring = (g.coordinates as number[][][])[0] ?? [];
+        if (ring.length)
+          at = [
+            ring.reduce((s, c) => s + Number(c[0]), 0) / ring.length,
+            ring.reduce((s, c) => s + Number(c[1]), 0) / ring.length,
+          ];
+      }
+      if (!at) continue;
+      out.push({
+        at,
+        type: type || (i ? "kast" : "paal"),
+        kind: STREET_OBJECT_TEXT[type] ?? (i ? "cabinet" : "pole"),
+      });
+    }
+  });
+  return out;
+}

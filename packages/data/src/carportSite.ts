@@ -72,6 +72,16 @@ function exitStretches(plot: Polygon, exit: Polygon): [Point, Point][] {
   return out;
 }
 
+/** BGT road functions a car may drive on (to reach a gate or turn round). */
+const DRIVABLE = new Set([
+  "rijbaan lokale weg",
+  "rijbaan regionale weg",
+  "rijbaan autoweg",
+  "parkeervlak",
+  "inrit",
+  "woonerf",
+]);
+
 export function carportSite(
   ctx: PlotContext,
   rules: RuleSet,
@@ -226,6 +236,17 @@ export function carportSite(
             : "none",
       access: { level, entries: localEntries, frontage, note: ctx.access.reason },
       streetTrees: (ctx.trees ?? []).map((t) => toLocal(f, t.at)),
+      road: ctx.publicAreas
+        ? {
+            drivable: ctx.publicAreas
+              .filter((a) => a.kind === "road" && DRIVABLE.has(a.label))
+              .map((a) => L(a.outline)),
+            crossable: ctx.publicAreas
+              .filter((a) => a.label === "fietspad")
+              .map((a) => L(a.outline)),
+            objects: (ctx.streetObjects ?? []).map((o) => ({ at: toLocal(f, o.at), kind: o.kind })),
+          }
+        : null,
       boundary: ctx.boundary
         ? ctx.boundary.pieces.map((p) => ({
             a: toLocal(f, p.a),

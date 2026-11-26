@@ -129,10 +129,31 @@ export interface WorldInput {
   scan: { at: Point; blocks: boolean }[];
   scanCellM: number;
   gates: Gate[];
+  /**
+   * The street as it really is: road surfaces a car may drive on, and objects in the street it
+   * must miss (lamp posts, poles, cabinets, street-tree trunks). With it, the car comes along the
+   * road from either side, crosses the pavement or verge only straight in front of a gate, and
+   * may turn anywhere on the road. Without it, the old model: a straight strip out from each gate.
+   */
+  road?:
+    | {
+        drivable: Polygon[];
+        blockers: Polygon[];
+        /** Cycle paths and lanes: a car may swing over them only close to a gate, to turn in. */
+        crossable?: Polygon[];
+        /** All public ground (pavement, verges, green): the car's body may overhang its edge. */
+        soft?: Polygon[];
+      }
+    | undefined;
 }
 
 export interface World {
   plot: Polygon;
+  /** True when the real road surface is known (see WorldInput.road). */
+  roadMode: boolean;
+  /** Per gate: how far out the road surface starts (m), in road mode. */
+  apron: number[];
+  drivable: Polygon[];
   cell: number;
   minX: number;
   minY: number;
@@ -154,6 +175,16 @@ const CORRIDOR_M = 11;
 const START_OUT_M = 9;
 /** How far the road is opened along the street beyond each gate, for leaving. */
 const ROAD_ALONG_M = 10;
+/** Road mode: how much street around the plot is part of the world. */
+const ROAD_MARGIN_M = 20;
+/** Road mode: the farthest the road surface may lie beyond a gate (pavement plus verge). */
+const APRON_MAX_M = 8;
+/** Road mode: how much wider a crossing is at the road than at the gate, each side (m). */
+const APRON_FLARE_M = 2.5;
+/** Road mode: how far along the street from a gate a car may swing over a cycle path to turn in. */
+const SWING_M = 6;
+/** Road mode: how far a car's body may overhang the kerb onto pavement or verge (m). */
+const OVERHANG_M = 0.5;
 
 function inwardNormal(plot: Polygon, a: Point, b: Point): Point {
   const dx = b[0] - a[0];
@@ -195,7 +226,8 @@ function fillPolygon(
 export function buildWorld(input: WorldInput): World {
   const xs = input.plot.map((p) => p[0]);
   const ys = input.plot.map((p) => p[1]);
-  const m = CORRIDOR_M + 2;
+  const roadMode = !!input.road && input.road.drivable.length > 0;
+  const m = roadMode ? ROAD_MARGIN_M : CORRIDOR_M + 2;
   const span =
     (Math.max(...xs) - Math.min(...xs) + 2 * m) * (Math.max(...ys) - Math.min(...ys) + 2 * m);
   const cell = span > 40000 ? 0.25 : 0.2;
@@ -204,19 +236,45 @@ export function buildWorld(input: WorldInput): World {
   const nx = Math.ceil((Math.max(...xs) + m - minX) / cell);
   const ny = Math.ceil((Math.max(...ys) + m - minY) / cell);
   const dims = { minX, minY, nx, ny, cell };
-  // Start with everything blocked, open the plot, open the road strips in front of the gates.
+  // Start with everything blocked, open the plot, then the ways out to the street.
   const blocked = new Uint8Array(nx * ny).fill(1);
   fillPolygon(input.plot, dims, blocked, 0);
+  const apron: number[] = [];
+  const drivable = roadMode ? input.road!.drivable : [];
+  if (roadMode) for (const d of drivable) fillPolygon(d, dims, blocked, 0);
   for (const g of input.gates) {
     const n = inwardNormal(input.plot, g.a, g.b);
+    // Road mode: the strip straight out from the gate across the pavement or verge, to where the
+    // road surface starts (found by looking out from both ends and the middle of the gate).
+    let depth = CORRIDOR_M;
+    if (roadMode) {
+      depth = 0;
+      for (const t of [0.15, 0.5, 0.85]) {
+        const p: Point = [g.a[0] + (g.b[0] - g.a[0]) * t, g.a[1] + (g.b[1] - g.a[1]) * t];
+        let d = 0;
+        while (
+          d <= APRON_MAX_M &&
+          !drivable.some((r) => contains(r, [p[0] - n[0] * d, p[1] - n[1] * d]))
+        )
+          d += 0.25;
+        depth = Math.max(depth, d > APRON_MAX_M ? CORRIDOR_M : d + 0.75);
+      }
+    }
+    apron.push(depth);
+    // In road mode the crossing widens towards the road, like the sloped kerb of a real
+    // driveway crossing, so a car can swing in from the road.
+    const len0 = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]) || 1;
+    const tt: Point = [(g.b[0] - g.a[0]) / len0, (g.b[1] - g.a[1]) / len0];
+    const fl = roadMode ? Math.min(APRON_FLARE_M, depth * 2) : 0;
     const corridor: Polygon = [
       g.a,
       g.b,
-      [g.b[0] - n[0] * CORRIDOR_M, g.b[1] - n[1] * CORRIDOR_M],
-      [g.a[0] - n[0] * CORRIDOR_M, g.a[1] - n[1] * CORRIDOR_M],
+      [g.b[0] - n[0] * depth + tt[0] * fl, g.b[1] - n[1] * depth + tt[1] * fl],
+      [g.a[0] - n[0] * depth - tt[0] * fl, g.a[1] - n[1] * depth - tt[1] * fl],
     ];
     fillPolygon(corridor, dims, blocked, 0);
-    // The road itself, along the street on both sides of the gate (from 2 m out), where a car
+    if (roadMode) continue;
+    // Old model: the road along the street on both sides of the gate (from 2 m out), where a car
     // leaving can turn to drive off along the street.
     const len = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]) || 1;
     const t: Point = [(g.b[0] - g.a[0]) / len, (g.b[1] - g.a[1]) / len];
@@ -230,6 +288,54 @@ export function buildWorld(input: WorldInput): World {
     ];
     fillPolygon(road, dims, blocked, 0);
   }
+  if (roadMode && input.road!.crossable?.length) {
+    // Turning space: cycle paths and lanes within a few metres along the street of each gate.
+    const swing = new Uint8Array(nx * ny);
+    const cyc = new Uint8Array(nx * ny);
+    input.gates.forEach((g, gi) => {
+      const n = inwardNormal(input.plot, g.a, g.b);
+      const len = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]) || 1;
+      const t: Point = [(g.b[0] - g.a[0]) / len, (g.b[1] - g.a[1]) / len];
+      const A: Point = [g.a[0] - t[0] * SWING_M, g.a[1] - t[1] * SWING_M];
+      const B: Point = [g.b[0] + t[0] * SWING_M, g.b[1] + t[1] * SWING_M];
+      const d = (apron[gi] ?? 0) + SWING_M;
+      fillPolygon(
+        [A, B, [B[0] - n[0] * d, B[1] - n[1] * d], [A[0] - n[0] * d, A[1] - n[1] * d]],
+        dims,
+        swing,
+        1,
+      );
+    });
+    for (const c of input.road!.crossable!) fillPolygon(c, dims, cyc, 1);
+    for (let k = 0; k < blocked.length; k++) if (swing[k] && cyc[k]) blocked[k] = 0;
+  }
+  if (roadMode && input.road!.soft?.length) {
+    // A kerb is not a wall: bumpers and mirrors may overhang the pavement or verge next to the
+    // road a little, never private ground.
+    const soft = new Uint8Array(nx * ny);
+    for (const p of input.road!.soft!) fillPolygon(p, dims, soft, 1);
+    const onPlotCell = new Uint8Array(nx * ny);
+    fillPolygon(input.plot, dims, onPlotCell, 1);
+    const road = new Uint8Array(nx * ny);
+    for (let k = 0; k < road.length; k++) road[k] = !blocked[k] && !onPlotCell[k] ? 1 : 0;
+    const r = Math.ceil((OVERHANG_M - 1e-9) / cell);
+    for (let y = 0; y < ny; y++)
+      for (let x = 0; x < nx; x++) {
+        const k = y * nx + x;
+        if (!blocked[k] || !soft[k] || onPlotCell[k]) continue;
+        search: for (let dy = -r; dy <= r; dy++)
+          for (let dx = -r; dx <= r; dx++) {
+            const xx = x + dx;
+            const yy = y + dy;
+            if (xx < 0 || yy < 0 || xx >= nx || yy >= ny || dx * dx + dy * dy > r * r) continue;
+            if (road[yy * nx + xx]) {
+              blocked[k] = 0;
+              break search;
+            }
+          }
+      }
+  }
+  if (roadMode) for (const b of input.road!.blockers) fillPolygon(b, dims, blocked, 1);
 
   for (const s of input.solids) fillPolygon(s, dims, blocked, 1);
   // Tree crowns inside the plot (the whole crown of anything 2.5 m or higher).
@@ -261,6 +367,9 @@ export function buildWorld(input: WorldInput): World {
   const j0 = Math.round(minY / GS);
   return {
     plot: input.plot,
+    roadMode,
+    apron,
+    drivable,
     cell,
     minX,
     minY,
@@ -562,11 +671,20 @@ export interface Lattice {
   /** Shortest distance from any gate's road side (static obstacles only). */
   res: SearchResult;
   starts: Set<number>;
+  /** Road mode: road states reached without entering the plot, and which of them border it. */
+  seed?: { states: Int32Array; frontier: Uint8Array };
+  /** Reverse moves: for heading h, the (previous heading, primitive) pairs ending in h. */
+  rev: [number, number][][];
 }
 
+/**
+ * Search over states in two gears: index s < N driving forward, s + N reversing (same pose).
+ * dist[s] for s < N is the cost to stand at s ready to drive forward.
+ */
 interface SearchResult {
   dist: Float32Array;
   par: Int32Array;
+  /** Move into the state: primitive 0–2, or 3 for a change of gear. */
   pr: Int8Array;
   goal: number;
 }
@@ -640,32 +758,64 @@ const headingOf = (d: Point) => ((Math.round(Math.atan2(d[0], d[1]) / Q45) % 8) 
 /** Lattice states on the road side of the gates, heading into the plot. */
 function startStates(L: Lattice): Set<number> {
   const out = new Set<number>();
-  for (const g of L.w.gates) {
+  const add = (px: number, py: number, h: number) => {
+    if (!onLattice(L, px, py)) return;
+    const s = stOf(L, Math.round(px / GS) * GS, Math.round(py / GS) * GS, h);
+    if (nodeOk(L, s, null)) out.add(s);
+  };
+  L.w.gates.forEach((g, gi) => {
     const n = inwardNormal(L.w.plot, g.a, g.b);
+    const len = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]) || 1;
+    if (L.w.roadMode) {
+      // On the road, some way along the street on either side, driving towards the gate.
+      const t: Point = [(g.b[0] - g.a[0]) / len, (g.b[1] - g.a[1]) / len];
+      const mid: Point = [(g.a[0] + g.b[0]) / 2, (g.a[1] + g.b[1]) / 2];
+      // Look out across the street at several distances along it; every road point found
+      // (at least 1.5 m apart) is a start, heading along the street towards the gate.
+      for (const along of [8, 11, 14, 17])
+        for (const side of [1, -1]) {
+          let last = -Infinity;
+          for (let o = 0.5; o <= ROAD_MARGIN_M - 2; o += 0.5) {
+            const px = mid[0] + t[0] * along * side - n[0] * o;
+            const py = mid[1] + t[1] * along * side - n[1] * o;
+            if (o - last < 1.5 || !L.w.drivable.some((r) => contains(r, [px, py]))) continue;
+            last = o;
+            add(px, py, headingOf([-t[0] * side, -t[1] * side]));
+          }
+        }
+      // No road within reach of this gate (apron fell back to the straight strip): start at
+      // its far end, driving in.
+      if ((L.w.apron[gi] ?? 0) < CORRIDOR_M) return;
+    }
     const h = headingOf(n);
-    const len = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]);
     const steps = Math.max(1, Math.ceil(len / (GS / 2)));
     for (let i = 0; i <= steps; i++) {
-      const t = i / steps;
-      const px = g.a[0] + (g.b[0] - g.a[0]) * t - n[0] * START_OUT_M;
-      const py = g.a[1] + (g.b[1] - g.a[1]) * t - n[1] * START_OUT_M;
-      if (!onLattice(L, px, py)) continue;
-      const s = stOf(L, Math.round(px / GS) * GS, Math.round(py / GS) * GS, h);
-      if (nodeOk(L, s, null)) out.add(s);
+      const f = i / steps;
+      add(
+        g.a[0] + (g.b[0] - g.a[0]) * f - n[0] * START_OUT_M,
+        g.a[1] + (g.b[1] - g.a[1]) * f - n[1] * START_OUT_M,
+        h,
+      );
     }
-  }
+  });
   return out;
 }
 
 const MAXPOPS = 6000;
+/** Reversing on the way in costs this many times the distance (people prefer driving forward). */
+const REV_IN = 2;
+/** Cost of stopping to change gear (m equivalent). */
+const GEAR_IN = 3;
+/** Most shunts (reverse, then forward again) on the way in. */
+const MAXSHUNT = 3;
 
 function search(L: Lattice, dyn: Dyn | null, goals: Map<number, unknown> | null): SearchResult {
   const { N } = L;
   const NI = L.w.NI;
-  const dist = new Float32Array(N).fill(Infinity);
-  const par = new Int32Array(N).fill(-1);
-  const pr = new Int8Array(N).fill(-1);
-  const done = new Uint8Array(N);
+  const dist = new Float32Array(2 * N).fill(Infinity);
+  const par = new Int32Array(2 * N).fill(-1);
+  const pr = new Int8Array(2 * N).fill(-1);
+  const done = new Uint8Array(2 * N);
   let g0: [number, number] | null = null;
   let g1: [number, number] | null = null;
   if (goals) {
@@ -676,28 +826,51 @@ function search(L: Lattice, dyn: Dyn | null, goals: Map<number, unknown> | null)
   const gx = g0 && g1 ? g1[0] - g0[0] : 0;
   const gy = g0 && g1 ? g1[1] - g0[1] : 0;
   const gl2 = gx * gx + gy * gy;
-  const hf = (s: number) => {
+  const hf = (S: number) => {
     if (!g0) return 0;
-    const [sx, sy] = stXY(L, s);
+    const [sx, sy] = stXY(L, S % N);
     const x = sx - g0[0];
     const y = sy - g0[1];
     const t = gl2 ? Math.max(0, Math.min(1, (x * gx + y * gy) / gl2)) : 0;
     return Math.hypot(x - t * gx, y - t * gy);
   };
   const heap = new Heap();
-  for (const s of L.starts) {
-    if (!nodeOk(L, s, dyn)) continue;
-    dist[s] = 0;
-    heap.push(hf(s), s);
-  }
+  // Road mode: the drive along the road is the same for every carport (carport posts and parked
+  // cars are on the plot), so a goal search starts from the road states already found, and only
+  // those next to the plot are expanded again.
+  const seed = goals && L.w.roadMode ? roadSeed(L) : null;
+  if (seed) {
+    for (const S of seed.states) {
+      dist[S] = L.res.dist[S]!;
+      par[S] = L.res.par[S]!;
+      pr[S] = L.res.pr[S]!;
+      if (seed.frontier[S]) heap.push(dist[S]! + hf(S), S);
+      else done[S] = 1;
+    }
+  } else
+    for (const s of L.starts) {
+      if (!nodeOk(L, s, dyn)) continue;
+      dist[s] = 0;
+      heap.push(hf(s), s);
+    }
+  const relax = (T: number, nd: number, from: number, m: number) => {
+    if (nd < dist[T]! - 1e-9) {
+      dist[T] = nd;
+      par[T] = from;
+      pr[T] = m;
+      heap.push(nd + hf(T), T);
+    }
+  };
   let pops = 0;
   while (heap.size) {
-    const s = heap.pop();
-    if (done[s]) continue;
-    done[s] = 1;
+    const S = heap.pop();
+    if (done[S]) continue;
+    done[S] = 1;
+    const rev = S >= N;
+    const s = rev ? S - N : S;
     if (goals) {
-      if (goals.has(s)) return { dist, par, pr, goal: s };
-      if (++pops > MAXPOPS) break;
+      if (!rev && goals.has(s)) return { dist, par, pr, goal: s };
+      if (!(seed && seed.frontier[S]) && ++pops > MAXPOPS) break;
     }
     const h = s & 7;
     const k = s >> 3;
@@ -705,47 +878,148 @@ function search(L: Lattice, dyn: Dyn | null, goals: Map<number, unknown> | null)
     const j = Math.floor(k / NI);
     const [x, y] = stXY(L, s);
     const inside = onPlot(L, x, y);
-    for (let p = 0; p < 3; p++) {
-      const P = L.prims[h]![p]!;
-      // Off the plot (on the road): only straight on, in the heading the car came in with.
-      if (!inside && P.dh !== 0) continue;
-      const ni = i + P.di;
-      const nj = j + P.dj;
-      if (ni < 0 || ni >= NI || nj < 0 || nj >= L.w.NJ) continue;
-      const nh = (h + P.dh + 8) & 7;
-      const ns = (nj * NI + ni) * 8 + nh;
-      if (done[ns]) continue;
-      if (!edgeOk(L, s, p, x, y, P, dyn)) continue;
-      const nd = dist[s]! + P.cost;
-      if (nd < dist[ns]! - 1e-9) {
-        dist[ns] = nd;
-        par[ns] = s;
-        pr[ns] = p;
-        heap.push(nd + hf(ns), ns);
+    if (!rev) {
+      for (let p = 0; p < 3; p++) {
+        const P = L.prims[h]![p]!;
+        // Old model: no turning off the plot. Road mode: the car may turn on the road.
+        if (!inside && P.dh !== 0 && !L.w.roadMode) continue;
+        const ni = i + P.di;
+        const nj = j + P.dj;
+        if (ni < 0 || ni >= NI || nj < 0 || nj >= L.w.NJ) continue;
+        const ns = (nj * NI + ni) * 8 + ((h + P.dh + 8) & 7);
+        if (done[ns]) continue;
+        if (!edgeOk(L, s, p, x, y, P, dyn)) continue;
+        relax(ns, dist[S]! + P.cost, S, p);
+      }
+    } else {
+      // Reversing: back along a primitive that would have ended here.
+      for (const [hp, p] of L.rev[h]!) {
+        const P = L.prims[hp]![p]!;
+        if (!inside && P.dh !== 0 && !L.w.roadMode) continue;
+        const pi = i - P.di;
+        const pj = j - P.dj;
+        if (pi < 0 || pi >= NI || pj < 0 || pj >= L.w.NJ) continue;
+        const sp = (pj * NI + pi) * 8 + hp;
+        if (done[sp + N]) continue;
+        const [px, py] = stXY(L, sp);
+        if (!nodeOk(L, sp, dyn) || !edgeOk(L, sp, p, px, py, P, dyn)) continue;
+        relax(sp + N, dist[S]! + P.len * REV_IN + (P.dh ? TURNPEN : 0), S, p);
       }
     }
+    // Change gear where the car stands (a shunt is reverse, then forward again).
+    relax(rev ? s : S + N, dist[S]! + GEAR_IN, S, 3);
   }
   return { dist, par, pr, goal: -1 };
 }
 
-function extract(L: Lattice, res: SearchResult, s: number): { poses: Pose[]; turns: number[] } {
-  const chain: [number, number][] = [];
+/** Road states whose shortest drive never touches the plot, and those near it. */
+function roadSeed(L: Lattice): NonNullable<Lattice["seed"]> {
+  if (L.seed) return L.seed;
+  const { N } = L;
+  const off = new Int8Array(2 * N); // 0 unknown, 1 off the plot all the way, 2 not
+  const offPlot = (S: number) => {
+    const [x, y] = stXY(L, S % N);
+    return !onPlot(L, x, y);
+  };
+  const chainOff = (S0: number): boolean => {
+    const stack: number[] = [];
+    let S = S0;
+    let ok = true;
+    for (;;) {
+      if (off[S] !== 0) {
+        ok = off[S] === 1;
+        break;
+      }
+      stack.push(S);
+      if (!offPlot(S)) {
+        ok = false;
+        break;
+      }
+      const p = L.res.par[S]!;
+      if (p < 0) break;
+      S = p;
+    }
+    for (const q of stack) off[q] = ok ? 1 : 2;
+    return ok;
+  };
+  // Near: within reach of one move and the car's length of the plot.
+  const xs = L.w.plot.map((p) => p[0]);
+  const ys = L.w.plot.map((p) => p[1]);
+  const near = L.car.l + 4;
+  const [bx0, by0, bx1, by1] = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+  const states: number[] = [];
+  const frontier = new Uint8Array(2 * N);
+  for (let S = 0; S < 2 * N; S++) {
+    if (L.res.dist[S] === Infinity || !chainOff(S)) continue;
+    states.push(S);
+    const [x, y] = stXY(L, S % N);
+    const dx = Math.max(bx0 - x, 0, x - bx1);
+    const dy = Math.max(by0 - y, 0, y - by1);
+    if (dx * dx + dy * dy <= near * near && distToPolygon(L.w.plot, x, y) <= near) frontier[S] = 1;
+  }
+  L.seed = { states: Int32Array.from(states), frontier };
+  return L.seed;
+}
+
+function distToPolygon(poly: Polygon, x: number, y: number): number {
+  let min = Infinity;
+  for (let e = 0; e < poly.length; e++) {
+    const a = poly[e]!;
+    const b = poly[(e + 1) % poly.length]!;
+    const dx = b[0] - a[0];
+    const dy = b[1] - a[1];
+    const t = Math.max(
+      0,
+      Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy || 1)),
+    );
+    min = Math.min(min, Math.hypot(x - a[0] - t * dx, y - a[1] - t * dy));
+  }
+  return min;
+}
+
+function extract(
+  L: Lattice,
+  res: SearchResult,
+  s: number,
+): { poses: Pose[]; turns: number[]; shunts: number } {
+  const { N } = L;
+  const chain: number[] = [];
   let q = s;
   while (res.par[q]! >= 0) {
-    chain.push([res.par[q]!, res.pr[q]!]);
+    chain.push(q);
     q = res.par[q]!;
   }
   chain.reverse();
-  const [x0, y0] = stXY(L, q);
+  const [x0, y0] = stXY(L, q % N);
   const poses: Pose[] = [{ x: x0, y: y0, a: HEADA(q & 7) }];
   const turns: number[] = [];
-  for (const [ps, p] of chain) {
-    const [x, y] = stXY(L, ps);
-    const P = L.prims[ps & 7]![p]!;
-    for (const sm of P.samples) poses.push({ x: x + sm.x, y: y + sm.y, a: sm.a });
-    if (P.dh) turns.push(P.dh);
+  let gears = 0;
+  let prev = q;
+  for (const S of chain) {
+    const m = res.pr[S]!;
+    if (m === 3) gears++;
+    else if (S < N) {
+      const ps = prev % N;
+      const [x, y] = stXY(L, ps);
+      const P = L.prims[ps & 7]![m]!;
+      for (const sm of P.samples) poses.push({ x: x + sm.x, y: y + sm.y, a: sm.a });
+      if (P.dh) turns.push(P.dh);
+    } else {
+      // Reversing from prev back to S: the primitive of S's heading, walked backwards.
+      const cs = S - N;
+      const [x, y] = stXY(L, cs);
+      const P = L.prims[cs & 7]![m]!;
+      const seg = [
+        { x, y, a: HEADA(cs & 7) },
+        ...P.samples.map((q2) => ({ x: x + q2.x, y: y + q2.y, a: q2.a })),
+      ].reverse();
+      seg.shift();
+      for (const p of seg) poses.push({ ...p, rev: true });
+      if (P.dh) turns.push(-P.dh);
+    }
+    prev = S;
   }
-  return { poses, turns };
+  return { poses, turns, shunts: Math.floor(gears / 2) };
 }
 
 export function buildLattice(w: World, car: Car): Lattice {
@@ -759,7 +1033,10 @@ export function buildLattice(w: World, car: Car): Lattice {
     edge: new Uint8Array(N * 3),
     res: { dist: new Float32Array(0), par: new Int32Array(0), pr: new Int8Array(0), goal: -1 },
     starts: new Set(),
+    rev: [...Array(8)].map(() => []),
   };
+  for (let h = 0; h < 8; h++)
+    for (let p = 0; p < 3; p++) L.rev[(h + L.prims[h]![p]!.dh + 8) & 7]!.push([h, p]);
   L.starts = startStates(L);
   L.res = search(L, null, null);
   return L;
@@ -985,19 +1262,22 @@ function dynFirstHit(car: Car, poses: Pose[], dyn: Dyn | null): { i: number; b: 
   return null;
 }
 
-export function describeRoute(turns: number[]): string {
+export function describeRoute(turns: number[], shunts = 0): string {
   const g: { s: number; n: number }[] = [];
   for (const t of turns) {
     if (g.length && g[g.length - 1]!.s === t) g[g.length - 1]!.n++;
     else g.push({ s: t, n: 1 });
   }
-  return !g.length
+  const base = !g.length
     ? "straight in"
     : g.length === 1
       ? `with one ${g[0]!.n * 45}° curve`
       : g.length === 2 && g[0]!.s !== g[1]!.s && g[0]!.n === g[1]!.n
         ? "with an S-bend"
         : `with ${g.length} curves`;
+  return shunts
+    ? `${base}, after ${shunts === 1 ? "one shunt" : `${shunts} shunts`} (back and forth)`
+    : base;
 }
 
 export interface BayRoute {
@@ -1009,6 +1289,8 @@ export interface BayRoute {
   how: string;
   /** Where the swept path crosses the plot boundary (points), for the exit width. */
   crossing: Point[];
+  /** Times the car reverses and drives forward again on the way in. */
+  shunts: number;
   /** The lattice state where the final approach starts, and the poses from there into the bay. */
   start: number;
   tail: Pose[];
@@ -1055,7 +1337,7 @@ function bayRoute(
     for (const { c, tot } of order) {
       const p = extract(L, res, c.s);
       if (dynFirstHit(L.car, p.poses, dyn)) continue;
-      if (p.turns.length + (c.turns ?? []).length > MAXTURN) continue;
+      if (p.turns.length + (c.turns ?? []).length > MAXTURN || p.shunts > MAXSHUNT) continue;
       return { tot, c, p };
     }
     return null;
@@ -1078,7 +1360,7 @@ function bayRoute(
   }
   if (!best) return null;
   const turns = best.p.turns.concat(best.c.turns ?? []);
-  if (turns.length > MAXTURN) return null;
+  if (turns.length > MAXTURN || best.p.shunts > MAXSHUNT) return null;
   const tail = (best.c.pre ?? []).concat(lineFrom(E, best.c.k));
   const poses = best.p.poses.concat(tail);
   return {
@@ -1089,7 +1371,8 @@ function bayRoute(
     entryHeading: E.h,
     cost: best.tot,
     lengthM: best.tot - turns.length * TURNPEN,
-    how: describeRoute(turns),
+    how: describeRoute(turns, best.p.shunts),
+    shunts: best.p.shunts,
     crossing: crossings(L.car, L.w.plot, poses),
   };
 }

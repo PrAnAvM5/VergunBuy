@@ -132,3 +132,84 @@ describe("default car", () => {
     expect(car.clr).toBe(0.3);
   });
 });
+
+describe("road-aware car world", () => {
+  // Road 6.5 m wide, from 2 m to 8.5 m in front of the plot (a 2 m pavement in between), 60 m long.
+  const road = { drivable: [box(-25, -8.5, 45, -2)], blockers: [] as Polygon[] };
+  const roadSite = (extra: Partial<WorldInput> = {}) => site({ road, ...extra });
+
+  it("starts on the road on both sides of the gate, driving along the street", () => {
+    const L = buildLattice(buildWorld(roadSite()), carOf(DEFAULT_VEHICLE));
+    expect(L.w.roadMode).toBe(true);
+    const xs = [...L.starts].map((s) => {
+      const k = s >> 3;
+      return (L.w.i0 + (k % L.w.NI)) * 0.5;
+    });
+    const hs = new Set([...L.starts].map((s) => s & 7));
+    expect(Math.min(...xs)).toBeLessThan(13);
+    expect(Math.max(...xs)).toBeGreaterThan(18);
+    // Along the street (headings 2 and 6), never straight at the plot.
+    expect([...hs].every((h) => h === 2 || h === 6)).toBe(true);
+  });
+
+  it("drives in from the road and every pose is on the road, the crossing or the plot", () => {
+    const L = buildLattice(buildWorld(roadSite()), carOf(DEFAULT_VEHICLE));
+    const acc = accessCarport(L, backCarport, false);
+    const r = acc[0]!.route!;
+    expect(r).toBeTruthy();
+    const first = r.poses[0]!;
+    expect(first.y).toBeLessThan(-2);
+    // The car arrives along the street, not head-on from across it.
+    expect(Math.abs(Math.sin(first.a))).toBeGreaterThan(0.9);
+    for (const p of r.poses) {
+      const onRoad = p.y <= -2 && p.y >= -8.5;
+      const onCrossing = p.y > -2 && p.y < 0 && p.x > 10 && p.x < 21;
+      const onPlot = p.y >= 0;
+      expect(onRoad || onCrossing || onPlot).toBe(true);
+    }
+  });
+
+  it("does not drive through a lamp post", () => {
+    // Lamp posts all along the plot side of the road, except right at the gate.
+    const lamps: Polygon[] = [];
+    for (let x = -24; x < 44; x += 1) if (x < 9 || x > 22) lamps.push(box(x, -2.4, x + 0.4, -2));
+    const L = buildLattice(
+      buildWorld(roadSite({ road: { ...road, blockers: lamps } })),
+      carOf(DEFAULT_VEHICLE),
+    );
+    const r = accessCarport(L, backCarport, false)[0]!.route!;
+    expect(r).toBeTruthy();
+    const car = carOf(DEFAULT_VEHICLE);
+    const w = buildWorld(roadSite({ road: { ...road, blockers: lamps } }));
+    for (const p of r.poses) {
+      const ca = Math.cos(p.a);
+      const sa = Math.sin(p.a);
+      // Car centre stays clear of the lamp row except at the gate.
+      const cx = p.x + sa * car.bodyC;
+      const cy = p.y + ca * car.bodyC;
+      if (cx < 9 || cx > 22) expect(cy).toBeLessThan(-2.4 + 0.1);
+    }
+    expect(w.roadMode).toBe(true);
+  });
+
+  it("shunts when a turn in one go does not fit", () => {
+    // Road 7 m wide right against the plot, a 3.5 m gate between walls, carport straight
+    // behind it: a car coming along the street cannot line up in one go.
+    const narrow = { drivable: [box(-25, -7, 50, 0)], blockers: [] as Polygon[] };
+    const w = buildWorld({
+      plot: box(0, 0, 25, 30),
+      solids: [box(0, 0, 13, 14), box(16.5, 0, 25, 14)],
+      scan: [],
+      scanCellM: 0.5,
+      gates: [{ a: [13, 0], b: [16.5, 0], kind: "existing" }],
+      road: narrow,
+    });
+    const L = buildLattice(w, carOf(DEFAULT_VEHICLE));
+    const r = accessCarport(L, { x0: 13.25, y0: 18, x1: 16.25, y1: 23, o: "ns", bays: 1 }, true)[0]!
+      .route;
+    expect(r).toBeTruthy();
+    expect(r!.shunts).toBeGreaterThan(0);
+    expect(r!.poses.some((p) => p.rev)).toBe(true);
+    expect(r!.how).toMatch(/shunt/);
+  });
+});

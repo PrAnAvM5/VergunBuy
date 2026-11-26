@@ -74,7 +74,13 @@ import type { Address } from "./sources/locatieserver.ts";
 import { num, OGC, ogcItems, outerRings, str, type Bbox, type Feature } from "./sources/ogc.ts";
 import { fetchHeights, type BuildingHeights } from "./sources/threedbag.ts";
 import { fetchHeightGrid } from "./sources/ahn.ts";
-import { fetchEchoes, fetchMapBarriers, fetchNdvi } from "./sources/boundary.ts";
+import {
+  fetchEchoes,
+  fetchMapBarriers,
+  fetchNdvi,
+  fetchStreetObjects,
+  type StreetObject,
+} from "./sources/boundary.ts";
 
 export interface Building {
   id: string;
@@ -227,6 +233,8 @@ export interface PlotContext {
     ndviLayer: string | null;
     mapTypes: Record<string, number>;
   };
+  /** Lamp posts, poles, bollards and cabinets in the street near the plot (BGT); null: not loaded. */
+  streetObjects: StreetObject[] | null;
   /** Zoning plans, monuments and protected views, and the rule exclusions they trigger. */
   legal: LegalFacts & { exclusions: ExclusionResult[] };
   /** Published permit applications and decisions for this home (official publications). */
@@ -1334,6 +1342,38 @@ export async function buildPlotContext(
       "Without the height scan, fences, walls and hedges on the plot line are unknown.",
     );
 
+  // 7a. Fixed objects in the street (lamp posts, poles, cabinets): the car must drive round them.
+  let streetObjects: StreetObject[] | null = null;
+  try {
+    streetObjects = await tracer.step(
+      "street-objects",
+      "Lamp posts, poles and cabinets in the street (BGT)",
+      async (ctx) => {
+        const objs = await fetchStreetObjects(work, ctx, fetchFn).catch(() => null);
+        if (!objs) {
+          ctx.degrade("street objects could not be loaded");
+          return null;
+        }
+        const counts: Record<string, number> = {};
+        for (const o of objs) counts[o.kind] = (counts[o.kind] ?? 0) + 1;
+        ctx.summarize(
+          Object.entries(counts)
+            .map(([k, n]) => `${n} ${k}`)
+            .join(", ") || "none",
+        );
+        return objs;
+      },
+    );
+  } catch {
+    streetObjects = null;
+  }
+  if (!streetObjects)
+    note(
+      quality,
+      "access",
+      "Lamp posts and other street objects could not be loaded; the car route may pass through one.",
+    );
+
   // 7b. Legal facts: old zoning plans, monuments, protected views. Never critical: anything
   // missing makes the affected exclusions "unknown", which can never give a green result.
   const legal = await gatherLegal();
@@ -1526,6 +1566,7 @@ export async function buildPlotContext(
     structures,
     ...(obstacles ? { obstacles } : {}),
     ...(boundary ? { boundary } : {}),
+    streetObjects,
     legal,
     permits,
     measurements,

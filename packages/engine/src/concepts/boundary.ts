@@ -224,12 +224,14 @@ export function boundaryPieces(input: BoundaryInput, s = BOUNDARY_SETTINGS): Bou
       const m = lerp(a, b, (i + 0.5) / n);
       const street = input.streetRuns.some((r) => distanceToSegment(m, r.a, r.b) < 0.05);
       // A registered exit directly outside this piece (looking straight out up to exitNearM).
-      const exit =
-        street &&
-        [0.1, 0.75, 1.5, 2.25, s.exitNearM].some((d) => {
+      // Off the street side too, a registered driveway right against the plot line (within
+      // 1.5 m) is a way in: for example a lane that runs along the plot to its gate.
+      const exitAt = (ds: number[]) =>
+        ds.some((d) => {
           const q: Point = [m[0] + out_[0] * d, m[1] + out_[1] * d];
           return input.exits.some((e) => contains(e, q));
         });
+      const exit = street ? exitAt([0.1, 0.75, 1.5, 2.25, s.exitNearM]) : exitAt([0.1, 0.75, 1.5]);
       // Highest thing on the line here (inside a narrow band), away from buildings.
       let heightM: number | null = null;
       let top: Point | null = null;
@@ -273,7 +275,7 @@ export function boundaryPieces(input: BoundaryInput, s = BOUNDARY_SETTINGS): Bou
       out.push({
         a: pa,
         b: pb,
-        side: street ? "street" : "other",
+        side: street || exit ? "street" : "other",
         state,
         heightM,
         material,

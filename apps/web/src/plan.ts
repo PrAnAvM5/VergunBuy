@@ -7,7 +7,7 @@
 import type { PlotContext } from "@vergunbuy/data";
 import { at, boundaryRuns, type Polygon } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc } from "./format.ts";
-import { LINE_COLORS, SOLID_COLOR } from "./plan2d.ts";
+import { LAMP_COLOR, LINE_COLORS, POLE_COLOR, SOLID_COLOR, streetObjectSvg } from "./plan2d.ts";
 
 export interface Layers {
   context: boolean;
@@ -140,6 +140,10 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
     }
   }
 
+  if (layers.context)
+    for (const o of ctx.streetObjects ?? [])
+      parts.push(streetObjectSvg(tx(o.at[0]), ty(o.at[1]), o.kind));
+
   if (layers.edges) {
     ctx.edges.forEach((run, i) => {
       const a = at(ctx.plot.outline, run.edge);
@@ -218,6 +222,8 @@ export function legend(): string {
       sw("var(--path)", "Footpath"),
       sw("var(--green)", "Public green"),
       sw("#3f8f3a", "Street tree"),
+      sw(LAMP_COLOR, "Lamp post"),
+      sw(POLE_COLOR, "Pole, bollard, cabinet"),
       sw("#f2b134", "Driveway crossing"),
     ]),
     group("Garden (laser scan)", [

@@ -98,6 +98,17 @@ export interface CarportSite {
   };
   /** Registered street trees (local), kept clear of by a new exit. */
   streetTrees: Point[];
+  /**
+   * The street as it is: road surfaces a car may drive on (carriageway, parking, driveway
+   * crossings, shared residential street) and fixed objects in it (lamp posts, poles, cabinets).
+   * Null or absent: unknown, and the car is modelled on a straight strip out from each gate.
+   */
+  road?: {
+    drivable: Polygon[];
+    /** Cycle paths and lanes: crossed near a gate when turning in or out, never driven along. */
+    crossable?: Polygon[];
+    objects: { at: Point; kind: string }[];
+  } | null;
   /** What stands on the plot line, in 0.5 m pieces (local); null without the height scan. */
   boundary: { a: Point; b: Point; side: "street" | "other"; state: BoundaryState }[] | null;
   /** Height-scan obstacle cells (local centres) with heights; null when unavailable. */
@@ -313,6 +324,9 @@ export interface Prepared {
   houseM2: number;
 }
 
+/** Size of a lamp post, pole or cabinet as an obstacle (m, square). */
+const STREET_OBJECT_M = 0.4;
+
 const segBox = (p: Point, r: number): Polygon => box(p[0] - r, p[1] - r, p[0] + r, p[1] + r);
 
 /** Joins consecutive street-side pieces whose state is in `states` into gate segments. */
@@ -372,9 +386,21 @@ export function vehicleWorlds(
     ].map(([a, b]) => ({ a, b, kind: "frontage" }));
     closedGates = [];
   }
+  // Street objects and street-tree trunks as small blocks the car must miss on the road.
+  const road = site.road?.drivable.length
+    ? {
+        drivable: site.road.drivable,
+        crossable: site.road.crossable ?? [],
+        soft: site.publicAreas ?? [],
+        blockers: [
+          ...site.road.objects.map((o) => segBox(o.at, STREET_OBJECT_M / 2)),
+          ...site.streetTrees.map((t) => segBox(t, 0.3)),
+        ],
+      }
+    : undefined;
   const world = (gates: Gate[]) =>
     gates.length
-      ? buildLattice(buildWorld({ plot: site.plot, solids, scan, scanCellM, gates }), car)
+      ? buildLattice(buildWorld({ plot: site.plot, solids, scan, scanCellM, gates, road }), car)
       : null;
   return {
     car,

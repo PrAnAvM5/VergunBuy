@@ -246,6 +246,55 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
     scene.add(trunk, crown);
   }
 
+  // What stands on the street side of the plot line: hedges green, fences and walls dark, each
+  // piece at its scanned height (at least 0.6 m, so it shows), and exits as a low yellow kerb.
+  {
+    const hedgeMat = new THREE.MeshLambertMaterial({ color: 0x2f7d32 });
+    const wallMat = new THREE.MeshLambertMaterial({ color: 0x3a3a3a });
+    const exitMat = new THREE.MeshLambertMaterial({ color: 0xf2b134 });
+    for (const p of ctx.boundary?.pieces ?? []) {
+      if (p.side !== "street" || p.state === "open" || p.state === "unknown") continue;
+      const [ax, ay] = toLocal(ctx.frame, p.a);
+      const [bx, by] = toLocal(ctx.frame, p.b);
+      const len = Math.hypot(bx - ax, by - ay);
+      if (len < 0.05) continue;
+      const exit = p.state === "exit";
+      const h = exit ? 0.08 : Math.max(0.6, p.heightM ?? 1);
+      const thick = p.state === "hedge" ? 0.6 : exit ? 0.3 : 0.15;
+      const m = new THREE.Mesh(
+        new THREE.BoxGeometry(len + 0.02, h, thick),
+        exit ? exitMat : p.state === "hedge" ? hedgeMat : wallMat,
+      );
+      m.position.copy(v3((ax + bx) / 2, (ay + by) / 2, h / 2));
+      m.rotation.y = Math.atan2(by - ay, bx - ax);
+      scene.add(m);
+    }
+  }
+  // Lamp posts (5 m, with a head) and other poles and cabinets in the street.
+  {
+    const poleMat = new THREE.MeshLambertMaterial({ color: 0x4a4f57 });
+    const lampMat = new THREE.MeshBasicMaterial({ color: 0xffd23f });
+    for (const o of ctx.streetObjects ?? []) {
+      const [x, y] = toLocal(ctx.frame, o.at);
+      if (Math.abs(x - cx) > range || Math.abs(y - cy) > range) continue;
+      if (o.kind === "lamp post") {
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.09, 5, 8), poleMat);
+        pole.position.copy(v3(x, y, 2.5));
+        const head = new THREE.Mesh(new THREE.SphereGeometry(0.22, 10, 8), lampMat);
+        head.position.copy(v3(x, y, 5.1));
+        scene.add(pole, head);
+      } else if (o.kind.includes("cabinet")) {
+        const box = new THREE.Mesh(new THREE.BoxGeometry(0.6, 1.2, 0.35), poleMat);
+        box.position.copy(v3(x, y, 0.6));
+        scene.add(box);
+      } else {
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 2.4, 6), poleMat);
+        pole.position.copy(v3(x, y, 1.2));
+        scene.add(pole);
+      }
+    }
+  }
+
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 2000);
   const target = new THREE.Vector3(cx, 2, -cy);
   camera.position.set(cx - size * 0.35, size * 0.75 + 8, -L.plot.minY + size * 0.9 + 8);
