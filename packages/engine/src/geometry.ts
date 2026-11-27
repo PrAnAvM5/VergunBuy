@@ -208,14 +208,37 @@ export function centroid(poly: Polygon): Point {
 export function intersectionArea(a: Polygon, b: Polygon): number {
   if (a.length < 3 || b.length < 3) return 0;
   // Clip in local coordinates around a shared origin, for numerical robustness at RD scale.
-  const o = a[0] as Point;
+  // Same shape: the overlap is the shape (clipping identical rings is degenerate).
+  if (a.length === b.length && a.every((p, i) => p[0] === b[i]![0] && p[1] === b[i]![1]))
+    return Math.abs(area(a));
+  // The origin does not depend on the order of a and b, so the result is symmetric.
+  const o: Point = [
+    Math.min(...a.map((p) => p[0]), ...b.map((p) => p[0])),
+    Math.min(...a.map((p) => p[1]), ...b.map((p) => p[1])),
+  ];
   const ring = (p: Polygon): [number, number][] => {
     const r = p.map((q) => [q[0] - o[0], q[1] - o[1]] as [number, number]);
     const f = r[0]!;
     r.push([f[0], f[1]]);
     return r;
   };
-  const result = polygonClipping.intersection([ring(a)], [ring(b)]);
+  // The clipping library can fail on rare near-degenerate inputs ("Unable to complete output
+  // ring"). Retry with the operands swapped (same overlap), then with coordinates snapped to 1 mm.
+  let result: ReturnType<typeof polygonClipping.intersection>;
+  try {
+    result = polygonClipping.intersection([ring(a)], [ring(b)]);
+  } catch {
+    try {
+      result = polygonClipping.intersection([ring(b)], [ring(a)]);
+    } catch {
+      const snap = (r: [number, number][]) =>
+        r.map(
+          ([x, y]) =>
+            [Math.round(x * 1000) / 1000, Math.round(y * 1000) / 1000] as [number, number],
+        );
+      result = polygonClipping.intersection([snap(ring(a))], [snap(ring(b))]);
+    }
+  }
   let total = 0;
   for (const poly of result) {
     poly.forEach((r, i) => {
