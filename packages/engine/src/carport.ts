@@ -1216,7 +1216,11 @@ export function carAccess(
   for (const [lattice, via] of tiers) {
     if (!lattice) continue;
     const bays = accessCarport(lattice, rect, false);
-    if (bays.every((b) => b.route)) {
+    // A new way in is one exit: a route that crosses the plot line in two separate places
+    // (for example out again to shunt) would need two, which is not offered.
+    const oneExit =
+      via === "existing" || via === "probable" || bays.every((b) => crossingGroups(b.route) <= 1);
+    if (bays.every((b) => b.route) && oneExit) {
       const poses = bays.flatMap((b) => b.route!.poses);
       return {
         rect,
@@ -1231,6 +1235,29 @@ export function carAccess(
     last = { bays, lattice };
   }
   return { rect, fit, via: null, ...last, ...none };
+}
+
+/** Separate places (more than 1.5 m apart) where a route crosses the plot line. */
+function crossingGroups(route: BayAccess["route"]): number {
+  const pts = route?.crossing ?? [];
+  if (!pts.length) return 0;
+  const group = new Int32Array(pts.length).fill(-1);
+  let n = 0;
+  for (let i = 0; i < pts.length; i++) {
+    if (group[i]! >= 0) continue;
+    group[i] = n;
+    const stack = [i];
+    while (stack.length) {
+      const k = stack.pop()!;
+      for (let j = 0; j < pts.length; j++)
+        if (group[j]! < 0 && Math.hypot(pts[j]![0] - pts[k]![0], pts[j]![1] - pts[k]![1]) <= 1.5) {
+          group[j] = n;
+          stack.push(j);
+        }
+    }
+    n++;
+  }
+  return n;
 }
 
 /** States of the street-side plot-line pieces the routes cross. */
