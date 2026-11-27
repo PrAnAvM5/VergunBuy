@@ -174,7 +174,7 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
           v.access.via === "existing"
             ? "existing exit"
             : v.access.via === "probable"
-              ? "way in, not registered (check the kerb)"
+              ? "unregistered way in"
               : "new exit (exit permit)";
         parts.push(
           line(
@@ -260,7 +260,7 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
       <span><i class="ln" style="border-color:#1f6fd1;background:#1f6fd122"></i>car's path</span>
       <span><i class="ln dash" style="border-color:#4c8a3a"></i>back yard</span>
       <span><i class="sw" style="background:${LAMP_COLOR};border-radius:50%"></i>lamp post</span>
-      <span class="muted">Drag to move · corner to resize · click any object except a tree to remove it · plot line and garden colours as in the 2D plan</span>
+      <span class="muted">Drag to move · corner to resize · click an object (not a tree) to remove it, even under the carport · plot line and garden colours as in the 2D plan</span>
     </div>
     <div id="cp-verdict"></div>`;
   const svg = el.querySelector<SVGSVGElement>("#cp-svg")!;
@@ -310,6 +310,15 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     return fromScreen(p.x, p.y);
   };
   let drag: { mode: "move" | "resize"; dx: number; dy: number } | null = null;
+  let tap: { x: number; y: number; at: [number, number] } | null = null;
+  // A click on a scanned object (not a tree) removes it, or brings it back.
+  const removeAt = (mx: number, my: number) => {
+    const half = (site.obstacles?.cellM ?? 0.5) / 2 + 0.05;
+    const hit = (site.obstacles?.cells ?? []).find(
+      (c) => c.id && Math.abs(c.at[0] - mx) <= half && Math.abs(c.at[1] - my) <= half,
+    );
+    if (hit?.id && clearable(s, hit.id)) toggleCleared(s, hit.id);
+  };
   let pending: Placement | null = null;
   let frame = 0;
   svg.addEventListener("pointerdown", (ev) => {
@@ -321,14 +330,12 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     }
     const [mx, my] = toPlan(ev);
     if (s.pl && t.id === "cp-handle") drag = { mode: "resize", dx: 0, dy: 0 };
-    else if (s.pl && t.id === "cp-rect") drag = { mode: "move", dx: mx - s.pl.x, dy: my - s.pl.y };
-    else {
-      // A click on a shrub marks it as cleared (or brings it back).
-      const half = (site.obstacles?.cellM ?? 0.5) / 2 + 0.05;
-      const hit = (site.obstacles?.cells ?? []).find(
-        (c) => c.id && Math.abs(c.at[0] - mx) <= half && Math.abs(c.at[1] - my) <= half,
-      );
-      if (hit?.id && clearable(s, hit.id)) toggleCleared(s, hit.id);
+    else if (s.pl && t.id === "cp-rect") {
+      drag = { mode: "move", dx: mx - s.pl.x, dy: my - s.pl.y };
+      // A click (no drag) on the carport may be meant for an object under it.
+      tap = { x: ev.clientX, y: ev.clientY, at: [mx, my] };
+    } else {
+      removeAt(mx, my);
       return;
     }
     svg.setPointerCapture(ev.pointerId);
@@ -336,6 +343,10 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
   });
   svg.addEventListener("pointermove", (ev) => {
     if (!drag || !s.pl) return;
+    if (tap) {
+      if (Math.hypot(ev.clientX - tap.x, ev.clientY - tap.y) < 5) return;
+      tap = null;
+    }
     const cur = pending ?? s.pl;
     const [mx, my] = toPlan(ev);
     if (drag.mode === "move") pending = { ...cur, x: snap(mx - drag.dx), y: snap(my - drag.dy) };
@@ -376,6 +387,11 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
   });
   const end = () => {
     drag = null;
+    if (tap) {
+      const [x, y] = tap.at;
+      tap = null;
+      removeAt(x, y);
+    }
   };
   svg.addEventListener("pointerup", end);
   svg.addEventListener("pointercancel", end);

@@ -972,6 +972,12 @@ details.card > summary .sumnote {
   border-radius: 0;
   background: none;
 }
+.legend i.ln.dash {
+  border-top-style: dashed;
+}
+.legend i.dot {
+  border-radius: 50%;
+}
 
 /* Examples page */
 .ex-batch {

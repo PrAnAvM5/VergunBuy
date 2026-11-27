@@ -171,31 +171,47 @@ export function clearable(s: Session, id: string): boolean {
   return o.material === "solid";
 }
 
-/** The site with the removed objects that block a car (tall solid ones) taken out. */
+/** The site with the objects the person removed taken out. */
 function siteWithout(s: Session): CarportSite {
-  const cells = s.site.obstacles?.cells ?? [];
-  if (!s.site.obstacles || !cells.some((c) => c.tree && c.id && s.cleared.has(c.id))) return s.site;
+  if (!s.site.obstacles || !s.cleared.size) return s.site;
   return {
     ...s.site,
     obstacles: {
       ...s.site.obstacles,
-      cells: cells.filter((c) => !(c.tree && c.id && s.cleared.has(c.id))),
+      cells: s.site.obstacles.cells.filter((c) => !(c.id && s.cleared.has(c.id))),
     },
   };
 }
 
-/** Checks the current spot with the person's removals. */
+/** Checks a spot; notes what the person chose to remove. */
 function reevaluate(s: Session, pl: Placement): CarportVerdict {
   const v = evaluate(s.prep, pl, { cleared: s.cleared });
-  const tall = (s.ctx.obstacles?.obstacles ?? []).filter(
-    (o) => s.cleared.has(o.id) && o.kind !== "medium",
-  );
-  if (tall.length)
+  const gone = (s.ctx.obstacles?.obstacles ?? []).filter((o) => s.cleared.has(o.id));
+  if (gone.length) {
+    const tall = gone.some((o) => o.kind !== "medium");
+    const solid = gone.some((o) => o.material === "solid");
     v.warnings.push({
-      id: "removed-tall",
-      text: `This assumes you take down ${tall.length === 1 ? "the tall solid object" : `${tall.length} tall solid objects`} you marked (about ${Math.round(tall.reduce((t, o) => t + o.areaM2, 0))} m²). If it is an unregistered shed or building, check whether demolishing it needs a permit.`,
+      id: "removed",
+      text: `This assumes you remove the ${gone.length === 1 ? "object" : `${gone.length} objects`} you marked (about ${Math.round(gone.reduce((t, o) => t + o.areaM2, 0))} m²). Shrubs on your own plot need no permit${solid || tall ? "; for a shed, wall or other building, check whether taking it down needs one" : ""}. Trees cannot be removed here.`,
     });
+  }
   return v;
+}
+
+/** Works out the car's worlds again without the removed objects, then rechecks. */
+async function rebuild(s: Session, refresh: boolean): Promise<void> {
+  stopAnim(s);
+  s.busy = "Checking again without those objects…";
+  notify(s);
+  await yieldToPaint();
+  s.prep = prepare(siteWithout(s), s.params);
+  s.busy = null;
+  if (refresh) {
+    const custom = s.sel === null ? s.pl : null;
+    refreshOptions(s);
+    if (custom) place(s, custom);
+  } else if (s.pl) s.verdict = reevaluate(s, s.pl);
+  notify(s);
 }
 
 /** Marks a scanned object as removed (or not) and checks the carport again. */
@@ -203,12 +219,15 @@ export function toggleCleared(s: Session, id: string): void {
   if (!clearable(s, id)) return;
   if (s.cleared.has(id)) s.cleared.delete(id);
   else s.cleared.add(id);
-  stopAnim(s);
-  const tall = s.ctx.obstacles?.obstacles.find((o) => o.id === id)?.kind !== "medium";
-  // A tall object changes where the car can drive: work out the car's worlds again.
-  if (tall) s.prep = prepare(siteWithout(s), s.params);
-  if (s.pl) s.verdict = reevaluate(s, s.pl);
-  notify(s);
+  void rebuild(s, false);
+}
+
+/** Every object except trees removed (or all back); the numbered spots are found again. */
+export function clearAll(s: Session, on: boolean): void {
+  s.cleared = new Set(
+    on ? (s.ctx.obstacles?.obstacles ?? []).filter((o) => clearable(s, o.id)).map((o) => o.id) : [],
+  );
+  void rebuild(s, true);
 }
 
 /** The carport moved or resized by hand. */
@@ -377,6 +396,11 @@ export function controlsHtml(s: Session): string {
       <label class="small">W <input class="cp-num" type="number" step="0.1" min="${CARPORT_LIMITS.minWidthM}" max="${CARPORT_LIMITS.maxWidthM}" data-dim="widthM" value="${pl ? fmtNum(pl.widthM) : ""}"></label>
       <label class="small">L <input class="cp-num" type="number" step="0.1" min="${CARPORT_LIMITS.minLengthM}" max="${CARPORT_LIMITS.maxLengthM}" data-dim="lengthM" value="${pl ? fmtNum(pl.lengthM) : ""}"> m</label>
       <button data-act="rotate" class="btn small" title="Turn the carport 90°">↻ 90°</button>
+      ${
+        (s.ctx.obstacles?.obstacles ?? []).some((o) => clearable(s, o.id))
+          ? `<button data-act="clear-all" class="btn small" aria-pressed="${s.cleared.size > 0}" title="Remove every scanned object except trees">${s.cleared.size ? "Bring objects back" : "Remove all objects (not trees)"}</button>`
+          : ""
+      }
     </div>
     <div class="cp-tools cp-opts">
       ${
@@ -438,6 +462,9 @@ export function bindControls(root: HTMLElement, s: Session): void {
       place(s, { ...s.pl, [key]: Math.min(lim[1]!, Math.max(lim[0]!, v)) });
     }),
   );
+  root
+    .querySelector('[data-act="clear-all"]')
+    ?.addEventListener("click", () => clearAll(s, s.cleared.size === 0));
   root.querySelector('[data-act="rotate"]')?.addEventListener("click", () => {
     if (s.pl) place(s, { ...s.pl, rotation: s.pl.rotation === 0 ? 90 : 0 });
   });

@@ -335,7 +335,7 @@ export async function renderCheck(
           <div class="plan-tools" id="tools-street"><span>Free outside viewers, opened at this house in a new tab.</span></div>
           <div class="plan-tools" id="tools-3d"><span>Drag to rotate · scroll to zoom · right-drag to move. Shapes from 3D BAG (CC BY 4.0).</span></div>
           <div class="plan-tools"><label><input type="checkbox" id="l-dev" ${developer ? "checked" : ""} /> Developer details in the Inspector</label></div>
-          <div class="legend" id="legend">${legend()}</div>
+          <div class="legend" id="legend">${legend(initialView === "map" ? "map" : "plan")}</div>
         </div>
 
       </div>
@@ -419,6 +419,13 @@ export async function renderCheck(
     root
       .querySelectorAll<HTMLButtonElement>(".tabs button")
       .forEach((b) => b.classList.toggle("on", b.dataset.view === view));
+    if (legendEl && (view === "map" || view === "2d")) {
+      const kind = view === "map" ? "map" : "plan";
+      if (legendEl.dataset.kind !== kind) {
+        legendEl.innerHTML = legend(kind);
+        legendEl.dataset.kind = kind;
+      }
+    }
     if (legendEl)
       legendEl.style.display =
         view === "3d" || view === "street" || view === "carport2d" || view === "carport3d"

@@ -204,45 +204,71 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Map of the plot with house, neighbours and public areas">${parts.join("")}</svg>`;
 }
 
-/** The legend, in four plain groups. Same colours on the map, the 2D plan and Carport 2D. */
-export function legend(): string {
-  const sw = (c: string, l: string, line = false) =>
-    `<span><i class="${line ? "ln" : ""}" style="${line ? `border-color:${c}` : `background:${c}`}"></i>${esc(l)}</span>`;
+/**
+ * The legend for one view. The aerial map shows edge types and where a car could reach the plot
+ * (map register); the 2D plan shows what stands on the street side of the plot line (laser scan)
+ * and the objects in the street.
+ */
+export function legend(view: "map" | "plan" = "plan"): string {
+  const sw = (c: string, l: string, kind: "box" | "line" | "dash" | "dot" = "box") =>
+    `<span><i class="${kind === "line" || kind === "dash" ? `ln${kind === "dash" ? " dash" : ""}` : kind === "dot" ? "dot" : ""}" style="${kind === "line" || kind === "dash" ? `border-color:${c}` : `background:${c}`}"></i>${esc(l)}</span>`;
   const group = (title: string, items: string[]) =>
     `<div class="lg-group"><b>${esc(title)}</b>${items.join("")}</div>`;
+  const buildings = group("Buildings", [
+    sw("var(--house)", "House"),
+    sw("#b9aee8", "Other building on the plot"),
+    sw("#2a9d8f", "Other home, same parcel"),
+    sw("#a8a296", "Neighbours"),
+    sw("#00b8d9", "Canopy, pool (registered)"),
+  ]);
+  const garden = group("Garden (laser scan)", [
+    sw("#d63c3c", "Tree, 2.5 m+"),
+    sw("#e8961e", "1.5–2.5 m"),
+    sw("#f0d04a", "1–1.5 m"),
+    sw(SOLID_COLOR, "Solid, not a plant"),
+    sw("#8a7fd6", "Neighbour's tree overhanging"),
+    sw("#2f7d32", "Hedge (registered)"),
+  ]);
+  if (view === "map")
+    return [
+      buildings,
+      group("Street", [
+        sw("var(--road)", "Road"),
+        sw("var(--path)", "Footpath"),
+        sw("var(--green)", "Public green"),
+        sw("#3f8f3a", "Street tree", "dot"),
+        sw("#f2b134", "Registered driveway crossing"),
+        sw("#f2b134", "Car could reach here (no exit registered)", "dash"),
+      ]),
+      garden,
+      group("Plot edges (what lies beyond)", [
+        ...["public", "neighbour", "shared-wall", "rear-path", "water"].map((k) =>
+          sw(
+            EDGE_TEXT[k]!.color,
+            k === "public" ? "Street, path or green" : EDGE_TEXT[k]!.label,
+            "line",
+          ),
+        ),
+      ]),
+    ].join("");
   return [
-    group("Buildings", [
-      sw("var(--house)", "House"),
-      sw("#b9aee8", "Other building on the plot"),
-      sw("#2a9d8f", "Other home, same parcel"),
-      sw("#a8a296", "Neighbours"),
-      sw("#00b8d9", "Canopy, pool (registered)"),
-    ]),
+    buildings,
     group("Street", [
       sw("var(--road)", "Road"),
       sw("var(--path)", "Footpath"),
       sw("var(--green)", "Public green"),
-      sw("#3f8f3a", "Street tree"),
-      sw(LAMP_COLOR, "Lamp post"),
+      sw("#3f8f3a", "Street tree", "dot"),
+      sw(LAMP_COLOR, "Lamp post", "dot"),
       sw(POLE_COLOR, "Pole, bollard, cabinet"),
       sw("#f2b134", "Driveway crossing"),
     ]),
-    group("Garden (laser scan)", [
-      sw("#d63c3c", "Tree, 2.5 m+"),
-      sw("#e8961e", "1.5–2.5 m"),
-      sw("#f0d04a", "1–1.5 m"),
-      sw(SOLID_COLOR, "Solid, not a plant"),
-      sw("#8a7fd6", "Neighbour's tree overhanging"),
-      sw("#2f7d32", "Hedge (registered)"),
-    ]),
-    group("Plot line", [
-      sw(LINE_COLORS.open, "Street side: open", true),
-      sw(LINE_COLORS.hedge, "hedge", true),
-      sw(LINE_COLORS.barrier, "fence or wall", true),
-      sw(LINE_COLORS.unknown, "unclear", true),
-      ...["neighbour", "shared-wall", "rear-path", "water"].map((k) =>
-        sw(EDGE_TEXT[k]!.color, EDGE_TEXT[k]!.label, true),
-      ),
+    garden,
+    group("Street side of the plot line (laser scan)", [
+      sw(LINE_COLORS.open, "Open (under 0.6 m)", "dash"),
+      sw(LINE_COLORS.hedge, "Hedge", "line"),
+      sw(LINE_COLORS.barrier, "Fence or wall", "line"),
+      sw(LINE_COLORS.unknown, "Unclear", "dash"),
+      sw(LINE_COLORS.exit, "Registered exit", "line"),
     ]),
   ].join("");
 }
