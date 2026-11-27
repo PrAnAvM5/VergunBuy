@@ -456,10 +456,37 @@ export interface Rect {
   x1: number;
   y1: number;
   kind: string;
+  /** Oriented obstacle (4 corners, x/y pairs); the box above is then its bounding box. */
+  quad?: number[];
+}
+
+/** Separating-axis test of two convex quads given as 4 corners (x/y pairs). */
+function quadsOverlap(p: number[], q: number[]): boolean {
+  for (const poly of [p, q])
+    for (let k = 0; k < 8; k += 2) {
+      const ax = -(poly[(k + 3) % 8]! - poly[k + 1]!);
+      const ay = poly[(k + 2) % 8]! - poly[k]!;
+      let pl = Infinity;
+      let ph = -Infinity;
+      let ql = Infinity;
+      let qh = -Infinity;
+      for (let m = 0; m < 8; m += 2) {
+        const pv = p[m]! * ax + p[m + 1]! * ay;
+        const qv = q[m]! * ax + q[m + 1]! * ay;
+        pl = Math.min(pl, pv);
+        ph = Math.max(ph, pv);
+        ql = Math.min(ql, qv);
+        qh = Math.max(qh, qv);
+      }
+      const len = Math.hypot(ax, ay) || 1;
+      if (ph <= ql + EPS * len || qh <= pl + EPS * len) return false;
+    }
+  return true;
 }
 
 /** Separating-axis test: car (uninflated) against an axis-aligned rectangle. */
 function boxHit(car: Car, cc: number[], x: number, y: number, a: number, b: Rect): boolean {
+  if (b.quad) return quadsOverlap(cc, b.quad);
   let mnx = Infinity;
   let mxx = -Infinity;
   let mny = Infinity;
@@ -704,6 +731,7 @@ export interface Lattice {
   seed?: { states: Int32Array; frontier: Uint8Array };
   /** Reverse moves: for heading h, the (previous heading, primitive) pairs ending in h. */
   rev: [number, number][][];
+  ws?: Workspace;
 }
 
 /**
@@ -716,6 +744,10 @@ interface SearchResult {
   /** Move into the state: primitive 0–2, or 3 for a change of gear. */
   pr: Int8Array;
   goal: number;
+  /** Goal searches: entries count only where stamp equals cur; else they are the base's. */
+  stamp?: Uint32Array;
+  cur?: number;
+  base?: SearchResult;
 }
 
 const stXY = (L: Lattice, s: number): [number, number] => {
@@ -848,7 +880,7 @@ function startStates(L: Lattice): Set<number> {
   return out;
 }
 
-const MAXPOPS = 6000;
+const MAXPOPS = 3000;
 /** Reversing on the way in costs this many times the distance (people prefer driving forward). */
 const REV_IN = 2;
 /** Cost of stopping to change gear (m equivalent). */
@@ -856,17 +888,58 @@ const GEAR_IN = 3;
 /** Most shunts (reverse, then forward again) on the way in. */
 const MAXSHUNT = 3;
 
+/** Reusable arrays for goal searches (one per lattice), reset by a generation stamp. */
+interface Workspace {
+  dist: Float32Array;
+  par: Int32Array;
+  pr: Int8Array;
+  stamp: Uint32Array;
+  done: Uint32Array;
+  cur: number;
+}
+function workspace(L: Lattice): Workspace {
+  if (!L.ws) {
+    const n = 2 * L.N;
+    L.ws = {
+      dist: new Float32Array(n),
+      par: new Int32Array(n),
+      pr: new Int8Array(n),
+      stamp: new Uint32Array(n),
+      done: new Uint32Array(n),
+      cur: 0,
+    };
+  }
+  return L.ws;
+}
+
 function search(L: Lattice, dyn: Dyn | null, goals: Map<number, unknown> | null): SearchResult {
   const { N } = L;
   const NI = L.w.NI;
-  const dist = new Float32Array(2 * N).fill(Infinity);
-  const par = new Int32Array(2 * N).fill(-1);
-  const pr = new Int8Array(2 * N).fill(-1);
-  const done = new Uint8Array(2 * N);
+  // The full search (no goals) keeps its own arrays (it is the lattice's lasting result); goal
+  // searches share one workspace: entries count only with the current stamp.
+  const ws = goals ? workspace(L) : null;
+  const cur = ws ? ++ws.cur : 0;
+  const dist = ws ? ws.dist : new Float32Array(2 * N).fill(Infinity);
+  const par = ws ? ws.par : new Int32Array(2 * N).fill(-1);
+  const pr = ws ? ws.pr : new Int8Array(2 * N).fill(-1);
+  const doneA = ws ? null : new Uint8Array(2 * N);
+  const stamp = ws?.stamp;
+  const dget = (S: number) => (stamp ? (stamp[S] === cur ? dist[S]! : Infinity) : dist[S]!);
+  const isDone = (S: number) => (ws ? ws.done[S] === cur : doneA![S] === 1);
+  const markDone = (S: number) => {
+    if (ws) ws.done[S] = cur;
+    else doneA![S] = 1;
+  };
+  const set = (S: number, d: number, p: number, m: number) => {
+    dist[S] = d;
+    par[S] = p;
+    pr[S] = m;
+    if (stamp) stamp[S] = cur;
+  };
   let g0: [number, number] | null = null;
   let g1: [number, number] | null = null;
   if (goals) {
-    const pts = [...goals.keys()].map((s) => stXY(L, s));
+    const pts = [...goals.keys()].map((q) => stXY(L, q % N));
     g0 = pts[0]!;
     g1 = pts[pts.length - 1]!;
   }
@@ -888,37 +961,37 @@ function search(L: Lattice, dyn: Dyn | null, goals: Map<number, unknown> | null)
   const seed = goals && L.w.roadMode ? roadSeed(L) : null;
   if (seed) {
     for (const S of seed.states) {
-      dist[S] = L.res.dist[S]!;
-      par[S] = L.res.par[S]!;
-      pr[S] = L.res.pr[S]!;
-      if (seed.frontier[S]) heap.push(dist[S]! + hf(S), S);
-      else done[S] = 1;
+      if (seed.frontier[S]) {
+        set(S, L.res.dist[S]!, L.res.par[S]!, L.res.pr[S]!);
+        heap.push(dist[S]! + hf(S), S);
+      } else markDone(S);
     }
   } else
-    for (const s of L.starts) {
-      if (!nodeOk(L, s, dyn)) continue;
-      dist[s] = 0;
-      heap.push(hf(s), s);
+    for (const q of L.starts) {
+      if (!nodeOk(L, q, dyn)) continue;
+      set(q, 0, -1, -1);
+      heap.push(hf(q), q);
     }
   const relax = (T: number, nd: number, from: number, m: number) => {
-    if (nd < dist[T]! - 1e-9) {
-      dist[T] = nd;
-      par[T] = from;
-      pr[T] = m;
+    if (nd < dget(T) - 1e-9) {
+      set(T, nd, from, m);
       heap.push(nd + hf(T), T);
     }
   };
+  const result = (goal: number): SearchResult =>
+    ws ? { dist, par, pr, goal, stamp: ws.stamp, cur, base: L.res } : { dist, par, pr, goal };
   let pops = 0;
   while (heap.size) {
     const S = heap.pop();
-    if (done[S]) continue;
-    done[S] = 1;
+    if (isDone(S)) continue;
+    markDone(S);
     const rev = S >= N;
     const s = rev ? S - N : S;
     if (goals) {
-      if (!rev && goals.has(s)) return { dist, par, pr, goal: s };
+      if (goals.has(S)) return result(S);
       if (!(seed && seed.frontier[S]) && ++pops > MAXPOPS) break;
     }
+    const dS = dist[S]!;
     const h = s & 7;
     const k = s >> 3;
     const i = k % NI;
@@ -934,9 +1007,9 @@ function search(L: Lattice, dyn: Dyn | null, goals: Map<number, unknown> | null)
         const nj = j + P.dj;
         if (ni < 0 || ni >= NI || nj < 0 || nj >= L.w.NJ) continue;
         const ns = (nj * NI + ni) * 8 + ((h + P.dh + 8) & 7);
-        if (done[ns]) continue;
+        if (isDone(ns)) continue;
         if (!edgeOk(L, s, p, x, y, P, dyn)) continue;
-        relax(ns, dist[S]! + P.cost, S, p);
+        relax(ns, dS + P.cost, S, p);
       }
     } else {
       // Reversing: back along a primitive that would have ended here.
@@ -947,16 +1020,16 @@ function search(L: Lattice, dyn: Dyn | null, goals: Map<number, unknown> | null)
         const pj = j - P.dj;
         if (pi < 0 || pi >= NI || pj < 0 || pj >= L.w.NJ) continue;
         const sp = (pj * NI + pi) * 8 + hp;
-        if (done[sp + N]) continue;
+        if (isDone(sp + N)) continue;
         const [px, py] = stXY(L, sp);
         if (!nodeOk(L, sp, dyn) || !edgeOk(L, sp, p, px, py, P, dyn)) continue;
-        relax(sp + N, dist[S]! + P.len * REV_IN + (P.dh ? TURNPEN : 0), S, p);
+        relax(sp + N, dS + P.len * REV_IN + (P.dh ? TURNPEN : 0), S, p);
       }
     }
     // Change gear where the car stands (a shunt is reverse, then forward again).
-    relax(rev ? s : S + N, dist[S]! + GEAR_IN, S, 3);
+    relax(rev ? s : S + N, dS + GEAR_IN, S, 3);
   }
-  return { dist, par, pr, goal: -1 };
+  return result(-1);
 }
 
 /** Road states whose shortest drive never touches the plot, and those near it. */
@@ -1030,11 +1103,14 @@ function extract(
   s: number,
 ): { poses: Pose[]; turns: number[]; shunts: number } {
   const { N } = L;
+  const own = (q: number) => !res.stamp || res.stamp[q] === res.cur;
+  const parOf = (q: number) => (own(q) ? res.par[q]! : res.base!.par[q]!);
+  const prOf = (q: number) => (own(q) ? res.pr[q]! : res.base!.pr[q]!);
   const chain: number[] = [];
   let q = s;
-  while (res.par[q]! >= 0) {
+  while (parOf(q) >= 0) {
     chain.push(q);
-    q = res.par[q]!;
+    q = parOf(q);
   }
   chain.reverse();
   const [x0, y0] = stXY(L, q % N);
@@ -1043,7 +1119,7 @@ function extract(
   let gears = 0;
   let prev = q;
   for (const S of chain) {
-    const m = res.pr[S]!;
+    const m = prOf(S);
     if (m === 3) gears++;
     else if (S < N) {
       const ps = prev % N;
@@ -1101,6 +1177,60 @@ export interface CarportRect {
   /** "ns": cars park along y (bays side by side in x); "ew": along x. */
   o: "ns" | "ew";
   bays: 1 | 2;
+  /**
+   * A turned carport: the heading (radians, 0 = +y, clockwise) of the cars' long axis. The box
+   * above then gives the size, unturned ("ns": across in x, along in y), around its centre.
+   */
+  ang?: number;
+}
+
+/** A carport in its own frame: centre, the cars' axis heading, size along and across. */
+interface CFrame {
+  cx: number;
+  cy: number;
+  a: number;
+  along: number;
+  across: number;
+}
+function frameOf(r: CarportRect): CFrame {
+  const ns = r.o === "ns";
+  return {
+    cx: (r.x0 + r.x1) / 2,
+    cy: (r.y0 + r.y1) / 2,
+    a: r.ang ?? (ns ? 0 : Math.PI / 2),
+    along: ns ? r.y1 - r.y0 : r.x1 - r.x0,
+    across: ns ? r.x1 - r.x0 : r.y1 - r.y0,
+  };
+}
+/** Axis-aligned (the lattice approach applies): no angle, or a multiple of 90°. */
+function aligned(r: CarportRect): boolean {
+  if (r.ang === undefined) return true;
+  const base = r.o === "ns" ? 0 : Math.PI / 2;
+  const d = Math.abs(((r.ang - base) % Math.PI) + Math.PI) % Math.PI;
+  return d < 1e-6 || Math.PI - d < 1e-6;
+}
+const toFrame = (F: CFrame, x: number, y: number): [number, number] => {
+  const dx = x - F.cx;
+  const dy = y - F.cy;
+  const s = Math.sin(F.a);
+  const c = Math.cos(F.a);
+  // u across (to the right of the axis), v along the axis.
+  return [dx * c - dy * s, dx * s + dy * c];
+};
+const fromFrame = (F: CFrame, u: number, v: number): [number, number] => {
+  const s = Math.sin(F.a);
+  const c = Math.cos(F.a);
+  return [F.cx + u * c + v * s, F.cy - u * s + v * c];
+};
+/** The carport's four corners. */
+export function carportCorners(r: CarportRect): Point[] {
+  const F = frameOf(r);
+  return [
+    fromFrame(F, -F.across / 2, -F.along / 2),
+    fromFrame(F, F.across / 2, -F.along / 2),
+    fromFrame(F, F.across / 2, F.along / 2),
+    fromFrame(F, -F.across / 2, F.along / 2),
+  ];
 }
 
 const snapG = (v: number) => Math.round(v / GS) * GS;
@@ -1141,19 +1271,27 @@ function baysOf(car: Car, r: CarportRect, frontOnly: boolean): Bay[] {
 }
 
 const insideRect = (cc: number[], r: CarportRect) => {
-  for (let k = 0; k < 8; k += 2)
-    if (
-      cc[k]! < r.x0 - EPS ||
-      cc[k]! > r.x1 + EPS ||
-      cc[k + 1]! < r.y0 - EPS ||
-      cc[k + 1]! > r.y1 + EPS
-    )
-      return false;
+  if (aligned(r) && r.ang === undefined) {
+    for (let k = 0; k < 8; k += 2)
+      if (
+        cc[k]! < r.x0 - EPS ||
+        cc[k]! > r.x1 + EPS ||
+        cc[k + 1]! < r.y0 - EPS ||
+        cc[k + 1]! > r.y1 + EPS
+      )
+        return false;
+    return true;
+  }
+  const F = frameOf(r);
+  for (let k = 0; k < 8; k += 2) {
+    const [u, v] = toFrame(F, cc[k]!, cc[k + 1]!);
+    if (Math.abs(u) > F.across / 2 + EPS || Math.abs(v) > F.along / 2 + EPS) return false;
+  }
   return true;
 };
 
-function carRectAt(car: Car, x: number, y: number, a: number): Rect {
-  const cc = carCorners(car, x, y, a);
+function carRectAt(car: Car, x: number, y: number, a: number, grow = 0): Rect {
+  const cc = carCorners(car, x, y, a, grow);
   const xs = [cc[0]!, cc[2]!, cc[4]!, cc[6]!];
   const ys = [cc[1]!, cc[3]!, cc[5]!, cc[7]!];
   return {
@@ -1162,6 +1300,8 @@ function carRectAt(car: Car, x: number, y: number, a: number): Rect {
     x1: Math.max(...xs),
     y1: Math.max(...ys),
     kind: "car",
+    // Exact for a car standing at an angle (its bounding box would block the bay next to it).
+    ...(Math.abs(Math.sin(2 * a)) > 1e-6 ? { quad: cc } : {}),
   };
 }
 
@@ -1178,12 +1318,24 @@ export const POST_M = 0.1;
 export const INSIDE_CLEARANCE_M = 0.1;
 function postRects(r: CarportRect): Rect[] {
   const P = POST_M;
+  if (r.ang === undefined)
+    return [
+      [r.x0, r.y0],
+      [r.x1 - P, r.y0],
+      [r.x0, r.y1 - P],
+      [r.x1 - P, r.y1 - P],
+    ].map(([x, y]) => ({ x0: x!, y0: y!, x1: x! + P, y1: y! + P, kind: "post" }));
+  // A turned carport: a small square post just inside each corner.
+  const F = frameOf(r);
   return [
-    [r.x0, r.y0],
-    [r.x1 - P, r.y0],
-    [r.x0, r.y1 - P],
-    [r.x1 - P, r.y1 - P],
-  ].map(([x, y]) => ({ x0: x!, y0: y!, x1: x! + P, y1: y! + P, kind: "post" }));
+    [-1, -1],
+    [1, -1],
+    [-1, 1],
+    [1, 1],
+  ].map(([su, sv]) => {
+    const [x, y] = fromFrame(F, su! * (F.across / 2 - P / 2), sv! * (F.along / 2 - P / 2));
+    return { x0: x - P / 2, y0: y - P / 2, x1: x + P / 2, y1: y + P / 2, kind: "post" };
+  });
 }
 
 interface Cand {
@@ -1330,6 +1482,7 @@ export function describeRoute(turns: number[], shunts = 0): string {
 export interface BayRoute {
   ok: true;
   poses: Pose[];
+  /** Heading of the parked car (radians). */
   entryHeading: number;
   cost: number;
   lengthM: number;
@@ -1338,6 +1491,8 @@ export interface BayRoute {
   crossing: Point[];
   /** Times the car reverses and drives forward again on the way in. */
   shunts: number;
+  /** The car backs into the bay (parked nose out). */
+  rev?: boolean;
   /** The lattice state where the final approach starts, and the poses from there into the bay. */
   start: number;
   tail: Pose[];
@@ -1374,6 +1529,7 @@ function bayRoute(
   E: Entry,
   dyn: Dyn | null,
   cands: Cand[] & { _s?: Cand[] },
+  leads?: Lead[],
 ): BayRoute | null {
   const res = L.res;
   const tryList = (list: Cand[]) => {
@@ -1395,16 +1551,18 @@ function bayRoute(
     best = tryList(cands._s);
   }
   const all = cands.concat(cands._s ?? []);
-  if (!best && all.some((c) => c.ok && c.s >= 0 && res.dist[c.s]! < Infinity)) {
-    // The parked car or a post is in the way of the shortest route: search again around it.
-    const goals = new Map<number, Cand>();
-    for (const c of all) if (c.ok && c.s >= 0 && !goals.has(c.s)) goals.set(c.s, c);
-    const r2 = search(L, dyn, goals);
-    if (r2.goal >= 0) {
-      const c = goals.get(r2.goal)!;
-      best = { tot: r2.dist[r2.goal]! + c.k * GS + (c.extra ?? 0), c, p: extract(L, r2, r2.goal) };
-    }
-  }
+  // Not found: hand the line-ups to the caller for one search around the parked car and posts.
+  if (!best && leads)
+    for (const c of all)
+      if (c.ok && c.s >= 0 && res.dist[c.s]! < Infinity)
+        leads.push({
+          idx: c.s,
+          extra: c.k * GS + (c.extra ?? 0),
+          tail: (c.pre ?? []).concat(lineFrom(E, c.k)),
+          turns: c.turns ?? [],
+          rev: false,
+          head: HEADA(E.h),
+        });
   if (!best) return null;
   const turns = best.p.turns.concat(best.c.turns ?? []);
   if (turns.length > MAXTURN || best.p.shunts > MAXSHUNT) return null;
@@ -1415,11 +1573,311 @@ function bayRoute(
     tail,
     ok: true,
     poses,
-    entryHeading: E.h,
+    entryHeading: HEADA(E.h),
     cost: best.tot,
     lengthM: best.tot - turns.length * TURNPEN,
     how: describeRoute(turns, best.p.shunts),
     shunts: best.p.shunts,
+    crossing: crossings(L.car, L.w.plot, poses),
+  };
+}
+
+// ---------------------------------------------------------------------------------------------
+// Any angle, and reversing in: an exact connector from the lattice to the line into the bay
+// ---------------------------------------------------------------------------------------------
+
+/** One way into a bay: the end it is entered from (motion direction), forward or backing in. */
+interface GEntry {
+  /** Direction the car moves into the bay (radians). */
+  m: number;
+  rev: boolean;
+  /** Final pose (rear axle), heading = the car's nose. */
+  P: Pose;
+}
+
+/** Per bay: the four ways in (either end, forward or backing in). */
+function gBays(car: Car, r: CarportRect): GEntry[][] {
+  const F = frameOf(r);
+  const bw = F.across / r.bays;
+  const out: GEntry[][] = [];
+  for (let b = 0; b < r.bays; b++) {
+    const u = -F.across / 2 + bw * (b + 0.5);
+    const at = (v: number, head: number): Pose => {
+      const [x, y] = fromFrame(F, u, v);
+      return { x, y, a: head };
+    };
+    const A = F.a;
+    const B = F.a + Math.PI;
+    out.push([
+      // From the near end (moving along the axis): nose first, rear flush with the edge, or
+      // backing in, nose flush with the edge.
+      { m: A, rev: false, P: at(-F.along / 2 + car.ro, A) },
+      { m: A, rev: true, P: at(-F.along / 2 + car.nose, B) },
+      // From the far end.
+      { m: B, rev: false, P: at(F.along / 2 - car.ro, B) },
+      { m: B, rev: true, P: at(F.along / 2 - car.nose, A) },
+    ]);
+  }
+  return out;
+}
+
+const wrapPi = (x: number) => {
+  let v = (x + Math.PI) % (2 * Math.PI);
+  if (v < 0) v += 2 * Math.PI;
+  return v - Math.PI;
+};
+
+/** A way to finish a route from a lattice state: the poses after it, for one search. */
+interface Lead {
+  idx: number;
+  extra: number;
+  tail: Pose[];
+  turns: number[];
+  rev: boolean;
+  head: number;
+}
+
+/** One search around the parked car and posts to any of the leads; the route, or null. */
+function routeViaLeads(L: Lattice, dyn: Dyn | null, leads: Lead[]): BayRoute | null {
+  if (!dyn || !leads.length) return null;
+  const goals = new Map<number, Lead>();
+  for (const l of leads.sort(
+    (p, q) => L.res.dist[p.idx]! + p.extra - (L.res.dist[q.idx]! + q.extra),
+  ))
+    if (!goals.has(l.idx) && goals.size < 80) goals.set(l.idx, l);
+  const r2 = search(L, dyn, goals);
+  if (r2.goal < 0) return null;
+  const l = goals.get(r2.goal)!;
+  const p = extract(L, r2, r2.goal);
+  const turns = p.turns.concat(l.turns);
+  if (turns.length > MAXTURN || p.shunts > MAXSHUNT) return null;
+  const poses = p.poses.concat(l.tail);
+  const tot = r2.dist[r2.goal]! + l.extra;
+  const how = describeRoute(turns, p.shunts);
+  return {
+    ok: true,
+    start: l.idx,
+    tail: l.tail,
+    poses,
+    entryHeading: l.head,
+    cost: tot,
+    lengthM: tot - turns.length * TURNPEN,
+    how: l.rev ? `${how}, backing in` : how,
+    shunts: p.shunts,
+    ...(l.rev ? { rev: true } : {}),
+    crossing: crossings(L.car, L.w.plot, poses),
+  };
+}
+
+interface Conn {
+  idx: number;
+  cost: number;
+  tail: Pose[];
+  turns: number[];
+}
+
+/**
+ * From reached lattice states near the bay, one arc (radius at least the car's, solved so it
+ * ends exactly on the line into the bay) or an S-bend, then straight in. Forward entries start
+ * from states reached driving forward, backing-in entries from states reached reversing.
+ */
+function connectors(L: Lattice, r: CarportRect, E: GEntry, dyn: Dyn | null, max = 30): Conn[] {
+  const car = L.car;
+  const { N } = L;
+  const w = L.w;
+  const res = L.res;
+  const mx = Math.sin(E.m);
+  const my = Math.cos(E.m);
+  const mult = E.rev ? REV_IN : 1;
+  const RAD = 10;
+  const raw: {
+    idx: number;
+    cost: number;
+    x: number;
+    y: number;
+    mu: number;
+    R: number;
+    D: number;
+    lat: number;
+    tE: number;
+    kind: "line" | "arc" | "s";
+  }[] = [];
+  const iA = Math.max(0, Math.floor((E.P.x - RAD) / GS) - w.i0);
+  const iB = Math.min(w.NI - 1, Math.ceil((E.P.x + RAD) / GS) - w.i0);
+  const jA = Math.max(0, Math.floor((E.P.y - RAD) / GS) - w.j0);
+  const jB = Math.min(w.NJ - 1, Math.ceil((E.P.y + RAD) / GS) - w.j0);
+  for (let j = jA; j <= jB; j++)
+    for (let i = iA; i <= iB; i++) {
+      const x = (w.i0 + i) * GS;
+      const y = (w.j0 + j) * GS;
+      const dx = x - E.P.x;
+      const dy = y - E.P.y;
+      if (dx * dx + dy * dy > RAD * RAD) continue;
+      const along = dx * mx + dy * my;
+      if (along > 1e-6) continue; // must start on the approach side
+      const lat = dx * my - dy * mx; // to the right of the line (positive)
+      const base = (j * w.NI + i) * 8 + (E.rev ? N : 0);
+      let any = false;
+      for (let h = 0; h < 8 && !any; h++) any = res.dist[base + h]! < Infinity;
+      if (!any) continue;
+      for (let h = 0; h < 8; h++) {
+        const idx = (j * w.NI + i) * 8 + h + (E.rev ? N : 0);
+        const d = res.dist[idx]!;
+        if (d === Infinity) continue;
+        const mu = HEADA(h) + (E.rev ? Math.PI : 0);
+        const D = wrapPi(E.m - mu);
+        if (Math.abs(D) > (3 * Math.PI) / 8 + 1e-9) continue;
+        if (Math.abs(D) < 1e-6) {
+          if (Math.abs(lat) < 1e-6)
+            raw.push({
+              idx,
+              cost: d - along * mult,
+              x,
+              y,
+              mu,
+              R: 0,
+              D: 0,
+              lat: 0,
+              tE: -along,
+              kind: "line",
+            });
+          else if (Math.abs(lat) <= 2.5) {
+            const phi = Math.acos(1 - Math.abs(lat) / (2 * car.rt));
+            const adv = 2 * car.rt * Math.sin(phi);
+            if (-along < adv - 1e-6) continue;
+            raw.push({
+              idx,
+              cost: d + (2 * car.rt * phi + (-along - adv)) * mult + TURNPEN,
+              x,
+              y,
+              mu,
+              R: car.rt,
+              D: 0,
+              lat,
+              tE: -along - adv,
+              kind: "s",
+            });
+          }
+          continue;
+        }
+        const sg = Math.sign(D);
+        const kx = sg * (Math.cos(mu) - Math.cos(mu + D));
+        const ky = sg * (Math.sin(mu + D) - Math.sin(mu));
+        const ck = kx * my - ky * mx;
+        if (Math.abs(ck) < 1e-9) continue;
+        const R = -lat / ck;
+        if (R < car.rt - 1e-9 || R > 40) continue;
+        const ex = x + R * kx - E.P.x;
+        const ey = y + R * ky - E.P.y;
+        const tE = -(ex * mx + ey * my);
+        if (tE < -1e-6) continue;
+        raw.push({
+          idx,
+          cost: d + (R * Math.abs(D) + tE) * mult + TURNPEN * Math.ceil(Math.abs(D) / Q45 - 1e-6),
+          x,
+          y,
+          mu,
+          R,
+          D,
+          lat,
+          tE: Math.max(0, tE),
+          kind: "arc",
+        });
+      }
+    }
+  raw.sort((p, q) => p.cost - q.cost);
+  const out: Conn[] = [];
+  for (const c of raw) {
+    if (out.length >= max) break;
+    // The connector in "motion" terms (as if driving forward along the motion direction).
+    const segs: Seg[] =
+      c.kind === "line"
+        ? [{ S: c.tE }]
+        : c.kind === "s"
+          ? [
+              { A: -Math.sign(c.lat) * Math.acos(1 - Math.abs(c.lat) / (2 * c.R)) },
+              { A: Math.sign(c.lat) * Math.acos(1 - Math.abs(c.lat) / (2 * c.R)) },
+              { S: c.tE },
+            ]
+          : [{ A: c.D }, { S: c.tE }];
+    const motion = walk(c.R || car.rt, { x: c.x, y: c.y, a: c.mu }, segs);
+    if (!motion.length) continue;
+    const end = motion[motion.length - 1]!;
+    if (Math.hypot(end.x - E.P.x, end.y - E.P.y) > 0.05) continue;
+    motion[motion.length - 1] = { x: E.P.x, y: E.P.y, a: c.mu + (c.kind === "arc" ? c.D : 0) };
+    const tail = motion.map((p) => ({
+      x: p.x,
+      y: p.y,
+      a: E.rev ? p.a - Math.PI : p.a,
+      ...(E.rev ? { rev: true } : {}),
+    }));
+    tail[tail.length - 1] = { ...E.P, ...(E.rev ? { rev: true } : {}) };
+    if (
+      tail.some(
+        (p) => !insideRect(carCorners(car, p.x, p.y, p.a), r) && !staticFree(L, p.x, p.y, p.a),
+      )
+    )
+      continue;
+    if (dynFirstHit(car, tail, dyn)) continue;
+    const turns =
+      c.kind === "s"
+        ? [-Math.sign(c.lat), Math.sign(c.lat)]
+        : c.kind === "arc"
+          ? Array(Math.max(1, Math.round(Math.abs(c.D) / Q45))).fill(Math.sign(c.D))
+          : [];
+    out.push({ idx: c.idx, cost: c.cost, tail, turns });
+  }
+  return out;
+}
+
+/** The best route into a bay through a connector (any angle; forward or backing in). */
+function connectRoute(
+  L: Lattice,
+  r: CarportRect,
+  E: GEntry,
+  dyn: Dyn | null,
+  leads?: Lead[],
+): BayRoute | null {
+  const conns = connectors(L, r, E, dyn);
+  if (!conns.length) return null;
+  const res = L.res;
+  let best: { c: Conn; p: ReturnType<typeof extract>; tot: number } | null = null;
+  let blockedByDyn = false;
+  for (const c of conns) {
+    const p = extract(L, res, c.idx);
+    if (dynFirstHit(L.car, p.poses, dyn)) {
+      blockedByDyn = true;
+      continue;
+    }
+    if (p.turns.length + c.turns.length > MAXTURN || p.shunts > MAXSHUNT) continue;
+    best = { c, p, tot: c.cost };
+    break;
+  }
+  if (!best && leads && blockedByDyn)
+    for (const c of conns.slice(0, 40))
+      leads.push({
+        idx: c.idx,
+        extra: c.cost - res.dist[c.idx]!,
+        tail: c.tail,
+        turns: c.turns,
+        rev: E.rev,
+        head: E.P.a,
+      });
+  if (!best) return null;
+  const turns = best.p.turns.concat(best.c.turns);
+  const poses = best.p.poses.concat(best.c.tail);
+  const how = describeRoute(turns, best.p.shunts);
+  return {
+    ok: true,
+    start: best.c.idx,
+    tail: best.c.tail,
+    poses,
+    entryHeading: E.P.a,
+    cost: best.tot,
+    lengthM: best.tot - turns.length * TURNPEN,
+    how: E.rev ? `${how}, backing in` : how,
+    shunts: best.p.shunts,
+    ...(E.rev ? { rev: true } : {}),
     crossing: crossings(L.car, L.w.plot, poses),
   };
 }
@@ -1439,25 +1897,43 @@ export interface BayAccess {
  */
 export function accessCarport(L: Lattice, r: CarportRect, frontOnly: boolean): BayAccess[] {
   const car = L.car;
-  const bays = baysOf(car, r, frontOnly);
   const posts = postRects(r).map((p) => inflate(p, Math.min(car.clr, INSIDE_CLEARANCE_M)));
-  const parked = bays.map((B) =>
-    inflate(
-      carRectAt(car, B.entries[0]!.Af.x, B.entries[0]!.Af.y, HEADA(B.entries[0]!.h)),
-      car.clr,
-    ),
+  const gb = gBays(car, r);
+  const lattice = aligned(r) ? baysOf(car, r, frontOnly) : null;
+  // The other bay's car, parked nose first from the near end, for two-car carports.
+  const parked = gb.map((ents) =>
+    carRectAt(car, ents[0]!.P.x, ents[0]!.P.y, ents[0]!.P.a, car.clr),
   );
-  return bays.map((B, bi) => {
+  return gb.map((ents, bi) => {
     const dyn = dynOf([...posts, ...parked.filter((_, k) => k !== bi)]);
     let best: BayRoute | null = null;
-    for (const E of B.entries) {
-      const rt = bayRoute(L, r, E, dyn, approachCands(L, r, E, dyn));
+    const leads: Lead[] = [];
+    // A carport square to the lattice: the straight line-ups first (as before).
+    if (lattice)
+      for (const E of lattice[bi]!.entries) {
+        const rt = bayRoute(L, r, E, dyn, approachCands(L, r, E, dyn), leads);
+        if (rt && (!best || rt.cost < best.cost)) best = rt;
+      }
+    // Any angle, and backing in: the connector (backing in only where forward has no route).
+    for (const E of ents) {
+      if (frontOnly && E.m !== ents[0]!.m) continue;
+      if (lattice && !E.rev) continue;
+      if (E.rev && best) continue;
+      const rt = connectRoute(L, r, E, dyn, leads);
       if (rt && (!best || rt.cost < best.cost)) best = rt;
     }
+    if (!best && !lattice)
+      for (const E of ents) {
+        if (!E.rev) continue;
+        const rt = connectRoute(L, r, E, dyn, leads);
+        if (rt && (!best || rt.cost < best.cost)) best = rt;
+      }
+    // The other bay's car or a post is in the way of every short route: one search around it.
+    if (!best) best = routeViaLeads(L, dyn, leads);
     if (best) return { b: bi, route: best, parked: best.poses[best.poses.length - 1]! };
     // Why not: try ignoring posts and the parked car, and find what the path would hit.
     let blocker: string | undefined;
-    for (const E of B.entries) {
+    for (const E of lattice?.[bi]?.entries ?? []) {
       const cands = approachCands(L, r, E, null);
       let bestC: { tot: number; c: Cand } | null = null;
       for (const c of cands) {
@@ -1473,27 +1949,24 @@ export function accessCarport(L: Lattice, r: CarportRect, frontOnly: boolean): B
         break;
       }
     }
-    const E0 = B.entries[0]!;
+    const P0 = ents[0]!.P;
     return {
       b: bi,
       route: null,
       ...(blocker ? { blocker } : {}),
-      parked: { x: E0.Af.x, y: E0.Af.y, a: HEADA(E0.h) },
+      parked: { x: P0.x, y: P0.y, a: P0.a },
     };
   });
 }
 
-/** Whether a car of this size fits inside the carport with room to open its doors. */
 export function parkingFit(
   car: Car,
   r: CarportRect,
   doorGapM = 0.5,
 ): { fits: boolean; gapM: number } {
-  const ns = r.o === "ns";
-  const across = ns ? r.x1 - r.x0 : r.y1 - r.y0;
-  const depth = ns ? r.y1 - r.y0 : r.x1 - r.x0;
-  const gapM = across / r.bays - car.w;
-  return { fits: depth >= car.l - 1e-9 && gapM >= 2 * doorGapM - 1e-9, gapM: gapM / 2 };
+  const F = frameOf(r);
+  const gapM = F.across / r.bays - car.w;
+  return { fits: F.along >= car.l - 1e-9 && gapM >= 2 * doorGapM - 1e-9, gapM: gapM / 2 };
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -1526,7 +1999,7 @@ export function leaveCarport(
   const posts = postRects(r).map((p) => inflate(p, Math.min(car.clr, INSIDE_CLEARANCE_M)));
   const others = access
     .filter((_, k) => k !== bi)
-    .map((q) => inflate(carRectAt(car, q.parked.x, q.parked.y, q.parked.a), car.clr));
+    .map((q) => carRectAt(car, q.parked.x, q.parked.y, q.parked.a, car.clr));
   const dyn = dynOf([...posts, ...others]);
   // On the road the car ends up along the street the gate lies on (either direction).
   const streetHeadings = new Set<number>();
@@ -1542,6 +2015,13 @@ export function leaveCarport(
     (t, p, i) => (i ? t + Math.hypot(p.x - tailRev[i - 1]!.x, p.y - tailRev[i - 1]!.y) : t),
     0,
   );
+  const rc = carportCorners(r);
+  const rb = {
+    x0: Math.min(...rc.map((p) => p[0])),
+    y0: Math.min(...rc.map((p) => p[1])),
+    x1: Math.max(...rc.map((p) => p[0])),
+    y1: Math.max(...rc.map((p) => p[1])),
+  };
   // Driveway mask: swept on the way in (with margin), a turning space of 12 m around the carport,
   // and the road side of the gates.
   const MS = 0.25;
@@ -1555,7 +2035,7 @@ export function leaveCarport(
       const x = w.minX + ii * MS;
       const y = w.minY + jj * MS;
       if (
-        (x > r.x0 - TY && x < r.x1 + TY && y > r.y0 - TY && y < r.y1 + TY) ||
+        (x > rb.x0 - TY && x < rb.x1 + TY && y > rb.y0 - TY && y < rb.y1 + TY) ||
         !contains(w.plot, [x, y])
       )
         mask[jj * MI + ii] = 1;
@@ -1601,7 +2081,9 @@ export function leaveCarport(
   const done = new Uint8Array(2 * N);
   // Goal: off the plot, on the road side of a gate, in either direction along the road.
   const heap = new Heap();
-  dist[start] = tailLen * RVC;
+  // A car that backed in leaves nose first (forward phase); else it reverses out first.
+  const outFwd = start >= N;
+  dist[start] = tailLen * (outFwd ? 1 : RVC);
   // A* towards the road: the distance to the nearest gate never overestimates what is left.
   const toGate = (S: number) => {
     const [x, y] = stXY(L, S % N);
@@ -1697,10 +2179,10 @@ export function leaveCarport(
   };
   const poses: Pose[] = tailRev
     .slice(1)
-    .map((p) => ({ ...p, rev: true }))
-    .concat([{ ...pose(start), rev: true }]);
+    .map((p) => (outFwd ? { x: p.x, y: p.y, a: p.a } : { ...p, rev: true }))
+    .concat([outFwd ? pose(start) : { ...pose(start), rev: true }]);
   let revTurns = 0;
-  let fwd = false;
+  let fwd = outFwd;
   let changes = 0;
   let prev = start;
   for (const S of chain) {
@@ -1727,15 +2209,17 @@ export function leaveCarport(
     prev = S;
   }
   const text =
-    changes >= 3
-      ? `makes a ${changes === 3 ? "three" : "multi"}-point turn, then drives off along the street`
-      : !fwd
-        ? revTurns
-          ? "reverses out with a turn onto the street"
-          : "reverses straight back onto the street (no room to turn)"
-        : revTurns
-          ? "reverses out with a turn, then drives off along the street"
-          : "reverses out onto the street, then turns and drives off along it";
+    outFwd && changes === 0
+      ? "drives out nose first onto the street"
+      : changes >= 3
+        ? `makes a ${changes === 3 ? "three" : "multi"}-point turn, then drives off along the street`
+        : !fwd
+          ? revTurns
+            ? "reverses out with a turn onto the street"
+            : "reverses straight back onto the street (no room to turn)"
+          : revTurns
+            ? "reverses out with a turn, then drives off along the street"
+            : "reverses out onto the street, then turns and drives off along it";
   return { poses, text, forward: fwd };
 }
 

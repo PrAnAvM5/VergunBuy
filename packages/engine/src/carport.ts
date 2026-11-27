@@ -56,6 +56,10 @@ import type { BoundaryState, Material } from "./concepts/boundary.ts";
 
 /** Fixed standard height of the presets (decision of 2026-11-25: no height dragging). */
 export const CARPORT_HEIGHT_M = 2.5;
+/** Angles tried for the numbered spots (degrees). */
+const ROTATION_STEP = 15;
+/** Screening: a turned spot is tried after a square one that scores the same (m equivalent). */
+const TURNED_PENALTY = 100;
 /** From this height a scanned object counts as a tree (blocks the car and the carport). */
 const TREE_M = 2.5;
 
@@ -154,8 +158,11 @@ export interface Placement {
   y: number;
   widthM: number;
   lengthM: number;
-  /** 0: width along the street; 90: width into the plot. */
-  rotation: 0 | 90;
+  /**
+   * Degrees, clockwise: the heading of the cars' long axis (0: cars park facing away from the
+   * street, width along the street; 90: width into the plot). Any angle; 0–180 covers all.
+   */
+  rotation: number;
 }
 
 export type CheckOutcome = "pass" | "fail" | "unknown";
@@ -193,15 +200,27 @@ export interface CarportVerdict {
 }
 
 export function rectangle(p: Placement): Polygon {
-  const w = p.rotation === 0 ? p.widthM : p.lengthM;
-  const h = p.rotation === 0 ? p.lengthM : p.widthM;
+  // Width across the cars' axis, length along it; turned by the rotation (clockwise). The
+  // corners go round from the near-left one: r[0] (−across, −along) … r[2] (+across, +along).
+  const a = (p.rotation * Math.PI) / 180;
+  const exact = (v: number) =>
+    Math.abs(v) < 1e-12 ? 0 : Math.abs(Math.abs(v) - 1) < 1e-12 ? Math.sign(v) : v;
+  const s = exact(Math.sin(a));
+  const c = exact(Math.cos(a));
+  const at = (u: number, v: number): Point => [p.x + u * c + v * s, p.y - u * s + v * c];
   return [
-    [p.x - w / 2, p.y - h / 2],
-    [p.x + w / 2, p.y - h / 2],
-    [p.x + w / 2, p.y + h / 2],
-    [p.x - w / 2, p.y + h / 2],
+    at(-p.widthM / 2, -p.lengthM / 2),
+    at(p.widthM / 2, -p.lengthM / 2),
+    at(p.widthM / 2, p.lengthM / 2),
+    at(-p.widthM / 2, p.lengthM / 2),
   ];
 }
+
+/** True when the carport stands square to the plot frame (0° or 90°, also 180° and 270°). */
+export const isSquare = (p: Placement) => {
+  const q = ((p.rotation % 90) + 90) % 90;
+  return q < 1e-9 || 90 - q < 1e-9;
+};
 
 // ---------------------------------------------------------------------------------------------
 // The back-yard area (achtererfgebied)
@@ -1184,15 +1203,28 @@ export interface EvaluateOptions {
 
 /** The carport as the vehicle planner sees it: cars park along its length, one or two bays. */
 export function carportRect(pl: Placement, car: Car): CarportRect {
-  const r = rectangle(pl);
-  const across = pl.widthM;
+  const bays = pl.widthM >= 2 * (car.w + 2 * DOOR_GAP_M) ? 2 : 1;
+  if (isSquare(pl)) {
+    const r = rectangle(pl);
+    const q = ((pl.rotation % 180) + 180) % 180;
+    return {
+      x0: Math.min(...r.map((p) => p[0])),
+      y0: Math.min(...r.map((p) => p[1])),
+      x1: Math.max(...r.map((p) => p[0])),
+      y1: Math.max(...r.map((p) => p[1])),
+      o: q < 1e-9 ? "ns" : "ew",
+      bays,
+    };
+  }
+  // Turned: the unturned box around the centre, and the angle.
   return {
-    x0: r[0]![0],
-    y0: r[0]![1],
-    x1: r[2]![0],
-    y1: r[2]![1],
-    o: pl.rotation === 0 ? "ns" : "ew",
-    bays: across >= 2 * (car.w + 2 * DOOR_GAP_M) ? 2 : 1,
+    x0: pl.x - pl.widthM / 2,
+    y0: pl.y - pl.lengthM / 2,
+    x1: pl.x + pl.widthM / 2,
+    y1: pl.y + pl.lengthM / 2,
+    o: "ns",
+    bays,
+    ang: (pl.rotation * Math.PI) / 180,
   };
 }
 
@@ -1394,17 +1426,24 @@ export function options(
   for (const zz of zones) rasterize(zz, g, zoneMask);
   type Cand = { pl: Placement; score: number; zone: CarportZone };
   const queues: Record<CarportZone, Cand[]> = { back: [], side: [], front: [] };
-  for (const rotation of [0, 90] as const) {
-    const w = rotation === 0 ? size.widthM : size.lengthM;
-    const h = rotation === 0 ? size.lengthM : size.widthM;
-    const rE = rotation === 0 ? screen.reachExisting.ns : screen.reachExisting.ew;
-    const rA = rotation === 0 ? screen.reachAny.ns : screen.reachAny.ew;
-    for (let y = Math.min(...ys) + h / 2; y <= Math.max(...ys) - h / 2 + 1e-9; y += step)
-      for (let x = Math.min(...xs) + w / 2; x <= Math.max(...xs) - w / 2 + 1e-9; x += step) {
-        const i0 = Math.ceil((x - w / 2 - g.minX) / g.cell - 0.5);
-        const i1 = Math.floor((x + w / 2 - g.minX) / g.cell - 0.5);
-        const j0 = Math.ceil((y - h / 2 - g.minY) / g.cell - 0.5);
-        const j1 = Math.floor((y + h / 2 - g.minY) / g.cell - 0.5);
+  // Spots every 15°: square ones first among equals (simpler to build and to drive into).
+  for (let rotation = 0; rotation < 180; rotation += ROTATION_STEP) {
+    const a = (rotation * Math.PI) / 180;
+    const sa = Math.sin(a);
+    const ca = Math.cos(a);
+    const square = rotation % 90 === 0;
+    // Half extents of the turned rectangle's bounding box.
+    const hw = (Math.abs(ca) * size.widthM + Math.abs(sa) * size.lengthM) / 2;
+    const hh = (Math.abs(sa) * size.widthM + Math.abs(ca) * size.lengthM) / 2;
+    const rE =
+      rotation === 0 ? screen.reachExisting.ns : rotation === 90 ? screen.reachExisting.ew : null;
+    const rA = rotation === 0 ? screen.reachAny.ns : rotation === 90 ? screen.reachAny.ew : null;
+    for (let y = Math.min(...ys) + hh; y <= Math.max(...ys) - hh + 1e-9; y += step)
+      for (let x = Math.min(...xs) + hw; x <= Math.max(...xs) - hw + 1e-9; x += step) {
+        const i0 = Math.ceil((x - hw - g.minX) / g.cell - 0.5);
+        const i1 = Math.floor((x + hw - g.minX) / g.cell - 0.5);
+        const j0 = Math.ceil((y - hh - g.minY) / g.cell - 0.5);
+        const j1 = Math.floor((y + hh - g.minY) / g.cell - 0.5);
         let ok = true;
         let reachE = Infinity;
         let reachA = Infinity;
@@ -1414,13 +1453,27 @@ export function options(
         let inZone = false;
         for (let j = j0; j <= j1 && ok; j++)
           for (let i = i0; i <= i1; i++) {
+            if (!square) {
+              // Cell centre inside the turned rectangle?
+              const dx = g.minX + (i + 0.5) * g.cell - x;
+              const dy = g.minY + (j + 0.5) * g.cell - y;
+              const u = dx * ca - dy * sa;
+              const v = dx * sa + dy * ca;
+              if (Math.abs(u) > size.widthM / 2 || Math.abs(v) > size.lengthM / 2) continue;
+            }
             const k = j * g.nx + i;
             if (!screen.onPlot[k] || screen.solid[k] || screen.obstacle[k] === 2) {
               ok = false;
               break;
             }
-            reachE = Math.min(reachE, rE[k]!);
-            reachA = Math.min(reachA, rA[k]!);
+            reachE = Math.min(
+              reachE,
+              rE ? rE[k]! : Math.min(screen.reachExisting.ns[k]!, screen.reachExisting.ew[k]!),
+            );
+            reachA = Math.min(
+              reachA,
+              rA ? rA[k]! : Math.min(screen.reachAny.ns[k]!, screen.reachAny.ew[k]!),
+            );
             if (!screen.yard[k]) allYard = false;
             minPub = Math.min(minPub, screen.publicM[k]!);
             shrubs += screen.obstacle[k]!;
@@ -1432,7 +1485,7 @@ export function options(
         const zone: CarportZone = allYard
           ? "back"
           : yard.frontLineY !== null
-            ? y + h / 2 <= yard.frontLineY || y + h / 2 <= houseMinY
+            ? y + hh <= yard.frontLineY || y + hh <= houseMinY
               ? "front"
               : "side"
             : "side";
@@ -1443,7 +1496,8 @@ export function options(
           (pubOk ? 2e6 : 0) +
           (reachE < Infinity ? 1e6 : 0) -
           shrubs * 1e3 -
-          (reach < Infinity ? reach : 500);
+          (reach < Infinity ? reach : 500) -
+          (square ? 0 : TURNED_PENALTY);
         queues[zone].push({ pl: { x, y, rotation, ...size }, score, zone });
       }
   }

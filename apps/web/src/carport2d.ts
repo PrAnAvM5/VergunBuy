@@ -201,16 +201,20 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     parts.push(
       `<path id="cp-rect" d="${path(r)}" fill="${col}" fill-opacity="0.25" stroke="${col}" stroke-width="3" style="cursor:move"/>`,
     );
+    // Posts: a small square just inside each corner.
     const P = POST_M;
-    for (const [px, py] of [
-      [r[0]![0], r[0]![1]],
-      [r[1]![0] - P, r[1]![1]],
-      [r[3]![0], r[3]![1] - P],
-      [r[2]![0] - P, r[2]![1] - P],
-    ] as const)
+    const pc = [s.pl.x, s.pl.y];
+    for (const q of r) {
+      const dx = pc[0]! - q[0];
+      const dy = pc[1]! - q[1];
+      const dl = Math.hypot(dx, dy) || 1;
+      const px = q[0] + (dx / dl) * P * 0.7;
+      const py = q[1] + (dy / dl) * P * 0.7;
+      const half = Math.max(1.5, (P * S) / 2);
       parts.push(
-        `<rect x="${X(px).toFixed(1)}" y="${Y(py + P).toFixed(1)}" width="${Math.max(2, P * S).toFixed(1)}" height="${Math.max(2, P * S).toFixed(1)}" fill="#222" pointer-events="none"/>`,
+        `<rect x="${(X(px) - half).toFixed(1)}" y="${(Y(py) - half).toFixed(1)}" width="${(2 * half).toFixed(1)}" height="${(2 * half).toFixed(1)}" fill="#222" pointer-events="none"/>`,
       );
+    }
     if (s.sel !== null) {
       const o = s.opts[s.sel]!;
       parts.push(
@@ -219,9 +223,9 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     }
     // A car that does not fit is still drawn, in red, in the middle of the carport.
     if (!v.access.fit.fits) {
-      const a = v.access.rect.o === "ns" ? 0 : Math.PI / 2;
-      const cx = (v.access.rect.x0 + v.access.rect.x1) / 2;
-      const cy = (v.access.rect.y0 + v.access.rect.y1) / 2;
+      const a = (s.pl.rotation * Math.PI) / 180;
+      const cx = s.pl.x;
+      const cy = s.pl.y;
       parts.push(
         carSvg(
           car,
@@ -243,7 +247,14 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     if (s.moving) parts.push(carSvg(car, s.moving, "#cfe0f7", "#1f6fd1", "cp-movcar"));
     const corner = r[2]!;
     parts.push(
-      `<circle id="cp-handle" cx="${X(corner[0]).toFixed(1)}" cy="${Y(corner[1]).toFixed(1)}" r="8" fill="#fff" stroke="${col}" stroke-width="3" style="cursor:nwse-resize"/>`,
+      `<circle id="cp-handle" cx="${X(corner[0]).toFixed(1)}" cy="${Y(corner[1]).toFixed(1)}" r="8" fill="#fff" stroke="${col}" stroke-width="3" style="cursor:nwse-resize"><title>Drag to resize</title></circle>`,
+    );
+    // Turn handle on the next corner: drag round the centre (snaps to 5°).
+    const rc = r[1]!;
+    const rx = X(rc[0]);
+    const ry = Y(rc[1]);
+    parts.push(
+      `<g id="cp-rot" style="cursor:grab"><title>Drag to turn (${Math.round(s.pl.rotation)}°)</title><circle cx="${rx.toFixed(1)}" cy="${ry.toFixed(1)}" r="11" fill="#fff" stroke="${col}" stroke-width="3"/><path d="M${(rx - 5).toFixed(1)},${(ry - 1).toFixed(1)} A5,5 0 1,1 ${(rx - 1).toFixed(1)},${(ry + 5).toFixed(1)}" fill="none" stroke="${col}" stroke-width="2"/><path d="M${(rx - 8).toFixed(1)},${(ry - 3).toFixed(1)} L${(rx - 5).toFixed(1)},${(ry + 1).toFixed(1)} L${(rx - 2).toFixed(1)},${(ry - 3).toFixed(1)}Z" fill="${col}"/></g>`,
     );
     return parts.join("");
   };
@@ -260,7 +271,7 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
       <span><i class="ln" style="border-color:#1f6fd1;background:#1f6fd122"></i>car's path</span>
       <span><i class="ln dash" style="border-color:#4c8a3a"></i>back yard</span>
       <span><i class="sw" style="background:${LAMP_COLOR};border-radius:50%"></i>lamp post</span>
-      <span class="muted">Drag to move · corner to resize · click an object (not a tree) to remove it, even under the carport · plot line and garden colours as in the 2D plan</span>
+      <span class="muted">Drag to move · corner to resize · round handle turns it (5° steps) · click an object (not a tree) to remove it, even under the carport · plot line and garden colours as in the 2D plan</span>
     </div>
     <div id="cp-verdict"></div>`;
   const svg = el.querySelector<SVGSVGElement>("#cp-svg")!;
@@ -309,7 +320,8 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     const p = m ? pt.matrixTransform(m.inverse()) : pt;
     return fromScreen(p.x, p.y);
   };
-  let drag: { mode: "move" | "resize"; dx: number; dy: number } | null = null;
+  // rotate: dx = rotation at the start (degrees), dy = angle of the pointer at the start.
+  let drag: { mode: "move" | "resize" | "rotate"; dx: number; dy: number } | null = null;
   let tap: { x: number; y: number; at: [number, number] } | null = null;
   // A click on a scanned object (not a tree) removes it, or brings it back.
   const removeAt = (mx: number, my: number) => {
@@ -329,7 +341,13 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
       return;
     }
     const [mx, my] = toPlan(ev);
-    if (s.pl && t.id === "cp-handle") drag = { mode: "resize", dx: 0, dy: 0 };
+    if (s.pl && t.closest("#cp-rot"))
+      drag = {
+        mode: "rotate",
+        dx: s.pl.rotation,
+        dy: Math.atan2(mx - s.pl.x, my - s.pl.y),
+      };
+    else if (s.pl && t.id === "cp-handle") drag = { mode: "resize", dx: 0, dy: 0 };
     else if (s.pl && t.id === "cp-rect") {
       drag = { mode: "move", dx: mx - s.pl.x, dy: my - s.pl.y };
       // A click (no drag) on the carport may be meant for an object under it.
@@ -350,28 +368,37 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
     const cur = pending ?? s.pl;
     const [mx, my] = toPlan(ev);
     if (drag.mode === "move") pending = { ...cur, x: snap(mx - drag.dx), y: snap(my - drag.dy) };
-    else {
-      // The bottom-left corner stays; the handle sets the opposite corner.
+    else if (drag.mode === "rotate") {
+      // Turn round the centre by the angle the pointer moved; snaps to 5°.
+      const now = Math.atan2(mx - cur.x, my - cur.y);
+      let deg = drag.dx + ((now - drag.dy) * 180) / Math.PI;
+      deg = Math.round(deg / 5) * 5;
+      deg = ((deg % 360) + 360) % 360;
+      if (deg !== cur.rotation) pending = { ...cur, rotation: deg };
+    } else {
+      // The near-left corner stays; the handle sets the opposite corner (in the carport's frame).
       const r = rectangle(cur);
-      const left = r[0]![0];
-      const bottom = r[0]![1];
-      const rot0 = cur.rotation === 0;
-      const along = clamp(
-        snap(mx - left),
-        rot0 ? CARPORT_LIMITS.minWidthM : CARPORT_LIMITS.minLengthM,
-        rot0 ? CARPORT_LIMITS.maxWidthM : CARPORT_LIMITS.maxLengthM,
+      const a = (cur.rotation * Math.PI) / 180;
+      const e = [Math.cos(a), -Math.sin(a)];
+      const d = [Math.sin(a), Math.cos(a)];
+      const dx = mx - r[0]![0];
+      const dy = my - r[0]![1];
+      const across = clamp(
+        snap(dx * e[0]! + dy * e[1]!),
+        CARPORT_LIMITS.minWidthM,
+        CARPORT_LIMITS.maxWidthM,
       );
-      const into = clamp(
-        snap(my - bottom),
-        rot0 ? CARPORT_LIMITS.minLengthM : CARPORT_LIMITS.minWidthM,
-        rot0 ? CARPORT_LIMITS.maxLengthM : CARPORT_LIMITS.maxWidthM,
+      const along = clamp(
+        snap(dx * d[0]! + dy * d[1]!),
+        CARPORT_LIMITS.minLengthM,
+        CARPORT_LIMITS.maxLengthM,
       );
       pending = {
         ...cur,
-        widthM: rot0 ? along : into,
-        lengthM: rot0 ? into : along,
-        x: left + along / 2,
-        y: bottom + into / 2,
+        widthM: across,
+        lengthM: along,
+        x: r[0]![0] + (e[0]! * across) / 2 + (d[0]! * along) / 2,
+        y: r[0]![1] + (e[1]! * across) / 2 + (d[1]! * along) / 2,
       };
     }
     if (!frame)

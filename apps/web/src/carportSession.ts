@@ -395,6 +395,7 @@ export function controlsHtml(s: Session): string {
       <button data-size="double" class="btn small" aria-pressed="${s.sizeKey === "double"}">Double 6 × 5</button>
       <label class="small">W <input class="cp-num" type="number" step="0.1" min="${CARPORT_LIMITS.minWidthM}" max="${CARPORT_LIMITS.maxWidthM}" data-dim="widthM" value="${pl ? fmtNum(pl.widthM) : ""}"></label>
       <label class="small">L <input class="cp-num" type="number" step="0.1" min="${CARPORT_LIMITS.minLengthM}" max="${CARPORT_LIMITS.maxLengthM}" data-dim="lengthM" value="${pl ? fmtNum(pl.lengthM) : ""}"> m</label>
+      <label class="small">Angle <input class="cp-num" type="number" step="5" min="0" max="355" data-angle value="${pl ? Math.round(pl.rotation) : 0}">°</label>
       <button data-act="rotate" class="btn small" title="Turn the carport 90°">↻ 90°</button>
       ${
         (s.ctx.obstacles?.obstacles ?? []).some((o) => clearable(s, o.id))
@@ -408,7 +409,7 @@ export function controlsHtml(s: Session): string {
           ? s.opts
               .map(
                 (o, i) =>
-                  `<button class="optbtn" data-opt="${i}" aria-pressed="${s.sel === i}"><span class="dot" style="background:${COLOUR[o.verdict.colour]}"></span>#${o.n} ${esc(STATUS_TEXT(o.verdict))}</button>`,
+                  `<button class="optbtn" data-opt="${i}" aria-pressed="${s.sel === i}"><span class="dot" style="background:${COLOUR[o.verdict.colour]}"></span>#${o.n} ${esc(STATUS_TEXT(o.verdict))}${o.placement.rotation % 90 ? ` · ${o.placement.rotation}°` : ""}</button>`,
               )
               .join("")
           : `<span class="small muted">No spot found for this size.</span>`
@@ -462,11 +463,17 @@ export function bindControls(root: HTMLElement, s: Session): void {
       place(s, { ...s.pl, [key]: Math.min(lim[1]!, Math.max(lim[0]!, v)) });
     }),
   );
+  root.querySelector<HTMLInputElement>("[data-angle]")?.addEventListener("change", (ev) => {
+    if (!s.pl) return;
+    const v = Number((ev.target as HTMLInputElement).value.replace(",", "."));
+    if (!Number.isFinite(v)) return;
+    place(s, { ...s.pl, rotation: ((Math.round(v) % 360) + 360) % 360 });
+  });
   root
     .querySelector('[data-act="clear-all"]')
     ?.addEventListener("click", () => clearAll(s, s.cleared.size === 0));
   root.querySelector('[data-act="rotate"]')?.addEventListener("click", () => {
-    if (s.pl) place(s, { ...s.pl, rotation: s.pl.rotation === 0 ? 90 : 0 });
+    if (s.pl) place(s, { ...s.pl, rotation: (s.pl.rotation + 90) % 360 });
   });
   root.querySelector('[data-act="in"]')?.addEventListener("click", () => play(s, "in"));
   root.querySelector('[data-act="out"]')?.addEventListener("click", () => play(s, "out"));

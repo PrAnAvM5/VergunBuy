@@ -238,3 +238,30 @@ describe("road-aware car world", () => {
     expect(r!.how).toMatch(/shunt/);
   });
 });
+
+describe("carports at any angle, and backing in", () => {
+  it("drives into a carport turned 30° and parks along its axis", () => {
+    const L = buildLattice(buildWorld(site()), carOf(DEFAULT_VEHICLE));
+    const ang = (30 * Math.PI) / 180;
+    const r: CarportRect = { x0: 14.5, y0: 21, x1: 17.5, y1: 26, o: "ns", bays: 1, ang };
+    // The turned footprint must stay on the plot: shift it left a little.
+    r.x0 -= 1.5;
+    r.x1 -= 1.5;
+    const acc = accessCarport(L, r, false);
+    expect(acc[0]!.route).toBeTruthy();
+    const end = acc[0]!.parked;
+    const d = Math.abs(Math.sin(end.a - ang));
+    expect(d).toBeLessThan(1e-6);
+    const out = leaveCarport(L, r, acc, 0);
+    expect(out).toBeTruthy();
+  });
+
+  it("double carport at 60°: both bays reachable, cars side by side along the axis", () => {
+    const L = buildLattice(buildWorld(site({}, 18)), carOf(DEFAULT_VEHICLE));
+    const ang = Math.PI / 3;
+    const r: CarportRect = { x0: 9, y0: 19, x1: 15, y1: 24, o: "ns", bays: 2, ang };
+    const acc = accessCarport(L, r, false);
+    expect(acc.every((b) => b.route)).toBe(true);
+    for (const b of acc) expect(Math.abs(Math.sin(b.parked.a - ang))).toBeLessThan(1e-6);
+  });
+});

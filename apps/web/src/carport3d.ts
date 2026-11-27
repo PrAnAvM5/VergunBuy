@@ -109,23 +109,24 @@ export async function mountCarport3D(el: HTMLElement, ctx: PlotContext): Promise
     });
     const P = POST_M;
     const h = CARPORT_HEIGHT_M;
-    for (const [px, py] of [
-      [r[0]![0] + P / 2, r[0]![1] + P / 2],
-      [r[1]![0] - P / 2, r[1]![1] + P / 2],
-      [r[3]![0] + P / 2, r[3]![1] - P / 2],
-      [r[2]![0] - P / 2, r[2]![1] - P / 2],
-    ] as const) {
+    // Posts just inside each corner; the roof turned with the carport.
+    for (const q of r) {
+      const dx = s.pl.x - q[0];
+      const dy = s.pl.y - q[1];
+      const dl = Math.hypot(dx, dy) || 1;
       const post = new THREE.Mesh(
         new THREE.BoxGeometry(Math.max(P, 0.12), h, Math.max(P, 0.12)),
         postMat,
       );
-      post.position.copy(v3(px, py, h / 2));
+      post.position.copy(v3(q[0] + (dx / dl) * P * 0.7, q[1] + (dy / dl) * P * 0.7, h / 2));
       group.add(post);
     }
-    const w = r[1]![0] - r[0]![0];
-    const d = r[3]![1] - r[0]![1];
-    const roof = new THREE.Mesh(new THREE.BoxGeometry(w + 0.2, 0.15, d + 0.2), roofMat);
-    roof.position.copy(v3(r[0]![0] + w / 2, r[0]![1] + d / 2, h + 0.075));
+    const roof = new THREE.Mesh(
+      new THREE.BoxGeometry(s.pl.widthM + 0.2, 0.15, s.pl.lengthM + 0.2),
+      roofMat,
+    );
+    roof.position.copy(v3(s.pl.x, s.pl.y, h + 0.075));
+    roof.rotation.y = -(s.pl.rotation * Math.PI) / 180;
     group.add(roof);
     // Swept path on the ground for the selected bay.
     const B = v.access.bays[s.bay];
