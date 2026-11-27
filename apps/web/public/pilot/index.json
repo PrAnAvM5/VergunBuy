@@ -29,6 +29,16 @@
    "dirty": false,
    "label": "Step 3 angles, before road register",
    "homes": 60
+  },
+  {
+   "id": "202611271635-bd05543",
+   "at": "2026-11-27T16:35:12.497Z",
+   "commitAt": "2026-11-27T17:31:30+01:00",
+   "sha": "bd05543",
+   "subject": "Kerb: count a lowered kerb only as a dip in a raised kerb; calibrate on the 60 homes",
+   "dirty": false,
+   "label": "Kerb height (laser) + manual tick",
+   "homes": 60
   }
  ]
 }
