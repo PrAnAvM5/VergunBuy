@@ -1237,7 +1237,8 @@ export function carAccess(
   return { rect, fit, via: null, ...last, ...none };
 }
 
-/** Separate places (more than 1.5 m apart) where a route crosses the plot line. */
+/** Separate places (more than 3.2 m apart: wider than a car crossing) where a route crosses the
+ *  plot line. Both sides of the car body count as one place. */
 function crossingGroups(route: BayAccess["route"]): number {
   const pts = route?.crossing ?? [];
   if (!pts.length) return 0;
@@ -1250,7 +1251,7 @@ function crossingGroups(route: BayAccess["route"]): number {
     while (stack.length) {
       const k = stack.pop()!;
       for (let j = 0; j < pts.length; j++)
-        if (group[j]! < 0 && Math.hypot(pts[j]![0] - pts[k]![0], pts[j]![1] - pts[k]![1]) <= 1.5) {
+        if (group[j]! < 0 && Math.hypot(pts[j]![0] - pts[k]![0], pts[j]![1] - pts[k]![1]) <= 3.2) {
           group[j] = n;
           stack.push(j);
         }
