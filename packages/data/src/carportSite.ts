@@ -239,7 +239,7 @@ export function carportSite(
       publicAreas: ctx.publicAreas ? ctx.publicAreas.map((a) => L(a.outline)) : null,
       publicSides,
       front:
-        f.method === "street-label" || f.method === "agreed"
+        f.method === "street-label" || f.method === "agreed" || f.method === "road-register"
           ? "street-label"
           : f.method === "longest-public"
             ? "estimated"

@@ -81,6 +81,7 @@ import {
   fetchMapBarriers,
   fetchNdvi,
   fetchStreetObjects,
+  lines,
   type StreetObject,
 } from "./sources/boundary.ts";
 
@@ -261,6 +262,9 @@ const IN_USE = new Set([
   "Verbouwing pand",
   "Sloopvergunning verleend",
 ]);
+
+/** How far around the plot road-register segments are looked for (m). */
+const ROAD_SEARCH_M = 60;
 
 /** How far around the plot street-name labels are looked for (m). */
 const LABEL_SEARCH_M = 150;
@@ -1133,6 +1137,71 @@ export async function buildPlotContext(
     if (nearest) a.streetName = nearest.name;
   }
 
+  // 6b. The own street's centre line from the national road register (NWB): it names every road
+  // segment, with house-number ranges per side, so it finds the front also where no street-name
+  // label is printed nearby. Never critical: without it the labels and clues are used.
+  let roadPoints: { at: Point; name: string }[] = [];
+  let roadNote = "";
+  try {
+    roadPoints = await tracer.step(
+      "nwb",
+      "The own street in the national road register (NWB)",
+      async (ctx) => {
+        const res = await ogcItems(
+          OGC.nwb,
+          "wegvakken",
+          bboxOf(plot.outline, ROAD_SEARCH_M),
+          ctx,
+          fetchFn,
+        ).catch(() => null);
+        if (!res) {
+          ctx.degrade("road register could not be loaded");
+          return [];
+        }
+        const norm = (v: string) => v.toLowerCase().replace(/[^a-z0-9]/g, "");
+        const want = norm(address.street);
+        const own = res.features.filter((f) => norm(str(f.properties.stt_naam) ?? "") === want);
+        // Segments whose house-number range (either side) holds this number come first.
+        const holds = (f: Feature) =>
+          (["lnks", "rhts"] as const).some((side) => {
+            const a = Number(f.properties[`e_hnr_${side}`]);
+            const b = Number(f.properties[`l_hnr_${side}`]);
+            const par = str(f.properties[`hnrstr${side}`]) ?? "";
+            const n = address.number;
+            if (!Number.isFinite(a) || !Number.isFinite(b) || a <= 0) return false;
+            if (n < Math.min(a, b) || n > Math.max(a, b)) return false;
+            return par === "O" ? n % 2 === 1 : par === "E" ? n % 2 === 0 : true;
+          });
+        const withNumber = own.filter(holds);
+        const use = withNumber.length ? withNumber : own;
+        const pts: { at: Point; name: string }[] = [];
+        for (const f of use)
+          for (const line of lines(f))
+            for (let i = 0; i + 1 < line.length; i++) {
+              const a = line[i]!;
+              const b = line[i + 1]!;
+              const n = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 2));
+              for (let k = 0; k <= n; k++)
+                pts.push({
+                  at: [a[0] + ((b[0] - a[0]) * k) / n, a[1] + ((b[1] - a[1]) * k) / n],
+                  name: str(f.properties.stt_naam) ?? address.street,
+                });
+            }
+        roadNote = withNumber.length
+          ? "the road register's segment of this street that carries this house number"
+          : own.length
+            ? "the road register's centre line of this street"
+            : "";
+        ctx.summarize(
+          `${res.features.length} road segments, ${own.length} of ${address.street}${withNumber.length ? ` (${withNumber.length} with house number ${address.number})` : ""}`,
+        );
+        return pts;
+      },
+    );
+  } catch {
+    roadPoints = [];
+  }
+
   // 7. The plot's own frame: street at the bottom.
   const kindById = new Map((publicAreas ?? []).map((a) => [a.id, a.kind]));
   // When no edge touches public ground directly (a verge on the road's parcel lies in between),
@@ -1155,12 +1224,15 @@ export async function buildPlotContext(
     streetLabels,
     (id) => (id ? kindById.get(id) : undefined),
     {
+      roadPoints,
       farLabels: farStreetLabels,
       exits: exits.map((e) => e.outline),
       addressPoint: address.pointRd,
     },
   );
-  if (frame.method === "agreed") {
+  if (frame.method === "road-register") {
+    note(quality, "front", `The front faces ${frame.streetName ?? address.street}: ${roadNote}.`);
+  } else if (frame.method === "agreed") {
     note(
       quality,
       "front",

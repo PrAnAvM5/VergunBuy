@@ -288,13 +288,15 @@ export async function renderCheck(
   let dims = true;
   const plotEdges = new Set(ctx.edges.map((e) => e.kind));
   const frontNote =
-    ctx.frame.method === "street-label"
-      ? `Front faces ${esc(ctx.frame.streetName ?? "the street")} (from the street-name label).`
-      : ctx.frame.method === "agreed"
-        ? `Front: the side that ${esc((ctx.frame.evidence ?? []).join(" and "))}.`
-        : ctx.frame.method === "longest-public"
-          ? `Front is estimated${ctx.frame.evidence?.length ? ` (the side that ${esc(ctx.frame.evidence.join(" and "))})` : " (street name not found next to the plot)"}.`
-          : "No public side found.";
+    ctx.frame.method === "road-register"
+      ? `Front faces ${esc(ctx.frame.streetName ?? "the street")} (road register).`
+      : ctx.frame.method === "street-label"
+        ? `Front faces ${esc(ctx.frame.streetName ?? "the street")} (from the street-name label).`
+        : ctx.frame.method === "agreed"
+          ? `Front: the side that ${esc((ctx.frame.evidence ?? []).join(" and "))}.`
+          : ctx.frame.method === "longest-public"
+            ? `Front is estimated${ctx.frame.evidence?.length ? ` (the side that ${esc(ctx.frame.evidence.join(" and "))})` : " (street name not found next to the plot)"}.`
+            : "No public side found.";
 
   root.innerHTML = `
     <div class="check-head">

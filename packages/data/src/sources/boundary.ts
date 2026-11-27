@@ -95,7 +95,7 @@ export async function fetchNdvi(
   return { layer: CIR_LAYER, res: CIR_RES, x0, y0: y1, cols, rows, ndvi };
 }
 
-function lines(f: Feature): Point[][] {
+export function lines(f: Feature): Point[][] {
   const g = f.geometry;
   if (!g) return [];
   const c = g.coordinates as never;

@@ -5,7 +5,7 @@
  */
 import type { FetchFn } from "./http.ts";
 
-/** Keys: "locatieserver", "<dataset>/<collection>" (e.g. "bgt/wegdeel") or "3dbag/pand". */
+/** Keys: "locatieserver", "<dataset>/<collection>" (e.g. "bgt/wegdeel", "nwb/wegvakken") or "3dbag/pand". */
 export type RecordedResponses = Record<string, unknown>;
 
 export function fixtureKey(url: URL): string | undefined {
@@ -24,6 +24,10 @@ export function fixtureKey(url: URL): string | undefined {
     return "vergunbuy/ahn-echoes";
   if (url.hostname === "service.pdok.nl" && url.pathname.includes("/luchtfotocir/"))
     return `cir/${url.searchParams.get("layers") ?? "?"}`;
+  const nwb = /\/rws\/nationaal-wegenbestand-wegen\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(
+    url.pathname,
+  );
+  if (nwb) return `nwb/${nwb[1]}`;
   const rce = /\/rce\/[^/]+\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(url.pathname);
   if (rce) return `rce/${rce[1]}`;
   const m = /\/kadaster\/(bag|bgt|brk)[^/]*\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(

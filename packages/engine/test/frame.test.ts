@@ -98,3 +98,18 @@ describe("plotFrame without a label next to the plot", () => {
     expect(frame.method).toBe("longest-public");
   });
 });
+
+describe("plotFrame from the road register", () => {
+  it("faces the own street's centre line, before labels and clues", () => {
+    // Centre line of Westweg along x = -3; a (wrong) label of the same street to the south.
+    const roadPoints = [0, 5, 10, 15, 20].map((y) => ({
+      at: [-3, y] as [number, number],
+      name: "Westweg",
+    }));
+    const frame = plotFrame(plot, runs, [{ at: [4, -3], name: "Westweg" }], undefined, {
+      roadPoints,
+    });
+    expect(frame.method).toBe("road-register");
+    expect(toLocal(frame, [-3, 10])[1]).toBeLessThan(toLocal(frame, [4, 10])[1]);
+  });
+});

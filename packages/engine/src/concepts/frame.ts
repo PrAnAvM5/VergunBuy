@@ -2,6 +2,7 @@
  * Concept: the plot's own frame, "street at the bottom" (like the MVP plans).
  *
  * The front of the plot is the public boundary that faces the address's own street.
+ * 0. The own street's centre line in the national road register, NWB (method "road-register").
  * 1. The street-name label of that street in the BGT next to the plot (method "street-label").
  * 2. Otherwise two of these agreeing on one side (method "agreed"): the own street's label
  *    further away (up to about 150 m), the registered driveway crossing, and the side nearest
@@ -29,7 +30,7 @@ export interface PlotFrame {
   /** Rotation applied to RD coordinates (radians). */
   rotation: number;
   frontEdge: number;
-  method: "street-label" | "agreed" | "longest-public" | "none";
+  method: "road-register" | "street-label" | "agreed" | "longest-public" | "none";
   streetName?: string;
   /** What decided the front, in plain words (for "agreed" and the fallback). */
   evidence?: string[];
@@ -37,6 +38,11 @@ export interface PlotFrame {
 
 /** Extra clues for the front when no street-name label lies next to the plot. */
 export interface FrontHints {
+  /**
+   * Points along the own street's centre line from the national road register (NWB), near the
+   * plot: the strongest evidence (the register names every road segment).
+   */
+  roadPoints?: { at: Point; name: string }[];
   /** The own street's labels further away. */
   farLabels?: { at: Point; name: string }[];
   /** Registered driveway crossings that touch or face the plot. */
@@ -117,8 +123,15 @@ export function plotFrame(
     return edge === undefined ? undefined : { edge, name: name! };
   };
 
+  // 0. The own street's centre line (road register).
+  const road = facing(hints.roadPoints ?? []);
+  if (road) {
+    front = road.edge;
+    streetName = road.name;
+    method = "road-register";
+  }
   // 1. The own street's label next to the plot.
-  const near = facing(streetLabels);
+  const near = front === undefined ? facing(streetLabels) : undefined;
   if (near) {
     front = near.edge;
     streetName = near.name;

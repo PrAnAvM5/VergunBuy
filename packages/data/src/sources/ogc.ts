@@ -11,6 +11,8 @@ export const OGC = {
   bag: "https://api.pdok.nl/kadaster/bag/ogc/v2",
   brk: "https://api.pdok.nl/kadaster/brk-kadastrale-kaart/ogc/v1",
   bgt: "https://api.pdok.nl/kadaster/bgt/ogc/v1",
+  /** National road register (Rijkswaterstaat): road centre lines with street names. */
+  nwb: "https://api.pdok.nl/rws/nationaal-wegenbestand-wegen/ogc/v1",
 } as const;
 
 const Geometry = z.object({
