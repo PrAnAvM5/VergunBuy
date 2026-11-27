@@ -5,6 +5,7 @@
  *  - the plot and nearby public areas as ground surfaces; registered trees as simple trees.
  * Same frame as the 2D plan: street at the front. three.js is loaded only when this view opens.
  */
+import { smoothedPieces } from "./plotLine.ts";
 import type { Building, PlotContext } from "@vergunbuy/data";
 import { polyToLocal, toLocal, type Polygon } from "@vergunbuy/engine";
 import * as THREE from "three";
@@ -252,7 +253,7 @@ export function mountScene(el: HTMLElement, ctx: PlotContext): SceneHandle {
     const hedgeMat = new THREE.MeshLambertMaterial({ color: 0x2f7d32 });
     const wallMat = new THREE.MeshLambertMaterial({ color: 0x3a3a3a });
     const exitMat = new THREE.MeshLambertMaterial({ color: 0xf2b134 });
-    for (const p of ctx.boundary?.pieces ?? []) {
+    for (const p of smoothedPieces(ctx.boundary?.pieces ?? [])) {
       if (p.side !== "street" || p.state === "open" || p.state === "unknown") continue;
       const [ax, ay] = toLocal(ctx.frame, p.a);
       const [bx, by] = toLocal(ctx.frame, p.b);

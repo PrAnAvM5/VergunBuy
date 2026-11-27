@@ -2,6 +2,7 @@
  * Workspace 2D plan: only the plot and what stands on it, in the plot's own frame
  * (street at the bottom), with architectural dimension lines drawn outside the shapes.
  */
+import { smoothedPieces } from "./plotLine.ts";
 import type { PlotContext } from "@vergunbuy/data";
 import { boundaryRuns, polyToLocal, toLocal, type Point, type Polygon } from "@vergunbuy/engine";
 import { bandOf, esc, isOtherHomeOnParcel, OVERHANG_COLOR } from "./format.ts";
@@ -212,7 +213,7 @@ export function planScene(
   }
 
   // What stands on the plot line, on the street side.
-  for (const r of boundaryRuns(ctx.boundary?.pieces ?? [])) {
+  for (const r of boundaryRuns(smoothedPieces(ctx.boundary?.pieces ?? []))) {
     if (r.side !== "street") continue;
     const a = toLocal(f, r.a);
     const b = toLocal(f, r.b);

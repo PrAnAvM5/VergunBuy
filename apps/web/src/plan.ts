@@ -4,6 +4,7 @@
  * Underlay: the national aerial photo (PDOK, CC BY 4.0) for the chosen year. With the photo on,
  * overlays are drawn as thin outlines so they never wash out the photo.
  */
+import { smoothedPieces } from "./plotLine.ts";
 import type { PlotContext } from "@vergunbuy/data";
 import { at, boundaryRuns, type Polygon } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc } from "./format.ts";
@@ -159,7 +160,7 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
         `<line class="edge${sel(key)}" data-sel="${key}" x1="${tx(x1).toFixed(1)}" y1="${ty(y1).toFixed(1)}" x2="${tx(x2).toFixed(1)}" y2="${ty(y2).toFixed(1)}" stroke="${color}" stroke-width="5" stroke-linecap="butt"${style.dash ? ` stroke-dasharray="${style.dash}"` : ""}/>`,
       );
     });
-    for (const r of boundaryRuns(ctx.boundary?.pieces ?? [])) {
+    for (const r of boundaryRuns(smoothedPieces(ctx.boundary?.pieces ?? []))) {
       if (r.side !== "street" || r.state === "exit") continue;
       parts.push(
         `<line x1="${tx(r.a[0]).toFixed(1)}" y1="${ty(r.a[1]).toFixed(1)}" x2="${tx(r.b[0]).toFixed(1)}" y2="${ty(r.b[1]).toFixed(1)}" stroke="${LINE_COLORS[r.state]}" stroke-width="${r.state === "open" ? 3 : 6}" pointer-events="none"${r.state === "open" || r.state === "unknown" ? ' stroke-dasharray="7 5"' : ""}/>`,

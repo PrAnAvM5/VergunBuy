@@ -138,7 +138,7 @@ function refreshOptions(s: Session): void {
       ...s.size,
     };
     s.pl = pl;
-    s.verdict = evaluate(s.prep, pl, { cleared: s.cleared });
+    s.verdict = reevaluate(s, pl);
     s.message = {
       text: "No good spot found for this size: drag the carport to see what stands in the way.",
       bad: true,
@@ -157,28 +157,57 @@ export function select(s: Session, i: number | null, tell = true): void {
   s.message = null;
   const o = i === null ? undefined : s.opts[i];
   s.pl = o ? o.placement : null;
-  s.verdict = o
-    ? s.cleared.size
-      ? evaluate(s.prep, o.placement, { cleared: s.cleared })
-      : o.verdict
-    : null;
+  s.verdict = o ? (s.cleared.size ? reevaluate(s, o.placement) : o.verdict) : null;
   if (tell) notify(s);
 }
 
-/** Shrubs that can be marked as cleared: 1–2.5 m, on the plot, not solid. */
+/** Scanned objects that can be marked as removed: everything except trees (a tall object read
+ *  as a plant or unclear, or branches from next door). */
 export function clearable(s: Session, id: string): boolean {
-  return (s.site.obstacles?.cells ?? []).some(
-    (c) => c.id === id && !c.tree && c.material !== "solid",
-  );
+  const o = s.ctx.obstacles?.obstacles.find((x) => x.id === id);
+  if (!o) return false;
+  if (o.kind === "medium") return true;
+  if (o.kind === "overhang") return false;
+  return o.material === "solid";
 }
 
-/** Marks a scanned shrub as cleared (or not) and checks the carport again. */
+/** The site with the removed objects that block a car (tall solid ones) taken out. */
+function siteWithout(s: Session): CarportSite {
+  const cells = s.site.obstacles?.cells ?? [];
+  if (!s.site.obstacles || !cells.some((c) => c.tree && c.id && s.cleared.has(c.id))) return s.site;
+  return {
+    ...s.site,
+    obstacles: {
+      ...s.site.obstacles,
+      cells: cells.filter((c) => !(c.tree && c.id && s.cleared.has(c.id))),
+    },
+  };
+}
+
+/** Checks the current spot with the person's removals. */
+function reevaluate(s: Session, pl: Placement): CarportVerdict {
+  const v = evaluate(s.prep, pl, { cleared: s.cleared });
+  const tall = (s.ctx.obstacles?.obstacles ?? []).filter(
+    (o) => s.cleared.has(o.id) && o.kind !== "medium",
+  );
+  if (tall.length)
+    v.warnings.push({
+      id: "removed-tall",
+      text: `This assumes you take down ${tall.length === 1 ? "the tall solid object" : `${tall.length} tall solid objects`} you marked (about ${Math.round(tall.reduce((t, o) => t + o.areaM2, 0))} m²). If it is an unregistered shed or building, check whether demolishing it needs a permit.`,
+    });
+  return v;
+}
+
+/** Marks a scanned object as removed (or not) and checks the carport again. */
 export function toggleCleared(s: Session, id: string): void {
   if (!clearable(s, id)) return;
   if (s.cleared.has(id)) s.cleared.delete(id);
   else s.cleared.add(id);
   stopAnim(s);
-  if (s.pl) s.verdict = evaluate(s.prep, s.pl, { cleared: s.cleared });
+  const tall = s.ctx.obstacles?.obstacles.find((o) => o.id === id)?.kind !== "medium";
+  // A tall object changes where the car can drive: work out the car's worlds again.
+  if (tall) s.prep = prepare(siteWithout(s), s.params);
+  if (s.pl) s.verdict = reevaluate(s, s.pl);
   notify(s);
 }
 
@@ -188,7 +217,7 @@ export function place(s: Session, pl: Placement): void {
   s.pl = pl;
   s.sel = null;
   s.message = null;
-  s.verdict = evaluate(s.prep, pl, { cleared: s.cleared });
+  s.verdict = reevaluate(s, pl);
   if (s.bay >= s.verdict.access.bays.length) s.bay = 0;
   notify(s);
 }
@@ -210,7 +239,7 @@ export async function setCar(s: Session, params: VehicleParams): Promise<void> {
   notify(s);
   await yieldToPaint();
   const custom = s.sel === null ? s.pl : null;
-  s.prep = prepare(s.site, params);
+  s.prep = prepare(siteWithout(s), params);
   refreshOptions(s);
   if (custom) place(s, custom);
   s.busy = null;

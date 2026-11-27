@@ -831,7 +831,7 @@ export function evaluate(
   if (clearedHere || access.clearedM2)
     warnings.push({
       id: "cleared",
-      text: `This assumes you clear the shrubs you marked (about ${fmt(clearedHere * cellM2 + access.clearedM2)} m² in the way). Shrubs on your own plot need no permit; trees of 2.5 m and up cannot be marked.`,
+      text: `This assumes you remove what you marked (about ${fmt(clearedHere * cellM2 + access.clearedM2)} m² in the way). Shrubs on your own plot need no permit; for a shed or wall, check whether taking it down needs one. Trees cannot be marked.`,
     });
   const blockers = access.bays.filter((b) => !b.route);
   add({
@@ -1320,8 +1320,8 @@ function sweptCells(
   for (const i of hit) {
     const c = cells[i]!;
     if (c.outside) out.sweptPublicM2 += m2;
-    else if (c.material === "solid") out.sweptSolidM2 += m2;
     else if (c.id && cleared.has(c.id)) out.clearedM2 += m2;
+    else if (c.material === "solid") out.sweptSolidM2 += m2;
     else out.sweptShrubM2 += m2;
   }
   const r1 = (v: number) => Math.round(v * 10) / 10;
