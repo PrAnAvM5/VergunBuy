@@ -254,7 +254,11 @@ export function planScene(
       text(
         tx((L.plot.minX + L.plot.maxX) / 2),
         ty(streetY - 3.2),
-        f.streetName ? f.streetName : "Street side (estimated)",
+        f.streetName
+          ? f.streetName
+          : f.method === "agreed"
+            ? "Street side"
+            : "Street side (estimated)",
         13,
         "#5a5e66",
         500,

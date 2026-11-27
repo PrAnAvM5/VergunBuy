@@ -61,3 +61,40 @@ describe("describeSides", () => {
     expect(total).toBeCloseTo(2 * (8 + 20), 0);
   });
 });
+
+describe("plotFrame without a label next to the plot", () => {
+  // Public on the west (address street) and the south; no label nearby.
+  const exitWest: Polygon = rect(-3, 8, 0, 11);
+  it("takes the side two clues agree on: driveway crossing and address point", () => {
+    const frame = plotFrame(plot, runs, [], undefined, {
+      exits: [exitWest],
+      addressPoint: [1, 10],
+    });
+    expect(frame.method).toBe("agreed");
+    expect(toLocal(frame, [-3, 10])[1]).toBeLessThan(toLocal(frame, [4, 10])[1]);
+    expect(frame.evidence?.length).toBe(2);
+  });
+
+  it("a far label and the driveway crossing agreeing also count", () => {
+    const frame = plotFrame(plot, runs, [], undefined, {
+      farLabels: [{ at: [-3, 120], name: "Westweg" }],
+      exits: [exitWest],
+    });
+    expect(frame.method).toBe("agreed");
+    expect(frame.streetName).toBe("Westweg");
+  });
+
+  it("one clue alone stays estimated", () => {
+    const frame = plotFrame(plot, runs, [], undefined, { exits: [exitWest] });
+    expect(frame.method).toBe("longest-public");
+    expect(toLocal(frame, [-3, 10])[1]).toBeLessThan(toLocal(frame, [4, 10])[1]);
+  });
+
+  it("clues that disagree stay estimated", () => {
+    const frame = plotFrame(plot, runs, [], undefined, {
+      exits: [exitWest],
+      addressPoint: [6, 1],
+    });
+    expect(frame.method).toBe("longest-public");
+  });
+});

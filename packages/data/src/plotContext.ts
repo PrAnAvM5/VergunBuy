@@ -262,6 +262,9 @@ const IN_USE = new Set([
   "Sloopvergunning verleend",
 ]);
 
+/** How far around the plot street-name labels are looked for (m). */
+const LABEL_SEARCH_M = 150;
+
 /** How far outside the plot the verge and public green are scanned (m). */
 const OUTSIDE_M = 8;
 
@@ -815,6 +818,7 @@ export async function buildPlotContext(
 
   // 4. Public area from BGT (current objects only). Degrades to "unknown" edges, never to "neighbour".
   let streetLabels: { at: Point; name: string }[] = [];
+  let farStreetLabels: { at: Point; name: string }[] = [];
   let allLabels: { at: Point; name: string }[] = [];
   let labelsRead = false;
   let publicAreas:
@@ -850,7 +854,15 @@ export async function buildPlotContext(
           );
         }
         try {
-          const labels = await ogcItems(OGC.bgt, "openbareruimtelabel", work, ctx, fetchFn);
+          // Street-name labels are sparse (often one or two per street): look 150 m around, so
+          // the own street's label is found also when it is printed further along.
+          const labels = await ogcItems(
+            OGC.bgt,
+            "openbareruimtelabel",
+            bboxOf(plot.outline, LABEL_SEARCH_M),
+            ctx,
+            fetchFn,
+          );
           labelsRead = true;
           allLabels = labels.features
             .filter((f) => isCurrentBgt(f) && f.geometry?.type === "Point")
@@ -862,9 +874,19 @@ export async function buildPlotContext(
               };
             })
             .filter((l) => l.name !== "");
-          streetLabels = allLabels.filter(
+          // Nearest first, so a drawn street name is the one next to the plot.
+          const [cx0, cy0] = address.pointRd;
+          allLabels.sort(
+            (p, q) =>
+              Math.hypot(p.at[0] - cx0, p.at[1] - cy0) - Math.hypot(q.at[0] - cx0, q.at[1] - cy0),
+          );
+          const own = allLabels.filter(
             (l) => l.name.toLowerCase() === address.street.toLowerCase(),
           );
+          const inWork = (l: { at: Point }) =>
+            l.at[0] >= work[0] && l.at[0] <= work[2] && l.at[1] >= work[1] && l.at[1] <= work[3];
+          streetLabels = own.filter(inWork);
+          farStreetLabels = own.filter((l) => !inWork(l));
         } catch {
           labelsRead = false;
         }
@@ -1127,17 +1149,33 @@ export async function buildPlotContext(
           lengthM: r.lengthM,
         })),
       ];
-  const frame = plotFrame(plot.outline, frameRuns, streetLabels, (id) =>
-    id ? kindById.get(id) : undefined,
+  const frame = plotFrame(
+    plot.outline,
+    frameRuns,
+    streetLabels,
+    (id) => (id ? kindById.get(id) : undefined),
+    {
+      farLabels: farStreetLabels,
+      exits: exits.map((e) => e.outline),
+      addressPoint: address.pointRd,
+    },
   );
-  if (frame.method === "longest-public") {
+  if (frame.method === "agreed") {
+    note(
+      quality,
+      "front",
+      `No street-name label next to the plot; the front is the side that ${(frame.evidence ?? []).join(" and ")}.`,
+    );
+  } else if (frame.method === "longest-public") {
     downgrade(
       quality,
       "front",
       "assumed",
-      labelsRead
-        ? "The street name was not found next to the plot, so the front side is estimated."
-        : "Street names could not be loaded, so the front side is estimated.",
+      frame.evidence?.length
+        ? `The street name was not found next to the plot; the front is taken as the side that ${frame.evidence.join(" and ")}, so it is estimated.`
+        : labelsRead
+          ? "The street name was not found next to the plot, so the front side is estimated."
+          : "Street names could not be loaded, so the front side is estimated.",
     );
     flag(
       "FRONT_ESTIMATED",
