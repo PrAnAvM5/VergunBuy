@@ -36,7 +36,9 @@ const freshness = {
     inForce: snap.points.flatMap((p) => p.documents),
     drafts: snap.points.flatMap((p) => p.drafts),
   },
-  checkedAt: "2026-01-01T00:00:00Z",
+  // "Checked now" against the stored DSO snapshot: the rule-version check depends only on that
+  // file, not on the day the pilot snapshot is taken.
+  checkedAt: new Date().toISOString(),
   source: "snapshot" as const,
 };
 

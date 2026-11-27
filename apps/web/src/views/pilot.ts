@@ -211,12 +211,13 @@ function alerts(A: Snapshot, B: Snapshot): Alert[] {
     }
     if (!a || a.error) continue;
     if (b.front && a.front && b.front.method !== "none" && a.front.method !== "none") {
+      // Smallest angle between the two front directions (0–180°).
       const d = Math.abs(((((b.front.rotation - a.front.rotation) % 360) + 540) % 360) - 180);
-      if (180 - d >= 60)
+      if (d >= 60)
         out.push({
           level: "warn",
           id,
-          text: `${name}: the front side turned ${Math.round(180 - d)}° (${FRONT_TEXT[a.front.method] ?? a.front.method} → ${FRONT_TEXT[b.front.method] ?? b.front.method})`,
+          text: `${name}: the front side turned ${Math.round(d)}° (${FRONT_TEXT[a.front.method] ?? a.front.method} → ${FRONT_TEXT[b.front.method] ?? b.front.method})`,
         });
     }
     if (a.exits && b.exits && a.exits.registered !== b.exits.registered)
