@@ -215,10 +215,9 @@ export function planScene(
   // What stands on the plot line, on the street side.
   for (const r of boundaryRuns(smoothedPieces(ctx.boundary?.pieces ?? []))) {
     if (r.side !== "street") continue;
-    const a = toLocal(f, r.a);
-    const b = toLocal(f, r.b);
+    const pts = r.points.map((q) => toLocal(f, q));
     parts.push(
-      `<line x1="${tx(a[0]).toFixed(1)}" y1="${ty(a[1]).toFixed(1)}" x2="${tx(b[0]).toFixed(1)}" y2="${ty(b[1]).toFixed(1)}" stroke="${LINE_COLORS[r.state]}" stroke-width="${r.state === "open" ? 3 : 6}" stroke-linecap="butt" ${r.state === "open" || r.state === "unknown" ? 'stroke-dasharray="7 5"' : ""}><title>${esc(`${LINE_TEXT[r.state]}, ${r.lengthM} m${r.heightM !== null && r.state !== "exit" ? `, up to ${r.heightM} m high` : ""}`)}</title></line>`,
+      `<polyline points="${pts.map((q) => `${tx(q[0]).toFixed(1)},${ty(q[1]).toFixed(1)}`).join(" ")}" fill="none" stroke="${LINE_COLORS[r.state]}" stroke-width="${r.state === "open" ? 3 : 6}" stroke-linecap="butt" stroke-linejoin="round" ${r.state === "open" || r.state === "unknown" ? 'stroke-dasharray="7 5"' : ""}><title>${esc(`${LINE_TEXT[r.state]}, ${r.lengthM} m${r.heightM !== null && r.state !== "exit" ? `, up to ${r.heightM} m high` : ""}`)}</title></polyline>`,
     );
   }
 

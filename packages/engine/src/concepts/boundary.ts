@@ -287,8 +287,10 @@ export function boundaryPieces(input: BoundaryInput, s = BOUNDARY_SETTINGS): Bou
 }
 
 /** Joins consecutive pieces with the same side and state (for drawing and describing). */
-export function boundaryRuns(pieces: BoundaryPiece[]): (BoundaryPiece & { lengthM: number })[] {
-  const out: (BoundaryPiece & { lengthM: number })[] = [];
+export function boundaryRuns(
+  pieces: BoundaryPiece[],
+): (BoundaryPiece & { lengthM: number; points: Point[] })[] {
+  const out: (BoundaryPiece & { lengthM: number; points: Point[] })[] = [];
   for (const p of pieces) {
     const last = out[out.length - 1];
     if (
@@ -298,9 +300,11 @@ export function boundaryRuns(pieces: BoundaryPiece[]): (BoundaryPiece & { length
       Math.hypot(last.b[0] - p.a[0], last.b[1] - p.a[1]) < 1e-6
     ) {
       last.b = p.b;
+      // The run follows the plot line round its corners (a, b alone would cut across them).
+      last.points.push(p.b);
       last.lengthM += length(p.a, p.b);
       if (p.heightM !== null) last.heightM = Math.max(last.heightM ?? 0, p.heightM);
-    } else out.push({ ...p, lengthM: length(p.a, p.b) });
+    } else out.push({ ...p, lengthM: length(p.a, p.b), points: [p.a, p.b] });
   }
   for (const r of out) r.lengthM = Math.round(r.lengthM * 10) / 10;
   return out;

@@ -163,7 +163,7 @@ export function drawPlan(ctx: PlotContext, layers: Layers, selected?: string): s
     for (const r of boundaryRuns(smoothedPieces(ctx.boundary?.pieces ?? []))) {
       if (r.side !== "street" || r.state === "exit") continue;
       parts.push(
-        `<line x1="${tx(r.a[0]).toFixed(1)}" y1="${ty(r.a[1]).toFixed(1)}" x2="${tx(r.b[0]).toFixed(1)}" y2="${ty(r.b[1]).toFixed(1)}" stroke="${LINE_COLORS[r.state]}" stroke-width="${r.state === "open" ? 3 : 6}" pointer-events="none"${r.state === "open" || r.state === "unknown" ? ' stroke-dasharray="7 5"' : ""}/>`,
+        `<polyline points="${r.points.map((q) => `${tx(q[0]).toFixed(1)},${ty(q[1]).toFixed(1)}`).join(" ")}" fill="none" stroke="${LINE_COLORS[r.state]}" stroke-width="${r.state === "open" ? 3 : 6}" stroke-linejoin="round" pointer-events="none"${r.state === "open" || r.state === "unknown" ? ' stroke-dasharray="7 5"' : ""}/>`,
       );
     }
   }
