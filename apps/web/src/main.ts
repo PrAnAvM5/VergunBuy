@@ -3,6 +3,7 @@
  *              #/check/<postcode>/<number>[/<addition>][?demo][&dev]
  *              #/check/...?rec=<batch>/<home>   a validation home, replayed as recorded
  *              #/examples    all recorded validation homes
+ *              #/pilot       Pilot dashboard: what a change moved on the 60 homes
  *              #/system      System view of the last run
  *              #/about       How it works
  * Hash routes work on GitHub Pages without server configuration.
@@ -11,6 +12,7 @@ import "./style.css";
 import { renderAbout } from "./views/about.ts";
 import { disposeScene, renderCheck } from "./views/check.ts";
 import { renderExamples } from "./views/examples.ts";
+import { renderPilot } from "./views/pilot.ts";
 import { rememberExample } from "./remember.ts";
 import { renderHome } from "./views/home.ts";
 import { renderSystem } from "./views/system.ts";
@@ -65,6 +67,7 @@ function route(): void {
       params.get("rec") ?? undefined,
     );
   } else if (page === "examples") void renderExamples(app);
+  else if (page === "pilot") void renderPilot(app);
   else if (page === "system") renderSystem(app);
   else if (page === "about") renderAbout(app);
   else renderHome(app);

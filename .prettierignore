@@ -10,3 +10,4 @@ reports
 apps/web/public/validation
 fixtures
 apps/web/public/rules
+apps/web/public/pilot

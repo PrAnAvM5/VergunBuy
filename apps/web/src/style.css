@@ -993,3 +993,141 @@ details.card > summary .sumnote {
   padding: 3px 0;
   break-inside: avoid;
 }
+
+/* Pilot dashboard */
+.pd {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.pd-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.pd-head h1 {
+  margin: 0 0 4px;
+}
+.pd-pick {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pd-pick label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: var(--ink-2);
+  gap: 4px;
+}
+.pd-pick select {
+  max-width: 340px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+}
+.pd-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.pd-kpi,
+.pd-trend {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+.pd-kt {
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.pd-kv {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 2px 0;
+}
+.pd-d {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.pd-d.up {
+  color: var(--ok);
+}
+.pd-d.down {
+  color: var(--bad);
+}
+.pd-trends {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.pd-sec {
+  margin-bottom: 12px;
+}
+.pd-sec h2 {
+  display: inline;
+  font-size: 17px;
+  margin: 0 8px 0 0;
+}
+.pd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+.pd-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.pd-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--line);
+  padding: 4px 6px;
+}
+.pd-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 4px 6px;
+  vertical-align: top;
+}
+.pd-table .num {
+  text-align: right;
+  white-space: nowrap;
+}
+.pd-barcell {
+  width: 90px;
+}
+.pd-bar {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  margin: 1px 0;
+}
+.pd-bar.a {
+  background: var(--line);
+}
+.pd-bar.b {
+  background: var(--accent);
+}
+.pd-alerts {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+}
+.pd-alerts li {
+  margin: 4px 0;
+}
+.pd-alerts li.bad {
+  color: var(--bad);
+}
+.pd-alerts li.warn {
+  color: var(--warn);
+}
