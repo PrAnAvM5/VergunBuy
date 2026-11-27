@@ -260,7 +260,7 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
       <span><i class="ln" style="border-color:#1f6fd1;background:#1f6fd122"></i>car's path</span>
       <span><i class="ln dash" style="border-color:#4c8a3a"></i>back yard</span>
       <span><i class="sw" style="background:${LAMP_COLOR};border-radius:50%"></i>lamp post</span>
-      <span class="muted">Drag to move · corner to resize · click a shrub to mark it cleared · plot line and garden colours as in the 2D plan</span>
+      <span class="muted">Drag to move · corner to resize · click any object except a tree to remove it · plot line and garden colours as in the 2D plan</span>
     </div>
     <div id="cp-verdict"></div>`;
   const svg = el.querySelector<SVGSVGElement>("#cp-svg")!;
