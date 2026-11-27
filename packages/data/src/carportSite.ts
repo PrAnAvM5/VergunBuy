@@ -263,6 +263,7 @@ export function carportSite(
             b: toLocal(f, p.b),
             side: p.side,
             state: p.state,
+            ...(p.kerb ? { kerb: p.kerb, kerbStepM: p.kerbStepM ?? null } : {}),
           }))
         : null,
       obstacles,

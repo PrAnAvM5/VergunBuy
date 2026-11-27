@@ -16,7 +16,7 @@ import { rateLimit } from "./rateLimit.ts";
 import { createDso, DsoNotConfigured, RdPoint } from "./dso.ts";
 import { createRp, PlotPolygon } from "./rp.ts";
 import { createPermits, PermitQuery } from "./permits.ts";
-import { createAhn, EchoQuery } from "./ahn.ts";
+import { createAhn, EchoQuery, GroundQuery } from "./ahn.ts";
 
 export interface AppDeps {
   dso?: ReturnType<typeof createDso>;
@@ -59,6 +59,42 @@ export function createApp(deps: AppDeps) {
   app.use("/permits", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
   const ahn = deps.ahn ?? createAhn();
   app.use("/ahn/*", rateLimit(deps.rateLimit ?? { limit: 20, windowMs: 60_000 }));
+
+  /**
+   * Ground points (class 2) in narrow strips, e.g. both sides of a kerb: x, y as cm offsets from
+   * (ox, oy), z in mm. Body: { polygons } in RD New.
+   */
+  app.post("/ahn/ground", async (c) => {
+    const parsed = GroundQuery.safeParse(await c.req.json().catch(() => null));
+    if (!parsed.success)
+      return c.json(
+        {
+          error: {
+            code: "INVALID_INPUT",
+            message:
+              "Give polygons: [[[x, y], …], …] in RD New, within 220 m and at most 1500 m² in all.",
+          },
+        },
+        400,
+      );
+    try {
+      const data = await ahn.ground(parsed.data.polygons);
+      return c.json({ data, requestId: c.get("requestId") });
+    } catch (err) {
+      log({ level: "error", path: "/ahn/ground", message: String(err).slice(0, 300) });
+      return c.json(
+        {
+          error: {
+            code: "UPSTREAM_UNAVAILABLE",
+            message: "The laser point cloud could not be read right now.",
+            detail: String(err).slice(0, 200),
+          },
+          requestId: c.get("requestId"),
+        },
+        502,
+      );
+    }
+  });
 
   /**
    * Laser-scan echoes around a plot: per 0.5 m cell, non-ground points and how many came from

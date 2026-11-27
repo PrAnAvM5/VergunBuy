@@ -22,6 +22,8 @@ export function fixtureKey(url: URL): string | undefined {
     return "vergunbuy/permits";
   if (url.hostname === "vergunbuy-inky.vercel.app" && url.pathname === "/api/ahn/echoes")
     return "vergunbuy/ahn-echoes";
+  if (url.hostname === "vergunbuy-inky.vercel.app" && url.pathname === "/api/ahn/ground")
+    return "vergunbuy/ahn-ground";
   if (url.hostname === "service.pdok.nl" && url.pathname.includes("/luchtfotocir/"))
     return `cir/${url.searchParams.get("layers") ?? "?"}`;
   const nwb = /\/rws\/nationaal-wegenbestand-wegen\/ogc\/v\d+\/collections\/([^/]+)\/items/.exec(

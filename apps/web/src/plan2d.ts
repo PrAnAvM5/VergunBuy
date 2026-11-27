@@ -12,6 +12,14 @@ const H = 620;
 
 /** Colours of the street-side plot line by what stands on it. */
 /** A lamp post (yellow dot) or another pole, bollard or cabinet (small dark square) in the street. */
+/** Kerb line colours (laser): raised kerb, lowered for a driveway, unclear. */
+export const KERB_COLORS = { raised: "#5b6470", lowered: "#f2b134", unclear: "#b8bec7" } as const;
+export const KERB_TEXT = {
+  raised: "Raised kerb",
+  lowered: "Lowered kerb (driveway crossing)",
+  unclear: "Kerb unclear (parked car, too few points)",
+} as const;
+
 export function streetObjectSvg(x: number, y: number, kind: string): string {
   const t = `<title>${esc(kind[0]!.toUpperCase() + kind.slice(1))} (map register)</title>`;
   return kind === "lamp post"
@@ -210,6 +218,17 @@ export function planScene(
     const p = toLocal(f, o.at);
     if (p[0] < minX || p[0] > maxX || p[1] < minY || p[1] > maxY) continue;
     parts.push(streetObjectSvg(tx(p[0]), ty(p[1]), o.kind));
+  }
+
+  // Kerb height along the road (laser): raised, lowered (a driveway crossing), unclear.
+  for (const w of ctx.kerb?.windows ?? []) {
+    const a = toLocal(f, w.a);
+    const b = toLocal(f, w.b);
+    if (Math.max(a[1], b[1]) < minY || Math.min(a[1], b[1]) > maxY) continue;
+    const step = w.stepM === null ? "too few laser points" : `step ${Math.round(w.stepM * 100)} cm`;
+    parts.push(
+      `<line x1="${tx(a[0]).toFixed(1)}" y1="${ty(a[1]).toFixed(1)}" x2="${tx(b[0]).toFixed(1)}" y2="${ty(b[1]).toFixed(1)}" stroke="${KERB_COLORS[w.state]}" stroke-width="${w.state === "lowered" ? 5 : 3}" stroke-linecap="butt" ${w.state === "unclear" ? 'stroke-dasharray="3 3"' : ""}><title>${esc(`${KERB_TEXT[w.state]} (${step})`)}</title></line>`,
+    );
   }
 
   // What stands on the plot line, on the street side.

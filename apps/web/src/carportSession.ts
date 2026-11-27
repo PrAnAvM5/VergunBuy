@@ -73,6 +73,8 @@ export interface Session {
   anim: number;
   /** Scanned shrubs on the plot the person marked as cleared (obstacle ids). */
   cleared: Set<string>;
+  /** The person checked on site that the kerb is lowered where the car crosses. */
+  kerbConfirmed: boolean;
 }
 
 const sessions = new WeakMap<PlotContext, Promise<Session | { gate: string }>>();
@@ -119,13 +121,14 @@ async function build(ctx: PlotContext): Promise<Session | { gate: string }> {
     moving: null,
     anim: 0,
     cleared: new Set(),
+    kerbConfirmed: false,
   };
   refreshOptions(s);
   return s;
 }
 
 function refreshOptions(s: Session): void {
-  s.opts = options(s.prep, s.size);
+  s.opts = options(s.prep, s.size, 6, { kerbConfirmed: s.kerbConfirmed });
   select(s, s.opts.length ? 0 : null, false);
   if (!s.opts.length) {
     // Nothing to offer: still put a carport in the garden, so the user can drag it and see why.
@@ -157,7 +160,7 @@ export function select(s: Session, i: number | null, tell = true): void {
   s.message = null;
   const o = i === null ? undefined : s.opts[i];
   s.pl = o ? o.placement : null;
-  s.verdict = o ? (s.cleared.size ? reevaluate(s, o.placement) : o.verdict) : null;
+  s.verdict = o ? reevaluate(s, o.placement) : null;
   if (tell) notify(s);
 }
 
@@ -185,7 +188,7 @@ function siteWithout(s: Session): CarportSite {
 
 /** Checks a spot; notes what the person chose to remove. */
 function reevaluate(s: Session, pl: Placement): CarportVerdict {
-  const v = evaluate(s.prep, pl, { cleared: s.cleared });
+  const v = evaluate(s.prep, pl, { cleared: s.cleared, kerbConfirmed: s.kerbConfirmed });
   const gone = (s.ctx.obstacles?.obstacles ?? []).filter((o) => s.cleared.has(o.id));
   if (gone.length) {
     const tall = gone.some((o) => o.kind !== "medium");
@@ -228,6 +231,22 @@ export function clearAll(s: Session, on: boolean): void {
     on ? (s.ctx.obstacles?.obstacles ?? []).filter((o) => clearable(s, o.id)).map((o) => o.id) : [],
   );
   void rebuild(s, true);
+}
+
+/** "The kerb is lowered here, I checked": the spots are found again with that. */
+export function setKerbConfirmed(s: Session, on: boolean): void {
+  stopAnim(s);
+  s.kerbConfirmed = on;
+  const custom = s.sel === null ? s.pl : null;
+  refreshOptions(s);
+  if (custom) place(s, custom);
+  notify(s);
+}
+
+/** Whether the "kerb is lowered" tick matters for this spot. */
+export function kerbTickUseful(s: Session): boolean {
+  const via = s.verdict?.access.via;
+  return s.kerbConfirmed || via === "probable" || via === "unregistered" || via === "new-exit";
 }
 
 /** The carport moved or resized by hand. */
@@ -403,6 +422,11 @@ export function controlsHtml(s: Session): string {
           : ""
       }
     </div>
+    ${
+      kerbTickUseful(s)
+        ? `<div class="cp-tools"><label class="small cp-kerb" title="Look at the kerb where the yellow crossing meets the road: if it is lowered to road level (a driveway crossing), tick this."><input type="checkbox" data-act="kerb" ${s.kerbConfirmed ? "checked" : ""}> The kerb is lowered where the car crosses (I checked on site)</label></div>`
+        : ""
+    }
     <div class="cp-tools cp-opts">
       ${
         s.opts.length
@@ -472,6 +496,11 @@ export function bindControls(root: HTMLElement, s: Session): void {
   root
     .querySelector('[data-act="clear-all"]')
     ?.addEventListener("click", () => clearAll(s, s.cleared.size === 0));
+  root
+    .querySelector<HTMLInputElement>('[data-act="kerb"]')
+    ?.addEventListener("change", (ev) =>
+      setKerbConfirmed(s, (ev.target as HTMLInputElement).checked),
+    );
   root.querySelector('[data-act="rotate"]')?.addEventListener("click", () => {
     if (s.pl) place(s, { ...s.pl, rotation: (s.pl.rotation + 90) % 360 });
   });

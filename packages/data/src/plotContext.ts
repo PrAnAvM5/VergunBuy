@@ -18,6 +18,12 @@
  *  - Vegetation is typed: points "boom" = tree, areas "haag" = hedge; other types exist.
  */
 import {
+  kerbForPieces,
+  kerbLines,
+  kerbProfile,
+  kerbStrips,
+  outwardNormal,
+  type KerbWindow,
   area,
   assessAccess,
   centroid,
@@ -78,6 +84,7 @@ import { fetchHeights, type BuildingHeights } from "./sources/threedbag.ts";
 import { fetchHeightGrid } from "./sources/ahn.ts";
 import {
   fetchEchoes,
+  fetchGround,
   fetchMapBarriers,
   fetchNdvi,
   fetchStreetObjects,
@@ -240,6 +247,11 @@ export interface PlotContext {
   };
   /** Lamp posts, poles, bollards and cabinets in the street near the plot (BGT); null: not loaded. */
   streetObjects: StreetObject[] | null;
+  /**
+   * Kerb height along the road in front of the plot (laser ground points), 0.5 m windows.
+   * Also written onto the street-side boundary pieces (kerb, kerbStepM). Absent: not measured.
+   */
+  kerb?: { version: string; windows: KerbWindow[] };
   /** Zoning plans, monuments and protected views, and the rule exclusions they trigger. */
   legal: LegalFacts & { exclusions: ExclusionResult[] };
   /** Published permit applications and decisions for this home (official publications). */
@@ -255,6 +267,16 @@ export interface PlotContext {
   /** Per-domain data status; checks that need a non-complete domain cannot pass. */
   quality: DataQuality;
 }
+
+/** BGT road functions with a kerb along their edge (carriageway and parking). */
+const KERB_ROADS = new Set([
+  "rijbaan lokale weg",
+  "rijbaan regionale weg",
+  "rijbaan autoweg",
+  "parkeervlak",
+]);
+/** How far from the plot's street side a kerb is looked for (m). */
+const KERB_NEAR_M = 12;
 
 const IN_USE = new Set([
   "Pand in gebruik",
@@ -1535,6 +1557,76 @@ export async function buildPlotContext(
       "Lamp posts and other street objects could not be loaded; the car route may pass through one.",
     );
 
+  // 7a. Kerb height in front of the plot: a lowered kerb is a driveway crossing (laser scan).
+  let kerb: PlotContext["kerb"];
+  const streetPieces = boundary?.pieces.filter((p) => p.side === "street") ?? [];
+  if (publicAreas && streetPieces.length) {
+    try {
+      kerb = await tracer.step(
+        "kerb",
+        "Kerb height in front of the plot: raised or lowered for a driveway (laser scan)",
+        async (ctx) => {
+          const roads = publicAreas!
+            .filter((a) => a.kind === "road" && KERB_ROADS.has(a.label))
+            .map((a) => a.outline);
+          const beside = [
+            ...publicAreas!.filter(
+              (a) => a.kind !== "water" && !KERB_ROADS.has(a.label) && a.label !== "woonerf",
+            ),
+            ...openGround,
+          ].map((a) => a.outline);
+          const near = streetPieces.map(
+            (p) => [(p.a[0] + p.b[0]) / 2, (p.a[1] + p.b[1]) / 2] as Point,
+          );
+          const all = kerbLines(roads, beside, near, KERB_NEAR_M);
+          const kl = [...all]
+            .sort(
+              (p, q) =>
+                Math.hypot(q.b[0] - q.a[0], q.b[1] - q.a[1]) -
+                Math.hypot(p.b[0] - p.a[0], p.b[1] - p.a[1]),
+            )
+            .slice(0, 20);
+          if (!kl.length) {
+            ctx.summarize("no kerb between road and pavement near the plot");
+            return { version: "", windows: [] };
+          }
+          const g = await fetchGround(
+            kl.flatMap((k) => kerbStrips(k)),
+            ctx,
+            fetchFn,
+          ).catch(() => null);
+          if (!g) {
+            ctx.degrade("laser ground points could not be loaded");
+            return undefined;
+          }
+          const windows = kerbProfile(kl, g.points);
+          const hits = kerbForPieces(
+            streetPieces.map((p) => ({
+              a: p.a,
+              b: p.b,
+              out: outwardNormal(plot.outline, p.a, p.b),
+            })),
+            windows,
+            KERB_NEAR_M,
+          );
+          streetPieces.forEach((p, i) => {
+            const h = hits[i];
+            if (!h) return;
+            p.kerb = h.state;
+            p.kerbStepM = h.stepM;
+          });
+          const n = (st: string) => windows.filter((w) => w.state === st).length * 0.5;
+          ctx.summarize(
+            `${kl.length} kerb lines, ${g.points.length} ground points (${g.version}): ${n("raised")} m raised, ${n("lowered")} m lowered, ${n("unclear")} m unclear`,
+          );
+          return { version: g.version, windows };
+        },
+      );
+    } catch {
+      kerb = undefined;
+    }
+  }
+
   // 7b. Legal facts: old zoning plans, monuments, protected views. Never critical: anything
   // missing makes the affected exclusions "unknown", which can never give a green result.
   const legal = await gatherLegal();
@@ -1728,6 +1820,7 @@ export async function buildPlotContext(
     ...(obstacles ? { obstacles } : {}),
     ...(boundary ? { boundary } : {}),
     streetObjects,
+    ...(kerb ? { kerb } : {}),
     legal,
     permits,
     measurements,

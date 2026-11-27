@@ -173,9 +173,13 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
         const label =
           v.access.via === "existing"
             ? "existing exit"
-            : v.access.via === "probable"
-              ? "unregistered way in"
-              : "new exit (exit permit)";
+            : v.access.via === "kerb"
+              ? "lowered kerb (laser)"
+              : v.access.via === "confirmed"
+                ? "kerb confirmed by you"
+                : v.access.via === "probable"
+                  ? "unregistered way in"
+                  : "new exit (exit permit)";
         parts.push(
           line(
             a,

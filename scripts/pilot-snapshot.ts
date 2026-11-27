@@ -176,6 +176,26 @@ async function home(rec: Json, file: string): Promise<Json> {
       outsideCells: ctx.boundary?.outside?.length ?? 0,
       streetObjects: ctx.streetObjects?.length ?? null,
     },
+    // Kerb (laser ground points): per street-side piece, and against registered exits
+    // (calibration: a registered exit should read lowered, elsewhere raised).
+    kerb: ctx.kerb
+      ? {
+          windows: ctx.kerb.windows.length,
+          byState: lenBy(
+            ctx.kerb.windows,
+            (w) => w.state,
+            (w) => dist(w.a, w.b),
+          ),
+          pieces: lenBy(
+            street.filter((p) => p.kerb),
+            (p) => `${p.state === "exit" ? "exit" : "other"}-${p.kerb}`,
+            (p) => dist(p.a, p.b),
+          ),
+          steps: ctx.kerb.windows
+            .filter((w) => w.stepM !== null)
+            .map((w) => Math.round(w.stepM! * 100)),
+        }
+      : null,
     quality: Object.fromEntries(Object.entries(ctx.quality).map(([k, q]) => [k, q.status])),
     steps: Object.fromEntries(t.steps.map((s) => [s.id, s.status])),
     ms: { context: Math.round(ctxMs) },

@@ -8,7 +8,14 @@ import { smoothedPieces } from "./plotLine.ts";
 import type { PlotContext } from "@vergunbuy/data";
 import { at, boundaryRuns, type Polygon } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc } from "./format.ts";
-import { LAMP_COLOR, LINE_COLORS, POLE_COLOR, SOLID_COLOR, streetObjectSvg } from "./plan2d.ts";
+import {
+  KERB_COLORS,
+  LAMP_COLOR,
+  LINE_COLORS,
+  POLE_COLOR,
+  SOLID_COLOR,
+  streetObjectSvg,
+} from "./plan2d.ts";
 
 export interface Layers {
   context: boolean;
@@ -269,6 +276,11 @@ export function legend(view: "map" | "plan" = "plan"): string {
       sw(LINE_COLORS.barrier, "Fence or wall", "line"),
       sw(LINE_COLORS.unknown, "Unclear", "dash"),
       sw(LINE_COLORS.exit, "Registered exit", "line"),
+    ]),
+    group("Kerb along the road (laser scan)", [
+      sw(KERB_COLORS.raised, "Raised kerb", "line"),
+      sw(KERB_COLORS.lowered, "Lowered kerb (driveway)", "line"),
+      sw(KERB_COLORS.unclear, "Unclear", "dash"),
     ]),
   ].join("");
 }

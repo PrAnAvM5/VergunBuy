@@ -89,6 +89,8 @@ async function load(id: string): Promise<Snapshot> {
 
 const VIA_TEXT: Record<string, string> = {
   existing: "Registered exit",
+  kerb: "Lowered kerb (laser)",
+  confirmed: "Kerb confirmed",
   probable: "Unregistered way in",
   unregistered: "Unregistered way in",
   "new-exit": "New exit (permit)",
@@ -202,7 +204,13 @@ function alerts(A: Snapshot, B: Snapshot): Alert[] {
     // Never: green without a registered exit (zero false greens).
     for (const size of ["single", "double"] as const) {
       const f = b.carport?.[size].first;
-      if (f?.colour === "green" && f.via !== "existing")
+      if (f?.colour === "green" && f.via === "kerb")
+        out.push({
+          level: "warn",
+          id,
+          text: `${name}: ${size} spot #1 is green through a lowered kerb found by the laser (no registered exit): check on the aerial photo`,
+        });
+      else if (f?.colour === "green" && f.via !== "existing")
         out.push({
           level: "bad",
           id,
@@ -334,14 +342,14 @@ function render(root: HTMLElement, index: IndexEntry[], A: Snapshot, B: Snapshot
           c === "green" ? true : c === "amber" ? null : false,
         ] as [string, number, number, boolean | null],
     );
-  const viaKeys = ["existing", "probable", "new-exit", "through-barrier", "none"];
+  const viaKeys = ["existing", "kerb", "probable", "new-exit", "through-barrier", "none"];
   const viaRows = viaKeys.map(
     (k) =>
       [
         VIA_TEXT[k]!,
         ha.filter((h) => (firstVia(h) === "unregistered" ? "probable" : firstVia(h)) === k).length,
         hb.filter((h) => (firstVia(h) === "unregistered" ? "probable" : firstVia(h)) === k).length,
-        k === "existing" ? true : null,
+        k === "existing" || k === "kerb" ? true : null,
       ] as [string, number, number, boolean | null],
   );
   const greens = (s: Snapshot) =>

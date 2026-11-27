@@ -6,7 +6,7 @@ vi.mock("copc", () => {
   const pts = [
     { X: 81000.2, Y: 385000.2, NumberOfReturns: 3, Classification: 1 },
     { X: 81000.3, Y: 385000.3, NumberOfReturns: 1, Classification: 1 },
-    { X: 81000.3, Y: 385000.3, NumberOfReturns: 1, Classification: 2 },
+    { X: 81000.3, Y: 385000.3, NumberOfReturns: 1, Classification: 2, Z: 1.234 },
     { X: 81500, Y: 385500, NumberOfReturns: 1, Classification: 1 },
   ];
   return {
@@ -34,7 +34,7 @@ vi.mock("copc", () => {
   };
 });
 
-const { createAhn, EchoQuery } = await import("../src/ahn.ts");
+const { createAhn, EchoQuery, GroundQuery } = await import("../src/ahn.ts");
 
 describe("AHN echoes", () => {
   it("rejects boxes that are too big or outside the Netherlands", () => {
@@ -59,5 +59,26 @@ describe("AHN echoes", () => {
     expect(g.n[4]).toBe(2);
     expect(g.multi[4]).toBe(1);
     expect(g.points).toBe(2);
+  });
+});
+
+describe("AHN ground points", () => {
+  it("returns only ground points inside the strips", async () => {
+    const fetchFn = (async (url: string) =>
+      new Response(null, {
+        status: String(url).includes("AHN5") ? 200 : 404,
+      })) as unknown as typeof fetch;
+    const ahn = createAhn({ fetchFn });
+    const strip: [number, number][] = [
+      [81000, 385000],
+      [81001, 385000],
+      [81001, 385001],
+      [81000, 385001],
+    ];
+    expect(GroundQuery.safeParse({ polygons: [strip] }).success).toBe(true);
+    const g = await ahn.ground([strip]);
+    expect(g.x.length).toBe(1);
+    expect(g.ox + g.x[0]! / 100).toBeCloseTo(81000.3, 1);
+    expect(g.z[0]).toBe(1234);
   });
 });

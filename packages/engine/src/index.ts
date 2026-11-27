@@ -15,3 +15,4 @@ export * from "./concepts/boundary.ts";
 export * from "./concepts/legal.ts";
 export * from "./carport.ts";
 export * from "./vehicle.ts";
+export * from "./concepts/kerb.ts";

@@ -48,6 +48,43 @@ export async function fetchEchoes(
   return body.data;
 }
 
+const GroundAnswer = z.object({
+  data: z.object({
+    version: z.string(),
+    ox: z.number(),
+    oy: z.number(),
+    x: z.array(z.number()),
+    y: z.array(z.number()),
+    z: z.array(z.number()),
+  }),
+});
+
+/** Ground-classified laser points (class 2) inside the given strips, in metres (RD New, NAP). */
+export async function fetchGround(
+  polygons: Point[][],
+  ctx: StepContext,
+  fetchFn?: FetchFn,
+): Promise<{ version: string; points: { x: number; y: number; z: number }[] }> {
+  const body = await getJson({
+    url: new URL(`${VERGUNBUY_API}/api/ahn/ground`),
+    schema: GroundAnswer,
+    ctx,
+    ...(fetchFn ? { fetchFn } : {}),
+    postBody: {
+      polygons: polygons.map((p) =>
+        p.map((q) => [Math.round(q[0] * 100) / 100, Math.round(q[1] * 100) / 100]),
+      ),
+    },
+    timeoutMs: 55_000,
+    serviceName: "the laser point cloud (AHN, via our server)",
+  });
+  const d = body.data;
+  return {
+    version: d.version,
+    points: d.x.map((x, i) => ({ x: d.ox + x / 100, y: d.oy + d.y[i]! / 100, z: d.z[i]! / 1000 })),
+  };
+}
+
 export async function fetchNdvi(
   bbox: Bbox,
   ctx: StepContext,

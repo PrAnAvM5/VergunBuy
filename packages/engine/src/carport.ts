@@ -118,7 +118,17 @@ export interface CarportSite {
     objects: { at: Point; kind: string }[];
   } | null;
   /** What stands on the plot line, in 0.5 m pieces (local); null without the height scan. */
-  boundary: { a: Point; b: Point; side: "street" | "other"; state: BoundaryState }[] | null;
+  boundary:
+    | {
+        a: Point;
+        b: Point;
+        side: "street" | "other";
+        state: BoundaryState;
+        /** Kerb straight out from the piece (laser): lowered = a driveway crossing exists. */
+        kerb?: "raised" | "lowered" | "unclear";
+        kerbStepM?: number | null;
+      }[]
+    | null;
   /** Height-scan obstacle cells (local centres) with heights; null when unavailable. */
   obstacles: {
     /** tree: part of the crown of something 2.5 m or higher (blocks cars, cannot be built on). */
@@ -316,6 +326,11 @@ export interface VehicleWorlds {
   car: Car;
   params: VehicleParams;
   existing: Lattice | null;
+  /**
+   * Registered exits plus street-side stretches where the laser shows a lowered kerb (a
+   * driveway crossing that exists on the street); null when no lowered kerb was found.
+   */
+  kerb: Lattice | null;
   /** Existing exits plus open street-side stretches; null when there are none beyond the exits. */
   any: Lattice | null;
   /** Everything on the street side, including hedges, fences and walls. */
@@ -474,6 +489,7 @@ export function vehicleWorlds(
   let existingGates: Gate[];
   let openGates: Gate[];
   let closedGates: Gate[];
+  let kerbGates: Gate[] = [];
   if (site.boundary) {
     // Registered exits, and on plots without one the probable way in (road contact or a
     // pavement crossing where a car can reach the plot line), are tried first.
@@ -484,6 +500,11 @@ export function vehicleWorlds(
         : site.access.entries.map(([a, b]) => ({ a, b, kind: "existing" as const }))),
     ];
     openGates = gatesFrom(site.boundary, ["open"], "frontage");
+    kerbGates = gatesFrom(
+      site.boundary.filter((p) => p.kerb === "lowered"),
+      ["open", "exit"],
+      "existing",
+    );
     closedGates = gatesFrom(site.boundary, ["hedge", "barrier", "unknown"], "frontage");
   } else {
     existingGates =
@@ -529,6 +550,9 @@ export function vehicleWorlds(
     car,
     params,
     existing: world(existingGates),
+    kerb: kerbGates.length
+      ? world([...gatesFrom(site.boundary ?? [], ["exit"], "existing"), ...kerbGates])
+      : null,
     any: openGates.length ? world([...existingGates, ...openGates]) : null,
     opened: closedGates.length ? world([...existingGates, ...openGates, ...closedGates]) : null,
   };
@@ -815,7 +839,12 @@ export function evaluate(
           : `Nothing 1 m or higher stands here${scanNote}${clearedHere ? `, once the ${fmt(clearedHere * cellM2)} m² of shrubs you marked are cleared` : ""}.`,
   });
 
-  const access = carAccess(prep, pl, cleared);
+  const found = carAccess(prep, pl, cleared);
+  const access: CarAccess =
+    opts.kerbConfirmed &&
+    (found.via === "probable" || found.via === "unregistered" || found.via === "new-exit")
+      ? { ...found, via: "confirmed" }
+      : found;
   const car = prep.vehicle.car;
   add({
     id: "car-fit",
@@ -861,7 +890,7 @@ export function evaluate(
       ? "unknown"
       : noGates
         ? "unknown"
-        : access.via === "existing" && !conditions.length
+        : access.via && EXISTING_WAY_IN.has(access.via) && !conditions.length
           ? "pass"
           : access.via
             ? "unknown"
@@ -873,15 +902,19 @@ export function evaluate(
           ? `No way onto the plot was found for a car. ${site.access.note}`
           : access.via === "existing"
             ? `Drives in through the existing exit ${access.bays.map((b) => b.route!.how).join(" / ")} (turning radius ${fmt(car.rt)} m, ${fmt(car.clr)} m clear of walls and trees all the way).`
-            : access.via === "new-exit"
-              ? "Not through the existing exit, but through a new exit from the street. A new exit needs an exit permit (uitwegvergunning) from the municipality."
-              : access.via === "probable"
-                ? "Drives in where a car can already reach the plot line (no exit is registered here, so check whether the kerb is lowered or an exit permit is needed)."
-                : access.via === "unregistered"
-                  ? `A car can drive in from the street, but no exit is registered here, so a new exit needs an exit permit (uitwegvergunning) unless an older one already exists: ${site.access.note}`
-                  : access.via === "through-barrier"
-                    ? "A car can only get in through a hedge, fence or wall on the street side."
-                    : `A car cannot get there: ${blockers.some((b) => b.blocker === "car") ? "the other bay's car is in the way" : blockers.some((b) => b.blocker === "post") ? "a carport post is in the way" : `the house, buildings or trees leave no path with ${fmt(car.clr)} m clearance and a ${fmt(car.rt)} m turning radius`}.`,
+            : access.via === "kerb"
+              ? `Drives in where the kerb is lowered (laser scan: the pavement edge is at road level there, so a driveway crossing exists even though the map shows none) ${access.bays.map((b) => b.route!.how).join(" / ")}.`
+              : access.via === "confirmed"
+                ? `Drives in ${access.bays.map((b) => b.route!.how).join(" / ")}, where you confirmed the kerb is lowered. The crossing is drawn on the plan: check it is the spot you looked at.`
+                : access.via === "new-exit"
+                  ? "Not through the existing exit, but through a new exit from the street. A new exit needs an exit permit (uitwegvergunning) from the municipality."
+                  : access.via === "probable"
+                    ? "Drives in where a car can already reach the plot line (no exit is registered here, so check whether the kerb is lowered or an exit permit is needed)."
+                    : access.via === "unregistered"
+                      ? `A car can drive in from the street, but no exit is registered here, so a new exit needs an exit permit (uitwegvergunning) unless an older one already exists: ${site.access.note}`
+                      : access.via === "through-barrier"
+                        ? "A car can only get in through a hedge, fence or wall on the street side."
+                        : `A car cannot get there: ${blockers.some((b) => b.blocker === "car") ? "the other bay's car is in the way" : blockers.some((b) => b.blocker === "post") ? "a carport post is in the way" : `the house, buildings or trees leave no path with ${fmt(car.clr)} m clearance and a ${fmt(car.rt)} m turning radius`}.`,
       ...conditions,
     ].join(" "),
   });
@@ -1171,6 +1204,29 @@ function verdictFrom(
 // Car access for one placement
 // ---------------------------------------------------------------------------------------------
 
+/**
+ * How the car gets in. existing: a registered exit; kerb: where the laser shows a lowered kerb
+ * (a driveway crossing exists on the street, even if the map does not show it); confirmed: the
+ * person checked on site that the kerb is lowered where the car crosses; probable, new-exit,
+ * unregistered, through-barrier: see CarAccess.via.
+ */
+export type Via =
+  "existing" | "kerb" | "confirmed" | "probable" | "new-exit" | "unregistered" | "through-barrier";
+
+/** Ways in that exist on the street (no exit permit needed for the crossing). */
+export const EXISTING_WAY_IN: ReadonlySet<Via> = new Set(["existing", "kerb", "confirmed"]);
+
+/** Order of preference between ways in (lower first). */
+export const VIA_RANK: Record<Via, number> = {
+  existing: 0,
+  kerb: 0,
+  confirmed: 0,
+  probable: 1,
+  "new-exit": 2,
+  unregistered: 2,
+  "through-barrier": 3,
+};
+
 export interface CarAccess {
   rect: CarportRect;
   fit: { fits: boolean; gapM: number };
@@ -1179,7 +1235,7 @@ export interface CarAccess {
    *  unregistered: elsewhere from the street where no exit is registered; through-barrier:
    *  only through a hedge, fence or wall on the street side (open it, and a new exit);
    *  null: no way in. */
-  via: "existing" | "probable" | "new-exit" | "unregistered" | "through-barrier" | null;
+  via: Via | null;
   bays: BayAccess[];
   /** The world the routes were found in (for driving out). */
   lattice: Lattice | null;
@@ -1199,6 +1255,11 @@ export interface CarAccess {
 export interface EvaluateOptions {
   /** Ids of scanned shrubs on the plot they will clear. */
   cleared?: ReadonlySet<string>;
+  /**
+   * The person checked on site that the kerb is lowered where the car crosses to the street:
+   * a way in through an unregistered stretch then counts as existing ("confirmed").
+   */
+  kerbConfirmed?: boolean;
 }
 
 /** The carport as the vehicle planner sees it: cars park along its length, one or two bays. */
@@ -1233,14 +1294,16 @@ export function carAccess(
   pl: Placement,
   cleared: ReadonlySet<string> = new Set(),
 ): CarAccess {
-  const { car, existing, any, opened } = prep.vehicle;
+  const { car, existing, kerb, any, opened } = prep.vehicle;
   const rect = carportRect(pl, car);
   const fit = parkingFit(car, rect, DOOR_GAP_M);
   const none = { crossed: [], sweptShrubM2: 0, sweptSolidM2: 0, sweptPublicM2: 0, clearedM2: 0 };
   if (!fit.fits) return { rect, fit, via: null, bays: [], lattice: null, ...none };
   const registered = prep.site.access.level === "registered";
   const tiers: [Lattice | null, CarAccess["via"]][] = [
-    [existing, registered ? "existing" : "probable"],
+    ...(registered ? [[existing, "existing"] as [Lattice | null, Via]] : []),
+    [kerb ?? null, "kerb"],
+    ...(registered ? [] : [[existing, "probable"] as [Lattice | null, Via]]),
     [any, registered ? "new-exit" : "unregistered"],
     [opened, "through-barrier"],
   ];
@@ -1251,7 +1314,10 @@ export function carAccess(
     // A new way in is one exit: a route that crosses the plot line in two separate places
     // (for example out again to shunt) would need two, which is not offered.
     const oneExit =
-      via === "existing" || via === "probable" || bays.every((b) => crossingGroups(b.route) <= 1);
+      via === "existing" ||
+      via === "kerb" ||
+      via === "probable" ||
+      bays.every((b) => crossingGroups(b.route) <= 1);
     if (bays.every((b) => b.route) && oneExit) {
       const poses = bays.flatMap((b) => b.route!.poses);
       return {
@@ -1261,7 +1327,13 @@ export function carAccess(
         bays,
         lattice,
         crossed: crossedStates(prep.site, bays),
-        ...sweptCells(prep.site, car, poses, cleared, via === "existing" || via === "probable"),
+        ...sweptCells(
+          prep.site,
+          car,
+          poses,
+          cleared,
+          via === "existing" || via === "kerb" || via === "probable",
+        ),
       };
     }
     last = { bays, lattice };
@@ -1408,6 +1480,7 @@ export function options(
   prep: Prepared,
   size: { widthM: number; lengthM: number },
   max = 6,
+  opts: EvaluateOptions = {},
 ): CarportOption[] {
   const { site, grid: g, screen, yard } = prep;
   const xs = site.plot.map((p) => p[0]);
@@ -1530,17 +1603,14 @@ export function options(
       const c = q.shift()!;
       if (clash(c.pl)) continue;
       budget--;
-      const v = evaluate(prep, c.pl);
+      const v = evaluate(prep, c.pl, opts);
       if (v.colour === "red") continue;
       seen.push({ c, v });
-      if (v.colour === "green" || v.access.via === "existing" || v.access.via === "probable") break;
+      if (v.colour === "green" || (v.access.via && VIA_RANK[v.access.via] <= 1)) break;
     }
     if (!seen.length) return;
     const order = (v: CarportVerdict) =>
-      (v.colour === "green" ? 0 : 10) +
-      ({ existing: 0, probable: 1, "new-exit": 2, unregistered: 2, "through-barrier": 3 }[
-        v.access.via ?? "through-barrier"
-      ] ?? 4);
+      (v.colour === "green" ? 0 : 10) + VIA_RANK[v.access.via ?? "through-barrier"];
     const pick = seen.reduce((b, x) => (order(x.v) < order(b.v) ? x : b));
     chosen.push(pick);
     q.unshift(...seen.filter((x) => x !== pick).map((x) => x.c));
@@ -1555,10 +1625,7 @@ export function options(
   const rank = { green: 0, amber: 1, red: 2 } as const;
   // Among equals, a way in that already exists beats a new exit (people would rather not apply
   // for an exit permit), and a new exit beats breaking through a hedge or fence.
-  const viaRank = (v: CarportVerdict) =>
-    ({ existing: 0, probable: 1, "new-exit": 2, unregistered: 2, "through-barrier": 3 })[
-      v.access.via ?? "through-barrier"
-    ] ?? 4;
+  const viaRank = (v: CarportVerdict) => VIA_RANK[v.access.via ?? "through-barrier"];
   return chosen
     .sort(
       (a, b) =>

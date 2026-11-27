@@ -366,6 +366,32 @@ describe("the street side of the plot (fences, hedges, exits)", () => {
     expect(v2.warnings.some((w) => w.id === "cleared")).toBe(true);
   });
 
+  it("a lowered kerb (laser) counts as a way in that exists", () => {
+    const pieces = boundary((x) => (x < -6.5 ? "open" : "barrier")).map((p) =>
+      p.a[0] < -6.5 ? { ...p, kerb: "lowered" as const, kerbStepM: 0.01 } : p,
+    );
+    const none = { level: "none" as const, entries: [], frontage: [], note: "no exit" };
+    const v = evaluate(prepare(site({ access: none, boundary: pieces })), spot);
+    expect(v.access.via).toBe("kerb");
+    expect(outcome(v, "car-route")).toBe("pass");
+    // Raised kerb there: a new exit (amber), unless the person confirms the kerb is lowered.
+    const raised = pieces.map((p) => (p.kerb ? { ...p, kerb: "raised" as const } : p));
+    const p2 = prepare(site({ access: none, boundary: raised }));
+    const v2 = evaluate(p2, spot);
+    expect(v2.access.via).toBe("unregistered");
+    expect(outcome(v2, "car-route")).toBe("unknown");
+    const v3 = evaluate(p2, spot, { kerbConfirmed: true });
+    expect(v3.access.via).toBe("confirmed");
+    expect(outcome(v3, "car-route")).toBe("pass");
+  });
+
+  it("confirming the kerb never opens a fence", () => {
+    const v = evaluate(prepare(site({ boundary: boundary(() => "barrier") })), spot, {
+      kerbConfirmed: true,
+    });
+    expect(v.access.via).toBe("through-barrier");
+  });
+
   it("a new exit keeps 1.5 m from a street-tree trunk", () => {
     // No registered exit; the whole street side is open, a street tree stands 1 m out at x = 0.
     const open = site({

@@ -173,6 +173,13 @@ export interface BoundaryPiece {
   heightM: number | null;
   material: Material | null;
   source: "map" | "scan" | "exit" | "none";
+  /**
+   * The kerb straight out from this piece (laser scan): "lowered" is a driveway crossing at
+   * road level. Absent when not measured.
+   */
+  kerb?: "raised" | "lowered" | "unclear";
+  /** Kerb step height there (m), pavement side minus road side. */
+  kerbStepM?: number | null;
 }
 
 export interface BoundaryInput {

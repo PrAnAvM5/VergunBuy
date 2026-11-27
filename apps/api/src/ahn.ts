@@ -39,6 +39,54 @@ export const EchoQuery = z.object({
 });
 export type EchoQuery = z.infer<typeof EchoQuery>;
 
+/** Strips along the kerb (RD New polygons), at most 1500 m² in all, within 220 m. */
+export const GroundQuery = z.object({
+  polygons: z
+    .array(
+      z
+        .array(z.tuple([z.number(), z.number()]))
+        .min(3)
+        .max(64),
+    )
+    .min(1)
+    .max(40)
+    .refine((ps) => {
+      const xs = ps.flat().map((p) => p[0]);
+      const ys = ps.flat().map((p) => p[1]);
+      const area = ps.reduce((a, p) => {
+        let s = 0;
+        for (let i = 0; i < p.length; i++) {
+          const q = p[(i + 1) % p.length]!;
+          s += p[i]![0] * q[1] - q[0] * p[i]![1];
+        }
+        return a + Math.abs(s) / 2;
+      }, 0);
+      return (
+        Math.max(...xs) - Math.min(...xs) <= ECHO_MAX_SIDE_M &&
+        Math.max(...ys) - Math.min(...ys) <= ECHO_MAX_SIDE_M &&
+        Math.min(...xs) > -7000 &&
+        Math.max(...xs) < 300000 &&
+        Math.min(...ys) > 289000 &&
+        Math.max(...ys) < 629000 &&
+        area <= 1500
+      );
+    }, "polygons must be in RD New, within 220 m and at most 1500 m² in all"),
+});
+export type GroundQuery = z.infer<typeof GroundQuery>;
+
+/** Ground-classified laser points (class 2) inside the strips: x, y in cm offsets, z in mm. */
+export interface GroundPoints {
+  version: string;
+  /** Origin of the x/y offsets (RD New, m). */
+  ox: number;
+  oy: number;
+  /** Per point: x, y offsets in cm from the origin; z in mm above NAP. */
+  x: number[];
+  y: number[];
+  z: number[];
+  ms: number;
+}
+
 export interface EchoGrid {
   /** Which scan the points came from, e.g. "AHN5". */
   version: string;
@@ -129,6 +177,99 @@ export function createAhn(opts: { fetchFn?: Fetch; timeoutMs?: number; cacheMs?:
       files.set(url, p);
     }
     return p;
+  }
+
+  /** Every point in the sheets' octree nodes that overlap the bbox, with the given fields. */
+  async function eachPoint(
+    bbox: [number, number, number, number],
+    include: string[],
+    cb: (get: (name: string) => (i: number) => number, count: number) => void,
+  ): Promise<string> {
+    const lp = await lazPerf();
+    const cells: [number, number][] = [];
+    for (let y = Math.floor(bbox[1] / 1000) * 1000; y < bbox[3]; y += 1000)
+      for (let x = Math.floor(bbox[0] / 1000) * 1000; x < bbox[2]; x += 1000) cells.push([x, y]);
+    const found = (await Promise.all(cells.map(([x, y]) => sheet(x, y)))).filter(
+      (s): s is { url: string; version: string } => s !== null,
+    );
+    if (!found.length) throw new Error("No AHN point cloud sheet found here.");
+    for (const s of found) {
+      const copc = await open(s.url);
+      const get = getter(s.url);
+      const cube = copc.info.cube;
+      const span = cube[3] - cube[0];
+      const overlaps = (key: string) => {
+        const [d, nx, ny] = key.split("-").map(Number) as [number, number, number];
+        const size = span / 2 ** d;
+        const bx = cube[0] + nx * size;
+        const by = cube[1] + ny * size;
+        return !(bx > bbox[2] || bx + size < bbox[0] || by > bbox[3] || by + size < bbox[1]);
+      };
+      const nodes: Awaited<ReturnType<typeof Copc.loadHierarchyPage>>["nodes"][string][] = [];
+      const queue = [copc.info.rootHierarchyPage];
+      while (queue.length) {
+        const page = await Copc.loadHierarchyPage(get, queue.shift()!);
+        for (const [k, node] of Object.entries(page.nodes))
+          if (node && node.pointCount > 0 && overlaps(k)) nodes.push(node);
+        for (const [k, sub] of Object.entries(page.pages)) if (sub && overlaps(k)) queue.push(sub);
+      }
+      const views = await Promise.all(
+        nodes.map((node) =>
+          Copc.loadPointDataView(get, copc, node!, { lazPerf: lp, include: include as never }),
+        ),
+      );
+      for (const view of views) cb((name) => view.getter(name as never), view.pointCount);
+    }
+    return found[0]!.version;
+  }
+
+  const groundAnswers = new Map<string, { at: number; pts: GroundPoints }>();
+  /** Ground points (class 2) inside the strips. */
+  async function ground(polygons: [number, number][][]): Promise<GroundPoints> {
+    const started = performance.now();
+    const key = JSON.stringify(polygons.map((p) => p.map((q) => q.map((v) => v.toFixed(2)))));
+    const hit = groundAnswers.get(key);
+    if (hit && Date.now() - hit.at < cacheMs) return hit.pts;
+    const xs = polygons.flat().map((p) => p[0]);
+    const ys = polygons.flat().map((p) => p[1]);
+    const bbox: [number, number, number, number] = [
+      Math.min(...xs),
+      Math.min(...ys),
+      Math.max(...xs),
+      Math.max(...ys),
+    ];
+    const inside = (px: number, py: number, poly: [number, number][]) => {
+      let c = false;
+      for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+        const [xi, yi] = poly[i]!;
+        const [xj, yj] = poly[j]!;
+        if (yi > py !== yj > py && px < ((xj - xi) * (py - yi)) / (yj - yi) + xi) c = !c;
+      }
+      return c;
+    };
+    const ox = Math.floor(bbox[0]);
+    const oy = Math.floor(bbox[1]);
+    const out: GroundPoints = { version: "", ox, oy, x: [], y: [], z: [], ms: 0 };
+    out.version = await eachPoint(bbox, ["X", "Y", "Z", "Classification"], (get, count) => {
+      const gx = get("X");
+      const gy = get("Y");
+      const gz = get("Z");
+      const gc = get("Classification");
+      for (let i = 0; i < count; i++) {
+        if (gc(i) !== 2) continue;
+        const x = gx(i);
+        const y = gy(i);
+        if (x < bbox[0] || x > bbox[2] || y < bbox[1] || y > bbox[3]) continue;
+        if (!polygons.some((p) => inside(x, y, p))) continue;
+        out.x.push(Math.round((x - ox) * 100));
+        out.y.push(Math.round((y - oy) * 100));
+        out.z.push(Math.round(gz(i) * 1000));
+      }
+    });
+    out.ms = Math.round(performance.now() - started);
+    groundAnswers.set(key, { at: Date.now(), pts: out });
+    if (groundAnswers.size > 200) groundAnswers.delete(groundAnswers.keys().next().value!);
+    return out;
   }
 
   async function echoes(bbox: [number, number, number, number]): Promise<EchoGrid> {
@@ -223,5 +364,5 @@ export function createAhn(opts: { fetchFn?: Fetch; timeoutMs?: number; cacheMs?:
     return grid;
   }
 
-  return { echoes };
+  return { echoes, ground };
 }
