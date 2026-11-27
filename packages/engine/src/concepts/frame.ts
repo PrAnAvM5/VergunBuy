@@ -123,8 +123,46 @@ export function plotFrame(
     return edge === undefined ? undefined : { edge, name: name! };
   };
 
-  // 0. The own street's centre line (road register).
-  const road = facing(hints.roadPoints ?? []);
+  // 0. The own street's centre line (road register): the side that looks straight at it — a
+  // line out from the side, square to it, reaches the centre line soonest. (Nearest by plain
+  // distance would also pick a side edge near where the street runs on past the corner.)
+  const facingRoad = (pts: { at: Point; name: string }[]) => {
+    let best = Infinity;
+    let edge: number | undefined;
+    let name: string | undefined;
+    for (const i of candidates) {
+      const a = at(plot, i);
+      const b = at(plot, i + 1);
+      const len = length(a, b);
+      if (len < 0.5) continue;
+      const n = outwardNormal(plot, a, b);
+      const t: Point = [(b[0] - a[0]) / len, (b[1] - a[1]) / len];
+      const mid: Point = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+      for (const p of pts) {
+        const dx = p.at[0] - mid[0];
+        const dy = p.at[1] - mid[1];
+        const out = dx * n[0] + dy * n[1];
+        const side = Math.abs(dx * t[0] + dy * t[1]);
+        if (out <= 0 || side > len / 2 + 1.5) continue;
+        if (out < best) {
+          best = out;
+          edge = i;
+          name = p.name;
+        }
+      }
+    }
+    return edge === undefined ? undefined : { edge, name: name! };
+  };
+  // On a corner where the own street bends round the plot, the front is the side facing the bit
+  // of the street nearest the address point (the register places it by the entrance).
+  let road: { edge: number; name: string } | undefined;
+  const rp = hints.roadPoints ?? [];
+  if (rp.length && hints.addressPoint) {
+    const ap = hints.addressPoint;
+    const near = rp.reduce((b, p) => (length(p.at, ap) < length(b.at, ap) ? p : b));
+    road = facingRoad(rp.filter((p) => length(p.at, near.at) <= 10));
+  }
+  if (!road) road = facingRoad(rp);
   if (road) {
     front = road.edge;
     streetName = road.name;
