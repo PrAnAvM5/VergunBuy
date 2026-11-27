@@ -28,6 +28,13 @@ describe("kerb height from ground points", () => {
     expect(at(17).state).toBe("unclear");
   });
 
+  it("a whole street at road level is no driveway crossing", () => {
+    const flat = points().map((p) => (p.y > 0 ? { ...p, z: 2 + (p.z - 2) * 0 + 0.01 } : p));
+    const w = kerbProfile([line], flat);
+    expect(w.filter((q) => q.state === "lowered").length).toBe(0);
+    expect(w.some((q) => q.flush)).toBe(true);
+  });
+
   it("noisy points stay unclear rather than lowered", () => {
     const w = kerbProfile([line], points(0.25));
     expect(w.filter((q) => q.state === "lowered").length).toBe(0);

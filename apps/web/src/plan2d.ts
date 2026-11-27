@@ -17,7 +17,7 @@ export const KERB_COLORS = { raised: "#5b6470", lowered: "#f2b134", unclear: "#b
 export const KERB_TEXT = {
   raised: "Raised kerb",
   lowered: "Lowered kerb (driveway crossing)",
-  unclear: "Kerb unclear (parked car, too few points)",
+  unclear: "Kerb unclear (sloped kerb, parked car or too few points)",
 } as const;
 
 export function streetObjectSvg(x: number, y: number, kind: string): string {
@@ -227,7 +227,7 @@ export function planScene(
     if (Math.max(a[1], b[1]) < minY || Math.min(a[1], b[1]) > maxY) continue;
     const step = w.stepM === null ? "too few laser points" : `step ${Math.round(w.stepM * 100)} cm`;
     parts.push(
-      `<line x1="${tx(a[0]).toFixed(1)}" y1="${ty(a[1]).toFixed(1)}" x2="${tx(b[0]).toFixed(1)}" y2="${ty(b[1]).toFixed(1)}" stroke="${KERB_COLORS[w.state]}" stroke-width="${w.state === "lowered" ? 5 : 3}" stroke-linecap="butt" ${w.state === "unclear" ? 'stroke-dasharray="3 3"' : ""}><title>${esc(`${KERB_TEXT[w.state]} (${step})`)}</title></line>`,
+      `<line x1="${tx(a[0]).toFixed(1)}" y1="${ty(a[1]).toFixed(1)}" x2="${tx(b[0]).toFixed(1)}" y2="${ty(b[1]).toFixed(1)}" stroke="${KERB_COLORS[w.state]}" stroke-width="${w.state === "lowered" ? 5 : 3}" stroke-linecap="butt" ${w.state === "unclear" ? 'stroke-dasharray="3 3"' : ""}><title>${esc(w.flush ? `Level with the road along the street: no kerb here, so no sign of a driveway (${step})` : `${KERB_TEXT[w.state]} (${step})`)}</title></line>`,
     );
   }
 

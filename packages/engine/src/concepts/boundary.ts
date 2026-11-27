@@ -180,6 +180,8 @@ export interface BoundaryPiece {
   kerb?: "raised" | "lowered" | "unclear";
   /** Kerb step height there (m), pavement side minus road side. */
   kerbStepM?: number | null;
+  /** Why the kerb is unclear there (see KerbWindow.why). */
+  kerbWhy?: "points" | "spread" | "between" | "long" | "alone";
 }
 
 export interface BoundaryInput {

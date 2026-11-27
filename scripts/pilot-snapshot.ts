@@ -188,9 +188,13 @@ async function home(rec: Json, file: string): Promise<Json> {
           ),
           pieces: lenBy(
             street.filter((p) => p.kerb),
-            (p) => `${p.state === "exit" ? "exit" : "other"}-${p.kerb}`,
+            (p) =>
+              `${p.state === "exit" ? "exit" : "other"}-${p.kerb}${p.kerbWhy ? `-${p.kerbWhy}` : ""}`,
             (p) => dist(p.a, p.b),
           ),
+          exitSteps: street
+            .filter((p) => p.state === "exit" && p.kerbStepM != null)
+            .map((p) => Math.round(p.kerbStepM! * 100)),
           steps: ctx.kerb.windows
             .filter((w) => w.stepM !== null)
             .map((w) => Math.round(w.stepM! * 100)),

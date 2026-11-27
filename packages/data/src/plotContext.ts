@@ -1614,6 +1614,7 @@ export async function buildPlotContext(
             if (!h) return;
             p.kerb = h.state;
             p.kerbStepM = h.stepM;
+            if (h.why) p.kerbWhy = h.why;
           });
           const n = (st: string) => windows.filter((w) => w.state === st).length * 0.5;
           ctx.summarize(

@@ -10,7 +10,9 @@
  *    MIN_POINTS each, spread not too wide); the step is pavement side minus road side.
  *    About 10–15 cm: raised. Under 4.5 cm: lowered. Else, too few points or a wide spread:
  *    unclear (for example where a car was parked when the scan was flown).
- * 4. A lowered stretch counts only when at least 2.4 m long (a car plus margins).
+ * 4. A lowered stretch counts only when it is a dip in a raised kerb: at most 12 m long, with
+ *    raised kerb within 4 m (a whole street at road level has no kerbs, which proves nothing),
+ *    and at least 2.4 m long in front of the plot (a car plus margins).
  */
 import { contains, length, outwardNormal, type Point, type Polygon } from "../geometry.ts";
 
@@ -25,7 +27,15 @@ export const KERB_SETTINGS = {
   /** Median absolute deviation above this (m): too uneven to read (cars, bins, slopes). */
   maxSpreadM: 0.05,
   loweredBelowM: 0.045,
-  raisedFromM: 0.07,
+  /** Calibrated on the 60 pilot homes: sloped driveway kerbs at registered exits reach 5–8 cm,
+   *  normal raised kerbs 9–13 cm. */
+  raisedFromM: 0.09,
+  /** A level stretch longer than this is a street without kerbs, not a driveway crossing. */
+  maxLoweredM: 12,
+  /** A driveway crossing is a dip in a raised kerb: raised kerb within this distance of it. */
+  raisedNearM: 4,
+  /** "Raised kerb near" for the dip test: a step of at least this (sloped kerbs included). */
+  kerbFromM: 0.07,
   /** A lowered stretch shorter than this is not a way in. */
   minLoweredM: 2.4,
 } as const;
@@ -46,6 +56,11 @@ export interface KerbWindow {
   state: KerbState;
   /** Pavement side minus road side (m), null when unclear for lack of points. */
   stepM: number | null;
+  /** Level with the road, but too long or with no raised kerb near: no kerb here at all. */
+  flush?: boolean;
+  /** Why unclear: too few points, uneven ground, a step between lowered and raised (a sloped
+   *  kerb), or level but too long / with no kerb near (flush). */
+  why?: "points" | "spread" | "between" | "long" | "alone";
   nRoad: number;
   nPave: number;
 }
@@ -107,7 +122,15 @@ export function kerbProfile(
       const a: Point = [k.a[0] + t[0] * u0, k.a[1] + t[1] * u0];
       const b: Point = [k.a[0] + t[0] * u1, k.a[1] + t[1] * u1];
       if (zr.length < s.minPoints || zp.length < s.minPoints) {
-        out.push({ a, b, state: "unclear", stepM: null, nRoad: zr.length, nPave: zp.length });
+        out.push({
+          a,
+          b,
+          state: "unclear",
+          stepM: null,
+          nRoad: zr.length,
+          nPave: zp.length,
+          why: "points",
+        });
         continue;
       }
       const mr = median(zr);
@@ -129,11 +152,50 @@ export function kerbProfile(
         a,
         b,
         state,
+        ...(state === "unclear" ? { why: spread > s.maxSpreadM ? "spread" : "between" } : {}),
         stepM: Math.round(step * 1000) / 1000,
         nRoad: zr.length,
         nPave: zp.length,
       });
     }
+  }
+  return onlyDips(out, s);
+}
+
+/** Lowered runs that are not a dip in a raised kerb become unclear (flush). */
+function onlyDips(ws: KerbWindow[], s: typeof KERB_SETTINGS): KerbWindow[] {
+  const mid = (w: KerbWindow): Point => [(w.a[0] + w.b[0]) / 2, (w.a[1] + w.b[1]) / 2];
+  const touch = (p: KerbWindow, q: KerbWindow) =>
+    [p.a, p.b].some((x) => [q.a, q.b].some((y) => Math.hypot(x[0] - y[0], x[1] - y[1]) < 0.3));
+  const low = ws.map((w, i) => (w.state === "lowered" ? i : -1)).filter((i) => i >= 0);
+  const raised = ws
+    .filter((w) => w.state !== "lowered" && w.stepM !== null && w.stepM >= s.kerbFromM)
+    .map(mid);
+  const seen = new Set<number>();
+  const out = ws.map((w) => ({ ...w }));
+  for (const i of low) {
+    if (seen.has(i)) continue;
+    const run = [i];
+    seen.add(i);
+    for (let k = 0; k < run.length; k++)
+      for (const j of low)
+        if (!seen.has(j) && touch(ws[run[k]!]!, ws[j]!)) {
+          seen.add(j);
+          run.push(j);
+        }
+    const len = run.reduce((t, j) => t + length(ws[j]!.a, ws[j]!.b), 0);
+    const nearRaised = run.some((j) => {
+      const m = mid(ws[j]!);
+      return raised.some((r) => Math.hypot(r[0] - m[0], r[1] - m[1]) <= s.raisedNearM);
+    });
+    if (len > s.maxLoweredM + 1e-6 || !nearRaised)
+      for (const j of run)
+        out[j] = {
+          ...out[j]!,
+          state: "unclear",
+          flush: true,
+          why: len > s.maxLoweredM + 1e-6 ? "long" : "alone",
+        };
   }
   return out;
 }
