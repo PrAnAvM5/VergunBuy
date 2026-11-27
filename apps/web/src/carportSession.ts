@@ -71,6 +71,8 @@ export interface Session {
   /** The animated car's pose, or null when not animating. */
   moving: Pose | null;
   anim: number;
+  /** Scanned shrubs on the plot the person marked as cleared (obstacle ids). */
+  cleared: Set<string>;
 }
 
 const sessions = new WeakMap<PlotContext, Promise<Session | { gate: string }>>();
@@ -116,6 +118,7 @@ async function build(ctx: PlotContext): Promise<Session | { gate: string }> {
     listeners: new Set(),
     moving: null,
     anim: 0,
+    cleared: new Set(),
   };
   refreshOptions(s);
   return s;
@@ -135,7 +138,7 @@ function refreshOptions(s: Session): void {
       ...s.size,
     };
     s.pl = pl;
-    s.verdict = evaluate(s.prep, pl);
+    s.verdict = evaluate(s.prep, pl, { cleared: s.cleared });
     s.message = {
       text: "No good spot found for this size: drag the carport to see what stands in the way.",
       bad: true,
@@ -154,8 +157,29 @@ export function select(s: Session, i: number | null, tell = true): void {
   s.message = null;
   const o = i === null ? undefined : s.opts[i];
   s.pl = o ? o.placement : null;
-  s.verdict = o ? o.verdict : null;
+  s.verdict = o
+    ? s.cleared.size
+      ? evaluate(s.prep, o.placement, { cleared: s.cleared })
+      : o.verdict
+    : null;
   if (tell) notify(s);
+}
+
+/** Shrubs that can be marked as cleared: 1–2.5 m, on the plot, not solid. */
+export function clearable(s: Session, id: string): boolean {
+  return (s.site.obstacles?.cells ?? []).some(
+    (c) => c.id === id && !c.tree && c.material !== "solid",
+  );
+}
+
+/** Marks a scanned shrub as cleared (or not) and checks the carport again. */
+export function toggleCleared(s: Session, id: string): void {
+  if (!clearable(s, id)) return;
+  if (s.cleared.has(id)) s.cleared.delete(id);
+  else s.cleared.add(id);
+  stopAnim(s);
+  if (s.pl) s.verdict = evaluate(s.prep, s.pl, { cleared: s.cleared });
+  notify(s);
 }
 
 /** The carport moved or resized by hand. */
@@ -164,7 +188,7 @@ export function place(s: Session, pl: Placement): void {
   s.pl = pl;
   s.sel = null;
   s.message = null;
-  s.verdict = evaluate(s.prep, pl);
+  s.verdict = evaluate(s.prep, pl, { cleared: s.cleared });
   if (s.bay >= s.verdict.access.bays.length) s.bay = 0;
   notify(s);
 }

@@ -169,6 +169,31 @@ describe("road-aware car world", () => {
     }
   });
 
+  it("drives out until the whole car stands on the road", () => {
+    // A cycle path between the plot line and the road.
+    const w = buildWorld(
+      roadSite({
+        road: {
+          drivable: [box(-25, -8.5, 45, -3.5)],
+          blockers: [],
+          crossable: [box(-25, -3.5, 45, -2)],
+        },
+      }),
+    );
+    const L = buildLattice(w, carOf(DEFAULT_VEHICLE));
+    const acc = accessCarport(L, backCarport, false);
+    const out = leaveCarport(L, backCarport, acc, 0)!;
+    expect(out).toBeTruthy();
+    const last = out.poses[out.poses.length - 1]!;
+    const car = carOf(DEFAULT_VEHICLE);
+    const c = [-car.ro, car.nose].map((d) => last.y + Math.cos(last.a) * d);
+    for (const y of c) {
+      expect(y).toBeLessThanOrEqual(-3.5);
+      expect(y).toBeGreaterThanOrEqual(-8.5);
+    }
+    expect(Math.abs(Math.sin(last.a))).toBeGreaterThan(0.9);
+  });
+
   it("does not drive through a lamp post", () => {
     // Lamp posts all along the plot side of the road, except right at the gate.
     const lamps: Polygon[] = [];

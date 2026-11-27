@@ -3,7 +3,7 @@
  * where it comes from and how it was derived. The developer layer adds the raw record.
  */
 import { STRUCTURE_TEXT, SURFACE_TEXT, type PlotContext } from "@vergunbuy/data";
-import { OBSTACLE_KIND_TEXT } from "./format.ts";
+import { obstacleName } from "./format.ts";
 import { area, at, sideOfEdge } from "@vergunbuy/engine";
 import { EDGE_TEXT, esc, isOtherHomeOnParcel, m, m2 } from "./format.ts";
 
@@ -203,12 +203,7 @@ function describe(ctx: PlotContext, key: string): View | undefined {
         ? "Unknown (no echo data)"
         : `${o.material === "plant" ? "Plant" : o.material === "solid" ? "Solid, not a plant" : "Unclear"} · ${share("plant")}% plant, ${share("solid")}% solid`;
     return {
-      title:
-        o.kind === "medium"
-          ? o.material === "solid"
-            ? "Solid object, 1–2.5 m (wall, car or unregistered shed)"
-            : "Shrub or hedge, 1–2.5 m"
-          : (OBSTACLE_KIND_TEXT[o.kind] ?? o.kind),
+      title: obstacleName(o),
       rows: [
         { label: "Size on this plot", value: m2(o.areaM2), certainty: "measured" },
         {

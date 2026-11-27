@@ -349,5 +349,59 @@ describe("the street side of the plot (fences, hedges, exits)", () => {
     expect(v.access.via).toBe("existing");
     expect(v.access.sweptShrubM2).toBeGreaterThan(1);
     expect(outcome(v, "car-route")).toBe("unknown");
+    // Marked as cleared by the person: no longer in the way, and the verdict says so.
+    const v2 = evaluate(
+      prepare(
+        site({
+          boundary: boundary((x) => (x < -6.5 ? "exit" : "barrier")),
+          obstacles: { cells: shrubs.map((c) => ({ ...c, id: "shrub-1" })), cellM: 0.5 },
+        }),
+      ),
+      spot,
+      { cleared: new Set(["shrub-1"]) },
+    );
+    expect(v2.access.sweptShrubM2).toBe(0);
+    expect(v2.access.clearedM2).toBeGreaterThan(1);
+    expect(outcome(v2, "car-route")).toBe("pass");
+    expect(v2.warnings.some((w) => w.id === "cleared")).toBe(true);
+  });
+
+  it("a new exit keeps 1.5 m from a street-tree trunk", () => {
+    // No registered exit; the whole street side is open, a street tree stands 1 m out at x = 0.
+    const open = site({
+      access: { level: "none", entries: [], frontage: [], note: "" },
+      boundary: boundary(() => "open"),
+      streetTrees: [[0, -1]],
+      road: { drivable: [box(-40, -9, 40, -3)], objects: [] },
+    });
+    const L = prepare(open).vehicle.any!;
+    for (const g of L.w.gates)
+      for (const x of [g.a[0], g.b[0]]) expect(Math.abs(x)).toBeGreaterThanOrEqual(1.5);
+  });
+
+  it("trees on the verge outside the plot block a way in there", () => {
+    const verge = [];
+    for (let x = -10; x < 10; x += 0.5)
+      for (let y = -2.75; y < 0; y += 0.5)
+        verge.push({
+          at: [x + 0.25, y] as const,
+          heightM: x < 0 ? 6 : 1.5,
+          material: "plant" as const,
+        });
+    const v = evaluate(
+      prepare(
+        site({
+          access: { level: "none", entries: [], frontage: [], note: "" },
+          boundary: boundary(() => "open"),
+          road: { drivable: [box(-40, -9, 40, -3)], objects: [] },
+          obstacles: { cells: [], cellM: 0.5, outside: verge },
+        }),
+      ),
+      spot,
+    );
+    // Only the right half (shrubs, no trees) is passable: a condition about public planting.
+    expect(v.access.via).not.toBeNull();
+    expect(v.access.sweptPublicM2).toBeGreaterThan(0.5);
+    expect(v.checks.find((c) => c.id === "car-route")!.detail).toContain("public ground");
   });
 });

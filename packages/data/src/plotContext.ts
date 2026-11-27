@@ -60,6 +60,8 @@ import {
   boundaryPieces,
   majority,
   materialAt,
+  fillGaps,
+  type Material,
   type BoundaryPiece,
   type HeightGrid,
   type ObstacleResult,
@@ -229,6 +231,8 @@ export interface PlotContext {
    */
   boundary?: {
     pieces: BoundaryPiece[];
+    /** Scan cells 1 m or higher on public ground within 8 m outside the plot (not roads). */
+    outside?: { at: Point; heightM: number; material: Material | null }[];
     echo: { version: string; points: number } | null;
     ndviLayer: string | null;
     mapTypes: Record<string, number>;
@@ -257,6 +261,25 @@ const IN_USE = new Set([
   "Verbouwing pand",
   "Sloopvergunning verleend",
 ]);
+
+/** How far outside the plot the verge and public green are scanned (m). */
+const OUTSIDE_M = 8;
+
+function distanceToPolygonEdge(poly: Polygon, p: Point): number {
+  let min = Infinity;
+  for (let i = 0; i < poly.length; i++) {
+    const a = poly[i]!;
+    const b = poly[(i + 1) % poly.length]!;
+    const dx = b[0] - a[0];
+    const dy = b[1] - a[1];
+    const t = Math.max(
+      0,
+      Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy || 1)),
+    );
+    min = Math.min(min, Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy));
+  }
+  return min;
+}
 
 /** Plain names for BGT road functions. */
 export const SURFACE_TEXT: Record<string, string> = {
@@ -1264,11 +1287,13 @@ export async function buildPlotContext(
         async (ctx) => {
           const xs = plot.outline.map((p) => p[0]);
           const ys = plot.outline.map((p) => p[1]);
+          // 8 m around the plot: the line itself, and the verge or public green a car would
+          // cross to reach the road.
           const bbox: [number, number, number, number] = [
-            Math.min(...xs) - 3,
-            Math.min(...ys) - 3,
-            Math.max(...xs) + 3,
-            Math.max(...ys) + 3,
+            Math.min(...xs) - OUTSIDE_M,
+            Math.min(...ys) - OUTSIDE_M,
+            Math.max(...xs) + OUTSIDE_M,
+            Math.max(...ys) + OUTSIDE_M,
           ];
           const [echo, ndvi, map] = await Promise.all([
             fetchEchoes(bbox, ctx, fetchFn).catch(() => null),
@@ -1299,6 +1324,31 @@ export async function buildPlotContext(
             mapBarriers: map?.barriers ?? [],
             mapHedges: map?.hedges ?? [],
           });
+          // Things 1 m or higher on public ground just outside the plot (not on roads or parking,
+          // where parked cars stand), with what they are made of.
+          const publicGround = [
+            ...(publicAreas ?? []).filter((a) => a.kind !== "road" && a.kind !== "water"),
+            ...openGround,
+          ].map((a) => a.outline);
+          const ground = fillGaps(grid.dtm, grid.cols, grid.rows);
+          const outside: { at: Point; heightM: number; material: Material | null }[] = [];
+          const blds = [...house, ...outbuildings, ...neighbours].map((b) => b.outline);
+          for (let r = 0; r < grid.rows; r++)
+            for (let c = 0; c < grid.cols; c++) {
+              const k = r * grid.cols + c;
+              const hgt = grid.dsm[k]! - ground[k]!;
+              if (!(hgt >= 1)) continue;
+              const at: Point = [grid.x0 + (c + 0.5) * grid.res, grid.y0 - (r + 0.5) * grid.res];
+              if (contains(plot.outline, at)) continue;
+              if (distanceToPolygonEdge(plot.outline, at) > OUTSIDE_M) continue;
+              if (!publicGround.some((g) => contains(g, at))) continue;
+              if (blds.some((b) => contains(b, at))) continue;
+              outside.push({
+                at,
+                heightM: Math.round(hgt * 10) / 10,
+                material: materialAt(at, echo, ndvi).material,
+              });
+            }
           const street = pieces.filter((p) => p.side === "street");
           const m = (st: string) => street.filter((p) => p.state === st).length * 0.5;
           ctx.summarize(
@@ -1308,6 +1358,7 @@ export async function buildPlotContext(
           if (!ndvi) ctx.degrade("infrared photo missing");
           return {
             pieces,
+            outside,
             echo: echo ? { version: echo.version, points: echo.points } : null,
             ndviLayer: ndvi?.layer ?? null,
             mapTypes: map?.types ?? {},

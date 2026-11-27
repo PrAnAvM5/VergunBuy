@@ -182,13 +182,17 @@ function obstacleText(ctx: PlotContext): string {
   const o = ctx.obstacles;
   if (!o) return "Unknown (no height scan)";
   const n = (f: (x: (typeof o.obstacles)[number]) => boolean) => o.obstacles.filter(f).length;
-  const trees = n((x) => x.kind === "tall" || x.kind === "boundary");
+  const trees = n((x) => (x.kind === "tall" || x.kind === "boundary") && x.material !== "solid");
+  const tallSolid = n(
+    (x) => (x.kind === "tall" || x.kind === "boundary") && x.material === "solid",
+  );
   const shrubs = n((x) => x.kind === "medium" && x.material !== "solid");
   const solid = n((x) => x.kind === "medium" && x.material === "solid");
   const over = n((x) => x.kind === "overhang");
   const structures = ctx.structures.filter((s) => s.onPlotShare > 0.3);
   const parts = [
     trees ? `${trees} tree${trees > 1 ? "s" : ""}` : "",
+    tallSolid ? `${tallSolid} tall solid object${tallSolid > 1 ? "s" : ""}` : "",
     shrubs ? `${shrubs} shrub/hedge` : "",
     solid ? `${solid} solid object${solid > 1 ? "s" : ""}` : "",
     over ? `${over} overhanging` : "",

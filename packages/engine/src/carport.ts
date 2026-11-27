@@ -49,11 +49,15 @@ import {
   type Lattice,
   type LeaveRoute,
   type VehicleParams,
+  EXIT_TREE_M,
+  TRUNK_R,
 } from "./vehicle.ts";
 import type { BoundaryState, Material } from "./concepts/boundary.ts";
 
 /** Fixed standard height of the presets (decision of 2026-11-25: no height dragging). */
 export const CARPORT_HEIGHT_M = 2.5;
+/** From this height a scanned object counts as a tree (blocks the car and the carport). */
+const TREE_M = 2.5;
 
 export const CARPORT_PRESETS = {
   single: { widthM: 3, lengthM: 5 },
@@ -115,6 +119,8 @@ export interface CarportSite {
   obstacles: {
     /** tree: part of the crown of something 2.5 m or higher (blocks cars, cannot be built on). */
     cells: {
+      /** The scanned object this cell belongs to (for "I'll clear this shrub"). */
+      id?: string;
       at: Point;
       heightM: number;
       kind: string;
@@ -124,6 +130,12 @@ export interface CarportSite {
     }[];
     cellM: number;
     scanYear?: number;
+    /**
+     * Cells 1 m or higher on public ground just outside the plot (verges, public green,
+     * pavement), where a car would cross to reach the road: trees block, the rest is the
+     * municipality's planting or a solid object.
+     */
+    outside?: { at: Point; heightM: number; material: Material | null }[];
   } | null;
   /** Rule exclusions with zones already in the local frame. */
   exclusions: ExclusionResult[];
@@ -329,6 +341,77 @@ const STREET_OBJECT_M = 0.4;
 
 const segBox = (p: Point, r: number): Polygon => box(p[0] - r, p[1] - r, p[0] + r, p[1] + r);
 
+/** True when p lies in the strip straight out from a gate (8 m deep, 2.5 m wider each side). */
+function nearGateStrip(plot: Polygon, g: Gate, p: Point): boolean {
+  const len = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]) || 1;
+  const tx = (g.b[0] - g.a[0]) / len;
+  const ty = (g.b[1] - g.a[1]) / len;
+  const mid: Point = [(g.a[0] + g.b[0]) / 2, (g.a[1] + g.b[1]) / 2];
+  let nx = ty;
+  let ny = -tx;
+  if (contains(plot, [mid[0] + nx * 0.1, mid[1] + ny * 0.1])) {
+    nx = -nx;
+    ny = -ny;
+  }
+  const dx = p[0] - g.a[0];
+  const dy = p[1] - g.a[1];
+  const along = dx * tx + dy * ty;
+  const out = dx * nx + dy * ny;
+  return out >= -0.5 && out <= 8 && along >= -2.5 && along <= len + 2.5;
+}
+
+/** Splits new-exit gates into 0.5 m pieces and keeps those whose crossing to the road stays
+ *  EXIT_TREE_M clear of every street-tree trunk. */
+function treeSafe(site: CarportSite, gates: Gate[]): Gate[] {
+  const out: Gate[] = [];
+  const drivable = site.road?.drivable ?? [];
+  for (const g of gates) {
+    const len = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]);
+    const n = Math.max(1, Math.round(len / 0.5));
+    const tx = (g.b[0] - g.a[0]) / (len || 1);
+    const ty = (g.b[1] - g.a[1]) / (len || 1);
+    // Outward: the side of the piece away from the plot.
+    const mid: Point = [(g.a[0] + g.b[0]) / 2, (g.a[1] + g.b[1]) / 2];
+    let nx = ty;
+    let ny = -tx;
+    if (contains(site.plot, [mid[0] + nx * 0.1, mid[1] + ny * 0.1])) {
+      nx = -nx;
+      ny = -ny;
+    }
+    let cur: Gate | null = null;
+    for (let i = 0; i < n; i++) {
+      const pa: Point = [
+        g.a[0] + ((g.b[0] - g.a[0]) * i) / n,
+        g.a[1] + ((g.b[1] - g.a[1]) * i) / n,
+      ];
+      const pb: Point = [
+        g.a[0] + ((g.b[0] - g.a[0]) * (i + 1)) / n,
+        g.a[1] + ((g.b[1] - g.a[1]) * (i + 1)) / n,
+      ];
+      const pm: Point = [(pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2];
+      // How far out the crossing goes: to the road surface (at most 8 m), else 3 m.
+      let d = 0;
+      while (d <= 8 && !drivable.some((r) => contains(r, [pm[0] + nx * d, pm[1] + ny * d])))
+        d += 0.25;
+      if (d > 8) d = 3;
+      const ok = site.streetTrees.every(
+        (t) =>
+          Math.min(
+            distanceToSegment(t, pa, [pa[0] + nx * d, pa[1] + ny * d]),
+            distanceToSegment(t, pb, [pb[0] + nx * d, pb[1] + ny * d]),
+            distanceToSegment(t, pa, pb),
+          ) >=
+          EXIT_TREE_M + TRUNK_R,
+      );
+      if (ok) {
+        if (cur && Math.hypot(cur.b[0] - pa[0], cur.b[1] - pa[1]) < 1e-6) cur.b = pb;
+        else out.push((cur = { a: pa, b: pb, kind: g.kind }));
+      } else cur = null;
+    }
+  }
+  return out;
+}
+
 /** Joins consecutive street-side pieces whose state is in `states` into gate segments. */
 function gatesFrom(
   pieces: NonNullable<CarportSite["boundary"]>,
@@ -354,12 +437,20 @@ export function vehicleWorlds(
   const solids = [
     ...site.house.map((h) => h.outline),
     ...site.buildings.map((b) => b.outline),
-    // A street tree's trunk: a new exit keeps about 1 m from it (with the car's clearance).
-    ...site.streetTrees.map((t) => segBox(t, 0.5)),
+    // A street tree's trunk (assumed TRUNK_R; the car keeps its normal clearance).
+    ...site.streetTrees.map((t) => segBox(t, TRUNK_R)),
   ];
   // Only trees block inside the garden (decision 2026-11-25); shrubs and solid things lower
   // than 2.5 m are driven through with a condition (see evaluate).
-  const scan = (site.obstacles?.cells ?? []).map((c) => ({ at: c.at, blocks: c.tree }));
+  const scan = [...(site.obstacles?.cells ?? []).map((c) => ({ at: c.at, blocks: c.tree }))];
+  // Trees on the verge or public green outside the plot block a NEW way in there, as inside.
+  // Not in front of a way in that already exists (cars drive under street-tree crowns daily).
+  const outsideScan = (existing: Gate[]) =>
+    (site.obstacles?.outside ?? [])
+      .filter(
+        (c) => c.heightM >= TREE_M && !existing.some((g) => nearGateStrip(site.plot, g, c.at)),
+      )
+      .map((c) => ({ at: c.at, blocks: true }));
   const scanCellM = site.obstacles?.cellM ?? 0.5;
   let existingGates: Gate[];
   let openGates: Gate[];
@@ -386,21 +477,34 @@ export function vehicleWorlds(
     ].map(([a, b]) => ({ a, b, kind: "frontage" }));
     closedGates = [];
   }
+  // A new exit keeps EXIT_TREE_M from a street-tree trunk: plot-line pieces whose crossing to
+  // the road would come closer are no way in (municipal exit rules: no damage to street trees).
+  const awayFromTrees = (gs: Gate[]) => (site.streetTrees.length ? treeSafe(site, gs) : gs);
+  openGates = awayFromTrees(openGates);
+  closedGates = awayFromTrees(closedGates);
   // Street objects and street-tree trunks as small blocks the car must miss on the road.
   const road = site.road?.drivable.length
     ? {
         drivable: site.road.drivable,
         crossable: site.road.crossable ?? [],
         soft: site.publicAreas ?? [],
-        blockers: [
-          ...site.road.objects.map((o) => segBox(o.at, STREET_OBJECT_M / 2)),
-          ...site.streetTrees.map((t) => segBox(t, 0.3)),
-        ],
+        blockers: [...site.road.objects.map((o) => segBox(o.at, STREET_OBJECT_M / 2))],
+        trees: site.streetTrees,
       }
     : undefined;
   const world = (gates: Gate[]) =>
     gates.length
-      ? buildLattice(buildWorld({ plot: site.plot, solids, scan, scanCellM, gates, road }), car)
+      ? buildLattice(
+          buildWorld({
+            plot: site.plot,
+            solids,
+            scan: [...scan, ...outsideScan(existingGates)],
+            scanCellM,
+            gates,
+            road,
+          }),
+          car,
+        )
       : null;
   return {
     car,
@@ -612,7 +716,12 @@ function samples(r: Polygon, step = 0.5): Point[] {
 
 const fmt = (n: number) => (Math.round(n * 10) / 10).toString();
 
-export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
+export function evaluate(
+  prep: Prepared,
+  pl: Placement,
+  opts: EvaluateOptions = {},
+): CarportVerdict {
+  const cleared = opts.cleared ?? new Set<string>();
   const { site, yard } = prep;
   const r = rectangle(pl);
   const carportM2 = pl.widthM * pl.lengthM;
@@ -648,7 +757,10 @@ export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
   });
   // Trees and shrubs where the carport would stand (laser scan). A tree would have to be felled:
   // not offered (red). Shrubs and low objects can be cleared: amber with a warning.
-  const cellsIn = (site.obstacles?.cells ?? []).filter((c) => contains(r, c.at));
+  const cellsAll = (site.obstacles?.cells ?? []).filter((c) => contains(r, c.at));
+  const isCleared = (c: { id?: string; tree: boolean }) => !c.tree && !!c.id && cleared.has(c.id);
+  const clearedHere = cellsAll.filter(isCleared).length;
+  const cellsIn = cellsAll.filter((c) => !isCleared(c));
   const treeCells = cellsIn.filter((c) => c.tree);
   const lowCells = cellsIn.filter((c) => !c.tree && c.heightM >= 1);
   const solidCells = lowCells.filter((c) => c.material === "solid");
@@ -681,10 +793,10 @@ export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
             ]
               .filter(Boolean)
               .join(" ")
-          : `Nothing 1 m or higher stands here${scanNote}.`,
+          : `Nothing 1 m or higher stands here${scanNote}${clearedHere ? `, once the ${fmt(clearedHere * cellM2)} m² of shrubs you marked are cleared` : ""}.`,
   });
 
-  const access = carAccess(prep, pl);
+  const access = carAccess(prep, pl, cleared);
   const car = prep.vehicle.car;
   add({
     id: "car-fit",
@@ -708,10 +820,19 @@ export function evaluate(prep: Prepared, pl: Placement): CarportVerdict {
     conditions.push(
       `The car drives over about ${fmt(access.sweptShrubM2)} m² of shrubs or hedge (1–2.5 m) on the way in: they would have to go.`,
     );
+  if (access.via && access.sweptPublicM2 >= 0.5)
+    conditions.push(
+      `Just outside the plot the car would cross about ${fmt(access.sweptPublicM2)} m² of planting or objects 1–2.5 m high on public ground (verge or public green): the municipality decides whether that may go.`,
+    );
   if (access.via && access.sweptSolidM2 >= 0.5)
     conditions.push(
       `Something solid (1–2.5 m, about ${fmt(access.sweptSolidM2)} m²) stood in the way during the laser scan: a parked car, a low wall or a shed. Check on site.`,
     );
+  if (clearedHere || access.clearedM2)
+    warnings.push({
+      id: "cleared",
+      text: `This assumes you clear the shrubs you marked (about ${fmt(clearedHere * cellM2 + access.clearedM2)} m² in the way). Shrubs on your own plot need no permit; trees of 2.5 m and up cannot be marked.`,
+    });
   const blockers = access.bays.filter((b) => !b.route);
   add({
     id: "car-route",
@@ -1049,6 +1170,16 @@ export interface CarAccess {
    *  would have to go, and solid things (a parked car, a low wall, a shed) to check on site. */
   sweptShrubM2: number;
   sweptSolidM2: number;
+  /** Low things (1–2.5 m) on public ground outside the plot the car would cross. */
+  sweptPublicM2: number;
+  /** Shrubs the person chose to clear that the car or carport would otherwise hit. */
+  clearedM2: number;
+}
+
+/** Choices the person made on the plan. */
+export interface EvaluateOptions {
+  /** Ids of scanned shrubs on the plot they will clear. */
+  cleared?: ReadonlySet<string>;
 }
 
 /** The carport as the vehicle planner sees it: cars park along its length, one or two bays. */
@@ -1065,11 +1196,15 @@ export function carportRect(pl: Placement, car: Car): CarportRect {
   };
 }
 
-export function carAccess(prep: Prepared, pl: Placement): CarAccess {
+export function carAccess(
+  prep: Prepared,
+  pl: Placement,
+  cleared: ReadonlySet<string> = new Set(),
+): CarAccess {
   const { car, existing, any, opened } = prep.vehicle;
   const rect = carportRect(pl, car);
   const fit = parkingFit(car, rect, DOOR_GAP_M);
-  const none = { crossed: [], sweptShrubM2: 0, sweptSolidM2: 0 };
+  const none = { crossed: [], sweptShrubM2: 0, sweptSolidM2: 0, sweptPublicM2: 0, clearedM2: 0 };
   if (!fit.fits) return { rect, fit, via: null, bays: [], lattice: null, ...none };
   const registered = prep.site.access.level === "registered";
   const tiers: [Lattice | null, CarAccess["via"]][] = [
@@ -1090,7 +1225,7 @@ export function carAccess(prep: Prepared, pl: Placement): CarAccess {
         bays,
         lattice,
         crossed: crossedStates(prep.site, bays),
-        ...sweptCells(prep.site, car, poses),
+        ...sweptCells(prep.site, car, poses, cleared, via === "existing" || via === "probable"),
       };
     }
     last = { bays, lattice };
@@ -1120,9 +1255,19 @@ function sweptCells(
   site: CarportSite,
   car: Car,
   poses: { x: number; y: number; a: number }[],
-): { sweptShrubM2: number; sweptSolidM2: number } {
-  const cells = (site.obstacles?.cells ?? []).filter((c) => !c.tree && c.heightM >= 1);
-  if (!cells.length) return { sweptShrubM2: 0, sweptSolidM2: 0 };
+  cleared: ReadonlySet<string>,
+  /** Through a way in that already exists: what stands outside it is not the person's concern. */
+  existingWay = false,
+): { sweptShrubM2: number; sweptSolidM2: number; sweptPublicM2: number; clearedM2: number } {
+  type C = { at: Point; material: Material | null; id?: string; outside?: boolean };
+  const cells: C[] = [
+    ...(site.obstacles?.cells ?? []).filter((c) => !c.tree && c.heightM >= 1),
+    ...(existingWay ? [] : (site.obstacles?.outside ?? []))
+      .filter((c) => c.heightM >= 1 && c.heightM < TREE_M)
+      .map((c) => ({ ...c, outside: true })),
+  ];
+  const zero = { sweptShrubM2: 0, sweptSolidM2: 0, sweptPublicM2: 0, clearedM2: 0 };
+  if (!cells.length) return zero;
   const hit = new Set<number>();
   const R = Math.hypot((car.nose + car.ro) / 2, car.w / 2) + 0.3;
   for (let k = 0; k < poses.length; k += 2) {
@@ -1143,13 +1288,21 @@ function sweptCells(
     });
   }
   const m2 = (site.obstacles?.cellM ?? 0.5) ** 2;
-  let shrub = 0;
-  let solid = 0;
+  const out = { ...zero };
   for (const i of hit) {
-    if (cells[i]!.material === "solid") solid += m2;
-    else shrub += m2;
+    const c = cells[i]!;
+    if (c.outside) out.sweptPublicM2 += m2;
+    else if (c.material === "solid") out.sweptSolidM2 += m2;
+    else if (c.id && cleared.has(c.id)) out.clearedM2 += m2;
+    else out.sweptShrubM2 += m2;
   }
-  return { sweptShrubM2: Math.round(shrub * 10) / 10, sweptSolidM2: Math.round(solid * 10) / 10 };
+  const r1 = (v: number) => Math.round(v * 10) / 10;
+  return {
+    sweptShrubM2: r1(out.sweptShrubM2),
+    sweptSolidM2: r1(out.sweptSolidM2),
+    sweptPublicM2: r1(out.sweptPublicM2),
+    clearedM2: r1(out.clearedM2),
+  };
 }
 
 /** How the car in one bay leaves (reversing, turning where there is room). Null: not found. */

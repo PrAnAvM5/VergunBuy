@@ -19,9 +19,11 @@ import {
   bindControls,
   controlsHtml,
   fmtM,
+  clearable,
   getSession,
   place,
   select,
+  toggleCleared,
   verdictHtml,
   type Session,
 } from "./carportSession.ts";
@@ -121,6 +123,16 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
   const foreground = (): string => {
     const car = s.prep.vehicle.car;
     const parts: string[] = [];
+    // Shrubs marked as cleared: pale with a dashed outline.
+    if (s.cleared.size) {
+      const cm = site.obstacles?.cellM ?? 0.5;
+      for (const c of site.obstacles?.cells ?? []) {
+        if (!c.id || !s.cleared.has(c.id)) continue;
+        parts.push(
+          `<rect x="${X(c.at[0] - cm / 2).toFixed(1)}" y="${Y(c.at[1] + cm / 2).toFixed(1)}" width="${(cm * S).toFixed(1)}" height="${(cm * S).toFixed(1)}" fill="#fff" fill-opacity="0.8" stroke="#888" stroke-width="0.6" stroke-dasharray="2 1.5" pointer-events="none"/>`,
+        );
+      }
+    }
     // The other good spots, numbered.
     s.opts.forEach((o, i) => {
       if (i === s.sel) return;
@@ -243,7 +255,7 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
       <span><i class="ln" style="border-color:#1f6fd1;background:#1f6fd122"></i>car's path</span>
       <span><i class="ln dash" style="border-color:#4c8a3a"></i>back yard</span>
       <span><i class="sw" style="background:${LAMP_COLOR};border-radius:50%"></i>lamp post</span>
-      <span class="muted">Drag to move · corner to resize · plot line and garden colours as in the 2D plan</span>
+      <span class="muted">Drag to move · corner to resize · click a shrub to mark it cleared · plot line and garden colours as in the 2D plan</span>
     </div>
     <div id="cp-verdict"></div>`;
   const svg = el.querySelector<SVGSVGElement>("#cp-svg")!;
@@ -302,11 +314,18 @@ export async function mountCarport2D(el: HTMLElement, ctx: PlotContext): Promise
       select(s, Number(opt.getAttribute("data-opt")));
       return;
     }
-    if (!s.pl) return;
     const [mx, my] = toPlan(ev);
-    if (t.id === "cp-handle") drag = { mode: "resize", dx: 0, dy: 0 };
-    else if (t.id === "cp-rect") drag = { mode: "move", dx: mx - s.pl.x, dy: my - s.pl.y };
-    else return;
+    if (s.pl && t.id === "cp-handle") drag = { mode: "resize", dx: 0, dy: 0 };
+    else if (s.pl && t.id === "cp-rect") drag = { mode: "move", dx: mx - s.pl.x, dy: my - s.pl.y };
+    else {
+      // A click on a shrub marks it as cleared (or brings it back).
+      const half = (site.obstacles?.cellM ?? 0.5) / 2 + 0.05;
+      const hit = (site.obstacles?.cells ?? []).find(
+        (c) => c.id && Math.abs(c.at[0] - mx) <= half && Math.abs(c.at[1] - my) <= half,
+      );
+      if (hit?.id && clearable(s, hit.id)) toggleCleared(s, hit.id);
+      return;
+    }
     svg.setPointerCapture(ev.pointerId);
     ev.preventDefault();
   });

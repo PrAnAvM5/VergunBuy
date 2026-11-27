@@ -22,7 +22,7 @@
  * blocked grid cell has its centre inside it. With per-row prefix sums that is one lookup per grid
  * row, so the test is exact up to the grid cell (0.2 m).
  */
-import { contains, type Point, type Polygon } from "./geometry.ts";
+import { contains, distanceToSegment, type Point, type Polygon } from "./geometry.ts";
 
 export interface VehicleParams {
   widthM: number;
@@ -143,6 +143,8 @@ export interface WorldInput {
         crossable?: Polygon[];
         /** All public ground (pavement, verges, green): the car's body may overhang its edge. */
         soft?: Polygon[];
+        /** Street-tree trunks: the paved crossing of a new exit keeps EXIT_TREE_M from them. */
+        trees?: Point[];
       }
     | undefined;
 }
@@ -154,6 +156,8 @@ export interface World {
   /** Per gate: how far out the road surface starts (m), in road mode. */
   apron: number[];
   drivable: Polygon[];
+  /** Road mode: cells on a road surface (not cycle path, pavement or verge), free of objects. */
+  roadCell: Uint8Array | null;
   cell: number;
   minX: number;
   minY: number;
@@ -185,6 +189,10 @@ const APRON_FLARE_M = 2.5;
 const SWING_M = 6;
 /** Road mode: how far a car's body may overhang the kerb onto pavement or verge (m). */
 const OVERHANG_M = 0.5;
+/** Least distance (m) from a new exit's paved crossing to the outside of a street-tree trunk. */
+export const EXIT_TREE_M = 1.5;
+/** Assumed trunk radius (m): the register gives a point, not a trunk width. */
+export const TRUNK_R = 0.25;
 
 function inwardNormal(plot: Polygon, a: Point, b: Point): Point {
   const dx = b[0] - a[0];
@@ -265,12 +273,26 @@ export function buildWorld(input: WorldInput): World {
     // driveway crossing, so a car can swing in from the road.
     const len0 = Math.hypot(g.b[0] - g.a[0], g.b[1] - g.a[1]) || 1;
     const tt: Point = [(g.b[0] - g.a[0]) / len0, (g.b[1] - g.a[1]) / len0];
-    const fl = roadMode ? Math.min(APRON_FLARE_M, depth * 2) : 0;
+    // A new exit's crossing (flare included) keeps EXIT_TREE_M from a street-tree trunk.
+    const trees = g.kind === "existing" ? [] : (input.road?.trees ?? []);
+    const flareFor = (from: Point, sign: number) => {
+      let f = roadMode ? Math.min(APRON_FLARE_M, depth * 2) : 0;
+      for (; f > 0; f -= 0.5) {
+        const far: Point = [
+          from[0] - n[0] * depth + tt[0] * f * sign,
+          from[1] - n[1] * depth + tt[1] * f * sign,
+        ];
+        if (trees.every((t) => distanceToSegment(t, from, far) >= EXIT_TREE_M + TRUNK_R)) break;
+      }
+      return Math.max(0, f);
+    };
+    const flA = flareFor(g.a, -1);
+    const flB = flareFor(g.b, 1);
     const corridor: Polygon = [
       g.a,
       g.b,
-      [g.b[0] - n[0] * depth + tt[0] * fl, g.b[1] - n[1] * depth + tt[1] * fl],
-      [g.a[0] - n[0] * depth - tt[0] * fl, g.a[1] - n[1] * depth - tt[1] * fl],
+      [g.b[0] - n[0] * depth + tt[0] * flB, g.b[1] - n[1] * depth + tt[1] * flB],
+      [g.a[0] - n[0] * depth - tt[0] * flA, g.a[1] - n[1] * depth - tt[1] * flA],
     ];
     fillPolygon(corridor, dims, blocked, 0);
     if (roadMode) continue;
@@ -336,6 +358,12 @@ export function buildWorld(input: WorldInput): World {
       }
   }
   if (roadMode) for (const b of input.road!.blockers) fillPolygon(b, dims, blocked, 1);
+  let roadCell: Uint8Array | null = null;
+  if (roadMode) {
+    roadCell = new Uint8Array(nx * ny);
+    for (const d of drivable) fillPolygon(d, dims, roadCell, 1);
+    for (let k = 0; k < roadCell.length; k++) if (blocked[k]) roadCell[k] = 0;
+  }
 
   for (const s of input.solids) fillPolygon(s, dims, blocked, 1);
   // Tree crowns inside the plot (the whole crown of anything 2.5 m or higher).
@@ -370,6 +398,7 @@ export function buildWorld(input: WorldInput): World {
     roadMode,
     apron,
     drivable,
+    roadCell,
     cell,
     minX,
     minY,
@@ -750,6 +779,24 @@ function edgeOk(
   )
     for (const q of P.samples) if (dynHitWhich(L.car, dyn, x + q.x, y + q.y, q.a)) return false;
   return true;
+}
+
+/** True when the car's whole body (no clearance) stands on road cells. */
+function onRoad(w: World, car: Car, x: number, y: number, a: number): boolean {
+  const rc = w.roadCell!;
+  const c = carCorners(car, x, y, a);
+  // Corners, edge midpoints and the centre.
+  const pts: [number, number][] = [];
+  for (let k = 0; k < 8; k += 2) {
+    const n2 = (k + 2) % 8;
+    pts.push([c[k]!, c[k + 1]!], [(c[k]! + c[n2]!) / 2, (c[k + 1]! + c[n2 + 1]!) / 2]);
+  }
+  pts.push([(c[0]! + c[4]!) / 2, (c[1]! + c[5]!) / 2]);
+  return pts.every(([px, py]) => {
+    const i = Math.floor((px - w.minX) / w.cell);
+    const j = Math.floor((py - w.minY) / w.cell);
+    return i >= 0 && j >= 0 && i < w.nx && j < w.ny && rc[j * w.nx + i] === 1;
+  });
 }
 
 /** Nearest of the 8 headings to a direction vector. */
@@ -1600,7 +1647,8 @@ export function leaveCarport(
     // never possible, the first point where it is out at all).
     if (!inside && !quadHitsPlot(car, w.plot, x, y, HEADA(h))) {
       if (fallback < 0) fallback = S;
-      if (streetHeadings.has(h)) {
+      // Road mode: the whole car stands on the road itself, not on a cycle path or pavement.
+      if (streetHeadings.has(h) && (!w.roadCell || onRoad(w, car, x, y, HEADA(h)))) {
         goal = S;
         break;
       }

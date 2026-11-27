@@ -163,6 +163,7 @@ export function carportSite(
     ? {
         cells: ctx.obstacles.obstacles.flatMap((o) =>
           o.cells.map((c, i) => ({
+            id: o.id,
             at: toLocal(f, c),
             heightM: o.cellHeights[i] ?? 0,
             kind: o.kind,
@@ -172,6 +173,15 @@ export function carportSite(
           })),
         ),
         cellM: ctx.obstacles.res,
+        ...(ctx.boundary?.outside
+          ? {
+              outside: ctx.boundary.outside.map((c) => ({
+                at: toLocal(f, c.at),
+                heightM: c.heightM,
+                material: c.material,
+              })),
+            }
+          : {}),
         ...(ctx.house[0]?.heights?.scanYear ? { scanYear: ctx.house[0].heights.scanYear } : {}),
       }
     : null;

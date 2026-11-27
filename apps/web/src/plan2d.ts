@@ -168,6 +168,28 @@ export function planScene(
         `<path class="obj${sel(key)}" data-sel="${esc(key)}" d="${ds.join("")}" fill="${color}" fill-opacity="0.6" stroke="none"/>`,
       );
   }
+  // Verge and public green just outside the plot (laser scan): what a new way in would cross.
+  {
+    const byColor = new Map<string, string[]>();
+    for (const c of ctx.boundary?.outside ?? []) {
+      const [x, y] = c.at;
+      const color =
+        c.material === "solid" && c.heightM < 2.5 ? SOLID_COLOR : bandOf(c.heightM).color;
+      const d = path(
+        polyToLocal(f, [
+          [x - half, y - half],
+          [x + half, y - half],
+          [x + half, y + half],
+          [x - half, y + half],
+        ]),
+      );
+      byColor.set(color, [...(byColor.get(color) ?? []), d]);
+    }
+    for (const [color, ds] of byColor)
+      parts.push(
+        `<path d="${ds.join("")}" fill="${color}" fill-opacity="0.35" stroke="none"><title>Outside the plot, on public ground (laser scan)</title></path>`,
+      );
+  }
   for (const s of ctx.structures) {
     const key = `structure:${s.id}`;
     parts.push(

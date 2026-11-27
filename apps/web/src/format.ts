@@ -31,6 +31,30 @@ export const OBSTACLE_KIND_TEXT: Record<string, string> = {
   boundary: "Tree on the boundary line (may stand on either side)",
 };
 
+/**
+ * What a scanned object most likely is, from its height band (laser) and what it is made of
+ * (echoes + infrared): the title always agrees with "Made of".
+ */
+export function obstacleName(o: { kind: string; material?: string | null | undefined }): string {
+  const where =
+    o.kind === "boundary"
+      ? " on the plot line (may stand on either side)"
+      : o.kind === "overhang"
+        ? " next door, reaching over the line"
+        : "";
+  if (o.kind === "medium")
+    return o.material === "solid"
+      ? "Solid object, 1–2.5 m (low wall, parked car or unregistered shed)"
+      : o.material === "plant"
+        ? "Shrub or hedge, 1–2.5 m"
+        : "Low object, 1–2.5 m (plant or solid: unclear)";
+  return o.material === "solid"
+    ? `Tall solid object, 2.5 m+ (unregistered building, wall or roof)${where}`
+    : o.material === "plant"
+      ? `Tree${where}`
+      : `Tall object, 2.5 m+ (probably a tree; material unclear)${where}`;
+}
+
 export const m = (n: number, digits = 1) => `${n.toFixed(digits)} m`;
 export const m2 = (n: number) => `${Math.round(n)} m²`;
 
