@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "takenAt": "2026-11-27T14:19:44.976Z",
+ "takenAt": "2026-11-28T13:35:56.590Z",
  "points": [
   {
    "name": "Putte, Verdelingsweg 514",
    "x": 86549.8,
    "y": 376598.204,
-   "checkedAt": "2026-11-27T14:19:44.976Z",
+   "checkedAt": "2026-11-28T13:35:56.590Z",
    "latestAttemptComplete": true,
    "fingerprint": "63a06a438bb77ae5",
    "documents": [
@@ -756,7 +756,7 @@
    "name": "Putte, Berkenlaan 1",
    "x": 85402,
    "y": 374971,
-   "checkedAt": "2026-11-27T14:19:44.976Z",
+   "checkedAt": "2026-11-28T13:35:56.590Z",
    "latestAttemptComplete": true,
    "fingerprint": "63a06a438bb77ae5",
    "documents": [
@@ -1506,7 +1506,7 @@
    "name": "Huijbergen, Zonnedauw 13",
    "x": 84909,
    "y": 383328,
-   "checkedAt": "2026-11-27T14:19:44.976Z",
+   "checkedAt": "2026-11-28T13:35:56.590Z",
    "latestAttemptComplete": true,
    "fingerprint": "63a06a438bb77ae5",
    "documents": [
@@ -2256,7 +2256,7 @@
    "name": "Hoogerheide, Aalbersestraat 1",
    "x": 81029.282,
    "y": 381929.681,
-   "checkedAt": "2026-11-27T14:19:44.976Z",
+   "checkedAt": "2026-11-28T13:35:56.590Z",
    "latestAttemptComplete": true,
    "fingerprint": "63a06a438bb77ae5",
    "documents": [
@@ -3006,7 +3006,7 @@
    "name": "Ossendrecht, Markt 10a",
    "x": 81201.381,
    "y": 379008.519,
-   "checkedAt": "2026-11-27T14:19:44.976Z",
+   "checkedAt": "2026-11-28T13:35:56.590Z",
    "latestAttemptComplete": true,
    "fingerprint": "63a06a438bb77ae5",
    "documents": [
@@ -3756,7 +3756,7 @@
    "name": "Ossendrecht, Bremweg 1",
    "x": 81374,
    "y": 380528,
-   "checkedAt": "2026-11-27T14:19:44.976Z",
+   "checkedAt": "2026-11-28T13:35:56.590Z",
    "latestAttemptComplete": true,
    "fingerprint": "63a06a438bb77ae5",
    "documents": [
